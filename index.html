@@ -212,75 +212,82 @@
 
 <script>
     const data = [
-        { sem: 1, mat: [
-            { id: "PQ", n: "Principios de Química", c: 3, r: [], cat: "Fundamentación" },
+           { sem: 1, mat: [
+            { id: "A", n: "Principios de Química", c: 3, r: [], cat: "Fundamentación" },
             { id: "LTB", n: "Lab. Técnicas Básicas", c: 3, r: [], cat: "Fundamentación" },
-            { id: "CD", n: "Cálculo Diferencial", c: 4, r: [], cat: "Fundamentación" },
+            { id: "B", n: "Cálculo Diferencial", c: 4, r: [], cat: "Fundamentación" },
             { id: "OHI", n: "Opt. Herramientas Ing.", c: 3, r: [], cat: "Fundamentación" },
             { id: "IIQ", n: "Intro. Ing. Química", c: 3, r: [], cat: "Disciplinar" }
         ]},
         { sem: 2, mat: [
-            { id: "PAQ", n: "Principios Análisis Q.", c: 3, r: ["PQ"], cat: "Fundamentación" },
-            { id: "AL", n: "Álgebra Lineal", c: 4, r: ["CD"], cat: "Fundamentación" },
-            { id: "CI", n: "Cálculo Integral", c: 4, r: ["CD"], cat: "Fundamentación" },
-            { id: "FM", n: "Fund. de Mecánica", c: 4, r: ["CD"], cat: "Fundamentación" },
+            { id: "PAQ", n: "Principios Análisis Q.", c: 3, r: ["A"], cat: "Fundamentación" },
+            { id: "AL", n: "Álgebra Lineal", c: 4, r: ["B"], cat: "Fundamentación" },
+            { id: "CI", n: "Cálculo Integral", c: 4, r: ["B"], cat: "Fundamentación" },
+            { id: "FM", n: "Fund. de Mecánica", c: 4, r: ["B"], cat: "Fundamentación" },
             { id: "BM", n: "Balance de Materia", c: 3, r: [], cat: "Disciplinar" }
         ]},
         { sem: 3, mat: [
-            { id: "LPAQ", n: "Lab. Princ. Análisis", c: 3, r: ["PQ"], cat: "Fundamentación" },
+            { id: "LPA", n: "Lab. Principios Análisis", c: 3, r: ["A"], cat: "Fundamentación" },
             { id: "BIO", n: "Biología Molecular", c: 3, r: [], cat: "Fundamentación" },
             { id: "CVV", n: "Cálculo Varias Var.", c: 4, r: ["AL", "CI"], cat: "Fundamentación" },
-            { id: "FEM", n: "Fund. Elec. y Magnetismo", c: 4, r: ["CI", "FM"], cat: "Fundamentación" },
+            { id: "FEM", n: "Fund. Elec. y Mag.", c: 4, r: ["CI", "FM"], cat: "Fundamentación" },
             { id: "TERM", n: "Termodinámica", c: 3, r: ["BM"], cat: "Disciplinar" },
-            { id: "L1", n: "Libre Elección 1", c: 3, r: [], cat: "Libre" }
+            { id: "L1", n: "Libre Elección", c: 3, r: [], cat: "Libre" }
         ]},
         { sem: 4, mat: [
-            { id: "QO", n: "Química Orgánica", c: 3, r: ["PQ"], cat: "Fundamentación" },
-            { id: "PE", n: "Probabilidad y Est.", c: 3, r: ["CD"], cat: "Fundamentación" },
+            { id: "QO", n: "Principios Q. Inorganica", c: 3, r: ["A"], cat: "Fundamentación" },
+            { id: "PROB", n: "Probabilidad y Est.", c: 3, r: ["B"], cat: "Fundamentación" },
             { id: "ED", n: "Ecuaciones Diferenciales", c: 4, r: ["AL", "CI"], cat: "Fundamentación" },
             { id: "FLUI", n: "Fluidos", c: 3, r: ["FM", "TERM"], cat: "Disciplinar" },
             { id: "T1", n: "Taller 1", c: 1, r: ["CVV", "TERM"], cat: "Disciplinar" },
             { id: "TQ", n: "Termodinámica Química", c: 3, r: ["CVV", "TERM"], cat: "Disciplinar" }
         ]},
         { sem: 5, mat: [
-            { id: "QO2", n: "Química Orgánica II", c: 3, r: ["PQ"], cat: "Fundamentación" },
+            { id: "QO2", n: "Principios Q. Orgánica", c: 3, r: ["A"], cat: "Fundamentación" },
             { id: "MN", n: "Métodos Numéricos", c: 3, r: ["ED"], cat: "Fundamentación" },
-            { id: "TC", n: "Transf. Calor", c: 4, r: ["TERM", "ED"], cat: "Disciplinar" },
+            { id: "TC", n: "Transf. de Calor", c: 4, r: ["TERM", "ED"], cat: "Disciplinar" },
             { id: "MS", n: "Manejo de Sólidos", c: 3, r: ["FLUI"], cat: "Disciplinar" },
             { id: "BE", n: "Balance Energía y Equil.", c: 3, r: ["TQ"], cat: "Disciplinar" },
-            { id: "L2", n: "Libre Elección 2", c: 3, r: [], cat: "Libre" }
+            { id: "L2", n: "Libre Elección", c: 3, r: [], cat: "Libre" }
         ]},
         { sem: 6, mat: [
-            { id: "LQO", n: "Lab. Química Orgánica", c: 2, r: ["PQ"], cat: "Fundamentación" },
+            { id: "LQO", n: "Lab. Principios Orgánica", c: 2, r: ["A"], cat: "Fundamentación" },
             { id: "IE", n: "Ingeniería Económica", c: 3, r: ["CI"], cat: "Fundamentación" },
-            { id: "TM", n: "Transf. Masa", c: 3, r: ["ED"], cat: "Disciplinar" },
+            { id: "TM", n: "Transf. de Masa", c: 3, r: ["ED"], cat: "Disciplinar" },
             { id: "T2", n: "Taller 2", c: 1, r: ["ED"], cat: "Disciplinar" },
-            { id: "LPT", n: "Lab. Prop. Termodinámicas", c: 3, r: ["BE"], cat: "Disciplinar" },
-            { id: "OTE", n: "Opt. Termodinámica", c: 3, r: ["BE"], cat: "Disciplinar" }
+            { id: "LPT", n: "Lab. Prop. Termo.", c: 3, r: ["BE"], cat: "Disciplinar" },
+            { id: "OT", n: "Opt. Termodinámica", c: 3, r: ["BE"], cat: "Disciplinar" },
+            { id: "L3", n: "Libre Elección", c: 3, r: [], cat: "Libre" }
         ]},
         { sem: 7, mat: [
-            { id: "OEA", n: "Opt. Econ-Admin", c: 3, r: [], cat: "Fundamentación" },
-            { id: "GP", n: "Gerencia Proyectos", c: 3, r: ["IE"], cat: "Fundamentación" },
-            { id: "OSEP", n: "Operaciones Separación", c: 3, r: ["TM", "BE"], cat: "Disciplinar" },
-            { id: "LFC", n: "Lab. Fluidos y Calor", c: 3, r: ["TC"], cat: "Disciplinar" },
-            { id: "IRQ", n: "Ing. Reacciones Quím.", c: 3, r: ["BE"], cat: "Disciplinar" }
+            { id: "OEA", n: "Optativa Econ-Admin", c: 3, r: [], cat: "Fundamentación" },
+            { id: "GGP", n: "Gerencia Proyectos", c: 3, r: ["IE"], cat: "Fundamentación" },
+            { id: "OS", n: "Oper. de Separación", c: 3, r: ["TM", "BE"], cat: "Disciplinar" },
+            { id: "LF", n: "Lab. Fluidos y Calor", c: 3, r: ["TC"], cat: "Disciplinar" },
+            { id: "IR", n: "Ing. Reacc. Química", c: 3, r: ["BE"], cat: "Disciplinar" },
+            { id: "L4", n: "Libre Elección", c: 3, r: [], cat: "Libre" }
         ]},
         { sem: 8, mat: [
-            { id: "OMA", n: "Optativa Materiales", c: 3, r: ["CRED_108"], cat: "Disciplinar" },
-            { id: "CTRL", n: "Control de Procesos", c: 3, r: ["MN", "IRQ"], cat: "Disciplinar" },
-            { id: "LSR", n: "Lab. Sep/Reac/Contr", c: 3, r: ["OSEP", "CTRL"], cat: "Disciplinar" },
-            { id: "OPQ", n: "Opt. Proc. Químicos", c: 3, r: ["TM", "IRQ"], cat: "Disciplinar" },
-            { id: "DPQ", n: "Diseño Proc. Químicos", c: 3, r: ["BE"], cat: "Disciplinar" }
+            { id: "OM", n: "Optativa Materiales", c: 3, r: ["CRED_108"], cat: "Disciplinar" },
+            { id: "CP", n: "Control de Procesos", c: 3, r: ["MN", "IR"], cat: "Disciplinar" },
+            { id: "LS", n: "Lab. Sep/Reac/Contr", c: 3, r: ["OS", "CP"], cat: "Disciplinar" },
+            { id: "OP", n: "Opt. Proc. Químicos", c: 3, r: ["TM", "IR"], cat: "Disciplinar" },
+            { id: "DP", n: "Diseño Procesos Quím.", c: 3, r: ["BE"], cat: "Disciplinar" },
+            { id: "L5", n: "Libre Elección", c: 4, r: [], cat: "Libre" }
         ]},
         { sem: 9, mat: [
             { id: "TPI", n: "Taller Proy. Interdis.", c: 3, r: ["DISC_53"], cat: "Disciplinar" },
-            { id: "DPE", n: "Diseño Plantas y Equipos", c: 3, r: ["OSEP", "DPQ"], cat: "Disciplinar" },
-            { id: "IPRO", n: "Ingeniería Procesos", c: 3, r: ["DPQ"], cat: "Disciplinar" },
-            { id: "L3", n: "Libre Elección 3", c: 3, r: [], cat: "Libre" }
+            { id: "DPE", n: "Dis. Plantas y Equipos", c: 3, r: ["OS", "DP"], cat: "Disciplinar" },
+            { id: "IP", n: "Ingeniería Procesos", c: 3, r: ["DP"], cat: "Disciplinar" },
+            { id: "L6", n: "Libre Elección", c: 3, r: [], cat: "Libre" },
+            { id: "L7", n: "Libre Elección", c: 4, r: [], cat: "Libre" }
         ]},
         { sem: 10, mat: [
             { id: "TG", n: "Trabajo de Grado", c: 6, r: ["DISC_60"], cat: "Disciplinar" },
-            { id: "L4", n: "Libre Elección 4", c: 4, r: [], cat: "Libre" }
+            { id: "L8", n: "Libre Elección", c: 3, r: [], cat: "Libre" },
+            { id: "L9", n: "Libre Elección", c: 3, r: [], cat: "Libre" },
+            { id: "L10", n: "Libre Elección", c: 3, r: [], cat: "Libre" },
+            { id: "L11", n: "Libre Elección", c: 4, r: [], cat: "Libre" }
         ]}
     ];
 
