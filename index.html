@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Malla IQ - Progreso y Calculadora PAPA / PAPI</title>
+    <title>Malla IQ - Progreso y Calculadora PAPA / PAPI por Semestres</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -125,7 +125,7 @@
 
         .modal-content {
             background: var(--surface); padding: 25px; border-radius: 12px;
-            width: 90%; max-width: 500px; border: 1px solid var(--border); box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            width: 90%; max-width: 600px; border: 1px solid var(--border); box-shadow: 0 10px 25px rgba(0,0,0,0.5);
             max-height: 90vh; overflow-y: auto;
         }
 
@@ -144,21 +144,27 @@
         .btn-pending { border-color: var(--text-dim); color: var(--text-dim); }
         .btn-pending.active { background: var(--text-dim); color: white; }
 
-        /* Calculadora */
-        .calc-section { background: var(--bg); padding: 15px; border-radius: 8px; margin-bottom: 15px; border: 1px solid var(--border); }
-        .calc-title { font-size: 0.9rem; font-weight: bold; margin-bottom: 10px; color: var(--primary); }
-        
-        .sim-row { display: flex; gap: 10px; margin-bottom: 10px; }
-        .sim-row input {
-            background: var(--surface); border: 1px solid var(--border); color: white; padding: 10px;
-            border-radius: 6px; font-family: inherit; width: 100%; box-sizing: border-box;
+        /* Calculadora Dinámica */
+        .header-stats-calc {
+            background: var(--bg); padding: 15px; border-radius: 8px; margin-bottom: 20px;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 15px; border: 1px solid var(--primary); text-align: center;
         }
-        .sim-row input[type="number"] { width: 90px; }
-        .sim-row input[type="text"] { flex-grow: 1; }
+        .stat-box-val { display: block; font-size: 1.3rem; font-weight: bold; color: var(--primary); margin-top: 5px; }
+        
+        .semestre-block { background: var(--bg); padding: 15px; border-radius: 8px; margin-bottom: 15px; border: 1px solid var(--border); }
+        .sem-title-calc { margin-top: 0; margin-bottom: 12px; color: var(--primary); display: flex; justify-content:-moz-initial; justify-content: space-between; align-items: center; font-size: 1rem; }
+        .papi-semestre { font-size: 0.85rem; color: var(--success); font-weight: bold; }
 
-        .sim-results { background: rgba(56, 189, 248, 0.1); padding: 15px; border-radius: 8px; margin-top: 15px; border: 1px solid var(--primary); }
-        .res-text { display: flex; justify-content: space-between; margin-bottom: 8px; font-weight: 600; }
-        .res-text.highlight { color: var(--success); font-size: 1.2rem; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .materia-row { display: flex; gap: 8px; margin-bottom: 8px; }
+        .materia-row input {
+            background: var(--surface); border: 1px solid var(--border); color: white; padding: 8px;
+            border-radius: 6px; font-family: inherit; box-sizing: border-box;
+        }
+        .materia-row input[type="text"] { flex-grow: 1; }
+        .materia-row input[type="number"] { width: 80px; }
+        
+        .btn-add-mat { background: var(--border); color: white; margin-top: 5px; width: 100%; font-size: 0.85rem; padding: 8px; border-radius: 6px; border: none; cursor: pointer; font-weight: 600; }
+        .btn-add-sem { background: var(--primary); color: var(--bg); width: 100%; padding: 12px; font-size: 0.95rem; font-weight: bold; border-radius: 8px; border: none; cursor: pointer; margin-top: 10px; }
     </style>
 </head>
 <body>
@@ -204,39 +210,22 @@
     </div>
 </div>
 
-<!-- MODAL CALCULADORA PAPI Y PAPA ACUMULADO -->
+<!-- MODAL CALCULADORA PAPI Y PAPA ACUMULADO POR SEMESTRES -->
 <div class="modal-overlay" id="calc-modal">
     <div class="modal-content">
         <div class="modal-header">
-            <h2 style="color: var(--warning);">Calculadora PAPI & PAPA</h2>
+            <h2 style="color: var(--warning);">Calculadora PAPI & PAPA Acumulado</h2>
             <button class="close-btn" onclick="closeCalcModal()">&times;</button>
         </div>
         
-        <div class="calc-section">
-            <div class="calc-title">1. Tu Historial Acumulado (Hasta el semestre pasado)</div>
-            <div class="sim-row">
-                <input type="number" id="base-papa" placeholder="PAPA Acumulado" step="0.1" min="0" max="5" oninput="calculateAverages()">
-                <input type="number" id="base-credits" placeholder="Créditos Calificados" min="0" oninput="calculateAverages()" style="flex-grow:1; width:auto;">
-            </div>
-            <small style="color: var(--text-dim); font-size: 0.75rem;">Ingresa el acumulado total de créditos que llevas calificados (incluyendo perdidas).</small>
+        <div class="header-stats-calc">
+            <div>PAPA Acumulado (Carrera): <span id="total-papa" class="stat-box-val">0.00</span></div>
+            <div>Total Créditos Calificados: <span id="total-creds" class="stat-box-val">0</span></div>
         </div>
 
-        <div class="calc-section">
-            <div class="calc-title">2. Semestre Actual (Para calcular el PAPI)</div>
-            <div id="calc-rows-container">
-                <div class="sim-row">
-                    <input type="text" placeholder="Materia (Opcional)">
-                    <input type="number" placeholder="Nota" step="0.1" min="0" max="5" class="calc-nota" oninput="calculateAverages()">
-                    <input type="number" placeholder="Créditos" min="1" max="10" class="calc-cred" oninput="calculateAverages()">
-                </div>
-            </div>
-            <button class="btn-action" style="width: 100%; margin: 10px 0 0 0; background: var(--border);" onclick="addCalcRow()">+ Añadir otra materia</button>
-        </div>
-
-        <div class="sim-results">
-            <div class="res-text">PAPI (Promedio de este semestre): <span id="res-papi" style="color: var(--primary);">0.00</span></div>
-            <div class="res-text highlight">Nuevo PAPA Acumulado (Carrera): <span id="res-papa">0.00</span></div>
-        </div>
+        <div id="semestres-calc-container"></div>
+        
+        <button class="btn-add-sem" onclick="addCalculadoraSemestre()">+ Añadir Semestre</button>
     </div>
 </div>
 
@@ -316,6 +305,9 @@
 
     let visualState = JSON.parse(localStorage.getItem('malla_iq_visual_v3')) || {};
     let currentSubjId = null;
+
+    // Estado para la calculadora interactiva por semestres
+    let calcSemestres = JSON.parse(localStorage.getItem('calc_semestres_v1')) || [];
 
     function getMatInfo(id) {
         for(let s of data) {
@@ -458,57 +450,121 @@
         }
     }
 
+    // --- FUNCIONES DE LA CALCULADORA DINÁMICA POR SEMESTRES ---
     function openCalcModal() { 
         document.getElementById('calc-modal').classList.add('active'); 
-        calculateAverages();
+        renderCalculadora();
     }
     
     function closeCalcModal() { 
         document.getElementById('calc-modal').classList.remove('active'); 
     }
 
-    function addCalcRow() {
-        const container = document.getElementById('calc-rows-container');
-        const div = document.createElement('div');
-        div.className = 'sim-row';
-        div.innerHTML = `
-            <input type="text" placeholder="Materia (Opcional)">
-            <input type="number" placeholder="Nota" step="0.1" min="0" max="5" class="calc-nota" oninput="calculateAverages()">
-            <input type="number" placeholder="Créditos" min="1" max="10" class="calc-cred" oninput="calculateAverages()">
-        `;
-        container.appendChild(div);
+    function addCalculadoraSemestre() {
+        const id = Date.now();
+        calcSemestres.push({ id, materias: [] });
+        saveAndRenderCalc();
     }
 
-    function calculateAverages() {
-        let basePapa = parseFloat(document.getElementById('base-papa').value) || 0;
-        let baseCreds = parseFloat(document.getElementById('base-credits').value) || 0;
-        let historicalPoints = basePapa * baseCreds;
-
-        const notas = document.querySelectorAll('.calc-nota');
-        const creds = document.querySelectorAll('.calc-cred');
-        
-        let simPoints = 0;
-        let simCreds = 0;
-
-        for(let i = 0; i < notas.length; i++) {
-            let n = parseFloat(notas[i].value); 
-            let c = parseFloat(creds[i].value);
-            if(!isNaN(n) && !isNaN(c) && n >= 0 && n <= 5 && c > 0) {
-                simPoints += (n * c);
-                simCreds += c;
-            }
+    function addMateriaCalc(semId) {
+        const sem = calcSemestres.find(s => s.id === semId);
+        if(sem) {
+            sem.materias.push({ nombre: '', nota: '', creds: '' });
+            saveAndRenderCalc();
         }
+    }
 
-        // PAPI: Promedio exclusivo de las materias ingresadas del semestre actual
-        let papi = simCreds > 0 ? (simPoints / simCreds) : 0;
-        document.getElementById('res-papi').innerText = papi.toFixed(2);
+    function updateMateriaCalc(semId, matIdx, field, val) {
+        const sem = calcSemestres.find(s => s.id === semId);
+        if(sem && sem.materias[matIdx]) {
+            if(field === 'nota' || field === 'creds') {
+                sem.materias[matIdx][field] = val === '' ? '' : parseFloat(val);
+            } else {
+                sem.materias[matIdx][field] = val;
+            }
+            saveAndRenderCalc(false); // No re-renderizar todo para no perder el foco del input activo
+        }
+    }
 
-        // PAPA Acumulado: (Puntos históricos + Puntos del semestre actual) / (Créditos históricos + Créditos del semestre actual)
-        let totalCreds = baseCreds + simCreds;
-        let totalPoints = historicalPoints + simPoints;
-        let newPapa = totalCreds > 0 ? (totalPoints / totalCreds) : 0;
-        
-        document.getElementById('res-papa').innerText = newPapa.toFixed(2);
+    function saveAndRenderCalc(reRender = true) {
+        localStorage.setItem('calc_semestres_v1', JSON.stringify(calcSemestres));
+        calcularTotalesCalc();
+        if(reRender) {
+            renderCalculadoraUI();
+        }
+    }
+
+    function calcularTotalesCalc() {
+        let totalPuntos = 0;
+        let totalCreds = 0;
+
+        calcSemestres.forEach(s => {
+            let semPuntos = 0;
+            let semCreds = 0;
+
+            s.materias.forEach(m => {
+                let n = parseFloat(m.nota);
+                let c = parseFloat(m.creds);
+                if(!isNaN(n) && !isNaN(c) && n >= 0 && n <= 5 && c > 0) {
+                    semPuntos += (n * c);
+                    semCreds += c;
+                }
+            });
+
+            totalPuntos += semPuntos;
+            totalCreds += semCreds;
+
+            // Actualizar PAPI individual del semestre en tiempo real
+            const papiEl = document.getElementById(`papi-val-${s.id}`);
+            if(papiEl) {
+                let papi = semCreds > 0 ? (semPuntos / semCreds).toFixed(2) : "0.00";
+                papiEl.innerText = papi;
+            }
+        });
+
+        const papa = totalCreds > 0 ? (totalPuntos / totalCreds).toFixed(2) : "0.00";
+        document.getElementById('total-papa').innerText = papa;
+        document.getElementById('total-creds').innerText = totalCreds;
+    }
+
+    function renderCalculadora() {
+        renderCalculadoraUI();
+    }
+
+    function renderCalculadoraUI() {
+        const container = document.getElementById('semestres-calc-container');
+        container.innerHTML = '';
+
+        calcSemestres.forEach((s, sIdx) => {
+            const div = document.createElement('div');
+            div.className = 'semestre-block';
+            
+            div.innerHTML = `
+                <div class="sem-title-calc">
+                    <span>Semestre ${sIdx + 1}</span>
+                    <span class="papi-semestre">PAPI Semestral: <span id="papi-val-${s.id}">0.00</span></span>
+                </div>
+                <div id="mat-list-${s.id}"></div>
+                <button class="btn-add-mat" onclick="addMateriaCalc(${s.id})">+ Añadir Materia</button>
+            `;
+
+            const matListContainer = div.querySelector(`#mat-list-${s.id}`);
+            
+            s.materias.forEach((m, mIdx) => {
+                const row = document.createElement('div');
+                row.className = 'materia-row';
+                row.innerHTML = `
+                    <input type="text" placeholder="Materia (Opcional)" value="${m.nombre !== undefined ? m.nombre : ''}" oninput="updateMateriaCalc(${s.id}, ${mIdx}, 'nombre', this.value)">
+                    <input type="number" placeholder="Nota" step="0.1" min="0" max="5" value="${m.nota !== undefined ? m.nota : ''}" oninput="updateMateriaCalc(${s.id}, ${mIdx}, 'nota', this.value)">
+                    <input type="number" placeholder="Créditos" min="1" max="10" value="${m.creds !== undefined ? m.creds : ''}" oninput="updateMateriaCalc(${s.id}, ${mIdx}, 'creds', this.value)">
+                `;
+                matListContainer.appendChild(row);
+            });
+
+            container.appendChild(div);
+        });
+
+        calcularTotalesCalc();
     }
 
     renderMalla();
