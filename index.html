@@ -3,11 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Malla IQ - Progreso Visual</title>
-    
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3774049994253639"
-     crossorigin="anonymous"></script>
-
+    <title>Malla IQ - Calculadora PAPA y PAPI</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -44,7 +40,8 @@
         .stats {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
             margin-bottom: 20px;
         }
 
@@ -56,6 +53,18 @@
             border: 1px solid rgba(56, 189, 248, 0.3);
             font-size: 1rem;
             font-weight: 700;
+        }
+
+        .stat-badge.progress {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+
+        .stat-badge.papa {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--warning);
+            border-color: rgba(245, 158, 11, 0.3);
         }
 
         /* BARRA DE PROGRESO */
@@ -102,6 +111,32 @@
             height: 14px;
             border-radius: 3px;
             border: 2px solid transparent;
+        }
+
+        .btn-action {
+            background: var(--primary);
+            color: var(--bg);
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            margin-top: 15px;
+            margin-inline: 5px;
+            transition: 0.2s;
+        }
+        .btn-action:hover { opacity: 0.9; }
+        
+        .btn-reset {
+            background: var(--danger);
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 15px;
+            margin-inline: 5px;
         }
 
         .malla-wrapper {
@@ -165,6 +200,7 @@
 
         .m-name { font-size: 0.85rem; font-weight: 600; display: block; margin-bottom: 4px; line-height: 1.3; }
         .m-cred { font-size: 0.75rem; color: var(--text-dim); }
+        .approved .m-cred { color: rgba(255,255,255,0.9); font-weight: 600; }
 
         .tooltip {
             visibility: hidden;
@@ -188,16 +224,69 @@
 
         .materia:hover .tooltip { visibility: visible; opacity: 1; }
 
-        .btn-reset {
-            background: var(--danger);
-            color: white;
-            border: none;
-            padding: 10px 18px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            margin-top: 15px;
+        /* MODAL CALCULADORA PAPI/PAPA */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s;
         }
+        .modal-overlay.active { display: flex; opacity: 1; }
+
+        .modal-content {
+            background: var(--surface);
+            padding: 25px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 450px;
+            border: 1px solid var(--border);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+        }
+        
+        .modal-header h2 { margin: 0; font-size: 1.2rem; color: var(--primary); }
+        .close-btn { background: none; border: none; color: var(--text-dim); font-size: 1.5rem; cursor: pointer; }
+        .close-btn:hover { color: white; }
+
+        .sim-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .sim-row input {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            color: white;
+            padding: 8px;
+            border-radius: 6px;
+            font-family: inherit;
+        }
+        .sim-row input[type="number"] { width: 80px; }
+        .sim-row input[type="text"] { flex-grow: 1; }
+
+        .sim-results {
+            background: var(--bg);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border: 1px dashed var(--primary);
+        }
+        
+        .res-text { display: flex; justify-content: space-between; margin-bottom: 8px; font-weight: 600; }
+        .res-text.highlight { color: var(--success); font-size: 1.1rem; }
     </style>
 </head>
 <body>
@@ -207,7 +296,8 @@
     
     <div class="stats">
         <div class="stat-badge" id="total-c">Créditos: 0 / 180</div>
-        <div class="stat-badge" id="perc-c">0% completado</div>
+        <div class="stat-badge progress" id="perc-c">0% completado</div>
+        <div class="stat-badge papa" id="papa-c">PAPA: 0.00</div>
     </div>
 
     <div class="progress-container">
@@ -216,98 +306,131 @@
 
     <div class="leyenda">
         <div class="leyenda-item"><div class="color-box" style="border-color: #334155; opacity: 0.4;"></div> Bloqueado</div>
-        <div class="leyenda-item"><div class="color-box" style="border-color: var(--warning);"></div> Desbloqueo Parcial</div>
+        <div class="leyenda-item"><div class="color-box" style="border-color: var(--warning);"></div> Parcial</div>
         <div class="leyenda-item"><div class="color-box" style="border-color: var(--primary);"></div> Disponible</div>
         <div class="leyenda-item"><div class="color-box" style="background: var(--success);"></div> Aprobada</div>
     </div>
 
+    <button class="btn-action" onclick="openModal()">Simulador PAPI / PAPA</button>
     <button class="btn-reset" onclick="reset()">Reiniciar Malla</button>
 </header>
 
 <div class="malla-wrapper" id="grid"></div>
 
+<!-- MODAL SIMULADOR -->
+<div class="modal-overlay" id="sim-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Simulador de Semestre (PAPI)</h2>
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+        </div>
+        <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 0;">Ingresa las materias que planeas ver este semestre para proyectar tus promedios.</p>
+        
+        <div id="sim-rows-container">
+            <div class="sim-row">
+                <input type="text" placeholder="Materia (Opcional)" class="sim-name">
+                <input type="number" placeholder="Nota" step="0.1" min="0" max="5" class="sim-nota" oninput="calcSim()">
+                <input type="number" placeholder="Créditos" min="1" max="10" class="sim-cred" oninput="calcSim()">
+            </div>
+            <div class="sim-row">
+                <input type="text" placeholder="Materia (Opcional)" class="sim-name">
+                <input type="number" placeholder="Nota" step="0.1" min="0" max="5" class="sim-nota" oninput="calcSim()">
+                <input type="number" placeholder="Créditos" min="1" max="10" class="sim-cred" oninput="calcSim()">
+            </div>
+        </div>
+        
+        <button class="btn-action" style="width: 100%; margin: 10px 0 0 0; background: var(--border);" onclick="addRow()">+ Agregar otra materia</button>
+
+        <div class="sim-results">
+            <div class="res-text">PAPI Estimado (Semestre): <span id="res-papi">0.00</span></div>
+            <div class="res-text highlight">PAPA Proyectado: <span id="res-papa">0.00</span></div>
+        </div>
+    </div>
+</div>
+
 <script>
     const data = [
         { sem: 1, mat: [
-            { id: "A", n: "Principios de Química", c: 3, r: [], cat: "Fundamentación" },
+            { id: "PQ", n: "Principios de Química", c: 3, r: [], cat: "Fundamentación" },
             { id: "LTB", n: "Lab. Técnicas Básicas", c: 3, r: [], cat: "Fundamentación" },
-            { id: "B", n: "Cálculo Diferencial", c: 4, r: [], cat: "Fundamentación" },
+            { id: "CD", n: "Cálculo Diferencial", c: 4, r: [], cat: "Fundamentación" },
             { id: "OHI", n: "Opt. Herramientas Ing.", c: 3, r: [], cat: "Fundamentación" },
             { id: "IIQ", n: "Intro. Ing. Química", c: 3, r: [], cat: "Disciplinar" }
         ]},
         { sem: 2, mat: [
-            { id: "PAQ", n: "Principios Análisis Q.", c: 3, r: ["A"], cat: "Fundamentación" },
-            { id: "AL", n: "Álgebra Lineal", c: 4, r: ["B"], cat: "Fundamentación" },
-            { id: "CI", n: "Cálculo Integral", c: 4, r: ["B"], cat: "Fundamentación" },
-            { id: "FM", n: "Fund. de Mecánica", c: 4, r: ["B"], cat: "Fundamentación" },
+            { id: "PAQ", n: "Principios Análisis Q.", c: 3, r: ["PQ"], cat: "Fundamentación" },
+            { id: "AL", n: "Álgebra Lineal", c: 4, r: ["CD"], cat: "Fundamentación" },
+            { id: "CI", n: "Cálculo Integral", c: 4, r: ["CD"], cat: "Fundamentación" },
+            { id: "FM", n: "Fund. de Mecánica", c: 4, r: ["CD"], cat: "Fundamentación" },
             { id: "BM", n: "Balance de Materia", c: 3, r: [], cat: "Disciplinar" }
         ]},
         { sem: 3, mat: [
-            { id: "LPA", n: "Lab. Principios Análisis", c: 3, r: ["A"], cat: "Fundamentación" },
+            { id: "LPAQ", n: "Lab. Princ. Análisis", c: 3, r: ["PQ"], cat: "Fundamentación" },
             { id: "BIO", n: "Biología Molecular", c: 3, r: [], cat: "Fundamentación" },
             { id: "CVV", n: "Cálculo Varias Var.", c: 4, r: ["AL", "CI"], cat: "Fundamentación" },
-            { id: "FEM", n: "Fund. Elec. y Mag.", c: 4, r: ["CI", "FM"], cat: "Fundamentación" },
+            { id: "FEM", n: "Fund. Elec. y Magnetismo", c: 4, r: ["CI", "FM"], cat: "Fundamentación" },
             { id: "TERM", n: "Termodinámica", c: 3, r: ["BM"], cat: "Disciplinar" },
-            { id: "L1", n: "Libre Elección", c: 3, r: [], cat: "Libre" }
+            { id: "L1", n: "Libre Elección 1", c: 3, r: [], cat: "Libre" }
         ]},
         { sem: 4, mat: [
-            { id: "QO", n: "Principios Q. Inorganica", c: 3, r: ["A"], cat: "Fundamentación" },
-            { id: "PROB", n: "Probabilidad y Est.", c: 3, r: ["B"], cat: "Fundamentación" },
+            { id: "QO", n: "Química Orgánica", c: 3, r: ["PQ"], cat: "Fundamentación" },
+            { id: "PE", n: "Probabilidad y Est.", c: 3, r: ["CD"], cat: "Fundamentación" },
             { id: "ED", n: "Ecuaciones Diferenciales", c: 4, r: ["AL", "CI"], cat: "Fundamentación" },
             { id: "FLUI", n: "Fluidos", c: 3, r: ["FM", "TERM"], cat: "Disciplinar" },
             { id: "T1", n: "Taller 1", c: 1, r: ["CVV", "TERM"], cat: "Disciplinar" },
             { id: "TQ", n: "Termodinámica Química", c: 3, r: ["CVV", "TERM"], cat: "Disciplinar" }
         ]},
         { sem: 5, mat: [
-            { id: "QO2", n: "Principios Q. Orgánica", c: 3, r: ["A"], cat: "Fundamentación" },
+            { id: "QO2", n: "Química Orgánica II", c: 3, r: ["PQ"], cat: "Fundamentación" },
             { id: "MN", n: "Métodos Numéricos", c: 3, r: ["ED"], cat: "Fundamentación" },
-            { id: "TC", n: "Transf. de Calor", c: 4, r: ["TERM", "ED"], cat: "Disciplinar" },
+            { id: "TC", n: "Transf. Calor", c: 4, r: ["TERM", "ED"], cat: "Disciplinar" },
             { id: "MS", n: "Manejo de Sólidos", c: 3, r: ["FLUI"], cat: "Disciplinar" },
             { id: "BE", n: "Balance Energía y Equil.", c: 3, r: ["TQ"], cat: "Disciplinar" },
-            { id: "L2", n: "Libre Elección", c: 3, r: [], cat: "Libre" }
+            { id: "L2", n: "Libre Elección 2", c: 3, r: [], cat: "Libre" }
         ]},
         { sem: 6, mat: [
-            { id: "LQO", n: "Lab. Principios Orgánica", c: 2, r: ["A"], cat: "Fundamentación" },
+            { id: "LQO", n: "Lab. Química Orgánica", c: 2, r: ["PQ"], cat: "Fundamentación" },
             { id: "IE", n: "Ingeniería Económica", c: 3, r: ["CI"], cat: "Fundamentación" },
-            { id: "TM", n: "Transf. de Masa", c: 3, r: ["ED"], cat: "Disciplinar" },
+            { id: "TM", n: "Transf. Masa", c: 3, r: ["ED"], cat: "Disciplinar" },
             { id: "T2", n: "Taller 2", c: 1, r: ["ED"], cat: "Disciplinar" },
-            { id: "LPT", n: "Lab. Prop. Termo.", c: 3, r: ["BE"], cat: "Disciplinar" },
-            { id: "OT", n: "Opt. Termodinámica", c: 3, r: ["BE"], cat: "Disciplinar" },
-            { id: "L3", n: "Libre Elección", c: 3, r: [], cat: "Libre" }
+            { id: "LPT", n: "Lab. Prop. Termodinámicas", c: 3, r: ["BE"], cat: "Disciplinar" },
+            { id: "OTE", n: "Opt. Termodinámica", c: 3, r: ["BE"], cat: "Disciplinar" }
         ]},
         { sem: 7, mat: [
-            { id: "OEA", n: "Optativa Econ-Admin", c: 3, r: [], cat: "Fundamentación" },
-            { id: "GGP", n: "Gerencia Proyectos", c: 3, r: ["IE"], cat: "Fundamentación" },
-            { id: "OS", n: "Oper. de Separación", c: 3, r: ["TM", "BE"], cat: "Disciplinar" },
-            { id: "LF", n: "Lab. Fluidos y Calor", c: 3, r: ["TC"], cat: "Disciplinar" },
-            { id: "IR", n: "Ing. Reacc. Química", c: 3, r: ["BE"], cat: "Disciplinar" },
-            { id: "L4", n: "Libre Elección", c: 3, r: [], cat: "Libre" }
+            { id: "OEA", n: "Opt. Econ-Admin", c: 3, r: [], cat: "Fundamentación" },
+            { id: "GP", n: "Gerencia Proyectos", c: 3, r: ["IE"], cat: "Fundamentación" },
+            { id: "OSEP", n: "Operaciones Separación", c: 3, r: ["TM", "BE"], cat: "Disciplinar" },
+            { id: "LFC", n: "Lab. Fluidos y Calor", c: 3, r: ["TC"], cat: "Disciplinar" },
+            { id: "IRQ", n: "Ing. Reacciones Quím.", c: 3, r: ["BE"], cat: "Disciplinar" }
         ]},
         { sem: 8, mat: [
-            { id: "OM", n: "Optativa Materiales", c: 3, r: ["CRED_108"], cat: "Disciplinar" },
-            { id: "CP", n: "Control de Procesos", c: 3, r: ["MN", "IR"], cat: "Disciplinar" },
-            { id: "LS", n: "Lab. Sep/Reac/Contr", c: 3, r: ["OS", "CP"], cat: "Disciplinar" },
-            { id: "OP", n: "Opt. Proc. Químicos", c: 3, r: ["TM", "IR"], cat: "Disciplinar" },
-            { id: "DP", n: "Diseño Procesos Quím.", c: 3, r: ["BE"], cat: "Disciplinar" },
-            { id: "L5", n: "Libre Elección", c: 4, r: [], cat: "Libre" }
+            { id: "OMA", n: "Optativa Materiales", c: 3, r: ["CRED_108"], cat: "Disciplinar" },
+            { id: "CTRL", n: "Control de Procesos", c: 3, r: ["MN", "IRQ"], cat: "Disciplinar" },
+            { id: "LSR", n: "Lab. Sep/Reac/Contr", c: 3, r: ["OSEP", "CTRL"], cat: "Disciplinar" },
+            { id: "OPQ", n: "Opt. Proc. Químicos", c: 3, r: ["TM", "IRQ"], cat: "Disciplinar" },
+            { id: "DPQ", n: "Diseño Proc. Químicos", c: 3, r: ["BE"], cat: "Disciplinar" }
         ]},
         { sem: 9, mat: [
             { id: "TPI", n: "Taller Proy. Interdis.", c: 3, r: ["DISC_53"], cat: "Disciplinar" },
-            { id: "DPE", n: "Dis. Plantas y Equipos", c: 3, r: ["OS", "DP"], cat: "Disciplinar" },
-            { id: "IP", n: "Ingeniería Procesos", c: 3, r: ["DP"], cat: "Disciplinar" },
-            { id: "L6", n: "Libre Elección", c: 3, r: [], cat: "Libre" },
-            { id: "L7", n: "Libre Elección", c: 4, r: [], cat: "Libre" }
+            { id: "DPE", n: "Diseño Plantas y Equipos", c: 3, r: ["OSEP", "DPQ"], cat: "Disciplinar" },
+            { id: "IPRO", n: "Ingeniería Procesos", c: 3, r: ["DPQ"], cat: "Disciplinar" },
+            { id: "L3", n: "Libre Elección 3", c: 3, r: [], cat: "Libre" }
         ]},
         { sem: 10, mat: [
             { id: "TG", n: "Trabajo de Grado", c: 6, r: ["DISC_60"], cat: "Disciplinar" },
-            { id: "L8", n: "Libre Elección", c: 3, r: [], cat: "Libre" },
-            { id: "L9", n: "Libre Elección", c: 3, r: [], cat: "Libre" },
-            { id: "L10", n: "Libre Elección", c: 3, r: [], cat: "Libre" },
-            { id: "L11", n: "Libre Elección", c: 4, r: [], cat: "Libre" }
+            { id: "L4", n: "Libre Elección 4", c: 4, r: [], cat: "Libre" }
         ]}
     ];
 
-    let approved = JSON.parse(localStorage.getItem('malla_iq_final_bar')) || [];
+    // Ahora approved es un objeto que guarda la ID y su NOTA: { "PQ": 4.5, "CD": 3.8 }
+    let rawData = JSON.parse(localStorage.getItem('malla_iq_calc_v1'));
+    let approved = {};
+    if (Array.isArray(rawData)) { 
+        // Migración por si tenías progreso guardado de la versión anterior
+        rawData.forEach(id => approved[id] = 3.0); 
+    } else if (rawData) {
+        approved = rawData;
+    }
 
     function getMatInfo(id) {
         for(let s of data) {
@@ -319,15 +442,21 @@
 
     function getStats() {
         let t = 0, d = 0;
-        approved.forEach(id => {
+        let sumProd = 0;
+
+        for(let id in approved) {
             const m = getMatInfo(id);
             if(m) {
                 t += m.c;
                 if(m.cat === "Disciplinar") d += m.c;
+                sumProd += (approved[id] * m.c);
             }
-        });
+        }
+        
         let perc = Math.min((t * (100 / 180)), 100).toFixed(1);
-        return { total: t, disc: d, percentage: perc };
+        let papa = t > 0 ? (sumProd / t).toFixed(2) : "0.00";
+        
+        return { total: t, disc: d, percentage: perc, papa: papa, sumProd: sumProd };
     }
 
     function checkProgress(materiaId) {
@@ -342,7 +471,8 @@
             if(req === "CRED_108") ok = stats.total >= 108;
             else if(req === "DISC_53") ok = stats.disc >= 53;
             else if(req === "DISC_60") ok = stats.disc >= 60;
-            else ok = approved.includes(req);
+            else ok = (approved[req] !== undefined);
+            
             if (ok) met++;
             else {
                 const rM = getMatInfo(req);
@@ -357,13 +487,27 @@
 
     function toggle(id) {
         const prog = checkProgress(id);
-        if(approved.includes(id)) {
-            approved = approved.filter(x => x !== id);
+        const matInfo = getMatInfo(id);
+        
+        if(approved[id] !== undefined) {
+            if(confirm(`¿Desmarcar ${matInfo.n}?`)) {
+                delete approved[id];
+            }
         } else if(prog.status === 'ready') {
-            approved.push(id);
+            let input = prompt(`Ingresa tu nota definitiva para ${matInfo.n} (0.0 a 5.0):`);
+            if(input === null) return; // Canceló
+            
+            let nota = parseFloat(input.replace(',', '.'));
+            if(isNaN(nota) || nota < 0 || nota > 5) {
+                alert("Por favor ingresa una nota válida entre 0.0 y 5.0");
+                return;
+            }
+            approved[id] = nota;
         }
-        localStorage.setItem('malla_iq_final_bar', JSON.stringify(approved));
+        
+        localStorage.setItem('malla_iq_calc_v1', JSON.stringify(approved));
         render();
+        calcSim(); // Actualiza el simulador si está abierto
     }
 
     function render() {
@@ -373,6 +517,7 @@
         document.getElementById('total-c').innerText = `Créditos: ${stats.total} / 180`;
         document.getElementById('perc-c').innerText = `${stats.percentage}% completado`;
         document.getElementById('p-bar').style.width = `${stats.percentage}%`;
+        document.getElementById('papa-c').innerText = `PAPA: ${stats.papa}`;
         
         grid.innerHTML = '';
 
@@ -395,7 +540,7 @@
                 }
 
                 const prog = checkProgress(m.id);
-                const isApp = approved.includes(m.id);
+                const isApp = approved[m.id] !== undefined;
                 const card = document.createElement('div');
                 
                 let sClass = isApp ? 'approved' : 
@@ -405,12 +550,13 @@
                 card.className = `materia ${sClass}`;
                 card.onclick = () => toggle(m.id);
 
-                const tipTxt = isApp ? "Completada" : 
-                               (prog.status === 'ready' ? "Disponible" : "Falta: " + prog.missing.join(", "));
+                const notaTxt = isApp ? ` | Nota: ${approved[m.id].toFixed(1)}` : '';
+                const tipTxt = isApp ? "Aprobada (Click para quitar)" : 
+                               (prog.status === 'ready' ? "Disponible (Click para aprobar)" : "Falta: " + prog.missing.join(", "));
 
                 card.innerHTML = `
                     <span class="m-name">${m.n}</span>
-                    <span class="m-cred">${m.c} Créditos</span>
+                    <span class="m-cred">${m.c} Créditos${notaTxt}</span>
                     <div class="tooltip">${tipTxt}</div>
                 `;
                 col.appendChild(card);
@@ -420,11 +566,62 @@
     }
 
     function reset() {
-        if(confirm("¿Seguro que quieres borrar todo el progreso?")) {
-            approved = [];
-            localStorage.removeItem('malla_iq_final_bar');
+        if(confirm("¿Seguro que quieres borrar todo el progreso y las notas?")) {
+            approved = {};
+            localStorage.removeItem('malla_iq_calc_v1');
             render();
         }
+    }
+
+    // --- LÓGICA DEL SIMULADOR MODAL ---
+    function openModal() {
+        document.getElementById('sim-modal').classList.add('active');
+        calcSim();
+    }
+    
+    function closeModal() {
+        document.getElementById('sim-modal').classList.remove('active');
+    }
+
+    function addRow() {
+        const container = document.getElementById('sim-rows-container');
+        const div = document.createElement('div');
+        div.className = 'sim-row';
+        div.innerHTML = `
+            <input type="text" placeholder="Materia (Opcional)" class="sim-name">
+            <input type="number" placeholder="Nota" step="0.1" min="0" max="5" class="sim-nota" oninput="calcSim()">
+            <input type="number" placeholder="Créditos" min="1" max="10" class="sim-cred" oninput="calcSim()">
+        `;
+        container.appendChild(div);
+    }
+
+    function calcSim() {
+        const notas = document.querySelectorAll('.sim-nota');
+        const creds = document.querySelectorAll('.sim-cred');
+        
+        let simProd = 0;
+        let simCreds = 0;
+
+        for(let i = 0; i < notas.length; i++) {
+            let n = parseFloat(notas[i].value);
+            let c = parseFloat(creds[i].value);
+            
+            if(!isNaN(n) && !isNaN(c) && n >= 0 && n <= 5 && c > 0) {
+                simProd += (n * c);
+                simCreds += c;
+            }
+        }
+
+        let papi = simCreds > 0 ? (simProd / simCreds).toFixed(2) : "0.00";
+        document.getElementById('res-papi').innerText = papi;
+
+        // Proyección del PAPA combinando historial + simulador
+        const stats = getStats();
+        let totalProd = stats.sumProd + simProd;
+        let totalCreds = stats.total + simCreds;
+        
+        let papaProy = totalCreds > 0 ? (totalProd / totalCreds).toFixed(2) : stats.papa;
+        document.getElementById('res-papa').innerText = papaProy;
     }
 
     render();
