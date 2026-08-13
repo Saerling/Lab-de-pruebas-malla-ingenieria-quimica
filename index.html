@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Malla IQ - Calculadora PAPA y PAPI</title>
+    <title>Malla IQ - PAPA, PAPI e Intentos</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -55,238 +55,95 @@
             font-weight: 700;
         }
 
-        .stat-badge.progress {
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--success);
-            border-color: rgba(16, 185, 129, 0.3);
-        }
+        .stat-badge.progress { background: rgba(16, 185, 129, 0.1); color: var(--success); border-color: rgba(16, 185, 129, 0.3); }
+        .stat-badge.papa { background: rgba(245, 158, 11, 0.1); color: var(--warning); border-color: rgba(245, 158, 11, 0.3); }
 
-        .stat-badge.papa {
-            background: rgba(245, 158, 11, 0.1);
-            color: var(--warning);
-            border-color: rgba(245, 158, 11, 0.3);
-        }
-
-        /* BARRA DE PROGRESO */
         .progress-container {
-            width: 100%;
-            max-width: 600px;
-            background: #334155;
-            height: 12px;
-            border-radius: 10px;
-            margin: 0 auto 10px;
-            overflow: hidden;
-            border: 1px solid var(--border);
+            width: 100%; max-width: 600px; background: #334155; height: 12px;
+            border-radius: 10px; margin: 0 auto 10px; overflow: hidden; border: 1px solid var(--border);
         }
-
         .progress-bar {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, var(--primary), var(--success));
-            transition: width 0.5s ease-out;
-            border-radius: 10px;
+            height: 100%; width: 0%; background: linear-gradient(90deg, var(--primary), var(--success));
+            transition: width 0.5s ease-out; border-radius: 10px;
         }
 
         .leyenda {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            padding: 10px;
-            background: rgba(15, 23, 42, 0.5);
-            border-radius: 8px;
-            margin-top: 15px;
+            display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; padding: 10px;
+            background: rgba(15, 23, 42, 0.5); border-radius: 8px; margin-top: 15px;
         }
-
-        .leyenda-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.75rem;
-            color: var(--text-dim);
-        }
-
-        .color-box {
-            width: 14px;
-            height: 14px;
-            border-radius: 3px;
-            border: 2px solid transparent;
-        }
+        .leyenda-item { display: flex; align-items: center; gap: 8px; font-size: 0.75rem; color: var(--text-dim); }
+        .color-box { width: 14px; height: 14px; border-radius: 3px; border: 2px solid transparent; }
 
         .btn-action {
-            background: var(--primary);
-            color: var(--bg);
-            border: none;
-            padding: 10px 18px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 700;
-            margin-top: 15px;
-            margin-inline: 5px;
-            transition: 0.2s;
+            background: var(--primary); color: var(--bg); border: none; padding: 10px 18px;
+            border-radius: 8px; cursor: pointer; font-weight: 700; margin-top: 15px; transition: 0.2s;
         }
         .btn-action:hover { opacity: 0.9; }
         
         .btn-reset {
-            background: var(--danger);
-            color: white;
-            border: none;
-            padding: 10px 18px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            margin-top: 15px;
-            margin-inline: 5px;
+            background: var(--danger); color: white; border: none; padding: 10px 18px;
+            border-radius: 8px; cursor: pointer; font-weight: 600; margin-top: 15px; margin-left: 10px;
         }
 
         .malla-wrapper {
-            display: flex;
-            gap: 20px;
-            padding-top: 60px; 
-            padding-bottom: 40px;
-            justify-content: flex-start;
-            overflow-x: auto;
-            overflow-y: visible;
+            display: flex; gap: 20px; padding-top: 40px; padding-bottom: 40px;
+            justify-content: flex-start; overflow-x: auto;
         }
 
-        .semestre-col {
-            min-width: 230px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .sem-header {
-            background: var(--primary);
-            color: var(--bg);
-            text-align: center;
-            padding: 10px;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-        }
-
-        .cat-tag {
-            font-size: 0.65rem;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            margin-top: 10px;
-            padding-bottom: 4px;
-            border-bottom: 1px solid var(--border);
-            font-weight: 700;
-        }
+        .semestre-col { min-width: 230px; display: flex; flex-direction: column; gap: 12px; }
+        .sem-header { background: var(--primary); color: var(--bg); text-align: center; padding: 10px; border-radius: 8px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; }
+        .cat-tag { font-size: 0.65rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 10px; padding-bottom: 4px; border-bottom: 1px solid var(--border); font-weight: 700; }
 
         .materia {
-            background: var(--surface);
-            border: 2px solid var(--border);
-            padding: 14px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
+            background: var(--surface); border: 2px solid var(--border); padding: 14px;
+            border-radius: 10px; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); position: relative;
         }
 
         .status-locked-total { border-color: #334155; opacity: 0.4; }
         .status-locked-partial { border-color: var(--warning); background: rgba(245, 158, 11, 0.05); }
         .status-ready { border-color: var(--primary); box-shadow: 0 0 10px rgba(56, 189, 248, 0.1); }
+        .status-failed { border-color: var(--danger); background: rgba(239, 68, 68, 0.1); }
         .approved { background: var(--success) !important; border-color: #059669 !important; color: white; opacity: 1 !important; }
 
-        .materia:hover:not(.status-locked-total):not(.status-locked-partial) {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
-        }
+        .materia:hover:not(.status-locked-total):not(.status-locked-partial) { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4); }
 
         .m-name { font-size: 0.85rem; font-weight: 600; display: block; margin-bottom: 4px; line-height: 1.3; }
         .m-cred { font-size: 0.75rem; color: var(--text-dim); }
         .approved .m-cred { color: rgba(255,255,255,0.9); font-weight: 600; }
+        .status-failed .m-cred { color: var(--danger); font-weight: 600; }
 
-        .tooltip {
-            visibility: hidden;
-            width: 190px;
-            background: #0f172a;
-            color: white;
-            text-align: center;
-            border-radius: 6px;
-            padding: 8px;
-            position: absolute;
-            z-index: 100;
-            bottom: 115%;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.7rem;
-            border: 1px solid var(--border);
-            opacity: 0;
-            transition: opacity 0.2s;
-            pointer-events: none;
-        }
-
-        .materia:hover .tooltip { visibility: visible; opacity: 1; }
-
-        /* MODAL CALCULADORA PAPI/PAPA */
+        /* MODALES */
         .modal-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.7);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 999;
-            opacity: 0;
-            transition: opacity 0.3s;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7); display: none; justify-content: center; align-items: center;
+            z-index: 999; opacity: 0; transition: opacity 0.3s;
         }
         .modal-overlay.active { display: flex; opacity: 1; }
 
         .modal-content {
-            background: var(--surface);
-            padding: 25px;
-            border-radius: 12px;
-            width: 90%;
-            max-width: 450px;
-            border: 1px solid var(--border);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            background: var(--surface); padding: 25px; border-radius: 12px;
+            width: 90%; max-width: 450px; border: 1px solid var(--border); box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
 
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 10px;
-        }
-        
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
         .modal-header h2 { margin: 0; font-size: 1.2rem; color: var(--primary); }
         .close-btn { background: none; border: none; color: var(--text-dim); font-size: 1.5rem; cursor: pointer; }
         .close-btn:hover { color: white; }
 
-        .sim-row {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 10px;
-        }
-        .sim-row input {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            color: white;
-            padding: 8px;
-            border-radius: 6px;
-            font-family: inherit;
+        .sim-row { display: flex; gap: 10px; margin-bottom: 10px; }
+        .sim-row input, .form-input {
+            background: var(--bg); border: 1px solid var(--border); color: white; padding: 10px;
+            border-radius: 6px; font-family: inherit; width: 100%; box-sizing: border-box;
         }
         .sim-row input[type="number"] { width: 80px; }
         .sim-row input[type="text"] { flex-grow: 1; }
 
-        .sim-results {
-            background: var(--bg);
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 15px;
-            border: 1px dashed var(--primary);
-        }
-        
+        .sim-results { background: var(--bg); padding: 15px; border-radius: 8px; margin-top: 15px; border: 1px dashed var(--primary); }
         .res-text { display: flex; justify-content: space-between; margin-bottom: 8px; font-weight: 600; }
         .res-text.highlight { color: var(--success); font-size: 1.1rem; }
+        
+        .history-list { list-style: none; padding: 0; margin: 0 0 15px 0; font-size: 0.9rem; }
+        .history-list li { background: var(--bg); padding: 10px; border-radius: 6px; margin-bottom: 5px; display: flex; justify-content: space-between; }
     </style>
 </head>
 <body>
@@ -300,50 +157,63 @@
         <div class="stat-badge papa" id="papa-c">PAPA: 0.00</div>
     </div>
 
-    <div class="progress-container">
-        <div class="progress-bar" id="p-bar"></div>
-    </div>
+    <div class="progress-container"><div class="progress-bar" id="p-bar"></div></div>
 
     <div class="leyenda">
         <div class="leyenda-item"><div class="color-box" style="border-color: #334155; opacity: 0.4;"></div> Bloqueado</div>
         <div class="leyenda-item"><div class="color-box" style="border-color: var(--warning);"></div> Parcial</div>
         <div class="leyenda-item"><div class="color-box" style="border-color: var(--primary);"></div> Disponible</div>
+        <div class="leyenda-item"><div class="color-box" style="border-color: var(--danger); background: rgba(239, 68, 68, 0.2);"></div> Reprobada</div>
         <div class="leyenda-item"><div class="color-box" style="background: var(--success);"></div> Aprobada</div>
     </div>
 
-    <button class="btn-action" onclick="openModal()">Simulador PAPI / PAPA</button>
+    <button class="btn-action" onclick="openSimModal()">Simulador PAPI / PAPA</button>
     <button class="btn-reset" onclick="reset()">Reiniciar Malla</button>
 </header>
 
 <div class="malla-wrapper" id="grid"></div>
+
+<!-- MODAL GESTIÓN DE MATERIA -->
+<div class="modal-overlay" id="subj-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="subj-title">Materia</h2>
+            <button class="close-btn" onclick="closeSubjModal()">&times;</button>
+        </div>
+        <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 0;">Registro de notas e intentos (Aprueba con 3.0+).</p>
+        
+        <ul class="history-list" id="subj-history"></ul>
+        
+        <div id="subj-add-form" style="display:flex; gap:10px;">
+            <input type="number" id="subj-new-grade" class="form-input" placeholder="Nota definitiva (Ej: 2.5)" step="0.1" min="0" max="5">
+            <button class="btn-action" style="margin-top:0; white-space:nowrap;" onclick="addGrade()">Guardar</button>
+        </div>
+        
+        <button class="btn-reset" onclick="clearSubjectHistory()" style="width: 100%; margin: 15px 0 0 0; background: transparent; border: 1px solid var(--danger); color: var(--danger);">Borrar historial de esta materia</button>
+    </div>
+</div>
 
 <!-- MODAL SIMULADOR -->
 <div class="modal-overlay" id="sim-modal">
     <div class="modal-content">
         <div class="modal-header">
             <h2>Simulador de Semestre (PAPI)</h2>
-            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <button class="close-btn" onclick="closeSimModal()">&times;</button>
         </div>
-        <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 0;">Ingresa las materias que planeas ver este semestre para proyectar tus promedios.</p>
+        <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 0;">Ingresa las materias que planeas ver este semestre. Las pérdidas también afectarán la proyección.</p>
         
         <div id="sim-rows-container">
             <div class="sim-row">
-                <input type="text" placeholder="Materia (Opcional)" class="sim-name">
-                <input type="number" placeholder="Nota" step="0.1" min="0" max="5" class="sim-nota" oninput="calcSim()">
-                <input type="number" placeholder="Créditos" min="1" max="10" class="sim-cred" oninput="calcSim()">
-            </div>
-            <div class="sim-row">
-                <input type="text" placeholder="Materia (Opcional)" class="sim-name">
+                <input type="text" placeholder="Materia" class="sim-name">
                 <input type="number" placeholder="Nota" step="0.1" min="0" max="5" class="sim-nota" oninput="calcSim()">
                 <input type="number" placeholder="Créditos" min="1" max="10" class="sim-cred" oninput="calcSim()">
             </div>
         </div>
-        
-        <button class="btn-action" style="width: 100%; margin: 10px 0 0 0; background: var(--border);" onclick="addRow()">+ Agregar otra materia</button>
+        <button class="btn-action" style="width: 100%; margin: 10px 0 0 0; background: var(--border);" onclick="addRow()">+ Agregar materia</button>
 
         <div class="sim-results">
             <div class="res-text">PAPI Estimado (Semestre): <span id="res-papi">0.00</span></div>
-            <div class="res-text highlight">PAPA Proyectado: <span id="res-papa">0.00</span></div>
+            <div class="res-text highlight">PAPA Proyectado global: <span id="res-papa">0.00</span></div>
         </div>
     </div>
 </div>
@@ -422,14 +292,15 @@
         ]}
     ];
 
-    // Ahora approved es un objeto que guarda la ID y su NOTA: { "PQ": 4.5, "CD": 3.8 }
-    let rawData = JSON.parse(localStorage.getItem('malla_iq_calc_v1'));
-    let approved = {};
-    if (Array.isArray(rawData)) { 
-        // Migración por si tenías progreso guardado de la versión anterior
-        rawData.forEach(id => approved[id] = 3.0); 
-    } else if (rawData) {
-        approved = rawData;
+    // Ahora history guarda arrays de intentos: { "PQ": [2.5, 4.0], "CD": [3.8] }
+    let history = JSON.parse(localStorage.getItem('malla_iq_history_v2')) || {};
+    let currentSubjId = null;
+
+    // Migración por si venías de la versión anterior
+    let oldData = JSON.parse(localStorage.getItem('malla_iq_calc_v1'));
+    if(oldData && !Array.isArray(oldData) && Object.keys(history).length === 0) {
+        for(let key in oldData) history[key] = [oldData[key]];
+        localStorage.setItem('malla_iq_history_v2', JSON.stringify(history));
     }
 
     function getMatInfo(id) {
@@ -440,38 +311,49 @@
         return null;
     }
 
-    function getStats() {
-        let t = 0, d = 0;
-        let sumProd = 0;
+    function isApproved(id) {
+        return history[id] && history[id].some(g => g >= 3.0);
+    }
 
-        for(let id in approved) {
+    function getStats() {
+        let appCreds = 0, discCreds = 0;
+        let attemptCreds = 0, sumProd = 0;
+
+        for(let id in history) {
             const m = getMatInfo(id);
             if(m) {
-                t += m.c;
-                if(m.cat === "Disciplinar") d += m.c;
-                sumProd += (approved[id] * m.c);
+                let hasApp = false;
+                history[id].forEach(nota => {
+                    attemptCreds += m.c;
+                    sumProd += (nota * m.c);
+                    if(nota >= 3.0) hasApp = true;
+                });
+                
+                if(hasApp) {
+                    appCreds += m.c;
+                    if(m.cat === "Disciplinar") discCreds += m.c;
+                }
             }
         }
         
-        let perc = Math.min((t * (100 / 180)), 100).toFixed(1);
-        let papa = t > 0 ? (sumProd / t).toFixed(2) : "0.00";
+        let perc = Math.min((appCreds * (100 / 180)), 100).toFixed(1);
+        let papa = attemptCreds > 0 ? (sumProd / attemptCreds).toFixed(2) : "0.00";
         
-        return { total: t, disc: d, percentage: perc, papa: papa, sumProd: sumProd };
+        return { totalApp: appCreds, disc: discCreds, percentage: perc, papa: papa, sumProd: sumProd, attemptCreds: attemptCreds };
     }
 
     function checkProgress(materiaId) {
         const m = getMatInfo(materiaId);
         if (!m.r || m.r.length === 0) return { status: 'ready', missing: [] };
         const stats = getStats();
-        let met = 0;
-        let missingNames = [];
+        let met = 0; let missingNames = [];
 
         m.r.forEach(req => {
             let ok = false;
-            if(req === "CRED_108") ok = stats.total >= 108;
+            if(req === "CRED_108") ok = stats.totalApp >= 108;
             else if(req === "DISC_53") ok = stats.disc >= 53;
             else if(req === "DISC_60") ok = stats.disc >= 60;
-            else ok = (approved[req] !== undefined);
+            else ok = isApproved(req); // Solo desbloquea si la anterior es >= 3.0
             
             if (ok) met++;
             else {
@@ -485,36 +367,11 @@
         return { status: 'locked', missing: missingNames };
     }
 
-    function toggle(id) {
-        const prog = checkProgress(id);
-        const matInfo = getMatInfo(id);
-        
-        if(approved[id] !== undefined) {
-            if(confirm(`¿Desmarcar ${matInfo.n}?`)) {
-                delete approved[id];
-            }
-        } else if(prog.status === 'ready') {
-            let input = prompt(`Ingresa tu nota definitiva para ${matInfo.n} (0.0 a 5.0):`);
-            if(input === null) return; // Canceló
-            
-            let nota = parseFloat(input.replace(',', '.'));
-            if(isNaN(nota) || nota < 0 || nota > 5) {
-                alert("Por favor ingresa una nota válida entre 0.0 y 5.0");
-                return;
-            }
-            approved[id] = nota;
-        }
-        
-        localStorage.setItem('malla_iq_calc_v1', JSON.stringify(approved));
-        render();
-        calcSim(); // Actualiza el simulador si está abierto
-    }
-
     function render() {
         const grid = document.getElementById('grid');
         const stats = getStats();
         
-        document.getElementById('total-c').innerText = `Créditos: ${stats.total} / 180`;
+        document.getElementById('total-c').innerText = `Créditos: ${stats.totalApp} / 180`;
         document.getElementById('perc-c').innerText = `${stats.percentage}% completado`;
         document.getElementById('p-bar').style.width = `${stats.percentage}%`;
         document.getElementById('papa-c').innerText = `PAPA: ${stats.papa}`;
@@ -525,39 +382,38 @@
             const col = document.createElement('div');
             col.className = 'semestre-col';
             const head = document.createElement('div');
-            head.className = 'sem-header';
-            head.textContent = `Semestre ${semestre.sem}`;
+            head.className = 'sem-header'; head.textContent = `Semestre ${semestre.sem}`;
             col.appendChild(head);
             
             let lastCat = "";
             semestre.mat.forEach(m => {
                 if(m.cat !== lastCat) {
                     const tag = document.createElement('div');
-                    tag.className = 'cat-tag';
-                    tag.textContent = m.cat;
-                    col.appendChild(tag);
-                    lastCat = m.cat;
+                    tag.className = 'cat-tag'; tag.textContent = m.cat;
+                    col.appendChild(tag); lastCat = m.cat;
                 }
 
                 const prog = checkProgress(m.id);
-                const isApp = approved[m.id] !== undefined;
-                const card = document.createElement('div');
+                const app = isApproved(m.id);
+                const hasFailed = history[m.id] && history[m.id].length > 0 && !app;
                 
-                let sClass = isApp ? 'approved' : 
+                const card = document.createElement('div');
+                let sClass = app ? 'approved' : 
+                            (hasFailed ? 'status-failed' :
                             (prog.status === 'ready' ? 'status-ready' : 
-                            (prog.status === 'partial' ? 'status-locked-partial' : 'status-locked-total'));
+                            (prog.status === 'partial' ? 'status-locked-partial' : 'status-locked-total')));
 
                 card.className = `materia ${sClass}`;
-                card.onclick = () => toggle(m.id);
+                card.onclick = () => {
+                    if(prog.status !== 'locked' || history[m.id]) openSubjModal(m.id);
+                };
 
-                const notaTxt = isApp ? ` | Nota: ${approved[m.id].toFixed(1)}` : '';
-                const tipTxt = isApp ? "Aprobada (Click para quitar)" : 
-                               (prog.status === 'ready' ? "Disponible (Click para aprobar)" : "Falta: " + prog.missing.join(", "));
+                let bestGrade = app ? Math.max(...history[m.id]).toFixed(1) : (hasFailed ? "Reprobada" : "");
+                const notaTxt = bestGrade ? `<br><small>${bestGrade}</small>` : '';
 
                 card.innerHTML = `
                     <span class="m-name">${m.n}</span>
-                    <span class="m-cred">${m.c} Créditos${notaTxt}</span>
-                    <div class="tooltip">${tipTxt}</div>
+                    <span class="m-cred">${m.c} Créditos ${notaTxt}</span>
                 `;
                 col.appendChild(card);
             });
@@ -565,30 +421,81 @@
         });
     }
 
-    function reset() {
-        if(confirm("¿Seguro que quieres borrar todo el progreso y las notas?")) {
-            approved = {};
-            localStorage.removeItem('malla_iq_calc_v1');
-            render();
+    // --- MODAL DE MATERIAS ---
+    function openSubjModal(id) {
+        currentSubjId = id;
+        const m = getMatInfo(id);
+        document.getElementById('subj-title').innerText = m.n;
+        document.getElementById('subj-new-grade').value = '';
+        renderSubjHistory();
+        document.getElementById('subj-modal').classList.add('active');
+    }
+
+    function closeSubjModal() { document.getElementById('subj-modal').classList.remove('active'); }
+
+    function renderSubjHistory() {
+        const ul = document.getElementById('subj-history');
+        const form = document.getElementById('subj-add-form');
+        ul.innerHTML = '';
+        
+        if(!history[currentSubjId] || history[currentSubjId].length === 0) {
+            ul.innerHTML = '<li style="justify-content:center; color:var(--text-dim);">No hay registros aún.</li>';
+            form.style.display = 'flex';
+        } else {
+            let app = false;
+            history[currentSubjId].forEach((nota, i) => {
+                let isPass = nota >= 3.0;
+                let color = isPass ? 'var(--success)' : 'var(--danger)';
+                ul.innerHTML += `<li><span>Intento ${i+1}:</span> <strong style="color:${color}">${nota.toFixed(1)}</strong></li>`;
+                if(isPass) app = true;
+            });
+            form.style.display = app ? 'none' : 'flex'; // Oculta ingreso si ya se aprobó
         }
     }
 
-    // --- LÓGICA DEL SIMULADOR MODAL ---
-    function openModal() {
-        document.getElementById('sim-modal').classList.add('active');
-        calcSim();
+    function addGrade() {
+        let input = document.getElementById('subj-new-grade').value;
+        let nota = parseFloat(input.replace(',', '.'));
+        if(isNaN(nota) || nota < 0 || nota > 5) { alert("Nota inválida (0.0 - 5.0)"); return; }
+        
+        if(!history[currentSubjId]) history[currentSubjId] = [];
+        history[currentSubjId].push(nota);
+        
+        saveData();
+        renderSubjHistory();
     }
-    
-    function closeModal() {
-        document.getElementById('sim-modal').classList.remove('active');
+
+    function clearSubjectHistory() {
+        if(confirm("¿Eliminar todas las notas de esta materia? Esto afectará tu PAPA.")) {
+            delete history[currentSubjId];
+            saveData();
+            closeSubjModal();
+        }
     }
+
+    function saveData() {
+        localStorage.setItem('malla_iq_history_v2', JSON.stringify(history));
+        render();
+        if(document.getElementById('sim-modal').classList.contains('active')) calcSim();
+    }
+
+    function reset() {
+        if(confirm("¿Seguro que quieres borrar absolutamente todo tu progreso y notas?")) {
+            history = {};
+            saveData();
+        }
+    }
+
+    // --- MODAL SIMULADOR ---
+    function openSimModal() { document.getElementById('sim-modal').classList.add('active'); calcSim(); }
+    function closeSimModal() { document.getElementById('sim-modal').classList.remove('active'); }
 
     function addRow() {
         const container = document.getElementById('sim-rows-container');
         const div = document.createElement('div');
         div.className = 'sim-row';
         div.innerHTML = `
-            <input type="text" placeholder="Materia (Opcional)" class="sim-name">
+            <input type="text" placeholder="Materia" class="sim-name">
             <input type="number" placeholder="Nota" step="0.1" min="0" max="5" class="sim-nota" oninput="calcSim()">
             <input type="number" placeholder="Créditos" min="1" max="10" class="sim-cred" oninput="calcSim()">
         `;
@@ -598,30 +505,23 @@
     function calcSim() {
         const notas = document.querySelectorAll('.sim-nota');
         const creds = document.querySelectorAll('.sim-cred');
-        
-        let simProd = 0;
-        let simCreds = 0;
+        let simProd = 0, simCreds = 0;
 
         for(let i = 0; i < notas.length; i++) {
-            let n = parseFloat(notas[i].value);
-            let c = parseFloat(creds[i].value);
-            
+            let n = parseFloat(notas[i].value); let c = parseFloat(creds[i].value);
             if(!isNaN(n) && !isNaN(c) && n >= 0 && n <= 5 && c > 0) {
                 simProd += (n * c);
                 simCreds += c;
             }
         }
 
-        let papi = simCreds > 0 ? (simProd / simCreds).toFixed(2) : "0.00";
-        document.getElementById('res-papi').innerText = papi;
+        document.getElementById('res-papi').innerText = simCreds > 0 ? (simProd / simCreds).toFixed(2) : "0.00";
 
-        // Proyección del PAPA combinando historial + simulador
         const stats = getStats();
         let totalProd = stats.sumProd + simProd;
-        let totalCreds = stats.total + simCreds;
+        let totalCreds = stats.attemptCreds + simCreds; // Usa creditos intentados, no solo los aprobados!
         
-        let papaProy = totalCreds > 0 ? (totalProd / totalCreds).toFixed(2) : stats.papa;
-        document.getElementById('res-papa').innerText = papaProy;
+        document.getElementById('res-papa').innerText = totalCreds > 0 ? (totalProd / totalCreds).toFixed(2) : stats.papa;
     }
 
     render();
