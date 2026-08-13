@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Malla IQ - Progreso y Calculadora</title>
+    <title>Malla IQ - Progreso y Calculadora PAPA / PAPI</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -181,7 +181,7 @@
         <div class="leyenda-item"><div class="color-box" style="background: var(--success);"></div> Aprobada</div>
     </div>
 
-    <button class="btn-calc" onclick="openCalcModal()">Calculadora PAPA / PAPI</button>
+    <button class="btn-calc" onclick="openCalcModal()">Calculadora PAPI & PAPA Acumulado</button>
     <button class="btn-reset" onclick="resetMalla()">Reiniciar Malla</button>
 </header>
 
@@ -204,25 +204,25 @@
     </div>
 </div>
 
-<!-- MODAL CALCULADORA INDEPENDIENTE -->
+<!-- MODAL CALCULADORA PAPI Y PAPA ACUMULADO -->
 <div class="modal-overlay" id="calc-modal">
     <div class="modal-content">
         <div class="modal-header">
-            <h2 style="color: var(--warning);">Calculadora Académica</h2>
+            <h2 style="color: var(--warning);">Calculadora PAPI & PAPA</h2>
             <button class="close-btn" onclick="closeCalcModal()">&times;</button>
         </div>
         
         <div class="calc-section">
-            <div class="calc-title">1. Historial (Opcional, para calcular PAPA)</div>
+            <div class="calc-title">1. Tu Historial Acumulado (Hasta el semestre pasado)</div>
             <div class="sim-row">
-                <input type="number" id="base-papa" placeholder="PAPA Actual" step="0.1" min="0" max="5" oninput="calculateAverages()">
+                <input type="number" id="base-papa" placeholder="PAPA Acumulado" step="0.1" min="0" max="5" oninput="calculateAverages()">
                 <input type="number" id="base-credits" placeholder="Créditos Calificados" min="0" oninput="calculateAverages()" style="flex-grow:1; width:auto;">
             </div>
-            <small style="color: var(--text-dim); font-size: 0.75rem;">Ingresa los créditos calificados totales (incluyendo perdidas).</small>
+            <small style="color: var(--text-dim); font-size: 0.75rem;">Ingresa el acumulado total de créditos que llevas calificados (incluyendo perdidas).</small>
         </div>
 
         <div class="calc-section">
-            <div class="calc-title">2. Semestre a Simular (PAPI)</div>
+            <div class="calc-title">2. Semestre Actual (Para calcular el PAPI)</div>
             <div id="calc-rows-container">
                 <div class="sim-row">
                     <input type="text" placeholder="Materia (Opcional)">
@@ -230,18 +230,17 @@
                     <input type="number" placeholder="Créditos" min="1" max="10" class="calc-cred" oninput="calculateAverages()">
                 </div>
             </div>
-            <button class="btn-action" style="width: 100%; margin: 10px 0 0 0; background: var(--border);" onclick="addCalcRow()">+ Añadir materia al semestre</button>
+            <button class="btn-action" style="width: 100%; margin: 10px 0 0 0; background: var(--border);" onclick="addCalcRow()">+ Añadir otra materia</button>
         </div>
 
         <div class="sim-results">
-            <div class="res-text">PAPI del Semestre: <span id="res-papi">0.00</span></div>
-            <div class="res-text highlight">Nuevo PAPA Global: <span id="res-papa">0.00</span></div>
+            <div class="res-text">PAPI (Promedio de este semestre): <span id="res-papi" style="color: var(--primary);">0.00</span></div>
+            <div class="res-text highlight">Nuevo PAPA Acumulado (Carrera): <span id="res-papa">0.00</span></div>
         </div>
     </div>
 </div>
 
 <script>
-    // Datos de la malla
     const data = [
         { sem: 1, mat: [
             { id: "PQ", n: "Principios de Química", c: 3, r: [], cat: "Fundamentación" },
@@ -315,7 +314,6 @@
         ]}
     ];
 
-    // Estado visual de las materias: { "ID": "approved" | "failed" }
     let visualState = JSON.parse(localStorage.getItem('malla_iq_visual_v3')) || {};
     let currentSubjId = null;
 
@@ -408,7 +406,6 @@
                     if(prog.status !== 'locked' || state) openStatusModal(m.id);
                 };
 
-                // Si está perdida, mostrar un texto pequeño para dejarlo claro visualmente
                 const failText = state === 'failed' ? `<br><small style="color:var(--danger)">Reprobada</small>` : '';
 
                 card.innerHTML = `
@@ -421,18 +418,15 @@
         });
     }
 
-    // --- MODAL DE ESTADO VISUAL ---
     function openStatusModal(id) {
         currentSubjId = id;
         const m = getMatInfo(id);
         document.getElementById('status-title').innerText = m.n;
         
-        // Resetear botones
         document.getElementById('btn-app').classList.remove('active');
         document.getElementById('btn-fail').classList.remove('active');
         document.getElementById('btn-pend').classList.remove('active');
 
-        // Activar el correspondiente
         const currentState = visualState[id] || 'pending';
         if(currentState === 'approved') document.getElementById('btn-app').classList.add('active');
         else if(currentState === 'failed') document.getElementById('btn-fail').classList.add('active');
@@ -447,7 +441,7 @@
 
     function setStatus(newState) {
         if(newState === 'pending') {
-            delete visualState[currentSubjId]; // Se borra el estado, queda por defecto
+            delete visualState[currentSubjId];
         } else {
             visualState[currentSubjId] = newState;
         }
@@ -464,7 +458,6 @@
         }
     }
 
-    // --- CALCULADORA INDEPENDIENTE ---
     function openCalcModal() { 
         document.getElementById('calc-modal').classList.add('active'); 
         calculateAverages();
@@ -487,12 +480,10 @@
     }
 
     function calculateAverages() {
-        // 1. Datos históricos
         let basePapa = parseFloat(document.getElementById('base-papa').value) || 0;
         let baseCreds = parseFloat(document.getElementById('base-credits').value) || 0;
         let historicalPoints = basePapa * baseCreds;
 
-        // 2. Datos del semestre a simular
         const notas = document.querySelectorAll('.calc-nota');
         const creds = document.querySelectorAll('.calc-cred');
         
@@ -508,11 +499,11 @@
             }
         }
 
-        // PAPI (Promedio del semestre)
+        // PAPI: Promedio exclusivo de las materias ingresadas del semestre actual
         let papi = simCreds > 0 ? (simPoints / simCreds) : 0;
         document.getElementById('res-papi').innerText = papi.toFixed(2);
 
-        // Nuevo PAPA (Promedio global)
+        // PAPA Acumulado: (Puntos históricos + Puntos del semestre actual) / (Créditos históricos + Créditos del semestre actual)
         let totalCreds = baseCreds + simCreds;
         let totalPoints = historicalPoints + simPoints;
         let newPapa = totalCreds > 0 ? (totalPoints / totalCreds) : 0;
@@ -520,7 +511,6 @@
         document.getElementById('res-papa').innerText = newPapa.toFixed(2);
     }
 
-    // Inicializar visualmente
     renderMalla();
 </script>
 </body>
