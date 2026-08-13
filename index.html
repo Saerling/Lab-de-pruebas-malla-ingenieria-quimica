@@ -18,49 +18,14 @@
             --border: #334155;
         }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            margin: 0;
-            padding: 20px;
-        }
-
-        header {
-            max-width: 1200px;
-            margin: 0 auto 20px;
-            text-align: center;
-            background: var(--surface);
-            padding: 25px;
-            border-radius: 16px;
-            border: 1px solid var(--border);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-        }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); margin: 0; padding: 20px; }
+        header { max-width: 1200px; margin: 0 auto 20px; text-align: center; background: var(--surface); padding: 25px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
 
         /* TABS */
-        .tabs {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        .tab-btn {
-            background: var(--bg);
-            color: var(--text-dim);
-            border: 1px solid var(--border);
-            padding: 12px 24px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 700;
-            transition: all 0.3s;
-            font-family: inherit;
-        }
+        .tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 20px; flex-wrap: wrap; }
+        .tab-btn { background: var(--bg); color: var(--text-dim); border: 1px solid var(--border); padding: 12px 24px; border-radius: 8px; cursor: pointer; font-weight: 700; transition: all 0.3s; font-family: inherit; }
         .tab-btn:hover { color: white; border-color: var(--primary); }
-        .tab-btn.active {
-            background: var(--primary);
-            color: var(--bg);
-            border-color: var(--primary);
-        }
+        .tab-btn.active { background: var(--primary); color: var(--bg); border-color: var(--primary); }
 
         .view-section { display: none; }
         .view-section.active { display: block; animation: fadeIn 0.3s; }
@@ -68,64 +33,41 @@
 
         /* MALLA CURRICULAR STYLES */
         .stats { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin-bottom: 20px; }
-        .stat-badge {
-            background: rgba(56, 189, 248, 0.1); color: var(--primary); padding: 8px 16px;
-            border-radius: 20px; border: 1px solid rgba(56, 189, 248, 0.3); font-weight: 700;
-        }
+        .stat-badge { background: rgba(56, 189, 248, 0.1); color: var(--primary); padding: 8px 16px; border-radius: 20px; border: 1px solid rgba(56, 189, 248, 0.3); font-weight: 700; }
         .stat-badge.progress { background: rgba(16, 185, 129, 0.1); color: var(--success); border-color: rgba(16, 185, 129, 0.3); }
-
-        .progress-container {
-            width: 100%; max-width: 600px; background: #334155; height: 12px;
-            border-radius: 10px; margin: 0 auto 10px; overflow: hidden; border: 1px solid var(--border);
-        }
-        .progress-bar {
-            height: 100%; width: 0%; background: linear-gradient(90deg, var(--primary), var(--success));
-            transition: width 0.5s ease-out; border-radius: 10px;
-        }
-
-        .leyenda {
-            display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; padding: 10px;
-            background: rgba(15, 23, 42, 0.5); border-radius: 8px; margin-top: 15px;
-        }
+        
+        .progress-container { width: 100%; max-width: 600px; background: #334155; height: 12px; border-radius: 10px; margin: 0 auto 10px; overflow: hidden; border: 1px solid var(--border); }
+        .progress-bar { height: 100%; width: 0%; background: linear-gradient(90deg, var(--primary), var(--success)); transition: width 0.5s ease-out; border-radius: 10px; }
+        
+        .leyenda { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; padding: 10px; background: rgba(15, 23, 42, 0.5); border-radius: 8px; margin-top: 15px; }
         .leyenda-item { display: flex; align-items: center; gap: 8px; font-size: 0.75rem; color: var(--text-dim); }
         .color-box { width: 14px; height: 14px; border-radius: 3px; border: 2px solid transparent; }
-
-        .btn-reset {
-            background: var(--danger); color: white; border: none; padding: 10px 18px;
-            border-radius: 8px; cursor: pointer; font-weight: 600; margin-top: 15px;
-        }
+        
+        .btn-reset { background: var(--danger); color: white; border: none; padding: 10px 18px; border-radius: 8px; cursor: pointer; font-weight: 600; margin-top: 15px; }
 
         .malla-wrapper { display: flex; gap: 20px; padding-top: 20px; padding-bottom: 40px; overflow-x: auto; }
         .semestre-col { min-width: 230px; display: flex; flex-direction: column; gap: 12px; }
         .sem-header { background: var(--primary); color: var(--bg); text-align: center; padding: 10px; border-radius: 8px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; }
         .cat-tag { font-size: 0.65rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 10px; padding-bottom: 4px; border-bottom: 1px solid var(--border); font-weight: 700; }
 
-        .materia {
-            background: var(--surface); border: 2px solid var(--border); padding: 14px;
-            border-radius: 10px; cursor: pointer; transition: all 0.2s; position: relative;
-        }
+        .materia { background: var(--surface); border: 2px solid var(--border); padding: 14px; border-radius: 10px; cursor: pointer; transition: all 0.2s; position: relative; }
         .status-locked-total { border-color: #334155; opacity: 0.4; }
         .status-locked-partial { border-color: var(--warning); background: rgba(245, 158, 11, 0.05); }
         .status-ready { border-color: var(--primary); box-shadow: 0 0 10px rgba(56, 189, 248, 0.1); }
         .status-failed { border-color: var(--danger); background: rgba(239, 68, 68, 0.15); }
         .approved { background: var(--success) !important; border-color: #059669 !important; color: white; opacity: 1 !important; }
         .materia:hover:not(.status-locked-total):not(.status-locked-partial) { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4); }
+        
         .m-name { font-size: 0.85rem; font-weight: 600; display: block; margin-bottom: 4px; line-height: 1.3; }
         .m-cred { font-size: 0.75rem; color: var(--text-dim); }
         .approved .m-cred { color: rgba(255,255,255,0.9); font-weight: 600; }
         .status-failed .m-cred { color: var(--danger); font-weight: 600; }
+        .icon-indicator { font-size: 0.95rem; margin-left: 5px; }
 
         /* MODALES */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.7); display: none; justify-content: center; align-items: center;
-            z-index: 999; opacity: 0; transition: opacity 0.3s;
-        }
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: none; justify-content: center; align-items: center; z-index: 999; opacity: 0; transition: opacity 0.3s; }
         .modal-overlay.active { display: flex; opacity: 1; }
-        .modal-content {
-            background: var(--surface); padding: 25px; border-radius: 12px;
-            width: 90%; max-width: 350px; border: 1px solid var(--border); box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-        }
+        .modal-content { background: var(--surface); padding: 25px; border-radius: 12px; width: 90%; max-width: 350px; border: 1px solid var(--border); box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
         .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
         .modal-header h2 { margin: 0; font-size: 1.2rem; color: var(--primary); }
         .close-btn { background: none; border: none; color: var(--text-dim); font-size: 1.5rem; cursor: pointer; }
@@ -138,25 +80,26 @@
         .btn-pending { border-color: var(--text-dim); color: var(--text-dim); }
         .btn-pending.active { background: var(--text-dim); color: white; }
 
+        .calc-lock-msg { background: rgba(56, 189, 248, 0.1); color: var(--primary); padding: 15px; border-radius: 8px; border: 1px solid var(--primary); font-size: 0.9rem; text-align: center; }
+
         /* CALCULADORA DE SEMESTRES STYLES */
-        .calc-container { max-width: 800px; margin: auto; }
-        .header-stats {
-            position: sticky; top: 10px; background: var(--surface); padding: 20px;
-            border-radius: 12px; display: grid; grid-template-columns: 1fr 1fr;
-            gap: 20px; border: 1px solid var(--primary); z-index: 100; margin-bottom: 20px;
-        }
+        .calc-container { max-width: 900px; margin: auto; }
+        .header-stats { position: sticky; top: 10px; background: var(--surface); padding: 20px; border-radius: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; border: 1px solid var(--primary); z-index: 100; margin-bottom: 20px; }
         .stat-box { text-align: center; }
         .stat-val { display: block; font-size: 1.5rem; font-weight: bold; color: var(--primary); }
 
         .semestre-block { background: var(--surface); padding: 20px; border-radius: 10px; margin-bottom: 20px; border: 1px solid var(--border); }
-        .sem-title { margin-top: 0; color: var(--primary); display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 15px;}
-        .papi-semestre { font-size: 0.9rem; color: var(--success); }
+        .sem-title { margin-top: 0; color: var(--primary); display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 15px; align-items: center;}
+        .papi-semestre { font-size: 0.9rem; color: var(--success); background: var(--bg); padding: 5px 10px; border-radius: 6px; }
 
-        .materia-row { display: flex; gap: 10px; margin-bottom: 10px; }
-        .materia-row input { 
+        .materia-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; align-items: center; background: rgba(15,23,42,0.3); padding: 10px; border-radius: 8px;}
+        .materia-row input, .materia-row select { 
             background: var(--bg); border: 1px solid var(--border); color: white; 
-            padding: 10px; border-radius: 6px; width: 100%; font-family: inherit;
+            padding: 10px; border-radius: 6px; font-family: inherit; box-sizing: border-box;
         }
+        .materia-row select { flex-grow: 2; min-width: 180px; }
+        .materia-row input[type="text"] { flex-grow: 2; min-width: 150px; }
+        .materia-row input[type="number"] { width: 80px; }
         .materia-row input::placeholder { color: #64748b; }
         
         button { cursor: pointer; padding: 10px 15px; border-radius: 6px; border: none; font-weight: bold; transition: 0.2s; font-family: inherit;}
@@ -169,7 +112,6 @@
 
 <header>
     <h1 style="margin:0 0 15px">Centro Estudiantil IQ</h1>
-    
     <div class="tabs">
         <button class="tab-btn active" id="tab-malla" onclick="switchTab('malla')">Malla Curricular</button>
         <button class="tab-btn" id="tab-calc" onclick="switchTab('calc')">Calculadora Histórica</button>
@@ -183,19 +125,18 @@
             <div class="stat-badge" id="total-c">Créditos Aprobados: 0 / 180</div>
             <div class="stat-badge progress" id="perc-c">0% completado</div>
         </div>
-
         <div class="progress-container"><div class="progress-bar" id="p-bar"></div></div>
-
+        
         <div class="leyenda">
             <div class="leyenda-item"><div class="color-box" style="border-color: #334155; opacity: 0.4;"></div> Bloqueado</div>
             <div class="leyenda-item"><div class="color-box" style="border-color: var(--warning);"></div> Parcial</div>
             <div class="leyenda-item"><div class="color-box" style="border-color: var(--primary);"></div> Disponible</div>
-            <div class="leyenda-item"><div class="color-box" style="border-color: var(--danger); background: rgba(239, 68, 68, 0.2);"></div> Reprobada</div>
-            <div class="leyenda-item"><div class="color-box" style="background: var(--success);"></div> Aprobada</div>
+            <div class="leyenda-item"><div class="color-box" style="border-color: var(--danger); background: rgba(239, 68, 68, 0.2);"></div> Reprobada ❌</div>
+            <div class="leyenda-item"><div class="color-box" style="background: var(--success);"></div> Aprobada ✅</div>
         </div>
         
         <div style="text-align: center;">
-            <button class="btn-reset" onclick="resetMalla()">Reiniciar Malla</button>
+            <button class="btn-reset" onclick="resetMalla()">Reiniciar Estado Manual</button>
         </div>
 
         <div class="malla-wrapper" id="grid"></div>
@@ -211,11 +152,9 @@
         </div>
 
         <div id="semestres-container"></div>
-        
         <button class="btn-add-sem" onclick="addSemestre()">+ Añadir nuevo semestre</button>
     </div>
 </div>
-
 
 <!-- MODAL ESTADO DE MATERIA (MALLA) -->
 <div class="modal-overlay" id="status-modal">
@@ -224,13 +163,19 @@
             <h2 id="status-title">Materia</h2>
             <button class="close-btn" onclick="closeStatusModal()">&times;</button>
         </div>
-        <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 0; margin-bottom: 20px;">
-            Marca visualmente el estado de esta materia.
-        </p>
         
-        <button id="btn-app" class="state-btn btn-approve" onclick="setStatus('approved')">✅ Aprobada</button>
-        <button id="btn-fail" class="state-btn btn-fail" onclick="setStatus('failed')">❌ Reprobada</button>
-        <button id="btn-pend" class="state-btn btn-pending" onclick="setStatus('pending')">⏳ Pendiente</button>
+        <div id="calc-message" style="display: none;" class="calc-lock-msg">
+            <!-- Mensaje inyectado por JS -->
+        </div>
+
+        <div id="manual-controls">
+            <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 0; margin-bottom: 20px;">
+                Marca manualmente el estado de esta materia. (Se desactiva si usas la calculadora).
+            </p>
+            <button id="btn-app" class="state-btn btn-approve" onclick="setStatus('approved')">✅ Aprobada</button>
+            <button id="btn-fail" class="state-btn btn-fail" onclick="setStatus('failed')">❌ Reprobada</button>
+            <button id="btn-pend" class="state-btn btn-pending" onclick="setStatus('pending')">⏳ Pendiente</button>
+        </div>
     </div>
 </div>
 
@@ -249,82 +194,26 @@
     }
 
     // ==========================================
-    // LÓGICA DE LA MALLA CURRICULAR
+    // DATOS DE LA MALLA
     // ==========================================
     const data = [
-        { sem: 1, mat: [
-            { id: "PQ", n: "Principios de Química", c: 3, r: [], cat: "Fundamentación" },
-            { id: "LTB", n: "Lab. Técnicas Básicas", c: 3, r: [], cat: "Fundamentación" },
-            { id: "CD", n: "Cálculo Diferencial", c: 4, r: [], cat: "Fundamentación" },
-            { id: "OHI", n: "Opt. Herramientas Ing.", c: 3, r: [], cat: "Fundamentación" },
-            { id: "IIQ", n: "Intro. Ing. Química", c: 3, r: [], cat: "Disciplinar" }
-        ]},
-        { sem: 2, mat: [
-            { id: "PAQ", n: "Principios Análisis Q.", c: 3, r: ["PQ"], cat: "Fundamentación" },
-            { id: "AL", n: "Álgebra Lineal", c: 4, r: ["CD"], cat: "Fundamentación" },
-            { id: "CI", n: "Cálculo Integral", c: 4, r: ["CD"], cat: "Fundamentación" },
-            { id: "FM", n: "Fund. de Mecánica", c: 4, r: ["CD"], cat: "Fundamentación" },
-            { id: "BM", n: "Balance de Materia", c: 3, r: [], cat: "Disciplinar" }
-        ]},
-        { sem: 3, mat: [
-            { id: "LPAQ", n: "Lab. Princ. Análisis", c: 3, r: ["PQ"], cat: "Fundamentación" },
-            { id: "BIO", n: "Biología Molecular", c: 3, r: [], cat: "Fundamentación" },
-            { id: "CVV", n: "Cálculo Varias Var.", c: 4, r: ["AL", "CI"], cat: "Fundamentación" },
-            { id: "FEM", n: "Fund. Elec. y Magnetismo", c: 4, r: ["CI", "FM"], cat: "Fundamentación" },
-            { id: "TERM", n: "Termodinámica", c: 3, r: ["BM"], cat: "Disciplinar" },
-            { id: "L1", n: "Libre Elección 1", c: 3, r: [], cat: "Libre" }
-        ]},
-        { sem: 4, mat: [
-            { id: "QO", n: "Química Orgánica", c: 3, r: ["PQ"], cat: "Fundamentación" },
-            { id: "PE", n: "Probabilidad y Est.", c: 3, r: ["CD"], cat: "Fundamentación" },
-            { id: "ED", n: "Ecuaciones Diferenciales", c: 4, r: ["AL", "CI"], cat: "Fundamentación" },
-            { id: "FLUI", n: "Fluidos", c: 3, r: ["FM", "TERM"], cat: "Disciplinar" },
-            { id: "T1", n: "Taller 1", c: 1, r: ["CVV", "TERM"], cat: "Disciplinar" },
-            { id: "TQ", n: "Termodinámica Química", c: 3, r: ["CVV", "TERM"], cat: "Disciplinar" }
-        ]},
-        { sem: 5, mat: [
-            { id: "QO2", n: "Química Orgánica II", c: 3, r: ["PQ"], cat: "Fundamentación" },
-            { id: "MN", n: "Métodos Numéricos", c: 3, r: ["ED"], cat: "Fundamentación" },
-            { id: "TC", n: "Transf. Calor", c: 4, r: ["TERM", "ED"], cat: "Disciplinar" },
-            { id: "MS", n: "Manejo de Sólidos", c: 3, r: ["FLUI"], cat: "Disciplinar" },
-            { id: "BE", n: "Balance Energía y Equil.", c: 3, r: ["TQ"], cat: "Disciplinar" },
-            { id: "L2", n: "Libre Elección 2", c: 3, r: [], cat: "Libre" }
-        ]},
-        { sem: 6, mat: [
-            { id: "LQO", n: "Lab. Química Orgánica", c: 2, r: ["PQ"], cat: "Fundamentación" },
-            { id: "IE", n: "Ingeniería Económica", c: 3, r: ["CI"], cat: "Fundamentación" },
-            { id: "TM", n: "Transf. Masa", c: 3, r: ["ED"], cat: "Disciplinar" },
-            { id: "T2", n: "Taller 2", c: 1, r: ["ED"], cat: "Disciplinar" },
-            { id: "LPT", n: "Lab. Prop. Termodinámicas", c: 3, r: ["BE"], cat: "Disciplinar" },
-            { id: "OTE", n: "Opt. Termodinámica", c: 3, r: ["BE"], cat: "Disciplinar" }
-        ]},
-        { sem: 7, mat: [
-            { id: "OEA", n: "Opt. Econ-Admin", c: 3, r: [], cat: "Fundamentación" },
-            { id: "GP", n: "Gerencia Proyectos", c: 3, r: ["IE"], cat: "Fundamentación" },
-            { id: "OSEP", n: "Operaciones Separación", c: 3, r: ["TM", "BE"], cat: "Disciplinar" },
-            { id: "LFC", n: "Lab. Fluidos y Calor", c: 3, r: ["TC"], cat: "Disciplinar" },
-            { id: "IRQ", n: "Ing. Reacciones Quím.", c: 3, r: ["BE"], cat: "Disciplinar" }
-        ]},
-        { sem: 8, mat: [
-            { id: "OMA", n: "Optativa Materiales", c: 3, r: ["CRED_108"], cat: "Disciplinar" },
-            { id: "CTRL", n: "Control de Procesos", c: 3, r: ["MN", "IRQ"], cat: "Disciplinar" },
-            { id: "LSR", n: "Lab. Sep/Reac/Contr", c: 3, r: ["OSEP", "CTRL"], cat: "Disciplinar" },
-            { id: "OPQ", n: "Opt. Proc. Químicos", c: 3, r: ["TM", "IRQ"], cat: "Disciplinar" },
-            { id: "DPQ", n: "Diseño Proc. Químicos", c: 3, r: ["BE"], cat: "Disciplinar" }
-        ]},
-        { sem: 9, mat: [
-            { id: "TPI", n: "Taller Proy. Interdis.", c: 3, r: ["DISC_53"], cat: "Disciplinar" },
-            { id: "DPE", n: "Diseño Plantas y Equipos", c: 3, r: ["OSEP", "DPQ"], cat: "Disciplinar" },
-            { id: "IPRO", n: "Ingeniería Procesos", c: 3, r: ["DPQ"], cat: "Disciplinar" },
-            { id: "L3", n: "Libre Elección 3", c: 3, r: [], cat: "Libre" }
-        ]},
-        { sem: 10, mat: [
-            { id: "TG", n: "Trabajo de Grado", c: 6, r: ["DISC_60"], cat: "Disciplinar" },
-            { id: "L4", n: "Libre Elección 4", c: 4, r: [], cat: "Libre" }
-        ]}
+        { sem: 1, mat: [{ id: "PQ", n: "Principios de Química", c: 3, r: [], cat: "Fundamentación" }, { id: "LTB", n: "Lab. Técnicas Básicas", c: 3, r: [], cat: "Fundamentación" }, { id: "CD", n: "Cálculo Diferencial", c: 4, r: [], cat: "Fundamentación" }, { id: "OHI", n: "Opt. Herramientas Ing.", c: 3, r: [], cat: "Fundamentación" }, { id: "IIQ", n: "Intro. Ing. Química", c: 3, r: [], cat: "Disciplinar" }] },
+        { sem: 2, mat: [{ id: "PAQ", n: "Principios Análisis Q.", c: 3, r: ["PQ"], cat: "Fundamentación" }, { id: "AL", n: "Álgebra Lineal", c: 4, r: ["CD"], cat: "Fundamentación" }, { id: "CI", n: "Cálculo Integral", c: 4, r: ["CD"], cat: "Fundamentación" }, { id: "FM", n: "Fund. de Mecánica", c: 4, r: ["CD"], cat: "Fundamentación" }, { id: "BM", n: "Balance de Materia", c: 3, r: [], cat: "Disciplinar" }] },
+        { sem: 3, mat: [{ id: "LPAQ", n: "Lab. Princ. Análisis", c: 3, r: ["PQ"], cat: "Fundamentación" }, { id: "BIO", n: "Biología Molecular", c: 3, r: [], cat: "Fundamentación" }, { id: "CVV", n: "Cálculo Varias Var.", c: 4, r: ["AL", "CI"], cat: "Fundamentación" }, { id: "FEM", n: "Fund. Elec. y Magnetismo", c: 4, r: ["CI", "FM"], cat: "Fundamentación" }, { id: "TERM", n: "Termodinámica", c: 3, r: ["BM"], cat: "Disciplinar" }, { id: "L1", n: "Libre Elección 1", c: 3, r: [], cat: "Libre" }] },
+        { sem: 4, mat: [{ id: "QO", n: "Química Orgánica", c: 3, r: ["PQ"], cat: "Fundamentación" }, { id: "PE", n: "Probabilidad y Est.", c: 3, r: ["CD"], cat: "Fundamentación" }, { id: "ED", n: "Ecuaciones Diferenciales", c: 4, r: ["AL", "CI"], cat: "Fundamentación" }, { id: "FLUI", n: "Fluidos", c: 3, r: ["FM", "TERM"], cat: "Disciplinar" }, { id: "T1", n: "Taller 1", c: 1, r: ["CVV", "TERM"], cat: "Disciplinar" }, { id: "TQ", n: "Termodinámica Química", c: 3, r: ["CVV", "TERM"], cat: "Disciplinar" }] },
+        { sem: 5, mat: [{ id: "QO2", n: "Química Orgánica II", c: 3, r: ["PQ"], cat: "Fundamentación" }, { id: "MN", n: "Métodos Numéricos", c: 3, r: ["ED"], cat: "Fundamentación" }, { id: "TC", n: "Transf. Calor", c: 4, r: ["TERM", "ED"], cat: "Disciplinar" }, { id: "MS", n: "Manejo de Sólidos", c: 3, r: ["FLUI"], cat: "Disciplinar" }, { id: "BE", n: "Balance Energía y Equil.", c: 3, r: ["TQ"], cat: "Disciplinar" }, { id: "L2", n: "Libre Elección 2", c: 3, r: [], cat: "Libre" }] },
+        { sem: 6, mat: [{ id: "LQO", n: "Lab. Química Orgánica", c: 2, r: ["PQ"], cat: "Fundamentación" }, { id: "IE", n: "Ingeniería Económica", c: 3, r: ["CI"], cat: "Fundamentación" }, { id: "TM", n: "Transf. Masa", c: 3, r: ["ED"], cat: "Disciplinar" }, { id: "T2", n: "Taller 2", c: 1, r: ["ED"], cat: "Disciplinar" }, { id: "LPT", n: "Lab. Prop. Termodinámicas", c: 3, r: ["BE"], cat: "Disciplinar" }, { id: "OTE", n: "Opt. Termodinámica", c: 3, r: ["BE"], cat: "Disciplinar" }] },
+        { sem: 7, mat: [{ id: "OEA", n: "Opt. Econ-Admin", c: 3, r: [], cat: "Fundamentación" }, { id: "GP", n: "Gerencia Proyectos", c: 3, r: ["IE"], cat: "Fundamentación" }, { id: "OSEP", n: "Operaciones Separación", c: 3, r: ["TM", "BE"], cat: "Disciplinar" }, { id: "LFC", n: "Lab. Fluidos y Calor", c: 3, r: ["TC"], cat: "Disciplinar" }, { id: "IRQ", n: "Ing. Reacciones Quím.", c: 3, r: ["BE"], cat: "Disciplinar" }] },
+        { sem: 8, mat: [{ id: "OMA", n: "Optativa Materiales", c: 3, r: ["CRED_108"], cat: "Disciplinar" }, { id: "CTRL", n: "Control de Procesos", c: 3, r: ["MN", "IRQ"], cat: "Disciplinar" }, { id: "LSR", n: "Lab. Sep/Reac/Contr", c: 3, r: ["OSEP", "CTRL"], cat: "Disciplinar" }, { id: "OPQ", n: "Opt. Proc. Químicos", c: 3, r: ["TM", "IRQ"], cat: "Disciplinar" }, { id: "DPQ", n: "Diseño Proc. Químicos", c: 3, r: ["BE"], cat: "Disciplinar" }] },
+        { sem: 9, mat: [{ id: "TPI", n: "Taller Proy. Interdis.", c: 3, r: ["DISC_53"], cat: "Disciplinar" }, { id: "DPE", n: "Diseño Plantas y Equipos", c: 3, r: ["OSEP", "DPQ"], cat: "Disciplinar" }, { id: "IPRO", n: "Ingeniería Procesos", c: 3, r: ["DPQ"], cat: "Disciplinar" }, { id: "L3", n: "Libre Elección 3", c: 3, r: [], cat: "Libre" }] },
+        { sem: 10, mat: [{ id: "TG", n: "Trabajo de Grado", c: 6, r: ["DISC_60"], cat: "Disciplinar" }, { id: "L4", n: "Libre Elección 4", c: 4, r: [], cat: "Libre" }] }
     ];
 
-    let visualState = JSON.parse(localStorage.getItem('malla_iq_visual_v3')) || {};
+    // ==========================================
+    // ESTADO E INTEGRACIÓN (Calculadora -> Malla)
+    // ==========================================
+    let visualState = JSON.parse(localStorage.getItem('malla_iq_visual_v4')) || {};
+    let semestres = JSON.parse(localStorage.getItem('calc_iq_history_v4')) || [];
     let currentSubjId = null;
 
     function getMatInfo(id) {
@@ -335,17 +224,40 @@
         return null;
     }
 
+    // Retorna la mayor nota válida que el estudiante haya ingresado en la calculadora para una materia
+    function getCalcNota(mId) {
+        let maxNota = -1;
+        let hasEntry = false;
+        semestres.forEach(sem => {
+            sem.materias.forEach(mat => {
+                if(mat.materiaId === mId && mat.nota !== '' && !isNaN(mat.nota)) {
+                    hasEntry = true;
+                    if(mat.nota > maxNota) maxNota = mat.nota;
+                }
+            });
+        });
+        return hasEntry ? maxNota : -1;
+    }
+
+    // Fusiona la fuente de verdad: La calculadora tiene prioridad sobre el click manual
+    function getCombinedState(mId) {
+        let cNota = getCalcNota(mId);
+        if (cNota !== -1) {
+            return cNota >= 3.0 ? 'approved' : 'failed';
+        }
+        return visualState[mId];
+    }
+
     function getVisualStats() {
         let appCreds = 0, discCreds = 0;
-        for(let id in visualState) {
-            if(visualState[id] === 'approved') {
-                const m = getMatInfo(id);
-                if(m) {
+        data.forEach(sem => {
+            sem.mat.forEach(m => {
+                if(getCombinedState(m.id) === 'approved') {
                     appCreds += m.c;
                     if(m.cat === "Disciplinar") discCreds += m.c;
                 }
-            }
-        }
+            });
+        });
         let perc = Math.min((appCreds * (100 / 180)), 100).toFixed(1);
         return { totalApp: appCreds, disc: discCreds, percentage: perc };
     }
@@ -362,7 +274,7 @@
             if(req === "CRED_108") ok = stats.totalApp >= 108;
             else if(req === "DISC_53") ok = stats.disc >= 53;
             else if(req === "DISC_60") ok = stats.disc >= 60;
-            else ok = (visualState[req] === 'approved'); 
+            else ok = (getCombinedState(req) === 'approved'); 
             
             if (ok) met++;
         });
@@ -372,6 +284,9 @@
         return { status: 'locked' };
     }
 
+    // ==========================================
+    // RENDERIZADO DE LA MALLA
+    // ==========================================
     function renderMalla() {
         const grid = document.getElementById('grid');
         const stats = getVisualStats();
@@ -398,14 +313,19 @@
                 }
 
                 const prog = checkProgress(m.id);
-                const state = visualState[m.id];
+                const state = getCombinedState(m.id);
                 
                 const card = document.createElement('div');
                 let sClass = '';
+                let icon = '';
                 
-                if (state === 'approved') sClass = 'approved';
-                else if (state === 'failed') sClass = 'status-failed';
-                else if (prog.status === 'ready') sClass = 'status-ready';
+                if (state === 'approved') {
+                    sClass = 'approved';
+                    icon = '<span class="icon-indicator" title="Aprobada">✅</span>';
+                } else if (state === 'failed') {
+                    sClass = 'status-failed';
+                    icon = '<span class="icon-indicator" title="Reprobada">❌</span>';
+                } else if (prog.status === 'ready') sClass = 'status-ready';
                 else if (prog.status === 'partial') sClass = 'status-locked-partial';
                 else sClass = 'status-locked-total';
 
@@ -417,7 +337,7 @@
                 const failText = state === 'failed' ? `<br><small style="color:var(--danger)">Reprobada</small>` : '';
 
                 card.innerHTML = `
-                    <span class="m-name">${m.n}</span>
+                    <span class="m-name">${m.n}${icon}</span>
                     <span class="m-cred">${m.c} Créditos ${failText}</span>
                 `;
                 col.appendChild(card);
@@ -431,21 +351,35 @@
         const m = getMatInfo(id);
         document.getElementById('status-title').innerText = m.n;
         
-        document.getElementById('btn-app').classList.remove('active');
-        document.getElementById('btn-fail').classList.remove('active');
-        document.getElementById('btn-pend').classList.remove('active');
+        const cNota = getCalcNota(id);
+        const manualControls = document.getElementById('manual-controls');
+        const calcMessage = document.getElementById('calc-message');
 
-        const currentState = visualState[id] || 'pending';
-        if(currentState === 'approved') document.getElementById('btn-app').classList.add('active');
-        else if(currentState === 'failed') document.getElementById('btn-fail').classList.add('active');
-        else document.getElementById('btn-pend').classList.add('active');
+        // Si la nota existe en la calculadora, bloqueamos la edición manual aquí.
+        if(cNota !== -1) {
+            manualControls.style.display = 'none';
+            calcMessage.style.display = 'block';
+            
+            let estado = cNota >= 3.0 ? '<span style="color:var(--success)">Aprobada ✅</span>' : '<span style="color:var(--danger)">Reprobada ❌</span>';
+            calcMessage.innerHTML = `El estado de esta materia está controlado por la pestaña de <b>Calculadora</b>.<br><br>Nota registrada: <b>${cNota.toFixed(1)}</b> (${estado})`;
+        } else {
+            manualControls.style.display = 'block';
+            calcMessage.style.display = 'none';
+            
+            document.getElementById('btn-app').classList.remove('active');
+            document.getElementById('btn-fail').classList.remove('active');
+            document.getElementById('btn-pend').classList.remove('active');
+
+            const currentState = visualState[id] || 'pending';
+            if(currentState === 'approved') document.getElementById('btn-app').classList.add('active');
+            else if(currentState === 'failed') document.getElementById('btn-fail').classList.add('active');
+            else document.getElementById('btn-pend').classList.add('active');
+        }
 
         document.getElementById('status-modal').classList.add('active');
     }
 
-    function closeStatusModal() { 
-        document.getElementById('status-modal').classList.remove('active'); 
-    }
+    function closeStatusModal() { document.getElementById('status-modal').classList.remove('active'); }
 
     function setStatus(newState) {
         if(newState === 'pending') {
@@ -453,15 +387,15 @@
         } else {
             visualState[currentSubjId] = newState;
         }
-        localStorage.setItem('malla_iq_visual_v3', JSON.stringify(visualState));
+        localStorage.setItem('malla_iq_visual_v4', JSON.stringify(visualState));
         renderMalla();
         closeStatusModal();
     }
 
     function resetMalla() {
-        if(confirm("¿Seguro que quieres reiniciar todo el progreso visual de la malla?")) {
+        if(confirm("¿Borrar marcas manuales de la Malla? (No borrará lo que esté en la calculadora)")) {
             visualState = {};
-            localStorage.setItem('malla_iq_visual_v3', JSON.stringify(visualState));
+            localStorage.setItem('malla_iq_visual_v4', JSON.stringify(visualState));
             renderMalla();
         }
     }
@@ -469,17 +403,31 @@
     // ==========================================
     // LÓGICA DE LA CALCULADORA HISTÓRICA
     // ==========================================
-    let semestres = JSON.parse(localStorage.getItem('calc_iq_history')) || [];
+    
+    // Generador de opciones para los select de la calculadora
+    function getSubjectOptions(selectedId) {
+        let html = `<option value="">-- Seleccionar Materia --</option>`;
+        data.forEach(sem => {
+            html += `<optgroup label="Semestre ${sem.sem}">`;
+            sem.mat.forEach(m => {
+                let sel = m.id === selectedId ? 'selected' : '';
+                html += `<option value="${m.id}" data-creds="${m.c}" data-name="${m.n}" ${sel}>${m.n}</option>`;
+            });
+            html += `</optgroup>`;
+        });
+        let customSel = selectedId === 'custom' ? 'selected' : '';
+        html += `<option value="custom" ${customSel}>Otra / Electiva Libre...</option>`;
+        return html;
+    }
 
     function addSemestre() {
-        const id = Date.now();
-        semestres.push({ id, materias: [] });
+        semestres.push({ id: Date.now(), materias: [] });
         saveAndRenderCalc();
     }
 
     function addMateria(semId) {
         const sem = semestres.find(s => s.id === semId);
-        sem.materias.push({ nombre: '', nota: 0, creds: 0 });
+        sem.materias.push({ materiaId: '', nombre: '', nota: '', creds: '' });
         saveAndRenderCalc();
     }
     
@@ -490,21 +438,43 @@
     }
 
     function deleteSemestre(semId) {
-        if(confirm("¿Eliminar este semestre y todas sus materias?")) {
+        if(confirm("¿Eliminar este semestre y todas sus notas?")) {
             semestres = semestres.filter(s => s.id !== semId);
             saveAndRenderCalc();
         }
     }
 
+    function handleMateriaChange(semId, matIdx, selectEl) {
+        const val = selectEl.value;
+        const sem = semestres.find(s => s.id === semId);
+        const mat = sem.materias[matIdx];
+        
+        mat.materiaId = val;
+        
+        if(val === 'custom') {
+            mat.nombre = '';
+            mat.creds = '';
+        } else if (val !== '') {
+            const opt = selectEl.options[selectEl.selectedIndex];
+            mat.nombre = opt.getAttribute('data-name');
+            mat.creds = parseFloat(opt.getAttribute('data-creds'));
+        } else {
+            mat.nombre = '';
+            mat.creds = '';
+        }
+        saveAndRenderCalc();
+    }
+
     function updateMateria(semId, matIdx, field, val) {
         const sem = semestres.find(s => s.id === semId);
         if (field === 'nota' || field === 'creds') {
-            sem.materias[matIdx][field] = parseFloat(val) || 0;
+            sem.materias[matIdx][field] = val === '' ? '' : parseFloat(val);
         } else {
             sem.materias[matIdx][field] = val;
         }
         calcularPromedios();
-        localStorage.setItem('calc_iq_history', JSON.stringify(semestres));
+        localStorage.setItem('calc_iq_history_v4', JSON.stringify(semestres));
+        renderMalla(); // Actualiza los chulos/equis dinámicamente
     }
 
     function calcularPromedios() {
@@ -516,10 +486,14 @@
             let semCreds = 0;
 
             s.materias.forEach(m => {
-                totalPuntos += (m.nota * m.creds);
-                totalCreds += m.creds;
-                semPuntos += (m.nota * m.creds);
-                semCreds += m.creds;
+                let n = parseFloat(m.nota);
+                let c = parseFloat(m.creds);
+                if(!isNaN(n) && !isNaN(c) && c > 0) {
+                    totalPuntos += (n * c);
+                    totalCreds += c;
+                    semPuntos += (n * c);
+                    semCreds += c;
+                }
             });
 
             const papi = semCreds > 0 ? (semPuntos / semCreds).toFixed(2) : "0.00";
@@ -533,8 +507,9 @@
     }
 
     function saveAndRenderCalc() {
-        localStorage.setItem('calc_iq_history', JSON.stringify(semestres));
+        localStorage.setItem('calc_iq_history_v4', JSON.stringify(semestres));
         renderCalculadora();
+        renderMalla(); // Actualiza la Malla con los nuevos cambios de la calculadora
     }
 
     function renderCalculadora() {
@@ -559,11 +534,21 @@
             s.materias.forEach((m, mIdx) => {
                 const row = document.createElement('div');
                 row.className = 'materia-row';
+                
+                const isCustom = m.materiaId === 'custom';
+                const hasId = m.materiaId && m.materiaId !== '';
+
                 row.innerHTML = `
-                    <input type="text" placeholder="Nombre materia (ej. Cálculo)" value="${m.nombre}" oninput="updateMateria(${s.id}, ${mIdx}, 'nombre', this.value)" style="flex-grow:2;">
-                    <input type="number" placeholder="Nota" step="0.1" min="0" max="5" value="${m.nota || ''}" oninput="updateMateria(${s.id}, ${mIdx}, 'nota', this.value)">
-                    <input type="number" placeholder="Cred." min="0" value="${m.creds || ''}" oninput="updateMateria(${s.id}, ${mIdx}, 'creds', this.value)">
-                    <button onclick="deleteMateria(${s.id}, ${mIdx})" style="background:var(--danger); color:white; padding:10px;">X</button>
+                    <select onchange="handleMateriaChange(${s.id}, ${mIdx}, this)">
+                        ${getSubjectOptions(m.materiaId)}
+                    </select>
+                    
+                    ${isCustom ? `<input type="text" placeholder="Nombre (Ej. Deporte)" value="${m.nombre}" oninput="updateMateria(${s.id}, ${mIdx}, 'nombre', this.value)">` : ''}
+                    
+                    <input type="number" placeholder="Nota" step="0.1" min="0" max="5" value="${m.nota !== undefined ? m.nota : ''}" oninput="updateMateria(${s.id}, ${mIdx}, 'nota', this.value)">
+                    <input type="number" placeholder="Créditos" min="0" value="${m.creds !== undefined ? m.creds : ''}" oninput="updateMateria(${s.id}, ${mIdx}, 'creds', this.value)" ${hasId && !isCustom ? 'readonly style="opacity:0.7;" title="Los créditos se asignan solos"' : ''}>
+                    
+                    <button onclick="deleteMateria(${s.id}, ${mIdx})" style="background:var(--danger); color:white; padding:10px;" title="Eliminar materia">X</button>
                 `;
                 list.appendChild(row);
             });
@@ -573,11 +558,13 @@
         calcularPromedios();
     }
 
-    // Inicialización al cargar la página
+    // ==========================================
+    // INICIALIZACIÓN
+    // ==========================================
     renderMalla();
     renderCalculadora();
     
-    // Si la calculadora está vacía, agregar un semestre inicial por defecto
+    // Si la calculadora está vacía, agregar un semestre por defecto
     if(semestres.length === 0) {
         addSemestre();
     }
