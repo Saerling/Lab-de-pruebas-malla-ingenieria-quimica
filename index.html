@@ -16,6 +16,11 @@
             --text: #f1f5f9;
             --text-dim: #94a3b8;
             --border: #334155;
+            
+            /* Colores oficiales Agrupaciones */
+            --color-fundamentacion: #00e5ff; /* Cyan */
+            --color-disciplinar: #a3e635; /* Verde lima */
+            --color-libre: #facc15; /* Amarillo */
         }
 
         body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); margin: 0; padding: 20px; }
@@ -79,7 +84,6 @@
         .btn-fail.active { background: var(--danger); color: white; }
         .btn-pending { border-color: var(--text-dim); color: var(--text-dim); }
         .btn-pending.active { background: var(--text-dim); color: white; }
-
         .calc-lock-msg { background: rgba(56, 189, 248, 0.1); color: var(--primary); padding: 15px; border-radius: 8px; border: 1px solid var(--primary); font-size: 0.9rem; text-align: center; }
 
         /* CALCULADORA DE SEMESTRES STYLES */
@@ -87,25 +91,38 @@
         .header-stats { position: sticky; top: 10px; background: var(--surface); padding: 20px; border-radius: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; border: 1px solid var(--primary); z-index: 100; margin-bottom: 20px; }
         .stat-box { text-align: center; }
         .stat-val { display: block; font-size: 1.5rem; font-weight: bold; color: var(--primary); }
-
         .semestre-block { background: var(--surface); padding: 20px; border-radius: 10px; margin-bottom: 20px; border: 1px solid var(--border); }
         .sem-title { margin-top: 0; color: var(--primary); display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 15px; align-items: center;}
         .papi-semestre { font-size: 0.9rem; color: var(--success); background: var(--bg); padding: 5px 10px; border-radius: 6px; }
-
         .materia-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; align-items: center; background: rgba(15,23,42,0.3); padding: 10px; border-radius: 8px;}
-        .materia-row input, .materia-row select { 
-            background: var(--bg); border: 1px solid var(--border); color: white; 
-            padding: 10px; border-radius: 6px; font-family: inherit; box-sizing: border-box;
-        }
+        .materia-row input, .materia-row select { background: var(--bg); border: 1px solid var(--border); color: white; padding: 10px; border-radius: 6px; font-family: inherit; box-sizing: border-box; }
         .materia-row select { flex-grow: 2; min-width: 180px; }
         .materia-row input[type="text"] { flex-grow: 2; min-width: 150px; }
         .materia-row input[type="number"] { width: 80px; }
-        .materia-row input::placeholder { color: #64748b; }
-        
         button { cursor: pointer; padding: 10px 15px; border-radius: 6px; border: none; font-weight: bold; transition: 0.2s; font-family: inherit;}
         .btn-add-mat { background: var(--border); color: white; margin-top: 10px; }
         .btn-add-sem { background: var(--primary); color: var(--bg); width: 100%; padding: 15px; font-size: 1rem; margin-top: 10px; margin-bottom: 40px;}
         button:hover { opacity: 0.9; }
+
+        /* AGRUPACIONES STYLES */
+        .agrupaciones-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; padding-bottom: 40px; }
+        .agrupacion-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; }
+        .agr-header { text-align: center; padding: 12px; font-weight: 700; color: #000; text-transform: uppercase; font-size: 0.9rem; }
+        .agr-header.fundamentacion { background: var(--color-fundamentacion); }
+        .agr-header.disciplinar { background: var(--color-disciplinar); }
+        .agr-header.libre { background: var(--color-libre); }
+        
+        .agr-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; flex-grow: 1; }
+        .agr-table th { background: rgba(0,0,0,0.2); padding: 8px; text-align: left; color: var(--text-dim); border-bottom: 1px solid var(--border); }
+        .agr-table td { padding: 8px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .agr-table tr.obligatoria { background: rgba(255, 255, 255, 0.08); } /* Gris tenue para las obligatorias */
+        .agr-table tr:hover { background: rgba(255,255,255,0.1); }
+        
+        .agr-footer { padding: 12px; background: rgba(0,0,0,0.3); border-top: 1px solid var(--border); text-align: center; font-size: 0.75rem; font-weight: 600; color: var(--text-dim); }
+        .req-txt { color: var(--text); }
+        .obl-txt { color: #ef4444; } /* Rojo suave como en la imagen */
+        .opt-txt { color: var(--primary); } /* Azul claro como en la imagen */
+
     </style>
 </head>
 <body>
@@ -115,6 +132,7 @@
     <div class="tabs">
         <button class="tab-btn active" id="tab-malla" onclick="switchTab('malla')">Malla Curricular</button>
         <button class="tab-btn" id="tab-calc" onclick="switchTab('calc')">Calculadora Histórica</button>
+        <button class="tab-btn" id="tab-agrupaciones" onclick="switchTab('agrupaciones')">Programa por Agrupaciones</button>
     </div>
 </header>
 
@@ -151,7 +169,6 @@
             <div class="stat-box">Total Créditos Cursados <span id="total-creds" class="stat-val">0</span></div>
         </div>
 
-        <!-- APARTADO DE NIVELACIÓN -->
         <div class="semestre-block" style="border-color: var(--warning);">
             <div class="sem-title">
                 <span>¿Te tocó hacer nivelación?</span>
@@ -172,6 +189,20 @@
     </div>
 </div>
 
+<!-- VISTA 3: PROGRAMA POR AGRUPACIONES -->
+<div id="agrupaciones-view" class="view-section">
+    <div class="leyenda" style="max-width: 1200px; margin: 0 auto 20px auto; background: var(--surface);">
+        <div class="leyenda-item"><div class="color-box" style="background: var(--color-fundamentacion);"></div> COMPONENTE DE FUNDAMENTACIÓN</div>
+        <div class="leyenda-item"><div class="color-box" style="background: var(--color-disciplinar);"></div> COMPONENTE DE FORMACIÓN PROFESIONAL O DISCIPLINAR</div>
+        <div class="leyenda-item"><div class="color-box" style="background: var(--color-libre);"></div> COMPONENTE DE LIBRE ELECCIÓN</div>
+        <div class="leyenda-item"><div class="color-box" style="background: rgba(255, 255, 255, 0.15);"></div> ASIGNATURA OBLIGATORIA</div>
+    </div>
+    
+    <div class="agrupaciones-container" id="agrupaciones-container">
+        <!-- Renderizado vía JavaScript -->
+    </div>
+</div>
+
 <!-- MODAL ESTADO DE MATERIA (MALLA) -->
 <div class="modal-overlay" id="status-modal">
     <div class="modal-content">
@@ -180,9 +211,7 @@
             <button class="close-btn" onclick="closeStatusModal()">&times;</button>
         </div>
         
-        <div id="calc-message" style="display: none;" class="calc-lock-msg">
-            <!-- Mensaje inyectado por JS -->
-        </div>
+        <div id="calc-message" style="display: none;" class="calc-lock-msg"></div>
 
         <div id="manual-controls">
             <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 0; margin-bottom: 20px;">
@@ -202,8 +231,10 @@
     function switchTab(tab) {
         document.getElementById('malla-view').classList.remove('active');
         document.getElementById('calc-view').classList.remove('active');
+        document.getElementById('agrupaciones-view').classList.remove('active');
         document.getElementById('tab-malla').classList.remove('active');
         document.getElementById('tab-calc').classList.remove('active');
+        document.getElementById('tab-agrupaciones').classList.remove('active');
 
         document.getElementById(tab + '-view').classList.add('active');
         document.getElementById('tab-' + tab).classList.add('active');
@@ -226,13 +257,218 @@
     ];
 
     // ==========================================
+    // DATOS DE AGRUPACIONES OFICIALES
+    // ==========================================
+    const agrupacionesInfo = [
+        {
+            title: "MATEMÁTICAS, PROBABILIDAD Y ESTADÍSTICA", type: "fundamentacion",
+            req: 23, obl: 23, opt: 0,
+            materias: [
+                { id: "1000004", n: "Cálculo diferencial", c: 4, ob: true },
+                { id: "1000005", n: "Cálculo integral", c: 4, ob: true },
+                { id: "1000006", n: "Cálculo en Varias variables", c: 4, ob: true },
+                { id: "1000007", n: "Ecuaciones diferenciales", c: 4, ob: true },
+                { id: "1000013", n: "Probabilidad y estadística fundamental", c: 3, ob: true },
+                { id: "1000003", n: "Álgebra lineal", c: 4, ob: true }
+            ]
+        },
+        {
+            title: "QUÍMICA Y BIOLOGÍA", type: "fundamentacion",
+            req: 23, obl: 23, opt: 0,
+            materias: [
+                { id: "1000025", n: "Laboratorio técnicas básicas en química", c: 3, ob: true },
+                { id: "1000024", n: "Principios de química", c: 3, ob: true },
+                { id: "1000026", n: "Principios de análisis químico", c: 3, ob: true },
+                { id: "1000027", n: "Laboratorio principios de análisis químico", c: 3, ob: true },
+                { id: "1000028", n: "Principios de química inorgánica", c: 3, ob: true },
+                { id: "1000030", n: "Principios de química orgánica", c: 3, ob: true },
+                { id: "1000010", n: "Laboratorio principios de química orgánica", c: 2, ob: true },
+                { id: "1000025b", n: "Biología molecular y celular", c: 3, ob: true }
+            ]
+        },
+        {
+            title: "FÍSICA", type: "fundamentacion",
+            req: 8, obl: 8, opt: 0,
+            materias: [
+                { id: "1000019", n: "Fundamentos de mecánica", c: 4, ob: true },
+                { id: "1000017", n: "Fundamentos de electricidad y magnetismo", c: 4, ob: true }
+            ]
+        },
+        {
+            title: "CIENCIAS ECONÓMICAS Y ADMINISTRATIVAS", type: "fundamentacion",
+            req: 9, obl: 6, opt: 3,
+            materias: [
+                { id: "2015703", n: "Ingeniería económica", c: 3, ob: true },
+                { id: "2015702", n: "Gerencia y gestión de proyectos", c: 3, ob: true },
+                { id: "2015698", n: "Administración de empresas", c: 3, ob: false },
+                { id: "2016609", n: "Seguridad industrial", c: 3, ob: false },
+                { id: "2016741", n: "Finanzas", c: 3, ob: false },
+                { id: "2016610", n: "Sistemas de costos", c: 4, ob: false },
+                { id: "2015699", n: "Administración de mercados", c: 3, ob: false },
+                { id: "2016592", n: "Economía general", c: 3, ob: false },
+                { id: "2015695", n: "Diseño, gestión y evaluación de proyectos", c: 3, ob: false },
+                { id: "2015705", n: "Mercados I", c: 4, ob: false },
+                { id: "2016056", n: "Teoría de la decisión", c: 4, ob: false },
+                { id: "2015700", n: "Fundamentos de contabilidad financiera", c: 3, ob: false },
+                { id: "2015704", n: "Mercadeo internacional", c: 3, ob: false },
+                { id: "2015694", n: "Derecho laboral", c: 3, ob: false }
+            ]
+        },
+        {
+            title: "HERRAMIENTAS DE LA INGENIERÍA", type: "fundamentacion",
+            req: 6, obl: 3, opt: 3,
+            materias: [
+                { id: "2015734", n: "Programación de computadores", c: 3, ob: false },
+                { id: "2015709", n: "Comunicación oral y escrita", c: 3, ob: false },
+                { id: "2015711", n: "Dibujo básico", c: 3, ob: false },
+                { id: "2015970", n: "Métodos numéricos", c: 3, ob: true }
+            ]
+        },
+        {
+            title: "TERMODINÁMICA", type: "disciplinar",
+            req: 13, obl: 10, opt: 3,
+            materias: [
+                { id: "2015741", n: "Termodinámica", c: 3, ob: true },
+                { id: "2015740", n: "Termodinámica química", c: 3, ob: true },
+                { id: "2015735", n: "Taller 1", c: 1, ob: true },
+                { id: "2015707", n: "Balance de energía y equilibrio químico", c: 3, ob: true },
+                { id: "2015739", n: "Termodinámica molecular", c: 3, ob: false },
+                { id: "2015738", n: "Termodinámica de ciclos", c: 3, ob: false },
+                { id: "1000038", n: "Fisicoquímica II", c: 3, ob: false }
+            ]
+        },
+        {
+            title: "OPERACIONES UNITARIAS", type: "disciplinar",
+            req: 20, obl: 20, opt: 0,
+            materias: [
+                { id: "2015708", n: "Balance de materia", c: 3, ob: true },
+                { id: "2015714", n: "Fluidos", c: 3, ob: true },
+                { id: "2015726", n: "Manejo de sólidos", c: 3, ob: true },
+                { id: "2015743", n: "Transferencia de calor", c: 4, ob: true },
+                { id: "2015744", n: "Transferencia de masa", c: 3, ob: true },
+                { id: "2015736", n: "Taller 2", c: 1, ob: true },
+                { id: "2015731", n: "Operaciones de separación", c: 3, ob: true }
+            ]
+        },
+        {
+            title: "INVESTIGACIÓN E INNOVACIÓN", type: "disciplinar",
+            req: 18, obl: 12, opt: 6,
+            materias: [
+                { id: "2015721", n: "Laboratorio de propiedades termodinámicas y transporte", c: 3, ob: true },
+                { id: "2015719", n: "Laboratorio de fluidos, sólidos y transf. de calor", c: 3, ob: true },
+                { id: "2015720", n: "Laboratorio de operaciones de sep., reacción y control", c: 3, ob: true },
+                { id: "2015737", n: "Taller de proyectos interdisciplinarios", c: 3, ob: true },
+                { id: "2015289", n: "Trabajo de grado", c: 6, ob: false },
+                { id: "2015290", n: "Trabajo de grado - Asignaturas de posgrado", c: 6, ob: false }
+            ]
+        },
+        {
+            title: "PROCESOS QUÍMICOS Y BIOQUÍMICOS", type: "disciplinar",
+            req: 18, obl: 15, opt: 3,
+            materias: [
+                { id: "2015716", n: "Ingeniería de reacciones químicas", c: 3, ob: true },
+                { id: "2015713", n: "Diseño de procesos químicos y bioquímicos", c: 3, ob: true },
+                { id: "2015710", n: "Control de procesos", c: 3, ob: true },
+                { id: "2015712", n: "Diseño de plantas y equipos", c: 3, ob: true },
+                { id: "2015715", n: "Ingeniería de procesos", c: 3, ob: true },
+                { id: "2015729", n: "Modelamiento y sim. de procesos químicos", c: 3, ob: false },
+                { id: "2015728", n: "Modelamiento y sim. de procesos bioquímicos", c: 3, ob: false }
+            ]
+        },
+        {
+            title: "CONTEXTO PROFESIONAL", type: "disciplinar",
+            req: 3, obl: 3, opt: 0,
+            materias: [
+                { id: "2015718", n: "Introducción a la Ingeniería Química", c: 3, ob: true }
+            ]
+        },
+        {
+            title: "MATERIALES", type: "disciplinar",
+            req: 3, obl: 0, opt: 3,
+            materias: [
+                { id: "2015717", n: "Introducción a la ingeniería de materiales", c: 3, ob: false },
+                { id: "2020326", n: "Nuevos tópicos en ingeniería química", c: 3, ob: false },
+                { id: "1000040", n: "Introducción a la ciencia de materiales", c: 3, ob: false },
+                { id: "2015727", n: "Materiales", c: 3, ob: false },
+                { id: "2024929", n: "Introducción a la Ing. de materiales poliméricos", c: 3, ob: false },
+                { id: "2017348", n: "Tecnología de materiales", c: 3, ob: false },
+                { id: "2017256", n: "Ciencia e Ingeniería de materiales", c: 3, ob: false },
+                { id: "2015598", n: "Química de sólidos", c: 3, ob: false }
+            ]
+        },
+        {
+            title: "PROFUNDIZACIÓN", type: "libre",
+            isText: true,
+            text: "Las asignaturas de esta agrupación y su información se presentan en la Tabla 19 del Proyecto Educativo del Programa PEP. Se sugiere cursarlas como parte del componente de Libre Elección.<br><br>En las asignaturas de profundización existe la opción de realizar Práctica estudiantil."
+        }
+    ];
+
+    function renderAgrupaciones() {
+        const container = document.getElementById('agrupaciones-container');
+        container.innerHTML = '';
+
+        agrupacionesInfo.forEach(agr => {
+            const card = document.createElement('div');
+            card.className = 'agrupacion-card';
+
+            const header = document.createElement('div');
+            header.className = `agr-header ${agr.type}`;
+            header.innerText = agr.title;
+            card.appendChild(header);
+
+            if (agr.isText) {
+                const textDiv = document.createElement('div');
+                textDiv.style.padding = '20px';
+                textDiv.style.fontSize = '0.85rem';
+                textDiv.style.lineHeight = '1.5';
+                textDiv.style.color = 'var(--text-dim)';
+                textDiv.style.flexGrow = '1';
+                textDiv.innerHTML = agr.text;
+                card.appendChild(textDiv);
+            } else {
+                const table = document.createElement('table');
+                table.className = 'agr-table';
+                table.innerHTML = `
+                    <thead>
+                        <tr>
+                            <th>CÓDIGO</th>
+                            <th>NOMBRE DE LA ASIGNATURA</th>
+                            <th style="text-align:center;">CRÉD.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${agr.materias.map(m => `
+                            <tr class="${m.ob ? 'obligatoria' : ''}">
+                                <td>${m.id}</td>
+                                <td>${m.n}</td>
+                                <td style="text-align:center;">${m.c}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                `;
+                card.appendChild(table);
+
+                const footer = document.createElement('div');
+                footer.className = 'agr-footer';
+                footer.innerHTML = `
+                    CRÉDITOS: <span class="req-txt">EXIGIDOS: ${agr.req}</span> | 
+                    <span class="obl-txt">OBLIGATORIOS: ${agr.obl}</span> | 
+                    <span class="opt-txt">OPTATIVAS: ${agr.opt}</span>
+                `;
+                card.appendChild(footer);
+            }
+
+            container.appendChild(card);
+        });
+    }
+
+    // ==========================================
     // ESTADO E INTEGRACIÓN (Calculadora -> Malla)
     // ==========================================
-    let visualState = JSON.parse(localStorage.getItem('malla_iq_visual_v6')) || {};
-    let semestres = JSON.parse(localStorage.getItem('calc_iq_history_v6')) || [];
+    let visualState = JSON.parse(localStorage.getItem('malla_iq_visual_v7')) || {};
+    let semestres = JSON.parse(localStorage.getItem('calc_iq_history_v7')) || [];
     
-    // Configuración de nivelación (Malla y Calculadora)
-    let hasNivelacion = JSON.parse(localStorage.getItem('calc_iq_has_niv_v6')) || false;
+    let hasNivelacion = JSON.parse(localStorage.getItem('calc_iq_has_niv_v7')) || false;
     const nivelacionMaterias = [
         { id: "niv_lecto", n: "Lecto-escritura", c: 4, r: [], cat: "Nivelación" },
         { id: "niv_mat", n: "Matemáticas básicas", c: 4, r: [], cat: "Nivelación" },
@@ -241,17 +477,15 @@
         { id: "niv_ing3", n: "Inglés III", c: 3, r: ["niv_ing2"], cat: "Nivelación" },
         { id: "niv_ing4", n: "Inglés IV", c: 3, r: ["niv_ing3"], cat: "Nivelación" }
     ];
-    let nivelacionNotas = JSON.parse(localStorage.getItem('calc_iq_niv_notas_v6')) || {
+    let nivelacionNotas = JSON.parse(localStorage.getItem('calc_iq_niv_notas_v7')) || {
         niv_lecto: '', niv_mat: '', niv_ing1: '', niv_ing2: '', niv_ing3: '', niv_ing4: ''
     };
 
     let currentSubjId = null;
 
-    // Buscar info de materia (incluye Nivelación)
     function getMatInfo(id) {
         let nMat = nivelacionMaterias.find(x => x.id === id);
         if (nMat) return nMat;
-
         for(let s of data) {
             let m = s.mat.find(x => x.id === id);
             if(m) return m;
@@ -259,15 +493,11 @@
         return null;
     }
 
-    // Obtener la nota desde la calculadora
     function getCalcNota(mId) {
-        // Revisar si es de nivelación
         if(mId.startsWith('niv_')) {
             let n = parseFloat(nivelacionNotas[mId]);
             return (!isNaN(n) && n.toString().trim() !== '') ? n : -1;
         }
-
-        // Revisar semestres normales
         let maxNota = -1;
         let hasEntry = false;
         semestres.forEach(sem => {
@@ -283,19 +513,14 @@
 
     function getCombinedState(mId) {
         let cNota = getCalcNota(mId);
-        if (cNota !== -1) {
-            return cNota >= 3.0 ? 'approved' : 'failed';
-        }
+        if (cNota !== -1) return cNota >= 3.0 ? 'approved' : 'failed';
         return visualState[mId];
     }
 
     function getVisualStats() {
         let appCreds = 0, discCreds = 0;
-        
-        // Sumar progreso de materias normales y nivelación
         let mData = [...data];
         if(hasNivelacion) mData.unshift({ sem: 0, mat: nivelacionMaterias });
-
         mData.forEach(sem => {
             sem.mat.forEach(m => {
                 if(getCombinedState(m.id) === 'approved') {
@@ -304,8 +529,6 @@
                 }
             });
         });
-        
-        // Asumiendo que el mínimo sigue siendo 180 (las de nivelación se suman al total cursado)
         let perc = Math.min((appCreds * (100 / 180)), 100).toFixed(1);
         return { totalApp: appCreds, disc: discCreds, percentage: perc };
     }
@@ -313,27 +536,20 @@
     function checkProgress(materiaId) {
         const m = getMatInfo(materiaId);
         let reqs = [...(m.r || [])];
-
-        // LÓGICA PRERREQUISITO DINÁMICO: Si hay nivelación, Cálculo Diferencial exige Matemáticas Básicas
         if(m.id === "CD" && hasNivelacion) {
             if(!reqs.includes("niv_mat")) reqs.push("niv_mat");
         }
-
         if (reqs.length === 0) return { status: 'ready' };
-        
         const stats = getVisualStats();
         let met = 0;
-
         reqs.forEach(req => {
             let ok = false;
             if(req === "CRED_108") ok = stats.totalApp >= 108;
             else if(req === "DISC_53") ok = stats.disc >= 53;
             else if(req === "DISC_60") ok = stats.disc >= 60;
             else ok = (getCombinedState(req) === 'approved'); 
-            
             if (ok) met++;
         });
-
         if (met === reqs.length) return { status: 'ready' };
         if (met > 0) return { status: 'partial' };
         return { status: 'locked' };
@@ -345,18 +561,13 @@
     function renderMalla() {
         const grid = document.getElementById('grid');
         const stats = getVisualStats();
-        
         document.getElementById('total-c').innerText = `Créditos Aprobados: ${stats.totalApp} (Base 180)`;
         document.getElementById('perc-c').innerText = `${stats.percentage}% completado`;
         document.getElementById('p-bar').style.width = `${stats.percentage}%`;
         
         grid.innerHTML = '';
-
-        // Inject Semestre 0 si está activo
         let mallaData = [...data];
-        if (hasNivelacion) {
-            mallaData.unshift({ sem: 0, mat: nivelacionMaterias });
-        }
+        if (hasNivelacion) mallaData.unshift({ sem: 0, mat: nivelacionMaterias });
 
         mallaData.forEach(semestre => {
             const col = document.createElement('div');
@@ -373,29 +584,19 @@
                     tag.className = 'cat-tag'; tag.textContent = m.cat;
                     col.appendChild(tag); lastCat = m.cat;
                 }
-
                 const prog = checkProgress(m.id);
                 const state = getCombinedState(m.id);
-                
                 const card = document.createElement('div');
-                let sClass = '';
-                let icon = '';
+                let sClass = '', icon = '';
                 
-                if (state === 'approved') {
-                    sClass = 'approved';
-                    icon = '<span class="icon-indicator" title="Aprobada">✅</span>';
-                } else if (state === 'failed') {
-                    sClass = 'status-failed';
-                    icon = '<span class="icon-indicator" title="Reprobada">❌</span>';
-                } else if (prog.status === 'ready') sClass = 'status-ready';
+                if (state === 'approved') { sClass = 'approved'; icon = '<span class="icon-indicator" title="Aprobada">✅</span>'; } 
+                else if (state === 'failed') { sClass = 'status-failed'; icon = '<span class="icon-indicator" title="Reprobada">❌</span>'; } 
+                else if (prog.status === 'ready') sClass = 'status-ready';
                 else if (prog.status === 'partial') sClass = 'status-locked-partial';
                 else sClass = 'status-locked-total';
 
                 card.className = `materia ${sClass}`;
-                card.onclick = () => {
-                    if(prog.status !== 'locked' || state) openStatusModal(m.id);
-                };
-
+                card.onclick = () => { if(prog.status !== 'locked' || state) openStatusModal(m.id); };
                 const failText = state === 'failed' ? `<br><small style="color:var(--danger)">Reprobada</small>` : '';
 
                 card.innerHTML = `
@@ -412,7 +613,6 @@
         currentSubjId = id;
         const m = getMatInfo(id);
         document.getElementById('status-title').innerText = m.n;
-        
         const cNota = getCalcNota(id);
         const manualControls = document.getElementById('manual-controls');
         const calcMessage = document.getElementById('calc-message');
@@ -425,7 +625,6 @@
         } else {
             manualControls.style.display = 'block';
             calcMessage.style.display = 'none';
-            
             document.getElementById('btn-app').classList.remove('active');
             document.getElementById('btn-fail').classList.remove('active');
             document.getElementById('btn-pend').classList.remove('active');
@@ -435,19 +634,15 @@
             else if(currentState === 'failed') document.getElementById('btn-fail').classList.add('active');
             else document.getElementById('btn-pend').classList.add('active');
         }
-
         document.getElementById('status-modal').classList.add('active');
     }
 
     function closeStatusModal() { document.getElementById('status-modal').classList.remove('active'); }
 
     function setStatus(newState) {
-        if(newState === 'pending') {
-            delete visualState[currentSubjId];
-        } else {
-            visualState[currentSubjId] = newState;
-        }
-        localStorage.setItem('malla_iq_visual_v6', JSON.stringify(visualState));
+        if(newState === 'pending') delete visualState[currentSubjId];
+        else visualState[currentSubjId] = newState;
+        localStorage.setItem('malla_iq_visual_v7', JSON.stringify(visualState));
         renderMalla();
         closeStatusModal();
     }
@@ -455,7 +650,7 @@
     function resetMalla() {
         if(confirm("¿Borrar marcas manuales de la Malla?")) {
             visualState = {};
-            localStorage.setItem('malla_iq_visual_v6', JSON.stringify(visualState));
+            localStorage.setItem('malla_iq_visual_v7', JSON.stringify(visualState));
             renderMalla();
         }
     }
@@ -465,17 +660,13 @@
     // ==========================================
     function toggleNivelacion(checkbox) {
         hasNivelacion = checkbox.checked;
-        localStorage.setItem('calc_iq_has_niv_v6', JSON.stringify(hasNivelacion));
-        
+        localStorage.setItem('calc_iq_has_niv_v7', JSON.stringify(hasNivelacion));
         if(!hasNivelacion) {
-            // Limpiar notas visuales y de calc si se desactiva
             nivelacionNotas = { niv_lecto: '', niv_mat: '', niv_ing1: '', niv_ing2: '', niv_ing3: '', niv_ing4: '' };
-            localStorage.setItem('calc_iq_niv_notas_v6', JSON.stringify(nivelacionNotas));
-            
+            localStorage.setItem('calc_iq_niv_notas_v7', JSON.stringify(nivelacionNotas));
             nivelacionMaterias.forEach(m => delete visualState[m.id]);
-            localStorage.setItem('malla_iq_visual_v6', JSON.stringify(visualState));
+            localStorage.setItem('malla_iq_visual_v7', JSON.stringify(visualState));
         }
-        
         renderNivelacion();
         calcularPromedios();
         renderMalla();
@@ -483,21 +674,19 @@
 
     function updateNivNota(nivId, val) {
         nivelacionNotas[nivId] = val === '' ? '' : parseFloat(val);
-        localStorage.setItem('calc_iq_niv_notas_v6', JSON.stringify(nivelacionNotas));
+        localStorage.setItem('calc_iq_niv_notas_v7', JSON.stringify(nivelacionNotas));
         calcularPromedios();
-        renderMalla(); // Actualiza Malla (Semestre 0 y progreso)
+        renderMalla();
     }
 
     function renderNivelacion() {
         const toggle = document.getElementById('nivelacion-toggle');
         const container = document.getElementById('nivelacion-container');
         const list = document.getElementById('nivelacion-materias-list');
-
         toggle.checked = hasNivelacion;
         container.style.display = hasNivelacion ? 'block' : 'none';
         
         if(!hasNivelacion) return;
-
         list.innerHTML = '';
         nivelacionMaterias.forEach(m => {
             const row = document.createElement('div');
@@ -529,106 +718,65 @@
         return html;
     }
 
-    function addSemestre() {
-        semestres.push({ id: Date.now(), materias: [] });
-        saveAndRenderCalc();
-    }
-
-    function addMateria(semId) {
-        const sem = semestres.find(s => s.id === semId);
-        sem.materias.push({ materiaId: '', nombre: '', nota: '', creds: '' });
-        saveAndRenderCalc();
-    }
-    
-    function deleteMateria(semId, matIdx) {
-        const sem = semestres.find(s => s.id === semId);
-        sem.materias.splice(matIdx, 1);
-        saveAndRenderCalc();
-    }
-
-    function deleteSemestre(semId) {
-        if(confirm("¿Eliminar este semestre y todas sus notas?")) {
-            semestres = semestres.filter(s => s.id !== semId);
-            saveAndRenderCalc();
-        }
-    }
+    function addSemestre() { semestres.push({ id: Date.now(), materias: [] }); saveAndRenderCalc(); }
+    function addMateria(semId) { const sem = semestres.find(s => s.id === semId); sem.materias.push({ materiaId: '', nombre: '', nota: '', creds: '' }); saveAndRenderCalc(); }
+    function deleteMateria(semId, matIdx) { const sem = semestres.find(s => s.id === semId); sem.materias.splice(matIdx, 1); saveAndRenderCalc(); }
+    function deleteSemestre(semId) { if(confirm("¿Eliminar este semestre y todas sus notas?")) { semestres = semestres.filter(s => s.id !== semId); saveAndRenderCalc(); } }
 
     function handleMateriaChange(semId, matIdx, selectEl) {
         const val = selectEl.value;
         const sem = semestres.find(s => s.id === semId);
         const mat = sem.materias[matIdx];
-        
         mat.materiaId = val;
         
-        if(val === 'custom') {
-            mat.nombre = '';
-            mat.creds = '';
-        } else if (val !== '') {
+        if(val === 'custom') { mat.nombre = ''; mat.creds = ''; } 
+        else if (val !== '') {
             const opt = selectEl.options[selectEl.selectedIndex];
             mat.nombre = opt.getAttribute('data-name');
             mat.creds = parseFloat(opt.getAttribute('data-creds'));
-        } else {
-            mat.nombre = '';
-            mat.creds = '';
-        }
+        } else { mat.nombre = ''; mat.creds = ''; }
         saveAndRenderCalc();
     }
 
     function updateMateria(semId, matIdx, field, val) {
         const sem = semestres.find(s => s.id === semId);
-        if (field === 'nota' || field === 'creds') {
-            sem.materias[matIdx][field] = val === '' ? '' : parseFloat(val);
-        } else {
-            sem.materias[matIdx][field] = val;
-        }
+        if (field === 'nota' || field === 'creds') sem.materias[matIdx][field] = val === '' ? '' : parseFloat(val);
+        else sem.materias[matIdx][field] = val;
         calcularPromedios();
-        localStorage.setItem('calc_iq_history_v6', JSON.stringify(semestres));
+        localStorage.setItem('calc_iq_history_v7', JSON.stringify(semestres));
         renderMalla();
     }
 
     function calcularPromedios() {
-        let totalPuntos = 0;
-        let totalCreds = 0;
-
-        // Sumar nivelación si está activa
+        let totalPuntos = 0, totalCreds = 0;
         if(hasNivelacion) {
             nivelacionMaterias.forEach(m => {
                 let n = parseFloat(nivelacionNotas[m.id]);
                 let c = m.c;
-                if(!isNaN(n) && !isNaN(c) && c > 0) {
-                    totalPuntos += (n * c);
-                    totalCreds += c;
-                }
+                if(!isNaN(n) && !isNaN(c) && c > 0) { totalPuntos += (n * c); totalCreds += c; }
             });
         }
 
         semestres.forEach(s => {
-            let semPuntos = 0;
-            let semCreds = 0;
-
+            let semPuntos = 0, semCreds = 0;
             s.materias.forEach(m => {
-                let n = parseFloat(m.nota);
-                let c = parseFloat(m.creds);
+                let n = parseFloat(m.nota), c = parseFloat(m.creds);
                 if(!isNaN(n) && !isNaN(c) && c > 0) {
-                    totalPuntos += (n * c);
-                    totalCreds += c;
-                    semPuntos += (n * c);
-                    semCreds += c;
+                    totalPuntos += (n * c); totalCreds += c;
+                    semPuntos += (n * c); semCreds += c;
                 }
             });
-
             const papi = semCreds > 0 ? (semPuntos / semCreds).toFixed(2) : "0.00";
             const el = document.getElementById(`papi-${s.id}`);
             if(el) el.innerText = `PAPI Semestral: ${papi}`;
         });
-
         const papa = totalCreds > 0 ? (totalPuntos / totalCreds).toFixed(2) : "0.00";
         document.getElementById('total-papa').innerText = papa;
         document.getElementById('total-creds').innerText = totalCreds;
     }
 
     function saveAndRenderCalc() {
-        localStorage.setItem('calc_iq_history_v6', JSON.stringify(semestres));
+        localStorage.setItem('calc_iq_history_v7', JSON.stringify(semestres));
         renderCalculadora();
         renderMalla();
     }
@@ -637,7 +785,6 @@
         renderNivelacion();
         const container = document.getElementById('semestres-container');
         container.innerHTML = '';
-        
         semestres.forEach((s, sIdx) => {
             const div = document.createElement('div');
             div.className = 'semestre-block';
@@ -651,12 +798,10 @@
                 <div class="materias-list" id="list-${s.id}"></div>
                 <button class="btn-add-mat" onclick="addMateria(${s.id})">+ Agregar Materia</button>
             `;
-            
             const list = div.querySelector(`#list-${s.id}`);
             s.materias.forEach((m, mIdx) => {
                 const row = document.createElement('div');
                 row.className = 'materia-row';
-                
                 const isCustom = m.materiaId === 'custom';
                 const hasId = m.materiaId && m.materiaId !== '';
 
@@ -664,17 +809,13 @@
                     <select onchange="handleMateriaChange(${s.id}, ${mIdx}, this)">
                         ${getSubjectOptions(m.materiaId)}
                     </select>
-                    
                     ${isCustom ? `<input type="text" placeholder="Nombre (Ej. Deporte)" value="${m.nombre}" oninput="updateMateria(${s.id}, ${mIdx}, 'nombre', this.value)">` : ''}
-                    
                     <input type="number" placeholder="Nota" step="0.1" min="0" max="5" value="${m.nota !== undefined ? m.nota : ''}" oninput="updateMateria(${s.id}, ${mIdx}, 'nota', this.value)">
                     <input type="number" placeholder="Créditos" min="0" value="${m.creds !== undefined ? m.creds : ''}" oninput="updateMateria(${s.id}, ${mIdx}, 'creds', this.value)" ${hasId && !isCustom ? 'readonly style="opacity:0.7;" title="Los créditos se asignan solos"' : ''}>
-                    
                     <button onclick="deleteMateria(${s.id}, ${mIdx})" style="background:var(--danger); color:white; padding:10px;" title="Eliminar materia">X</button>
                 `;
                 list.appendChild(row);
             });
-            
             container.appendChild(div);
         });
         calcularPromedios();
@@ -685,10 +826,9 @@
     // ==========================================
     renderMalla();
     renderCalculadora();
+    renderAgrupaciones();
     
-    if(semestres.length === 0) {
-        addSemestre();
-    }
+    if(semestres.length === 0) addSemestre();
 
 </script>
 </body>
