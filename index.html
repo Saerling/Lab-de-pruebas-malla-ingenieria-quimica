@@ -161,7 +161,7 @@
             </div>
             <div id="nivelacion-container" style="display: none; margin-top: 15px;">
                 <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 0; margin-bottom: 15px;">
-                    Ingresa las notas obtenidas en tus materias de nivelación (afectan el PAPA y los créditos totales).
+                    Ingresa las notas obtenidas en tus materias de nivelación (se reflejarán como Semestre 0 en la Malla).
                 </p>
                 <div id="nivelacion-materias-list"></div>
             </div>
@@ -228,26 +228,30 @@
     // ==========================================
     // ESTADO E INTEGRACIÓN (Calculadora -> Malla)
     // ==========================================
-    let visualState = JSON.parse(localStorage.getItem('malla_iq_visual_v5')) || {};
-    let semestres = JSON.parse(localStorage.getItem('calc_iq_history_v5')) || [];
+    let visualState = JSON.parse(localStorage.getItem('malla_iq_visual_v6')) || {};
+    let semestres = JSON.parse(localStorage.getItem('calc_iq_history_v6')) || [];
     
-    // Configuración de nivelación
-    let hasNivelacion = JSON.parse(localStorage.getItem('calc_iq_has_niv_v5')) || false;
+    // Configuración de nivelación (Malla y Calculadora)
+    let hasNivelacion = JSON.parse(localStorage.getItem('calc_iq_has_niv_v6')) || false;
     const nivelacionMaterias = [
-        { id: "niv_lecto", n: "Lecto-escritura", c: 4 },
-        { id: "niv_mat", n: "Matemáticas básicas", c: 4 },
-        { id: "niv_ing1", n: "Inglés I", c: 3 },
-        { id: "niv_ing2", n: "Inglés II", c: 3 },
-        { id: "niv_ing3", n: "Inglés III", c: 3 },
-        { id: "niv_ing4", n: "Inglés IV", c: 3 }
+        { id: "niv_lecto", n: "Lecto-escritura", c: 4, r: [], cat: "Nivelación" },
+        { id: "niv_mat", n: "Matemáticas básicas", c: 4, r: [], cat: "Nivelación" },
+        { id: "niv_ing1", n: "Inglés I", c: 3, r: [], cat: "Nivelación" },
+        { id: "niv_ing2", n: "Inglés II", c: 3, r: ["niv_ing1"], cat: "Nivelación" },
+        { id: "niv_ing3", n: "Inglés III", c: 3, r: ["niv_ing2"], cat: "Nivelación" },
+        { id: "niv_ing4", n: "Inglés IV", c: 3, r: ["niv_ing3"], cat: "Nivelación" }
     ];
-    let nivelacionNotas = JSON.parse(localStorage.getItem('calc_iq_niv_notas_v5')) || {
+    let nivelacionNotas = JSON.parse(localStorage.getItem('calc_iq_niv_notas_v6')) || {
         niv_lecto: '', niv_mat: '', niv_ing1: '', niv_ing2: '', niv_ing3: '', niv_ing4: ''
     };
 
     let currentSubjId = null;
 
+    // Buscar info de materia (incluye Nivelación)
     function getMatInfo(id) {
+        let nMat = nivelacionMaterias.find(x => x.id === id);
+        if (nMat) return nMat;
+
         for(let s of data) {
             let m = s.mat.find(x => x.id === id);
             if(m) return m;
@@ -255,7 +259,15 @@
         return null;
     }
 
+    // Obtener la nota desde la calculadora
     function getCalcNota(mId) {
+        // Revisar si es de nivelación
+        if(mId.startsWith('niv_')) {
+            let n = parseFloat(nivelacionNotas[mId]);
+            return (!isNaN(n) && n.toString().trim() !== '') ? n : -1;
+        }
+
+        // Revisar semestres normales
         let maxNota = -1;
         let hasEntry = false;
         semestres.forEach(sem => {
@@ -279,7 +291,12 @@
 
     function getVisualStats() {
         let appCreds = 0, discCreds = 0;
-        data.forEach(sem => {
+        
+        // Sumar progreso de materias normales y nivelación
+        let mData = [...data];
+        if(hasNivelacion) mData.unshift({ sem: 0, mat: nivelacionMaterias });
+
+        mData.forEach(sem => {
             sem.mat.forEach(m => {
                 if(getCombinedState(m.id) === 'approved') {
                     appCreds += m.c;
@@ -287,18 +304,27 @@
                 }
             });
         });
+        
+        // Asumiendo que el mínimo sigue siendo 180 (las de nivelación se suman al total cursado)
         let perc = Math.min((appCreds * (100 / 180)), 100).toFixed(1);
         return { totalApp: appCreds, disc: discCreds, percentage: perc };
     }
 
     function checkProgress(materiaId) {
         const m = getMatInfo(materiaId);
-        if (!m.r || m.r.length === 0) return { status: 'ready' };
+        let reqs = [...(m.r || [])];
+
+        // LÓGICA PRERREQUISITO DINÁMICO: Si hay nivelación, Cálculo Diferencial exige Matemáticas Básicas
+        if(m.id === "CD" && hasNivelacion) {
+            if(!reqs.includes("niv_mat")) reqs.push("niv_mat");
+        }
+
+        if (reqs.length === 0) return { status: 'ready' };
         
         const stats = getVisualStats();
         let met = 0;
 
-        m.r.forEach(req => {
+        reqs.forEach(req => {
             let ok = false;
             if(req === "CRED_108") ok = stats.totalApp >= 108;
             else if(req === "DISC_53") ok = stats.disc >= 53;
@@ -308,7 +334,7 @@
             if (ok) met++;
         });
 
-        if (met === m.r.length) return { status: 'ready' };
+        if (met === reqs.length) return { status: 'ready' };
         if (met > 0) return { status: 'partial' };
         return { status: 'locked' };
     }
@@ -320,17 +346,24 @@
         const grid = document.getElementById('grid');
         const stats = getVisualStats();
         
-        document.getElementById('total-c').innerText = `Créditos Aprobados: ${stats.totalApp} / 180`;
+        document.getElementById('total-c').innerText = `Créditos Aprobados: ${stats.totalApp} (Base 180)`;
         document.getElementById('perc-c').innerText = `${stats.percentage}% completado`;
         document.getElementById('p-bar').style.width = `${stats.percentage}%`;
         
         grid.innerHTML = '';
 
-        data.forEach(semestre => {
+        // Inject Semestre 0 si está activo
+        let mallaData = [...data];
+        if (hasNivelacion) {
+            mallaData.unshift({ sem: 0, mat: nivelacionMaterias });
+        }
+
+        mallaData.forEach(semestre => {
             const col = document.createElement('div');
             col.className = 'semestre-col';
             const head = document.createElement('div');
-            head.className = 'sem-header'; head.textContent = `Semestre ${semestre.sem}`;
+            head.className = 'sem-header'; 
+            head.textContent = semestre.sem === 0 ? "Semestre 0 (Niv.)" : `Semestre ${semestre.sem}`;
             col.appendChild(head);
             
             let lastCat = "";
@@ -414,7 +447,7 @@
         } else {
             visualState[currentSubjId] = newState;
         }
-        localStorage.setItem('malla_iq_visual_v5', JSON.stringify(visualState));
+        localStorage.setItem('malla_iq_visual_v6', JSON.stringify(visualState));
         renderMalla();
         closeStatusModal();
     }
@@ -422,7 +455,7 @@
     function resetMalla() {
         if(confirm("¿Borrar marcas manuales de la Malla?")) {
             visualState = {};
-            localStorage.setItem('malla_iq_visual_v5', JSON.stringify(visualState));
+            localStorage.setItem('malla_iq_visual_v6', JSON.stringify(visualState));
             renderMalla();
         }
     }
@@ -432,22 +465,27 @@
     // ==========================================
     function toggleNivelacion(checkbox) {
         hasNivelacion = checkbox.checked;
-        localStorage.setItem('calc_iq_has_niv_v5', JSON.stringify(hasNivelacion));
+        localStorage.setItem('calc_iq_has_niv_v6', JSON.stringify(hasNivelacion));
         
         if(!hasNivelacion) {
-            // Limpiar notas si se desactiva
+            // Limpiar notas visuales y de calc si se desactiva
             nivelacionNotas = { niv_lecto: '', niv_mat: '', niv_ing1: '', niv_ing2: '', niv_ing3: '', niv_ing4: '' };
-            localStorage.setItem('calc_iq_niv_notas_v5', JSON.stringify(nivelacionNotas));
+            localStorage.setItem('calc_iq_niv_notas_v6', JSON.stringify(nivelacionNotas));
+            
+            nivelacionMaterias.forEach(m => delete visualState[m.id]);
+            localStorage.setItem('malla_iq_visual_v6', JSON.stringify(visualState));
         }
         
         renderNivelacion();
         calcularPromedios();
+        renderMalla();
     }
 
     function updateNivNota(nivId, val) {
         nivelacionNotas[nivId] = val === '' ? '' : parseFloat(val);
-        localStorage.setItem('calc_iq_niv_notas_v5', JSON.stringify(nivelacionNotas));
+        localStorage.setItem('calc_iq_niv_notas_v6', JSON.stringify(nivelacionNotas));
         calcularPromedios();
+        renderMalla(); // Actualiza Malla (Semestre 0 y progreso)
     }
 
     function renderNivelacion() {
@@ -544,7 +582,7 @@
             sem.materias[matIdx][field] = val;
         }
         calcularPromedios();
-        localStorage.setItem('calc_iq_history_v5', JSON.stringify(semestres));
+        localStorage.setItem('calc_iq_history_v6', JSON.stringify(semestres));
         renderMalla();
     }
 
@@ -590,7 +628,7 @@
     }
 
     function saveAndRenderCalc() {
-        localStorage.setItem('calc_iq_history_v5', JSON.stringify(semestres));
+        localStorage.setItem('calc_iq_history_v6', JSON.stringify(semestres));
         renderCalculadora();
         renderMalla();
     }
