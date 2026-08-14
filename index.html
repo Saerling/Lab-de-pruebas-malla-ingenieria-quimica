@@ -495,7 +495,11 @@
 
     function getCalcNota(mId) {
         if(mId.startsWith('niv_')) {
-            let n = parseFloat(nivelacionNotas[mId]);
+            let val = nivelacionNotas[mId];
+            // Retornar el texto directo si es cualitativo
+            if (val === 'AP' || val === 'RE') return val;
+            
+            let n = parseFloat(val);
             return (!isNaN(n) && n.toString().trim() !== '') ? n : -1;
         }
         let maxNota = -1;
@@ -513,6 +517,11 @@
 
     function getCombinedState(mId) {
         let cNota = getCalcNota(mId);
+        // Leer los estados cualitativos 
+        if (cNota === 'AP') return 'approved';
+        if (cNota === 'RE') return 'failed';
+        
+        // Fallback para las materias cuantitativas tradicionales
         if (cNota !== -1) return cNota >= 3.0 ? 'approved' : 'failed';
         return visualState[mId];
     }
@@ -620,8 +629,20 @@
         if(cNota !== -1) {
             manualControls.style.display = 'none';
             calcMessage.style.display = 'block';
-            let estado = cNota >= 3.0 ? '<span style="color:var(--success)">Aprobada ✅</span>' : '<span style="color:var(--danger)">Reprobada ❌</span>';
-            calcMessage.innerHTML = `El estado de esta materia está controlado por la pestaña de <b>Calculadora</b>.<br><br>Nota registrada: <b>${cNota.toFixed(1)}</b> (${estado})`;
+            
+            let estadoStr = '';
+            let notaStr = '';
+            
+            // Modal adaptado para variables cualitativas y cuantitativas
+            if (cNota === 'AP' || cNota === 'RE') {
+                estadoStr = cNota === 'AP' ? '<span style="color:var(--success)">Aprobada ✅</span>' : '<span style="color:var(--danger)">Reprobada ❌</span>';
+                notaStr = cNota === 'AP' ? 'Aprobado' : 'Desaprobado';
+            } else {
+                estadoStr = cNota >= 3.0 ? '<span style="color:var(--success)">Aprobada ✅</span>' : '<span style="color:var(--danger)">Reprobada ❌</span>';
+                notaStr = cNota.toFixed(1);
+            }
+
+            calcMessage.innerHTML = `El estado de esta materia está controlado por la pestaña de <b>Calculadora</b>.<br><br>Nota registrada: <b>${notaStr}</b> (${estadoStr})`;
         } else {
             manualControls.style.display = 'block';
             calcMessage.style.display = 'none';
@@ -673,7 +694,12 @@
     }
 
     function updateNivNota(nivId, val) {
-        nivelacionNotas[nivId] = val === '' ? '' : parseFloat(val);
+        // Si el valor es Aprobado (AP) o Desaprobado (RE), se guarda como texto.
+        if (val === 'AP' || val === 'RE') {
+            nivelacionNotas[nivId] = val;
+        } else {
+            nivelacionNotas[nivId] = val === '' ? '' : parseFloat(val);
+        }
         localStorage.setItem('calc_iq_niv_notas_v7', JSON.stringify(nivelacionNotas));
         calcularPromedios();
         renderMalla();
@@ -688,12 +714,29 @@
         
         if(!hasNivelacion) return;
         list.innerHTML = '';
+        
         nivelacionMaterias.forEach(m => {
             const row = document.createElement('div');
             row.className = 'materia-row';
+            
+            let inputHtml = '';
+            // Condicional para verificar si es materia de inglés
+            if (m.id.startsWith('niv_ing')) {
+                const nota = nivelacionNotas[m.id] || '';
+                inputHtml = `
+                    <select style="width: 130px;" onchange="updateNivNota('${m.id}', this.value)">
+                        <option value="" ${nota === '' ? 'selected' : ''}>- Estado -</option>
+                        <option value="AP" ${nota === 'AP' ? 'selected' : ''}>Aprobado</option>
+                        <option value="RE" ${nota === 'RE' ? 'selected' : ''}>Desaprobado</option>
+                    </select>
+                `;
+            } else {
+                inputHtml = `<input type="number" placeholder="Nota" step="0.1" min="0" max="5" value="${nivelacionNotas[m.id] !== undefined ? nivelacionNotas[m.id] : ''}" oninput="updateNivNota('${m.id}', this.value)">`;
+            }
+
             row.innerHTML = `
                 <input type="text" value="${m.n}" readonly style="flex-grow:2; background:var(--surface);">
-                <input type="number" placeholder="Nota" step="0.1" min="0" max="5" value="${nivelacionNotas[m.id] !== undefined ? nivelacionNotas[m.id] : ''}" oninput="updateNivNota('${m.id}', this.value)">
+                ${inputHtml}
                 <input type="text" value="${m.c} Créditos" readonly style="width: 80px; text-align:center; background:var(--surface);">
             `;
             list.appendChild(row);
