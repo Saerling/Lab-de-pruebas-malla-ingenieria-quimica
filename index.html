@@ -420,82 +420,82 @@ function switchTab(tab) {
 // Simplificando los datos previos para el ejemplo visual de requisitos:
 const mallaData = [
     { sem: 1, mat: [
-            { id: "A", n: "Principios de Química", c: 3, r: [], cat: "Fundamentación" },
-            { id: "LTB", n: "Lab. Técnicas Básicas", c: 3, r: [], cat: "Fundamentación" },
-            { id: "B", n: "Cálculo Diferencial", c: 4, r: [], cat: "Fundamentación" },
-            { id: "OHI", n: "Opt. Herramientas Ing.", c: 3, r: [], cat: "Fundamentación" },
-            { id: "IIQ", n: "Intro. Ing. Química", c: 3, r: [], cat: "Disciplinar" }
-        ]},
-        { sem: 2, mat: [
-            { id: "PAQ", n: "Principios Análisis Q.", c: 3, r: ["A"], cat: "Fundamentación" },
-            { id: "AL", n: "Álgebra Lineal", c: 4, r: ["B"], cat: "Fundamentación" },
-            { id: "CI", n: "Cálculo Integral", c: 4, r: ["B"], cat: "Fundamentación" },
-            { id: "FM", n: "Fund. de Mecánica", c: 4, r: ["B"], cat: "Fundamentación" },
-            { id: "BM", n: "Balance de Materia", c: 3, r: [], cat: "Disciplinar" }
-        ]},
-        { sem: 3, mat: [
-            { id: "LPA", n: "Lab. Principios Análisis", c: 3, r: ["A"], cat: "Fundamentación" },
-            { id: "BIO", n: "Biología Molecular", c: 3, r: [], cat: "Fundamentación" },
-            { id: "CVV", n: "Cálculo Varias Var.", c: 4, r: ["AL", "CI"], cat: "Fundamentación" },
-            { id: "FEM", n: "Fund. Elec. y Mag.", c: 4, r: ["CI", "FM"], cat: "Fundamentación" },
-            { id: "TERM", n: "Termodinámica", c: 3, r: ["BM"], cat: "Disciplinar" },
-            { id: "L1", n: "Libre Elección", c: 3, r: [], cat: "Libre" }
-        ]},
-        { sem: 4, mat: [
-            { id: "QO", n: "Principios Q. Inorganica", c: 3, r: ["A"], cat: "Fundamentación" },
-            { id: "PROB", n: "Probabilidad y Est.", c: 3, r: ["B"], cat: "Fundamentación" },
-            { id: "ED", n: "Ecuaciones Diferenciales", c: 4, r: ["AL", "CI"], cat: "Fundamentación" },
-            { id: "FLUI", n: "Fluidos", c: 3, r: ["FM", "TERM"], cat: "Disciplinar" },
-            { id: "T1", n: "Taller 1", c: 1, r: ["CVV", "TERM"], cat: "Disciplinar" },
-            { id: "TQ", n: "Termodinámica Química", c: 3, r: ["CVV", "TERM"], cat: "Disciplinar" }
-        ]},
-        { sem: 5, mat: [
-            { id: "QO2", n: "Principios Q. Orgánica", c: 3, r: ["A"], cat: "Fundamentación" },
-            { id: "MN", n: "Métodos Numéricos", c: 3, r: ["ED"], cat: "Fundamentación" },
-            { id: "TC", n: "Transf. de Calor", c: 4, r: ["TERM", "ED"], cat: "Disciplinar" },
-            { id: "MS", n: "Manejo de Sólidos", c: 3, r: ["FLUI"], cat: "Disciplinar" },
-            { id: "BE", n: "Balance Energía y Equil.", c: 3, r: ["TQ"], cat: "Disciplinar" },
-            { id: "L2", n: "Libre Elección", c: 3, r: [], cat: "Libre" }
-        ]},
-        { sem: 6, mat: [
-            { id: "LQO", n: "Lab. Principios Orgánica", c: 2, r: ["A"], cat: "Fundamentación" },
-            { id: "IE", n: "Ingeniería Económica", c: 3, r: ["CI"], cat: "Fundamentación" },
-            { id: "TM", n: "Transf. de Masa", c: 3, r: ["ED"], cat: "Disciplinar" },
-            { id: "T2", n: "Taller 2", c: 1, r: ["ED"], cat: "Disciplinar" },
-            { id: "LPT", n: "Lab. Prop. Termo.", c: 3, r: ["BE"], cat: "Disciplinar" },
-            { id: "OT", n: "Opt. Termodinámica", c: 3, r: ["BE"], cat: "Disciplinar" },
-            { id: "L3", n: "Libre Elección", c: 3, r: [], cat: "Libre" }
-        ]},
-        { sem: 7, mat: [
-            { id: "OEA", n: "Optativa Econ-Admin", c: 3, r: [], cat: "Fundamentación" },
-            { id: "GGP", n: "Gerencia Proyectos", c: 3, r: ["IE"], cat: "Fundamentación" },
-            { id: "OS", n: "Oper. de Separación", c: 3, r: ["TM", "BE"], cat: "Disciplinar" },
-            { id: "LF", n: "Lab. Fluidos y Calor", c: 3, r: ["TC"], cat: "Disciplinar" },
-            { id: "IR", n: "Ing. Reacc. Química", c: 3, r: ["BE"], cat: "Disciplinar" },
-            { id: "L4", n: "Libre Elección", c: 3, r: [], cat: "Libre" }
-        ]},
-        { sem: 8, mat: [
-            { id: "OM", n: "Optativa Materiales", c: 3, r: ["CRED_108"], cat: "Disciplinar" },
-            { id: "CP", n: "Control de Procesos", c: 3, r: ["MN", "IR"], cat: "Disciplinar" },
-            { id: "LS", n: "Lab. Sep/Reac/Contr", c: 3, r: ["OS", "CP"], cat: "Disciplinar" },
-            { id: "OP", n: "Opt. Proc. Químicos", c: 3, r: ["TM", "IR"], cat: "Disciplinar" },
-            { id: "DP", n: "Diseño Procesos Quím.", c: 3, r: ["BE"], cat: "Disciplinar" },
-            { id: "L5", n: "Libre Elección", c: 4, r: [], cat: "Libre" }
-        ]},
-        { sem: 9, mat: [
-            { id: "TPI", n: "Taller Proy. Interdis.", c: 3, r: ["DISC_53"], cat: "Disciplinar" },
-            { id: "DPE", n: "Dis. Plantas y Equipos", c: 3, r: ["OS", "DP"], cat: "Disciplinar" },
-            { id: "IP", n: "Ingeniería Procesos", c: 3, r: ["DP"], cat: "Disciplinar" },
-            { id: "L6", n: "Libre Elección", c: 3, r: [], cat: "Libre" },
-            { id: "L7", n: "Libre Elección", c: 4, r: [], cat: "Libre" }
-        ]},
-        { sem: 10, mat: [
-            { id: "TG", n: "Trabajo de Grado", c: 6, r: ["DISC_60"], cat: "Disciplinar" },
-            { id: "L8", n: "Libre Elección", c: 3, r: [], cat: "Libre" },
-            { id: "L9", n: "Libre Elección", c: 3, r: [], cat: "Libre" },
-            { id: "L10", n: "Libre Elección", c: 3, r: [], cat: "Libre" },
-            { id: "L11", n: "Libre Elección", c: 4, r: [], cat: "Libre" }
-        ]}
+        { id: 'A', name: 'Principios de Química', cred: 3, type: 'fund', req: [] },
+        { id: 'LTB', name: 'Lab. Técnicas Básicas', cred: 3, type: 'fund', req: [] },
+        { id: 'B', name: 'Cálculo Diferencial', cred: 4, type: 'fund', req: [] },
+        { id: 'OHI', name: 'Opt. Herramientas Ing.', cred: 3, type: 'fund', req: [] },
+        { id: 'IIQ', name: 'Intro. Ing. Química', cred: 3, type: 'disc', req: [] }
+    ]},
+    { sem: 2, mat: [
+        { id: 'PAQ', name: 'Principios Análisis Q.', cred: 3, type: 'fund', req: ['A'] },
+        { id: 'AL', name: 'Álgebra Lineal', cred: 4, type: 'fund', req: ['B'] },
+        { id: 'CI', name: 'Cálculo Integral', cred: 4, type: 'fund', req: ['B'] },
+        { id: 'FM', name: 'Fund. de Mecánica', cred: 4, type: 'fund', req: ['B'] },
+        { id: 'BM', name: 'Balance de Materia', cred: 3, type: 'disc', req: [] }
+    ]},
+    { sem: 3, mat: [
+        { id: 'LPA', name: 'Lab. Principios Análisis', cred: 3, type: 'fund', req: ['A'] },
+        { id: 'BIO', name: 'Biología Molecular', cred: 3, type: 'fund', req: [] },
+        { id: 'CVV', name: 'Cálculo Varias Var.', cred: 4, type: 'fund', req: ['AL', 'CI'] },
+        { id: 'FEM', name: 'Fund. Elec. y Mag.', cred: 4, type: 'fund', req: ['CI', 'FM'] },
+        { id: 'TERM', name: 'Termodinámica', cred: 3, type: 'disc', req: ['BM'] },
+        { id: 'L1', name: 'Libre Elección', cred: 3, type: 'libre', req: [] }
+    ]},
+    { sem: 4, mat: [
+        { id: 'QO', name: 'Principios Q. Inorganica', cred: 3, type: 'fund', req: ['A'] },
+        { id: 'PROB', name: 'Probabilidad y Est.', cred: 3, type: 'fund', req: ['B'] },
+        { id: 'ED', name: 'Ecuaciones Diferenciales', cred: 4, type: 'fund', req: ['AL', 'CI'] },
+        { id: 'FLUI', name: 'Fluidos', cred: 3, type: 'disc', req: ['FM', 'TERM'] },
+        { id: 'T1', name: 'Taller 1', cred: 1, type: 'disc', req: ['CVV', 'TERM'] },
+        { id: 'TQ', name: 'Termodinámica Química', cred: 3, type: 'disc', req: ['CVV', 'TERM'] }
+    ]},
+    { sem: 5, mat: [
+        { id: 'QO2', name: 'Principios Q. Orgánica', cred: 3, type: 'fund', req: ['A'] },
+        { id: 'MN', name: 'Métodos Numéricos', cred: 3, type: 'fund', req: ['ED'] },
+        { id: 'TC', name: 'Transf. de Calor', cred: 4, type: 'disc', req: ['TERM', 'ED'] },
+        { id: 'MS', name: 'Manejo de Sólidos', cred: 3, type: 'disc', req: ['FLUI'] },
+        { id: 'BE', name: 'Balance Energía y Equil.', cred: 3, type: 'disc', req: ['TQ'] },
+        { id: 'L2', name: 'Libre Elección', cred: 3, type: 'libre', req: [] }
+    ]},
+    { sem: 6, mat: [
+        { id: 'LQO', name: 'Lab. Principios Orgánica', cred: 2, type: 'fund', req: ['A'] },
+        { id: 'IE', name: 'Ingeniería Económica', cred: 3, type: 'fund', req: ['CI'] },
+        { id: 'TM', name: 'Transf. de Masa', cred: 3, type: 'disc', req: ['ED'] },
+        { id: 'T2', name: 'Taller 2', cred: 1, type: 'disc', req: ['ED'] },
+        { id: 'LPT', name: 'Lab. Prop. Termo.', cred: 3, type: 'disc', req: ['BE'] },
+        { id: 'OT', name: 'Opt. Termodinámica', cred: 3, type: 'disc', req: ['BE'] },
+        { id: 'L3', name: 'Libre Elección', cred: 3, type: 'libre', req: [] }
+    ]},
+    { sem: 7, mat: [
+        { id: 'OEA', name: 'Optativa Econ-Admin', cred: 3, type: 'fund', req: [] },
+        { id: 'GGP', name: 'Gerencia Proyectos', cred: 3, type: 'fund', req: ['IE'] },
+        { id: 'OS', name: 'Oper. de Separación', cred: 3, type: 'disc', req: ['TM', 'BE'] },
+        { id: 'LF', name: 'Lab. Fluidos y Calor', cred: 3, type: 'disc', req: ['TC'] },
+        { id: 'IR', name: 'Ing. Reacc. Química', cred: 3, type: 'disc', req: ['BE'] },
+        { id: 'L4', name: 'Libre Elección', cred: 3, type: 'libre', req: [] }
+    ]},
+    { sem: 8, mat: [
+        { id: 'OM', name: 'Optativa Materiales', cred: 3, type: 'disc', req: ['CRED_108'] },
+        { id: 'CP', name: 'Control de Procesos', cred: 3, type: 'disc', req: ['MN', 'IR'] },
+        { id: 'LS', name: 'Lab. Sep/Reac/Contr', cred: 3, type: 'disc', req: ['OS', 'CP'] },
+        { id: 'OP', name: 'Opt. Proc. Químicos', cred: 3, type: 'disc', req: ['TM', 'IR'] },
+        { id: 'DP', name: 'Diseño Procesos Quím.', cred: 3, type: 'disc', req: ['BE'] },
+        { id: 'L5', name: 'Libre Elección', cred: 4, type: 'libre', req: [] }
+    ]},
+    { sem: 9, mat: [
+        { id: 'TPI', name: 'Taller Proy. Interdis.', cred: 3, type: 'disc', req: ['DISC_53'] },
+        { id: 'DPE', name: 'Dis. Plantas y Equipos', cred: 3, type: 'disc', req: ['OS', 'DP'] },
+        { id: 'IP', name: 'Ingeniería Procesos', cred: 3, type: 'disc', req: ['DP'] },
+        { id: 'L6', name: 'Libre Elección', cred: 3, type: 'libre', req: [] },
+        { id: 'L7', name: 'Libre Elección', cred: 4, type: 'libre', req: [] }
+    ]},
+    { sem: 10, mat: [
+        { id: 'TG', name: 'Trabajo de Grado', cred: 6, type: 'disc', req: ['DISC_60'] },
+        { id: 'L8', name: 'Libre Elección', cred: 3, type: 'libre', req: [] },
+        { id: 'L9', name: 'Libre Elección', cred: 3, type: 'libre', req: [] },
+        { id: 'L10', name: 'Libre Elección', cred: 3, type: 'libre', req: [] },
+        { id: 'L11', name: 'Libre Elección', cred: 4, type: 'libre', req: [] }
+    ]}
 ];
 
 // Estado persistente
