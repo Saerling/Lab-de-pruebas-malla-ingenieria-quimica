@@ -18,10 +18,10 @@
             --border: #333333;
             
             /* Colores oficiales Agrupaciones */
-            --color-fundamentacion: #00e5ff; /* Cyan */
-            --color-disciplinar: #a3e635; /* Verde lima */
-            --color-nivelacion: #ff8a65; /* Naranja suave */
-            --color-libre: #facc15; /* Amarillo */
+            --color-fundamentacion: #00e5ff;
+            --color-disciplinar: #a3e635;
+            --color-nivelacion: #ff8a65;
+            --color-libre: #facc15;
         }
 
         body { font-family: 'Inter', 'Segoe UI', sans-serif; background-color: var(--bg); color: var(--text); margin: 0; padding: 20px; }
@@ -86,7 +86,6 @@
         .btn-fail.active { background: var(--danger); color: white; }
         .btn-pending { border-color: var(--text-dim); color: var(--text-dim); }
         .btn-pending.active { background: var(--text-dim); color: white; }
-        .calc-lock-msg { background: rgba(77, 166, 255, 0.1); color: var(--primary); padding: 15px; border-radius: 8px; border: 1px solid var(--primary); font-size: 0.9rem; text-align: center; }
 
         /* CALCULADORA DE SEMESTRES STYLES */
         .calc-container { max-width: 900px; margin: auto; }
@@ -121,7 +120,7 @@
         .agr-header.nivelacion { background: var(--color-nivelacion); }
         .agr-header.libre { background: var(--color-libre); }
         
-        .agr-body { display: none; } /* Oculto por defecto */
+        .agr-body { display: none; }
         .agr-body.open { display: block; animation: slideDown 0.3s ease; }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -171,7 +170,7 @@
         </div>
         
         <div style="text-align: center;">
-            <button class="btn-reset" onclick="resetMalla()">Limpiar Historial Manual</button>
+            <button class="btn-reset" onclick="resetMalla()">Limpiar Malla Curricular</button>
         </div>
 
         <div class="malla-wrapper" id="grid"></div>
@@ -190,12 +189,12 @@
             <div class="sem-title">
                 <span style="color: var(--color-nivelacion);">Asignaturas de Nivelación e Inglés</span>
                 <label style="cursor: pointer; display: flex; align-items: center; gap: 8px; color: var(--text);">
-                    <input type="checkbox" id="nivelacion-toggle" onchange="toggleNivelacion(this)" style="width: auto; cursor: pointer; accent-color: var(--color-nivelacion);"> Sí, requiero nivelación
+                    <input type="checkbox" id="nivelacion-toggle" onchange="toggleNivelacion(this)" style="width: auto; cursor: pointer; accent-color: var(--color-nivelacion);"> Habilitar Semestre 0 (Malla)
                 </label>
             </div>
             <div id="nivelacion-container" style="display: none; margin-top: 15px;">
                 <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 0; margin-bottom: 15px;">
-                    Las materias cualitativas (Inglés) no afectan el PAPA, pero suman progreso. Se reflejarán como Semestre 0 en la Malla.
+                    Calcula tu promedio incluyendo materias cualitativas y cuantitativas base.
                 </p>
                 <div id="nivelacion-materias-list"></div>
             </div>
@@ -220,12 +219,10 @@
             <h2 id="status-title">Materia</h2>
             <button class="close-btn" onclick="closeStatusModal()">&times;</button>
         </div>
-        
-        <div id="calc-message" style="display: none;" class="calc-lock-msg"></div>
 
         <div id="manual-controls">
             <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 0; margin-bottom: 20px;">
-                Marca manualmente el estado de esta materia. (Se desactiva si ingresas nota en la Calculadora).
+                Selecciona el estado de esta materia en tu plan de estudios.
             </p>
             <button id="btn-app" class="state-btn btn-approve" onclick="setStatus('approved')">✅ Aprobada</button>
             <button id="btn-fail" class="state-btn btn-fail" onclick="setStatus('failed')">❌ Reprobada</button>
@@ -344,26 +341,19 @@
     function renderAgrupaciones() {
         const container = document.getElementById('agrupaciones-container');
         container.innerHTML = '';
-        agrupacionesInfo.forEach((agr, index) => {
+        agrupacionesInfo.forEach((agr) => {
             const card = document.createElement('div');
             card.className = 'agrupacion-card';
 
-            // Header desplegable (Accordion)
             const header = document.createElement('div');
             header.className = `agr-header ${agr.type}`;
             header.innerHTML = `<span>${agr.title}</span> <span class="toggle-icon">▼</span>`;
             
-            // Cuerpo oculto
             const body = document.createElement('div');
             body.className = 'agr-body';
             
-            // Lógica Toggle
             header.onclick = () => {
                 const isOpen = body.classList.contains('open');
-                // Opcional: Cerrar los demás acordeones
-                /* document.querySelectorAll('.agr-body').forEach(b => b.classList.remove('open'));
-                document.querySelectorAll('.agr-header').forEach(h => h.classList.remove('open')); */
-                
                 if (isOpen) {
                     body.classList.remove('open');
                     header.classList.remove('open');
@@ -392,12 +382,17 @@
     }
 
     // ==========================================
-    // ESTADO E INTEGRACIÓN (Malla / Calculadora)
+    // ESTADO DESVINCULADO (MALLA VS CALCULADORA)
     // ==========================================
-    let visualState = JSON.parse(localStorage.getItem('malla_iq_visual_v9')) || {};
-    let semestres = JSON.parse(localStorage.getItem('calc_iq_history_v9')) || [];
-    let hasNivelacion = JSON.parse(localStorage.getItem('calc_iq_has_niv_v9')) || false;
     
+    // ESTADO MALLA (100% independiente)
+    let visualState = JSON.parse(localStorage.getItem('malla_iq_visual_v10')) || {};
+    
+    // ESTADO CALCULADORA
+    let semestres = JSON.parse(localStorage.getItem('calc_iq_history_v10')) || [];
+    let hasNivelacion = JSON.parse(localStorage.getItem('calc_iq_has_niv_v10')) || false;
+    let nivelacionNotas = JSON.parse(localStorage.getItem('calc_iq_niv_notas_v10')) || {};
+
     const nivelacionMaterias = [
         { id: "niv_lecto", n: "Lecto-escritura", c: 4, r: [], cat: "Nivelación", eval: "cuantitativa" },
         { id: "niv_mat", n: "Matemáticas Básicas", c: 4, r: [], cat: "Nivelación", eval: "cuantitativa" },
@@ -406,7 +401,6 @@
         { id: "niv_ing3", n: "Inglés III", c: 3, r: ["niv_ing2"], cat: "Nivelación", eval: "cualitativa" },
         { id: "niv_ing4", n: "Inglés IV", c: 3, r: ["niv_ing3"], cat: "Nivelación", eval: "cualitativa" }
     ];
-    let nivelacionNotas = JSON.parse(localStorage.getItem('calc_iq_niv_notas_v9')) || {};
 
     let currentSubjId = null;
 
@@ -417,24 +411,8 @@
         return null;
     }
 
-    function getCalcNota(mId) {
-        if(mId.startsWith('niv_')) {
-            let val = nivelacionNotas[mId];
-            if (!val) return -1;
-            if (mId.startsWith('niv_ing')) return val === 'AP' ? 5.0 : (val === 'RE' ? 0.0 : -1);
-            let n = parseFloat(val);
-            return (!isNaN(n)) ? n : -1;
-        }
-        let maxNota = -1;
-        semestres.forEach(sem => sem.materias.forEach(mat => {
-            if(mat.materiaId === mId && mat.nota !== '' && !isNaN(mat.nota)) maxNota = Math.max(maxNota, mat.nota);
-        }));
-        return maxNota;
-    }
-
-    function getCombinedState(mId) {
-        let cNota = getCalcNota(mId);
-        if (cNota !== -1) return cNota >= 3.0 ? 'approved' : 'failed';
+    // Funciones exclusivas de la Malla
+    function getMallaState(mId) {
         return visualState[mId];
     }
 
@@ -442,7 +420,7 @@
         let appCreds = 0, discCreds = 0, totalReq = 180;
         let mData = hasNivelacion ? [{ sem: 0, mat: nivelacionMaterias }, ...data] : data;
         mData.forEach(sem => sem.mat.forEach(m => {
-            if(getCombinedState(m.id) === 'approved') {
+            if(getMallaState(m.id) === 'approved') {
                 appCreds += m.c;
                 if(m.cat === "Disciplinar") discCreds += m.c;
             }
@@ -453,7 +431,7 @@
     function checkProgress(materiaId) {
         const m = getMatInfo(materiaId);
         let reqs = m.r || [];
-        if(m.id === "CD" && hasNivelacion && !reqs.includes("niv_mat")) reqs.push("niv_mat"); // Prerrequisito dinámico
+        if(m.id === "CD" && hasNivelacion && !reqs.includes("niv_mat")) reqs.push("niv_mat"); 
         if (reqs.length === 0) return { status: 'ready' };
         
         const stats = getVisualStats();
@@ -463,7 +441,8 @@
             if(req === "CRED_108") ok = stats.totalApp >= 108;
             else if(req === "DISC_53") ok = stats.disc >= 53;
             else if(req === "DISC_60") ok = stats.disc >= 60;
-            else ok = (getCombinedState(req) === 'approved');
+            else ok = (getMallaState(req) === 'approved');
+            
             if (ok) met++;
         });
         
@@ -497,7 +476,7 @@
                     lastCat = m.cat;
                 }
                 const prog = checkProgress(m.id);
-                const state = getCombinedState(m.id);
+                const state = getMallaState(m.id);
                 
                 let sClass = state === 'approved' ? 'approved' : state === 'failed' ? 'status-failed' : prog.status === 'ready' ? 'status-ready' : prog.status === 'partial' ? 'status-locked-partial' : 'status-locked-total';
                 let icon = state === 'approved' ? '✅' : state === 'failed' ? '❌' : '';
@@ -515,50 +494,49 @@
     function openStatusModal(id) {
         currentSubjId = id;
         document.getElementById('status-title').innerText = getMatInfo(id).n;
-        const cNota = getCalcNota(id);
-        const manualControls = document.getElementById('manual-controls');
-        const calcMessage = document.getElementById('calc-message');
-
-        if(cNota !== -1) {
-            manualControls.style.display = 'none';
-            calcMessage.style.display = 'block';
-            let estado = cNota >= 3.0 ? '<span style="color:var(--success)">Aprobada ✅</span>' : '<span style="color:var(--danger)">Reprobada ❌</span>';
-            calcMessage.innerHTML = `Controlado por la Calculadora Histórica.<br><br>Estado: <b>${estado}</b>`;
-        } else {
-            manualControls.style.display = 'block';
-            calcMessage.style.display = 'none';
-            ['btn-app', 'btn-fail', 'btn-pend'].forEach(b => document.getElementById(b).classList.remove('active'));
-            let st = visualState[id] || 'pending';
-            if(st === 'approved') document.getElementById('btn-app').classList.add('active');
-            else if(st === 'failed') document.getElementById('btn-fail').classList.add('active');
-            else document.getElementById('btn-pend').classList.add('active');
-        }
+        
+        // Modal estrictamente manual
+        document.getElementById('manual-controls').style.display = 'block';
+        ['btn-app', 'btn-fail', 'btn-pend'].forEach(b => document.getElementById(b).classList.remove('active'));
+        
+        let st = visualState[id] || 'pending';
+        if(st === 'approved') document.getElementById('btn-app').classList.add('active');
+        else if(st === 'failed') document.getElementById('btn-fail').classList.add('active');
+        else document.getElementById('btn-pend').classList.add('active');
+        
         document.getElementById('status-modal').classList.add('active');
     }
 
     function closeStatusModal() { document.getElementById('status-modal').classList.remove('active'); }
+    
     function setStatus(newState) {
         if(newState === 'pending') delete visualState[currentSubjId];
         else visualState[currentSubjId] = newState;
-        localStorage.setItem('malla_iq_visual_v9', JSON.stringify(visualState));
+        localStorage.setItem('malla_iq_visual_v10', JSON.stringify(visualState));
         renderMalla(); closeStatusModal();
     }
-    function resetMalla() { if(confirm("¿Borrar marcas manuales de la Malla?")) { visualState = {}; localStorage.setItem('malla_iq_visual_v9', JSON.stringify(visualState)); renderMalla(); } }
+    
+    function resetMalla() { if(confirm("¿Borrar todas las marcas de la Malla? (No borrará la calculadora)")) { visualState = {}; localStorage.setItem('malla_iq_visual_v10', JSON.stringify(visualState)); renderMalla(); } }
 
     // ==========================================
     // LÓGICA DE CALCULADORA Y NIVELACIÓN
     // ==========================================
     function toggleNivelacion(cb) {
         hasNivelacion = cb.checked;
-        localStorage.setItem('calc_iq_has_niv_v9', JSON.stringify(hasNivelacion));
-        if(!hasNivelacion) { nivelacionNotas = {}; localStorage.setItem('calc_iq_niv_notas_v9', JSON.stringify({})); nivelacionMaterias.forEach(m => delete visualState[m.id]); }
-        renderNivelacion(); calcularPromedios(); renderMalla();
+        localStorage.setItem('calc_iq_has_niv_v10', JSON.stringify(hasNivelacion));
+        if(!hasNivelacion) { 
+            nivelacionNotas = {}; 
+            localStorage.setItem('calc_iq_niv_notas_v10', JSON.stringify({})); 
+            nivelacionMaterias.forEach(m => delete visualState[m.id]); // Limpiar de malla también
+            localStorage.setItem('malla_iq_visual_v10', JSON.stringify(visualState));
+        }
+        renderNivelacion(); calcularPromedios(); renderMalla(); // El único punto donde la calc redibuja la malla (por agregar la columna)
     }
 
     function updateNivNota(nivId, val) {
         nivelacionNotas[nivId] = val;
-        localStorage.setItem('calc_iq_niv_notas_v9', JSON.stringify(nivelacionNotas));
-        calcularPromedios(); renderMalla();
+        localStorage.setItem('calc_iq_niv_notas_v10', JSON.stringify(nivelacionNotas));
+        calcularPromedios();
     }
 
     function renderNivelacion() {
@@ -614,7 +592,7 @@
 
     function updateMateria(semId, matIdx, field, val) {
         semestres.find(s => s.id === semId).materias[matIdx][field] = (field === 'nota' || field === 'creds') ? (val === '' ? '' : parseFloat(val)) : val;
-        calcularPromedios(); localStorage.setItem('calc_iq_history_v9', JSON.stringify(semestres)); renderMalla();
+        calcularPromedios(); localStorage.setItem('calc_iq_history_v10', JSON.stringify(semestres));
     }
 
     function calcularPromedios() {
@@ -640,7 +618,7 @@
         document.getElementById('total-creds').innerText = totalCrd;
     }
 
-    function saveAndRenderCalc() { localStorage.setItem('calc_iq_history_v9', JSON.stringify(semestres)); renderCalculadora(); renderMalla(); }
+    function saveAndRenderCalc() { localStorage.setItem('calc_iq_history_v10', JSON.stringify(semestres)); renderCalculadora(); }
 
     function renderCalculadora() {
         renderNivelacion();
@@ -680,3 +658,4 @@
 </script>
 </body>
 </html>
+
