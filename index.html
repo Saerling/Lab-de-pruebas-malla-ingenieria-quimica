@@ -237,6 +237,17 @@
     </div>
 </div>
 
+<!-- MODAL CUPOS Y GRUPOS EN TIEMPO REAL (SIA) - Vista Agrupaciones -->
+<div class="modal-overlay" id="cupos-modal">
+    <div class="modal-content" style="max-width: 460px; max-height: 85vh; overflow-y: auto;">
+        <div class="modal-header">
+            <h2 id="cupos-modal-title">Materia</h2>
+            <button class="close-btn" onclick="closeCuposModal()">&times;</button>
+        </div>
+        <div id="cupos-modal-body"></div>
+    </div>
+</div>
+
 <script>
     // ==========================================
     // LÓGICA DE NAVEGACIÓN (TABS)
@@ -270,7 +281,7 @@
     ];
 
     // ==========================================
-    // DATOS DE AGRUPACIONES OFICIALES (AQUÍ ESTÁN LOS CÓDIGOS SIA)
+    // DATOS DE AGRUPACIONES OFICIALES
     // ==========================================
     const agrupacionesInfo = [
         {
@@ -296,7 +307,7 @@
                 { id: "1000028", n: "Principios de química inorgánica", c: 3, ob: true },
                 { id: "1000030", n: "Principios de química orgánica", c: 3, ob: true },
                 { id: "1000010", n: "Laboratorio principios de química orgánica", c: 2, ob: true },
-                { id: "1000025b", n: "Biología molecular y celular", c: 3, ob: true } // El 'b' evitarlo en SIA si puedes
+                { id: "1000025b", n: "Biología molecular y celular", c: 3, ob: true }
             ]
         },
         {
@@ -446,9 +457,9 @@
                     </thead>
                     <tbody>
                         ${agr.materias.map(m => `
-                            <tr class="${m.ob ? 'obligatoria' : ''}">
+                            <tr class="${m.ob ? 'obligatoria' : ''}" style="cursor:pointer;" onclick="openCuposModal('${m.id}')" title="Ver cupos y grupos en tiempo real (SIA)">
                                 <td>${m.id}</td>
-                                <td>${m.n}</td>
+                                <td>${m.n} <span style="opacity:0.5; font-size:0.75rem;">📊</span></td>
                                 <td style="text-align:center;">${m.c}</td>
                             </tr>
                         `).join('')}
@@ -471,12 +482,562 @@
     }
 
     // ==========================================
+    // CUPOS Y GRUPOS EN TIEMPO REAL (SIA) - Vista Agrupaciones
+    // ==========================================
+    const SIA_API_BASE = 'https://sia.gabotachak.dev/v1';
+    const SIA_CAMPUS = '1101';   // Sede Bogotá
+    const SIA_PROGRAM = '2549';  // Ingeniería Química
+    const SIA_FACULTY = '2055';  // Facultad de Ingeniería
+    const SIA_CACHE_MS = 5 * 60 * 1000; // Caché en el navegador: 5 min (el backend ya cachea con max_age=3600)
+    const siaCache = {};
+
+    const SIA_DIAS = { 0: 'Domingo', 1: 'Lunes', 2: 'Martes', 3: 'Miércoles', 4: 'Jueves', 5: 'Viernes', 6: 'Sábado', 7: 'Domingo' };
+    function siaFormatDia(weekday) {
+        return SIA_DIAS[weekday] !== undefined ? SIA_DIAS[weekday] : `Día ${weekday}`;
+    }
+
+    function siaTimeAgo(isoString) {
+        if (!isoString) return '';
+        const diffMs = Date.now() - new Date(isoString).getTime();
+        const mins = Math.floor(diffMs / 60000);
+        if (mins < 1) return 'hace instantes';
+        if (mins < 60) return `hace ${mins} min`;
+        const hrs = Math.floor(mins / 60);
+        if (hrs < 24) return `hace ${hrs} h`;
+        return `hace ${Math.floor(hrs / 24)} d`;
+    }
+
+    function getAgrupacionMateriaInfo(id) {
+        for (const agr of agrupacionesInfo) {
+            if (agr.isText) continue;
+            const m = agr.materias.find(x => x.id === id);
+            if (m) return m;
+        }
+        return null;
+    }
+
+    function closeCuposModal() {
+        document.getElementById('cupos-modal').classList.remove('active');
+    }
+
+    function renderCuposError(message) {
+        document.getElementById('cupos-modal-body').innerHTML = `
+            <div class="cupos-box">
+                <div style="font-size:0.85rem; color:var(--danger); text-align:center;">⚠️ ${message}</div>
+            </div>
+        `;
+    }
+
+    function renderCuposContent(apiData) {
+        const body = document.getElementById('cupos-modal-body');
+        const sections = apiData.sections || [];
+
+        if (sections.length === 0) {
+            body.innerHTML = `
+                <div class="cupos-box">
+                    <div style="font-size:0.85rem; color:var(--text-dim); text-align:center;">No hay grupos ofertados actualmente para esta materia.</div>
+                </div>
+            `;
+            return;
+        }
+
+        const groupsHtml = sections.map(s => {
+            const available = s.seats ? s.seats.available : null;
+            const lleno = available === 0;
+            const cupoTxt = available === null || available === undefined
+                ? 'Sin datos'
+                : (lleno ? 'LLENO' : `${available} cupo${available === 1 ? '' : 's'}`);
+            const scheduleTxt = (s.schedule || [])
+                .map(h => `${siaFormatDia(h.weekday)} ${h.start_time}–${h.end_time}`)
+                .join(', ') || 'Sin horario registrado';
+            const roomTxt = (s.schedule || [])
+                .map(h => h.room)
+                .filter((v, i, a) => v && a.indexOf(v) === i)
+                .join(', ');
+            const updatedTxt = s.seats && s.seats.measured_at ? siaTimeAgo(s.seats.measured_at) : '';
+
+            return `
+                <div class="grupo-item" style="border-left-color: ${lleno ? 'var(--danger)' : 'var(--primary)'};">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                        <strong>${s.label || ('Grupo ' + s.number)}</strong>
+                        <span class="cupo-badge ${lleno ? 'cupo-lleno' : ''}">${cupoTxt}</span>
+                    </div>
+                    <div style="color:var(--text-dim); line-height:1.6;">
+                        👤 ${s.instructor || 'Docente sin asignar'}<br>
+                        🕐 ${s.shift || ''} · ${scheduleTxt}<br>
+                        📍 ${roomTxt || 'Salón sin asignar'}
+                        ${updatedTxt ? `<br>🔄 Cupos actualizados ${updatedTxt}` : ''}
+                    </div>
+                </div>
+            `;
+        }).join('');
+
+        body.innerHTML = `
+            <div class="cupos-box">
+                <h3>📊 Cupos en Tiempo Real (SIA)
+                    <span style="font-size:0.7rem; font-weight:400; color:var(--text-dim);">
+                        ${apiData.code || ''}${apiData.credits !== undefined ? ' · ' + apiData.credits + ' créd.' : ''}
+                    </span>
+                </h3>
+                ${groupsHtml}
+            </div>
+        `;
+    }
+
+    async function openCuposModal(courseId) {
+        const info = getAgrupacionMateriaInfo(courseId);
+        document.getElementById('cupos-modal-title').innerText = info ? info.n : `Materia ${courseId}`;
+        document.getElementById('cupos-modal').classList.add('active');
+
+        const cached = siaCache[courseId];
+        if (cached && (Date.now() - cached.ts) < SIA_CACHE_MS) {
+            renderCuposContent(cached.data);
+            return;
+        }
+
+        document.getElementById('cupos-modal-body').innerHTML = `
+            <div class="cupos-box">
+                <div style="font-size:0.85rem; color:var(--text-dim); text-align:center;">Conectando con el SIA... ⏳</div>
+            </div>
+        `;
+
+        const url = `${SIA_API_BASE}/campuses/${SIA_CAMPUS}/programs/${SIA_PROGRAM}/courses/${courseId}?faculty=${SIA_FACULTY}&level=pregrado&max_age=3600`;
+
+        try {
+            const res = await fetch(url);
+            if (!res.ok) {
+                if (res.status === 404) {
+                    renderCuposError(`No se encontró información en el SIA para el código <b>${courseId}</b>. Puede que este código no coincida exactamente con el que usa la Universidad.`);
+                } else {
+                    renderCuposError(`El SIA respondió con un error (código ${res.status}). Intenta de nuevo en unos minutos.`);
+                }
+                return;
+            }
+            const data = await res.json();
+            siaCache[courseId] = { data, ts: Date.now() };
+            renderCuposContent(data);
+        } catch (err) {
+            renderCuposError('No se pudo conectar con el servicio de cupos del SIA. Verifica tu conexión a internet e intenta de nuevo.');
+        }
+    }
+
+    // ==========================================
     // ESTADO E INTEGRACIÓN (Calculadora -> Malla)
     // ==========================================
     let visualState = JSON.parse(localStorage.getItem('malla_iq_visual_v7')) || {};
     let semestres = JSON.parse(localStorage.getItem('calc_iq_history_v7')) || [];
     
     let hasNivelacion = JSON.parse(localStorage.getItem('calc_iq_has_niv_v7')) || false;
-    const nivelacionNo incluiste el código adicional que deseas añadir. 
+    const nivelacionMaterias = [
+        { id: "niv_lecto", n: "Lecto-escritura", c: 4, r: [], cat: "Nivelación" },
+        { id: "niv_mat", n: "Matemáticas básicas", c: 4, r: [], cat: "Nivelación" },
+        { id: "niv_ing1", n: "Inglés I", c: 3, r: [], cat: "Nivelación" },
+        { id: "niv_ing2", n: "Inglés II", c: 3, r: ["niv_ing1"], cat: "Nivelación" },
+        { id: "niv_ing3", n: "Inglés III", c: 3, r: ["niv_ing2"], cat: "Nivelación" },
+        { id: "niv_ing4", n: "Inglés IV", c: 3, r: ["niv_ing3"], cat: "Nivelación" }
+    ];
+    let nivelacionNotas = JSON.parse(localStorage.getItem('calc_iq_niv_notas_v7')) || {
+        niv_lecto: '', niv_mat: '', niv_ing1: '', niv_ing2: '', niv_ing3: '', niv_ing4: ''
+    };
 
-Por favor, compárteme "ese código" que necesitas integrar y, si tienes alguna preferencia sobre dónde o cómo debe funcionar (por ejemplo, si es una nueva función, un estilo CSS, o una nueva pestaña), indícalo. Con esa información, haré la fusión de manera correcta y te entregaré el código de `index(1).html` completo.
+    let currentSubjId = null;
+
+    function getMatInfo(id) {
+        let nMat = nivelacionMaterias.find(x => x.id === id);
+        if (nMat) return nMat;
+        for(let s of data) {
+            let m = s.mat.find(x => x.id === id);
+            if(m) return m;
+        }
+        return null;
+    }
+
+    function getCalcNota(mId) {
+        if(mId.startsWith('niv_')) {
+            let val = nivelacionNotas[mId];
+            // Retornar el texto directo si es cualitativo
+            if (val === 'AP' || val === 'RE') return val;
+            
+            let n = parseFloat(val);
+            return (!isNaN(n) && n.toString().trim() !== '') ? n : -1;
+        }
+        let maxNota = -1;
+        let hasEntry = false;
+        semestres.forEach(sem => {
+            sem.materias.forEach(mat => {
+                if(mat.materiaId === mId && mat.nota !== '' && !isNaN(mat.nota)) {
+                    hasEntry = true;
+                    if(mat.nota > maxNota) maxNota = mat.nota;
+                }
+            });
+        });
+        return hasEntry ? maxNota : -1;
+    }
+
+    function getCombinedState(mId) {
+        let cNota = getCalcNota(mId);
+        // Leer los estados cualitativos 
+        if (cNota === 'AP') return 'approved';
+        if (cNota === 'RE') return 'failed';
+        
+        // Fallback para las materias cuantitativas tradicionales
+        if (cNota !== -1) return cNota >= 3.0 ? 'approved' : 'failed';
+        return visualState[mId];
+    }
+
+    function getVisualStats() {
+        let appCreds = 0, discCreds = 0;
+        let mData = [...data];
+        if(hasNivelacion) mData.unshift({ sem: 0, mat: nivelacionMaterias });
+        mData.forEach(sem => {
+            sem.mat.forEach(m => {
+                if(getCombinedState(m.id) === 'approved') {
+                    appCreds += m.c;
+                    if(m.cat === "Disciplinar") discCreds += m.c;
+                }
+            });
+        });
+        let perc = Math.min((appCreds * (100 / 180)), 100).toFixed(1);
+        return { totalApp: appCreds, disc: discCreds, percentage: perc };
+    }
+
+    function checkProgress(materiaId) {
+        const m = getMatInfo(materiaId);
+        let reqs = [...(m.r || [])];
+        if(m.id === "CD" && hasNivelacion) {
+            if(!reqs.includes("niv_mat")) reqs.push("niv_mat");
+        }
+        if (reqs.length === 0) return { status: 'ready' };
+        const stats = getVisualStats();
+        let met = 0;
+        reqs.forEach(req => {
+            let ok = false;
+            if(req === "CRED_108") ok = stats.totalApp >= 108;
+            else if(req === "DISC_53") ok = stats.disc >= 53;
+            else if(req === "DISC_60") ok = stats.disc >= 60;
+            else ok = (getCombinedState(req) === 'approved'); 
+            if (ok) met++;
+        });
+        if (met === reqs.length) return { status: 'ready' };
+        if (met > 0) return { status: 'partial' };
+        return { status: 'locked' };
+    }
+
+    // ==========================================
+    // RENDERIZADO DE LA MALLA
+    // ==========================================
+    function renderMalla() {
+        const grid = document.getElementById('grid');
+        const stats = getVisualStats();
+        document.getElementById('total-c').innerText = `Créditos Aprobados: ${stats.totalApp} (Base 180)`;
+        document.getElementById('perc-c').innerText = `${stats.percentage}% completado`;
+        document.getElementById('p-bar').style.width = `${stats.percentage}%`;
+        
+        grid.innerHTML = '';
+        let mallaData = [...data];
+        if (hasNivelacion) mallaData.unshift({ sem: 0, mat: nivelacionMaterias });
+
+        mallaData.forEach(semestre => {
+            const col = document.createElement('div');
+            col.className = 'semestre-col';
+            const head = document.createElement('div');
+            head.className = 'sem-header'; 
+            head.textContent = semestre.sem === 0 ? "Semestre 0 (Niv.)" : `Semestre ${semestre.sem}`;
+            col.appendChild(head);
+            
+            let lastCat = "";
+            semestre.mat.forEach(m => {
+                if(m.cat !== lastCat) {
+                    const tag = document.createElement('div');
+                    tag.className = 'cat-tag'; tag.textContent = m.cat;
+                    col.appendChild(tag); lastCat = m.cat;
+                }
+                const prog = checkProgress(m.id);
+                const state = getCombinedState(m.id);
+                const card = document.createElement('div');
+                let sClass = '', icon = '';
+                
+                if (state === 'approved') { sClass = 'approved'; icon = '<span class="icon-indicator" title="Aprobada">✅</span>'; } 
+                else if (state === 'failed') { sClass = 'status-failed'; icon = '<span class="icon-indicator" title="Reprobada">❌</span>'; } 
+                else if (prog.status === 'ready') sClass = 'status-ready';
+                else if (prog.status === 'partial') sClass = 'status-locked-partial';
+                else sClass = 'status-locked-total';
+
+                card.className = `materia ${sClass}`;
+                card.onclick = () => { if(prog.status !== 'locked' || state) openStatusModal(m.id); };
+                const failText = state === 'failed' ? `<br><small style="color:var(--danger)">Reprobada</small>` : '';
+
+                card.innerHTML = `
+                    <span class="m-name">${m.n}${icon}</span>
+                    <span class="m-cred">${m.c} Créditos ${failText}</span>
+                `;
+                col.appendChild(card);
+            });
+            grid.appendChild(col);
+        });
+    }
+
+    function openStatusModal(id) {
+        currentSubjId = id;
+        const m = getMatInfo(id);
+        document.getElementById('status-title').innerText = m.n;
+
+        // Contenedor de "Cupos SIA" agregado en la última edición: se deja oculto por defecto
+        // porque aún no existe una fuente de datos/API real conectada (ver nota al final del chat).
+        const siaContainer = document.getElementById('sia-cupos-container');
+        if (siaContainer) siaContainer.style.display = 'none';
+
+        const cNota = getCalcNota(id);
+        const manualControls = document.getElementById('manual-controls');
+        const calcMessage = document.getElementById('calc-message');
+
+        if(cNota !== -1) {
+            manualControls.style.display = 'none';
+            calcMessage.style.display = 'block';
+            
+            let estadoStr = '';
+            let notaStr = '';
+            
+            // Modal adaptado para variables cualitativas y cuantitativas
+            if (cNota === 'AP' || cNota === 'RE') {
+                estadoStr = cNota === 'AP' ? '<span style="color:var(--success)">Aprobada ✅</span>' : '<span style="color:var(--danger)">Reprobada ❌</span>';
+                notaStr = cNota === 'AP' ? 'Aprobado' : 'Desaprobado';
+            } else {
+                estadoStr = cNota >= 3.0 ? '<span style="color:var(--success)">Aprobada ✅</span>' : '<span style="color:var(--danger)">Reprobada ❌</span>';
+                notaStr = cNota.toFixed(1);
+            }
+
+            calcMessage.innerHTML = `El estado de esta materia está controlado por la pestaña de <b>Calculadora</b>.<br><br>Nota registrada: <b>${notaStr}</b> (${estadoStr})`;
+        } else {
+            manualControls.style.display = 'block';
+            calcMessage.style.display = 'none';
+            document.getElementById('btn-app').classList.remove('active');
+            document.getElementById('btn-fail').classList.remove('active');
+            document.getElementById('btn-pend').classList.remove('active');
+
+            const currentState = visualState[id] || 'pending';
+            if(currentState === 'approved') document.getElementById('btn-app').classList.add('active');
+            else if(currentState === 'failed') document.getElementById('btn-fail').classList.add('active');
+            else document.getElementById('btn-pend').classList.add('active');
+        }
+        document.getElementById('status-modal').classList.add('active');
+    }
+
+    function closeStatusModal() { document.getElementById('status-modal').classList.remove('active'); }
+
+    function setStatus(newState) {
+        if(newState === 'pending') delete visualState[currentSubjId];
+        else visualState[currentSubjId] = newState;
+        localStorage.setItem('malla_iq_visual_v7', JSON.stringify(visualState));
+        renderMalla();
+        closeStatusModal();
+    }
+
+    function resetMalla() {
+        if(confirm("¿Borrar marcas manuales de la Malla?")) {
+            visualState = {};
+            localStorage.setItem('malla_iq_visual_v7', JSON.stringify(visualState));
+            renderMalla();
+        }
+    }
+
+    // ==========================================
+    // LÓGICA DE NIVELACIÓN
+    // ==========================================
+    function toggleNivelacion(checkbox) {
+        hasNivelacion = checkbox.checked;
+        localStorage.setItem('calc_iq_has_niv_v7', JSON.stringify(hasNivelacion));
+        if(!hasNivelacion) {
+            nivelacionNotas = { niv_lecto: '', niv_mat: '', niv_ing1: '', niv_ing2: '', niv_ing3: '', niv_ing4: '' };
+            localStorage.setItem('calc_iq_niv_notas_v7', JSON.stringify(nivelacionNotas));
+            nivelacionMaterias.forEach(m => delete visualState[m.id]);
+            localStorage.setItem('malla_iq_visual_v7', JSON.stringify(visualState));
+        }
+        renderNivelacion();
+        calcularPromedios();
+        renderMalla();
+    }
+
+    function updateNivNota(nivId, val) {
+        // Si el valor es Aprobado (AP) o Desaprobado (RE), se guarda como texto.
+        if (val === 'AP' || val === 'RE') {
+            nivelacionNotas[nivId] = val;
+        } else {
+            nivelacionNotas[nivId] = val === '' ? '' : parseFloat(val);
+        }
+        localStorage.setItem('calc_iq_niv_notas_v7', JSON.stringify(nivelacionNotas));
+        calcularPromedios();
+        renderMalla();
+    }
+
+    function renderNivelacion() {
+        const toggle = document.getElementById('nivelacion-toggle');
+        const container = document.getElementById('nivelacion-container');
+        const list = document.getElementById('nivelacion-materias-list');
+        toggle.checked = hasNivelacion;
+        container.style.display = hasNivelacion ? 'block' : 'none';
+        
+        if(!hasNivelacion) return;
+        list.innerHTML = '';
+        
+        nivelacionMaterias.forEach(m => {
+            const row = document.createElement('div');
+            row.className = 'materia-row';
+            
+            let inputHtml = '';
+            // Condicional para verificar si es materia de inglés
+            if (m.id.startsWith('niv_ing')) {
+                const nota = nivelacionNotas[m.id] || '';
+                inputHtml = `
+                    <select style="width: 130px;" onchange="updateNivNota('${m.id}', this.value)">
+                        <option value="" ${nota === '' ? 'selected' : ''}>- Estado -</option>
+                        <option value="AP" ${nota === 'AP' ? 'selected' : ''}>Aprobado</option>
+                        <option value="RE" ${nota === 'RE' ? 'selected' : ''}>Desaprobado</option>
+                    </select>
+                `;
+            } else {
+                inputHtml = `<input type="number" placeholder="Nota" step="0.1" min="0" max="5" value="${nivelacionNotas[m.id] !== undefined ? nivelacionNotas[m.id] : ''}" oninput="updateNivNota('${m.id}', this.value)">`;
+            }
+
+            row.innerHTML = `
+                <input type="text" value="${m.n}" readonly style="flex-grow:2; background:var(--surface);">
+                ${inputHtml}
+                <input type="text" value="${m.c} Créditos" readonly style="width: 80px; text-align:center; background:var(--surface);">
+            `;
+            list.appendChild(row);
+        });
+    }
+
+    // ==========================================
+    // LÓGICA DE LA CALCULADORA HISTÓRICA
+    // ==========================================
+    function getSubjectOptions(selectedId) {
+        let html = `<option value="">-- Seleccionar Materia --</option>`;
+        data.forEach(sem => {
+            html += `<optgroup label="Semestre ${sem.sem}">`;
+            sem.mat.forEach(m => {
+                let sel = m.id === selectedId ? 'selected' : '';
+                html += `<option value="${m.id}" data-creds="${m.c}" data-name="${m.n}" ${sel}>${m.n}</option>`;
+            });
+            html += `</optgroup>`;
+        });
+        let customSel = selectedId === 'custom' ? 'selected' : '';
+        html += `<option value="custom" ${customSel}>Otra / Electiva Libre...</option>`;
+        return html;
+    }
+
+    function addSemestre() { semestres.push({ id: Date.now(), materias: [] }); saveAndRenderCalc(); }
+    function addMateria(semId) { const sem = semestres.find(s => s.id === semId); sem.materias.push({ materiaId: '', nombre: '', nota: '', creds: '' }); saveAndRenderCalc(); }
+    function deleteMateria(semId, matIdx) { const sem = semestres.find(s => s.id === semId); sem.materias.splice(matIdx, 1); saveAndRenderCalc(); }
+    function deleteSemestre(semId) { if(confirm("¿Eliminar este semestre y todas sus notas?")) { semestres = semestres.filter(s => s.id !== semId); saveAndRenderCalc(); } }
+
+    function handleMateriaChange(semId, matIdx, selectEl) {
+        const val = selectEl.value;
+        const sem = semestres.find(s => s.id === semId);
+        const mat = sem.materias[matIdx];
+        mat.materiaId = val;
+        
+        if(val === 'custom') { mat.nombre = ''; mat.creds = ''; } 
+        else if (val !== '') {
+            const opt = selectEl.options[selectEl.selectedIndex];
+            mat.nombre = opt.getAttribute('data-name');
+            mat.creds = parseFloat(opt.getAttribute('data-creds'));
+        } else { mat.nombre = ''; mat.creds = ''; }
+        saveAndRenderCalc();
+    }
+
+    function updateMateria(semId, matIdx, field, val) {
+        const sem = semestres.find(s => s.id === semId);
+        if (field === 'nota' || field === 'creds') sem.materias[matIdx][field] = val === '' ? '' : parseFloat(val);
+        else sem.materias[matIdx][field] = val;
+        calcularPromedios();
+        localStorage.setItem('calc_iq_history_v7', JSON.stringify(semestres));
+        renderMalla();
+    }
+
+    function calcularPromedios() {
+        let totalPuntos = 0, totalCreds = 0;
+        if(hasNivelacion) {
+            nivelacionMaterias.forEach(m => {
+                let n = parseFloat(nivelacionNotas[m.id]);
+                let c = m.c;
+                if(!isNaN(n) && !isNaN(c) && c > 0) { totalPuntos += (n * c); totalCreds += c; }
+            });
+        }
+
+        semestres.forEach(s => {
+            let semPuntos = 0, semCreds = 0;
+            s.materias.forEach(m => {
+                let n = parseFloat(m.nota), c = parseFloat(m.creds);
+                if(!isNaN(n) && !isNaN(c) && c > 0) {
+                    totalPuntos += (n * c); totalCreds += c;
+                    semPuntos += (n * c); semCreds += c;
+                }
+            });
+            const papi = semCreds > 0 ? (semPuntos / semCreds).toFixed(2) : "0.00";
+            const el = document.getElementById(`papi-${s.id}`);
+            if(el) el.innerText = `PAPI Semestral: ${papi}`;
+        });
+        const papa = totalCreds > 0 ? (totalPuntos / totalCreds).toFixed(2) : "0.00";
+        document.getElementById('total-papa').innerText = papa;
+        document.getElementById('total-creds').innerText = totalCreds;
+    }
+
+    function saveAndRenderCalc() {
+        localStorage.setItem('calc_iq_history_v7', JSON.stringify(semestres));
+        renderCalculadora();
+        renderMalla();
+    }
+
+    function renderCalculadora() {
+        renderNivelacion();
+        const container = document.getElementById('semestres-container');
+        container.innerHTML = '';
+        semestres.forEach((s, sIdx) => {
+            const div = document.createElement('div');
+            div.className = 'semestre-block';
+            div.innerHTML = `
+                <div class="sem-title">
+                    <span>Semestre ${sIdx + 1} 
+                        <button onclick="deleteSemestre(${s.id})" style="background:none; color:var(--danger); padding:0; margin-left:15px; font-size:0.8rem;">(Eliminar)</button>
+                    </span>
+                    <span id="papi-${s.id}" class="papi-semestre">PAPI Semestral: 0.00</span>
+                </div>
+                <div class="materias-list" id="list-${s.id}"></div>
+                <button class="btn-add-mat" onclick="addMateria(${s.id})">+ Agregar Materia</button>
+            `;
+            const list = div.querySelector(`#list-${s.id}`);
+            s.materias.forEach((m, mIdx) => {
+                const row = document.createElement('div');
+                row.className = 'materia-row';
+                const isCustom = m.materiaId === 'custom';
+                const hasId = m.materiaId && m.materiaId !== '';
+
+                row.innerHTML = `
+                    <select onchange="handleMateriaChange(${s.id}, ${mIdx}, this)">
+                        ${getSubjectOptions(m.materiaId)}
+                    </select>
+                    ${isCustom ? `<input type="text" placeholder="Nombre (Ej. Deporte)" value="${m.nombre}" oninput="updateMateria(${s.id}, ${mIdx}, 'nombre', this.value)">` : ''}
+                    <input type="number" placeholder="Nota" step="0.1" min="0" max="5" value="${m.nota !== undefined ? m.nota : ''}" oninput="updateMateria(${s.id}, ${mIdx}, 'nota', this.value)">
+                    <input type="number" placeholder="Créditos" min="0" value="${m.creds !== undefined ? m.creds : ''}" oninput="updateMateria(${s.id}, ${mIdx}, 'creds', this.value)" ${hasId && !isCustom ? 'readonly style="opacity:0.7;" title="Los créditos se asignan solos"' : ''}>
+                    <button onclick="deleteMateria(${s.id}, ${mIdx})" style="background:var(--danger); color:white; padding:10px;" title="Eliminar materia">X</button>
+                `;
+                list.appendChild(row);
+            });
+            container.appendChild(div);
+        });
+        calcularPromedios();
+    }
+
+    // ==========================================
+    // INICIALIZACIÓN
+    // ==========================================
+    renderMalla();
+    renderCalculadora();
+    renderAgrupaciones();
+    
+    if(semestres.length === 0) addSemestre();
+
+</script>
+</body>
+</html>
