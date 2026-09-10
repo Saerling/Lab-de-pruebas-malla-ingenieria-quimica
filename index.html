@@ -597,8 +597,7 @@
         `;
     }
 
-    // Helper con Timeout para no demorar la respuesta
-    async function fetchWithTimeout(url, timeoutMs = 5000) {
+    async function fetchWithTimeout(url, timeoutMs = 7000) {
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
         try {
@@ -633,34 +632,45 @@
         startSiaTimer();
 
         const targetUrl = `${SIA_API_BASE}/campuses/${SIA_CAMPUS}/programs/${SIA_PROGRAM}/courses/${courseId}?faculty=${SIA_FACULTY}&level=pregrado&max_age=3600`;
-        
-        // Estrategia: 1° Directo (ultra rápido y habilita CORS), 2° y 3° Proxies alternativos de baja latencia
+        const encodedUrl = encodeURIComponent(targetUrl);
+
+        // Proxies estables compatibles con CORS
         const endpoints = [
-            targetUrl,
-            `https://corsproxy.io/?${encodeURIComponent(targetUrl)}`,
-            `https://api.allorigins.win/raw?url=${encodeURIComponent(targetUrl)}`
+            { url: `https://api.allorigins.win/get?url=${encodedUrl}`, type: 'allorigins' },
+            { url: `https://api.codetabs.com/v1/proxy?quest=${encodedUrl}`, type: 'direct' },
+            { url: `https://thingproxy.freeboard.io/fetch/${targetUrl}`, type: 'direct' },
+            { url: targetUrl, type: 'direct' }
         ];
 
         for (let i = 0; i < endpoints.length; i++) {
-            const currentUrl = endpoints[i];
+            const ep = endpoints[i];
             let retryEl = document.getElementById('sia-retry-msg');
             if (retryEl && i > 0) {
                 retryEl.innerText = `Reintentando vía servidor alternativo (${i + 1}/${endpoints.length})...`;
             }
 
             try {
-                const res = await fetchWithTimeout(currentUrl, 5000); // MÁXIMO 5s por consulta
+                const res = await fetchWithTimeout(ep.url, 7000);
                 if (!res.ok) continue;
 
-                const data = await res.json().catch(() => null);
+                let data = null;
+                if (ep.type === 'allorigins') {
+                    const wrapper = await res.json();
+                    if (wrapper && wrapper.contents) {
+                        data = typeof wrapper.contents === 'string' ? JSON.parse(wrapper.contents) : wrapper.contents;
+                    }
+                } else {
+                    data = await res.json().catch(() => null);
+                }
+
                 if (!data || !Array.isArray(data.sections)) continue;
 
                 stopSiaTimer();
                 siaCache[courseId] = { data, ts: Date.now() };
                 renderCuposContent(data);
-                return; // Éxito inmediato
+                return;
             } catch (err) {
-                // Intenta el siguiente endpoint si el actual tarda o falla
+                // Intenta con el siguiente endpoint de la lista
             }
         }
 
