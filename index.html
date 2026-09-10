@@ -219,13 +219,6 @@
         
         <div id="calc-message" style="display: none;" class="calc-lock-msg"></div>
 
-        <!-- CONTENEDOR NUEVO PARA LOS CUPOS DEL SIA -->
-        <div id="sia-cupos-container" class="cupos-box" style="display: none;">
-            <h3>📊 Cupos en Tiempo Real (SIA)</h3>
-            <div id="sia-loading" style="font-size:0.85rem; color:var(--text-dim); text-align:center;">Conectando con el SIA...</div>
-            <div id="sia-data-list"></div>
-        </div>
-
         <div id="manual-controls">
             <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 0; margin-bottom: 20px;">
                 Marca manualmente el estado de esta materia. (Se desactiva si usas la calculadora).
@@ -482,16 +475,15 @@
     }
 
     // ==========================================
-    // CUPOS Y GRUPOS EN TIEMPO REAL (SIA) - Vista Agrupaciones
+    // CONEXIÓN RÁPIDA Y OPTIMIZADA CON EL SIA
     // ==========================================
     const SIA_API_BASE = 'https://sia.gabotachak.dev/v1';
     const SIA_CAMPUS = '1101';   // Sede Bogotá
     const SIA_PROGRAM = '2549';  // Ingeniería Química
     const SIA_FACULTY = '2055';  // Facultad de Ingeniería
-    const SIA_CACHE_MS = 5 * 60 * 1000; // Caché en el navegador: 5 min
+    const SIA_CACHE_MS = 5 * 60 * 1000; // Caché: 5 min
     const siaCache = {};
 
-    const SIA_PROXY_PREFIX = 'https://api.allorigins.win/raw?url=';
     let siaTimerInterval = null;
 
     const SIA_DIAS = { 0: 'Domingo', 1: 'Lunes', 2: 'Martes', 3: 'Miércoles', 4: 'Jueves', 5: 'Viernes', 6: 'Sábado', 7: 'Domingo' };
@@ -605,6 +597,20 @@
         `;
     }
 
+    // Helper con Timeout para no demorar la respuesta
+    async function fetchWithTimeout(url, timeoutMs = 5000) {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+        try {
+            const response = await fetch(url, { signal: controller.signal });
+            clearTimeout(timeoutId);
+            return response;
+        } catch (err) {
+            clearTimeout(timeoutId);
+            throw err;
+        }
+    }
+
     async function openCuposModal(courseId) {
         const info = getAgrupacionMateriaInfo(courseId);
         document.getElementById('cupos-modal-title').innerText = info ? info.n : `Materia ${courseId}`;
@@ -627,51 +633,39 @@
         startSiaTimer();
 
         const targetUrl = `${SIA_API_BASE}/campuses/${SIA_CAMPUS}/programs/${SIA_PROGRAM}/courses/${courseId}?faculty=${SIA_FACULTY}&level=pregrado&max_age=3600`;
-        const url = SIA_PROXY_PREFIX + encodeURIComponent(targetUrl);
-
-        const maxRetries = 3;
         
-        for (let attempt = 1; attempt <= maxRetries; attempt++) {
-            if (attempt > 1) {
-                let retryEl = document.getElementById('sia-retry-msg');
-                if (retryEl) retryEl.innerText = `Reintentando... Intento ${attempt} de ${maxRetries}`;
-                await new Promise(r => setTimeout(r, 1000)); // Espera 1 segundo antes de reintentar
+        // Estrategia: 1° Directo (ultra rápido y habilita CORS), 2° y 3° Proxies alternativos de baja latencia
+        const endpoints = [
+            targetUrl,
+            `https://corsproxy.io/?${encodeURIComponent(targetUrl)}`,
+            `https://api.allorigins.win/raw?url=${encodeURIComponent(targetUrl)}`
+        ];
+
+        for (let i = 0; i < endpoints.length; i++) {
+            const currentUrl = endpoints[i];
+            let retryEl = document.getElementById('sia-retry-msg');
+            if (retryEl && i > 0) {
+                retryEl.innerText = `Reintentando vía servidor alternativo (${i + 1}/${endpoints.length})...`;
             }
-            
+
             try {
-                const res = await fetch(url);
-                if (!res.ok) {
-                    if (attempt === maxRetries) {
-                        stopSiaTimer();
-                        renderCuposError(`El proxy o el SIA respondieron con un error (código ${res.status}). Intenta de nuevo en unos minutos.`);
-                        return;
-                    }
-                    continue; // Sigue al próximo intento
-                }
-                
+                const res = await fetchWithTimeout(currentUrl, 5000); // MÁXIMO 5s por consulta
+                if (!res.ok) continue;
+
                 const data = await res.json().catch(() => null);
-                if (!data || !Array.isArray(data.sections)) {
-                    if (attempt === maxRetries) {
-                        stopSiaTimer();
-                        renderCuposError(`No se pudo obtener información del SIA para el código <b>${courseId}</b>. Puede que el código no exista o el servicio esté temporalmente caído.`);
-                        return;
-                    }
-                    continue;
-                }
-                
+                if (!data || !Array.isArray(data.sections)) continue;
+
                 stopSiaTimer();
                 siaCache[courseId] = { data, ts: Date.now() };
                 renderCuposContent(data);
-                break; // Si todo salió bien, rompe el ciclo y no sigue reintentando
-
+                return; // Éxito inmediato
             } catch (err) {
-                if (attempt === maxRetries) {
-                    stopSiaTimer();
-                    renderCuposError('No se pudo conectar con el servicio de cupos del SIA tras múltiples intentos. Verifica tu conexión e intenta de nuevo.');
-                    return;
-                }
+                // Intenta el siguiente endpoint si el actual tarda o falla
             }
         }
+
+        stopSiaTimer();
+        renderCuposError('No se pudo conectar con el servicio de cupos del SIA. Por favor, verifica tu conexión a internet o intenta nuevamente.');
     }
 
     // ==========================================
@@ -829,9 +823,6 @@
         currentSubjId = id;
         const m = getMatInfo(id);
         document.getElementById('status-title').innerText = m.n;
-
-        const siaContainer = document.getElementById('sia-cupos-container');
-        if (siaContainer) siaContainer.style.display = 'none';
 
         const cNota = getCalcNota(id);
         const manualControls = document.getElementById('manual-controls');
