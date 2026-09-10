@@ -597,7 +597,8 @@
         `;
     }
 
-    async function fetchWithTimeout(url, timeoutMs = 7000) {
+    // El timeout ahora es de 15 segundos para darle margen de tiempo de respuesta
+    async function fetchWithTimeout(url, timeoutMs = 15000) {
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
         try {
@@ -634,11 +635,11 @@
         const targetUrl = `${SIA_API_BASE}/campuses/${SIA_CAMPUS}/programs/${SIA_PROGRAM}/courses/${courseId}?faculty=${SIA_FACULTY}&level=pregrado&max_age=3600`;
         const encodedUrl = encodeURIComponent(targetUrl);
 
-        // Proxies estables compatibles con CORS
+        // Se han eliminado los proxies caídos y se han añadido alternativas funcionales en 2024
         const endpoints = [
+            { url: `https://api.allorigins.win/raw?url=${encodedUrl}`, type: 'direct' },
+            { url: `https://corsproxy.io/?${encodedUrl}`, type: 'direct' },
             { url: `https://api.allorigins.win/get?url=${encodedUrl}`, type: 'allorigins' },
-            { url: `https://api.codetabs.com/v1/proxy?quest=${encodedUrl}`, type: 'direct' },
-            { url: `https://thingproxy.freeboard.io/fetch/${targetUrl}`, type: 'direct' },
             { url: targetUrl, type: 'direct' }
         ];
 
@@ -650,7 +651,8 @@
             }
 
             try {
-                const res = await fetchWithTimeout(ep.url, 7000);
+                // Ahora espera 15 segundos para no cancelar solicitudes lentas prematuramente
+                const res = await fetchWithTimeout(ep.url, 15000);
                 if (!res.ok) continue;
 
                 let data = null;
@@ -670,7 +672,7 @@
                 renderCuposContent(data);
                 return;
             } catch (err) {
-                // Intenta con el siguiente endpoint de la lista
+                // Intenta con el siguiente endpoint de la lista si falla o se agota el tiempo
             }
         }
 
