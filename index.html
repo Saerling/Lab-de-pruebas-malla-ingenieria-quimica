@@ -491,6 +491,16 @@
     const SIA_CACHE_MS = 5 * 60 * 1000; // Caché en el navegador: 5 min (el backend ya cachea con max_age=3600)
     const siaCache = {};
 
+    // sia.gabotachak.dev no envía cabeceras CORS, así que el navegador bloquea la
+    // petición directa (error "CORS Missing Allow Origin"). Por eso pasamos la
+    // petición por un proxy que sí agrega esa cabecera.
+    //
+    // Por defecto usa allorigins.win (gratis, sin registro, pero es un servicio de
+    // terceros que puede fallar o ir lento). Si montas tu propio proxy (por ejemplo
+    // un Cloudflare Worker gratuito), simplemente reemplaza esta línea por:
+    //   const SIA_PROXY_PREFIX = 'https://tu-proxy.tuusuario.workers.dev/?url=';
+    const SIA_PROXY_PREFIX = 'https://api.allorigins.win/raw?url=';
+
     const SIA_DIAS = { 0: 'Domingo', 1: 'Lunes', 2: 'Martes', 3: 'Miércoles', 4: 'Jueves', 5: 'Viernes', 6: 'Sábado', 7: 'Domingo' };
     function siaFormatDia(weekday) {
         return SIA_DIAS[weekday] !== undefined ? SIA_DIAS[weekday] : `Día ${weekday}`;
@@ -601,19 +611,22 @@
             </div>
         `;
 
-        const url = `${SIA_API_BASE}/campuses/${SIA_CAMPUS}/programs/${SIA_PROGRAM}/courses/${courseId}?faculty=${SIA_FACULTY}&level=pregrado&max_age=3600`;
+        const targetUrl = `${SIA_API_BASE}/campuses/${SIA_CAMPUS}/programs/${SIA_PROGRAM}/courses/${courseId}?faculty=${SIA_FACULTY}&level=pregrado&max_age=3600`;
+        const url = SIA_PROXY_PREFIX + encodeURIComponent(targetUrl);
 
         try {
             const res = await fetch(url);
             if (!res.ok) {
-                if (res.status === 404) {
-                    renderCuposError(`No se encontró información en el SIA para el código <b>${courseId}</b>. Puede que este código no coincida exactamente con el que usa la Universidad.`);
-                } else {
-                    renderCuposError(`El SIA respondió con un error (código ${res.status}). Intenta de nuevo en unos minutos.`);
-                }
+                renderCuposError(`El proxy o el SIA respondieron con un error (código ${res.status}). Intenta de nuevo en unos minutos.`);
                 return;
             }
-            const data = await res.json();
+            // Algunos proxies gratuitos siempre devuelven 200 aunque la API original
+            // haya fallado, así que validamos también la forma de los datos.
+            const data = await res.json().catch(() => null);
+            if (!data || !Array.isArray(data.sections)) {
+                renderCuposError(`No se pudo obtener información del SIA para el código <b>${courseId}</b>. Puede que el código no exista en el sistema o que el servicio esté temporalmente caído.`);
+                return;
+            }
             siaCache[courseId] = { data, ts: Date.now() };
             renderCuposContent(data);
         } catch (err) {
