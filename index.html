@@ -217,9 +217,10 @@
             <button class="close-btn" onclick="closeStatusModal()">&times;</button>
         </div>
         
-        <div id="sia-cupos-btn-container"></div>
-
         <div id="calc-message" style="display: none;" class="calc-lock-msg"></div>
+
+        <!-- Botón para consultar cupos SIA (se llena dinámicamente solo si la materia tiene siaId) -->
+        <div id="sia-cupos-btn-container"></div>
 
         <div id="manual-controls">
             <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 0; margin-bottom: 20px;">
@@ -232,7 +233,7 @@
     </div>
 </div>
 
-<!-- MODAL CUPOS Y GRUPOS EN TIEMPO REAL (SIA) -->
+<!-- MODAL CUPOS Y GRUPOS EN TIEMPO REAL (SIA) - Vista Agrupaciones -->
 <div class="modal-overlay" id="cupos-modal">
     <div class="modal-content" style="max-width: 460px; max-height: 85vh; overflow-y: auto;">
         <div class="modal-header">
@@ -260,7 +261,7 @@
     }
 
     // ==========================================
-    // DATOS DE LA MALLA (Con códigos SIA mapeados)
+    // DATOS DE LA MALLA
     // ==========================================
     const data = [
         { sem: 1, mat: [{ id: "PQ", siaId: "1000024", n: "Principios de Química", c: 3, r: [], cat: "Fundamentación" }, { id: "LTB", siaId: "1000025", n: "Lab. Técnicas Básicas", c: 3, r: [], cat: "Fundamentación" }, { id: "CD", siaId: "1000004", n: "Cálculo Diferencial", c: 4, r: [], cat: "Fundamentación" }, { id: "OHI", siaId: "", n: "Opt. Herramientas Ing.", c: 3, r: [], cat: "Fundamentación" }, { id: "IIQ", siaId: "2015718", n: "Intro. Ing. Química", c: 3, r: [], cat: "Disciplinar" }] },
@@ -430,54 +431,80 @@
             header.innerText = agr.title;
             card.appendChild(header);
 
-            const table = document.createElement('table');
-            table.className = 'agr-table';
-            table.innerHTML = `
-                <thead>
-                    <tr>
-                        <th>CÓDIGO</th>
-                        <th>NOMBRE DE LA ASIGNATURA</th>
-                        <th style="text-align:center;">CRÉD.</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    ${agr.materias.map(m => `
-                        <tr class="${m.ob ? 'obligatoria' : ''}" style="cursor:pointer;" onclick="openCuposModal('${m.id}')" title="Ver cupos y grupos en tiempo real (SIA)">
-                            <td>${m.id}</td>
-                            <td>${m.n} <span style="opacity:0.5; font-size:0.75rem;">📊</span></td>
-                            <td style="text-align:center;">${m.c}</td>
+            if (agr.isText) {
+                const textDiv = document.createElement('div');
+                textDiv.style.padding = '20px';
+                textDiv.style.fontSize = '0.85rem';
+                textDiv.style.lineHeight = '1.5';
+                textDiv.style.color = 'var(--text-dim)';
+                textDiv.style.flexGrow = '1';
+                textDiv.innerHTML = agr.text;
+                card.appendChild(textDiv);
+            } else {
+                const table = document.createElement('table');
+                table.className = 'agr-table';
+                table.innerHTML = `
+                    <thead>
+                        <tr>
+                            <th>CÓDIGO</th>
+                            <th>NOMBRE DE LA ASIGNATURA</th>
+                            <th style="text-align:center;">CRÉD.</th>
                         </tr>
-                    `).join('')}
-                </tbody>
-            `;
-            card.appendChild(table);
+                    </thead>
+                    <tbody>
+                        ${agr.materias.map(m => `
+                            <tr class="${m.ob ? 'obligatoria' : ''}" style="cursor:pointer;" onclick="openCuposModal('${m.id}')" title="Ver cupos y grupos en tiempo real (SIA)">
+                                <td>${m.id}</td>
+                                <td>${m.n} <span style="opacity:0.5; font-size:0.75rem;">📊</span></td>
+                                <td style="text-align:center;">${m.c}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                `;
+                card.appendChild(table);
 
-            const footer = document.createElement('div');
-            footer.className = 'agr-footer';
-            footer.innerHTML = `
-                CRÉDITOS: <span class="req-txt">EXIGIDOS: ${agr.req}</span> | 
-                <span class="obl-txt">OBLIGATORIOS: ${agr.obl}</span> | 
-                <span class="opt-txt">OPTATIVAS: ${agr.opt}</span>
-            `;
-            card.appendChild(footer);
+                const footer = document.createElement('div');
+                footer.className = 'agr-footer';
+                footer.innerHTML = `
+                    CRÉDITOS: <span class="req-txt">EXIGIDOS: ${agr.req}</span> | 
+                    <span class="obl-txt">OBLIGATORIOS: ${agr.obl}</span> | 
+                    <span class="opt-txt">OPTATIVAS: ${agr.opt}</span>
+                `;
+                card.appendChild(footer);
+            }
 
             container.appendChild(card);
         });
     }
 
     // ==========================================
-    // CONEXIÓN DIRECTA Y PROCESAMIENTO DE JSON DEL SIA
+    // CUPOS Y GRUPOS EN TIEMPO REAL (SIA)
     // ==========================================
     const SIA_API_BASE = 'https://sia.gabotachak.dev/v1';
-    const SIA_CAMPUS = '1101';
-    const SIA_PROGRAM = '2549';
-    const SIA_FACULTY = '2055';
-    const SIA_CACHE_MS = 5 * 60 * 1000;
+    const SIA_CAMPUS = '1101';   // Sede Bogotá
+    const SIA_PROGRAM = '2549';  // Ingeniería Química
+    const SIA_FACULTY = '2055';  // Facultad de Ingeniería
+    const SIA_CACHE_MS = 5 * 60 * 1000; // Caché en el navegador: 5 min (el backend ya cachea con max_age=3600)
     const siaCache = {};
-
     let siaTimerInterval = null;
+
+    // sia.gabotachak.dev no envía cabeceras CORS, así que el navegador bloquea la
+    // petición directa ("CORS Missing Allow Origin"). Por eso se usa tu propio proxy
+    // desplegado en Railway (servicio "proxy-sia") como primera opción.
+    //
+    // SUPUESTO A VERIFICAR: asumo que tu proxy es un espejo transparente, es decir que
+    // acepta exactamente el mismo path/query que la API real, solo cambiando el dominio.
+    // Ejemplo esperado:
+    //   https://proxy-sia-production.up.railway.app/v1/campuses/1101/programs/2549/courses/2015735?faculty=2055&level=pregrado&max_age=3600
+    // Si tu proxy funciona distinto (por ejemplo con un parámetro ?url=...), avísame y
+    // ajusto esta línea.
+    const SIA_OWN_PROXY_BASE = 'https://proxy-sia-production.up.railway.app/v1';
+
+    // Respaldo público gratuito por si tu proxy propio no responde (sin registro, pero
+    // puede fallar o ir lento al ser un servicio de terceros).
+    const SIA_PUBLIC_PROXY_PREFIX = 'https://api.allorigins.win/raw?url=';
+
     const SIA_DIAS = { 0: 'Domingo', 1: 'Lunes', 2: 'Martes', 3: 'Miércoles', 4: 'Jueves', 5: 'Viernes', 6: 'Sábado', 7: 'Domingo' };
-    
     function siaFormatDia(weekday) {
         return SIA_DIAS[weekday] !== undefined ? SIA_DIAS[weekday] : `Día ${weekday}`;
     }
@@ -493,13 +520,21 @@
         return `hace ${Math.floor(hrs / 24)} d`;
     }
 
-    function getSiaMateriaInfo(id) {
-        // Busca si el id está en la malla (tiene nombre) o en las agrupaciones
+    // Busca el nombre de una materia a partir de su código SIA, tanto en la Malla
+    // Curricular (campo siaId) como en el Programa por Agrupaciones (campo id).
+    function getMateriaNameBySiaId(siaId) {
         for (const s of data) {
-            const m = s.mat.find(x => x.id === id || x.siaId === id);
-            if (m) return { n: m.n, id: m.siaId || id };
+            const m = s.mat.find(x => x.siaId === siaId);
+            if (m) return m.n;
         }
+        const agrMat = getAgrupacionMateriaInfo(siaId);
+        if (agrMat) return agrMat.n;
+        return null;
+    }
+
+    function getAgrupacionMateriaInfo(id) {
         for (const agr of agrupacionesInfo) {
+            if (agr.isText) continue;
             const m = agr.materias.find(x => x.id === id);
             if (m) return m;
         }
@@ -507,16 +542,17 @@
     }
 
     function startSiaTimer() {
-        let startTime = Date.now();
-        if(siaTimerInterval) clearInterval(siaTimerInterval);
+        const startTime = Date.now();
+        if (siaTimerInterval) clearInterval(siaTimerInterval);
         siaTimerInterval = setInterval(() => {
-            let el = document.getElementById('sia-timer-display');
-            if(el) el.innerText = ((Date.now() - startTime) / 1000).toFixed(1) + 's';
+            const el = document.getElementById('sia-timer-display');
+            if (el) el.innerText = ((Date.now() - startTime) / 1000).toFixed(1) + 's';
         }, 100);
     }
 
     function stopSiaTimer() {
-        if(siaTimerInterval) clearInterval(siaTimerInterval);
+        if (siaTimerInterval) clearInterval(siaTimerInterval);
+        siaTimerInterval = null;
     }
 
     function closeCuposModal() {
@@ -532,7 +568,6 @@
         `;
     }
 
-    // Procesa exactamente la estructura JSON de la imagen
     function renderCuposContent(apiData) {
         const body = document.getElementById('cupos-modal-body');
         const sections = apiData.sections || [];
@@ -547,26 +582,20 @@
         }
 
         const groupsHtml = sections.map(s => {
-            // Estructura extraída de s.seats
             const available = s.seats ? s.seats.available : null;
             const lleno = available === 0;
             const cupoTxt = available === null || available === undefined
                 ? 'Sin datos'
                 : (lleno ? 'LLENO' : `${available} cupo${available === 1 ? '' : 's'}`);
-            
-            // Estructura extraída de s.schedule (Array)
             const scheduleTxt = (s.schedule || [])
                 .map(h => `${siaFormatDia(h.weekday)} ${h.start_time}–${h.end_time}`)
                 .join(', ') || 'Sin horario registrado';
-            
             const roomTxt = (s.schedule || [])
                 .map(h => h.room)
                 .filter((v, i, a) => v && a.indexOf(v) === i)
                 .join(', ');
-            
             const updatedTxt = s.seats && s.seats.measured_at ? siaTimeAgo(s.seats.measured_at) : '';
 
-            // Estructura base
             return `
                 <div class="grupo-item" style="border-left-color: ${lleno ? 'var(--danger)' : 'var(--primary)'};">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
@@ -609,17 +638,13 @@
     }
 
     async function openCuposModal(courseId) {
-        const info = getSiaMateriaInfo(courseId);
-        // Si el id viene de la malla (ej. 'PQ'), usamos su siaId (ej. '1000024')
-        const finalSiaId = (info && info.id && !isNaN(info.id)) ? info.id : courseId;
-        
-        document.getElementById('cupos-modal-title').innerText = info ? info.n : `Materia ${courseId}`;
-        
-        // Cerramos el de status si venimos de la Malla y abrimos el de cupos
+        // Si venimos del modal de la Malla, lo cerramos para no encimar ventanas
         document.getElementById('status-modal').classList.remove('active');
+
+        document.getElementById('cupos-modal-title').innerText = getMateriaNameBySiaId(courseId) || `Materia ${courseId}`;
         document.getElementById('cupos-modal').classList.add('active');
 
-        const cached = siaCache[finalSiaId];
+        const cached = siaCache[courseId];
         if (cached && (Date.now() - cached.ts) < SIA_CACHE_MS) {
             renderCuposContent(cached.data);
             return;
@@ -627,56 +652,44 @@
 
         document.getElementById('cupos-modal-body').innerHTML = `
             <div class="cupos-box" style="text-align:center;">
-                <div style="font-size:0.85rem; color:var(--text-dim); margin-bottom: 8px;">Conectando con el SIA...</div>
+                <div style="font-size:0.85rem; color:var(--text-dim); margin-bottom:8px;">Conectando con el SIA...</div>
                 <div id="sia-timer-display" style="font-size:1.5rem; font-weight:bold; color:var(--primary);">0.0s</div>
-                <div id="sia-retry-msg" style="font-size:0.75rem; color:var(--warning); margin-top:8px; min-height: 15px;"></div>
+                <div id="sia-retry-msg" style="font-size:0.75rem; color:var(--warning); margin-top:8px; min-height:15px;"></div>
             </div>
         `;
-        
         startSiaTimer();
 
-        // LLAMADA DIRECTA PRIORIZADA (Basado en la ruta que funciona en la imagen)
-        const targetUrl = `${SIA_API_BASE}/campuses/${SIA_CAMPUS}/programs/${SIA_PROGRAM}/courses/${finalSiaId}?faculty=${SIA_FACULTY}&level=pregrado&max_age=3600`;
-        const encodedUrl = encodeURIComponent(targetUrl);
+        const path = `/campuses/${SIA_CAMPUS}/programs/${SIA_PROGRAM}/courses/${courseId}?faculty=${SIA_FACULTY}&level=pregrado&max_age=3600`;
+        const targetUrl = `${SIA_API_BASE}${path}`;
 
         const endpoints = [
-            { url: targetUrl, type: 'direct' },
-            { url: `https://api.allorigins.win/raw?url=${encodedUrl}`, type: 'direct' },
-            { url: `https://corsproxy.io/?${encodedUrl}`, type: 'direct' }
+            `${SIA_OWN_PROXY_BASE}${path}`,
+            `${SIA_PUBLIC_PROXY_PREFIX}${encodeURIComponent(targetUrl)}`
         ];
 
         for (let i = 0; i < endpoints.length; i++) {
-            const ep = endpoints[i];
-            let retryEl = document.getElementById('sia-retry-msg');
+            const retryEl = document.getElementById('sia-retry-msg');
             if (retryEl && i > 0) {
-                retryEl.innerText = `Reintentando vía servidor alternativo (${i}/${endpoints.length - 1})...`;
+                retryEl.innerText = `Tu proxy no respondió, probando servidor de respaldo...`;
             }
-
             try {
-                const res = await fetchWithTimeout(ep.url, 10000);
+                const res = await fetchWithTimeout(endpoints[i], 10000);
                 if (!res.ok) continue;
 
-                let data = null;
-                if (ep.type === 'allorigins') {
-                    const wrapper = await res.json();
-                    if (wrapper && wrapper.contents) {
-                        data = typeof wrapper.contents === 'string' ? JSON.parse(wrapper.contents) : wrapper.contents;
-                    }
-                } else {
-                    data = await res.json().catch(() => null);
-                }
-
+                const data = await res.json().catch(() => null);
                 if (!data || !Array.isArray(data.sections)) continue;
 
                 stopSiaTimer();
-                siaCache[finalSiaId] = { data, ts: Date.now() };
+                siaCache[courseId] = { data, ts: Date.now() };
                 renderCuposContent(data);
                 return;
-            } catch (err) {}
+            } catch (err) {
+                // Intenta el siguiente endpoint de la lista
+            }
         }
 
         stopSiaTimer();
-        renderCuposError('No se pudo conectar con el servicio de cupos del SIA. Por favor, verifica tu conexión a internet o intenta nuevamente.');
+        renderCuposError(`No se pudo obtener información del SIA para el código <b>${courseId}</b>. Ni tu proxy propio ni el respaldo respondieron correctamente. Revisa que el proxy de Railway siga activo, o que el código exista en el sistema.`);
     }
 
     // ==========================================
@@ -713,7 +726,9 @@
     function getCalcNota(mId) {
         if(mId.startsWith('niv_')) {
             let val = nivelacionNotas[mId];
+            // Retornar el texto directo si es cualitativo
             if (val === 'AP' || val === 'RE') return val;
+            
             let n = parseFloat(val);
             return (!isNaN(n) && n.toString().trim() !== '') ? n : -1;
         }
@@ -732,8 +747,11 @@
 
     function getCombinedState(mId) {
         let cNota = getCalcNota(mId);
+        // Leer los estados cualitativos 
         if (cNota === 'AP') return 'approved';
         if (cNota === 'RE') return 'failed';
+        
+        // Fallback para las materias cuantitativas tradicionales
         if (cNota !== -1) return cNota >= 3.0 ? 'approved' : 'failed';
         return visualState[mId];
     }
@@ -835,12 +853,12 @@
         const m = getMatInfo(id);
         document.getElementById('status-title').innerText = m.n;
 
-        // Inyectar el botón de Cupos SIA en la Malla
-        const cuposContainer = document.getElementById('sia-cupos-btn-container');
+        // Botón de cupos SIA: solo aparece si esta materia tiene un código real del SIA mapeado
+        const cuposBtnContainer = document.getElementById('sia-cupos-btn-container');
         if (m.siaId && m.siaId.trim() !== '') {
-            cuposContainer.innerHTML = `<button onclick="openCuposModal('${m.siaId}')" class="state-btn" style="background:rgba(56, 189, 248, 0.15); color:var(--primary); border-color:var(--primary); margin-bottom: 20px; display:flex; justify-content:center; align-items:center; gap:8px;">📊 Consultar Cupos SIA</button>`;
+            cuposBtnContainer.innerHTML = `<button onclick="openCuposModal('${m.siaId}')" class="state-btn" style="background:rgba(56, 189, 248, 0.15); color:var(--primary); border-color:var(--primary); margin-bottom: 20px; display:flex; justify-content:center; align-items:center; gap:8px;">📊 Consultar Cupos SIA</button>`;
         } else {
-            cuposContainer.innerHTML = '';
+            cuposBtnContainer.innerHTML = '';
         }
 
         const cNota = getCalcNota(id);
@@ -854,6 +872,7 @@
             let estadoStr = '';
             let notaStr = '';
             
+            // Modal adaptado para variables cualitativas y cuantitativas
             if (cNota === 'AP' || cNota === 'RE') {
                 estadoStr = cNota === 'AP' ? '<span style="color:var(--success)">Aprobada ✅</span>' : '<span style="color:var(--danger)">Reprobada ❌</span>';
                 notaStr = cNota === 'AP' ? 'Aprobado' : 'Desaprobado';
@@ -914,6 +933,7 @@
     }
 
     function updateNivNota(nivId, val) {
+        // Si el valor es Aprobado (AP) o Desaprobado (RE), se guarda como texto.
         if (val === 'AP' || val === 'RE') {
             nivelacionNotas[nivId] = val;
         } else {
@@ -939,6 +959,7 @@
             row.className = 'materia-row';
             
             let inputHtml = '';
+            // Condicional para verificar si es materia de inglés
             if (m.id.startsWith('niv_ing')) {
                 const nota = nivelacionNotas[m.id] || '';
                 inputHtml = `
