@@ -480,7 +480,7 @@
     // ==========================================
     // CUPOS Y GRUPOS EN TIEMPO REAL (SIA)
     // ==========================================
-    const SIA_API_BASE = 'https://sia.gabotachak.dev/v1';
+    const SIA_API_BASE = 'https://sia.gabotachak.dev';
     const SIA_CAMPUS = '1101';   // Sede Bogotá
     const SIA_PROGRAM = '2549';  // Ingeniería Química
     const SIA_FACULTY = '2055';  // Facultad de Ingeniería
@@ -491,14 +491,7 @@
     // sia.gabotachak.dev no envía cabeceras CORS, así que el navegador bloquea la
     // petición directa ("CORS Missing Allow Origin"). Por eso se usa tu propio proxy
     // desplegado en Railway (servicio "proxy-sia") como primera opción.
-    //
-    // SUPUESTO A VERIFICAR: asumo que tu proxy es un espejo transparente, es decir que
-    // acepta exactamente el mismo path/query que la API real, solo cambiando el dominio.
-    // Ejemplo esperado:
-    //   https://proxy-sia-production.up.railway.app/v1/campuses/1101/programs/2549/courses/2015735?faculty=2055&level=pregrado&max_age=3600
-    // Si tu proxy funciona distinto (por ejemplo con un parámetro ?url=...), avísame y
-    // ajusto esta línea.
-    const SIA_OWN_PROXY_BASE = 'https://proxy-sia-production.up.railway.app/v1';
+    const SIA_OWN_PROXY_BASE = 'https://proxy-sia-production.up.railway.app/api/sia';
 
     // Respaldo público gratuito por si tu proxy propio no responde (sin registro, pero
     // puede fallar o ir lento al ser un servicio de terceros).
@@ -659,7 +652,8 @@
         `;
         startSiaTimer();
 
-        const path = `/campuses/${SIA_CAMPUS}/programs/${SIA_PROGRAM}/courses/${courseId}?faculty=${SIA_FACULTY}&level=pregrado&max_age=3600`;
+        // Ruta corregida para consumir directamente el ID en la API comunitaria
+        const path = `/${courseId}?faculty=${SIA_FACULTY}&level=pregrado&max_age=3600`;
         const targetUrl = `${SIA_API_BASE}${path}`;
 
         const endpoints = [
