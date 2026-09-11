@@ -632,14 +632,19 @@
         
         startSiaTimer();
 
+        // URL original de los datos
         const targetUrl = `${SIA_API_BASE}/campuses/${SIA_CAMPUS}/programs/${SIA_PROGRAM}/courses/${courseId}?faculty=${SIA_FACULTY}&level=pregrado&max_age=3600`;
         const encodedUrl = encodeURIComponent(targetUrl);
 
-        // Se han eliminado los proxies caídos y se han añadido alternativas funcionales en 2024
+        // AQUÍ SE CONFIGURA TU NUEVO PROXY EN RAILWAY COMO OPCIÓN PRINCIPAL
         const endpoints = [
+            // Intento 1: Llamada a tu proxy pasándole el courseId (si tu código de Node lo maneja así)
+            { url: `https://proxy-sia-production.up.railway.app/api/sia?courseId=${courseId}`, type: 'direct' },
+            // Intento 2: Llamada a tu proxy pasándole la URL destino completa (muy común en proxies)
+            { url: `https://proxy-sia-production.up.railway.app/api/sia?url=${encodedUrl}`, type: 'direct' },
+            // Intentos de respaldo: por si tu proxy alguna vez se cae o se reinicia
             { url: `https://api.allorigins.win/raw?url=${encodedUrl}`, type: 'direct' },
             { url: `https://corsproxy.io/?${encodedUrl}`, type: 'direct' },
-            { url: `https://api.allorigins.win/get?url=${encodedUrl}`, type: 'allorigins' },
             { url: targetUrl, type: 'direct' }
         ];
 
