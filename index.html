@@ -217,6 +217,8 @@
             <button class="close-btn" onclick="closeStatusModal()">&times;</button>
         </div>
         
+        <div id="sia-cupos-btn-container"></div>
+
         <div id="calc-message" style="display: none;" class="calc-lock-msg"></div>
 
         <div id="manual-controls">
@@ -230,7 +232,7 @@
     </div>
 </div>
 
-<!-- MODAL CUPOS Y GRUPOS EN TIEMPO REAL (SIA) - Vista Agrupaciones -->
+<!-- MODAL CUPOS Y GRUPOS EN TIEMPO REAL (SIA) -->
 <div class="modal-overlay" id="cupos-modal">
     <div class="modal-content" style="max-width: 460px; max-height: 85vh; overflow-y: auto;">
         <div class="modal-header">
@@ -258,19 +260,19 @@
     }
 
     // ==========================================
-    // DATOS DE LA MALLA
+    // DATOS DE LA MALLA (Con códigos SIA mapeados)
     // ==========================================
     const data = [
-        { sem: 1, mat: [{ id: "PQ", n: "Principios de Química", c: 3, r: [], cat: "Fundamentación" }, { id: "LTB", n: "Lab. Técnicas Básicas", c: 3, r: [], cat: "Fundamentación" }, { id: "CD", n: "Cálculo Diferencial", c: 4, r: [], cat: "Fundamentación" }, { id: "OHI", n: "Opt. Herramientas Ing.", c: 3, r: [], cat: "Fundamentación" }, { id: "IIQ", n: "Intro. Ing. Química", c: 3, r: [], cat: "Disciplinar" }] },
-        { sem: 2, mat: [{ id: "PAQ", n: "Principios Análisis Q.", c: 3, r: ["PQ"], cat: "Fundamentación" }, { id: "AL", n: "Álgebra Lineal", c: 4, r: ["CD"], cat: "Fundamentación" }, { id: "CI", n: "Cálculo Integral", c: 4, r: ["CD"], cat: "Fundamentación" }, { id: "FM", n: "Fund. de Mecánica", c: 4, r: ["CD"], cat: "Fundamentación" }, { id: "BM", n: "Balance de Materia", c: 3, r: [], cat: "Disciplinar" }] },
-        { sem: 3, mat: [{ id: "LPAQ", n: "Lab. Princ. Análisis", c: 3, r: ["PQ"], cat: "Fundamentación" }, { id: "BIO", n: "Biología Molecular", c: 3, r: [], cat: "Fundamentación" }, { id: "CVV", n: "Cálculo Varias Var.", c: 4, r: ["AL", "CI"], cat: "Fundamentación" }, { id: "FEM", n: "Fund. Elec. y Magnetismo", c: 4, r: ["CI", "FM"], cat: "Fundamentación" }, { id: "TERM", n: "Termodinámica", c: 3, r: ["BM"], cat: "Disciplinar" }, { id: "L1", n: "Libre Elección 1", c: 3, r: [], cat: "Libre" }] },
-        { sem: 4, mat: [{ id: "QO", n: "Química Orgánica", c: 3, r: ["PQ"], cat: "Fundamentación" }, { id: "PE", n: "Probabilidad y Est.", c: 3, r: ["CD"], cat: "Fundamentación" }, { id: "ED", n: "Ecuaciones Diferenciales", c: 4, r: ["AL", "CI"], cat: "Fundamentación" }, { id: "FLUI", n: "Fluidos", c: 3, r: ["FM", "TERM"], cat: "Disciplinar" }, { id: "T1", n: "Taller 1", c: 1, r: ["CVV", "TERM"], cat: "Disciplinar" }, { id: "TQ", n: "Termodinámica Química", c: 3, r: ["CVV", "TERM"], cat: "Disciplinar" }] },
-        { sem: 5, mat: [{ id: "QO2", n: "Química Orgánica II", c: 3, r: ["PQ"], cat: "Fundamentación" }, { id: "MN", n: "Métodos Numéricos", c: 3, r: ["ED"], cat: "Fundamentación" }, { id: "TC", n: "Transf. Calor", c: 4, r: ["TERM", "ED"], cat: "Disciplinar" }, { id: "MS", n: "Manejo de Sólidos", c: 3, r: ["FLUI"], cat: "Disciplinar" }, { id: "BE", n: "Balance Energía y Equil.", c: 3, r: ["TQ"], cat: "Disciplinar" }, { id: "L2", n: "Libre Elección 2", c: 3, r: [], cat: "Libre" }] },
-        { sem: 6, mat: [{ id: "LQO", n: "Lab. Química Orgánica", c: 2, r: ["PQ"], cat: "Fundamentación" }, { id: "IE", n: "Ingeniería Económica", c: 3, r: ["CI"], cat: "Fundamentación" }, { id: "TM", n: "Transf. Masa", c: 3, r: ["ED"], cat: "Disciplinar" }, { id: "T2", n: "Taller 2", c: 1, r: ["ED"], cat: "Disciplinar" }, { id: "LPT", n: "Lab. Prop. Termodinámicas", c: 3, r: ["BE"], cat: "Disciplinar" }, { id: "OTE", n: "Opt. Termodinámica", c: 3, r: ["BE"], cat: "Disciplinar" }] },
-        { sem: 7, mat: [{ id: "OEA", n: "Opt. Econ-Admin", c: 3, r: [], cat: "Fundamentación" }, { id: "GP", n: "Gerencia Proyectos", c: 3, r: ["IE"], cat: "Fundamentación" }, { id: "OSEP", n: "Operaciones Separación", c: 3, r: ["TM", "BE"], cat: "Disciplinar" }, { id: "LFC", n: "Lab. Fluidos y Calor", c: 3, r: ["TC"], cat: "Disciplinar" }, { id: "IRQ", n: "Ing. Reacciones Quím.", c: 3, r: ["BE"], cat: "Disciplinar" }] },
-        { sem: 8, mat: [{ id: "OMA", n: "Optativa Materiales", c: 3, r: ["CRED_108"], cat: "Disciplinar" }, { id: "CTRL", n: "Control de Procesos", c: 3, r: ["MN", "IRQ"], cat: "Disciplinar" }, { id: "LSR", n: "Lab. Sep/Reac/Contr", c: 3, r: ["OSEP", "CTRL"], cat: "Disciplinar" }, { id: "OPQ", n: "Opt. Proc. Químicos", c: 3, r: ["TM", "IRQ"], cat: "Disciplinar" }, { id: "DPQ", n: "Diseño Proc. Químicos", c: 3, r: ["BE"], cat: "Disciplinar" }] },
-        { sem: 9, mat: [{ id: "TPI", n: "Taller Proy. Interdis.", c: 3, r: ["DISC_53"], cat: "Disciplinar" }, { id: "DPE", n: "Diseño Plantas y Equipos", c: 3, r: ["OSEP", "DPQ"], cat: "Disciplinar" }, { id: "IPRO", n: "Ingeniería Procesos", c: 3, r: ["DPQ"], cat: "Disciplinar" }, { id: "L3", n: "Libre Elección 3", c: 3, r: [], cat: "Libre" }] },
-        { sem: 10, mat: [{ id: "TG", n: "Trabajo de Grado", c: 6, r: ["DISC_60"], cat: "Disciplinar" }, { id: "L4", n: "Libre Elección 4", c: 4, r: [], cat: "Libre" }] }
+        { sem: 1, mat: [{ id: "PQ", siaId: "1000024", n: "Principios de Química", c: 3, r: [], cat: "Fundamentación" }, { id: "LTB", siaId: "1000025", n: "Lab. Técnicas Básicas", c: 3, r: [], cat: "Fundamentación" }, { id: "CD", siaId: "1000004", n: "Cálculo Diferencial", c: 4, r: [], cat: "Fundamentación" }, { id: "OHI", siaId: "", n: "Opt. Herramientas Ing.", c: 3, r: [], cat: "Fundamentación" }, { id: "IIQ", siaId: "2015718", n: "Intro. Ing. Química", c: 3, r: [], cat: "Disciplinar" }] },
+        { sem: 2, mat: [{ id: "PAQ", siaId: "1000026", n: "Principios Análisis Q.", c: 3, r: ["PQ"], cat: "Fundamentación" }, { id: "AL", siaId: "1000003", n: "Álgebra Lineal", c: 4, r: ["CD"], cat: "Fundamentación" }, { id: "CI", siaId: "1000005", n: "Cálculo Integral", c: 4, r: ["CD"], cat: "Fundamentación" }, { id: "FM", siaId: "1000019", n: "Fund. de Mecánica", c: 4, r: ["CD"], cat: "Fundamentación" }, { id: "BM", siaId: "2015708", n: "Balance de Materia", c: 3, r: [], cat: "Disciplinar" }] },
+        { sem: 3, mat: [{ id: "LPAQ", siaId: "1000027", n: "Lab. Princ. Análisis", c: 3, r: ["PQ"], cat: "Fundamentación" }, { id: "BIO", siaId: "1000025b", n: "Biología Molecular", c: 3, r: [], cat: "Fundamentación" }, { id: "CVV", siaId: "1000006", n: "Cálculo Varias Var.", c: 4, r: ["AL", "CI"], cat: "Fundamentación" }, { id: "FEM", siaId: "1000017", n: "Fund. Elec. y Magnetismo", c: 4, r: ["CI", "FM"], cat: "Fundamentación" }, { id: "TERM", siaId: "2015741", n: "Termodinámica", c: 3, r: ["BM"], cat: "Disciplinar" }, { id: "L1", siaId: "", n: "Libre Elección 1", c: 3, r: [], cat: "Libre" }] },
+        { sem: 4, mat: [{ id: "QO", siaId: "1000030", n: "Química Orgánica", c: 3, r: ["PQ"], cat: "Fundamentación" }, { id: "PE", siaId: "1000013", n: "Probabilidad y Est.", c: 3, r: ["CD"], cat: "Fundamentación" }, { id: "ED", siaId: "1000007", n: "Ecuaciones Diferenciales", c: 4, r: ["AL", "CI"], cat: "Fundamentación" }, { id: "FLUI", siaId: "2015714", n: "Fluidos", c: 3, r: ["FM", "TERM"], cat: "Disciplinar" }, { id: "T1", siaId: "2015735", n: "Taller 1", c: 1, r: ["CVV", "TERM"], cat: "Disciplinar" }, { id: "TQ", siaId: "2015740", n: "Termodinámica Química", c: 3, r: ["CVV", "TERM"], cat: "Disciplinar" }] },
+        { sem: 5, mat: [{ id: "QO2", siaId: "", n: "Química Orgánica II", c: 3, r: ["PQ"], cat: "Fundamentación" }, { id: "MN", siaId: "2015970", n: "Métodos Numéricos", c: 3, r: ["ED"], cat: "Fundamentación" }, { id: "TC", siaId: "2015743", n: "Transf. Calor", c: 4, r: ["TERM", "ED"], cat: "Disciplinar" }, { id: "MS", siaId: "2015726", n: "Manejo de Sólidos", c: 3, r: ["FLUI"], cat: "Disciplinar" }, { id: "BE", siaId: "2015707", n: "Balance Energía y Equil.", c: 3, r: ["TQ"], cat: "Disciplinar" }, { id: "L2", siaId: "", n: "Libre Elección 2", c: 3, r: [], cat: "Libre" }] },
+        { sem: 6, mat: [{ id: "LQO", siaId: "1000010", n: "Lab. Química Orgánica", c: 2, r: ["PQ"], cat: "Fundamentación" }, { id: "IE", siaId: "2015703", n: "Ingeniería Económica", c: 3, r: ["CI"], cat: "Fundamentación" }, { id: "TM", siaId: "2015744", n: "Transf. Masa", c: 3, r: ["ED"], cat: "Disciplinar" }, { id: "T2", siaId: "2015736", n: "Taller 2", c: 1, r: ["ED"], cat: "Disciplinar" }, { id: "LPT", siaId: "2015721", n: "Lab. Prop. Termodinámicas", c: 3, r: ["BE"], cat: "Disciplinar" }, { id: "OTE", siaId: "", n: "Opt. Termodinámica", c: 3, r: ["BE"], cat: "Disciplinar" }] },
+        { sem: 7, mat: [{ id: "OEA", siaId: "", n: "Opt. Econ-Admin", c: 3, r: [], cat: "Fundamentación" }, { id: "GP", siaId: "2015702", n: "Gerencia Proyectos", c: 3, r: ["IE"], cat: "Fundamentación" }, { id: "OSEP", siaId: "2015731", n: "Operaciones Separación", c: 3, r: ["TM", "BE"], cat: "Disciplinar" }, { id: "LFC", siaId: "2015719", n: "Lab. Fluidos y Calor", c: 3, r: ["TC"], cat: "Disciplinar" }, { id: "IRQ", siaId: "2015716", n: "Ing. Reacciones Quím.", c: 3, r: ["BE"], cat: "Disciplinar" }] },
+        { sem: 8, mat: [{ id: "OMA", siaId: "", n: "Optativa Materiales", c: 3, r: ["CRED_108"], cat: "Disciplinar" }, { id: "CTRL", siaId: "2015710", n: "Control de Procesos", c: 3, r: ["MN", "IRQ"], cat: "Disciplinar" }, { id: "LSR", siaId: "2015720", n: "Lab. Sep/Reac/Contr", c: 3, r: ["OSEP", "CTRL"], cat: "Disciplinar" }, { id: "OPQ", siaId: "", n: "Opt. Proc. Químicos", c: 3, r: ["TM", "IRQ"], cat: "Disciplinar" }, { id: "DPQ", siaId: "2015713", n: "Diseño Proc. Químicos", c: 3, r: ["BE"], cat: "Disciplinar" }] },
+        { sem: 9, mat: [{ id: "TPI", siaId: "2015737", n: "Taller Proy. Interdis.", c: 3, r: ["DISC_53"], cat: "Disciplinar" }, { id: "DPE", siaId: "2015712", n: "Diseño Plantas y Equipos", c: 3, r: ["OSEP", "DPQ"], cat: "Disciplinar" }, { id: "IPRO", siaId: "2015715", n: "Ingeniería Procesos", c: 3, r: ["DPQ"], cat: "Disciplinar" }, { id: "L3", siaId: "", n: "Libre Elección 3", c: 3, r: [], cat: "Libre" }] },
+        { sem: 10, mat: [{ id: "TG", siaId: "", n: "Trabajo de Grado", c: 6, r: ["DISC_60"], cat: "Disciplinar" }, { id: "L4", siaId: "", n: "Libre Elección 4", c: 4, r: [], cat: "Libre" }] }
     ];
 
     // ==========================================
@@ -428,64 +430,52 @@
             header.innerText = agr.title;
             card.appendChild(header);
 
-            if (agr.isText) {
-                const textDiv = document.createElement('div');
-                textDiv.style.padding = '20px';
-                textDiv.style.fontSize = '0.85rem';
-                textDiv.style.lineHeight = '1.5';
-                textDiv.style.color = 'var(--text-dim)';
-                textDiv.style.flexGrow = '1';
-                textDiv.innerHTML = agr.text;
-                card.appendChild(textDiv);
-            } else {
-                const table = document.createElement('table');
-                table.className = 'agr-table';
-                table.innerHTML = `
-                    <thead>
-                        <tr>
-                            <th>CÓDIGO</th>
-                            <th>NOMBRE DE LA ASIGNATURA</th>
-                            <th style="text-align:center;">CRÉD.</th>
+            const table = document.createElement('table');
+            table.className = 'agr-table';
+            table.innerHTML = `
+                <thead>
+                    <tr>
+                        <th>CÓDIGO</th>
+                        <th>NOMBRE DE LA ASIGNATURA</th>
+                        <th style="text-align:center;">CRÉD.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${agr.materias.map(m => `
+                        <tr class="${m.ob ? 'obligatoria' : ''}" style="cursor:pointer;" onclick="openCuposModal('${m.id}')" title="Ver cupos y grupos en tiempo real (SIA)">
+                            <td>${m.id}</td>
+                            <td>${m.n} <span style="opacity:0.5; font-size:0.75rem;">📊</span></td>
+                            <td style="text-align:center;">${m.c}</td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        ${agr.materias.map(m => `
-                            <tr class="${m.ob ? 'obligatoria' : ''}" style="cursor:pointer;" onclick="openCuposModal('${m.id}')" title="Ver cupos y grupos en tiempo real (SIA)">
-                                <td>${m.id}</td>
-                                <td>${m.n} <span style="opacity:0.5; font-size:0.75rem;">📊</span></td>
-                                <td style="text-align:center;">${m.c}</td>
-                            </tr>
-                        `).join('')}
-                    </tbody>
-                `;
-                card.appendChild(table);
+                    `).join('')}
+                </tbody>
+            `;
+            card.appendChild(table);
 
-                const footer = document.createElement('div');
-                footer.className = 'agr-footer';
-                footer.innerHTML = `
-                    CRÉDITOS: <span class="req-txt">EXIGIDOS: ${agr.req}</span> | 
-                    <span class="obl-txt">OBLIGATORIOS: ${agr.obl}</span> | 
-                    <span class="opt-txt">OPTATIVAS: ${agr.opt}</span>
-                `;
-                card.appendChild(footer);
-            }
+            const footer = document.createElement('div');
+            footer.className = 'agr-footer';
+            footer.innerHTML = `
+                CRÉDITOS: <span class="req-txt">EXIGIDOS: ${agr.req}</span> | 
+                <span class="obl-txt">OBLIGATORIOS: ${agr.obl}</span> | 
+                <span class="opt-txt">OPTATIVAS: ${agr.opt}</span>
+            `;
+            card.appendChild(footer);
 
             container.appendChild(card);
         });
     }
 
     // ==========================================
-    // CONEXIÓN RÁPIDA Y OPTIMIZADA CON EL SIA
+    // CONEXIÓN DIRECTA Y PROCESAMIENTO DE JSON DEL SIA
     // ==========================================
     const SIA_API_BASE = 'https://sia.gabotachak.dev/v1';
-    const SIA_CAMPUS = '1101';   // Sede Bogotá
-    const SIA_PROGRAM = '2549';  // Ingeniería Química
-    const SIA_FACULTY = '2055';  // Facultad de Ingeniería
-    const SIA_CACHE_MS = 5 * 60 * 1000; // Caché: 5 min
+    const SIA_CAMPUS = '1101';
+    const SIA_PROGRAM = '2549';
+    const SIA_FACULTY = '2055';
+    const SIA_CACHE_MS = 5 * 60 * 1000;
     const siaCache = {};
 
     let siaTimerInterval = null;
-
     const SIA_DIAS = { 0: 'Domingo', 1: 'Lunes', 2: 'Martes', 3: 'Miércoles', 4: 'Jueves', 5: 'Viernes', 6: 'Sábado', 7: 'Domingo' };
     
     function siaFormatDia(weekday) {
@@ -503,9 +493,13 @@
         return `hace ${Math.floor(hrs / 24)} d`;
     }
 
-    function getAgrupacionMateriaInfo(id) {
+    function getSiaMateriaInfo(id) {
+        // Busca si el id está en la malla (tiene nombre) o en las agrupaciones
+        for (const s of data) {
+            const m = s.mat.find(x => x.id === id || x.siaId === id);
+            if (m) return { n: m.n, id: m.siaId || id };
+        }
         for (const agr of agrupacionesInfo) {
-            if (agr.isText) continue;
             const m = agr.materias.find(x => x.id === id);
             if (m) return m;
         }
@@ -517,10 +511,7 @@
         if(siaTimerInterval) clearInterval(siaTimerInterval);
         siaTimerInterval = setInterval(() => {
             let el = document.getElementById('sia-timer-display');
-            if(el) {
-                let diff = (Date.now() - startTime) / 1000;
-                el.innerText = diff.toFixed(1) + 's';
-            }
+            if(el) el.innerText = ((Date.now() - startTime) / 1000).toFixed(1) + 's';
         }, 100);
     }
 
@@ -541,6 +532,7 @@
         `;
     }
 
+    // Procesa exactamente la estructura JSON de la imagen
     function renderCuposContent(apiData) {
         const body = document.getElementById('cupos-modal-body');
         const sections = apiData.sections || [];
@@ -555,20 +547,26 @@
         }
 
         const groupsHtml = sections.map(s => {
+            // Estructura extraída de s.seats
             const available = s.seats ? s.seats.available : null;
             const lleno = available === 0;
             const cupoTxt = available === null || available === undefined
                 ? 'Sin datos'
                 : (lleno ? 'LLENO' : `${available} cupo${available === 1 ? '' : 's'}`);
+            
+            // Estructura extraída de s.schedule (Array)
             const scheduleTxt = (s.schedule || [])
                 .map(h => `${siaFormatDia(h.weekday)} ${h.start_time}–${h.end_time}`)
                 .join(', ') || 'Sin horario registrado';
+            
             const roomTxt = (s.schedule || [])
                 .map(h => h.room)
                 .filter((v, i, a) => v && a.indexOf(v) === i)
                 .join(', ');
+            
             const updatedTxt = s.seats && s.seats.measured_at ? siaTimeAgo(s.seats.measured_at) : '';
 
+            // Estructura base
             return `
                 <div class="grupo-item" style="border-left-color: ${lleno ? 'var(--danger)' : 'var(--primary)'};">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
@@ -597,8 +595,7 @@
         `;
     }
 
-    // El timeout ahora es de 15 segundos para darle margen de tiempo de respuesta
-    async function fetchWithTimeout(url, timeoutMs = 15000) {
+    async function fetchWithTimeout(url, timeoutMs = 10000) {
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
         try {
@@ -612,11 +609,17 @@
     }
 
     async function openCuposModal(courseId) {
-        const info = getAgrupacionMateriaInfo(courseId);
+        const info = getSiaMateriaInfo(courseId);
+        // Si el id viene de la malla (ej. 'PQ'), usamos su siaId (ej. '1000024')
+        const finalSiaId = (info && info.id && !isNaN(info.id)) ? info.id : courseId;
+        
         document.getElementById('cupos-modal-title').innerText = info ? info.n : `Materia ${courseId}`;
+        
+        // Cerramos el de status si venimos de la Malla y abrimos el de cupos
+        document.getElementById('status-modal').classList.remove('active');
         document.getElementById('cupos-modal').classList.add('active');
 
-        const cached = siaCache[courseId];
+        const cached = siaCache[finalSiaId];
         if (cached && (Date.now() - cached.ts) < SIA_CACHE_MS) {
             renderCuposContent(cached.data);
             return;
@@ -632,32 +635,25 @@
         
         startSiaTimer();
 
-        // URL original de los datos
-        const targetUrl = `${SIA_API_BASE}/campuses/${SIA_CAMPUS}/programs/${SIA_PROGRAM}/courses/${courseId}?faculty=${SIA_FACULTY}&level=pregrado&max_age=3600`;
+        // LLAMADA DIRECTA PRIORIZADA (Basado en la ruta que funciona en la imagen)
+        const targetUrl = `${SIA_API_BASE}/campuses/${SIA_CAMPUS}/programs/${SIA_PROGRAM}/courses/${finalSiaId}?faculty=${SIA_FACULTY}&level=pregrado&max_age=3600`;
         const encodedUrl = encodeURIComponent(targetUrl);
 
-        // AQUÍ SE CONFIGURA TU NUEVO PROXY EN RAILWAY COMO OPCIÓN PRINCIPAL
         const endpoints = [
-            // Intento 1: Llamada a tu proxy pasándole el courseId (si tu código de Node lo maneja así)
-            { url: `https://proxy-sia-production.up.railway.app/api/sia?courseId=${courseId}`, type: 'direct' },
-            // Intento 2: Llamada a tu proxy pasándole la URL destino completa (muy común en proxies)
-            { url: `https://proxy-sia-production.up.railway.app/api/sia?url=${encodedUrl}`, type: 'direct' },
-            // Intentos de respaldo: por si tu proxy alguna vez se cae o se reinicia
+            { url: targetUrl, type: 'direct' },
             { url: `https://api.allorigins.win/raw?url=${encodedUrl}`, type: 'direct' },
-            { url: `https://corsproxy.io/?${encodedUrl}`, type: 'direct' },
-            { url: targetUrl, type: 'direct' }
+            { url: `https://corsproxy.io/?${encodedUrl}`, type: 'direct' }
         ];
 
         for (let i = 0; i < endpoints.length; i++) {
             const ep = endpoints[i];
             let retryEl = document.getElementById('sia-retry-msg');
             if (retryEl && i > 0) {
-                retryEl.innerText = `Reintentando vía servidor alternativo (${i + 1}/${endpoints.length})...`;
+                retryEl.innerText = `Reintentando vía servidor alternativo (${i}/${endpoints.length - 1})...`;
             }
 
             try {
-                // Ahora espera 15 segundos para no cancelar solicitudes lentas prematuramente
-                const res = await fetchWithTimeout(ep.url, 15000);
+                const res = await fetchWithTimeout(ep.url, 10000);
                 if (!res.ok) continue;
 
                 let data = null;
@@ -673,12 +669,10 @@
                 if (!data || !Array.isArray(data.sections)) continue;
 
                 stopSiaTimer();
-                siaCache[courseId] = { data, ts: Date.now() };
+                siaCache[finalSiaId] = { data, ts: Date.now() };
                 renderCuposContent(data);
                 return;
-            } catch (err) {
-                // Intenta con el siguiente endpoint de la lista si falla o se agota el tiempo
-            }
+            } catch (err) {}
         }
 
         stopSiaTimer();
@@ -840,6 +834,14 @@
         currentSubjId = id;
         const m = getMatInfo(id);
         document.getElementById('status-title').innerText = m.n;
+
+        // Inyectar el botón de Cupos SIA en la Malla
+        const cuposContainer = document.getElementById('sia-cupos-btn-container');
+        if (m.siaId && m.siaId.trim() !== '') {
+            cuposContainer.innerHTML = `<button onclick="openCuposModal('${m.siaId}')" class="state-btn" style="background:rgba(56, 189, 248, 0.15); color:var(--primary); border-color:var(--primary); margin-bottom: 20px; display:flex; justify-content:center; align-items:center; gap:8px;">📊 Consultar Cupos SIA</button>`;
+        } else {
+            cuposContainer.innerHTML = '';
+        }
 
         const cNota = getCalcNota(id);
         const manualControls = document.getElementById('manual-controls');
