@@ -256,6 +256,43 @@
 .mm-sep { height: 1px; background: var(--border); margin: 5px 4px; }
 .mm-note { padding: 8px 12px; font-size: 0.75rem; color: var(--text-dim); max-width: 200px; line-height: 1.4; }
 .hint { text-align: center; color: var(--text-dim); font-family: var(--mono); font-size: 0.7rem; margin-top: 12px; }
+
+/* ===== CONEXIONES ENTRE MATERIAS ===== */
+.malla-wrapper { position: relative; }
+.materia { z-index: 1; }
+.links-svg { position: absolute; top: 0; left: 0; pointer-events: none; z-index: 0; overflow: visible; }
+.malla-wrapper.links-off .links-svg { display: none; }
+.status-locked-total { filter: grayscale(0.8); }
+
+.lk path { fill: none; stroke-linecap: round; transition: opacity 0.3s, stroke-width 0.3s; }
+.lk.off .lk-track { stroke: var(--text-dim); stroke-width: 1.3; stroke-dasharray: 3 7; opacity: 0.3; }
+.lk.off .lk-end { fill: var(--text-dim); opacity: 0.3; }
+.lk.done .lk-track { stroke: var(--success); stroke-width: 1.6; opacity: 0.35; }
+.lk.done .lk-end { fill: var(--success); opacity: 0.5; }
+.lk.on .lk-track { stroke: var(--primary); stroke-width: 1.4; opacity: 0.25; }
+.lk.on .lk-end { fill: var(--primary); animation: endPulse 1.8s ease-in-out infinite; }
+@keyframes endPulse { 50% { opacity: 0.35; } }
+.lk-glow { stroke: var(--primary); stroke-width: 2.6; stroke-dasharray: 1; filter: drop-shadow(0 0 4px var(--primary)); }
+.lk-glow.fresh { animation: chargeIn 1.1s var(--ease) both; }
+@keyframes chargeIn { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+.lk-spark { fill: #fff; stroke: var(--primary); stroke-width: 1.5; filter: drop-shadow(0 0 5px var(--primary)) drop-shadow(0 0 9px var(--primary)); }
+
+.malla-wrapper.has-focus .lk { opacity: 0.22; }
+.malla-wrapper.has-focus .lk.hl { opacity: 1; }
+.lk.hl .lk-track { stroke-width: 2.4; opacity: 0.95; }
+.lk.off.hl .lk-track { stroke: var(--accent); }
+.lk.off.hl .lk-end { fill: var(--accent); opacity: 1; }
+.materia.rel { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft), var(--glow); }
+.materia.rel.status-locked-total { opacity: 0.9; }
+
+.materia.just-unlocked { animation: unlock 1.3s var(--spring) both, breathe 3.2s ease-in-out 1.3s infinite; }
+@keyframes unlock {
+    0% { transform: scale(0.92); box-shadow: 0 0 0 0 var(--primary); }
+    40% { transform: scale(1.06); box-shadow: 0 0 0 10px transparent, 0 0 30px var(--primary); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 transparent; }
+}
+.btn-links { color: var(--primary); border-color: var(--primary); margin-left: 8px; }
+.btn-links:hover { background: var(--primary); color: var(--on-primary); }
         
     </style>
 <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme_iq') || 'dark');</script>
@@ -294,6 +331,7 @@
         <div style="text-align: center;">
             <button class="btn-reset" onclick="resetMalla()">Reiniciar Estado Manual</button>
         </div>
+        <button class="btn-reset btn-links" id="links-toggle" onclick="toggleLinks()">🔗 Conexiones: ON</button>
         <div class="hint">clic en una materia = aprobada · ⋮ para reprobada, pendiente y cupos</div>
 
         <div class="malla-wrapper" id="grid"></div>
@@ -424,6 +462,7 @@ function switchTab(tab) {
     document.getElementById(tab + '-view').classList.add('active');
     document.getElementById('tab-' + tab).classList.add('active');
     if (tab === 'horario') renderHorario();
+    if (tab === 'malla') requestAnimationFrame(drawLinks);
 }
 
     // ==========================================
@@ -994,6 +1033,7 @@ function renderMalla() {
             else sClass = 'status-locked-total';
 
             card.className = `materia ${sClass}`;
+            card.dataset.id = m.id;
             card.onclick = () => handleCardClick(card, m.id, prog.status, state);
             const failText = state === 'failed' ? `<br><small style="color:var(--danger)">Reprobada</small>` : '';
 
@@ -1004,9 +1044,11 @@ function renderMalla() {
             `;
             col.appendChild(card);
         });
+        requestAnimationFrame(drawLinks);
         grid.appendChild(col);
     });
 }
+    
 
 // Clic en la tarjeta: alterna Aprobada <-> Pendiente
 function handleCardClick(card, id, progStatus, state) {
@@ -1502,10 +1544,106 @@ function toggleTheme() {
 function openCoffeeModal() { document.getElementById('coffee-modal').classList.add('active'); }
 function closeCoffeeModal() { document.getElementById('coffee-modal').classList.remove('active'); }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCoffeeModal(); });
+
+// ==========================================
+// CONEXIONES ENTRE PRERREQUISITOS
+// ==========================================
+let _prevOn = null, _prevReady = null;
+let linksOn = localStorage.getItem('links_iq') !== '0';
+
+function linkReqs(m) {
+    const r = [...(m.r || [])];
+    if (m.id === 'CD' && hasNivelacion && !r.includes('niv_mat')) r.push('niv_mat');
+    return r.filter(x => !/^(CRED|DISC)_/.test(x));
+}
+
+function drawLinks() {
+    const grid = document.getElementById('grid');
+    if (!grid || grid.offsetParent === null) return;            // pestaña oculta
+    grid.querySelectorAll('.links-svg').forEach(s => s.remove());
+    setFocus.cur = undefined;
+
+    const cards = {};
+    grid.querySelectorAll('.materia[data-id]').forEach(c => cards[c.dataset.id] = c);
+    const on = new Set(), ready = new Set();
+    let html = '';
+
+    Object.keys(cards).forEach(id => {
+        const m = getMatInfo(id); if (!m) return;
+        const st = getCombinedState(id);
+        if (!st && checkProgress(id).status === 'ready') ready.add(id);
+        const t = cards[id];
+        linkReqs(m).forEach(rid => {
+            const s = cards[rid]; if (!s) return;
+            const x1 = s.offsetLeft + s.offsetWidth, y1 = s.offsetTop + s.offsetHeight / 2;
+            const x2 = t.offsetLeft, y2 = t.offsetTop + t.offsetHeight / 2;
+            const dx = Math.max(40, (x2 - x1) * 0.5);
+            const d = `M${x1},${y1} C${x1 + dx},${y1} ${x2 - dx},${y2} ${x2},${y2}`;
+            const sa = getCombinedState(rid) === 'approved';
+            const cls = sa ? (st === 'approved' ? 'done' : 'on') : 'off';
+            const key = rid + '>' + id;
+            let extra = '';
+            if (cls === 'on') {
+                on.add(key);
+                const fresh = _prevOn && !_prevOn.has(key);
+                extra = `<path class="lk-glow ${fresh ? 'fresh' : ''}" d="${d}" pathLength="1"/>
+                         <circle class="lk-spark" r="3"><animateMotion dur="2.4s" repeatCount="indefinite" path="${d}"/></circle>`;
+            }
+            html += `<g class="lk ${cls}" data-from="${rid}" data-to="${id}">
+                        <path class="lk-track" d="${d}"/>${extra}
+                        <circle class="lk-end" cx="${x2}" cy="${y2}" r="3"/>
+                     </g>`;
+        });
+    });
+
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('class', 'links-svg');
+    svg.setAttribute('width', grid.scrollWidth);
+    svg.setAttribute('height', grid.scrollHeight);
+    svg.innerHTML = html;
+    grid.prepend(svg);
+
+    if (_prevReady) ready.forEach(id => { if (!_prevReady.has(id) && cards[id]) cards[id].classList.add('just-unlocked'); });
+    _prevOn = on; _prevReady = ready;
+}
+
+// Resaltar conexiones al pasar el cursor
+function setFocus(id) {
+    if (setFocus.cur === id) return;
+    setFocus.cur = id;
+    const grid = document.getElementById('grid');
+    grid.classList.toggle('has-focus', !!id);
+    const rel = new Set();
+    grid.querySelectorAll('.lk').forEach(g => {
+        const hit = id && (g.dataset.from === id || g.dataset.to === id);
+        g.classList.toggle('hl', !!hit);
+        if (hit) { rel.add(g.dataset.from); rel.add(g.dataset.to); }
+    });
+    grid.querySelectorAll('.materia').forEach(c => c.classList.toggle('rel', rel.has(c.dataset.id) && c.dataset.id !== id));
+}
+document.getElementById('grid').addEventListener('mouseover', e => { const c = e.target.closest('.materia'); setFocus(c ? c.dataset.id : null); });
+document.getElementById('grid').addEventListener('mouseleave', () => setFocus(null));
+
+// Botón ON/OFF
+function applyLinksToggle() {
+    document.getElementById('grid').classList.toggle('links-off', !linksOn);
+    const b = document.getElementById('links-toggle');
+    if (b) b.textContent = linksOn ? '🔗 Conexiones: ON' : '🔗 Conexiones: OFF';
+}
+function toggleLinks() {
+    linksOn = !linksOn;
+    try { localStorage.setItem('links_iq', linksOn ? '1' : '0'); } catch (e) {}
+    applyLinksToggle();
+}
+
+let _rz;
+window.addEventListener('resize', () => { clearTimeout(_rz); _rz = setTimeout(drawLinks, 150); });
+window.addEventListener('load', drawLinks);
     
     // ==========================================
     // INICIALIZACIÓN
     // ==========================================
+    applyLinksToggle();
     applyTheme(document.documentElement.getAttribute('data-theme'));
     renderMalla();
     renderCalculadora();
