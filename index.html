@@ -1065,9 +1065,9 @@ function renderMalla() {
             `;
             col.appendChild(card);
         });
-        requestAnimationFrame(drawLinks);
         grid.appendChild(col);
     });
+    requestAnimationFrame(drawLinks);
 }
     
 
@@ -1634,17 +1634,6 @@ function drawLinks() {
     };
     grid.prepend(mk('links-svg', back));     // líneas detrás de las tarjetas
     grid.append(mk('links-svg ports-svg', front));   // puertos encima
-
-    if (_prevReady) ready.forEach(id => { if (!_prevReady.has(id) && cards[id]) cards[id].classList.add('just-unlocked'); });
-    _prevOn = on; _prevReady = ready;
-}
-
-    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg.setAttribute('class', 'links-svg');
-    svg.setAttribute('width', grid.scrollWidth);
-    svg.setAttribute('height', grid.scrollHeight);
-    svg.innerHTML = html;
-    grid.prepend(svg);
 
     if (_prevReady) ready.forEach(id => { if (!_prevReady.has(id) && cards[id]) cards[id].classList.add('just-unlocked'); });
     _prevOn = on; _prevReady = ready;
