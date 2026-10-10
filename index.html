@@ -293,6 +293,27 @@
 }
 .btn-links { color: var(--primary); border-color: var(--primary); margin-left: 8px; }
 .btn-links:hover { background: var(--primary); color: var(--on-primary); }
+
+/* ===== AJUSTES CONEXIONES v2 ===== */
+.malla-wrapper { gap: 96px; padding-left: 12px; padding-right: 40px; }
+.ports-svg { z-index: 2; }
+.lk path { stroke-linejoin: round; }
+
+.lk-start { fill: var(--surface); stroke-width: 2; }
+.lk.off .lk-start { stroke: var(--text-dim); opacity: 0.55; }
+.lk.on .lk-start, .lk.done .lk-start { stroke: var(--success); }
+.lk-end { stroke: var(--surface); stroke-width: 1.5; }
+.lk.hl .lk-start { stroke: var(--accent); opacity: 1; }
+
+.lk.off .lk-track { opacity: 0.4; }
+.lk.on .lk-track { stroke-width: 1.8; opacity: 0.4; }
+.lk.done .lk-track { stroke-width: 2; opacity: 0.5; }
+.lk-glow { stroke-width: 3; }
+
+/* Las tarjetas bloqueadas quedan opacas para que las líneas no se transparenten */
+.status-locked-total { opacity: 1; }
+.status-locked-total > * { opacity: 0.5; }
+.materia.rel.status-locked-total > * { opacity: 1; }
         
     </style>
 <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme_iq') || 'dark');</script>
@@ -1557,28 +1578,36 @@ function linkReqs(m) {
     return r.filter(x => !/^(CRED|DISC)_/.test(x));
 }
 
+function posIn(el, root) {
+    let x = 0, y = 0, e = el;
+    while (e && e !== root) { x += e.offsetLeft; y += e.offsetTop; e = e.offsetParent; }
+    return { x, y };
+}
+
 function drawLinks() {
     const grid = document.getElementById('grid');
     if (!grid || grid.offsetParent === null) return;            // pestaña oculta
-    grid.querySelectorAll('.links-svg').forEach(s => s.remove());
+    grid.querySelectorAll('.links-svg, .ports-svg').forEach(s => s.remove());
     setFocus.cur = undefined;
 
     const cards = {};
     grid.querySelectorAll('.materia[data-id]').forEach(c => cards[c.dataset.id] = c);
     const on = new Set(), ready = new Set();
-    let html = '';
+    let back = '', front = '';
 
     Object.keys(cards).forEach(id => {
         const m = getMatInfo(id); if (!m) return;
         const st = getCombinedState(id);
         if (!st && checkProgress(id).status === 'ready') ready.add(id);
-        const t = cards[id];
+        const t = cards[id], tp = posIn(t, grid);
         linkReqs(m).forEach(rid => {
             const s = cards[rid]; if (!s) return;
-            const x1 = s.offsetLeft + s.offsetWidth, y1 = s.offsetTop + s.offsetHeight / 2;
-            const x2 = t.offsetLeft, y2 = t.offsetTop + t.offsetHeight / 2;
-            const dx = Math.max(40, (x2 - x1) * 0.5);
+            const sp = posIn(s, grid);
+            const x1 = sp.x + s.offsetWidth, y1 = sp.y + s.offsetHeight / 2;   // borde derecho del prerrequisito
+            const x2 = tp.x,                 y2 = tp.y + t.offsetHeight / 2;   // borde izquierdo de la materia que abre
+            const dx = Math.max(50, Math.abs(x2 - x1) * 0.45);
             const d = `M${x1},${y1} C${x1 + dx},${y1} ${x2 - dx},${y2} ${x2},${y2}`;
+
             const sa = getCombinedState(rid) === 'approved';
             const cls = sa ? (st === 'approved' ? 'done' : 'on') : 'off';
             const key = rid + '>' + id;
@@ -1587,14 +1616,28 @@ function drawLinks() {
                 on.add(key);
                 const fresh = _prevOn && !_prevOn.has(key);
                 extra = `<path class="lk-glow ${fresh ? 'fresh' : ''}" d="${d}" pathLength="1"/>
-                         <circle class="lk-spark" r="3"><animateMotion dur="2.4s" repeatCount="indefinite" path="${d}"/></circle>`;
+                         <circle class="lk-spark" r="3.5"><animateMotion dur="2.4s" repeatCount="indefinite" path="${d}"/></circle>`;
             }
-            html += `<g class="lk ${cls}" data-from="${rid}" data-to="${id}">
-                        <path class="lk-track" d="${d}"/>${extra}
-                        <circle class="lk-end" cx="${x2}" cy="${y2}" r="3"/>
-                     </g>`;
+            const attrs = `class="lk ${cls}" data-from="${rid}" data-to="${id}"`;
+            back  += `<g ${attrs}><path class="lk-track" d="${d}"/>${extra}</g>`;
+            front += `<g ${attrs}><circle class="lk-start" cx="${x1}" cy="${y1}" r="4"/><circle class="lk-end" cx="${x2}" cy="${y2}" r="4.5"/></g>`;
         });
     });
+
+    const mk = (cls, html) => {
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttribute('class', cls);
+        svg.setAttribute('width', grid.scrollWidth);
+        svg.setAttribute('height', grid.scrollHeight);
+        svg.innerHTML = html;
+        return svg;
+    };
+    grid.prepend(mk('links-svg', back));     // líneas detrás de las tarjetas
+    grid.append(mk('links-svg ports-svg', front));   // puertos encima
+
+    if (_prevReady) ready.forEach(id => { if (!_prevReady.has(id) && cards[id]) cards[id].classList.add('just-unlocked'); });
+    _prevOn = on; _prevReady = ready;
+}
 
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     svg.setAttribute('class', 'links-svg');
@@ -1639,6 +1682,10 @@ function toggleLinks() {
 let _rz;
 window.addEventListener('resize', () => { clearTimeout(_rz); _rz = setTimeout(drawLinks, 150); });
 window.addEventListener('load', drawLinks);
+if (window.ResizeObserver) {
+    let _ro;
+    new ResizeObserver(() => { clearTimeout(_ro); _ro = setTimeout(drawLinks, 120); }).observe(document.getElementById('grid'));
+}
     
     // ==========================================
     // INICIALIZACIÓN
