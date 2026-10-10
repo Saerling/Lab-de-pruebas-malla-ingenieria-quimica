@@ -330,6 +330,29 @@
 .no-title { font-family: var(--mono); font-weight: 700; font-size: 1.05rem; color: var(--danger); margin-top: 8px; }
 .no-sub { font-size: 0.78rem; color: var(--text-dim); margin-top: 6px; max-width: 280px; line-height: 1.45; }
 .mm-item.mm-off { opacity: 0.45; }
+
+/* ===== COLOR PROPIO POR CONEXIÓN ===== */
+:root { --lk-l: 64%; --lk-s: 72%; }
+[data-theme="light"] { --lk-l: 42%; --lk-s: 62%; }
+.lk { --lc: hsl(var(--h, 160) var(--lk-s) var(--lk-l)); }
+
+.lk .lk-track { stroke: var(--lc) !important; }
+.lk .lk-end, .lk .lk-spark { fill: var(--lc) !important; }
+.lk .lk-end { stroke: var(--surface) !important; }
+.lk .lk-start { stroke: var(--lc) !important; fill: var(--surface) !important; }
+.lk .lk-spark { fill: #fff !important; stroke: var(--lc) !important; filter: drop-shadow(0 0 5px var(--lc)) drop-shadow(0 0 9px var(--lc)); }
+.lk .lk-glow { stroke: var(--lc) !important; filter: drop-shadow(0 0 4px var(--lc)); }
+
+/* El estado ahora se lee por el estilo del trazo, no por el color */
+.lk.off .lk-track { stroke-width: 1.7; stroke-dasharray: 5 6; opacity: 0.5; }
+.lk.off .lk-end, .lk.off .lk-start { opacity: 0.6; }
+.lk.on .lk-track { stroke-width: 2.2; stroke-dasharray: none; opacity: 0.55; }
+.lk.on .lk-end, .lk.on .lk-start { opacity: 1; }
+.lk.done .lk-track { stroke-width: 2.4; stroke-dasharray: none; opacity: 0.9; }
+.lk.done .lk-end, .lk.done .lk-start { opacity: 1; }
+.lk.hl .lk-track { stroke-width: 3.2; opacity: 1; }
+.lk.hl .lk-start, .lk.hl .lk-end { opacity: 1; }
+.lk.off.hl .lk-track { stroke-dasharray: 5 6; }
     </style>
 <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme_iq') || 'dark');</script>
 </head>
@@ -1641,6 +1664,7 @@ function drawLinks() {
     const on = new Set(), ready = new Set();
     let back = '', front = '';
 
+    let li = 0;
     Object.keys(cards).forEach(id => {
         const m = getMatInfo(id); if (!m) return;
         const st = getCombinedState(id);
@@ -1664,7 +1688,8 @@ function drawLinks() {
                 extra = `<path class="lk-glow ${fresh ? 'fresh' : ''}" d="${d}" pathLength="1"/>
                          <circle class="lk-spark" r="3.5"><animateMotion dur="2.4s" repeatCount="indefinite" path="${d}"/></circle>`;
             }
-            const attrs = `class="lk ${cls}" data-from="${rid}" data-to="${id}"`;
+            const hue = Math.round((li++ * 137.508) % 360);
+            const attrs = `class="lk ${cls}" data-from="${rid}" data-to="${id}" style="--h:${hue}"`;
             back  += `<g ${attrs}><path class="lk-track" d="${d}"/>${extra}</g>`;
             front += `<g ${attrs}><circle class="lk-start" cx="${x1}" cy="${y1}" r="4"/><circle class="lk-end" cx="${x2}" cy="${y2}" r="4.5"/></g>`;
         });
