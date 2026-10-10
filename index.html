@@ -315,6 +315,21 @@
 .status-locked-total > * { opacity: 0.5; }
 .materia.rel.status-locked-total > * { opacity: 1; }
         
+
+/* ===== AVISO "AÚN NO ES EL MOMENTO" ===== */
+.no-toast { position: fixed; left: 50%; top: 50%; z-index: 2000; transform: translate(-50%, -50%); pointer-events: none; text-align: center; background: var(--surface); border: 1px solid var(--danger); border-radius: 22px; padding: 22px 32px; box-shadow: var(--shadow-lg), 0 0 40px rgba(224, 122, 110, 0.25); animation: toastLife 2.6s var(--ease) both; max-width: 86vw; }
+@keyframes toastLife {
+    0% { opacity: 0; transform: translate(-50%, -40%) scale(0.8); }
+    10% { opacity: 1; transform: translate(-50%, -50%) scale(1.04); }
+    16% { transform: translate(-50%, -50%) scale(1); }
+    85% { opacity: 1; }
+    100% { opacity: 0; transform: translate(-50%, -56%) scale(0.96); }
+}
+.no-hand { font-size: 3.6rem; line-height: 1; display: inline-block; transform-origin: 50% 90%; animation: wagNo 0.55s ease-in-out 0.25s 4 both; }
+@keyframes wagNo { 0% { transform: rotate(-26deg); } 50% { transform: rotate(26deg); } 100% { transform: rotate(-26deg); } }
+.no-title { font-family: var(--mono); font-weight: 700; font-size: 1.05rem; color: var(--danger); margin-top: 8px; }
+.no-sub { font-size: 0.78rem; color: var(--text-dim); margin-top: 6px; max-width: 280px; line-height: 1.45; }
+.mm-item.mm-off { opacity: 0.45; }
     </style>
 <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme_iq') || 'dark');</script>
 </head>
@@ -1071,18 +1086,48 @@ function renderMalla() {
 }
     
 
+// ==========================================
+// REGLA: no se aprueba sin todos los prerrequisitos
+// ==========================================
+function missingReqs(id) {
+    const m = getMatInfo(id); if (!m) return [];
+    const reqs = [...(m.r || [])];
+    if (m.id === 'CD' && hasNivelacion && !reqs.includes('niv_mat')) reqs.push('niv_mat');
+    const stats = getVisualStats(), out = [];
+    reqs.forEach(r => {
+        if (r === 'CRED_108') { if (stats.totalApp < 108) out.push('108 créditos aprobados'); }
+        else if (r === 'DISC_53') { if (stats.disc < 53) out.push('53 créditos disciplinares'); }
+        else if (r === 'DISC_60') { if (stats.disc < 60) out.push('60 créditos disciplinares'); }
+        else if (getCombinedState(r) !== 'approved') { const x = getMatInfo(r); out.push(x ? x.n : r); }
+    });
+    return out;
+}
+const canApprove = id => missingReqs(id).length === 0;
+
+let _noToastT;
+function showNoToast(id) {
+    closeMateriaMenu();
+    const falta = missingReqs(id);
+    const lista = falta.slice(0, 3).map(siaEsc).join(' · ') + (falta.length > 3 ? ` · +${falta.length - 3}` : '');
+    const old = document.getElementById('no-toast'); if (old) old.remove();
+    clearTimeout(_noToastT);
+    const t = document.createElement('div');
+    t.id = 'no-toast'; t.className = 'no-toast';
+    t.innerHTML = `<div class="no-hand">☝️</div><div class="no-title">Aún no es el momento</div>${lista ? `<div class="no-sub">Te falta: ${lista}</div>` : ''}`;
+    document.body.appendChild(t);
+    _noToastT = setTimeout(() => t.remove(), 2600);
+    const card = document.querySelector(`.materia[data-id="${id}"]`);
+    if (card) { card.classList.remove('nope'); void card.offsetWidth; card.classList.add('nope'); setTimeout(() => card.classList.remove('nope'), 500); }
+}
+
 // Clic en la tarjeta: alterna Aprobada <-> Pendiente
 function handleCardClick(card, id, progStatus, state) {
     if (getCalcNota(id) !== -1) { openStatusModal(id); return; }   // lo controla la Calculadora
-    if (progStatus === 'locked' && !state) {                       // bloqueada: avisa con un temblor
-        card.classList.add('nope');
-        setTimeout(() => card.classList.remove('nope'), 500);
-        return;
-    }
     quickSet(id, state === 'approved' ? 'pending' : 'approved');
 }
 
 function quickSet(id, newState) {
+    if (newState === 'approved' && !canApprove(id)) { showNoToast(id); return; }
     if (newState === 'pending') delete visualState[id];
     else visualState[id] = newState;
     localStorage.setItem('malla_iq_visual_v7', JSON.stringify(visualState));
@@ -1097,7 +1142,7 @@ function openMateriaMenu(ev, id) {
     const m = getMatInfo(id);
     const locked = getCalcNota(id) !== -1;
     const cur = getCombinedState(id) || 'pending';
-    const item = (st, label) => `<button class="mm-item ${cur === st ? 'on' : ''}" onclick="event.stopPropagation(); quickSet('${id}','${st}')">${label}</button>`;
+    const item = (st, label) => `<button class="mm-item ${cur === st ? 'on' : ''} ${st === 'approved' && !canApprove(id) ? 'mm-off' : ''}" onclick="event.stopPropagation(); quickSet('${id}','${st}')">${label}</button>`;
 
     const menu = document.createElement('div');
     menu.id = 'materia-menu';
@@ -1176,6 +1221,7 @@ window.addEventListener('scroll', closeMateriaMenu, true);
     function closeStatusModal() { document.getElementById('status-modal').classList.remove('active'); }
 
     function setStatus(newState) {
+        if (newState === 'approved' && !canApprove(currentSubjId)) { closeStatusModal(); showNoToast(currentSubjId); return; }
         if(newState === 'pending') delete visualState[currentSubjId];
         else visualState[currentSubjId] = newState;
         localStorage.setItem('malla_iq_visual_v7', JSON.stringify(visualState));
