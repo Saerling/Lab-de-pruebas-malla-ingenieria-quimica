@@ -238,6 +238,25 @@
 .site-footer { max-width: 1200px; margin: 40px auto 10px; padding: 22px 24px; text-align: center; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; color: var(--text-dim); font-size: 0.8rem; line-height: 1.7; animation: fadeUp 0.6s var(--ease) both; }
 .site-footer .foot-tag { display: block; font-family: var(--mono); font-size: 0.68rem; color: var(--accent); letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 6px; }
 .site-footer strong { color: var(--primary); }
+
+        /* ===== MENÚ ⋮ DE MATERIAS ===== */
+.dots-btn { position: absolute; top: 6px; right: 6px; width: 28px; height: 28px; padding: 0; border-radius: 8px; background: transparent; color: var(--text-dim); font-size: 1.15rem; line-height: 1; display: grid; place-items: center; opacity: 0.55; transition: opacity 0.2s, background 0.2s, transform 0.25s var(--spring), color 0.2s; }
+.materia:hover .dots-btn, .dots-btn:focus-visible { opacity: 1; }
+.dots-btn:hover { background: var(--primary-soft); color: var(--primary); transform: scale(1.15); }
+.approved .dots-btn { color: #fff; }
+.approved .dots-btn:hover { background: rgba(255, 255, 255, 0.22); color: #fff; }
+.materia .m-name { padding-right: 24px; }
+.materia.nope { animation: shake 0.45s ease; }
+
+.materia-menu { position: fixed; z-index: 1200; min-width: 190px; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 6px; box-shadow: var(--shadow-lg), var(--glow); transform-origin: top right; animation: menuPop 0.22s var(--spring) both; }
+@keyframes menuPop { from { opacity: 0; transform: scale(0.85) translateY(-6px); } to { opacity: 1; transform: none; } }
+.mm-item { display: block; width: 100%; text-align: left; background: transparent; color: var(--text); padding: 9px 12px; border-radius: 9px; font-size: 0.82rem; font-weight: 700; }
+.mm-item:hover { background: var(--primary-soft); color: var(--primary); transform: translateX(3px); }
+.mm-item.on { background: var(--accent-soft); color: var(--accent); }
+.mm-sep { height: 1px; background: var(--border); margin: 5px 4px; }
+.mm-note { padding: 8px 12px; font-size: 0.75rem; color: var(--text-dim); max-width: 200px; line-height: 1.4; }
+.hint { text-align: center; color: var(--text-dim); font-family: var(--mono); font-size: 0.7rem; margin-top: 12px; }
+        
     </style>
 <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme_iq') || 'dark');</script>
 </head>
@@ -275,6 +294,7 @@
         <div style="text-align: center;">
             <button class="btn-reset" onclick="resetMalla()">Reiniciar Estado Manual</button>
         </div>
+        <div class="hint">clic en una materia = aprobada · ⋮ para reprobada, pendiente y cupos</div>
 
         <div class="malla-wrapper" id="grid"></div>
     </div>
@@ -936,57 +956,111 @@ function switchTab(tab) {
     // ==========================================
     // RENDERIZADO DE LA MALLA
     // ==========================================
-    function renderMalla() {
-        const grid = document.getElementById('grid');
-        const stats = getVisualStats();
-        document.getElementById('total-c').innerText = `Créditos Aprobados: ${stats.totalApp} (Base 180)`;
-        document.getElementById('perc-c').innerText = `${stats.percentage}% completado`;
-        document.getElementById('p-bar').style.width = `${stats.percentage}%`;
-        
-        grid.innerHTML = '';
-        let mallaData = [...data];
-        if (hasNivelacion) mallaData.unshift({ sem: 0, mat: nivelacionMaterias });
+function renderMalla() {
+    const grid = document.getElementById('grid');
+    const stats = getVisualStats();
+    document.getElementById('total-c').innerText = `Créditos Aprobados: ${stats.totalApp} (Base 180)`;
+    document.getElementById('perc-c').innerText = `${stats.percentage}% completado`;
+    document.getElementById('p-bar').style.width = `${stats.percentage}%`;
 
-        mallaData.forEach(semestre => {
-            const col = document.createElement('div');
-            col.className = 'semestre-col';
-            const head = document.createElement('div');
-            head.className = 'sem-header'; 
-            head.textContent = semestre.sem === 0 ? "Semestre 0 (Niv.)" : `Semestre ${semestre.sem}`;
-            col.appendChild(head);
-            
-            let lastCat = "";
-            semestre.mat.forEach(m => {
-                if(m.cat !== lastCat) {
-                    const tag = document.createElement('div');
-                    tag.className = 'cat-tag'; tag.textContent = m.cat;
-                    col.appendChild(tag); lastCat = m.cat;
-                }
-                const prog = checkProgress(m.id);
-                const state = getCombinedState(m.id);
-                const card = document.createElement('div');
-                let sClass = '', icon = '';
-                
-                if (state === 'approved') { sClass = 'approved'; icon = '<span class="icon-indicator" title="Aprobada">✅</span>'; } 
-                else if (state === 'failed') { sClass = 'status-failed'; icon = '<span class="icon-indicator" title="Reprobada">❌</span>'; } 
-                else if (prog.status === 'ready') sClass = 'status-ready';
-                else if (prog.status === 'partial') sClass = 'status-locked-partial';
-                else sClass = 'status-locked-total';
+    grid.innerHTML = '';
+    let mallaData = [...data];
+    if (hasNivelacion) mallaData.unshift({ sem: 0, mat: nivelacionMaterias });
 
-                card.className = `materia ${sClass}`;
-                card.onclick = () => { if(prog.status !== 'locked' || state) openStatusModal(m.id); };
-                const failText = state === 'failed' ? `<br><small style="color:var(--danger)">Reprobada</small>` : '';
+    mallaData.forEach(semestre => {
+        const col = document.createElement('div');
+        col.className = 'semestre-col';
+        const head = document.createElement('div');
+        head.className = 'sem-header';
+        head.textContent = semestre.sem === 0 ? "Semestre 0 (Niv.)" : `Semestre ${semestre.sem}`;
+        col.appendChild(head);
 
-                card.innerHTML = `
-                    <span class="m-name">${m.n}${icon}</span>
-                    <span class="m-cred">${m.c} Créditos ${failText}</span>
-                `;
-                col.appendChild(card);
-            });
-            grid.appendChild(col);
+        let lastCat = "";
+        semestre.mat.forEach(m => {
+            if (m.cat !== lastCat) {
+                const tag = document.createElement('div');
+                tag.className = 'cat-tag'; tag.textContent = m.cat;
+                col.appendChild(tag); lastCat = m.cat;
+            }
+            const prog = checkProgress(m.id);
+            const state = getCombinedState(m.id);
+            const card = document.createElement('div');
+            let sClass = '', icon = '';
+
+            if (state === 'approved') { sClass = 'approved'; icon = '<span class="icon-indicator" title="Aprobada">✅</span>'; }
+            else if (state === 'failed') { sClass = 'status-failed'; icon = '<span class="icon-indicator" title="Reprobada">❌</span>'; }
+            else if (prog.status === 'ready') sClass = 'status-ready';
+            else if (prog.status === 'partial') sClass = 'status-locked-partial';
+            else sClass = 'status-locked-total';
+
+            card.className = `materia ${sClass}`;
+            card.onclick = () => handleCardClick(card, m.id, prog.status, state);
+            const failText = state === 'failed' ? `<br><small style="color:var(--danger)">Reprobada</small>` : '';
+
+            card.innerHTML = `
+                <button class="dots-btn" title="Más opciones" aria-label="Más opciones" onclick="openMateriaMenu(event,'${m.id}')">⋮</button>
+                <span class="m-name">${m.n}${icon}</span>
+                <span class="m-cred">${m.c} Créditos ${failText}</span>
+            `;
+            col.appendChild(card);
         });
-    }
+        grid.appendChild(col);
+    });
+}
 
+// Clic en la tarjeta: alterna Aprobada <-> Pendiente
+function handleCardClick(card, id, progStatus, state) {
+    if (getCalcNota(id) !== -1) { openStatusModal(id); return; }   // lo controla la Calculadora
+    if (progStatus === 'locked' && !state) {                       // bloqueada: avisa con un temblor
+        card.classList.add('nope');
+        setTimeout(() => card.classList.remove('nope'), 500);
+        return;
+    }
+    quickSet(id, state === 'approved' ? 'pending' : 'approved');
+}
+
+function quickSet(id, newState) {
+    if (newState === 'pending') delete visualState[id];
+    else visualState[id] = newState;
+    localStorage.setItem('malla_iq_visual_v7', JSON.stringify(visualState));
+    closeMateriaMenu();
+    renderMalla();
+}
+
+// Menú de los tres puntos
+function openMateriaMenu(ev, id) {
+    ev.stopPropagation();
+    closeMateriaMenu();
+    const m = getMatInfo(id);
+    const locked = getCalcNota(id) !== -1;
+    const cur = getCombinedState(id) || 'pending';
+    const item = (st, label) => `<button class="mm-item ${cur === st ? 'on' : ''}" onclick="event.stopPropagation(); quickSet('${id}','${st}')">${label}</button>`;
+
+    const menu = document.createElement('div');
+    menu.id = 'materia-menu';
+    menu.className = 'materia-menu';
+    menu.innerHTML = locked
+        ? `<div class="mm-note">Estado controlado por la Calculadora</div>`
+        : item('approved', '✅ Aprobada') + item('failed', '❌ Reprobada') + item('pending', '⏳ Pendiente');
+    if (m.siaId && m.siaId.trim() !== '') {
+        menu.innerHTML += `<div class="mm-sep"></div><button class="mm-item" onclick="closeMateriaMenu(); openCuposModal('${m.siaId}')">📊 Ver cupos SIA</button>`;
+    }
+    document.body.appendChild(menu);
+
+    const r = ev.currentTarget.getBoundingClientRect();
+    const w = menu.offsetWidth, h = menu.offsetHeight;
+    const left = Math.max(8, Math.min(r.right - w, window.innerWidth - w - 8));
+    let top = r.bottom + 6;
+    if (top + h > window.innerHeight - 8) top = r.top - h - 6;
+    menu.style.left = left + 'px';
+    menu.style.top = Math.max(8, top) + 'px';
+}
+
+function closeMateriaMenu() { const m = document.getElementById('materia-menu'); if (m) m.remove(); }
+document.addEventListener('click', closeMateriaMenu);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMateriaMenu(); });
+window.addEventListener('scroll', closeMateriaMenu, true);
+    
     function openStatusModal(id) {
         currentSubjId = id;
         const m = getMatInfo(id);
