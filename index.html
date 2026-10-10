@@ -223,6 +223,21 @@
         .hor-block.conf { border-color: var(--danger); background-image: repeating-linear-gradient(45deg, rgba(224, 122, 110, 0.55) 0 8px, transparent 8px 16px); }
 
         @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+        /* ===== CAFÉ + FOOTER ===== */
+.coffee-btn { position: absolute; top: 16px; left: 16px; background: var(--accent-soft); color: var(--accent); border: 1px solid var(--accent); padding: 8px 14px; border-radius: 999px; font-family: var(--mono); font-size: 0.75rem; }
+.coffee-btn:hover { background: var(--accent); color: var(--bg); box-shadow: var(--shadow); }
+.coffee-ico { display: inline-block; }
+.coffee-btn:hover .coffee-ico { animation: wiggle 0.6s ease; }
+@media (max-width: 640px) { .coffee-btn { position: static; display: block; margin: 0 auto 10px; } }
+
+.qr-box { background: #fff; padding: 14px; border-radius: 14px; width: fit-content; margin: 0 auto 14px; box-shadow: var(--shadow); }
+.qr-box img { display: block; width: 220px; height: 220px; object-fit: contain; }
+.coffee-text { text-align: center; color: var(--text-dim); font-size: 0.85rem; line-height: 1.6; margin: 0; }
+
+.site-footer { max-width: 1200px; margin: 40px auto 10px; padding: 22px 24px; text-align: center; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; color: var(--text-dim); font-size: 0.8rem; line-height: 1.7; animation: fadeUp 0.6s var(--ease) both; }
+.site-footer .foot-tag { display: block; font-family: var(--mono); font-size: 0.68rem; color: var(--accent); letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 6px; }
+.site-footer strong { color: var(--primary); }
     </style>
 <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme_iq') || 'dark');</script>
 </head>
@@ -230,6 +245,7 @@
 
 <header>
     <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">☀ Modo día</button>
+    <button class="coffee-btn" onclick="openCoffeeModal()"><span class="coffee-ico">☕</span> Invítame un café</button>
     <h1 style="margin:0 0 15px">LAB DE PRUEBAS MALLA IQ</h1>
     <div class="tabs">
         <button class="tab-btn active" id="tab-malla" onclick="switchTab('malla')">Malla Curricular</button>
@@ -320,6 +336,24 @@
         <div id="hor-conflictos"></div>
         <div class="hor-scroll"><div id="hor-calendario"></div></div>
         <div id="hor-lista" style="margin-top:12px;"></div>
+    </div>
+</div>
+
+<footer class="site-footer">
+    <span class="foot-tag">// Aviso legal</span>
+    La información académica que aparece en esta página (malla curricular, asignaturas, créditos, cupos y horarios)
+    <strong>no es de mi autoría</strong>: es de dominio de la <strong>Universidad Nacional de Colombia</strong>.<br>
+    Este sitio es un proyecto independiente, <strong>sin fines lucrativos</strong>, creado únicamente con <strong>fines educativos</strong>.
+</footer>
+
+<div class="modal-overlay" id="coffee-modal" onclick="if(event.target===this)closeCoffeeModal()">
+    <div class="modal-content" style="max-width: 340px;">
+        <div class="modal-header">
+            <h2>☕ Invítame un café</h2>
+            <button class="close-btn" onclick="closeCoffeeModal()">&times;</button>
+        </div>
+        <div class="qr-box"><img src="qr-cafe.png" alt="Código QR para invitarme un café"></div>
+        <p class="coffee-text">Si esta página te ayudó, escanea el QR para apoyar el proyecto. ¡Gracias! 💚</p>
     </div>
 </div>
     
@@ -1390,6 +1424,10 @@ function toggleTheme() {
     try { localStorage.setItem('theme_iq', next); } catch (e) {}
     setTimeout(() => html.classList.remove('theme-anim'), 500);
 }
+
+function openCoffeeModal() { document.getElementById('coffee-modal').classList.add('active'); }
+function closeCoffeeModal() { document.getElementById('coffee-modal').classList.remove('active'); }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCoffeeModal(); });
     
     // ==========================================
     // INICIALIZACIÓN
