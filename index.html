@@ -5,29 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Malla IQ y Calculadora de Promedios</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    /* HORARIO SEMANAL */
-.hor-panel { max-width: 1200px; margin: 0 auto 20px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
-.hor-bar { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
-.hor-bar select, .hor-bar input { background: var(--bg); border: 1px solid var(--border); color: white; padding: 10px; border-radius: 6px; font-family: inherit; }
-.hor-bar select { flex: 2; min-width: 220px; }
-.hor-bar input { width: 120px; }
-.hor-btn { background: var(--primary); color: var(--bg); }
-.hor-btn.sec { background: var(--border); color: white; }
-.hor-btn.del { background: var(--danger); color: white; }
-.hor-msg { font-size: 0.85rem; color: var(--text-dim); text-align: center; padding: 12px; }
-.hor-g { background: rgba(255,255,255,0.05); border-left: 3px solid var(--primary); border-radius: 6px; padding: 10px; margin-top: 8px; font-size: 0.82rem; display: flex; justify-content: space-between; gap: 10px; align-items: center; flex-wrap: wrap; }
-.hor-g.lleno { border-left-color: var(--danger); }
-.hor-g.in { border-left-color: var(--success); background: rgba(16,185,129,0.1); }
-.hor-g small { color: var(--text-dim); display: block; line-height: 1.6; }
-.hor-warn { background: rgba(239,68,68,0.15); border: 1px solid var(--danger); color: #fecaca; padding: 10px; border-radius: 8px; margin-bottom: 12px; font-size: 0.85rem; }
-.hor-scroll { overflow-x: auto; }
-.hor-grid { display: grid; grid-template-columns: 52px repeat(6, 1fr); min-width: 760px; }
-.hor-dayhead { background: var(--primary); color: var(--bg); text-align: center; font-weight: 700; padding: 8px 0; font-size: 0.8rem; border-left: 1px solid var(--bg); }
-.hor-times div { height: 48px; font-size: 0.7rem; color: var(--text-dim); text-align: right; padding-right: 6px; box-sizing: border-box; border-top: 1px solid transparent; }
-.hor-col { position: relative; border-left: 1px solid var(--border); background: repeating-linear-gradient(to bottom, transparent 0, transparent 47px, var(--border) 47px, var(--border) 48px); }
-.hor-block { position: absolute; left: 2px; right: 2px; border-radius: 6px; padding: 4px 6px; font-size: 0.7rem; line-height: 1.25; overflow: hidden; color: white; box-sizing: border-box; border: 2px solid rgba(255,255,255,0.15); }
-.hor-block b { display: block; font-size: 0.74rem; }
-.hor-block.conf { border-color: var(--danger); background-image: repeating-linear-gradient(45deg, rgba(239,68,68,0.45) 0 8px, transparent 8px 16px); }
+
     <style>
         :root {
             --bg: #0f172a;
@@ -152,7 +130,29 @@
         .req-txt { color: var(--text); }
         .obl-txt { color: #ef4444; } 
         .opt-txt { color: var(--primary); } 
-
+/* HORARIO SEMANAL */
+        .hor-panel { max-width: 1200px; margin: 0 auto 20px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+        .hor-bar { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+        .hor-bar select, .hor-bar input { background: var(--bg); border: 1px solid var(--border); color: white; padding: 10px; border-radius: 6px; font-family: inherit; }
+        .hor-bar select { flex: 2; min-width: 220px; }
+        .hor-bar input { width: 120px; }
+        .hor-btn { background: var(--primary); color: var(--bg); }
+        .hor-btn.sec { background: var(--border); color: white; }
+        .hor-btn.del { background: var(--danger); color: white; }
+        .hor-msg { font-size: 0.85rem; color: var(--text-dim); text-align: center; padding: 12px; }
+        .hor-g { background: rgba(255,255,255,0.05); border-left: 3px solid var(--primary); border-radius: 6px; padding: 10px; margin-top: 8px; font-size: 0.82rem; display: flex; justify-content: space-between; gap: 10px; align-items: center; flex-wrap: wrap; }
+        .hor-g.lleno { border-left-color: var(--danger); }
+        .hor-g.in { border-left-color: var(--success); background: rgba(16,185,129,0.1); }
+        .hor-g small { color: var(--text-dim); display: block; line-height: 1.6; }
+        .hor-warn { background: rgba(239,68,68,0.15); border: 1px solid var(--danger); color: #fecaca; padding: 10px; border-radius: 8px; margin-bottom: 12px; font-size: 0.85rem; }
+        .hor-scroll { overflow-x: auto; }
+        .hor-grid { display: grid; grid-template-columns: 52px repeat(6, 1fr); min-width: 760px; }
+        .hor-dayhead { background: var(--primary); color: var(--bg); text-align: center; font-weight: 700; padding: 8px 0; font-size: 0.8rem; border-left: 1px solid var(--bg); }
+        .hor-times div { height: 48px; font-size: 0.7rem; color: var(--text-dim); text-align: right; padding-right: 6px; box-sizing: border-box; border-top: 1px solid transparent; }
+        .hor-col { position: relative; border-left: 1px solid var(--border); background: repeating-linear-gradient(to bottom, transparent 0, transparent 47px, var(--border) 47px, var(--border) 48px); }
+        .hor-block { position: absolute; left: 2px; right: 2px; border-radius: 6px; padding: 4px 6px; font-size: 0.7rem; line-height: 1.25; overflow: hidden; color: white; box-sizing: border-box; border: 2px solid rgba(255,255,255,0.15); }
+        .hor-block b { display: block; font-size: 0.74rem; }
+        .hor-block.conf { border-color: var(--danger); background-image: repeating-linear-gradient(45deg, rgba(239,68,68,0.45) 0 8px, transparent 8px 16px); }
     </style>
 </head>
 <body>
