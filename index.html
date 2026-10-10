@@ -477,40 +477,27 @@
         });
     }
 
+   
+// ==========================================
+    // CUPOS Y GRUPOS EN TIEMPO REAL — catálogo público del SIA, vía tu proxy de Railway
     // ==========================================
-    // CUPOS Y GRUPOS EN TIEMPO REAL (SIA)
-    // ==========================================
-    const SIA_API_BASE = 'https://sia.gabotachak.dev';
-    const SIA_CAMPUS = '1101';   // Sede Bogotá
-    const SIA_PROGRAM = '2549';  // Ingeniería Química
-    const SIA_FACULTY = '2055';  // Facultad de Ingeniería
-    const SIA_CACHE_MS = 5 * 60 * 1000; // Caché en el navegador: 5 min (el backend ya cachea con max_age=3600)
+    const SIA_API = 'https://proxy-sia-production.up.railway.app/api/catalogo';
+    const SIA_FILTROS = 'sede=1101&facultad=2055&plan=2549'; // Bogotá · Fac. de Ingeniería · Ing. Química
+    const SIA_CACHE_MS = 5 * 60 * 1000;   // caché en el navegador (el servidor cachea 3 min más)
+    const SIA_TIMEOUT_MS = 45000;         // cada consulta recorre ~10 pasos en el SIA: puede tardar
     const siaCache = {};
     let siaTimerInterval = null;
+    let siaReqSeq = 0;                    // descarta respuestas de consultas que el usuario ya abandonó
 
-    // sia.gabotachak.dev no envía cabeceras CORS, así que el navegador bloquea la
-    // petición directa ("CORS Missing Allow Origin"). Por eso se usa tu propio proxy
-    // desplegado en Railway (servicio "proxy-sia") como primera opción.
-    const SIA_OWN_PROXY_BASE = 'https://proxy-sia-production.up.railway.app/api/sia';
+    // Los datos vienen de un tercero y se insertan con innerHTML: siempre se escapan.
+    const siaEsc = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    const siaCap = (s) => s ? s.charAt(0).toUpperCase() + s.slice(1).toLowerCase() : s;
 
-    // Respaldo público gratuito por si tu proxy propio no responde (sin registro, pero
-    // puede fallar o ir lento al ser un servicio de terceros).
-    const SIA_PUBLIC_PROXY_PREFIX = 'https://api.allorigins.win/raw?url=';
-
-    const SIA_DIAS = { 0: 'Domingo', 1: 'Lunes', 2: 'Martes', 3: 'Miércoles', 4: 'Jueves', 5: 'Viernes', 6: 'Sábado', 7: 'Domingo' };
-    function siaFormatDia(weekday) {
-        return SIA_DIAS[weekday] !== undefined ? SIA_DIAS[weekday] : `Día ${weekday}`;
-    }
-
-    function siaTimeAgo(isoString) {
-        if (!isoString) return '';
-        const diffMs = Date.now() - new Date(isoString).getTime();
-        const mins = Math.floor(diffMs / 60000);
+    function siaTimeAgo(ts) {
+        const mins = Math.floor((Date.now() - ts) / 60000);
         if (mins < 1) return 'hace instantes';
         if (mins < 60) return `hace ${mins} min`;
-        const hrs = Math.floor(mins / 60);
-        if (hrs < 24) return `hace ${hrs} h`;
-        return `hace ${Math.floor(hrs / 24)} d`;
+        return `hace ${Math.floor(mins / 60)} h`;
     }
 
     // Busca el nombre de una materia a partir de su código SIA, tanto en la Malla
@@ -521,8 +508,7 @@
             if (m) return m.n;
         }
         const agrMat = getAgrupacionMateriaInfo(siaId);
-        if (agrMat) return agrMat.n;
-        return null;
+        return agrMat ? agrMat.n : null;
     }
 
     function getAgrupacionMateriaInfo(id) {
@@ -549,23 +535,26 @@
     }
 
     function closeCuposModal() {
+        siaReqSeq++;            // cancela cualquier consulta en curso
         stopSiaTimer();
         document.getElementById('cupos-modal').classList.remove('active');
     }
 
-    function renderCuposError(message) {
+    function renderCuposError(html) {
         document.getElementById('cupos-modal-body').innerHTML = `
             <div class="cupos-box">
-                <div style="font-size:0.85rem; color:var(--danger); text-align:center;">⚠️ ${message}</div>
+                <div style="font-size:0.85rem; color:var(--danger); text-align:center; line-height:1.5;">⚠️ ${html}</div>
             </div>
         `;
     }
 
-    function renderCuposContent(apiData) {
+    function renderCuposContent(res, ts) {
         const body = document.getElementById('cupos-modal-body');
-        const sections = apiData.sections || [];
+        const tipos = res.tiposClase || [];
+        const grupos = tipos.flatMap(t => (t.grupos || []).map(g => ({ ...g, _tipo: t.nombre })));
+        grupos.sort((a, b) => String(a.grupo).localeCompare(String(b.grupo), 'es', { numeric: true }));
 
-        if (sections.length === 0) {
+        if (grupos.length === 0) {
             body.innerHTML = `
                 <div class="cupos-box">
                     <div style="font-size:0.85rem; color:var(--text-dim); text-align:center;">No hay grupos ofertados actualmente para esta materia.</div>
@@ -574,59 +563,59 @@
             return;
         }
 
-        const groupsHtml = sections.map(s => {
-            const available = s.seats ? s.seats.available : null;
-            const lleno = available === 0;
-            const cupoTxt = available === null || available === undefined
-                ? 'Sin datos'
-                : (lleno ? 'LLENO' : `${available} cupo${available === 1 ? '' : 's'}`);
-            const scheduleTxt = (s.schedule || [])
-                .map(h => `${siaFormatDia(h.weekday)} ${h.start_time}–${h.end_time}`)
+        const variosTipos = tipos.length > 1;
+        const groupsHtml = grupos.map(g => {
+            const n = g.cuposDisponibles;
+            const lleno = n === 0;
+            const cupoTxt = (n === null || n === undefined) ? 'Sin datos' : (lleno ? 'LLENO' : `${n} cupo${n === 1 ? '' : 's'}`);
+            const horario = (g.horarios || [])
+                .map(h => h.dia ? `${siaCap(h.dia)} ${h.inicio}–${h.fin}` : h.texto)
                 .join(', ') || 'Sin horario registrado';
-            const roomTxt = (s.schedule || [])
-                .map(h => h.room)
-                .filter((v, i, a) => v && a.indexOf(v) === i)
-                .join(', ');
-            const updatedTxt = s.seats && s.seats.measured_at ? siaTimeAgo(s.seats.measured_at) : '';
+            const salones = [...new Set((g.horarios || [])
+                .flatMap(h => (h.ubicaciones || []).map(u => u.codigo || u.descripcion))
+                .filter(Boolean))].join(', ');
+            const profes = (g.profesores || []).join(' · ') || 'Docente sin asignar';
+            const label = /^\d+$/.test(String(g.grupo)) ? `Grupo ${g.grupo}` : `${g.grupo} · ${g.nombre}`;
 
             return `
                 <div class="grupo-item" style="border-left-color: ${lleno ? 'var(--danger)' : 'var(--primary)'};">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
-                        <strong>${s.label || ('Grupo ' + s.number)}</strong>
-                        <span class="cupo-badge ${lleno ? 'cupo-lleno' : ''}">${cupoTxt}</span>
+                        <strong>${siaEsc(label)}${variosTipos ? ` <span style="font-weight:400; font-size:0.7rem; color:var(--text-dim);">${siaEsc(g._tipo)}</span>` : ''}</strong>
+                        <span class="cupo-badge ${lleno ? 'cupo-lleno' : ''}">${siaEsc(cupoTxt)}</span>
                     </div>
                     <div style="color:var(--text-dim); line-height:1.6;">
-                        👤 ${s.instructor || 'Docente sin asignar'}<br>
-                        🕐 ${s.shift || ''} · ${scheduleTxt}<br>
-                        📍 ${roomTxt || 'Salón sin asignar'}
-                        ${updatedTxt ? `<br>🔄 Cupos actualizados ${updatedTxt}` : ''}
+                        👤 ${siaEsc(profes)}<br>
+                        🕐 ${siaEsc(g.jornada || '')}${g.jornada ? ' · ' : ''}${siaEsc(horario)}<br>
+                        📍 ${siaEsc(salones || 'Salón sin asignar')}
                     </div>
                 </div>
             `;
         }).join('');
 
+        const a = res.asignatura || {};
+        const r = res.resumen || {};
         body.innerHTML = `
             <div class="cupos-box">
-                <h3>📊 Cupos en Tiempo Real (SIA)
+                <h3>📊 Cupos del Catálogo SIA
                     <span style="font-size:0.7rem; font-weight:400; color:var(--text-dim);">
-                        ${apiData.code || ''}${apiData.credits !== undefined ? ' · ' + apiData.credits + ' créd.' : ''}
+                        ${siaEsc(a.codigo || '')}${a.creditos ? ' · ' + siaEsc(a.creditos) + ' créd.' : ''}
                     </span>
                 </h3>
+                <div style="font-size:0.78rem; color:var(--text-dim); margin-bottom:10px;">
+                    ${siaEsc(r.gruposConCupo)} de ${siaEsc(r.grupos)} grupos con cupo · ${siaEsc(r.cuposDisponibles)} cupos libres · 🔄 consultado ${siaTimeAgo(ts)}
+                </div>
                 ${groupsHtml}
             </div>
         `;
     }
 
-    async function fetchWithTimeout(url, timeoutMs = 10000) {
+    async function fetchWithTimeout(url, timeoutMs) {
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
         try {
-            const response = await fetch(url, { signal: controller.signal });
+            return await fetch(url, { signal: controller.signal });
+        } finally {
             clearTimeout(timeoutId);
-            return response;
-        } catch (err) {
-            clearTimeout(timeoutId);
-            throw err;
         }
     }
 
@@ -636,56 +625,66 @@
 
         document.getElementById('cupos-modal-title').innerText = getMateriaNameBySiaId(courseId) || `Materia ${courseId}`;
         document.getElementById('cupos-modal').classList.add('active');
+        const seq = ++siaReqSeq;
 
         const cached = siaCache[courseId];
         if (cached && (Date.now() - cached.ts) < SIA_CACHE_MS) {
-            renderCuposContent(cached.data);
+            renderCuposContent(cached.data, cached.ts);
             return;
         }
 
         document.getElementById('cupos-modal-body').innerHTML = `
             <div class="cupos-box" style="text-align:center;">
-                <div style="font-size:0.85rem; color:var(--text-dim); margin-bottom:8px;">Conectando con el SIA...</div>
+                <div style="font-size:0.85rem; color:var(--text-dim); margin-bottom:8px;">Consultando el catálogo del SIA...<br>
+                    <span style="font-size:0.72rem;">Puede tardar unos segundos la primera vez.</span></div>
                 <div id="sia-timer-display" style="font-size:1.5rem; font-weight:bold; color:var(--primary);">0.0s</div>
                 <div id="sia-retry-msg" style="font-size:0.75rem; color:var(--warning); margin-top:8px; min-height:15px;"></div>
             </div>
         `;
         startSiaTimer();
 
-        // Ruta corregida para consumir directamente el ID en la API comunitaria
-        const path = `/${courseId}?faculty=${SIA_FACULTY}&level=pregrado&max_age=3600`;
-        const targetUrl = `${SIA_API_BASE}${path}`;
+        const url = `${SIA_API}/grupos?${SIA_FILTROS}&codigo=${encodeURIComponent(courseId)}`;
+        let lastError = 'No se pudo conectar con el servidor.';
 
-        const endpoints = [
-            `${SIA_OWN_PROXY_BASE}${path}`,
-            `${SIA_PUBLIC_PROXY_PREFIX}${encodeURIComponent(targetUrl)}`
-        ];
-
-        for (let i = 0; i < endpoints.length; i++) {
-            const retryEl = document.getElementById('sia-retry-msg');
-            if (retryEl && i > 0) {
-                retryEl.innerText = `Tu proxy no respondió, probando servidor de respaldo...`;
-            }
+        for (let intento = 1; intento <= 2; intento++) {
             try {
-                const res = await fetchWithTimeout(endpoints[i], 10000);
-                if (!res.ok) continue;
+                if (intento > 1) {
+                    const retryEl = document.getElementById('sia-retry-msg');
+                    if (retryEl) retryEl.innerText = 'Reintentando...';
+                }
+                const res = await fetchWithTimeout(url, SIA_TIMEOUT_MS);
+                const json = await res.json().catch(() => null);
+                if (seq !== siaReqSeq) return;                 // el usuario cerró o abrió otra materia
 
-                const data = await res.json().catch(() => null);
-                if (!data || !Array.isArray(data.sections)) continue;
-
-                stopSiaTimer();
-                siaCache[courseId] = { data, ts: Date.now() };
-                renderCuposContent(data);
-                return;
+                const item = json && Array.isArray(json.resultados) ? json.resultados[0] : null;
+                if (res.ok && item && !item.error) {
+                    stopSiaTimer();
+                    siaCache[courseId] = { data: item, ts: Date.now() };
+                    renderCuposContent(item, siaCache[courseId].ts);
+                    return;
+                }
+                if (item && item.error) {
+                    if ((item.status || 502) < 500) {          // p. ej. 404: la materia no está en este plan; no se reintenta
+                        stopSiaTimer();
+                        const sim = (item.similares || []).slice(0, 4).map(siaEsc).join('<br>');
+                        renderCuposError(`El código <b>${siaEsc(courseId)}</b> no figura en el catálogo del plan de Ingeniería Química.${sim ? `<br><br><span style="color:var(--text-dim)">Parecidos:<br>${sim}</span>` : ''}`);
+                        return;
+                    }
+                    lastError = item.error;
+                } else {
+                    lastError = (json && json.error) || `El servidor respondió HTTP ${res.status}.`;
+                    if (res.status < 500) break;
+                }
             } catch (err) {
-                // Intenta el siguiente endpoint de la lista
+                if (seq !== siaReqSeq) return;
+                lastError = err.name === 'AbortError' ? 'El SIA tardó demasiado en responder.' : 'No se pudo conectar con el servidor.';
             }
         }
 
+        if (seq !== siaReqSeq) return;
         stopSiaTimer();
-        renderCuposError(`No se pudo obtener información del SIA para el código <b>${courseId}</b>. Ni tu proxy propio ni el respaldo respondieron correctamente. Revisa que el proxy de Railway siga activo, o que el código exista en el sistema.`);
+        renderCuposError(`${siaEsc(lastError)}<br><span style="color:var(--text-dim)">Revisa que el proxy de Railway esté activo e inténtalo de nuevo.</span>`);
     }
-
     // ==========================================
     // ESTADO E INTEGRACIÓN (Calculadora -> Malla)
     // ==========================================
