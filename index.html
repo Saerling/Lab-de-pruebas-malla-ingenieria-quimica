@@ -5,6 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Malla IQ y Calculadora de Promedios</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    /* HORARIO SEMANAL */
+.hor-panel { max-width: 1200px; margin: 0 auto 20px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+.hor-bar { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.hor-bar select, .hor-bar input { background: var(--bg); border: 1px solid var(--border); color: white; padding: 10px; border-radius: 6px; font-family: inherit; }
+.hor-bar select { flex: 2; min-width: 220px; }
+.hor-bar input { width: 120px; }
+.hor-btn { background: var(--primary); color: var(--bg); }
+.hor-btn.sec { background: var(--border); color: white; }
+.hor-btn.del { background: var(--danger); color: white; }
+.hor-msg { font-size: 0.85rem; color: var(--text-dim); text-align: center; padding: 12px; }
+.hor-g { background: rgba(255,255,255,0.05); border-left: 3px solid var(--primary); border-radius: 6px; padding: 10px; margin-top: 8px; font-size: 0.82rem; display: flex; justify-content: space-between; gap: 10px; align-items: center; flex-wrap: wrap; }
+.hor-g.lleno { border-left-color: var(--danger); }
+.hor-g.in { border-left-color: var(--success); background: rgba(16,185,129,0.1); }
+.hor-g small { color: var(--text-dim); display: block; line-height: 1.6; }
+.hor-warn { background: rgba(239,68,68,0.15); border: 1px solid var(--danger); color: #fecaca; padding: 10px; border-radius: 8px; margin-bottom: 12px; font-size: 0.85rem; }
+.hor-scroll { overflow-x: auto; }
+.hor-grid { display: grid; grid-template-columns: 52px repeat(6, 1fr); min-width: 760px; }
+.hor-dayhead { background: var(--primary); color: var(--bg); text-align: center; font-weight: 700; padding: 8px 0; font-size: 0.8rem; border-left: 1px solid var(--bg); }
+.hor-times div { height: 48px; font-size: 0.7rem; color: var(--text-dim); text-align: right; padding-right: 6px; box-sizing: border-box; border-top: 1px solid transparent; }
+.hor-col { position: relative; border-left: 1px solid var(--border); background: repeating-linear-gradient(to bottom, transparent 0, transparent 47px, var(--border) 47px, var(--border) 48px); }
+.hor-block { position: absolute; left: 2px; right: 2px; border-radius: 6px; padding: 4px 6px; font-size: 0.7rem; line-height: 1.25; overflow: hidden; color: white; box-sizing: border-box; border: 2px solid rgba(255,255,255,0.15); }
+.hor-block b { display: block; font-size: 0.74rem; }
+.hor-block.conf { border-color: var(--danger); background-image: repeating-linear-gradient(45deg, rgba(239,68,68,0.45) 0 8px, transparent 8px 16px); }
     <style>
         :root {
             --bg: #0f172a;
@@ -140,6 +163,7 @@
         <button class="tab-btn active" id="tab-malla" onclick="switchTab('malla')">Malla Curricular</button>
         <button class="tab-btn" id="tab-calc" onclick="switchTab('calc')">Calculadora Histórica</button>
         <button class="tab-btn" id="tab-agrupaciones" onclick="switchTab('agrupaciones')">Programa por Agrupaciones</button>
+        <button class="tab-btn" id="tab-horario" onclick="switchTab('horario')">Horario Semanal</button>
     </div>
 </header>
 
@@ -208,7 +232,25 @@
         <!-- Renderizado vía JavaScript -->
     </div>
 </div>
-
+    
+<!-- VISTA 4: HORARIO SEMANAL -->
+<div id="horario-view" class="view-section">
+    <div class="hor-panel">
+        <div class="hor-bar">
+            <select id="hor-select" onchange="document.getElementById('hor-codigo').value = this.value"></select>
+            <input type="text" id="hor-codigo" placeholder="Código SIA">
+            <button class="hor-btn" onclick="horCargar()">Buscar grupos</button>
+            <button class="hor-btn del" onclick="horLimpiar()">Vaciar horario</button>
+        </div>
+        <div id="hor-grupos"></div>
+    </div>
+    <div class="hor-panel">
+        <div id="hor-conflictos"></div>
+        <div class="hor-scroll"><div id="hor-calendario"></div></div>
+        <div id="hor-lista" style="margin-top:12px;"></div>
+    </div>
+</div>
+    
 <!-- MODAL ESTADO DE MATERIA (MALLA) -->
 <div class="modal-overlay" id="status-modal">
     <div class="modal-content">
@@ -248,17 +290,15 @@
     // ==========================================
     // LÓGICA DE NAVEGACIÓN (TABS)
     // ==========================================
-    function switchTab(tab) {
-        document.getElementById('malla-view').classList.remove('active');
-        document.getElementById('calc-view').classList.remove('active');
-        document.getElementById('agrupaciones-view').classList.remove('active');
-        document.getElementById('tab-malla').classList.remove('active');
-        document.getElementById('tab-calc').classList.remove('active');
-        document.getElementById('tab-agrupaciones').classList.remove('active');
-
-        document.getElementById(tab + '-view').classList.add('active');
-        document.getElementById('tab-' + tab).classList.add('active');
-    }
+function switchTab(tab) {
+    ['malla', 'calc', 'agrupaciones', 'horario'].forEach(t => {
+        document.getElementById(t + '-view').classList.remove('active');
+        document.getElementById('tab-' + t).classList.remove('active');
+    });
+    document.getElementById(tab + '-view').classList.add('active');
+    document.getElementById('tab-' + tab).classList.add('active');
+    if (tab === 'horario') renderHorario();
+}
 
     // ==========================================
     // DATOS DE LA MALLA
@@ -1096,12 +1136,184 @@
         calcularPromedios();
     }
 
+// ==========================================
+// HORARIO SEMANAL
+// ==========================================
+const HOR_KEY = 'horario_iq_v1';
+const HOR_PX = 48; // alto de cada hora en pixeles
+const HOR_DIAS = [['LUN', 'Lunes'], ['MAR', 'Martes'], ['MIE', 'Miércoles'], ['JUE', 'Jueves'], ['VIE', 'Viernes'], ['SAB', 'Sábado']];
+let horario = JSON.parse(localStorage.getItem(HOR_KEY)) || [];
+let horOpciones = [];   // grupos de la última búsqueda
+let horSeq = 0;
+
+const horDia = d => String(d || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase().slice(0, 3);
+function horMin(t) {
+    const m = String(t || '').match(/(\d{1,2})\s*:?\s*(\d{2})?\s*([ap])?/i);
+    if (!m) return null;
+    let h = +m[1];
+    if (m[3] && m[3].toLowerCase() === 'p' && h < 12) h += 12;
+    return h * 60 + (+(m[2] || 0));
+}
+const horFmt = min => `${String(Math.floor(min / 60)).padStart(2, '0')}:${String(min % 60).padStart(2, '0')}`;
+const horColor = s => { let h = 0; for (const c of String(s)) h = (h * 31 + c.charCodeAt(0)) % 360; return `hsl(${h},55%,36%)`; };
+const horSave = () => localStorage.setItem(HOR_KEY, JSON.stringify(horario));
+
+function horCatalogo() {
+    const map = new Map();
+    data.forEach(s => s.mat.forEach(m => { if (/^\d+$/.test(m.siaId || '')) map.set(m.siaId, m.n); }));
+    agrupacionesInfo.forEach(a => (a.materias || []).forEach(m => { if (/^\d+$/.test(m.id) && !map.has(m.id)) map.set(m.id, m.n); }));
+    return [...map].sort((a, b) => a[1].localeCompare(b[1], 'es'));
+}
+
+async function horFetch(codigo) {
+    const c = siaCache[codigo];
+    if (c && (Date.now() - c.ts) < SIA_CACHE_MS) return c.data;
+    const url = `${SIA_API}/grupos?${SIA_FILTROS}&codigo=${encodeURIComponent(codigo)}`;
+    let err = 'No se pudo conectar con el servidor.';
+    for (let i = 1; i <= 2; i++) {
+        try {
+            const res = await fetchWithTimeout(url, SIA_TIMEOUT_MS);
+            const json = await res.json().catch(() => null);
+            const item = json && Array.isArray(json.resultados) ? json.resultados[0] : null;
+            if (res.ok && item && !item.error) { siaCache[codigo] = { data: item, ts: Date.now() }; return item; }
+            err = (item && item.error) || (json && json.error) || `El servidor respondió HTTP ${res.status}.`;
+            if (item && item.error && (item.status || 502) < 500) break;   // p. ej. 404: no se reintenta
+            if (!item && res.status < 500) break;
+        } catch (e) {
+            err = e.name === 'AbortError' ? 'El SIA tardó demasiado en responder.' : 'No se pudo conectar con el servidor.';
+        }
+    }
+    throw new Error(err);
+}
+
+function horParse(codigo, item) {
+    const nombre = getMateriaNameBySiaId(codigo) || (item.asignatura && item.asignatura.nombre) || codigo;
+    return (item.tiposClase || []).flatMap(t => (t.grupos || []).map(g => {
+        const slots = (g.horarios || []).map(h => ({
+            d: horDia(h.dia), s: horMin(h.inicio), e: horMin(h.fin),
+            salon: [...new Set((h.ubicaciones || []).map(u => u.codigo || u.descripcion).filter(Boolean))].join(', ')
+        })).filter(x => x.d && x.s != null && x.e != null && x.e > x.s);
+        return {
+            key: `${codigo}|${g.grupo}|${t.nombre || ''}`, codigo, nombre,
+            grupo: /^\d+$/.test(String(g.grupo)) ? `Grupo ${g.grupo}` : String(g.grupo),
+            profes: (g.profesores || []).join(' · '), cupos: g.cuposDisponibles, slots,
+            sinHorario: slots.length === 0
+        };
+    })).sort((a, b) => a.grupo.localeCompare(b.grupo, 'es', { numeric: true }));
+}
+
+async function horCargar() {
+    const codigo = document.getElementById('hor-codigo').value.trim();
+    const box = document.getElementById('hor-grupos');
+    if (!codigo) { box.innerHTML = '<div class="hor-msg">Elige una materia o escribe un código SIA.</div>'; return; }
+    box.innerHTML = '<div class="hor-msg">Consultando el catálogo del SIA… puede tardar hasta 45 s la primera vez.</div>';
+    const seq = ++horSeq;
+    try {
+        const item = await horFetch(codigo);
+        if (seq !== horSeq) return;
+        horOpciones = horParse(codigo, item);
+        horRenderOpciones();
+    } catch (e) {
+        if (seq !== horSeq) return;
+        box.innerHTML = `<div class="hor-msg" style="color:var(--danger)">⚠️ ${siaEsc(e.message)}</div>`;
+    }
+}
+
+function horSlotsTxt(slots) {
+    return slots.map(x => `${HOR_DIAS.find(d => d[0] === x.d)?.[1] || x.d} ${horFmt(x.s)}–${horFmt(x.e)}`).join(', ') || 'Sin horario registrado';
+}
+
+function horRenderOpciones() {
+    const box = document.getElementById('hor-grupos');
+    if (!horOpciones.length) { box.innerHTML = '<div class="hor-msg">No hay grupos ofertados para esta materia.</div>'; return; }
+    box.innerHTML = horOpciones.map((g, i) => {
+        const lleno = g.cupos === 0;
+        const cupoTxt = (g.cupos === null || g.cupos === undefined) ? 'Sin datos' : (lleno ? 'LLENO' : `${g.cupos} cupo${g.cupos === 1 ? '' : 's'}`);
+        const enHorario = horario.some(h => h.key === g.key);
+        return `<div class="hor-g ${lleno ? 'lleno' : ''} ${enHorario ? 'in' : ''}">
+            <div><strong>${siaEsc(g.grupo)}</strong> <span class="cupo-badge ${lleno ? 'cupo-lleno' : ''}">${siaEsc(cupoTxt)}</span>
+            <small>👤 ${siaEsc(g.profes || 'Docente sin asignar')}<br>🕐 ${siaEsc(horSlotsTxt(g.slots))}</small></div>
+            ${g.sinHorario ? '<small>No se puede graficar</small>'
+              : enHorario ? `<button class="hor-btn sec" onclick="horQuitar('${siaEsc(g.key)}')">Quitar</button>`
+              : `<button class="hor-btn" onclick="horAgregar(${i})">+ Agregar al horario</button>`}
+        </div>`;
+    }).join('');
+}
+
+function horAgregar(i) {
+    const g = horOpciones[i];
+    if (!g) return;
+    horario = horario.filter(h => h.codigo !== g.codigo);   // un solo grupo por materia: reemplaza el anterior
+    horario.push(g);
+    horSave(); horRenderOpciones(); renderHorario();
+}
+function horQuitar(key) {
+    horario = horario.filter(h => h.key !== key);
+    horSave(); horRenderOpciones(); renderHorario();
+}
+function horLimpiar() {
+    if (horario.length && confirm('¿Vaciar todo el horario?')) { horario = []; horSave(); horRenderOpciones(); renderHorario(); }
+}
+
+// Detecta cruces entre materias distintas
+function horConflictos() {
+    const conf = new Set(), pares = [];
+    for (let i = 0; i < horario.length; i++) for (let j = i + 1; j < horario.length; j++) {
+        const a = horario[i], b = horario[j];
+        const choque = a.slots.some(x => b.slots.some(y => x.d === y.d && x.s < y.e && y.s < x.e));
+        if (choque) { conf.add(a.key); conf.add(b.key); pares.push(`${a.nombre} ↔ ${b.nombre}`); }
+    }
+    return { conf, pares };
+}
+
+function renderHorario() {
+    const sel = document.getElementById('hor-select');
+    if (!sel) return;
+    if (!sel.options.length) {
+        sel.innerHTML = '<option value="">-- Elige una materia --</option>' +
+            horCatalogo().map(([id, n]) => `<option value="${id}">${siaEsc(n)} (${id})</option>`).join('');
+    }
+
+    const { conf, pares } = horConflictos();
+    document.getElementById('hor-conflictos').innerHTML = pares.length
+        ? `<div class="hor-warn">⚠️ Cruces de horario: ${pares.map(siaEsc).join(' · ')}</div>` : '';
+
+    const slots = horario.flatMap(h => h.slots);
+    const h0 = Math.min(7, ...slots.map(x => Math.floor(x.s / 60)));
+    const h1 = Math.max(19, ...slots.map(x => Math.ceil(x.e / 60)));
+    const alto = (h1 - h0) * HOR_PX;
+
+    const horas = Array.from({ length: h1 - h0 }, (_, k) => `<div>${String(h0 + k).padStart(2, '0')}:00</div>`).join('');
+    const cols = HOR_DIAS.map(([cod]) => {
+        const bloques = horario.flatMap(h => h.slots.filter(x => x.d === cod).map(x => `
+            <div class="hor-block ${conf.has(h.key) ? 'conf' : ''}" style="top:${(x.s / 60 - h0) * HOR_PX}px; height:${(x.e - x.s) / 60 * HOR_PX - 2}px; background-color:${horColor(h.codigo)};"
+                 title="${siaEsc(h.nombre)} · ${siaEsc(h.grupo)}&#10;${horFmt(x.s)}–${horFmt(x.e)}&#10;${siaEsc(h.profes)}">
+                <b>${siaEsc(h.nombre)}</b>${siaEsc(h.grupo)}${x.salon ? ' · ' + siaEsc(x.salon) : ''}<br>${horFmt(x.s)}–${horFmt(x.e)}
+            </div>`)).join('');
+        return `<div class="hor-col" style="height:${alto}px;">${bloques}</div>`;
+    }).join('');
+
+    document.getElementById('hor-calendario').innerHTML = `
+        <div class="hor-grid">
+            <div></div>${HOR_DIAS.map(d => `<div class="hor-dayhead">${d[1]}</div>`).join('')}
+            <div class="hor-times">${horas}</div>${cols}
+        </div>`;
+
+    document.getElementById('hor-lista').innerHTML = horario.length
+        ? horario.map(h => `<div class="hor-g" style="border-left-color:${horColor(h.codigo)};">
+            <div><strong>${siaEsc(h.nombre)}</strong> · ${siaEsc(h.grupo)}<small>👤 ${siaEsc(h.profes || 'Docente sin asignar')}<br>🕐 ${siaEsc(horSlotsTxt(h.slots))}</small></div>
+            <button class="hor-btn del" onclick="horQuitar('${siaEsc(h.key)}')">Quitar</button></div>`).join('')
+        : '<div class="hor-msg">Aún no has agregado materias. Elige una arriba y pulsa "Buscar grupos".</div>';
+}
+
+    
     // ==========================================
     // INICIALIZACIÓN
     // ==========================================
     renderMalla();
     renderCalculadora();
     renderAgrupaciones();
+    renderHorario();
     
     if(semestres.length === 0) addSemestre();
 
