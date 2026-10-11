@@ -200,7 +200,7 @@
         .hor-panel { max-width: 1200px; margin: 0 auto 20px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 18px; box-shadow: var(--shadow); }
         .hor-bar { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
         .hor-bar select { flex: 2; min-width: 220px; }
-        .hor-bar input { width: 120px; }
+        .hor-bar input { flex: 1; min-width: 240px; }
         .hor-btn { background: var(--primary); color: var(--on-primary); }
         .hor-btn.sec { background: var(--surface-2); color: var(--text-dim); border: 1px solid var(--border); }
         .hor-btn.del { background: var(--danger); color: var(--bg); }
@@ -211,6 +211,28 @@
         .libre-toolbar button, .libre-more { background: var(--primary-soft); color: var(--primary); border: 1px solid var(--border); padding: 9px 14px; }
         .libre-more { display: block; margin: 12px auto; }
         .libre-tag { font-size: 0.65rem; font-family: var(--mono); padding: 2px 6px; border-radius: 4px; background: var(--surface-2); color: var(--text-dim); border: 1px solid var(--border); white-space: nowrap; }
+        .hor-tools { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 12px; }
+        .hor-tools #hor-resumen { margin-left: auto; font-family: var(--mono); font-size: 0.78rem; color: var(--text-dim); }
+        .hor-planes { display: flex; gap: 4px; }
+        .hor-plan { background: var(--surface-2); color: var(--text-dim); border: 1px solid var(--border); padding: 7px 12px; }
+        .hor-plan.on { background: var(--primary); color: var(--on-primary); border-color: var(--primary); }
+        .hor-x { position: absolute; top: 1px; right: 4px; cursor: pointer; font-size: 0.9rem; line-height: 1; opacity: 0.75; }
+        .hor-x:hover { opacity: 1; }
+        .hor-print-title { display: none; font-family: var(--mono); font-weight: 700; margin-bottom: 8px; }
+        .hor-addbtn { margin-top: 8px; padding: 6px 10px; font-size: 0.75rem; }
+        .lib-slots { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: 0.78rem; color: var(--text-dim); margin-bottom: 10px; }
+        .lib-slot { background: var(--surface-2); color: var(--text); border: 1px solid var(--border); padding: 6px 10px; font-size: 0.75rem; }
+        .lib-slot.on { background: var(--primary); color: var(--on-primary); border-color: var(--primary); }
+        .m-libre { display: block; margin-top: 6px; font-size: 0.72rem; line-height: 1.3; color: var(--accent); }
+        .approved .m-libre { color: inherit; opacity: 0.9; }
+        .libpick-q { width: 100%; box-sizing: border-box; background: var(--surface-2); border: 1px solid var(--border); color: var(--text); padding: 9px 12px; border-radius: 8px; margin-bottom: 8px; font-family: inherit; }
+        @media print {
+            body > *:not(#horario-view) { display: none !important; }
+            #horario-view .hor-panel:first-child, .hor-tools, .hor-x, #hor-estado, #hor-lista .hor-btn { display: none !important; }
+            .hor-print-title { display: block; }
+            body { background: #fff !important; color: #000 !important; }
+            .hor-block { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
         .hor-msg { font-size: 0.85rem; color: var(--text-dim); text-align: center; padding: 12px; font-family: var(--mono); }
         .hor-g { background: var(--surface-2); border-left: 3px solid var(--primary); border-radius: 10px; padding: 10px; margin-top: 8px; font-size: 0.82rem; display: flex; justify-content: space-between; gap: 10px; align-items: center; flex-wrap: wrap; animation: fadeUp 0.4s var(--ease) both; transition: transform 0.25s var(--ease), box-shadow 0.25s; }
         .hor-g:hover { transform: translateX(4px); box-shadow: var(--shadow); }
@@ -507,14 +529,23 @@
 <div id="horario-view" class="view-section">
     <div class="hor-panel">
         <div class="hor-bar">
-            <select id="hor-select" onchange="document.getElementById('hor-codigo').value = this.value"></select>
-            <input type="text" id="hor-codigo" placeholder="Código SIA">
+            <input type="text" id="hor-codigo" list="hor-materias" placeholder="Busca por nombre o código (malla, agrupaciones y libre elección)" autocomplete="off" onchange="horCargar()">
+            <datalist id="hor-materias"></datalist>
             <button class="hor-btn" onclick="horCargar()">Buscar grupos</button>
-            <button class="hor-btn del" onclick="horLimpiar()">Vaciar horario</button>
         </div>
         <div id="hor-grupos"></div>
     </div>
     <div class="hor-panel">
+        <div class="hor-tools">
+            <div class="hor-planes" id="hor-planes"></div>
+            <button class="hor-btn sec" onclick="horRefrescar()" title="Vuelve a consultar el SIA">🔄 Actualizar cupos</button>
+            <button class="hor-btn sec" onclick="horCopiar()">📋 Copiar</button>
+            <button class="hor-btn sec" onclick="window.print()">🖨 Imprimir</button>
+            <button class="hor-btn del" onclick="horLimpiar()">Vaciar</button>
+            <span id="hor-resumen"></span>
+        </div>
+        <div id="hor-estado" class="hor-msg"></div>
+        <div id="hor-print-title" class="hor-print-title"></div>
         <div id="hor-conflictos"></div>
         <div class="hor-scroll"><div id="hor-calendario"></div></div>
         <div id="hor-lista" style="margin-top:12px;"></div>
@@ -571,6 +602,17 @@
             <button class="close-btn" onclick="closeCuposModal()">&times;</button>
         </div>
         <div id="cupos-modal-body"></div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="libre-pick-modal" onclick="if(event.target===this)libPickCerrar()">
+    <div class="modal-content" style="max-width: 440px; max-height: 85vh; overflow-y: auto;">
+        <div class="modal-header">
+            <h2 id="libpick-title">Libre elección</h2>
+            <button class="close-btn" onclick="libPickCerrar()">&times;</button>
+        </div>
+        <input type="text" id="libpick-q" class="libpick-q" placeholder="Buscar en la lista de libre elección..." oninput="libPickRender()">
+        <div id="libpick-body"></div>
     </div>
 </div>
 
@@ -891,6 +933,11 @@ function switchTab(tab) {
     function renderCuposContent(res, ts) {
         const body = document.getElementById('cupos-modal-body');
         const tipos = res.tiposClase || [];
+        const asig = res.asignatura || {};
+        siaModalCtx.creditos = asig.creditos || siaModalCtx.creditos;
+        if (!siaModalCtx.nombre) siaModalCtx.nombre = asig.nombre || '';
+        const hg = horParse(siaModalCtx.codigo, res, siaModalCtx.libre);
+        horModalList = [];
         const grupos = tipos.flatMap(t => (t.grupos || []).map(g => ({ ...g, _tipo: t.nombre })));
         grupos.sort((a, b) => String(a.grupo).localeCompare(String(b.grupo), 'es', { numeric: true }));
 
@@ -919,6 +966,9 @@ function switchTab(tab) {
                 ? profesLista.map(p => rvChip(p, (res.asignatura || {}).codigo)).join('')
                 : 'Docente sin asignar';
             const label = /^\d+$/.test(String(g.grupo)) ? `Grupo ${g.grupo}` : `${g.grupo} · ${g.nombre}`;
+            const pg = hg.find(x => x.key === `${siaModalCtx.codigo}|${g.grupo}|${g._tipo || ''}`);
+            let addBtn = '';
+            if (pg && !pg.sinHorario) { horModalList.push(pg); addBtn = `<button class="hor-btn hor-addbtn" data-i="${horModalList.length - 1}" onclick="horAgregarModal(${horModalList.length - 1})">📅 Agregar al horario</button>`; }
 
             return `
                 <div class="grupo-item" style="border-left-color: ${lleno ? 'var(--danger)' : 'var(--primary)'};">
@@ -931,6 +981,7 @@ function switchTab(tab) {
                         🕐 ${siaEsc(g.jornada || '')}${g.jornada ? ' · ' : ''}${siaEsc(horario)}<br>
                         📍 ${siaEsc(salones || 'Salón sin asignar')}
                     </div>
+                    ${addBtn}
                 </div>
             `;
         }).join('');
@@ -947,11 +998,13 @@ function switchTab(tab) {
                 <div style="font-size:0.78rem; color:var(--text-dim); margin-bottom:10px;">
                     ${siaEsc(r.gruposConCupo)} de ${siaEsc(r.grupos)} grupos con cupo · ${siaEsc(r.cuposDisponibles)} cupos libres · 🔄 consultado ${siaTimeAgo(ts)}
                 </div>
+                ${siaModalCtx.libre ? `<div class="lib-slots" id="lib-slots">${libreSlotsHtml()}</div>` : ''}
                 ${groupsHtml}
                 <div class="rv-ext">💬 Toca el nombre de un profesor para ver o dejar reseñas anónimas.<br>
                     Más opiniones en <a href="https://losestudiantes.com/home" target="_blank" rel="noopener noreferrer">Los Estudiantes ↗</a></div>
             </div>
         `;
+        horModalRefrescar();
         rvLlenarResumenes(body);
     }
 
@@ -972,6 +1025,7 @@ function switchTab(tab) {
         document.getElementById('cupos-modal-title').innerText = opts.nombre || getMateriaNameBySiaId(courseId) || `Materia ${courseId}`;
         document.getElementById('cupos-modal').classList.add('active');
         const seq = ++siaReqSeq;
+        siaModalCtx = { codigo: courseId, libre: opts.libre || '', nombre: opts.nombre || getMateriaNameBySiaId(courseId) || '', creditos: null };
 
         const ck = (opts.libre ? 'libre:' + opts.libre + '|' : '') + courseId;   // misma materia, distinto origen = otra entrada
         const cached = siaCache[ck];
@@ -1141,8 +1195,119 @@ function switchTab(tab) {
     document.getElementById('libre-body').addEventListener('click', (e) => {
         const tr = e.target.closest('tr[data-i]');
         const a = tr && libreView[Number(tr.dataset.i)];
-        if (a) openCuposModal(a.codigo, { libre: libreFuente(), nombre: a.nombre });
+        if (a) {
+            libreRegistrarVista({ codigo: a.codigo, nombre: a.nombre, creditos: a.creditos, libre: libreFuente() });
+            openCuposModal(a.codigo, { libre: libreFuente(), nombre: a.nombre });
+        }
     });
+
+    // ==========================================
+    // LIBRE ELECCIÓN <-> MALLA / HORARIO
+    // ==========================================
+    const LIBRE_MALLA_KEY = 'malla_iq_libre_malla_v1';
+    const LIBRE_VISTAS_KEY = 'malla_iq_libre_vistas_v1';
+    const LIBRE_DEFAULT = 'modo=facultad&sede=1101&facultad=2000';   // la fuente "Sede Bogotá · todas"
+    const libreLeer = (k, def) => { try { return JSON.parse(localStorage.getItem(k)) || def; } catch (e) { return def; } };
+    let libreMalla = libreLeer(LIBRE_MALLA_KEY, {});     // { L1: { codigo, nombre, creditos, libre } }
+    let libreVistas = libreLeer(LIBRE_VISTAS_KEY, []);   // las últimas que el usuario abrió
+    let siaModalCtx = { codigo: '', libre: '', nombre: '', creditos: null };   // materia que muestra el modal de cupos
+    let libPickSlot = null, libPickItems = [], libreUltimoIntento = 0;
+
+    const libreSlots = () => data.flatMap(s => s.mat.filter(m => m.cat === 'Libre').map(m => ({ id: m.id, sem: s.sem })));
+    function libreGuardar() {
+        try { localStorage.setItem(LIBRE_MALLA_KEY, JSON.stringify(libreMalla)); localStorage.setItem(LIBRE_VISTAS_KEY, JSON.stringify(libreVistas)); } catch (e) { /* sin espacio */ }
+    }
+    function libreRegistrarVista(v) {
+        libreVistas = [v, ...libreVistas.filter(x => x.codigo !== v.codigo)].slice(0, 30);
+        libreGuardar();
+    }
+
+    // Todo lo de libre elección que el usuario ya cargó (memoria + caché del navegador): código -> { nombre, fuente, creditos }
+    function libreTodas() {
+        const out = new Map();
+        const add = (fuente, d) => ((d && d.asignaturas) || []).forEach(a => { if (!out.has(a.codigo)) out.set(a.codigo, { nombre: a.nombre, fuente, creditos: a.creditos }); });
+        Object.entries(libreStore).forEach(([f, d]) => add(f, d));
+        try {
+            for (let i = 0; i < localStorage.length; i++) {
+                const k = localStorage.key(i);
+                if (k.startsWith(LIBRE_LS_PREFIX) && !libreStore[k.slice(LIBRE_LS_PREFIX.length)]) add(k.slice(LIBRE_LS_PREFIX.length), JSON.parse(localStorage.getItem(k)));
+            }
+        } catch (e) { /* caché dañada */ }
+        return out;
+    }
+
+    // Carga en segundo plano la lista por defecto si el usuario aún no ha abierto la pestaña Libre Elección
+    async function libreCargarDefault() {
+        if (libreTodas().size || Date.now() - libreUltimoIntento < 60000) return;
+        libreUltimoIntento = Date.now();
+        try {
+            const res = await fetchWithTimeout(`${SIA_API}/libre?${LIBRE_DEFAULT}`, LIBRE_TIMEOUT_MS);
+            const json = await res.json().catch(() => null);
+            if (res.ok && json && Array.isArray(json.asignaturas)) {
+                const d = {
+                    ts: Date.now(), filas: json.filasSia || json.asignaturas.length, completo: json.completo !== false,
+                    asignaturas: json.asignaturas
+                        .map(a => ({ codigo: a.codigo, nombre: a.nombre, creditos: a.creditos, sinProgramar: !!a.sinProgramar }))
+                        .sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'))
+                };
+                libreStore[LIBRE_DEFAULT] = d;
+                try { localStorage.setItem(LIBRE_LS_PREFIX + LIBRE_DEFAULT, JSON.stringify(d)); } catch (e) { /* sin espacio */ }
+            }
+        } catch (e) { /* sin lista: el usuario todavía puede escribir un código */ }
+        horPoblarLista();
+        libPickRender();
+    }
+
+    // Poner una materia de libre elección en uno de los cupos "Libre Elección N" de la malla
+    function libreAsignar(slotId, v) {
+        v = v || { codigo: siaModalCtx.codigo, nombre: siaModalCtx.nombre, creditos: siaModalCtx.creditos, libre: siaModalCtx.libre };
+        if (!v.codigo) return;
+        Object.keys(libreMalla).forEach(k => { if (libreMalla[k].codigo === v.codigo) delete libreMalla[k]; });   // una materia ocupa un solo cupo
+        libreMalla[slotId] = { codigo: v.codigo, nombre: v.nombre, creditos: v.creditos || null, libre: v.libre };
+        libreRegistrarVista(v);
+        renderMalla();
+        const box = document.getElementById('lib-slots');
+        if (box) box.innerHTML = libreSlotsHtml();
+        libPickCerrar();
+    }
+    function libreQuitar(slotId) { delete libreMalla[slotId]; libreGuardar(); closeMateriaMenu(); renderMalla(); }
+    function libreOpts(slotId) { const l = libreMalla[slotId] || {}; return { libre: l.libre, nombre: l.nombre }; }
+    function libreSlotsHtml() {
+        return '<span>📌 Poner en mi malla:</span>' + libreSlots().map(s => {
+            const cur = libreMalla[s.id], on = cur && cur.codigo === siaModalCtx.codigo;
+            const tip = on ? 'Ya está en este cupo' : cur ? 'Reemplaza a ' + cur.nombre : `Libre elección ${s.id.slice(1)} · semestre ${s.sem}`;
+            return `<button class="lib-slot ${on ? 'on' : ''}" onclick="libreAsignar('${s.id}')" title="${siaEsc(tip)}">${on ? '✓ ' : ''}L${s.id.slice(1)} · sem ${s.sem}</button>`;
+        }).join('');
+    }
+
+    // Selector de materia para un cupo de la malla (desde el menú ⋮ de la tarjeta)
+    function libPickAbrir(slotId) {
+        closeMateriaMenu();
+        libPickSlot = slotId;
+        document.getElementById('libpick-title').textContent = `Libre elección ${slotId.slice(1)}`;
+        document.getElementById('libpick-q').value = '';
+        document.getElementById('libre-pick-modal').classList.add('active');
+        libPickRender();
+        libreCargarDefault();
+    }
+    function libPickCerrar() { libPickSlot = null; const m = document.getElementById('libre-pick-modal'); if (m) m.classList.remove('active'); }
+    function libPickElegir(i) { const v = libPickItems[i]; if (v && libPickSlot) libreAsignar(libPickSlot, v); }
+    function libPickRender() {
+        if (!libPickSlot) return;
+        const q = libreNorm(document.getElementById('libpick-q').value.trim());
+        const todas = libreTodas();
+        libPickItems = q
+            ? [...todas].filter(([id, v]) => libreNorm(v.nombre).includes(q) || libreNorm(id).includes(q)).slice(0, 40)
+                .map(([id, v]) => ({ codigo: id, nombre: v.nombre, creditos: v.creditos, libre: v.fuente }))
+            : libreVistas.slice(0, 8);
+        const nota = q ? (libPickItems.length ? `${libPickItems.length} resultado(s)` : 'Sin resultados.')
+            : (libreVistas.length ? 'Las últimas que viste:' : (todas.size ? `Escribe para buscar entre ${todas.size} materias de libre elección.` : 'Cargando la lista de libre elección…'));
+        document.getElementById('libpick-body').innerHTML =
+            `<div class="hor-msg" style="padding:6px;">${nota}</div>` +
+            libPickItems.map((v, i) => `<div class="hor-g"><div><strong>${siaEsc(v.nombre)}</strong><small>${siaEsc(v.codigo)}${v.creditos ? ' · ' + siaEsc(v.creditos) + ' créd.' : ''}</small></div>
+                <button class="hor-btn" onclick="libPickElegir(${i})">Elegir</button></div>`).join('') +
+            `<div style="text-align:center; margin-top:10px;"><button class="hor-btn sec" onclick="libPickCerrar(); switchTab('libre')">Abrir la pestaña Libre Elección</button></div>`;
+    }
 
     // ==========================================
     // ESTADO E INTEGRACIÓN (Calculadora -> Malla)
@@ -1295,6 +1460,7 @@ function renderMalla() {
                 <button class="dots-btn" title="Más opciones" aria-label="Más opciones" onclick="openMateriaMenu(event,'${m.id}')">⋮</button>
                 <span class="m-name">${m.n}${icon}</span>
                 <span class="m-cred">${m.c} Créditos ${failText}</span>
+                ${libreMalla[m.id] ? `<span class="m-libre" title="${siaEsc(libreMalla[m.id].codigo)}">📌 ${siaEsc(libreMalla[m.id].nombre)}</span>` : ''}
             `;
             col.appendChild(card);
         });
@@ -1370,6 +1536,15 @@ function openMateriaMenu(ev, id) {
         : item('approved', '✅ Aprobada') + item('failed', '❌ Reprobada') + item('pending', '⏳ Pendiente');
     if (m.siaId && m.siaId.trim() !== '') {
         menu.innerHTML += `<div class="mm-sep"></div><button class="mm-item" onclick="closeMateriaMenu(); openCuposModal('${m.siaId}')">📊 Ver cupos SIA</button>`;
+    }
+    if (m.cat === 'Libre') {
+        const lm = libreMalla[m.id];
+        menu.innerHTML += '<div class="mm-sep"></div>' + (lm
+            ? `<div class="mm-note">📌 ${siaEsc(lm.nombre)}</div>
+               <button class="mm-item" onclick="closeMateriaMenu(); openCuposModal('${siaEsc(lm.codigo)}', libreOpts('${m.id}'))">📊 Ver grupos y cupos</button>
+               <button class="mm-item" onclick="libPickAbrir('${m.id}')">🔄 Cambiar materia</button>
+               <button class="mm-item" onclick="libreQuitar('${m.id}')">✕ Quitar</button>`
+            : `<button class="mm-item" onclick="libPickAbrir('${m.id}')">📌 Elegir libre elección</button>`);
     }
     document.body.appendChild(menu);
 
@@ -1646,11 +1821,17 @@ window.addEventListener('scroll', closeMateriaMenu, true);
 // ==========================================
 // HORARIO SEMANAL
 // ==========================================
-const HOR_KEY = 'horario_iq_v1';
-const HOR_PX = 48; // alto de cada hora en pixeles
+const HOR_KEY = 'horario_iq_v1';             // el plan A conserva la clave original: no se pierde lo ya guardado
+const HOR_PLAN_KEY = 'horario_iq_plan';
+const HOR_PX = 48;                           // alto de cada hora en pixeles
 const HOR_DIAS = [['LUN', 'Lunes'], ['MAR', 'Martes'], ['MIE', 'Miércoles'], ['JUE', 'Jueves'], ['VIE', 'Viernes'], ['SAB', 'Sábado']];
-let horario = JSON.parse(localStorage.getItem(HOR_KEY)) || [];
-let horOpciones = [];   // grupos de la última búsqueda
+const HOR_PLANES = ['A', 'B', 'C'];
+let horPlan = HOR_PLANES.includes(localStorage.getItem(HOR_PLAN_KEY)) ? localStorage.getItem(HOR_PLAN_KEY) : 'A';
+const horKey = () => horPlan === 'A' ? HOR_KEY : `${HOR_KEY}_${horPlan}`;
+const horLeer = () => { try { return JSON.parse(localStorage.getItem(horKey())) || []; } catch (e) { return []; } };
+let horario = horLeer();
+let horOpciones = [];    // grupos de la última búsqueda
+let horModalList = [];   // grupos que muestra el modal de cupos (botón "Agregar al horario")
 let horSeq = 0;
 
 const horDia = d => String(d || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase().slice(0, 3);
@@ -1663,26 +1844,59 @@ function horMin(t) {
 }
 const horFmt = min => `${String(Math.floor(min / 60)).padStart(2, '0')}:${String(min % 60).padStart(2, '0')}`;
 const horColor = s => { let h = 0; for (const c of String(s)) h = (h * 31 + c.charCodeAt(0)) % 360; return `hsl(${h},55%,36%)`; };
-const horSave = () => localStorage.setItem(HOR_KEY, JSON.stringify(horario));
-
-function horCatalogo() {
-    const map = new Map();
-    data.forEach(s => s.mat.forEach(m => { if (/^\d+$/.test(m.siaId || '')) map.set(m.siaId, m.n); }));
-    agrupacionesInfo.forEach(a => (a.materias || []).forEach(m => { if (/^\d+$/.test(m.id) && !map.has(m.id)) map.set(m.id, m.n); }));
-    return [...map].sort((a, b) => a[1].localeCompare(b[1], 'es'));
+const horSave = () => { try { localStorage.setItem(horKey(), JSON.stringify(horario)); } catch (e) { /* sin espacio */ } };
+const horEstado = msg => { const el = document.getElementById('hor-estado'); if (el) el.textContent = msg || ''; };
+const horChoca = (a, b) => a.slots.some(x => b.slots.some(y => x.d === y.d && x.s < y.e && y.s < x.e));
+const horCruces = g => horario.filter(h => h.codigo !== g.codigo && horChoca(h, g)).map(h => h.nombre);
+function horCreditos(h) {
+    if (h.creditos) return Number(h.creditos);
+    for (const s of data) { const m = s.mat.find(x => x.siaId === h.codigo); if (m) return m.c; }
+    const am = getAgrupacionMateriaInfo(h.codigo);
+    return am ? am.c : 0;
 }
 
-async function horFetch(codigo) {
-    const c = siaCache[codigo];
-    if (c && (Date.now() - c.ts) < SIA_CACHE_MS) return c.data;
-    const url = `${SIA_API}/grupos?${SIA_FILTROS}&codigo=${encodeURIComponent(codigo)}`;
+// Catálogo para el buscador: malla + agrupaciones + toda la libre elección que el usuario ya haya cargado
+function horCatalogo() {
+    const map = new Map();
+    data.forEach(s => s.mat.forEach(m => { if (/^\d+$/.test(m.siaId || '')) map.set(m.siaId, { id: m.siaId, nombre: m.n, libre: '' }); }));
+    agrupacionesInfo.forEach(a => (a.materias || []).forEach(m => { if (/^\d+$/.test(m.id) && !map.has(m.id)) map.set(m.id, { id: m.id, nombre: m.n, libre: '' }); }));
+    libreTodas().forEach((v, id) => { if (!map.has(id)) map.set(id, { id, nombre: v.nombre, libre: v.fuente }); });
+    return [...map.values()].sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
+}
+function horPoblarLista() {
+    const dl = document.getElementById('hor-materias');
+    if (!dl) return;
+    dl.innerHTML = horCatalogo().map(c => `<option value="${siaEsc(c.id + ' · ' + c.nombre)}" label="${c.libre ? 'Libre elección' : ''}"></option>`).join('');
+}
+// "2030030 · Aguas y economía", "2030030" o parte del nombre -> { codigo, libre } (libre = filtro del SIA de donde sale)
+function horResolver(txt) {
+    const t = String(txt || '').trim();
+    if (!t) return null;
+    const cat = horCatalogo();
+    const code = t.split(/\s+/)[0];
+    let hit = cat.find(c => c.id.toLowerCase() === code.toLowerCase());
+    if (!hit) {
+        const n = libreNorm(t), m = cat.filter(c => libreNorm(c.nombre).includes(n));
+        if (m.length > 1) return { ambiguo: m.length };
+        hit = m[0];
+    }
+    return hit ? { codigo: hit.id, libre: hit.libre } : { codigo: code, libre: '' };
+}
+
+async function horFetch(codigo, libre = '', force = false) {
+    const ck = (libre ? 'libre:' + libre + '|' : '') + codigo;       // misma clave que usa el modal de cupos
+    const c = siaCache[ck];
+    if (!force && c && (Date.now() - c.ts) < SIA_CACHE_MS) return c.data;
+    const url = libre
+        ? `${SIA_API}/libre/grupos?${libre}&codigo=${encodeURIComponent(codigo)}`
+        : `${SIA_API}/grupos?${SIA_FILTROS}&codigo=${encodeURIComponent(codigo)}`;
     let err = 'No se pudo conectar con el servidor.';
     for (let i = 1; i <= 2; i++) {
         try {
-            const res = await fetchWithTimeout(url, SIA_TIMEOUT_MS);
+            const res = await fetchWithTimeout(url, libre ? 70000 : SIA_TIMEOUT_MS);
             const json = await res.json().catch(() => null);
             const item = json && Array.isArray(json.resultados) ? json.resultados[0] : null;
-            if (res.ok && item && !item.error) { siaCache[codigo] = { data: item, ts: Date.now() }; return item; }
+            if (res.ok && item && !item.error) { siaCache[ck] = { data: item, ts: Date.now() }; return item; }
             err = (item && item.error) || (json && json.error) || `El servidor respondió HTTP ${res.status}.`;
             if (item && item.error && (item.status || 502) < 500) break;   // p. ej. 404: no se reintenta
             if (!item && res.status < 500) break;
@@ -1693,15 +1907,16 @@ async function horFetch(codigo) {
     throw new Error(err);
 }
 
-function horParse(codigo, item) {
+function horParse(codigo, item, libre = '') {
     const nombre = getMateriaNameBySiaId(codigo) || (item.asignatura && item.asignatura.nombre) || codigo;
+    const creditos = (item.asignatura && item.asignatura.creditos) || null;
     return (item.tiposClase || []).flatMap(t => (t.grupos || []).map(g => {
         const slots = (g.horarios || []).map(h => ({
             d: horDia(h.dia), s: horMin(h.inicio), e: horMin(h.fin),
             salon: [...new Set((h.ubicaciones || []).map(u => u.codigo || u.descripcion).filter(Boolean))].join(', ')
         })).filter(x => x.d && x.s != null && x.e != null && x.e > x.s);
         return {
-            key: `${codigo}|${g.grupo}|${t.nombre || ''}`, codigo, nombre,
+            key: `${codigo}|${g.grupo}|${t.nombre || ''}`, codigo, nombre, creditos, libre,
             grupo: /^\d+$/.test(String(g.grupo)) ? `Grupo ${g.grupo}` : String(g.grupo),
             profes: (g.profesores || []).join(' · '), cupos: g.cuposDisponibles, slots,
             sinHorario: slots.length === 0
@@ -1710,15 +1925,16 @@ function horParse(codigo, item) {
 }
 
 async function horCargar() {
-    const codigo = document.getElementById('hor-codigo').value.trim();
     const box = document.getElementById('hor-grupos');
-    if (!codigo) { box.innerHTML = '<div class="hor-msg">Elige una materia o escribe un código SIA.</div>'; return; }
+    const r = horResolver(document.getElementById('hor-codigo').value);
+    if (!r) { box.innerHTML = '<div class="hor-msg">Busca una materia por nombre o código SIA.</div>'; return; }
+    if (r.ambiguo) { box.innerHTML = `<div class="hor-msg">Hay ${r.ambiguo} materias con ese nombre: elige una de la lista desplegable.</div>`; return; }
     box.innerHTML = '<div class="hor-msg">Consultando el catálogo del SIA… puede tardar hasta 45 s la primera vez.</div>';
     const seq = ++horSeq;
     try {
-        const item = await horFetch(codigo);
+        const item = await horFetch(r.codigo, r.libre);
         if (seq !== horSeq) return;
-        horOpciones = horParse(codigo, item);
+        horOpciones = horParse(r.codigo, item, r.libre);
         horRenderOpciones();
     } catch (e) {
         if (seq !== horSeq) return;
@@ -1732,34 +1948,94 @@ function horSlotsTxt(slots) {
 
 function horRenderOpciones() {
     const box = document.getElementById('hor-grupos');
-    if (!horOpciones.length) { box.innerHTML = '<div class="hor-msg">No hay grupos ofertados para esta materia.</div>'; return; }
+    if (!horOpciones.length) { if (box.innerHTML.includes('hor-g')) box.innerHTML = ''; return; }
     box.innerHTML = horOpciones.map((g, i) => {
         const lleno = g.cupos === 0;
         const cupoTxt = (g.cupos === null || g.cupos === undefined) ? 'Sin datos' : (lleno ? 'LLENO' : `${g.cupos} cupo${g.cupos === 1 ? '' : 's'}`);
         const enHorario = horario.some(h => h.key === g.key);
+        const cruces = enHorario ? [] : horCruces(g);
+        const otro = !enHorario && horario.some(h => h.codigo === g.codigo);
         return `<div class="hor-g ${lleno ? 'lleno' : ''} ${enHorario ? 'in' : ''}">
             <div><strong>${siaEsc(g.grupo)}</strong> <span class="cupo-badge ${lleno ? 'cupo-lleno' : ''}">${siaEsc(cupoTxt)}</span>
-            <small>👤 ${siaEsc(g.profes || 'Docente sin asignar')}<br>🕐 ${siaEsc(horSlotsTxt(g.slots))}</small></div>
+            <small>👤 ${siaEsc(g.profes || 'Docente sin asignar')}<br>🕐 ${siaEsc(horSlotsTxt(g.slots))}</small>
+            ${cruces.length ? `<small style="color:var(--danger)">⚠️ Cruza con ${siaEsc(cruces.join(', '))}</small>` : ''}</div>
             ${g.sinHorario ? '<small>No se puede graficar</small>'
               : enHorario ? `<button class="hor-btn sec" onclick="horQuitar('${siaEsc(g.key)}')">Quitar</button>`
-              : `<button class="hor-btn" onclick="horAgregar(${i})">+ Agregar al horario</button>`}
+              : `<button class="hor-btn" onclick="horAgregar(${i})">${otro ? '↔ Cambiar a este grupo' : '+ Agregar al horario'}</button>`}
         </div>`;
     }).join('');
 }
 
-function horAgregar(i) {
-    const g = horOpciones[i];
-    if (!g) return;
+function horPoner(g) {
     horario = horario.filter(h => h.codigo !== g.codigo);   // un solo grupo por materia: reemplaza el anterior
-    horario.push(g);
-    horSave(); horRenderOpciones(); renderHorario();
+    horario.push({ ...g, ausente: false });
+    horSave();
 }
-function horQuitar(key) {
-    horario = horario.filter(h => h.key !== key);
-    horSave(); horRenderOpciones(); renderHorario();
-}
+function horAgregar(i) { const g = horOpciones[i]; if (!g) return; horPoner(g); horRenderOpciones(); renderHorario(); }
+function horQuitar(key) { horario = horario.filter(h => h.key !== key); horSave(); horRenderOpciones(); renderHorario(); }
 function horLimpiar() {
-    if (horario.length && confirm('¿Vaciar todo el horario?')) { horario = []; horSave(); horRenderOpciones(); renderHorario(); }
+    if (horario.length && confirm(`¿Vaciar el plan ${horPlan} del horario?`)) { horario = []; horSave(); horRenderOpciones(); renderHorario(); }
+}
+
+// Botón "Agregar al horario" dentro del modal de cupos (sirve para malla, agrupaciones y libre elección)
+function horAgregarModal(i) {
+    const g = horModalList[i];
+    if (!g) return;
+    if (horario.some(h => h.key === g.key)) { horario = horario.filter(h => h.key !== g.key); horSave(); }
+    else horPoner(g);
+    horModalRefrescar();
+}
+function horModalRefrescar() {
+    document.querySelectorAll('#cupos-modal-body .hor-addbtn').forEach(b => {
+        const g = horModalList[Number(b.dataset.i)];
+        if (!g) return;
+        const dentro = horario.some(h => h.key === g.key);
+        const cruces = dentro ? [] : horCruces(g);
+        b.className = 'hor-btn hor-addbtn' + (dentro ? ' sec' : '');
+        b.textContent = dentro ? '✓ En tu horario · quitar'
+            : cruces.length ? `📅 Agregar (⚠️ cruza con ${cruces[0]}${cruces.length > 1 ? ' +' + (cruces.length - 1) : ''})`
+            : '📅 Agregar al horario';
+    });
+}
+
+function horCambiarPlan(p) {
+    if (!HOR_PLANES.includes(p) || p === horPlan) return;
+    horPlan = p;
+    try { localStorage.setItem(HOR_PLAN_KEY, p); } catch (e) { /* sin espacio */ }
+    horario = horLeer();
+    horEstado('');
+    horRenderOpciones(); renderHorario();
+}
+
+// Vuelve a consultar el SIA: actualiza cupos, profesores y horarios, y avisa si un grupo ya no existe
+async function horRefrescar() {
+    if (!horario.length) return;
+    const lista = horario, k = horKey();
+    const pares = [...new Map(lista.map(h => [(h.libre || '') + '|' + h.codigo, h])).values()];
+    let n = 0, fallos = 0;
+    for (const h of pares) {
+        horEstado(`Actualizando cupos… ${++n}/${pares.length} (${h.nombre})`);
+        try {
+            const nuevos = horParse(h.codigo, await horFetch(h.codigo, h.libre || '', true), h.libre || '');
+            lista.filter(x => x.codigo === h.codigo && (x.libre || '') === (h.libre || '')).forEach(x => {
+                const g = nuevos.find(y => y.key === x.key);
+                if (g) Object.assign(x, { cupos: g.cupos, profes: g.profes, slots: g.slots, creditos: g.creditos || x.creditos, ausente: false });
+                else x.ausente = true;
+            });
+        } catch (e) { fallos++; }
+    }
+    try { localStorage.setItem(k, JSON.stringify(lista)); } catch (e) { /* sin espacio */ }
+    horEstado(`${fallos ? '⚠️ ' + fallos + ' materia(s) no se pudieron actualizar · ' : '✓ '}Cupos al ${new Date().toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit' })}`);
+    if (lista === horario) { horRenderOpciones(); renderHorario(); }
+}
+
+async function horCopiar() {
+    if (!horario.length) return;
+    const txt = `Horario · Plan ${horPlan}\n` +
+        horario.map(h => `• ${h.nombre} — ${h.grupo}${h.profes ? ' (' + h.profes + ')' : ''}: ${horSlotsTxt(h.slots)}`).join('\n') +
+        `\nTotal: ${horario.reduce((s, h) => s + horCreditos(h), 0)} créditos`;
+    try { await navigator.clipboard.writeText(txt); horEstado('✓ Horario copiado al portapapeles'); }
+    catch (e) { prompt('Copia tu horario:', txt); }
 }
 
 // Detecta cruces entre materias distintas
@@ -1767,23 +2043,27 @@ function horConflictos() {
     const conf = new Set(), pares = [];
     for (let i = 0; i < horario.length; i++) for (let j = i + 1; j < horario.length; j++) {
         const a = horario[i], b = horario[j];
-        const choque = a.slots.some(x => b.slots.some(y => x.d === y.d && x.s < y.e && y.s < x.e));
-        if (choque) { conf.add(a.key); conf.add(b.key); pares.push(`${a.nombre} ↔ ${b.nombre}`); }
+        if (horChoca(a, b)) { conf.add(a.key); conf.add(b.key); pares.push(`${a.nombre} ↔ ${b.nombre}`); }
     }
     return { conf, pares };
 }
 
 function renderHorario() {
-    const sel = document.getElementById('hor-select');
-    if (!sel) return;
-    if (!sel.options.length) {
-        sel.innerHTML = '<option value="">-- Elige una materia --</option>' +
-            horCatalogo().map(([id, n]) => `<option value="${id}">${siaEsc(n)} (${id})</option>`).join('');
-    }
+    if (!document.getElementById('hor-calendario')) return;
+    horPoblarLista();
+    libreCargarDefault();   // en segundo plano: así la libre elección aparece en el buscador
+
+    document.getElementById('hor-planes').innerHTML = HOR_PLANES.map(p =>
+        `<button class="hor-plan ${p === horPlan ? 'on' : ''}" onclick="horCambiarPlan('${p}')">Plan ${p}</button>`).join('');
+    document.getElementById('hor-print-title').textContent = `Horario semanal · Plan ${horPlan}`;
+    const cred = horario.reduce((s, h) => s + horCreditos(h), 0);
+    document.getElementById('hor-resumen').textContent = `${horario.length} materia${horario.length === 1 ? '' : 's'} · ${cred} créditos`;
 
     const { conf, pares } = horConflictos();
-    document.getElementById('hor-conflictos').innerHTML = pares.length
-        ? `<div class="hor-warn">⚠️ Cruces de horario: ${pares.map(siaEsc).join(' · ')}</div>` : '';
+    const ausentes = horario.filter(h => h.ausente).map(h => `${h.nombre} (${h.grupo})`);
+    document.getElementById('hor-conflictos').innerHTML =
+        (pares.length ? `<div class="hor-warn">⚠️ Cruces de horario: ${pares.map(siaEsc).join(' · ')}</div>` : '') +
+        (ausentes.length ? `<div class="hor-warn">⚠️ Ya no aparece en el SIA: ${ausentes.map(siaEsc).join(' · ')}</div>` : '');
 
     const slots = horario.flatMap(h => h.slots);
     const h0 = Math.min(7, ...slots.map(x => Math.floor(x.s / 60)));
@@ -1795,6 +2075,7 @@ function renderHorario() {
         const bloques = horario.flatMap(h => h.slots.filter(x => x.d === cod).map(x => `
             <div class="hor-block ${conf.has(h.key) ? 'conf' : ''}" style="top:${(x.s / 60 - h0) * HOR_PX}px; height:${(x.e - x.s) / 60 * HOR_PX - 2}px; background-color:${horColor(h.codigo)};"
                  title="${siaEsc(h.nombre)} · ${siaEsc(h.grupo)}&#10;${horFmt(x.s)}–${horFmt(x.e)}&#10;${siaEsc(h.profes)}">
+                <span class="hor-x" title="Quitar del horario" onclick="horQuitar('${siaEsc(h.key)}')">×</span>
                 <b>${siaEsc(h.nombre)}</b>${siaEsc(h.grupo)}${x.salon ? ' · ' + siaEsc(x.salon) : ''}<br>${horFmt(x.s)}–${horFmt(x.e)}
             </div>`)).join('');
         return `<div class="hor-col" style="height:${alto}px;">${bloques}</div>`;
@@ -1807,10 +2088,14 @@ function renderHorario() {
         </div>`;
 
     document.getElementById('hor-lista').innerHTML = horario.length
-        ? horario.map(h => `<div class="hor-g" style="border-left-color:${horColor(h.codigo)};">
-            <div><strong>${siaEsc(h.nombre)}</strong> · ${siaEsc(h.grupo)}<small>👤 ${siaEsc(h.profes || 'Docente sin asignar')}<br>🕐 ${siaEsc(horSlotsTxt(h.slots))}</small></div>
-            <button class="hor-btn del" onclick="horQuitar('${siaEsc(h.key)}')">Quitar</button></div>`).join('')
-        : '<div class="hor-msg">Aún no has agregado materias. Elige una arriba y pulsa "Buscar grupos".</div>';
+        ? horario.map(h => {
+            const lleno = h.cupos === 0;
+            return `<div class="hor-g ${lleno ? 'lleno' : ''}" style="border-left-color:${horColor(h.codigo)};">
+            <div><strong>${siaEsc(h.nombre)}</strong> · ${siaEsc(h.grupo)}${h.libre ? ' <span class="libre-tag">libre elección</span>' : ''}${lleno ? ' <span class="cupo-badge cupo-lleno">LLENO</span>' : ''}
+            <small>👤 ${siaEsc(h.profes || 'Docente sin asignar')}<br>🕐 ${siaEsc(horSlotsTxt(h.slots))} · ${horCreditos(h)} créd.</small></div>
+            <button class="hor-btn del" onclick="horQuitar('${siaEsc(h.key)}')">Quitar</button></div>`;
+        }).join('')
+        : '<div class="hor-msg">Plan vacío. Busca una materia arriba (también las de libre elección) o usa "📅 Agregar al horario" desde el modal de cupos.</div>';
 }
 function applyTheme(t) {
     document.documentElement.setAttribute('data-theme', t);
