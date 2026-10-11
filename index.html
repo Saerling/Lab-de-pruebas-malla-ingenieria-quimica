@@ -414,6 +414,13 @@
         .rv-note { font-size:0.7rem; color:var(--text-dim); line-height:1.45; margin-top:8px; }
         .rv-foot { font-size:0.72rem; color:var(--text-dim); text-align:center; margin-top:14px; }
         .rv-hp { position:absolute; left:-9999px; width:1px; height:1px; opacity:0; }
+
+/* ===== AVISO DE CRUCE DE HORARIO ===== */
+.cross-toast { animation-duration: 3.6s; max-width: min(90vw, 360px); }
+.no-face { font-size: 3.6rem; line-height: 1; display: inline-block; transform-origin: 50% 60%; animation: headNo 0.5s ease-in-out 0.25s 5 both; }
+@keyframes headNo { 0% { transform: translateX(-14px) rotate(-16deg); } 50% { transform: translateX(14px) rotate(16deg); } 100% { transform: translateX(-14px) rotate(-16deg); } }
+.cross-item { margin-top: 8px; padding: 8px 12px; background: var(--danger-soft); border: 1px solid var(--danger); border-radius: 12px; font-size: 0.82rem; color: var(--text); line-height: 1.4; }
+.cross-item small { display: block; font-family: var(--mono); font-size: 0.7rem; color: var(--danger); margin-top: 2px; }
 </style>
 <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme_iq') || 'dark');</script>
 </head>
@@ -1966,10 +1973,38 @@ function horRenderOpciones() {
     }).join('');
 }
 
+// Detalle de los cruces: con qué materia choca y en qué franja
+function horCrucesInfo(g) {
+    return horario.filter(h => h.codigo !== g.codigo && horChoca(h, g)).map(h => {
+        const ov = [];
+        h.slots.forEach(x => g.slots.forEach(y => {
+            if (x.d === y.d && x.s < y.e && y.s < x.e)
+                ov.push(`${HOR_DIAS.find(d => d[0] === x.d)?.[1] || x.d} ${horFmt(Math.max(x.s, y.s))}–${horFmt(Math.min(x.e, y.e))}`);
+        }));
+        return { nombre: h.nombre, grupo: h.grupo, cuando: [...new Set(ov)].join(', ') };
+    });
+}
+
+function showCruceToast(g, cr) {
+    const old = document.getElementById('no-toast'); if (old) old.remove();
+    clearTimeout(_noToastT);
+    const t = document.createElement('div');
+    t.id = 'no-toast'; t.className = 'no-toast cross-toast';
+    t.innerHTML = `<div class="no-face">😕</div>
+        <div class="no-title">No puedes hacer eso</div>
+        <div class="no-sub"><b>${siaEsc(g.nombre)}</b> (${siaEsc(g.grupo)}) se cruza con una materia que ya agregaste:</div>
+        ${cr.map(c => `<div class="cross-item">📚 <b>${siaEsc(c.nombre)}</b> · ${siaEsc(c.grupo)}<small>${siaEsc(c.cuando)}</small></div>`).join('')}`;
+    document.body.appendChild(t);
+    _noToastT = setTimeout(() => t.remove(), 3600);
+}
+
 function horPoner(g) {
+    const cr = horCrucesInfo(g);
+    if (cr.length) { showCruceToast(g, cr); return false; }   // se cruza: no se agrega
     horario = horario.filter(h => h.codigo !== g.codigo);   // un solo grupo por materia: reemplaza el anterior
     horario.push({ ...g, ausente: false });
     horSave();
+    return true;
 }
 function horAgregar(i) { const g = horOpciones[i]; if (!g) return; horPoner(g); horRenderOpciones(); renderHorario(); }
 function horQuitar(key) { horario = horario.filter(h => h.key !== key); horSave(); horRenderOpciones(); renderHorario(); }
