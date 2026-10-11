@@ -421,6 +421,46 @@
 @keyframes headNo { 0% { transform: translateX(-14px) rotate(-16deg); } 50% { transform: translateX(14px) rotate(16deg); } 100% { transform: translateX(-14px) rotate(-16deg); } }
 .cross-item { margin-top: 8px; padding: 8px 12px; background: var(--danger-soft); border: 1px solid var(--danger); border-radius: 12px; font-size: 0.82rem; color: var(--text); line-height: 1.4; }
 .cross-item small { display: block; font-family: var(--mono); font-size: 0.7rem; color: var(--danger); margin-top: 2px; }
+
+/* ===== LISTA DE MATERIAS + GRUPOS (acordeón) ===== */
+:root { --hm-l: 60%; }
+[data-theme="light"] { --hm-l: 40%; }
+#hor-grupos { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+.hm-card { --mc: hsl(var(--mh) 62% var(--hm-l)); background: var(--surface-2); border-radius: 12px; border-left: 3px solid var(--mc); border-bottom: 2px solid var(--mc); box-shadow: var(--shadow); overflow: hidden; animation: fadeUp 0.4s var(--ease) both; transition: box-shadow 0.3s; }
+.hm-card.open { box-shadow: var(--shadow-lg); }
+.hm-head { display: flex; align-items: center; gap: 10px; padding: 12px; cursor: pointer; transition: background 0.2s; }
+.hm-head:hover { background: color-mix(in srgb, var(--mc) 9%, transparent); }
+.hm-x { background: none; color: var(--danger); padding: 0; width: 26px; height: 26px; font-size: 1.1rem; border-radius: 50%; flex-shrink: 0; }
+.hm-x:hover { background: var(--danger-soft); transform: rotate(90deg) scale(1.1); }
+.hm-info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.hm-name { font-weight: 800; font-size: 0.85rem; line-height: 1.3; }
+.hm-chip { align-self: flex-start; font-family: var(--mono); font-size: 0.68rem; font-weight: 700; color: var(--mc); background: color-mix(in srgb, var(--mc) 16%, transparent); padding: 2px 9px; border-radius: 6px; }
+.hm-cupos { flex-shrink: 0; min-width: 66px; background: hsl(var(--mh) 50% 32%); color: #fff; font-family: var(--mono); font-size: 0.72rem; font-weight: 700; text-align: center; line-height: 1.35; padding: 7px 10px; border-radius: 8px; }
+.hm-chev { color: var(--text-dim); font-size: 1.2rem; transition: transform 0.35s var(--spring); }
+.hm-card.open .hm-chev { transform: rotate(180deg); }
+.hm-body { padding: 2px 12px 14px; animation: fadeUp 0.35s var(--ease) both; }
+.hm-tools { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin: 4px 0 10px; }
+.hm-filter { flex: 1; min-width: 150px; background: var(--bg); border: 1px solid var(--border); color: var(--text); padding: 9px 12px; border-radius: 10px; font-family: inherit; transition: border-color 0.2s, box-shadow 0.2s; }
+.hm-filter:focus { outline: none; border-color: var(--primary); box-shadow: var(--ring); }
+.hm-pill-btn { background: transparent; color: var(--text-dim); border: 1px solid var(--border); padding: 7px 12px; border-radius: 999px; font-size: 0.74rem; }
+.hm-pill-btn.on { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
+
+.hg { display: flex; align-items: center; gap: 12px; padding: 10px 6px; border-radius: 12px; cursor: pointer; transition: background 0.2s, transform 0.25s var(--ease); }
+.hg:hover { background: color-mix(in srgb, var(--mc) 9%, transparent); transform: translateX(3px); }
+.hg-dot { width: 15px; height: 15px; flex-shrink: 0; border-radius: 50%; border: 2px solid var(--success); transition: all 0.3s var(--spring); }
+.hg.in .hg-dot { background: var(--success); box-shadow: 0 0 0 4px var(--primary-soft); transform: scale(1.15); }
+.hg.nopos { cursor: not-allowed; opacity: 0.55; }
+.hg.nopos .hg-dot { border-color: var(--text-dim); }
+.hg-main { flex: 1; min-width: 0; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 3px; }
+.hg-pill { max-width: 100%; border: 1.5px solid var(--text); border-radius: 999px; padding: 5px 18px; font-weight: 800; font-size: 0.8rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; background: var(--bg); transition: border-color 0.25s, color 0.25s; }
+.hg.in .hg-pill { border-color: var(--success); color: var(--success); }
+.hg-cupos { font-size: 0.75rem; color: var(--text-dim); }
+.hg.lleno .hg-cupos { color: var(--danger); font-weight: 800; }
+.hg-slots div { font-family: var(--mono); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.3px; color: var(--accent); }
+.hg-warn { font-size: 0.72rem; color: var(--danger); }
+.hg-heart { background: none; color: var(--text-dim); padding: 4px; font-size: 1.15rem; line-height: 1; flex-shrink: 0; }
+.hg-heart.on { color: var(--danger); }
+.hg-heart:hover { transform: scale(1.25); }
 </style>
 <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme_iq') || 'dark');</script>
 </head>
@@ -538,7 +578,7 @@
         <div class="hor-bar">
             <input type="text" id="hor-codigo" list="hor-materias" placeholder="Busca por nombre o código (malla, agrupaciones y libre elección)" autocomplete="off" onchange="horCargar()">
             <datalist id="hor-materias"></datalist>
-            <button class="hor-btn" onclick="horCargar()">Buscar grupos</button>
+            <button class="hor-btn" onclick="horCargar()">+ Agregar materia</button>
         </div>
         <div id="hor-grupos"></div>
     </div>
@@ -1931,47 +1971,169 @@ function horParse(codigo, item, libre = '') {
     })).sort((a, b) => a.grupo.localeCompare(b.grupo, 'es', { numeric: true }));
 }
 
-async function horCargar() {
-    const box = document.getElementById('hor-grupos');
-    const r = horResolver(document.getElementById('hor-codigo').value);
-    if (!r) { box.innerHTML = '<div class="hor-msg">Busca una materia por nombre o código SIA.</div>'; return; }
-    if (r.ambiguo) { box.innerHTML = `<div class="hor-msg">Hay ${r.ambiguo} materias con ese nombre: elige una de la lista desplegable.</div>`; return; }
-    box.innerHTML = '<div class="hor-msg">Consultando el catálogo del SIA… puede tardar hasta 45 s la primera vez.</div>';
-    const seq = ++horSeq;
-    try {
-        const item = await horFetch(r.codigo, r.libre);
-        if (seq !== horSeq) return;
-        horOpciones = horParse(r.codigo, item, r.libre);
-        horRenderOpciones();
-    } catch (e) {
-        if (seq !== horSeq) return;
-        box.innerHTML = `<div class="hor-msg" style="color:var(--danger)">⚠️ ${siaEsc(e.message)}</div>`;
-    }
+// ==========================================
+// LISTA DE MATERIAS (acordeón) Y SUS GRUPOS
+// ==========================================
+const HOR_LISTA_KEY = 'horario_iq_lista', HOR_FAV_KEY = 'horario_iq_favs';
+let horListaSel = (() => { try { return JSON.parse(localStorage.getItem(HOR_LISTA_KEY)) || []; } catch (e) { return []; } })();
+let horFavs = new Set((() => { try { return JSON.parse(localStorage.getItem(HOR_FAV_KEY)) || []; } catch (e) { return []; } })());
+let horOpen = null, horFilter = '', horSoloFav = false, horSinCruce = false, horMsg = '';
+const horGrupos = {}, horErr = {}, horLoadSeq = {};
+const horN = s => String(s ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+const horHue = s => { let h = 0; for (const c of String(s)) h = (h * 31 + c.charCodeAt(0)) % 360; return h; };
+const horListaSave = () => { try { localStorage.setItem(HOR_LISTA_KEY, JSON.stringify(horListaSel)); } catch (e) {} };
+const horFavSave = () => { try { localStorage.setItem(HOR_FAV_KEY, JSON.stringify([...horFavs])); } catch (e) {} };
+
+// Las materias de la lista + las que ya están en el horario aunque no estén en la lista
+function horListaTodas() {
+    const out = [...horListaSel];
+    horario.forEach(h => { if (!out.some(e => e.codigo === h.codigo)) out.push({ codigo: h.codigo, libre: h.libre || '', nombre: h.nombre }); });
+    return out;
 }
+const horEntry = code => horListaTodas().find(e => e.codigo === code);
+function horListaAdd(e) {
+    if (horListaSel.some(x => x.codigo === e.codigo)) return;
+    horListaSel.push({ codigo: e.codigo, libre: e.libre || '', nombre: e.nombre || e.codigo });
+    horListaSave();
+}
+
+function horCargar() {
+    const inp = document.getElementById('hor-codigo');
+    const txt = inp.value.trim();
+    if (!txt) return;
+    const r = horResolver(txt);
+    if (!r) return;
+    if (r.ambiguo) { horMsg = `Hay ${r.ambiguo} materias con ese nombre: elige una de la lista desplegable.`; horRenderOpciones(); return; }
+    horMsg = '';
+    const cat = horCatalogo().find(c => c.id === r.codigo);
+    horListaAdd({ codigo: r.codigo, libre: r.libre, nombre: cat ? cat.nombre : r.codigo });
+    inp.value = '';
+    horToggle(r.codigo, true);
+}
+
+async function horLoad(code, force = false) {
+    const e = horEntry(code); if (!e) return;
+    const seq = horLoadSeq[code] = (horLoadSeq[code] || 0) + 1;
+    delete horErr[code];
+    try {
+        const item = await horFetch(code, e.libre, force);
+        if (seq !== horLoadSeq[code]) return;
+        horGrupos[code] = horParse(code, item, e.libre);
+    } catch (err) {
+        if (seq !== horLoadSeq[code]) return;
+        horErr[code] = err.message;
+    }
+    horRenderOpciones();
+}
+
+function horToggle(code, forceOpen) {
+    if (horOpen === code && !forceOpen) { horOpen = null; horRenderOpciones(); return; }
+    horOpen = code; horFilter = '';
+    horRenderOpciones();
+    const el = document.getElementById('hm-' + code);
+    if (el) el.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    horLoad(code);
+}
+
+function horQuitarMateria(code) {
+    const enHor = horario.some(h => h.codigo === code);
+    if (enHor && !confirm('Esta materia está en tu horario. ¿Quitarla también del horario?')) return;
+    horListaSel = horListaSel.filter(e => e.codigo !== code); horListaSave();
+    if (enHor) { horario = horario.filter(h => h.codigo !== code); horSave(); }
+    if (horOpen === code) horOpen = null;
+    horRenderOpciones(); renderHorario();
+}
+
+function horToggleGrupo(code, i) {
+    const g = (horGrupos[code] || [])[i];
+    if (!g || g.sinHorario) return;
+    if (horario.some(h => h.key === g.key)) horario = horario.filter(h => h.key !== g.key), horSave();
+    else if (!horPoner(g)) return;                   // se cruza: horPoner ya mostró el aviso
+    horRenderOpciones(); renderHorario();
+}
+function horFav(code, key) {
+    if (horFavs.has(key)) horFavs.delete(key); else horFavs.add(key);
+    horFavSave(); horRenderGrupos(code);
+}
+function horSetFilter(code, v) { horFilter = v; horRenderGrupos(code); }
+function horSetFlag(code, flag) { if (flag === 'fav') horSoloFav = !horSoloFav; else horSinCruce = !horSinCruce; horRenderOpciones(); }
 
 function horSlotsTxt(slots) {
     return slots.map(x => `${HOR_DIAS.find(d => d[0] === x.d)?.[1] || x.d} ${horFmt(x.s)}–${horFmt(x.e)}`).join(', ') || 'Sin horario registrado';
 }
 
+function horGruposHTML(code) {
+    const gs = horGrupos[code];
+    if (horErr[code] && !gs) return `<div class="hor-msg" style="color:var(--danger)">⚠️ ${siaEsc(horErr[code])}<br><button class="hor-btn sec" style="margin-top:8px" onclick="horLoad('${siaEsc(code)}', true)">Reintentar</button></div>`;
+    if (!gs) return '<div class="hor-msg">Consultando el catálogo del SIA… puede tardar hasta 45 s la primera vez.</div>';
+    if (!gs.length) return '<div class="hor-msg">No hay grupos ofertados para esta materia.</div>';
+    const f = horN(horFilter.trim());
+    const rows = gs.map((g, i) => {
+        const enHor = horario.some(h => h.key === g.key);
+        const cruces = enHor ? [] : horCruces(g);
+        const fav = horFavs.has(g.key);
+        const lleno = g.cupos === 0;
+        const prof = g.profes || 'No informado';
+        const slotsTxt = g.slots.map(x => `${(HOR_DIAS.find(d => d[0] === x.d)?.[1] || x.d).toUpperCase()} ${horFmt(x.s)} - ${horFmt(x.e)}`);
+        if (f && !horN(`${g.grupo} ${prof} ${slotsTxt.join(' ')}`).includes(f)) return '';
+        if (horSoloFav && !fav) return '';
+        if (horSinCruce && cruces.length) return '';
+        const num = String(g.grupo).replace(/^Grupo\s*/i, '');
+        const cupoTxt = (g.cupos === null || g.cupos === undefined) ? 'Sin datos' : (lleno ? 'LLENO' : `${g.cupos} Cupos`);
+        return `<div class="hg ${enHor ? 'in' : ''} ${lleno ? 'lleno' : ''} ${g.sinHorario ? 'nopos' : ''}" onclick="horToggleGrupo('${siaEsc(code)}', ${i})">
+            <span class="hg-dot"></span>
+            <div class="hg-main">
+                <div class="hg-pill" title="${siaEsc(prof)}">G${siaEsc(num)} - ${siaEsc(prof)}</div>
+                <div class="hg-cupos">${siaEsc(cupoTxt)}</div>
+                <div class="hg-slots">${slotsTxt.length ? slotsTxt.map(t => `<div>${siaEsc(t)}</div>`).join('') : '<div>SIN HORARIO · no se puede graficar</div>'}</div>
+                ${cruces.length ? `<div class="hg-warn">⚠️ Cruza con ${siaEsc(cruces.join(', '))}</div>` : ''}
+            </div>
+            <button class="hg-heart ${fav ? 'on' : ''}" title="Favorito" onclick="event.stopPropagation(); horFav('${siaEsc(code)}', '${siaEsc(g.key)}')">${fav ? '♥' : '♡'}</button>
+        </div>`;
+    }).join('');
+    return rows || '<div class="hor-msg">Ningún grupo coincide con el filtro.</div>';
+}
+
+function horRenderGrupos(code) {
+    const el = document.getElementById('hg-list-' + code);
+    if (el) el.innerHTML = horGruposHTML(code);
+}
+
 function horRenderOpciones() {
     const box = document.getElementById('hor-grupos');
-    if (!horOpciones.length) { if (box.innerHTML.includes('hor-g')) box.innerHTML = ''; return; }
-    box.innerHTML = horOpciones.map((g, i) => {
-        const lleno = g.cupos === 0;
-        const cupoTxt = (g.cupos === null || g.cupos === undefined) ? 'Sin datos' : (lleno ? 'LLENO' : `${g.cupos} cupo${g.cupos === 1 ? '' : 's'}`);
-        const enHorario = horario.some(h => h.key === g.key);
-        const cruces = enHorario ? [] : horCruces(g);
-        const otro = !enHorario && horario.some(h => h.codigo === g.codigo);
-        return `<div class="hor-g ${lleno ? 'lleno' : ''} ${enHorario ? 'in' : ''}">
-            <div><strong>${siaEsc(g.grupo)}</strong> <span class="cupo-badge ${lleno ? 'cupo-lleno' : ''}">${siaEsc(cupoTxt)}</span>
-            <small>👤 ${siaEsc(g.profes || 'Docente sin asignar')}<br>🕐 ${siaEsc(horSlotsTxt(g.slots))}</small>
-            ${cruces.length ? `<small style="color:var(--danger)">⚠️ Cruza con ${siaEsc(cruces.join(', '))}</small>` : ''}</div>
-            ${g.sinHorario ? '<small>No se puede graficar</small>'
-              : enHorario ? `<button class="hor-btn sec" onclick="horQuitar('${siaEsc(g.key)}')">Quitar</button>`
-              : `<button class="hor-btn" onclick="horAgregar(${i})">${otro ? '↔ Cambiar a este grupo' : '+ Agregar al horario'}</button>`}
+    if (!box) return;
+    const lista = horListaTodas();
+    const msg = horMsg ? `<div class="hor-msg">${siaEsc(horMsg)}</div>` : '';
+    if (!lista.length) { box.innerHTML = msg || '<div class="hor-msg">Agrega materias a tu lista y despliégalas para ver sus grupos.</div>'; return; }
+    box.innerHTML = msg + lista.map(e => {
+        const code = e.codigo, open = horOpen === code, gs = horGrupos[code];
+        const cred = (gs && gs[0] && gs[0].creditos) || horCreditos({ codigo: code });
+        const total = gs ? gs.reduce((a, g) => a + (typeof g.cupos === 'number' ? g.cupos : 0), 0) : null;
+        const enHor = horario.some(h => h.codigo === code);
+        const c = siaEsc(code);
+        return `<div class="hm-card ${open ? 'open' : ''}" id="hm-${c}" style="--mh:${horHue(code)}">
+            <div class="hm-head" onclick="horToggle('${c}')">
+                <button class="hm-x" title="Quitar de mi lista" onclick="event.stopPropagation(); horQuitarMateria('${c}')">⊗</button>
+                <div class="hm-info">
+                    <div class="hm-name">${siaEsc(e.nombre)} (${c})${enHor ? ' <span title="En tu horario">✅</span>' : ''}</div>
+                    ${cred ? `<span class="hm-chip">Créditos: ${siaEsc(cred)}</span>` : ''}
+                </div>
+                <div class="hm-cupos">Cupos<br>${total === null ? '—' : total}</div>
+                <span class="hm-chev">⌄</span>
+            </div>
+            ${open ? `<div class="hm-body">
+                <div class="hm-tools">
+                    <input class="hm-filter" type="text" placeholder="Filtrar grupos" value="${siaEsc(horFilter)}" oninput="horSetFilter('${c}', this.value)">
+                    <button class="hm-pill-btn ${horSoloFav ? 'on' : ''}" onclick="horSetFlag('${c}','fav')">♥ Favoritos</button>
+                    <button class="hm-pill-btn ${horSinCruce ? 'on' : ''}" onclick="horSetFlag('${c}','cruce')">Sin cruces</button>
+                </div>
+                <div id="hg-list-${c}">${horGruposHTML(code)}</div>
+            </div>` : ''}
         </div>`;
     }).join('');
 }
+
+horRenderOpciones();
 
 // Detalle de los cruces: con qué materia choca y en qué franja
 function horCrucesInfo(g) {
@@ -2004,6 +2166,7 @@ function horPoner(g) {
     horario = horario.filter(h => h.codigo !== g.codigo);   // un solo grupo por materia: reemplaza el anterior
     horario.push({ ...g, ausente: false });
     horSave();
+    horListaAdd({ codigo: g.codigo, libre: g.libre, nombre: g.nombre });
     return true;
 }
 function horAgregar(i) { const g = horOpciones[i]; if (!g) return; horPoner(g); horRenderOpciones(); renderHorario(); }
@@ -2021,6 +2184,7 @@ function horAgregarModal(i) {
     horModalRefrescar();
 }
 function horModalRefrescar() {
+    horRenderOpciones();
     document.querySelectorAll('#cupos-modal-body .hor-addbtn').forEach(b => {
         const g = horModalList[Number(b.dataset.i)];
         if (!g) return;
