@@ -204,12 +204,6 @@
         .hor-btn { background: var(--primary); color: var(--on-primary); }
         .hor-btn.sec { background: var(--surface-2); color: var(--text-dim); border: 1px solid var(--border); }
         .hor-btn.del { background: var(--danger); color: var(--bg); }
-        .libre-toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding: 12px; border-bottom: 1px solid var(--border); }
-        .libre-toolbar input[type="text"] { flex: 1 1 220px; background: var(--surface-2); border: 1px solid var(--border); color: var(--text); padding: 9px 12px; border-radius: 8px; font-family: inherit; }
-        .libre-toolbar label { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; color: var(--text-dim); cursor: pointer; }
-        .libre-toolbar button, .libre-more { background: var(--primary-soft); color: var(--primary); border: 1px solid var(--border); padding: 9px 14px; }
-        .libre-more { display: block; margin: 12px auto; }
-        .libre-tag { font-size: 0.65rem; font-family: var(--mono); padding: 2px 6px; border-radius: 4px; background: var(--surface-2); color: var(--text-dim); border: 1px solid var(--border); white-space: nowrap; }
         .hor-msg { font-size: 0.85rem; color: var(--text-dim); text-align: center; padding: 12px; font-family: var(--mono); }
         .hor-g { background: var(--surface-2); border-left: 3px solid var(--primary); border-radius: 10px; padding: 10px; margin-top: 8px; font-size: 0.82rem; display: flex; justify-content: space-between; gap: 10px; align-items: center; flex-wrap: wrap; animation: fadeUp 0.4s var(--ease) both; transition: transform 0.25s var(--ease), box-shadow 0.25s; }
         .hor-g:hover { transform: translateX(4px); box-shadow: var(--shadow); }
@@ -359,7 +353,39 @@
 .lk.hl .lk-track { stroke-width: 3.2; opacity: 1; }
 .lk.hl .lk-start, .lk.hl .lk-end { opacity: 1; }
 .lk.off.hl .lk-track { stroke-dasharray: 5 6; }
-    </style>
+    
+        /* ===== Reseñas de profesores ===== */
+        .rv-chip { display:inline-flex; align-items:center; gap:6px; background:var(--surface-2); color:var(--text); border:1px solid var(--border); border-radius:999px; padding:2px 10px; margin:2px 4px 2px 0; font:inherit; font-size:0.8rem; cursor:pointer; transition:border-color .2s, transform .2s; }
+        .rv-chip:hover { border-color:var(--primary); transform:translateY(-1px); }
+        .rv-score { font-family:var(--mono); font-size:0.7rem; color:var(--accent); }
+        .rv-ext { font-size:0.75rem; color:var(--text-dim); text-align:center; margin-top:8px; }
+        .rv-ext a, .rv-foot a { color:var(--primary); }
+        .rv-sum { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:12px; }
+        .rv-sum div { background:var(--primary-soft); border:1px solid var(--border); border-radius:10px; padding:8px 12px; font-family:var(--mono); font-size:0.78rem; }
+        .rv-sum b { color:var(--primary); font-size:1.05rem; }
+        .rv-item { background:var(--surface-2); border:1px solid var(--border); border-radius:10px; padding:10px 12px; margin-bottom:8px; font-size:0.85rem; }
+        .rv-item-top { display:flex; justify-content:space-between; gap:8px; color:var(--text-dim); font-size:0.72rem; margin-bottom:4px; font-family:var(--mono); }
+        .rv-stars { color:var(--accent); letter-spacing:1px; }
+        .rv-item p { margin:4px 0 6px; line-height:1.5; white-space:pre-wrap; overflow-wrap:anywhere; }
+        .rv-link { background:none; border:none; color:var(--text-dim); font-size:0.7rem; cursor:pointer; padding:0; text-decoration:underline; }
+        .rv-link:hover { color:var(--danger); }
+        .rv-form { border-top:1px dashed var(--border); margin-top:14px; padding-top:12px; }
+        .rv-form h3 { margin:0 0 8px; font-family:var(--mono); font-size:0.85rem; color:var(--primary); }
+        .rv-pick { display:flex; align-items:center; gap:4px; margin:6px 0; font-size:0.78rem; color:var(--text-dim); }
+        .rv-pick > span:first-child { min-width:92px; }
+        .rv-pick button { background:var(--surface-2); border:1px solid var(--border); color:var(--text-dim); width:32px; height:32px; border-radius:8px; cursor:pointer; font-family:var(--mono); }
+        .rv-pick button.on { background:var(--primary); color:var(--on-primary); border-color:var(--primary); }
+        .rv-form textarea { width:100%; min-height:90px; box-sizing:border-box; background:var(--surface-2); color:var(--text); border:1px solid var(--border); border-radius:10px; padding:10px; font:inherit; font-size:0.85rem; resize:vertical; }
+        .rv-form textarea:focus { outline:none; border-color:var(--primary); }
+        .rv-count { text-align:right; font-size:0.68rem; color:var(--text-dim); font-family:var(--mono); }
+        .rv-send { background:var(--primary); color:var(--on-primary); border:none; border-radius:10px; padding:10px 18px; font-weight:700; cursor:pointer; margin-top:8px; font-family:var(--mono); font-size:0.78rem; }
+        .rv-send:disabled { opacity:.5; cursor:wait; }
+        .rv-msg { margin-top:8px; font-size:0.8rem; line-height:1.45; }
+        .rv-msg.ok { color:var(--success); } .rv-msg.err { color:var(--danger); }
+        .rv-note { font-size:0.7rem; color:var(--text-dim); line-height:1.45; margin-top:8px; }
+        .rv-foot { font-size:0.72rem; color:var(--text-dim); text-align:center; margin-top:14px; }
+        .rv-hp { position:absolute; left:-9999px; width:1px; height:1px; opacity:0; }
+</style>
 <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme_iq') || 'dark');</script>
 </head>
 <body>
@@ -372,7 +398,6 @@
         <button class="tab-btn active" id="tab-malla" onclick="switchTab('malla')">Malla Curricular</button>
         <button class="tab-btn" id="tab-calc" onclick="switchTab('calc')">Calculadora Histórica</button>
         <button class="tab-btn" id="tab-agrupaciones" onclick="switchTab('agrupaciones')">Programa por Agrupaciones</button>
-        <button class="tab-btn" id="tab-libre" onclick="switchTab('libre')">Libre Elección</button>
         <button class="tab-btn" id="tab-horario" onclick="switchTab('horario')">Horario Semanal</button>
     </div>
 </header>
@@ -445,20 +470,6 @@
     </div>
 </div>
     
-<!-- VISTA: LIBRE ELECCIÓN (catálogo del SIA vía proxy) -->
-<div id="libre-view" class="view-section">
-    <div class="agrupacion-card" style="max-width: 1200px; margin: 0 auto 40px;">
-        <div class="agr-header libre">Libre Elección · Catálogo del SIA</div>
-        <div class="libre-toolbar">
-            <input type="text" id="libre-q" placeholder="Buscar por nombre o código..." oninput="libreRender(true)">
-            <label><input type="checkbox" id="libre-solo-prog" onchange="libreRender(true)"> Ocultar sin programar</label>
-            <button onclick="libreLoad(true)">↻ Actualizar</button>
-        </div>
-        <div id="libre-status" class="hor-msg"></div>
-        <div id="libre-body"></div>
-    </div>
-</div>
-
 <!-- VISTA 4: HORARIO SEMANAL -->
 <div id="horario-view" class="view-section">
     <div class="hor-panel">
@@ -530,19 +541,28 @@
     </div>
 </div>
 
+<div class="modal-overlay" id="resenas-modal">
+    <div class="modal-content" style="max-width: 460px; max-height: 88vh; overflow-y: auto;">
+        <div class="modal-header">
+            <h2 id="resenas-title">Reseñas</h2>
+            <button class="close-btn" onclick="closeResenas()">&times;</button>
+        </div>
+        <div id="resenas-body"></div>
+    </div>
+</div>
+
 <script>
     // ==========================================
     // LÓGICA DE NAVEGACIÓN (TABS)
     // ==========================================
 function switchTab(tab) {
-    ['malla', 'calc', 'agrupaciones', 'libre', 'horario'].forEach(t => {
+    ['malla', 'calc', 'agrupaciones', 'horario'].forEach(t => {
         document.getElementById(t + '-view').classList.remove('active');
         document.getElementById('tab-' + t).classList.remove('active');
     });
     document.getElementById(tab + '-view').classList.add('active');
     document.getElementById('tab-' + tab).classList.add('active');
     if (tab === 'horario') renderHorario();
-    if (tab === 'libre') libreLoad();
     if (tab === 'malla') requestAnimationFrame(drawLinks);
 }
 
@@ -552,13 +572,13 @@ function switchTab(tab) {
     const data = [
         { sem: 1, mat: [{ id: "PQ", siaId: "1000024", n: "Principios de Química", c: 3, r: [], cat: "Fundamentación" }, { id: "LTB", siaId: "1000025", n: "Lab. Técnicas Básicas", c: 3, r: [], cat: "Fundamentación" }, { id: "CD", siaId: "1000004", n: "Cálculo Diferencial", c: 4, r: [], cat: "Fundamentación" }, { id: "OHI", siaId: "", n: "Opt. Herramientas Ing.", c: 3, r: [], cat: "Fundamentación" }, { id: "IIQ", siaId: "2015718", n: "Intro. Ing. Química", c: 3, r: [], cat: "Disciplinar" }] },
         { sem: 2, mat: [{ id: "PAQ", siaId: "1000026", n: "Principios Análisis Q.", c: 3, r: ["PQ"], cat: "Fundamentación" }, { id: "AL", siaId: "1000003", n: "Álgebra Lineal", c: 4, r: ["CD"], cat: "Fundamentación" }, { id: "CI", siaId: "1000005", n: "Cálculo Integral", c: 4, r: ["CD"], cat: "Fundamentación" }, { id: "FM", siaId: "1000019", n: "Fund. de Mecánica", c: 4, r: ["CD"], cat: "Fundamentación" }, { id: "BM", siaId: "2015708", n: "Balance de Materia", c: 3, r: [], cat: "Disciplinar" }] },
-        { sem: 3, mat: [{ id: "LPAQ", siaId: "1000027", n: "Lab. Princ. Análisis", c: 3, r: ["PQ"], cat: "Fundamentación" }, { id: "BIO", siaId: "1000010", n: "Biología Molecular", c: 3, r: [], cat: "Fundamentación" }, { id: "CVV", siaId: "1000006", n: "Cálculo Varias Var.", c: 4, r: ["AL", "CI"], cat: "Fundamentación" }, { id: "FEM", siaId: "1000017", n: "Fund. Elec. y Magnetismo", c: 4, r: ["CI", "FM"], cat: "Fundamentación" }, { id: "TERM", siaId: "2015741", n: "Termodinámica", c: 3, r: ["BM"], cat: "Disciplinar" }, { id: "L1", siaId: "", n: "Libre Elección 1", c: 3, r: [], cat: "Libre" }] },
+        { sem: 3, mat: [{ id: "LPAQ", siaId: "1000027", n: "Lab. Princ. Análisis", c: 3, r: ["PQ"], cat: "Fundamentación" }, { id: "BIO", siaId: "1000025b", n: "Biología Molecular", c: 3, r: [], cat: "Fundamentación" }, { id: "CVV", siaId: "1000006", n: "Cálculo Varias Var.", c: 4, r: ["AL", "CI"], cat: "Fundamentación" }, { id: "FEM", siaId: "1000017", n: "Fund. Elec. y Magnetismo", c: 4, r: ["CI", "FM"], cat: "Fundamentación" }, { id: "TERM", siaId: "2015741", n: "Termodinámica", c: 3, r: ["BM"], cat: "Disciplinar" }, { id: "L1", siaId: "", n: "Libre Elección 1", c: 3, r: [], cat: "Libre" }] },
         { sem: 4, mat: [{ id: "QO", siaId: "1000030", n: "Química Orgánica", c: 3, r: ["PQ"], cat: "Fundamentación" }, { id: "PE", siaId: "1000013", n: "Probabilidad y Est.", c: 3, r: ["CD"], cat: "Fundamentación" }, { id: "ED", siaId: "1000007", n: "Ecuaciones Diferenciales", c: 4, r: ["AL", "CI"], cat: "Fundamentación" }, { id: "FLUI", siaId: "2015714", n: "Fluidos", c: 3, r: ["FM", "TERM"], cat: "Disciplinar" }, { id: "T1", siaId: "2015735", n: "Taller 1", c: 1, r: ["CVV", "TERM"], cat: "Disciplinar" }, { id: "TQ", siaId: "2015740", n: "Termodinámica Química", c: 3, r: ["CVV", "TERM"], cat: "Disciplinar" }] },
         { sem: 5, mat: [{ id: "QO2", siaId: "", n: "Química Orgánica II", c: 3, r: ["PQ"], cat: "Fundamentación" }, { id: "MN", siaId: "2015970", n: "Métodos Numéricos", c: 3, r: ["ED"], cat: "Fundamentación" }, { id: "TC", siaId: "2015743", n: "Transf. Calor", c: 4, r: ["TERM", "ED"], cat: "Disciplinar" }, { id: "MS", siaId: "2015726", n: "Manejo de Sólidos", c: 3, r: ["FLUI"], cat: "Disciplinar" }, { id: "BE", siaId: "2015707", n: "Balance Energía y Equil.", c: 3, r: ["TQ"], cat: "Disciplinar" }, { id: "L2", siaId: "", n: "Libre Elección 2", c: 3, r: [], cat: "Libre" }] },
-        { sem: 6, mat: [{ id: "LQO", siaId: "1000031", n: "Lab. Química Orgánica", c: 2, r: ["PQ"], cat: "Fundamentación" }, { id: "IE", siaId: "2015703", n: "Ingeniería Económica", c: 3, r: ["CI"], cat: "Fundamentación" }, { id: "TM", siaId: "2015744", n: "Transf. Masa", c: 3, r: ["ED"], cat: "Disciplinar" }, { id: "T2", siaId: "2015736", n: "Taller 2", c: 1, r: ["ED"], cat: "Disciplinar" }, { id: "LPT", siaId: "2015721", n: "Lab. Prop. Termodinámicas", c: 3, r: ["BE"], cat: "Disciplinar" }, { id: "OTE", siaId: "", n: "Opt. Termodinámica", c: 3, r: ["BE"], cat: "Disciplinar" }] },
+        { sem: 6, mat: [{ id: "LQO", siaId: "1000010", n: "Lab. Química Orgánica", c: 2, r: ["PQ"], cat: "Fundamentación" }, { id: "IE", siaId: "2015703", n: "Ingeniería Económica", c: 3, r: ["CI"], cat: "Fundamentación" }, { id: "TM", siaId: "2015744", n: "Transf. Masa", c: 3, r: ["ED"], cat: "Disciplinar" }, { id: "T2", siaId: "2015736", n: "Taller 2", c: 1, r: ["ED"], cat: "Disciplinar" }, { id: "LPT", siaId: "2015721", n: "Lab. Prop. Termodinámicas", c: 3, r: ["BE"], cat: "Disciplinar" }, { id: "OTE", siaId: "", n: "Opt. Termodinámica", c: 3, r: ["BE"], cat: "Disciplinar" }] },
         { sem: 7, mat: [{ id: "OEA", siaId: "", n: "Opt. Econ-Admin", c: 3, r: [], cat: "Fundamentación" }, { id: "GP", siaId: "2015702", n: "Gerencia Proyectos", c: 3, r: ["IE"], cat: "Fundamentación" }, { id: "OSEP", siaId: "2015731", n: "Operaciones Separación", c: 3, r: ["TM", "BE"], cat: "Disciplinar" }, { id: "LFC", siaId: "2015719", n: "Lab. Fluidos y Calor", c: 3, r: ["TC"], cat: "Disciplinar" }, { id: "IRQ", siaId: "2015716", n: "Ing. Reacciones Quím.", c: 3, r: ["BE"], cat: "Disciplinar" }] },
         { sem: 8, mat: [{ id: "OMA", siaId: "", n: "Optativa Materiales", c: 3, r: ["CRED_108"], cat: "Disciplinar" }, { id: "CTRL", siaId: "2015710", n: "Control de Procesos", c: 3, r: ["MN", "IRQ"], cat: "Disciplinar" }, { id: "LSR", siaId: "2015720", n: "Lab. Sep/Reac/Contr", c: 3, r: ["OSEP", "CTRL"], cat: "Disciplinar" }, { id: "OPQ", siaId: "", n: "Opt. Proc. Químicos", c: 3, r: ["TM", "IRQ"], cat: "Disciplinar" }, { id: "DPQ", siaId: "2015713", n: "Diseño Proc. Químicos", c: 3, r: ["BE"], cat: "Disciplinar" }] },
-        { sem: 9, mat: [{ id: "TPI", siaId: "2024045", n: "Taller Proy. Interdis.", c: 3, r: ["DISC_53"], cat: "Disciplinar" }, { id: "DPE", siaId: "2015712", n: "Diseño Plantas y Equipos", c: 3, r: ["OSEP", "DPQ"], cat: "Disciplinar" }, { id: "IPRO", siaId: "2015715", n: "Ingeniería Procesos", c: 3, r: ["DPQ"], cat: "Disciplinar" }, { id: "L3", siaId: "", n: "Libre Elección 3", c: 3, r: [], cat: "Libre" }] },
+        { sem: 9, mat: [{ id: "TPI", siaId: "2015737", n: "Taller Proy. Interdis.", c: 3, r: ["DISC_53"], cat: "Disciplinar" }, { id: "DPE", siaId: "2015712", n: "Diseño Plantas y Equipos", c: 3, r: ["OSEP", "DPQ"], cat: "Disciplinar" }, { id: "IPRO", siaId: "2015715", n: "Ingeniería Procesos", c: 3, r: ["DPQ"], cat: "Disciplinar" }, { id: "L3", siaId: "", n: "Libre Elección 3", c: 3, r: [], cat: "Libre" }] },
         { sem: 10, mat: [{ id: "TG", siaId: "", n: "Trabajo de Grado", c: 6, r: ["DISC_60"], cat: "Disciplinar" }, { id: "L4", siaId: "", n: "Libre Elección 4", c: 4, r: [], cat: "Libre" }] }
     ];
 
@@ -588,8 +608,8 @@ function switchTab(tab) {
                 { id: "1000027", n: "Laboratorio principios de análisis químico", c: 3, ob: true },
                 { id: "1000028", n: "Principios de química inorgánica", c: 3, ob: true },
                 { id: "1000030", n: "Principios de química orgánica", c: 3, ob: true },
-                { id: "1000031", n: "Laboratorio principios de química orgánica", c: 2, ob: true },
-                { id: "1000010", n: "Biología molecular y celular", c: 3, ob: true }
+                { id: "1000010", n: "Laboratorio principios de química orgánica", c: 2, ob: true },
+                { id: "1000025b", n: "Biología molecular y celular", c: 3, ob: true }
             ]
         },
         {
@@ -663,7 +683,7 @@ function switchTab(tab) {
                 { id: "2015721", n: "Laboratorio de propiedades termodinámicas y transporte", c: 3, ob: true },
                 { id: "2015719", n: "Laboratorio de fluidos, sólidos y transf. de calor", c: 3, ob: true },
                 { id: "2015720", n: "Laboratorio de operaciones de sep., reacción y control", c: 3, ob: true },
-                { id: "2024045", n: "Taller de proyectos interdisciplinarios", c: 3, ob: true },
+                { id: "2015737", n: "Taller de proyectos interdisciplinarios", c: 3, ob: true },
                 { id: "2015289", n: "Trabajo de grado", c: 6, ob: false },
                 { id: "2015290", n: "Trabajo de grado - Asignaturas de posgrado", c: 6, ob: false }
             ]
@@ -767,7 +787,7 @@ function switchTab(tab) {
 // ==========================================
     // CUPOS Y GRUPOS EN TIEMPO REAL — catálogo público del SIA, vía tu proxy de Railway
     // ==========================================
-    const SIA_API = 'https://proxy-sia-production.up.railway.app/api/catalogo';
+    const SIA_API = 'https://proxy-sia.onrender.com/api/catalogo';
     const SIA_FILTROS = 'sede=1101&facultad=2055&plan=2549'; // Bogotá · Fac. de Ingeniería · Ing. Química
     const SIA_CACHE_MS = 5 * 60 * 1000;   // caché en el navegador (el servidor cachea 3 min más)
     const SIA_TIMEOUT_MS = 45000;         // cada consulta recorre ~10 pasos en el SIA: puede tardar
@@ -860,7 +880,10 @@ function switchTab(tab) {
             const salones = [...new Set((g.horarios || [])
                 .flatMap(h => (h.ubicaciones || []).map(u => u.codigo || u.descripcion))
                 .filter(Boolean))].join(', ');
-            const profes = (g.profesores || []).join(' · ') || 'Docente sin asignar';
+            const profesLista = g.profesores || [];
+            const profesHtml = profesLista.length
+                ? profesLista.map(p => rvChip(p, (res.asignatura || {}).codigo)).join('')
+                : 'Docente sin asignar';
             const label = /^\d+$/.test(String(g.grupo)) ? `Grupo ${g.grupo}` : `${g.grupo} · ${g.nombre}`;
 
             return `
@@ -870,7 +893,7 @@ function switchTab(tab) {
                         <span class="cupo-badge ${lleno ? 'cupo-lleno' : ''}">${siaEsc(cupoTxt)}</span>
                     </div>
                     <div style="color:var(--text-dim); line-height:1.6;">
-                        👤 ${siaEsc(profes)}<br>
+                        👤 ${profesHtml}<br>
                         🕐 ${siaEsc(g.jornada || '')}${g.jornada ? ' · ' : ''}${siaEsc(horario)}<br>
                         📍 ${siaEsc(salones || 'Salón sin asignar')}
                     </div>
@@ -891,8 +914,11 @@ function switchTab(tab) {
                     ${siaEsc(r.gruposConCupo)} de ${siaEsc(r.grupos)} grupos con cupo · ${siaEsc(r.cuposDisponibles)} cupos libres · 🔄 consultado ${siaTimeAgo(ts)}
                 </div>
                 ${groupsHtml}
+                <div class="rv-ext">💬 Toca el nombre de un profesor para ver o dejar reseñas anónimas.<br>
+                    Más opiniones en <a href="https://losestudiantes.com/home" target="_blank" rel="noopener noreferrer">Los Estudiantes ↗</a></div>
             </div>
         `;
+        rvLlenarResumenes(body);
     }
 
     async function fetchWithTimeout(url, timeoutMs) {
@@ -905,16 +931,15 @@ function switchTab(tab) {
         }
     }
 
-    async function openCuposModal(courseId, opts = {}) {
+    async function openCuposModal(courseId) {
         // Si venimos del modal de la Malla, lo cerramos para no encimar ventanas
         document.getElementById('status-modal').classList.remove('active');
 
-        document.getElementById('cupos-modal-title').innerText = opts.nombre || getMateriaNameBySiaId(courseId) || `Materia ${courseId}`;
+        document.getElementById('cupos-modal-title').innerText = getMateriaNameBySiaId(courseId) || `Materia ${courseId}`;
         document.getElementById('cupos-modal').classList.add('active');
         const seq = ++siaReqSeq;
 
-        const ck = (opts.tipologia ? opts.tipologia + '|' : '') + courseId;   // misma materia, distinta tipología = otra entrada
-        const cached = siaCache[ck];
+        const cached = siaCache[courseId];
         if (cached && (Date.now() - cached.ts) < SIA_CACHE_MS) {
             renderCuposContent(cached.data, cached.ts);
             return;
@@ -930,7 +955,7 @@ function switchTab(tab) {
         `;
         startSiaTimer();
 
-        const url = `${SIA_API}/grupos?${SIA_FILTROS}&codigo=${encodeURIComponent(courseId)}${opts.tipologia ? '&tipologia=' + encodeURIComponent(opts.tipologia) : ''}`;
+        const url = `${SIA_API}/grupos?${SIA_FILTROS}&codigo=${encodeURIComponent(courseId)}`;
         let lastError = 'No se pudo conectar con el servidor.';
 
         for (let intento = 1; intento <= 2; intento++) {
@@ -946,8 +971,8 @@ function switchTab(tab) {
                 const item = json && Array.isArray(json.resultados) ? json.resultados[0] : null;
                 if (res.ok && item && !item.error) {
                     stopSiaTimer();
-                    siaCache[ck] = { data: item, ts: Date.now() };
-                    renderCuposContent(item, siaCache[ck].ts);
+                    siaCache[courseId] = { data: item, ts: Date.now() };
+                    renderCuposContent(item, siaCache[courseId].ts);
                     return;
                 }
                 if (item && item.error) {
@@ -972,109 +997,6 @@ function switchTab(tab) {
         stopSiaTimer();
         renderCuposError(`${siaEsc(lastError)}<br><span style="color:var(--text-dim)">Revisa que el proxy de Railway esté activo e inténtalo de nuevo.</span>`);
     }
-    // ==========================================
-    // LIBRE ELECCIÓN — todas las asignaturas de esa tipología, desde el catálogo del SIA (vía tu proxy)
-    // ==========================================
-    const LIBRE_TIPOLOGIA = 'libre eleccion';
-    const LIBRE_LS_KEY = 'malla_iq_libre_v1';
-    const LIBRE_TTL_MS = 6 * 60 * 60 * 1000;   // el catálogo cambia poco: 6 h en el navegador
-    const LIBRE_TIMEOUT_MS = 90000;            // lista grande: puede tardar más que una sola materia
-    const LIBRE_PAGE = 150;                    // filas que se dibujan por tanda
-    let libreData = null;                      // { ts, total, asignaturas: [{codigo, nombre, creditos, sinProgramar}] }
-    let libreLoading = false;
-    let libreShown = LIBRE_PAGE;
-    let libreView = [];                        // filas que pasan el filtro actual
-
-    const libreNorm = (s) => String(s ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
-    const libreStatus = (html) => { document.getElementById('libre-status').innerHTML = html; };
-
-    async function libreLoad(force = false) {
-        if (libreLoading) return;
-        if (!force && libreData) { libreRender(false); return; }
-        if (!force) {
-            try {
-                const saved = JSON.parse(localStorage.getItem(LIBRE_LS_KEY) || 'null');
-                if (saved && Array.isArray(saved.asignaturas) && (Date.now() - saved.ts) < LIBRE_TTL_MS) {
-                    libreData = saved; libreRender(true); return;
-                }
-            } catch (e) { /* caché dañada: se ignora */ }
-        }
-
-        libreLoading = true;
-        document.getElementById('libre-body').innerHTML = '';
-        const t0 = Date.now();
-        const paint = () => libreStatus(`Consultando el catálogo del SIA... ${Math.floor((Date.now() - t0) / 1000)}s<br><span style="font-size:0.72rem;">La lista es grande: puede tardar un poco la primera vez.</span>`);
-        paint();
-        const timer = setInterval(paint, 500);
-        const url = `${SIA_API}/asignaturas?${SIA_FILTROS}&tipologia=${encodeURIComponent(LIBRE_TIPOLOGIA)}`;
-        let err = 'No se pudo conectar con el servidor.';
-        try {
-            for (let i = 1; i <= 2; i++) {
-                try {
-                    const res = await fetchWithTimeout(url, LIBRE_TIMEOUT_MS);
-                    const json = await res.json().catch(() => null);
-                    if (res.ok && json && Array.isArray(json.asignaturas)) {
-                        libreData = {
-                            ts: Date.now(),
-                            total: json.total || json.asignaturas.length,
-                            asignaturas: json.asignaturas
-                                .map(a => ({ codigo: a.codigo, nombre: a.nombre, creditos: a.creditos, sinProgramar: !!a.sinProgramar }))
-                                .sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'))
-                        };
-                        try { localStorage.setItem(LIBRE_LS_KEY, JSON.stringify(libreData)); } catch (e) { /* sin espacio: queda en memoria */ }
-                        libreRender(true);
-                        return;
-                    }
-                    err = (json && json.error) || `El servidor respondió HTTP ${res.status}.`;
-                    if (res.status < 500) break;
-                } catch (e) {
-                    err = e.name === 'AbortError' ? 'El SIA tardó demasiado en responder.' : 'No se pudo conectar con el servidor.';
-                }
-            }
-            libreStatus(`⚠️ ${siaEsc(err)} <button onclick="libreLoad(true)" style="margin-left:8px;">Reintentar</button>`);
-        } finally {
-            clearInterval(timer);
-            libreLoading = false;
-        }
-    }
-
-    function libreRender(reset) {
-        if (!libreData) return;
-        if (reset) libreShown = LIBRE_PAGE;
-        const q = libreNorm(document.getElementById('libre-q').value.trim());
-        const ocultar = document.getElementById('libre-solo-prog').checked;
-        libreView = libreData.asignaturas.filter(a =>
-            (!ocultar || !a.sinProgramar) &&
-            (!q || libreNorm(a.nombre).includes(q) || libreNorm(a.codigo).includes(q)));
-
-        const sinProg = libreData.asignaturas.filter(a => a.sinProgramar).length;
-        const truncada = libreData.total > libreData.asignaturas.length;
-        libreStatus(`${libreView.length} de ${libreData.asignaturas.length} asignaturas · ${sinProg} sin programar · 🔄 ${siaTimeAgo(libreData.ts)}` +
-            (truncada ? `<br><span style="color:var(--warning)">⚠️ El SIA reporta ${libreData.total} filas pero solo llegaron ${libreData.asignaturas.length}.</span>` : ''));
-
-        const body = document.getElementById('libre-body');
-        if (!libreView.length) { body.innerHTML = '<div class="hor-msg">Sin resultados para ese filtro.</div>'; return; }
-        const rows = libreView.slice(0, libreShown).map((a, i) => `
-            <tr style="cursor:pointer;" data-i="${i}" title="Ver grupos y cupos">
-                <td>${siaEsc(a.codigo)}</td>
-                <td>${siaEsc(a.nombre)} <span style="opacity:0.5; font-size:0.75rem;">📊</span>${a.sinProgramar ? ' <span class="libre-tag">sin programar</span>' : ''}</td>
-                <td style="text-align:center;">${siaEsc(a.creditos ?? '')}</td>
-            </tr>`).join('');
-        body.innerHTML = `
-            <div style="overflow-x:auto;"><table class="agr-table">
-                <thead><tr><th>CÓDIGO</th><th>NOMBRE DE LA ASIGNATURA</th><th style="text-align:center;">CRÉD.</th></tr></thead>
-                <tbody>${rows}</tbody>
-            </table></div>
-            ${libreView.length > libreShown ? `<button class="libre-more" onclick="libreShown += LIBRE_PAGE; libreRender(false)">Mostrar más (${libreView.length - libreShown} restantes)</button>` : ''}`;
-    }
-
-    // Un solo manejador de clic para toda la tabla (los nombres pueden traer comillas)
-    document.getElementById('libre-body').addEventListener('click', (e) => {
-        const tr = e.target.closest('tr[data-i]');
-        const a = tr && libreView[Number(tr.dataset.i)];
-        if (a) openCuposModal(a.codigo, { tipologia: LIBRE_TIPOLOGIA, nombre: a.nombre });
-    });
-
     // ==========================================
     // ESTADO E INTEGRACIÓN (Calculadora -> Malla)
     // ==========================================
@@ -1885,6 +1807,143 @@ if (window.ResizeObserver) {
     
     if(semestres.length === 0) addSemestre();
 
+
+    // ==========================================
+    // RESEÑAS ANÓNIMAS DE PROFESORES
+    // ==========================================
+    const RV_API = SIA_API.replace(/\/api\/catalogo$/, '/api/resenas');
+    const rvEsc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    let rvMemToken = null, rvSeq = 0;
+    const rv = { prof: '', asig: '', offset: 0, cal: 0, dif: 0 };
+
+    function rvRand() { const a = new Uint8Array(24); crypto.getRandomValues(a); return Array.from(a, b => b.toString(16).padStart(2, '0')).join(''); }
+    function rvToken() {
+        try { let t = localStorage.getItem('rv_token'); if (!t) { t = rvRand(); localStorage.setItem('rv_token', t); } return t; }
+        catch (e) { return rvMemToken || (rvMemToken = rvRand()); }
+    }
+    const rvStars = n => n == null ? '' : '★'.repeat(Math.round(n)) + '☆'.repeat(5 - Math.round(n));
+
+    function rvChip(nombre, codigo) {
+        return `<button type="button" class="rv-chip" data-prof="${rvEsc(nombre)}" data-asig="${rvEsc(codigo || '')}"
+                    onclick="openResenas(this.dataset.prof, this.dataset.asig)">${rvEsc(nombre)} <span class="rv-score">⭐ …</span></button>`;
+    }
+
+    async function rvLlenarResumenes(root) {
+        const chips = [...root.querySelectorAll('.rv-chip')];
+        const nombres = [...new Set(chips.map(c => c.dataset.prof))].slice(0, 30);
+        if (!nombres.length) return;
+        try {
+            const r = await fetch(`${RV_API}/resumen?` + nombres.map(n => 'p=' + encodeURIComponent(n)).join('&'));
+            const j = await r.json();
+            chips.forEach(c => {
+                const x = (j.resumenes || {})[c.dataset.prof];
+                c.querySelector('.rv-score').textContent = x && x.n > 0 ? `★ ${x.calificacion.toFixed(1)} (${x.n})` : '☆ sin reseñas';
+            });
+        } catch (e) { chips.forEach(c => { c.querySelector('.rv-score').textContent = '☆'; }); }
+    }
+
+    function openResenas(prof, asig) {
+        Object.assign(rv, { prof, asig, offset: 0, cal: 0, dif: 0 });
+        document.getElementById('resenas-title').textContent = prof;
+        document.getElementById('resenas-modal').classList.add('active');
+        rvCargar(true);
+    }
+    function closeResenas() { rvSeq++; document.getElementById('resenas-modal').classList.remove('active'); }
+
+    async function rvCargar(inicial) {
+        const body = document.getElementById('resenas-body');
+        const seq = ++rvSeq;
+        if (inicial) body.innerHTML = '<div class="rv-msg" style="color:var(--text-dim)">Cargando reseñas…</div>';
+        try {
+            const r = await fetch(`${RV_API}?profesor=${encodeURIComponent(rv.prof)}&offset=${rv.offset}`);
+            const j = await r.json();
+            if (seq !== rvSeq) return;
+            if (!r.ok) throw new Error(j.error || 'Error');
+            if (inicial) rvRenderBase(j); else rvAgregar(j);
+        } catch (e) {
+            if (seq !== rvSeq) return;
+            body.innerHTML = `<div class="rv-msg err">⚠️ No se pudieron cargar las reseñas. Revisa que el servidor esté activo.</div>`;
+        }
+    }
+
+    function rvItemHtml(x) {
+        const fecha = new Date(x.fecha).toLocaleDateString('es-CO', { year: 'numeric', month: 'short' });
+        return `<div class="rv-item" id="rv-${x.id}">
+            <div class="rv-item-top"><span class="rv-stars">${rvStars(x.calificacion)}</span>
+                <span>${x.dificultad ? 'Dificultad ' + x.dificultad + '/5 · ' : ''}${x.asignatura ? rvEsc(x.asignatura) + ' · ' : ''}${rvEsc(fecha)}</span></div>
+            ${x.comentario ? `<p>${rvEsc(x.comentario)}</p>` : ''}
+            <button class="rv-link" onclick="rvReportar(${x.id}, this)">Reportar</button></div>`;
+    }
+
+    function rvRenderBase(j) {
+        const s = j.resumen || {};
+        const resumen = s.n > 0
+            ? `<div class="rv-sum"><div><b>${s.calificacion.toFixed(1)}</b> / 5<br>${rvStars(s.calificacion)}</div>
+               ${s.dificultad != null ? `<div><b>${s.dificultad.toFixed(1)}</b> / 5<br>dificultad</div>` : ''}
+               <div><b>${s.n}</b><br>reseña${s.n === 1 ? '' : 's'}</div></div>`
+            : `<div class="rv-msg" style="color:var(--text-dim)">Aún no hay reseñas. ¡Sé la primera persona en dejar una!</div>`;
+        document.getElementById('resenas-body').innerHTML = `
+            ${resumen}
+            <div id="rv-lista">${(j.resenas || []).map(rvItemHtml).join('')}</div>
+            <div id="rv-mas">${j.hayMas ? '<button class="rv-link" onclick="rvMas()">Ver más reseñas</button>' : ''}</div>
+            <div class="rv-form">
+                <h3>✍️ Deja tu reseña (anónima)</h3>
+                <div class="rv-pick" id="rv-cal"><span>Calificación</span>${[1, 2, 3, 4, 5].map(n => `<button type="button" onclick="rvSet('cal',${n})">${n}</button>`).join('')}</div>
+                <div class="rv-pick" id="rv-dif"><span>Dificultad</span>${[1, 2, 3, 4, 5].map(n => `<button type="button" onclick="rvSet('dif',${n})">${n}</button>`).join('')}</div>
+                <textarea id="rv-txt" maxlength="600" placeholder="Cuenta cómo es la clase: metodología, evaluaciones, carga de trabajo… (opcional)" oninput="rvContar()"></textarea>
+                <div class="rv-count"><span id="rv-n">0</span>/600</div>
+                <input class="rv-hp" id="rv-web" tabindex="-1" autocomplete="off" aria-hidden="true">
+                <button class="rv-send" id="rv-send" onclick="rvEnviar()">Publicar reseña</button>
+                <div class="rv-msg" id="rv-msg"></div>
+                <div class="rv-note">No pedimos nombre, correo ni cuenta. Un moderador automático revisa cada comentario: habla de la clase, no de la persona, y sin insultos ni datos de contacto.</div>
+            </div>
+            <div class="rv-foot">¿Buscas más opiniones? Míralas en <a href="https://losestudiantes.com/home" target="_blank" rel="noopener noreferrer">Los Estudiantes ↗</a></div>`;
+    }
+
+    function rvAgregar(j) {
+        document.getElementById('rv-lista').insertAdjacentHTML('beforeend', (j.resenas || []).map(rvItemHtml).join(''));
+        document.getElementById('rv-mas').innerHTML = j.hayMas ? '<button class="rv-link" onclick="rvMas()">Ver más reseñas</button>' : '';
+    }
+    function rvMas() { rv.offset += 10; rvCargar(false); }
+
+    function rvSet(campo, n) {
+        rv[campo] = n;
+        document.querySelectorAll(`#rv-${campo} button`).forEach((b, i) => b.classList.toggle('on', i + 1 === n));
+    }
+    function rvContar() { document.getElementById('rv-n').textContent = document.getElementById('rv-txt').value.length; }
+    function rvMsg(txt, ok) { const m = document.getElementById('rv-msg'); m.textContent = txt; m.className = 'rv-msg ' + (ok ? 'ok' : 'err'); }
+
+    async function rvEnviar() {
+        if (!rv.cal) { rvMsg('Elige una calificación de 1 a 5.', false); return; }
+        const btn = document.getElementById('rv-send');
+        btn.disabled = true; rvMsg('Revisando tu comentario…', true);
+        try {
+            const r = await fetch(RV_API, {
+                method: 'POST', headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    profesor: rv.prof, asignatura: rv.asig || undefined, calificacion: rv.cal, dificultad: rv.dif || undefined,
+                    comentario: document.getElementById('rv-txt').value, token: rvToken(), web: document.getElementById('rv-web').value
+                })
+            });
+            const j = await r.json().catch(() => ({}));
+            if (!r.ok) { rvMsg(j.error || 'No se pudo enviar. Inténtalo de nuevo.', false); btn.disabled = false; return; }
+            if (j.estado === 'pendiente') {
+                rvMsg('¡Gracias! Tu comentario quedó en revisión y se publicará si cumple las reglas.', true);
+                btn.disabled = true;
+            } else {
+                rvMsg('¡Gracias! Tu reseña fue publicada.', true);
+                rv.offset = 0; setTimeout(() => rvCargar(true), 900);
+            }
+        } catch (e) { rvMsg('No se pudo conectar con el servidor.', false); btn.disabled = false; }
+    }
+
+    async function rvReportar(id, btn) {
+        if (!confirm('¿Reportar esta reseña como inapropiada?')) return;
+        try {
+            await fetch(`${RV_API}/${id}/reportar`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ token: rvToken() }) });
+            btn.textContent = 'Reportada ✓'; btn.disabled = true;
+        } catch (e) { btn.textContent = 'Error, reintenta'; }
+    }
 </script>
 </body>
 </html>
