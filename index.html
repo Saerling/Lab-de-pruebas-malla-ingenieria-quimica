@@ -461,6 +461,102 @@
 .hg-heart { background: none; color: var(--text-dim); padding: 4px; font-size: 1.15rem; line-height: 1; flex-shrink: 0; }
 .hg-heart.on { color: var(--danger); }
 .hg-heart:hover { transform: scale(1.25); }
+
+/* ===== INFO Y CALENDARIO ===== */
+.info-wrap { max-width: 1200px; margin: 0 auto; display: grid; gap: 20px; padding-bottom: 20px; }
+.info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px; }
+.info-card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 22px; box-shadow: var(--shadow); animation: fadeUp 0.5s var(--ease) both; }
+.info-card h3 { margin: 0 0 14px; font-family: var(--mono); font-size: 1rem; color: var(--text); }
+.info-card.emerg { border-color: var(--danger); box-shadow: var(--shadow), 0 0 28px rgba(224, 122, 110, 0.12); }
+.info-card.emerg h3 { color: var(--danger); }
+.ic-note { font-size: 0.85rem; color: var(--text-dim); line-height: 1.55; margin: 0 0 12px; }
+.ic-note b { color: var(--text); }
+.ic-block { background: var(--surface-2); border: 1px solid var(--border); border-radius: 14px; padding: 12px 14px; margin-bottom: 10px; }
+.ic-h { font-family: var(--mono); font-size: 0.74rem; font-weight: 700; color: var(--accent); margin-bottom: 8px; }
+.ic-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 0.82rem; padding: 6px 0; }
+.ic-row + .ic-row { border-top: 1px dashed var(--border); }
+.ic-acts { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.tel-btn { display: inline-block; text-decoration: none; background: var(--primary-soft); color: var(--primary); border: 1px solid var(--border); padding: 6px 12px; border-radius: 999px; font-family: var(--mono); font-size: 0.74rem; font-weight: 700; transition: transform 0.25s var(--spring), background 0.2s, color 0.2s; }
+.tel-btn:hover { transform: translateY(-2px) scale(1.04); background: var(--primary); color: var(--on-primary); }
+.ext { font-family: var(--mono); font-size: 0.72rem; color: var(--text-dim); }
+.copy-btn { background: transparent; border: 1px solid var(--border); padding: 4px 8px; border-radius: 8px; font-size: 0.8rem; color: var(--text-dim); }
+.copy-btn:hover { border-color: var(--primary); }
+.ic-src { font-size: 0.7rem; color: var(--text-dim); margin-top: 10px; line-height: 1.5; }
+
+.link-hero { background: var(--surface-2); border: 1px solid var(--border); border-left: 3px solid var(--primary); border-radius: 14px; padding: 14px; }
+.lh-top { display: flex; gap: 12px; align-items: center; margin-bottom: 10px; }
+.lh-ico { font-size: 1.8rem; }
+.lh-top b { display: block; font-size: 0.88rem; }
+.lh-top small { color: var(--text-dim); font-family: var(--mono); font-size: 0.7rem; }
+.lh-acts { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.lh-open { display: inline-block; text-decoration: none; padding: 10px 16px; border-radius: 10px; font-weight: 700; font-size: 0.82rem; }
+.lh-open:hover { transform: translateY(-2px); box-shadow: var(--shadow), var(--glow); }
+.lnk { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; animation: fadeUp 0.35s var(--ease) both; }
+.lnk a { flex: 1; min-width: 0; display: block; text-decoration: none; color: var(--text); font-weight: 700; font-size: 0.84rem; background: var(--surface-2); border: 1px solid var(--border); padding: 10px 12px; border-radius: 10px; transition: border-color 0.2s, transform 0.25s var(--ease); overflow: hidden; text-overflow: ellipsis; }
+.lnk a:hover { border-color: var(--primary); transform: translateX(3px); }
+.lnk a small { display: block; font-family: var(--mono); font-size: 0.66rem; color: var(--text-dim); font-weight: 400; }
+.lnk-x { background: transparent; color: var(--danger); padding: 6px 9px; border-radius: 8px; }
+.lnk-x:hover { background: var(--danger-soft); }
+.ln-form { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+.ln-form input { flex: 1; min-width: 140px; background: var(--bg); border: 1px solid var(--border); color: var(--text); padding: 10px; border-radius: 10px; font-family: inherit; }
+.ln-form input:focus { outline: none; border-color: var(--primary); box-shadow: var(--ring); }
+
+/* Semestre: cabecera con cuenta atrás */
+.sem-hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 26px; background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 24px; box-shadow: var(--shadow), var(--glow); animation: fadeUp 0.5s var(--ease) both; }
+@media (max-width: 820px) { .sem-hero { grid-template-columns: 1fr; } }
+.sh-tag { font-family: var(--mono); font-size: 0.68rem; color: var(--accent); letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 8px; }
+.sh-title { font-family: var(--mono); font-size: 2rem; font-weight: 700; color: var(--text); }
+.sh-phase { display: inline-block; margin: 6px 0 16px; background: var(--primary-soft); color: var(--primary); border: 1px solid var(--border); padding: 6px 14px; border-radius: 999px; font-family: var(--mono); font-size: 0.8rem; font-weight: 700; }
+.wk-strip { display: grid; grid-template-columns: repeat(16, 1fr); gap: 4px; align-items: end; height: 24px; }
+.wk { height: 10px; border-radius: 4px; background: var(--surface-2); border: 1px solid var(--border); transition: all 0.3s; }
+.wk.past { background: var(--primary); border-color: transparent; opacity: 0.55; }
+.wk.cur { height: 22px; background: var(--accent); border-color: transparent; animation: breathe 2.4s ease-in-out infinite; }
+.wk-lbl { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 0.62rem; color: var(--text-dim); margin: 4px 0 12px; }
+.sem-bar { height: 10px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+.sem-bar i { display: block; height: 100%; width: 0; border-radius: 10px; background: linear-gradient(90deg, var(--primary), var(--accent)); transition: width 1s var(--ease); }
+.sh-pct { font-size: 0.74rem; color: var(--text-dim); margin-top: 6px; font-family: var(--mono); }
+.cd-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.cd-box { background: var(--surface-2); border: 1px solid var(--border); border-radius: 14px; padding: 14px 4px; text-align: center; }
+.cd-num { font-family: var(--mono); font-size: 1.9rem; font-weight: 700; color: var(--primary); font-variant-numeric: tabular-nums; }
+.cd-lbl { font-size: 0.62rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
+.sh-note { margin-top: 12px; font-size: 0.8rem; color: var(--text-dim); }
+
+/* Calendario */
+.cal-layout { display: grid; grid-template-columns: 1.5fr 1fr; gap: 24px; }
+@media (max-width: 820px) { .cal-layout { grid-template-columns: 1fr; } }
+.cal-head { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.cal-mes { flex: 1; text-align: center; font-family: var(--mono); font-weight: 700; font-size: 0.95rem; }
+.cal-nav, .cal-hoy { background: var(--surface-2); color: var(--text); border: 1px solid var(--border); padding: 6px 12px; border-radius: 10px; font-family: var(--mono); font-weight: 700; }
+.cal-nav:hover:not(:disabled), .cal-hoy:hover { border-color: var(--primary); color: var(--primary); }
+.cal-nav:disabled { opacity: 0.3; cursor: not-allowed; }
+.cal-grid { display: grid; grid-template-columns: 34px repeat(7, 1fr); gap: 4px; }
+.cal-dow { font-family: var(--mono); font-size: 0.66rem; color: var(--text-dim); text-align: center; padding: 4px 0; }
+.cal-wk { display: grid; place-items: center; font-family: var(--mono); font-size: 0.68rem; color: var(--text-dim); }
+.cal-wk.cur { color: var(--accent); font-weight: 800; }
+.cal-day { position: relative; min-height: 44px; border: 1px solid transparent; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 0.82rem; cursor: pointer; transition: transform 0.2s var(--spring), background 0.2s, border-color 0.2s; }
+.cal-day.out { visibility: hidden; cursor: default; }
+.cal-day.insem { background: var(--primary-soft); }
+.cal-day.ev { background: color-mix(in srgb, var(--ec) 24%, transparent); border-color: var(--ec); font-weight: 800; }
+.cal-day:not(.out):hover { transform: scale(1.1); border-color: var(--primary); z-index: 2; }
+.cal-day.today { box-shadow: 0 0 0 2px var(--accent), var(--glow); font-weight: 800; animation: breathe 2.6s ease-in-out infinite; }
+.cal-day.sel { outline: 2px solid var(--primary); outline-offset: 1px; }
+.cal-dots { display: flex; gap: 2px; margin-top: 2px; }
+.cal-dots i { width: 5px; height: 5px; border-radius: 50%; display: block; }
+.cal-leg { display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 14px; }
+.lg { display: inline-flex; align-items: center; gap: 6px; font-size: 0.68rem; color: var(--text-dim); }
+.lg i { width: 9px; height: 9px; border-radius: 3px; display: block; }
+.cal-detail { background: var(--surface-2); border: 1px solid var(--border); border-radius: 14px; padding: 14px; animation: fadeUp 0.3s var(--ease) both; }
+.cd-date { font-family: var(--mono); font-weight: 700; font-size: 0.95rem; }
+.cd-sub { font-size: 0.76rem; color: var(--text-dim); margin: 2px 0 10px; }
+.cd-none { font-size: 0.78rem; color: var(--text-dim); }
+.ev-chip { display: inline-block; margin: 0 6px 6px 0; padding: 5px 12px; border-radius: 999px; font-size: 0.76rem; font-weight: 700; color: var(--text); background: color-mix(in srgb, var(--ec) 22%, transparent); border: 1px solid var(--ec); }
+.up-item { display: flex; align-items: center; gap: 10px; padding: 9px 8px; border-radius: 10px; cursor: pointer; transition: background 0.2s, transform 0.25s var(--ease); }
+.up-item:hover { background: var(--primary-soft); transform: translateX(3px); }
+.up-item i { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.up-item div { flex: 1; min-width: 0; }
+.up-item b { display: block; font-size: 0.8rem; }
+.up-item small { font-family: var(--mono); font-size: 0.68rem; color: var(--text-dim); }
+.up-item span { font-family: var(--mono); font-size: 0.7rem; color: var(--accent); font-weight: 700; white-space: nowrap; }
 </style>
 <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme_iq') || 'dark');</script>
 </head>
@@ -476,6 +572,7 @@
         <button class="tab-btn" id="tab-agrupaciones" onclick="switchTab('agrupaciones')">Programa por Agrupaciones</button>
         <button class="tab-btn" id="tab-libre" onclick="switchTab('libre')">Libre Elección</button>
         <button class="tab-btn" id="tab-horario" onclick="switchTab('horario')">Horario Semanal</button>
+        <button class="tab-btn" id="tab-info" onclick="switchTab('info')">📌 Info y Calendario</button>
     </div>
 </header>
 
@@ -599,6 +696,70 @@
     </div>
 </div>
 
+<!-- VISTA: INFO Y CALENDARIO -->
+<div id="info-view" class="view-section">
+  <div class="info-wrap">
+    <section class="sem-hero" id="sem-hero"></section>
+    <section class="info-card" id="cal-card"></section>
+
+    <div class="info-grid">
+      <section class="info-card emerg">
+        <h3>🚨 En caso de emergencia</h3>
+        <p class="ic-note">Servicio de Atención Prioritaria dentro del Campus: <b>Edificio de Genética</b>.</p>
+
+        <div class="ic-block">
+          <div class="ic-h">📍 Estás dentro de la sede Bogotá</div>
+          <div class="ic-row"><span>Emergencia o crisis de salud mental · <b>CPRAE</b></span>
+            <span class="ic-acts"><a class="tel-btn" href="tel:+576013165000">📞 (601) 316 5000</a><span class="ext">Ext. 88888</span><button class="copy-btn" title="Copiar" onclick="infoCopiar('(601) 316 5000 Ext. 88888', this)">📋</button></span></div>
+        </div>
+
+        <div class="ic-block">
+          <div class="ic-h">🚑 Estás fuera del campus en Bogotá</div>
+          <p class="ic-note" style="margin:0">Debes llamar a <b>POSITIVA</b> y preguntar a dónde debes ir; según la emergencia te dirán el lugar para no hacer más viajes después.</p>
+        </div>
+
+        <div class="ic-block">
+          <div class="ic-h">🔷 Líneas externas (Póliza y Distrito)</div>
+          <div class="ic-row"><span>Línea POSITIVA · accidente o crisis en salud mental (Póliza Estudiantil)</span>
+            <span class="ic-acts"><a class="tel-btn" href="tel:%23533">📱 #533 Opc. 1–4</a><a class="tel-btn" href="tel:018000111170">📞 018000 111170</a><button class="copy-btn" title="Copiar" onclick="infoCopiar('018000111170', this)">📋</button></span></div>
+          <div class="ic-row"><span>Líneas generales del distrito · Secretaría Distrital de Salud de Bogotá</span>
+            <span class="ic-acts"><a class="tel-btn" href="tel:123">📞 123</a><a class="tel-btn" href="tel:106">📞 106</a></span></div>
+        </div>
+
+        <div class="ic-block">
+          <div class="ic-h">💚 Para salud mental (otras opciones)</div>
+          <div class="ic-row"><span>UN Escucha</span>
+            <span class="ic-acts"><a class="tel-btn" href="tel:+573212244933">📞 +57 321 2244933</a><button class="copy-btn" title="Copiar" onclick="infoCopiar('+57 321 2244933', this)">📋</button></span></div>
+          <div class="ic-row"><span>Distrito</span><span class="ic-acts"><a class="tel-btn" href="tel:106">📞 106</a></span></div>
+        </div>
+        <p class="ic-src">Información compartida por el canal de la Facultad de Ingeniería UNAL. Verifica siempre en los canales oficiales.</p>
+      </section>
+
+      <section class="info-card">
+        <h3>📄 Trámites y enlaces</h3>
+        <div class="link-hero">
+          <div class="lh-top"><span class="lh-ico">🏛️</span>
+            <div><b>Cupo FIBOG · Universidad Nacional de Colombia</b><small>procesofibog.unal.edu.co</small></div></div>
+          <p class="ic-note">Llena la <b>solicitud de sobrecupo</b> si la necesitas. Debes llenar <b>solamente el de la facultad</b> y <b>solo puedes hacerlo una vez</b>.</p>
+          <div class="lh-acts">
+            <a class="hor-btn lh-open" href="https://procesofibog.unal.edu.co/uncupo/login" target="_blank" rel="noopener noreferrer">Abrir solicitud de sobrecupo ↗</a>
+            <button class="copy-btn" title="Copiar enlace" onclick="infoCopiar('https://procesofibog.unal.edu.co/uncupo/login', this)">📋</button>
+          </div>
+        </div>
+
+        <div class="ic-h" style="margin-top:18px">🔖 Mis enlaces</div>
+        <div id="info-links"></div>
+        <div class="ln-form">
+          <input type="text" id="ln-t" placeholder="Título (ej. Horario de monitorías)" maxlength="60">
+          <input type="text" id="ln-u" placeholder="https://…">
+          <button class="hor-btn" onclick="infoLinkAdd()">+ Guardar</button>
+        </div>
+        <div class="ic-src" id="ln-msg">Se guardan solo en este navegador.</div>
+      </section>
+    </div>
+  </div>
+</div>
+
 <footer class="site-footer">
     <span class="foot-tag">// Aviso legal</span>
     La información académica que aparece en esta página (malla curricular, asignaturas, créditos, cupos y horarios)
@@ -678,7 +839,7 @@
     // LÓGICA DE NAVEGACIÓN (TABS)
     // ==========================================
 function switchTab(tab) {
-    ['malla', 'calc', 'agrupaciones', 'libre', 'horario'].forEach(t => {
+    ['malla', 'calc', 'agrupaciones', 'libre', 'horario', 'info'].forEach(t => {
         document.getElementById(t + '-view').classList.remove('active');
         document.getElementById('tab-' + t).classList.remove('active');
     });
@@ -686,6 +847,7 @@ function switchTab(tab) {
     document.getElementById('tab-' + tab).classList.add('active');
     if (tab === 'horario') renderHorario();
     if (tab === 'libre') libreLoad();
+    if (tab === 'info') infoRender();
     if (tab === 'malla') requestAnimationFrame(drawLinks);
 }
 
@@ -2426,6 +2588,253 @@ if (window.ResizeObserver) {
     new ResizeObserver(() => { clearTimeout(_ro); _ro = setTimeout(drawLinks, 120); }).observe(document.getElementById('grid'));
 }
     
+// ==========================================
+// INFO Y CALENDARIO ACADÉMICO
+// Para el próximo semestre basta con cambiar el objeto SEM.
+// ==========================================
+const EV_TIPOS = {
+    induccion:   { n: 'Inducción',                      c: '#a78bfa' },
+    inscripcion: { n: 'Último día de inscripción',      c: '#e3b563' },
+    inicio:      { n: 'Inicio de clases',               c: '#2dd4bf' },
+    admision:    { n: 'Examen de admisión pregrado',    c: '#f59e0b' },
+    admisionpos: { n: 'Examen de admisión posgrado',    c: '#38bdf8' },
+    festivo:     { n: 'Festivo',                        c: '#e07a6e' },
+    fin:         { n: 'Finalización de clases',         c: '#f472b6' },
+    notas:       { n: 'Reporte 100% de calificaciones', c: '#5fbf8f' },
+    cierre:      { n: 'Cierre de notas',                c: '#f9a8d4' },
+    vacdoc:      { n: 'Vacaciones docentes',            c: '#facc15' }
+};
+const SEM = {
+    nombre: '2026-2',
+    inicio: '2026-08-27',      // primer día de clases
+    fin: '2026-12-16',         // último día de clases
+    cierreFin: '2026-12-20',   // reporte 100% de calificaciones
+    semana1: '2026-08-30',     // domingo con el que arranca la "Semana 1" (calendario del estudiante)
+    semanas: 16,
+    eventos: [
+        ['2026-08-21', 'induccion'], ['2026-08-24', 'induccion'], ['2026-08-25', 'induccion'],
+        ['2026-08-26', 'inscripcion'], ['2026-08-27', 'inicio'],
+        ['2026-09-20', 'admision'],
+        ['2026-10-12', 'festivo'], ['2026-10-16', 'admisionpos'],
+        ['2026-11-02', 'festivo'], ['2026-11-16', 'festivo'],
+        ['2026-12-08', 'festivo'], ['2026-12-16', 'fin'], ['2026-12-20', 'notas']
+    ],
+    rangos: [['2026-12-17', '2026-12-20', 'cierre'], ['2026-12-21', '2026-12-31', 'vacdoc']]
+};
+const MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+const DIAS_N = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+const pDate = t => { const [y, m, d] = t.split('-').map(Number); return new Date(y, m - 1, d); };
+const dKey = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+const dNum = d => Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 864e5);
+const fmtFecha = d => `${DIAS_N[d.getDay()]} ${d.getDate()} de ${MESES[d.getMonth()]}`;
+const cap1 = t => t.charAt(0).toUpperCase() + t.slice(1);
+const relDias = n => n === 0 ? 'hoy' : n === 1 ? 'mañana' : n === -1 ? 'ayer' : n > 0 ? `en ${n} días` : `hace ${-n} días`;
+const SEM_Y = pDate(SEM.inicio).getFullYear();
+
+const EV_MAP = (() => {
+    const m = {}, add = (k, t) => { (m[k] = m[k] || []).push(t); };
+    SEM.eventos.forEach(([k, t]) => add(k, t));
+    SEM.rangos.forEach(([a, b, t]) => { for (const d = pDate(a); d <= pDate(b); d.setDate(d.getDate() + 1)) add(dKey(d), t); });
+    return m;
+})();
+const EV_LISTA = [...SEM.eventos.map(([k, t]) => ({ k, t })), ...SEM.rangos.map(([a, b, t]) => ({ k: a, t, fin: b }))].sort((x, y) => x.k < y.k ? -1 : 1);
+
+function semNum(d) {                       // 0 = antes de la Semana 1
+    const dn = dNum(d), s1 = dNum(pDate(SEM.semana1));
+    return dn < s1 ? 0 : Math.floor((dn - s1) / 7) + 1;
+}
+function semEstado(now) {
+    const dn = dNum(now), ini = dNum(pDate(SEM.inicio)), fin = dNum(pDate(SEM.fin)), cf = dNum(pDate(SEM.cierreFin));
+    if (dn < ini) return { fase: 'pre', sem: 0, texto: `Faltan ${ini - dn} ${ini - dn === 1 ? 'día' : 'días'} para iniciar clases` };
+    if (dn <= fin) { const w = semNum(now); return { fase: 'curso', sem: w, texto: w === 0 ? 'Semana de arranque' : `Semana ${w} de ${SEM.semanas}` }; }
+    if (dn <= cf) return { fase: 'cierre', sem: 0, texto: 'Cierre de notas' };
+    return { fase: 'fin', sem: 0, texto: 'Semestre terminado' };
+}
+
+let calMes = null, calSel = null, _infoDay = '';
+
+function infoRender() {
+    const now = new Date();
+    _infoDay = dKey(now);
+    if (calMes === null) calMes = Math.min(11, Math.max(7, now.getMonth()));
+    if (!calSel) calSel = (now.getFullYear() === SEM_Y && now.getMonth() === calMes) ? dKey(now) : `${SEM_Y}-${String(calMes + 1).padStart(2, '0')}-01`;
+    heroRender(now);
+    calRender(now);
+    infoCountdown();
+}
+
+function heroRender(now) {
+    const st = semEstado(now);
+    const cur = st.fase === 'curso' ? st.sem : 0;
+    const strip = Array.from({ length: SEM.semanas }, (_, i) => {
+        const w = i + 1, a = pDate(SEM.semana1); a.setDate(a.getDate() + i * 7);
+        const b = new Date(a); b.setDate(b.getDate() + 6);
+        const cls = (st.fase === 'cierre' || st.fase === 'fin' || w < cur) ? 'past' : (w === cur ? 'cur' : '');
+        return `<div class="wk ${cls}" title="Semana ${w}: ${a.getDate()} ${MESES[a.getMonth()].slice(0, 3)} – ${b.getDate()} ${MESES[b.getMonth()].slice(0, 3)}"></div>`;
+    }).join('');
+    document.getElementById('sem-hero').innerHTML = `
+        <div>
+            <div class="sh-tag">// Semestre académico</div>
+            <div class="sh-title">${siaEsc(SEM.nombre)}</div>
+            <div class="sh-phase">${siaEsc(st.texto)}</div>
+            <div class="wk-strip">${strip}</div>
+            <div class="wk-lbl"><span>Sem 1</span><span>Sem ${SEM.semanas}</span></div>
+            <div class="sem-bar"><i id="bar-i"></i></div>
+            <div class="sh-pct" id="bar-pct"></div>
+        </div>
+        <div>
+            <div class="sh-tag" id="cd-lbl"></div>
+            <div class="cd-grid">
+                <div class="cd-box"><div class="cd-num" id="cd-d">0</div><div class="cd-lbl">días</div></div>
+                <div class="cd-box"><div class="cd-num" id="cd-h">00</div><div class="cd-lbl">horas</div></div>
+                <div class="cd-box"><div class="cd-num" id="cd-m">00</div><div class="cd-lbl">min</div></div>
+                <div class="cd-box"><div class="cd-num" id="cd-s">00</div><div class="cd-lbl">seg</div></div>
+            </div>
+            <div class="sh-note" id="cd-note"></div>
+        </div>`;
+}
+
+function infoCountdown() {
+    const set = (id, v) => { const e = document.getElementById(id); if (e && e.textContent !== String(v)) e.textContent = v; };
+    if (!document.getElementById('cd-d')) return;
+    const now = new Date(), ini = pDate(SEM.inicio), fin = pDate(SEM.fin), cf = pDate(SEM.cierreFin);
+    const sig = d => { const x = new Date(d); x.setDate(x.getDate() + 1); return x; };   // 00:00 del día siguiente
+    let target = null, lbl = '', note = '';
+    if (now < ini) { target = ini; lbl = 'Faltan para iniciar clases'; note = `Inicio de clases: ${fmtFecha(ini)}`; }
+    else if (now < sig(fin)) { target = sig(fin); lbl = 'Para que termine el semestre'; note = `Fin de clases: ${fmtFecha(fin)}`; }
+    else if (now < sig(cf)) { target = sig(cf); lbl = 'Para el reporte final de notas'; note = `Reporte 100% de calificaciones: ${fmtFecha(cf)}`; }
+    if (!target) {
+        set('cd-lbl', 'Semestre terminado'); set('cd-note', '🎉 ¡Disfruta tus vacaciones!');
+        ['d', 'h', 'm', 's'].forEach(x => set('cd-' + x, x === 'd' ? '0' : '00'));
+    } else {
+        const ms = Math.max(0, target - now), p2 = n => String(n).padStart(2, '0');
+        set('cd-lbl', lbl); set('cd-note', note);
+        set('cd-d', Math.floor(ms / 864e5)); set('cd-h', p2(Math.floor(ms / 36e5) % 24));
+        set('cd-m', p2(Math.floor(ms / 6e4) % 60)); set('cd-s', p2(Math.floor(ms / 1000) % 60));
+    }
+    const a = ini.getTime(), b = sig(fin).getTime();
+    const pct = Math.max(0, Math.min(100, (now - a) / (b - a) * 100));
+    const bar = document.getElementById('bar-i'); if (bar) bar.style.width = pct + '%';
+    set('bar-pct', `${pct.toFixed(1)}% del semestre transcurrido`);
+}
+
+function calRender(now) {
+    const todayKey = dKey(now), todayDn = dNum(now), st = semEstado(now);
+    const iniDn = dNum(pDate(SEM.inicio)), finDn = dNum(pDate(SEM.fin));
+    const first = new Date(SEM_Y, calMes, 1), dim = new Date(SEM_Y, calMes + 1, 0).getDate(), lead = first.getDay();
+    const rows = Math.ceil((lead + dim) / 7);
+
+    let g = `<div class="cal-grid"><div class="cal-dow">Sem</div>${['D', 'L', 'M', 'M', 'J', 'V', 'S'].map(x => `<div class="cal-dow">${x}</div>`).join('')}`;
+    for (let r = 0; r < rows; r++) {
+        const sun = new Date(SEM_Y, calMes, 1 - lead + r * 7), wn = semNum(sun);
+        const show = wn >= 1 && wn <= SEM.semanas;
+        g += `<div class="cal-wk ${st.fase === 'curso' && st.sem === wn && show ? 'cur' : ''}">${show ? wn : ''}</div>`;
+        for (let c = 0; c < 7; c++) {
+            const n = r * 7 + c - lead + 1;
+            if (n < 1 || n > dim) { g += '<div class="cal-day out"></div>'; continue; }
+            const d = new Date(SEM_Y, calMes, n), k = dKey(d), dn = dNum(d), evs = EV_MAP[k] || [];
+            const cls = ['cal-day', dn >= iniDn && dn <= finDn ? 'insem' : '', evs.length ? 'ev' : '', k === todayKey ? 'today' : '', k === calSel ? 'sel' : ''].join(' ');
+            const dots = evs.length ? `<span class="cal-dots">${evs.map(t => `<i style="background:${EV_TIPOS[t].c}"></i>`).join('')}</span>` : '';
+            g += `<div class="${cls}" style="--ec:${evs.length ? EV_TIPOS[evs[0]].c : 'transparent'}" onclick="calSelect('${k}')" title="${siaEsc(evs.map(t => EV_TIPOS[t].n).join(' · '))}">${n}${dots}</div>`;
+        }
+    }
+    g += '</div>';
+
+    // detalle del día elegido
+    const sd = pDate(calSel), evs = EV_MAP[calSel] || [], w = semNum(sd), sdn = dNum(sd);
+    const inSem = sdn >= iniDn && sdn <= finDn;
+    const semTxt = inSem ? (w >= 1 ? `Semana ${w} de ${SEM.semanas}` : 'Semana de arranque') : '';
+    const detalle = `<div class="cal-detail">
+        <div class="cd-date">${siaEsc(cap1(fmtFecha(sd)))}</div>
+        <div class="cd-sub">${siaEsc([semTxt, relDias(sdn - todayDn)].filter(Boolean).join(' · '))}</div>
+        ${evs.length ? evs.map(t => `<div class="ev-chip" style="--ec:${EV_TIPOS[t].c}">${siaEsc(EV_TIPOS[t].n)}</div>`).join('') : '<div class="cd-none">Sin eventos especiales este día.</div>'}
+    </div>`;
+
+    // próximos eventos
+    const prox = EV_LISTA.filter(e => dNum(pDate(e.fin || e.k)) >= todayDn).slice(0, 5).map(e => {
+        const a = pDate(e.k), dn = dNum(a), enCurso = dn <= todayDn;
+        const f = e.fin ? `${a.getDate()}–${pDate(e.fin).getDate()} ${MESES[a.getMonth()].slice(0, 3)}` : `${a.getDate()} ${MESES[a.getMonth()].slice(0, 3)}`;
+        return `<div class="up-item" onclick="calIr('${e.k}')"><i style="background:${EV_TIPOS[e.t].c}"></i>
+            <div><b>${siaEsc(EV_TIPOS[e.t].n)}</b><small>${siaEsc(f)}</small></div><span>${enCurso ? 'en curso' : relDias(dn - todayDn)}</span></div>`;
+    }).join('') || '<div class="cd-none">No quedan más eventos este semestre.</div>';
+
+    const leyenda = Object.values(EV_TIPOS).map(t => `<span class="lg"><i style="background:${t.c}"></i>${siaEsc(t.n)}</span>`).join('');
+
+    document.getElementById('cal-card').innerHTML = `
+        <h3>🗓️ Calendario académico ${siaEsc(SEM.nombre)}</h3>
+        <div class="cal-layout">
+            <div>
+                <div class="cal-head">
+                    <button class="cal-nav" onclick="calMover(-1)" ${calMes <= 7 ? 'disabled' : ''}>‹</button>
+                    <div class="cal-mes">${cap1(MESES[calMes])} ${SEM_Y}</div>
+                    <button class="cal-nav" onclick="calMover(1)" ${calMes >= 11 ? 'disabled' : ''}>›</button>
+                    <button class="cal-hoy" onclick="calIr('${todayKey}')">Hoy</button>
+                </div>
+                ${g}
+                <div class="cal-leg">${leyenda}</div>
+            </div>
+            <div>${detalle}<div class="ic-h" style="margin:16px 0 6px">⏭️ Próximos eventos</div>${prox}</div>
+        </div>`;
+}
+
+function calSelect(k) { calSel = k; calRender(new Date()); }
+function calMover(dl) {
+    calMes = Math.min(11, Math.max(7, calMes + dl));
+    const t = new Date();
+    calSel = (t.getFullYear() === SEM_Y && t.getMonth() === calMes) ? dKey(t) : `${SEM_Y}-${String(calMes + 1).padStart(2, '0')}-01`;
+    calRender(t);
+}
+function calIr(k) {
+    const d = pDate(k);
+    if (d.getFullYear() === SEM_Y) calMes = Math.min(11, Math.max(7, d.getMonth()));
+    calSel = (d.getFullYear() === SEM_Y && d.getMonth() === calMes) ? k : `${SEM_Y}-${String(calMes + 1).padStart(2, '0')}-01`;
+    calRender(new Date());
+}
+
+// Se mantiene actualizado: cada segundo corre la cuenta atrás; al cambiar el día se redibuja todo
+setInterval(() => {
+    const v = document.getElementById('info-view');
+    if (!v || !v.classList.contains('active')) return;
+    if (dKey(new Date()) !== _infoDay) infoRender(); else infoCountdown();
+}, 1000);
+
+// Copiar al portapapeles
+function infoCopiar(txt, btn) {
+    const ok = () => { const old = btn.textContent; btn.textContent = '✓'; setTimeout(() => btn.textContent = old, 1200); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(ok, () => {});
+    else { const t = document.createElement('textarea'); t.value = txt; document.body.appendChild(t); t.select(); try { document.execCommand('copy'); ok(); } catch (e) {} t.remove(); }
+}
+
+// Enlaces propios (se guardan en este navegador)
+let infoLinks = (() => { try { return JSON.parse(localStorage.getItem('info_links_iq')) || []; } catch (e) { return []; } })();
+function infoLinksRender() {
+    const box = document.getElementById('info-links');
+    if (!box) return;
+    box.innerHTML = infoLinks.length ? infoLinks.map((l, i) => {
+        let host = ''; try { host = new URL(l.u).host; } catch (e) {}
+        return `<div class="lnk"><a href="${siaEsc(l.u)}" target="_blank" rel="noopener noreferrer">🔗 ${siaEsc(l.t)}<small>${siaEsc(host)}</small></a>
+            <button class="lnk-x" title="Eliminar" onclick="infoLinkDel(${i})">✕</button></div>`;
+    }).join('') : '<div class="hor-msg">Aún no has guardado enlaces propios.</div>';
+}
+function infoLinkAdd() {
+    const t = document.getElementById('ln-t').value.trim(), msg = document.getElementById('ln-msg');
+    let u = document.getElementById('ln-u').value.trim();
+    if (!u) { msg.textContent = 'Escribe la dirección del enlace.'; return; }
+    if (!/^https?:\/\//i.test(u)) u = 'https://' + u;
+    try { const x = new URL(u); if (!/^https?:$/.test(x.protocol)) throw 0; u = x.href; } catch (e) { msg.textContent = 'Ese enlace no parece válido.'; return; }
+    infoLinks.push({ t: t || new URL(u).host, u });
+    try { localStorage.setItem('info_links_iq', JSON.stringify(infoLinks)); } catch (e) {}
+    document.getElementById('ln-t').value = ''; document.getElementById('ln-u').value = '';
+    msg.textContent = 'Enlace guardado. Se guardan solo en este navegador.';
+    infoLinksRender();
+}
+function infoLinkDel(i) {
+    infoLinks.splice(i, 1);
+    try { localStorage.setItem('info_links_iq', JSON.stringify(infoLinks)); } catch (e) {}
+    infoLinksRender();
+}
+infoLinksRender();
+
     // ==========================================
     // INICIALIZACIÓN
     // ==========================================
