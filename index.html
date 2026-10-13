@@ -615,6 +615,51 @@
 .nv-cta:hover { transform: translateY(-2px) scale(1.03); box-shadow: var(--glow), var(--shadow); }
 .nv-cta:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 @media (max-width: 480px) { .nv-hero { padding: 36px 16px 16px; } .nv-list { padding: 4px 16px 10px; } .nv-mig { margin: 6px 16px 0; } .nv-foot { padding: 12px 16px; } .nv-cta { width: 100%; } }
+
+/* ===== COMENTARIOS ===== */
+.fb-btn { position: absolute; top: 58px; right: 16px; display: inline-flex; align-items: center; gap: 6px; background: var(--primary-soft); color: var(--primary); border: 1px solid var(--primary); padding: 8px 14px; border-radius: 999px; font-family: var(--mono); font-size: 0.72rem; font-weight: 700; cursor: pointer; transition: transform 0.3s var(--spring), box-shadow 0.25s, background 0.25s, color 0.25s; }
+.fb-btn:hover { transform: translateY(-2px); background: var(--primary); color: var(--on-primary); box-shadow: var(--glow); }
+.fb-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.fb-btn.nuevo::after { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); animation: nvPing 1.6s ease-out infinite; }
+@media (max-width: 640px) { .fb-btn { position: static; display: flex; margin: 0 auto 14px; width: max-content; } }
+
+.fb-tip { position: absolute; z-index: 900; background: var(--surface); border: 1px solid var(--primary); border-radius: 14px; padding: 12px 34px 12px 14px; box-shadow: var(--shadow-lg), var(--glow); font-size: 0.85rem; line-height: 1.45; color: var(--text); opacity: 0; transform: translateY(-8px) scale(0.96); pointer-events: none; transition: opacity 0.4s var(--ease), transform 0.5s var(--spring); }
+.fb-tip.on { opacity: 1; transform: none; pointer-events: auto; }
+.fb-tip b { color: var(--primary); }
+.fb-tip-x { position: absolute; top: 6px; right: 8px; background: none; border: none; color: var(--text-dim); font-size: 1.1rem; line-height: 1; cursor: pointer; padding: 2px 4px; border-radius: 6px; }
+.fb-tip-x:hover { color: var(--text); }
+.fb-arrow { position: absolute; top: -70px; width: 48px; height: 68px; overflow: visible; pointer-events: none; }
+.fb-arrow path { fill: none; stroke: var(--primary); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.fb-arrow .dash { stroke-dasharray: 2 7; animation: fbDash 1.1s linear infinite; }
+@keyframes fbDash { to { stroke-dashoffset: -18; } }
+
+#fb-modal { z-index: 1000; padding: 12px; }
+#fb-modal.active .nv-card { animation: modalPop 0.55s var(--spring) both; }
+#fb-modal .nv-card { max-width: 480px; }
+.fb-body { padding: 26px 22px 18px; overflow-y: auto; }
+.fb-body h2 { margin: 0 34px 4px 0; font-family: var(--mono); font-size: 1.05rem; color: var(--primary); }
+.fb-sub { margin: 0 0 16px; font-size: 0.85rem; line-height: 1.5; color: var(--text-dim); }
+.fb-types { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+.fb-types label { cursor: pointer; }
+.fb-types input { position: absolute; opacity: 0; pointer-events: none; }
+.fb-types span { display: inline-block; padding: 7px 13px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text-dim); font-size: 0.8rem; font-weight: 700; transition: all 0.2s var(--ease); }
+.fb-types label:hover span { border-color: var(--primary); color: var(--text); }
+.fb-types input:checked + span { background: var(--primary-soft); border-color: var(--primary); color: var(--primary); }
+.fb-types input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
+.fb-field { width: 100%; box-sizing: border-box; background: var(--surface-2); color: var(--text); border: 1px solid var(--border); border-radius: 12px; padding: 11px 13px; font-family: inherit; font-size: 0.9rem; transition: border-color 0.2s, box-shadow 0.2s; }
+.fb-field:focus { outline: none; border-color: var(--primary); box-shadow: var(--glow); }
+textarea.fb-field { min-height: 130px; resize: vertical; line-height: 1.5; }
+.fb-meta { display: flex; justify-content: space-between; margin: 5px 2px 12px; font-family: var(--mono); font-size: 0.7rem; color: var(--text-dim); }
+.fb-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.fb-msg { min-height: 1.3em; margin: 10px 0 0; font-size: 0.82rem; line-height: 1.4; color: var(--text-dim); }
+.fb-msg.err { color: var(--danger); }
+.fb-actions { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
+.fb-actions small { color: var(--text-dim); font-size: 0.74rem; flex: 1 1 180px; }
+.fb-ok { text-align: center; padding: 22px 6px 8px; }
+.fb-ok .big { font-size: 2.6rem; display: block; animation: modalPop 0.6s var(--spring) both; }
+.fb-ok h2 { margin: 10px 0 6px; }
+.nv-cta:disabled { opacity: 0.6; cursor: wait; transform: none; box-shadow: none; }
+@media (max-width: 480px) { .fb-body { padding: 24px 16px 16px; } .fb-actions .nv-cta { width: 100%; } }
 </style>
 <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme_iq') || 'dark');</script>
 </head>
@@ -622,6 +667,7 @@
 
 <header>
     <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">☀ Modo día</button>
+    <button class="fb-btn" id="fb-btn" onclick="openFeedback()" title="Dime tu opinión">💬 Comentarios</button>
     <button class="coffee-btn" onclick="openCoffeeModal()"><span class="coffee-ico">☕</span> Invítame un café</button>
     <h1 style="margin:0 0 10px">MALLA CURRICULAR IQ</h1>
     <button class="ver-chip" id="nv-chip" onclick="openNovedades()" title="Qué hay de nuevo">✨ Novedades v4.2</button>
@@ -917,6 +963,43 @@
         <div class="nv-foot">
             <small>Puedes volver a verlo con el botón «Novedades» del encabezado.</small>
             <button class="nv-cta" id="nv-cta" onclick="closeNovedades()">Entrar a la malla</button>
+        </div>
+    </div>
+</div>
+
+<!-- COMENTARIOS: buzón privado (llega solo al administrador) -->
+<div class="fb-tip" id="fb-tip" role="note">
+    <svg class="fb-arrow" id="fb-arrow" viewBox="0 0 48 68" aria-hidden="true"><path class="dash" d="M4 66 C -4 36, 34 44, 40 10"/><path d="M40 10 L32 18 M40 10 L47.5 19"/></svg>
+    <button class="fb-tip-x" onclick="fbHideTip()" aria-label="Cerrar aviso">&times;</button>
+    <b>Dime tu opinión.</b> Comentarios, sugerencias o quejas.
+</div>
+
+<div class="modal-overlay" id="fb-modal" onclick="if(event.target===this)closeFeedback()">
+    <div class="nv-card" role="dialog" aria-modal="true" aria-labelledby="fb-title">
+        <button class="close-btn nv-close" onclick="closeFeedback()" aria-label="Cerrar">&times;</button>
+        <div class="fb-body" id="fb-form-wrap">
+            <h2 id="fb-title">💬 Dime tu opinión</h2>
+            <p class="fb-sub">Comentarios, sugerencias o quejas. Tu mensaje me llega solo a mí y nadie más puede verlo.</p>
+            <div class="fb-types" role="radiogroup" aria-label="Tipo de mensaje">
+                <label><input type="radio" name="fb-tipo" value="Comentario" checked><span>💬 Comentario</span></label>
+                <label><input type="radio" name="fb-tipo" value="Sugerencia"><span>💡 Sugerencia</span></label>
+                <label><input type="radio" name="fb-tipo" value="Queja"><span>⚠️ Queja</span></label>
+            </div>
+            <textarea class="fb-field" id="fb-text" maxlength="1000" placeholder="Cuéntame qué piensas, qué te gustaría ver o qué no te funcionó…" aria-label="Tu mensaje"></textarea>
+            <div class="fb-meta"><span id="fb-hint">Mínimo 10 caracteres</span><span id="fb-count">0 / 1000</span></div>
+            <input class="fb-field" id="fb-contact" maxlength="80" placeholder="Nombre o contacto (opcional, solo si quieres respuesta)" aria-label="Nombre o contacto (opcional)" autocomplete="off">
+            <input class="fb-hp" id="fb-web" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <p class="fb-msg" id="fb-status" aria-live="polite"></p>
+            <div class="fb-actions">
+                <small>Es anónimo a menos que dejes un contacto.</small>
+                <button class="nv-cta" id="fb-send" onclick="sendFeedback()">Enviar</button>
+            </div>
+        </div>
+        <div class="fb-body fb-ok" id="fb-ok" style="display:none">
+            <span class="big">💚</span>
+            <h2>¡Gracias!</h2>
+            <p class="fb-sub">Tu mensaje me llegó y solo yo lo leo.</p>
+            <button class="nv-cta" onclick="closeFeedback()">Cerrar</button>
         </div>
     </div>
 </div>
@@ -3129,7 +3212,8 @@ infoLinksRender();
         { s: 'new', e: '⭐', t: 'Reseñas anónimas de profesores', p: 'Mira la calificación de cada profesor y deja la tuya, sin cuenta ni correo.' },
         { s: 'new', e: '📌', t: 'Libre elección con el catálogo del SIA', p: 'Busca materias de libre elección y fíjalas en los cupos de tu malla.' },
         { s: 'new', e: '🗓️', t: 'Horario semanal', p: 'Arma hasta tres planes (A, B y C), detecta cruces, marca favoritas, copia o imprime tu horario.' },
-        { s: 'new', e: '📍', t: 'Info y calendario', p: 'Calendario del semestre con cuenta regresiva, líneas de emergencia, solicitud de sobrecupo y tus propios enlaces.' }
+        { s: 'new', e: '📍', t: 'Info y calendario', p: 'Calendario del semestre con cuenta regresiva, líneas de emergencia, solicitud de sobrecupo y tus propios enlaces.' },
+        { s: 'new', e: '💬', t: 'Buzón de comentarios', p: 'Cuéntame tu opinión, sugerencias o quejas desde el botón Comentarios. Tu mensaje me llega solo a mí.' }
     ];
     var CMD = 'malla actualizar 1.0 → 4.2';
     var modal = document.getElementById('nv-modal');
@@ -3266,6 +3350,7 @@ infoLinksRender();
         timers.forEach(clearTimeout); timers = [];
         if (io) { io.disconnect(); io = null; }
         var chip = $('nv-chip'); if (chip) chip.classList.remove('nuevo');
+        if (window.fbShowTip) setTimeout(window.fbShowTip, 500);
         if (prevFocus && prevFocus.focus) { try { prevFocus.focus({ preventScroll: true }); } catch (e) {} }
     };
 
@@ -3283,6 +3368,121 @@ infoLinksRender();
     if (!seen()) {
         var chip = $('nv-chip'); if (chip) chip.classList.add('nuevo');
         setTimeout(window.openNovedades, 700);
+    }
+})();
+</script>
+<script id="comentarios-v42">
+(function () {
+    var API = 'https://proxy-sia.onrender.com/api/comentarios';
+    var K_TIP = 'malla_iq_fb_tip', K_LAST = 'malla_iq_fb_last', K_NV = 'malla_iq_novedades_visto';
+    var $ = function (id) { return document.getElementById(id); };
+    var modal = $('fb-modal'), tip = $('fb-tip'), btn = $('fb-btn');
+    if (!modal || !tip || !btn) return;
+    var tipTimer = null, prevFocus = null, slowTimer = null;
+    var get = function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } };
+    var set = function (k, v) { try { localStorage.setItem(k, v); } catch (e) { /* sin almacenamiento */ } };
+
+    /* ---- Aviso con flecha punteada ---- */
+    function placeTip() {
+        var b = btn.getBoundingClientRect(), sx = window.pageXOffset, sy = window.pageYOffset;
+        var w = Math.min(250, window.innerWidth - 24);
+        tip.style.width = w + 'px';
+        var left = Math.max(12, Math.min(b.right + sx - w, sx + window.innerWidth - w - 12));
+        tip.style.left = left + 'px';
+        tip.style.top = (b.bottom + sy + 76) + 'px';
+        var ax = (b.left + b.width / 2 + sx) - left - 40;
+        $('fb-arrow').style.left = Math.max(0, Math.min(w - 48, ax)) + 'px';
+    }
+    window.fbShowTip = function () {
+        if (get(K_TIP) === '1' || modal.classList.contains('active')) return;
+        set(K_TIP, '1');
+        placeTip();
+        tip.classList.add('on');
+        window.addEventListener('resize', placeTip);
+        window.addEventListener('scroll', onScroll, { passive: true });
+        tipTimer = setTimeout(window.fbHideTip, 14000);
+    };
+    function onScroll() { if (Math.abs(window.pageYOffset) > 120) window.fbHideTip(); }
+    window.fbHideTip = function () {
+        clearTimeout(tipTimer);
+        tip.classList.remove('on');
+        window.removeEventListener('resize', placeTip);
+        window.removeEventListener('scroll', onScroll);
+    };
+
+    /* ---- Modal ---- */
+    function status(msg, err) { var s = $('fb-status'); s.textContent = msg || ''; s.className = 'fb-msg' + (err ? ' err' : ''); }
+    function counter() {
+        var n = $('fb-text').value.length;
+        $('fb-count').textContent = n + ' / 1000';
+        $('fb-hint').textContent = n >= 10 ? '' : 'Mínimo 10 caracteres';
+    }
+    window.openFeedback = function () {
+        window.fbHideTip(); set(K_TIP, '1'); btn.classList.remove('nuevo');
+        prevFocus = document.activeElement;
+        $('fb-ok').style.display = 'none'; $('fb-form-wrap').style.display = '';
+        status(''); counter();
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        setTimeout(function () { try { $('fb-text').focus({ preventScroll: true }); } catch (e) {} }, 120);
+    };
+    window.closeFeedback = function () {
+        if (!modal.classList.contains('active')) return;
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+        clearTimeout(slowTimer);
+        if (prevFocus && prevFocus.focus) { try { prevFocus.focus({ preventScroll: true }); } catch (e) {} }
+    };
+
+    window.sendFeedback = function () {
+        var text = $('fb-text').value.trim(), send = $('fb-send');
+        var tipo = (document.querySelector('input[name="fb-tipo"]:checked') || {}).value || 'Comentario';
+        if (text.length < 10) { status('Escribe al menos 10 caracteres para poder entenderte.', true); $('fb-text').focus(); return; }
+        if ($('fb-web').value) { showOk(); return; } // trampa para bots
+        var last = parseInt(get(K_LAST) || '0', 10);
+        if (Date.now() - last < 30000) { status('Espera unos segundos antes de enviar otro mensaje.', true); return; }
+
+        send.disabled = true; send.textContent = 'Enviando…'; status('');
+        slowTimer = setTimeout(function () { status('El servidor estaba dormido, puede tardar hasta un minuto…'); }, 6000);
+        var ctrl = window.AbortController ? new AbortController() : null;
+        var to = setTimeout(function () { if (ctrl) ctrl.abort(); }, 60000);
+        fetch(API, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ tipo: tipo, mensaje: text, contacto: $('fb-contact').value.trim(), v: '4.2' }),
+            signal: ctrl ? ctrl.signal : undefined
+        }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok && j.ok !== false, j: j }; }); })
+          .then(function (res) {
+            if (!res.ok) throw new Error('http');
+            set(K_LAST, String(Date.now()));
+            showOk();
+          })
+          .catch(function () { status('No se pudo enviar. Revisa tu conexión e inténtalo de nuevo.', true); })
+          .then(function () { clearTimeout(to); clearTimeout(slowTimer); send.disabled = false; send.textContent = 'Enviar'; });
+    };
+    function showOk() {
+        $('fb-text').value = ''; $('fb-contact').value = ''; counter(); status('');
+        $('fb-form-wrap').style.display = 'none'; $('fb-ok').style.display = '';
+    }
+
+    $('fb-text').addEventListener('input', counter);
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') { window.fbHideTip(); }
+        if (!modal.classList.contains('active')) return;
+        if (e.key === 'Escape') { e.preventDefault(); window.closeFeedback(); return; }
+        if (e.key !== 'Tab') return;
+        var f = [].slice.call(modal.querySelectorAll('button, textarea, input:not(.fb-hp):not([type=radio]), input[type=radio]:checked')).filter(function (x) { return x.offsetParent !== null && !x.disabled; });
+        if (!f.length) return;
+        var first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+    document.addEventListener('pointerdown', function (e) { if (tip.classList.contains('on') && !tip.contains(e.target) && e.target !== btn) window.fbHideTip(); });
+
+    /* Si ya vio las novedades, el aviso sale solo; si no, sale al cerrar el pop-up de novedades */
+    if (get(K_TIP) !== '1') {
+        btn.classList.add('nuevo');
+        if (get(K_NV) === '4.2') setTimeout(window.fbShowTip, 1800);
     }
 })();
 </script>
