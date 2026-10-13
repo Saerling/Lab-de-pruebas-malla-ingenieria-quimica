@@ -660,6 +660,36 @@ textarea.fb-field { min-height: 130px; resize: vertical; line-height: 1.5; }
 .fb-ok h2 { margin: 10px 0 6px; }
 .nv-cta:disabled { opacity: 0.6; cursor: wait; transform: none; box-shadow: none; }
 @media (max-width: 480px) { .fb-body { padding: 24px 16px 16px; } .fb-actions .nv-cta { width: 100%; } }
+
+/* ===== SOLICITUDES / CONSEJO DE FACULTAD ===== */
+.cal-tools { margin: 0 0 10px; }
+.cal-com { background: transparent; color: var(--text-dim); border: 1px solid var(--border); padding: 6px 14px; border-radius: 999px; font-size: 0.74rem; font-family: var(--mono); }
+.cal-com.on { color: var(--primary); border-color: var(--primary); background: var(--primary-soft); }
+.com-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; background: var(--surface-2); border: 1px solid var(--border); border-left: 3px solid var(--primary); border-radius: 14px; padding: 14px; margin-bottom: 14px; }
+.com-next small { display: block; font-family: var(--mono); font-size: 0.7rem; color: var(--text-dim); margin-bottom: 2px; }
+.com-next b { font-size: 1rem; }
+.com-next span { margin-left: 6px; color: var(--accent); font-family: var(--mono); font-size: 0.78rem; font-weight: 700; }
+.com-sub { font-family: var(--mono); font-size: 0.74rem; font-weight: 700; color: var(--accent); margin-bottom: 8px; }
+.com-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 14px; }
+@media (max-width: 760px) { .com-steps { grid-template-columns: 1fr 1fr; } }
+.stp { position: relative; background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px; padding: 10px 8px; text-align: center; transition: transform 0.25s var(--spring); }
+.stp:hover { transform: translateY(-3px); }
+.stp .n { display: block; font-family: var(--mono); font-size: 0.6rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.3; }
+.stp b { display: block; margin: 4px 0 2px; font-size: 0.86rem; }
+.stp small { font-size: 0.68rem; color: var(--text-dim); }
+.stp.done { border-color: var(--success); opacity: 0.7; }
+.stp.done::after { content: '✓'; position: absolute; top: 5px; right: 8px; color: var(--success); font-size: 0.8rem; }
+.stp.cur { border-color: var(--accent); background: var(--accent-soft); animation: breathe 2.4s ease-in-out infinite; }
+.com-det summary { cursor: pointer; font-family: var(--mono); font-size: 0.8rem; font-weight: 700; color: var(--primary); padding: 6px 0; }
+.com-scroll { overflow-x: auto; margin-top: 8px; }
+.com-table { width: 100%; min-width: 640px; border-collapse: collapse; font-size: 0.78rem; }
+.com-table th { background: var(--head-bg); color: var(--head-text); font-family: var(--mono); font-size: 0.62rem; padding: 8px 6px; border: 1px solid var(--border); text-align: center; line-height: 1.35; }
+.com-table th small { display: block; font-weight: 400; opacity: 0.8; }
+.com-table td { padding: 8px 6px; border: 1px solid var(--border); text-align: center; }
+.com-table td:first-child { text-align: left; font-weight: 800; }
+.com-table tr.past td { opacity: 0.4; }
+.com-table tr.cur td { background: var(--accent-soft); font-weight: 800; }
+.com-table tr.receso td { background: var(--primary-soft); color: var(--primary); font-family: var(--mono); font-size: 0.7rem; font-weight: 700; text-align: center; }
 </style>
 <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme_iq') || 'dark');</script>
 </head>
@@ -806,6 +836,7 @@ textarea.fb-field { min-height: 130px; resize: vertical; line-height: 1.5; }
   <div class="info-wrap">
     <section class="sem-hero" id="sem-hero"></section>
     <section class="info-card" id="cal-card"></section>
+    <section class="info-card" id="com-card"></section>
 
     <div class="info-grid">
       <section class="info-card emerg">
@@ -849,6 +880,16 @@ textarea.fb-field { min-height: 130px; resize: vertical; line-height: 1.5; }
           <div class="lh-acts">
             <a class="hor-btn lh-open" href="https://procesofibog.unal.edu.co/uncupo/login" target="_blank" rel="noopener noreferrer">Abrir solicitud de sobrecupo ↗</a>
             <button class="copy-btn" title="Copiar enlace" onclick="infoCopiar('https://procesofibog.unal.edu.co/uncupo/login', this)">📋</button>
+          </div>
+        </div>
+
+        <div class="link-hero" style="margin-top:12px">
+          <div class="lh-top"><span class="lh-ico">📝</span>
+            <div><b>Solicitudes estudiantiles de pregrado</b><small>docs.google.com/forms</small></div></div>
+          <p class="ic-note">Formulario para <b>varios tipos de solicitudes</b>, tales como cambios, cancelaciones, traslados, movilidades, reingresos y más. Ten presentes las <b>fechas de recepción de documentos</b> de los comités y del Consejo de Facultad (tabla de fechas, arriba).</p>
+          <div class="lh-acts">
+            <a class="hor-btn lh-open" href="https://docs.google.com/forms/d/e/1FAIpQLSdqoAp3edCP5jbSEC1Yc44j4VAF_rwJPTtOHsMsHo5789Ov2A/viewform" target="_blank" rel="noopener noreferrer">Abrir formulario ↗</a>
+            <button class="copy-btn" title="Copiar enlace" onclick="infoCopiar('https://docs.google.com/forms/d/e/1FAIpQLSdqoAp3edCP5jbSEC1Yc44j4VAF_rwJPTtOHsMsHo5789Ov2A/viewform', this)">📋</button>
           </div>
         </div>
 
@@ -2850,6 +2891,102 @@ const EV_MAP = (() => {
     SEM.rangos.forEach(([a, b, t]) => { for (const d = pDate(a); d <= pDate(b); d.setDate(d.getDate() + 1)) add(dKey(d), t); });
     return m;
 })();
+
+// ===== Fechas 2026 de solicitudes (Consejo de Facultad) =====
+const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdqoAp3edCP5jbSEC1Yc44j4VAF_rwJPTtOHsMsHo5789Ov2A/viewform';
+Object.assign(EV_TIPOS, {
+    c_doc: { n: 'Recepción de documentos (comités)',   c: '#60a5fa' },
+    c_ses: { n: 'Sesiones de comités',                 c: '#c084fc' },
+    c_del: { n: 'Recepción Comisión Delegataria',      c: '#fb923c' },
+    c_pre: { n: 'Preconsejo Asuntos Docentes',         c: '#e879f9' },
+    c_con: { n: 'Consejo de Facultad',                 c: '#22d3ee' }
+});
+// [mes, recepción doc. comités (jue), sesiones comités (lun-mié), recepción comisión delegataria (vie), preconsejo asuntos docentes (mar), consejo de facultad (jue)]  — fechas "MM-DD"
+const COM_FILAS = [
+    ['Junio', '05-28', '06-01,06-02,06-03', '06-05', '06-09', '06-11'],
+    ['Junio', '06-11', '06-15,06-16,06-17', '06-19', '07-07', '07-09'],
+    ['Julio', '07-09', '07-13,07-14,07-15', '07-17', '07-21', '07-23'],
+    ['Julio', '07-23', '07-27,07-28,07-29', '07-31', '08-04', '08-06'],
+    ['Agosto', '08-06', '08-10,08-11,08-12', '08-14', '08-18', '08-20'],
+    ['Agosto', '08-20', '08-24,08-25,08-26', '08-28', '09-01', '09-03'],
+    ['Septiembre', '09-03', '09-07,09-08,09-09', '09-11', '09-15', '09-17'],
+    ['Septiembre', '09-17', '09-21,09-22,09-23', '09-25', '09-29', '10-01'],
+    ['Octubre', '10-01', '10-05,10-06,10-07', '10-09', '10-13', '10-15'],
+    ['Octubre', '10-15', '10-19,10-20,10-21', '10-23', '10-27', '10-29'],
+    ['Noviembre', '10-29', '11-02,11-03,11-04', '11-06', '11-10', '11-12'],
+    ['Noviembre', '11-12', '11-16,11-17,11-18', '11-20', '11-24', '11-26'],
+    ['Diciembre', '11-26', '11-30,12-01,12-02', '12-04', '12-07,12-09', '12-10']
+].map(f => ({ mes: f[0], doc: f[1].split(','), ses: f[2].split(','), del: f[3].split(','), pre: f[4].split(','), con: f[5].split(',') }));
+const COM_RECESO = 'Receso intersemestral (junio 22 – julio 6)';   // se muestra después de la fila 1
+const COM_PASOS = [['doc', 'Recepción de documentos', 'jueves'], ['ses', 'Sesiones de comités', 'lun–mié'], ['del', 'Comisión Delegataria', 'viernes'], ['pre', 'Preconsejo Asuntos Docentes', 'martes'], ['con', 'Consejo de Facultad', 'jueves']];
+const comD = k => pDate(SEM_Y + '-' + k);
+const COM_MAP = (() => {
+    const m = {};
+    COM_FILAS.forEach(f => COM_PASOS.forEach(([t]) => f[t].forEach(k => { const key = SEM_Y + '-' + k, tt = 'c_' + t; (m[key] = m[key] || []); if (!m[key].includes(tt)) m[key].push(tt); })));
+    return m;
+})();
+let calCom = localStorage.getItem('cal_com_iq') !== '0';
+const evsDe = k => [...(EV_MAP[k] || []), ...(calCom ? (COM_MAP[k] || []) : [])];
+function calToggleCom() { calCom = !calCom; try { localStorage.setItem('cal_com_iq', calCom ? '1' : '0'); } catch (e) {} calRender(new Date()); }
+let comOpen = true;
+
+function comRango(arr) {
+    const ds = arr.map(comD), m3 = d => MESES[d.getMonth()].slice(0, 3);
+    if (ds.length === 1) return `${ds[0].getDate()} ${m3(ds[0])}`;
+    const a = ds[0], b = ds[ds.length - 1], consec = dNum(b) - dNum(a) === ds.length - 1;
+    if (!consec) return `${ds.map(d => d.getDate()).join(' u ')} ${m3(a)}`;
+    return a.getMonth() === b.getMonth() ? `${a.getDate()}–${b.getDate()} ${m3(a)}` : `${a.getDate()} ${m3(a)} – ${b.getDate()} ${m3(b)}`;
+}
+function comCelda(arr, mes, t) {
+    const mi = MESES.indexOf(mes.toLowerCase());
+    return arr.map(k => { const d = comD(k); return d.getMonth() === mi ? d.getDate() : `${d.getDate()} (${cap1(MESES[d.getMonth()].slice(0, 3))})`; }).join(t === 'pre' && arr.length === 2 ? ' u ' : ', ');
+}
+
+function comRender(now) {
+    const el = document.getElementById('com-card'); if (!el) return;
+    const td = dNum(now), dn = k => dNum(comD(k));
+    const cur = COM_FILAS.filter(f => dn(f.doc[0]) <= td && td <= dn(f.con[0])).pop();
+    const next = COM_FILAS.find(f => dn(f.doc[0]) >= td);
+
+    let nextHtml;
+    if (next) { const d = comD(next.doc[0]); nextHtml = `<div class="com-next"><small>📥 Próxima recepción de documentos</small><b>${siaEsc(cap1(fmtFecha(d)))}</b> <span>${relDias(dn(next.doc[0]) - td)}</span></div>`; }
+    else nextHtml = '<div class="com-next"><small>📥 Recepción de documentos</small><b>No hay más fechas programadas en 2026</b></div>';
+
+    let steps = '';
+    if (cur) {
+        let marcado = false;
+        steps = `<div class="com-sub">⏳ Solicitudes en trámite · ciclo del ${siaEsc(comRango([cur.doc[0]]))} al ${siaEsc(comRango([cur.con[0]]))}</div><div class="com-steps">` + COM_PASOS.map(([t, nombre, dia]) => {
+            const arr = cur[t], a = dn(arr[0]), b = dn(arr[arr.length - 1]);
+            let cls = td > b ? 'done' : 'pend';
+            if (cls === 'pend' && !marcado) { cls = 'cur'; marcado = true; }
+            return `<div class="stp ${cls}"><span class="n">${nombre}</span><b>${siaEsc(comRango(arr))}</b><small>${dia}</small></div>`;
+        }).join('') + '</div>';
+    } else steps = '<div class="com-sub">No hay un ciclo de solicitudes en curso en este momento.</div>';
+
+    const filas = COM_FILAS.map((f, i) => {
+        const cls = f === cur ? 'cur' : (dn(f.con[0]) < td ? 'past' : '');
+        const tr = `<tr class="${cls}"><td>${siaEsc(f.mes)}</td>${COM_PASOS.map(([t]) => `<td>${siaEsc(comCelda(f[t], f.mes, t))}</td>`).join('')}</tr>`;
+        return i === 0 ? tr + `<tr class="receso"><td colspan="6">${siaEsc(COM_RECESO)}</td></tr>` : tr;
+    }).join('');
+
+    el.innerHTML = `
+        <h3>📑 Solicitudes · Consejo de Facultad ${SEM_Y}</h3>
+        <p class="ic-note">Ten en cuenta las fechas establecidas para el ${SEM_Y} por el Consejo de Facultad para la <b>recepción, análisis y aprobación de solicitudes</b>, con el fin de hacer seguimiento a la misma.</p>
+        <div class="com-top">${nextHtml}<a class="hor-btn lh-open" href="${FORM_URL}" target="_blank" rel="noopener noreferrer">Abrir formulario ↗</a></div>
+        ${steps}
+        <details class="com-det" ${comOpen ? 'open' : ''} ontoggle="comOpen = this.open">
+            <summary>📅 Todas las fechas ${SEM_Y}</summary>
+            <div class="com-scroll"><table class="com-table">
+                <thead><tr><th>MES</th>
+                    <th>Recepción doc. comités<small>(jueves)</small></th><th>Sesiones comités<small>(lun-mar-mié)</small></th>
+                    <th>Recepción Comisión Delegataria<small>(viernes)</small></th><th>Preconsejo Asuntos Docentes<small>(martes)</small></th>
+                    <th>Consejo de Facultad<small>(jueves)</small></th></tr></thead>
+                <tbody>${filas}</tbody>
+            </table></div>
+        </details>
+        <div class="ic-src">Estas fechas también aparecen en el calendario de arriba (botón «Fechas de solicitudes»).</div>`;
+}
+
 const EV_LISTA = [...SEM.eventos.map(([k, t]) => ({ k, t })), ...SEM.rangos.map(([a, b, t]) => ({ k: a, t, fin: b }))].sort((x, y) => x.k < y.k ? -1 : 1);
 
 function semNum(d) {                       // 0 = antes de la Semana 1
@@ -2873,6 +3010,7 @@ function infoRender() {
     if (!calSel) calSel = (now.getFullYear() === SEM_Y && now.getMonth() === calMes) ? dKey(now) : `${SEM_Y}-${String(calMes + 1).padStart(2, '0')}-01`;
     heroRender(now);
     calRender(now);
+    comRender(now);
     infoCountdown();
 }
 
@@ -2945,16 +3083,16 @@ function calRender(now) {
         for (let c = 0; c < 7; c++) {
             const n = r * 7 + c - lead + 1;
             if (n < 1 || n > dim) { g += '<div class="cal-day out"></div>'; continue; }
-            const d = new Date(SEM_Y, calMes, n), k = dKey(d), dn = dNum(d), evs = EV_MAP[k] || [];
-            const cls = ['cal-day', dn >= iniDn && dn <= finDn ? 'insem' : '', evs.length ? 'ev' : '', k === todayKey ? 'today' : '', k === calSel ? 'sel' : ''].join(' ');
+            const d = new Date(SEM_Y, calMes, n), k = dKey(d), dn = dNum(d), evsB = EV_MAP[k] || [], evs = evsDe(k);
+            const cls = ['cal-day', dn >= iniDn && dn <= finDn ? 'insem' : '', evsB.length ? 'ev' : '', k === todayKey ? 'today' : '', k === calSel ? 'sel' : ''].join(' ');
             const dots = evs.length ? `<span class="cal-dots">${evs.map(t => `<i style="background:${EV_TIPOS[t].c}"></i>`).join('')}</span>` : '';
-            g += `<div class="${cls}" style="--ec:${evs.length ? EV_TIPOS[evs[0]].c : 'transparent'}" onclick="calSelect('${k}')" title="${siaEsc(evs.map(t => EV_TIPOS[t].n).join(' · '))}">${n}${dots}</div>`;
+            g += `<div class="${cls}" style="--ec:${evsB.length ? EV_TIPOS[evsB[0]].c : 'transparent'}" onclick="calSelect('${k}')" title="${siaEsc(evs.map(t => EV_TIPOS[t].n).join(' · '))}">${n}${dots}</div>`;
         }
     }
     g += '</div>';
 
     // detalle del día elegido
-    const sd = pDate(calSel), evs = EV_MAP[calSel] || [], w = semNum(sd), sdn = dNum(sd);
+    const sd = pDate(calSel), evs = evsDe(calSel), w = semNum(sd), sdn = dNum(sd);
     const inSem = sdn >= iniDn && sdn <= finDn;
     const semTxt = inSem ? (w >= 1 ? `Semana ${w} de ${SEM.semanas}` : 'Semana de arranque') : '';
     const detalle = `<div class="cal-detail">
@@ -2971,7 +3109,7 @@ function calRender(now) {
             <div><b>${siaEsc(EV_TIPOS[e.t].n)}</b><small>${siaEsc(f)}</small></div><span>${enCurso ? 'en curso' : relDias(dn - todayDn)}</span></div>`;
     }).join('') || '<div class="cd-none">No quedan más eventos este semestre.</div>';
 
-    const leyenda = Object.values(EV_TIPOS).map(t => `<span class="lg"><i style="background:${t.c}"></i>${siaEsc(t.n)}</span>`).join('');
+    const leyenda = Object.entries(EV_TIPOS).filter(([k]) => calCom || !k.startsWith('c_')).map(([, t]) => `<span class="lg"><i style="background:${t.c}"></i>${siaEsc(t.n)}</span>`).join('');
 
     document.getElementById('cal-card').innerHTML = `
         <h3>🗓️ Calendario académico ${siaEsc(SEM.nombre)}</h3>
@@ -2983,6 +3121,7 @@ function calRender(now) {
                     <button class="cal-nav" onclick="calMover(1)" ${calMes >= 11 ? 'disabled' : ''}>›</button>
                     <button class="cal-hoy" onclick="calIr('${todayKey}')">Hoy</button>
                 </div>
+                <div class="cal-tools"><button class="cal-com ${calCom ? 'on' : ''}" onclick="calToggleCom()">🎓 Fechas de solicitudes ${calCom ? '✓' : ''}</button></div>
                 ${g}
                 <div class="cal-leg">${leyenda}</div>
             </div>
