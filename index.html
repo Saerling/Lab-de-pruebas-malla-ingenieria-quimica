@@ -726,6 +726,57 @@ textarea.fb-field { min-height: 130px; resize: vertical; line-height: 1.5; }
 .t-chip:hover { transform: translateY(-2px); border-color: var(--primary); color: var(--primary); background: var(--primary-soft); }
 .t-names { margin-top: 14px; font-size: 0.8rem; color: var(--text-dim); }
 .t-names:empty { display: none; }
+
+/* ===== MI PLANIFICACIÓN ===== */
+.btn-plan { color: var(--accent); border-color: var(--accent); margin-left: 8px; }
+.btn-plan:hover { background: var(--accent); color: var(--on-primary); }
+.btn-plan.on { background: var(--accent-soft); box-shadow: var(--glow); }
+.btn-plan.on:hover { background: var(--accent); color: var(--on-primary); }
+.plan-bar { display: flex; align-items: center; justify-content: space-between; gap: 10px 18px; flex-wrap: wrap; margin: 12px 0 0; padding: 12px 16px; background: var(--surface-2); border: 1px solid var(--accent); border-radius: 14px; animation: fadeUp 0.5s var(--ease) both; }
+.plan-bar[hidden] { display: none; }
+.plan-info { flex: 1 1 320px; font-size: 0.82rem; line-height: 1.5; color: var(--text-dim); }
+.plan-info b { display: block; color: var(--accent); font-family: var(--mono); font-size: 0.8rem; margin-bottom: 2px; }
+.plan-info small { display: block; margin-top: 3px; font-size: 0.72rem; opacity: 0.85; }
+.plan-legend { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; font-family: var(--mono); font-size: 0.68rem; color: var(--text-dim); }
+.plan-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-left: 6px; }
+.plan-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.plan-moved { font-family: var(--mono); font-size: 0.72rem; color: var(--text-dim); padding: 4px 10px; border-radius: 999px; border: 1px dashed var(--border); transition: all 0.3s var(--ease); }
+.plan-moved.on { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
+
+.malla-wrapper.plan-on .semestre-col { animation: none; min-height: 220px; border-radius: 14px; transition: background 0.2s, outline-color 0.2s; }
+.malla-wrapper.plan-on .semestre-col[data-sem="0"] { opacity: 0.85; }
+.malla-wrapper.plan-on .materia { cursor: grab; padding-left: 28px; border-left: 4px solid var(--cat, var(--border)); }
+.malla-wrapper.plan-on .semestre-col[data-sem="0"] .materia { cursor: pointer; padding-left: 14px; }
+.malla-wrapper.plan-on .materia:active { cursor: grabbing; }
+.malla-wrapper.plan-on .materia:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.plan-grip { position: absolute; left: 4px; top: 50%; transform: translateY(-50%); width: 20px; padding: 14px 0; text-align: center; color: var(--text-dim); font-size: 0.95rem; line-height: 1; cursor: grab; touch-action: none; user-select: none; opacity: 0.6; transition: opacity 0.2s, color 0.2s, transform 0.25s var(--spring); }
+.approved .plan-grip { color: #fff; }
+.materia:hover .plan-grip { opacity: 1; color: var(--accent); transform: translateY(-50%) scale(1.2); }
+.plan-warn { position: absolute; right: 8px; bottom: 6px; font-size: 0.85rem; cursor: help; animation: planWarn 2s ease-in-out infinite; }
+.malla-wrapper.plan-on .materia.plan-bad { border-top-color: var(--warning); border-right-color: var(--warning); border-bottom-color: var(--warning); }
+@keyframes planWarn { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.25); } }
+
+.malla-wrapper.plan-intro .materia { animation: planJig 0.5s ease-in-out both; animation-delay: calc(var(--i, 0) * 22ms); }
+@keyframes planJig { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-1.4deg) translateY(-2px); } 75% { transform: rotate(1.4deg) translateY(-2px); } }
+.materia.plan-drop { animation: planDrop 0.55s var(--spring) both; }
+@keyframes planDrop { 0% { transform: scale(1.1) rotate(-2deg); box-shadow: var(--shadow-lg), var(--glow); } 55% { transform: scale(0.97); } 100% { transform: none; } }
+
+.plan-ghost { position: fixed; left: 0; top: 0; z-index: 3000; margin: 0; pointer-events: none; opacity: 0.97; transition: none; box-shadow: 0 22px 44px rgba(0, 0, 0, 0.5), var(--glow); will-change: transform; animation: none !important; }
+.materia.plan-placeholder { opacity: 0.4; border-style: dashed; border-color: var(--accent); background: var(--accent-soft); animation: planPulse 1.1s ease-in-out infinite; }
+.materia.plan-placeholder > * { visibility: hidden; }
+@keyframes planPulse { 0%, 100% { box-shadow: 0 0 0 0 transparent; } 50% { box-shadow: 0 0 0 5px var(--accent-soft); } }
+.malla-wrapper.dragging .materia { pointer-events: none; }
+.malla-wrapper.dragging .links-svg { display: none; }
+.malla-wrapper.plan-on .semestre-col.drop-hover { background: var(--accent-soft); outline: 2px dashed var(--accent); outline-offset: 6px; }
+body.plan-dragging { user-select: none; -webkit-user-select: none; cursor: grabbing; }
+
+.sem-add { flex: 0 0 auto; min-width: 190px; min-height: 220px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; border: 2px dashed var(--border); border-radius: 14px; color: var(--text-dim); font-family: var(--mono); font-size: 0.78rem; cursor: pointer; transition: all 0.25s var(--ease); }
+.sem-add b { font-size: 1.6rem; color: var(--accent); }
+.sem-add small { display: block; margin-top: 4px; font-size: 0.66rem; opacity: 0.8; }
+.sem-add:hover, .sem-add.drop-hover, .sem-add:focus-visible { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); outline: none; transform: translateY(-3px); }
+.sem-cr { margin-left: 8px; font-size: 0.68rem; opacity: 0.75; font-weight: 400; }
+.lk.bad .lk-track { stroke: var(--danger) !important; stroke-dasharray: 5 5 !important; stroke-width: 1.8 !important; opacity: 0.85 !important; }
+.lk.bad .lk-end { fill: var(--danger) !important; opacity: 0.9 !important; }
 </style>
 <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme_iq') || 'dark');</script>
 </head>
@@ -768,6 +819,13 @@ textarea.fb-field { min-height: 130px; resize: vertical; line-height: 1.5; }
             <button class="btn-reset" onclick="resetMalla()">Reiniciar Estado Manual</button>
         </div>
         <button class="btn-reset btn-links" id="links-toggle" onclick="toggleLinks()">🔗 Conexiones: ON</button>
+        <button class="btn-reset btn-plan" id="plan-toggle" onclick="togglePlan()" aria-pressed="false" title="Reorganiza las materias a tu manera">🧭 Mi planificación: OFF</button>
+        <div class="plan-bar" id="plan-bar" hidden>
+            <div class="plan-info"><b>🧭 Mi planificación</b>Arrastra las materias entre semestres para armar tu propio orden. La malla oficial no se modifica y tu avance se conserva.<small>Teclado: enfoca una materia y usa Mayús + flechas. Los ⚠️ avisan si algo queda antes de su prerrequisito.</small></div>
+            <div class="plan-legend"><i style="background:var(--color-fundamentacion)"></i>Fundamentación <i style="background:var(--color-disciplinar)"></i>Disciplinar <i style="background:var(--color-libre)"></i>Libre elección</div>
+            <div class="plan-actions"><span id="plan-moved" class="plan-moved"></span><button class="btn-reset" onclick="planReset()">↩ Orden oficial</button></div>
+        </div>
+        <div class="nv-sr" id="plan-live" aria-live="polite"></div>
         <div class="hint">clic en una materia = aprobada · ⋮ para reprobada, pendiente y cupos</div>
 
         <div class="malla-wrapper" id="grid"></div>
@@ -1939,6 +1997,273 @@ function switchTab(tab) {
     // ==========================================
     // RENDERIZADO DE LA MALLA
     // ==========================================
+// ==========================================
+// MI PLANIFICACIÓN: reordena las materias entre semestres (la malla oficial no cambia)
+// ==========================================
+const PLAN_KEY = 'malla_iq_plan_v1', PLAN_ON_KEY = 'malla_iq_plan_on', PLAN_MAX = 14;
+const PLAN_CAT_COLOR = { 'Fundamentación': 'var(--color-fundamentacion)', 'Disciplinar': 'var(--color-disciplinar)', 'Libre': 'var(--color-libre)', 'Nivelación': 'var(--warning)' };
+let planOn = false;
+try { planOn = localStorage.getItem(PLAN_ON_KEY) === '1'; } catch (e) {}
+let planLayout = null;                 // { sems: [[ids del semestre 1], [ids del semestre 2], ...] }
+let _drag = null, _planJustDragged = false, _planDropId = null;
+
+function planOfficial() { return { sems: data.map(s => s.mat.map(m => m.id)) }; }
+
+function planLoad() {
+    let saved = null;
+    try { saved = JSON.parse(localStorage.getItem(PLAN_KEY)); } catch (e) {}
+    if (!saved || !Array.isArray(saved.sems)) { planLayout = planOfficial(); return; }
+    const valid = new Set(data.flatMap(s => s.mat.map(m => m.id)));
+    const seen = new Set(), sems = [];
+    saved.sems.slice(0, PLAN_MAX).forEach(arr => {
+        const col = [];
+        (Array.isArray(arr) ? arr : []).forEach(id => { if (valid.has(id) && !seen.has(id)) { seen.add(id); col.push(id); } });
+        sems.push(col);
+    });
+    // lo que falte (p. ej. materias nuevas) vuelve a su semestre oficial
+    data.forEach((s, i) => s.mat.forEach(m => { if (!seen.has(m.id)) { while (sems.length <= i) sems.push([]); sems[i].push(m.id); } }));
+    while (sems.length < data.length) sems.push([]);
+    planLayout = { sems };
+}
+function planTrim() { const s = planLayout.sems; while (s.length > data.length && !s[s.length - 1].length) s.pop(); }
+function planSave() { planTrim(); try { localStorage.setItem(PLAN_KEY, JSON.stringify(planLayout)); } catch (e) {} }
+function planColumns() {
+    if (!planLayout) planLoad();
+    return planLayout.sems.map((ids, i) => ({ sem: i + 1, mat: ids.map(getMatInfo).filter(Boolean) }));
+}
+
+// Avisos: materia antes (o junto) a su prerrequisito, o sin los créditos que pide
+function planWarnMap(cols) {
+    const semOf = {}, offOf = {};
+    cols.forEach((c, i) => c.mat.forEach(m => { semOf[m.id] = i; }));
+    data.forEach((s, i) => s.mat.forEach(m => { offOf[m.id] = i; }));   // la malla oficial también junta alguna (p. ej. Control y su laboratorio)
+    const out = {}; let cred = 0, disc = 0;
+    cols.forEach((c, i) => {
+        c.mat.forEach(m => {
+            const w = [];
+            (m.r || []).forEach(r => {
+                if (r === 'CRED_108') { if (cred < 108) w.push(`Pide 108 créditos aprobados y con tu plan llevarías ${cred} antes de este semestre`); }
+                else if (r === 'DISC_53') { if (disc < 53) w.push(`Pide 53 créditos disciplinares y con tu plan llevarías ${disc} antes de este semestre`); }
+                else if (r === 'DISC_60') { if (disc < 60) w.push(`Pide 60 créditos disciplinares y con tu plan llevarías ${disc} antes de este semestre`); }
+                else if (semOf[r] !== undefined) {
+                    const rm = getMatInfo(r), nm = rm ? rm.n : r;
+                    if (semOf[r] > i) w.push(`Está antes de su prerrequisito: ${nm}`);
+                    else if (semOf[r] === i && offOf[r] !== offOf[m.id]) w.push(`Comparte semestre con su prerrequisito: ${nm}`);
+                }
+            });
+            if (w.length) out[m.id] = w;
+        });
+        c.mat.forEach(m => { cred += m.c; if (m.cat === 'Disciplinar') disc += m.c; });
+    });
+    return out;
+}
+function planSemDom(el) { const c = el && el.closest('.semestre-col'); return c ? (parseInt(c.dataset.sem, 10) || 0) : 0; }
+
+function planUpdateBar() {
+    const el = document.getElementById('plan-moved'); if (!el || !planLayout) return;
+    const off = {}; data.forEach((s, i) => s.mat.forEach(m => { off[m.id] = i; }));
+    let moved = 0;
+    planLayout.sems.forEach((ids, i) => ids.forEach(id => { if (off[id] !== i) moved++; }));
+    el.textContent = moved ? `${moved} materia${moved === 1 ? '' : 's'} movida${moved === 1 ? '' : 's'}` : 'Igual a la oficial';
+    el.classList.toggle('on', moved > 0);
+}
+
+// Se llama al final de renderMalla cuando el modo está activo
+function planAfterRender(grid) {
+    if (planLayout.sems.length < PLAN_MAX) {
+        const add = document.createElement('div');
+        add.className = 'sem-add';
+        add.setAttribute('role', 'button'); add.tabIndex = 0;
+        add.innerHTML = '<span><b>＋</b><br>Añadir semestre<small>o suelta aquí una materia</small></span>';
+        add.onclick = () => { planLayout.sems.push([]); renderMalla(); };
+        add.onkeydown = ev => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); add.click(); } };
+        grid.appendChild(add);
+    }
+    planUpdateBar();
+    if (_planDropId) {
+        const c = grid.querySelector(`.materia[data-id="${_planDropId}"]`);
+        if (c) c.classList.add('plan-drop');
+        _planDropId = null;
+    }
+}
+
+function applyPlanUI() {
+    const b = document.getElementById('plan-toggle'), bar = document.getElementById('plan-bar'), grid = document.getElementById('grid');
+    if (b) { b.textContent = planOn ? '🧭 Mi planificación: ON' : '🧭 Mi planificación: OFF'; b.classList.toggle('on', planOn); b.setAttribute('aria-pressed', String(planOn)); }
+    if (bar) bar.hidden = !planOn;
+    if (grid) grid.classList.toggle('plan-on', planOn);
+}
+function togglePlan() {
+    planOn = !planOn;
+    try { localStorage.setItem(PLAN_ON_KEY, planOn ? '1' : '0'); } catch (e) {}
+    if (!planLayout) planLoad();
+    applyPlanUI();
+    const grid = document.getElementById('grid');
+    if (planOn) { grid.classList.add('plan-intro'); setTimeout(() => grid.classList.remove('plan-intro'), 1000); }
+    renderMalla();
+}
+function planReset() {
+    if (!confirm('¿Volver al orden oficial de la malla? Se perderá tu planificación.')) return;
+    planLayout = planOfficial(); planSave(); renderMalla();
+}
+function planAnnounce(id, semNum) {
+    const m = getMatInfo(id), live = document.getElementById('plan-live');
+    if (live && m) live.textContent = `${m.n} ahora está en el semestre ${semNum}`;
+}
+function planCommit(id) {
+    planSave(); _planDropId = id;
+    renderMalla();
+    const si = planLayout.sems.findIndex(a => a.includes(id));
+    planAnnounce(id, si + 1);
+}
+
+// ---------- Arrastrar y soltar (ratón, lápiz y táctil por el asa ⠿) ----------
+function planPointerDown(e) {
+    if (!planOn || _drag) return;
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    const card = e.target.closest('.materia');
+    if (!card || e.target.closest('.dots-btn')) return;
+    const col = card.closest('.semestre-col');
+    if (!col || col.dataset.sem === '0') return;
+    const touch = e.pointerType !== 'mouse';
+    if (touch && !e.target.closest('.plan-grip')) return;
+    _drag = { card, id: card.dataset.id, sx: e.clientX, sy: e.clientY, x: e.clientX, y: e.clientY, on: false, touch };
+    document.addEventListener('pointermove', planPointerMove);
+    document.addEventListener('pointerup', planPointerUp);
+    document.addEventListener('pointercancel', planPointerUp);
+}
+function planPointerMove(e) {
+    if (!_drag) return;
+    _drag.x = e.clientX; _drag.y = e.clientY;
+    if (!_drag.on) {
+        if (Math.hypot(e.clientX - _drag.sx, e.clientY - _drag.sy) < (_drag.touch ? 3 : 6)) return;
+        planStart();
+    }
+    e.preventDefault();
+    planTrack();
+}
+function planStart() {
+    const d = _drag, c = d.card, r = c.getBoundingClientRect(), grid = document.getElementById('grid');
+    d.ox = d.sx - r.left; d.oy = d.sy - r.top;
+    const g = c.cloneNode(true);
+    g.classList.add('plan-ghost');
+    g.classList.remove('plan-drop', 'just-unlocked', 'rel', 'nope');
+    g.removeAttribute('tabindex');
+    g.style.width = r.width + 'px'; g.style.height = r.height + 'px';
+    document.body.appendChild(g);
+    d.ghost = g; d.on = true;
+    c.classList.add('plan-placeholder');
+    grid.classList.add('dragging');
+    document.body.classList.add('plan-dragging');
+    if (typeof setFocus === 'function') setFocus(null);
+    d.raf = requestAnimationFrame(planLoop);
+}
+function planDist(r, x) { return (x >= r.left && x <= r.right) ? 0 : Math.min(Math.abs(x - r.left), Math.abs(x - r.right)); }
+function planTrack() {
+    const d = _drag; if (!d || !d.on) return;
+    d.ghost.style.transform = `translate(${d.x - d.ox}px, ${d.y - d.oy}px) rotate(2.5deg) scale(1.05)`;
+    const grid = document.getElementById('grid');
+    const cols = [...grid.querySelectorAll('.semestre-col')].filter(c => c.dataset.sem !== '0');
+    const add = grid.querySelector('.sem-add');
+    let best = null, bd = Infinity;
+    cols.forEach(c => { const dd = planDist(c.getBoundingClientRect(), d.x); if (dd < bd) { bd = dd; best = c; } });
+    let overAdd = false;
+    if (add && planDist(add.getBoundingClientRect(), d.x) < bd) { overAdd = true; best = null; }
+    cols.forEach(c => c.classList.toggle('drop-hover', c === best));
+    if (add) add.classList.toggle('drop-hover', overAdd);
+    if (!best) return;
+    const others = [...best.querySelectorAll(':scope > .materia')].filter(c => c !== d.card);
+    let idx = 0;
+    others.forEach(c => { const r = c.getBoundingClientRect(); if (r.top + r.height / 2 < d.y) idx++; });
+    const now = [...best.querySelectorAll(':scope > .materia')];
+    if (d.card.parentNode === best && now.indexOf(d.card) === idx) return;
+    planMoveCard(d.card, best, others[idx] || null);
+}
+// Mueve la tarjeta y anima (FLIP) al resto para que se deslicen a su nuevo sitio
+function planMoveCard(card, col, ref) {
+    const grid = document.getElementById('grid');
+    const els = [...grid.querySelectorAll('.semestre-col .materia')];
+    const before = new Map(els.map(e => [e, e.getBoundingClientRect()]));
+    col.insertBefore(card, ref);
+    els.forEach(e => {
+        if (e === card) return;
+        const a = before.get(e), b = e.getBoundingClientRect();
+        const dx = a.left - b.left, dy = a.top - b.top;
+        if (dx || dy) e.animate([{ transform: `translate(${dx}px, ${dy}px)` }, { transform: 'none' }], { duration: 240, easing: 'cubic-bezier(.2,.9,.3,1.15)' });
+    });
+}
+function planLoop() {
+    const d = _drag; if (!d || !d.on) return;
+    const grid = document.getElementById('grid'), r = grid.getBoundingClientRect();
+    let moved = false;
+    if (d.x < r.left + 70 && grid.scrollLeft > 0) { grid.scrollLeft -= 14; moved = true; }
+    else if (d.x > r.right - 70 && grid.scrollLeft < grid.scrollWidth - grid.clientWidth) { grid.scrollLeft += 14; moved = true; }
+    if (d.y < 80 && window.pageYOffset > 0) { window.scrollBy(0, -14); moved = true; }
+    else if (d.y > window.innerHeight - 80) { window.scrollBy(0, 14); moved = true; }
+    if (moved) planTrack();
+    d.raf = requestAnimationFrame(planLoop);
+}
+function planPointerUp(e) {
+    document.removeEventListener('pointermove', planPointerMove);
+    document.removeEventListener('pointerup', planPointerUp);
+    document.removeEventListener('pointercancel', planPointerUp);
+    const d = _drag; _drag = null;
+    if (!d || !d.on) return;                       // fue un clic normal
+    cancelAnimationFrame(d.raf);
+    _planJustDragged = true; setTimeout(() => { _planJustDragged = false; }, 60);
+    const grid = document.getElementById('grid'), cancel = e.type === 'pointercancel';
+    const add = grid.querySelector('.sem-add');
+    const overAdd = !cancel && add && add.classList.contains('drop-hover');
+    const sems = [...grid.querySelectorAll('.semestre-col')].filter(c => c.dataset.sem !== '0')
+        .map(c => [...c.querySelectorAll(':scope > .materia')].map(x => x.dataset.id));
+    let target = d.card.getBoundingClientRect();
+    const finish = () => {
+        d.ghost.remove();
+        grid.classList.remove('dragging');
+        document.body.classList.remove('plan-dragging');
+        if (cancel) { renderMalla(); return; }
+        if (overAdd) {
+            const i = sems.findIndex(a => a.includes(d.id));
+            if (i >= 0) sems[i] = sems[i].filter(x => x !== d.id);
+            sems.push([d.id]);
+        }
+        planLayout.sems = sems;
+        planCommit(d.id);
+    };
+    if (overAdd) { d.ghost.style.transition = 'opacity .18s, transform .18s'; d.ghost.style.opacity = '0'; setTimeout(finish, 190); return; }
+    d.ghost.style.transition = 'transform .24s cubic-bezier(.2,.9,.3,1.2)';
+    d.ghost.style.transform = `translate(${target.left}px, ${target.top}px)`;
+    setTimeout(finish, 250);
+}
+// Un clic justo después de arrastrar no debe aprobar/desaprobar la materia
+document.getElementById('grid').addEventListener('click', e => { if (_planJustDragged) { e.stopPropagation(); e.preventDefault(); } }, true);
+document.getElementById('grid').addEventListener('pointerdown', planPointerDown);
+
+// Teclado: Mayús + flechas mueve la materia enfocada (←→ de semestre, ↑↓ de orden)
+document.getElementById('grid').addEventListener('keydown', e => {
+    if (!planOn || !e.shiftKey || e.ctrlKey || e.metaKey || e.altKey) return;
+    const card = e.target.closest && e.target.closest('.materia'); if (!card) return;
+    if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) return;
+    const id = card.dataset.id;
+    let si = planLayout.sems.findIndex(a => a.includes(id)); if (si < 0) return;
+    const arr = planLayout.sems[si], pos = arr.indexOf(id);
+    if (e.key === 'ArrowUp') { if (pos === 0) return; arr.splice(pos, 1); arr.splice(pos - 1, 0, id); }
+    else if (e.key === 'ArrowDown') { if (pos >= arr.length - 1) return; arr.splice(pos, 1); arr.splice(pos + 1, 0, id); }
+    else if (e.key === 'ArrowLeft') { if (si === 0) return; arr.splice(pos, 1); planLayout.sems[si - 1].push(id); }
+    else {
+        if (si + 1 >= planLayout.sems.length) { if (planLayout.sems.length >= PLAN_MAX) return; planLayout.sems.push([]); }
+        arr.splice(pos, 1); planLayout.sems[si + 1].push(id);
+    }
+    e.preventDefault();
+    planCommit(id);
+    const again = document.querySelector(`#grid .materia[data-id="${id}"]`);
+    if (again) again.focus();
+});
+
+planLoad();
+applyPlanUI();
+
+
 function renderMalla() {
     const grid = document.getElementById('grid');
     const stats = getVisualStats();
@@ -1947,20 +2272,23 @@ function renderMalla() {
     document.getElementById('p-bar').style.width = `${stats.percentage}%`;
 
     grid.innerHTML = '';
-    let mallaData = [...data];
+    let mallaData = planOn ? planColumns() : [...data];
+    const pw = planOn ? planWarnMap(mallaData) : {};
+    let planIdx = 0;
     if (hasNivelacion) mallaData.unshift({ sem: 0, mat: nivelacionMaterias });
 
     mallaData.forEach(semestre => {
         const col = document.createElement('div');
-        col.className = 'semestre-col';
+        col.className = 'semestre-col'; col.dataset.sem = semestre.sem;
         const head = document.createElement('div');
         head.className = 'sem-header';
         head.textContent = semestre.sem === 0 ? "Semestre 0 (Niv.)" : `Semestre ${semestre.sem}`;
+        if (planOn && semestre.sem !== 0) head.innerHTML = `Semestre ${semestre.sem}<span class="sem-cr">· ${semestre.mat.reduce((a, x) => a + x.c, 0)} cr</span>`;
         col.appendChild(head);
 
         let lastCat = "";
         semestre.mat.forEach(m => {
-            if (m.cat !== lastCat) {
+            if (!planOn && m.cat !== lastCat) {
                 const tag = document.createElement('div');
                 tag.className = 'cat-tag'; tag.textContent = m.cat;
                 col.appendChild(tag); lastCat = m.cat;
@@ -1987,10 +2315,22 @@ function renderMalla() {
                 <span class="m-cred">${m.c} Créditos ${failText}</span>
                 ${libreMalla[m.id] ? `<span class="m-libre" title="${siaEsc(libreMalla[m.id].codigo)}">📌 ${siaEsc(libreMalla[m.id].nombre)}</span>` : ''}
             `;
+            if (planOn) {
+                card.dataset.cat = m.cat;
+                card.style.setProperty('--cat', PLAN_CAT_COLOR[m.cat] || 'var(--border)');
+                card.style.setProperty('--i', planIdx++);
+                if (semestre.sem !== 0) {
+                    card.tabIndex = 0;
+                    card.title = 'Arrastra para mover · Mayús + flechas con el teclado';
+                    card.insertAdjacentHTML('afterbegin', '<span class="plan-grip" aria-hidden="true">⠿</span>');
+                }
+                if (pw[m.id]) { card.classList.add('plan-bad'); card.insertAdjacentHTML('beforeend', `<span class="plan-warn" title="${siaEsc(pw[m.id].join(' · '))}">⚠️</span>`); }
+            }
             col.appendChild(card);
         });
         grid.appendChild(col);
     });
+    if (planOn) planAfterRender(grid);
     requestAnimationFrame(drawLinks);
 }
     
@@ -2837,6 +3177,7 @@ function drawLinks() {
 
             const sa = getCombinedState(rid) === 'approved';
             const cls = sa ? (st === 'approved' ? 'done' : 'on') : 'off';
+            const bad = planOn && planSemDom(s) >= planSemDom(t);
             const key = rid + '>' + id;
             let extra = '';
             if (cls === 'on') {
@@ -2846,7 +3187,7 @@ function drawLinks() {
                          <circle class="lk-spark" r="3.5"><animateMotion dur="2.4s" repeatCount="indefinite" path="${d}"/></circle>`;
             }
             const hue = Math.round((li++ * 137.508) % 360);
-            const attrs = `class="lk ${cls}" data-from="${rid}" data-to="${id}" style="--h:${hue}"`;
+            const attrs = `class="lk ${cls}${bad ? ' bad' : ''}" data-from="${rid}" data-to="${id}" style="--h:${hue}"`;
             back  += `<g ${attrs}><path class="lk-track" d="${d}"/>${extra}</g>`;
             front += `<g ${attrs}><circle class="lk-start" cx="${x1}" cy="${y1}" r="4"/><circle class="lk-end" cx="${x2}" cy="${y2}" r="4.5"/></g>`;
         });
@@ -3408,6 +3749,7 @@ infoLinksRender();
         { s: 'new', e: '✅', t: 'Aprobada, reprobada o pendiente', p: 'Clic para aprobar una materia; en ⋮ eliges reprobada o pendiente. Las notas de la calculadora actualizan la malla solas.' },
         { s: 'new', e: '☝️', t: 'Prerrequisitos que se respetan', p: 'No puedes aprobar una materia sin sus prerrequisitos (incluidos los de 108, 53 y 60 créditos) y te dice qué te falta.' },
         { s: 'new', e: '🔗', t: 'Conexiones entre materias', p: 'Líneas que unen cada materia con sus prerrequisitos; al pasar el cursor se resaltan. Actívalas o apágalas con el botón Conexiones.' },
+        { s: 'new', e: '🧭', t: 'Mi planificación', p: 'Arrastra las materias entre semestres para armar tu propio orden de la carrera. Te avisa si algo queda antes de su prerrequisito y la malla oficial no cambia.' },
         { s: 'new', e: '🗂️', t: 'Programa por agrupaciones', p: 'Las asignaturas del plan agrupadas por componente, con créditos exigidos, obligatorios y optativos.' },
         { s: 'new', e: '📊', t: 'Cupos y grupos en tiempo real', p: 'Consulta grupos, horarios, salones y cupos del SIA desde cualquier materia.' },
         { s: 'new', e: '⭐', t: 'Reseñas anónimas de profesores', p: 'Mira la calificación de cada profesor y deja la tuya, sin cuenta ni correo.' },
