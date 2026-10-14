@@ -5,7 +5,8 @@
      crossorigin="anonymous"></script>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#0c0e0d">
     <title>Malla Curricular IQ · v4.2</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 
@@ -744,9 +745,7 @@ textarea.fb-field { min-height: 130px; resize: vertical; line-height: 1.5; }
 .plan-moved.on { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
 
 .malla-wrapper.plan-on .semestre-col { animation: none; min-height: 220px; border-radius: 14px; transition: background 0.2s, outline-color 0.2s; }
-.malla-wrapper.plan-on .semestre-col[data-sem="0"] { opacity: 0.85; }
 .malla-wrapper.plan-on .materia { cursor: grab; padding-left: 28px; border-left: 4px solid var(--cat, var(--border)); }
-.malla-wrapper.plan-on .semestre-col[data-sem="0"] .materia { cursor: pointer; padding-left: 14px; }
 .malla-wrapper.plan-on .materia:active { cursor: grabbing; }
 .malla-wrapper.plan-on .materia:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .plan-grip { position: absolute; left: 4px; top: 50%; transform: translateY(-50%); width: 20px; padding: 14px 0; text-align: center; color: var(--text-dim); font-size: 0.95rem; line-height: 1; cursor: grab; touch-action: none; user-select: none; opacity: 0.6; transition: opacity 0.2s, color 0.2s, transform 0.25s var(--spring); }
@@ -882,6 +881,209 @@ body.plan-dragging { user-select: none; -webkit-user-select: none; cursor: grabb
 .lk.cur .lk-end, .lk.cur .lk-start { opacity: 0.9; }
 @keyframes curFlow { to { stroke-dashoffset: -9; } }
 </style>
+<style id="responsive-v1">
+/* =====================================================================
+   RESPONSIVE v1 · adapta la página a teléfono, tablet y computador
+   (solo CSS: no cambia la lógica de la aplicación)
+   ===================================================================== */
+:root { --maxw: 1200px; --pad: 20px; }
+@media (min-width: 1400px) { :root { --maxw: 1480px; } }
+@media (min-width: 1800px) { :root { --maxw: 1720px; } }
+
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body { min-height: 100vh; min-height: 100dvh; -webkit-tap-highlight-color: transparent; }
+img, svg { max-width: 100%; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+button, .tab-btn, summary { touch-action: manipulation; }
+
+/* ---------- Ancho útil: aprovecha pantallas grandes ---------- */
+header, .site-footer, .thanks, .info-wrap, .hor-panel, .agrupaciones-container,
+#malla-view > div, #agrupaciones-view .leyenda, #libre-view .agrupacion-card {
+    max-width: var(--maxw) !important;
+}
+.calc-container { max-width: min(var(--maxw), 1000px); }
+
+/* ---------- Malla: columnas que aprovechan el espacio ---------- */
+.malla-wrapper { -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
+.semestre-col { flex: 1 0 230px; max-width: 310px; }
+.sem-add { flex: 0 0 auto; }
+.malla-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 15px; }
+.malla-actions .btn-reset { margin: 0; }
+.plan-info { flex: 1 1 280px; }
+
+/* ---------- Agrupaciones / Info: sin desbordes en pantallas angostas ---------- */
+.agrupaciones-container { grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr)); }
+@media (min-width: 1400px) { .agrupaciones-container { grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); } }
+.info-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); }
+.agr-table td, .agr-table th { overflow-wrap: anywhere; }
+.libre-toolbar select { min-width: 0; }
+.com-steps .stp:last-child:nth-child(odd) { grid-column: 1 / -1; }
+
+/* ---------- Rejillas que no deben empujar el ancho de la página ---------- */
+.info-wrap { grid-template-columns: minmax(0, 1fr); }
+.info-grid > *, .sem-hero > *, .cal-layout > *, .info-wrap > * { min-width: 0; }
+@media (max-width: 820px) {
+    .sem-hero, .cal-layout { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ---------- Horario: columna de horas fija al desplazar ---------- */
+.hor-scroll { -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; scrollbar-width: thin; }
+.hor-grid > div:first-child, .hor-times { position: sticky; left: 0; z-index: 4; background: var(--surface); }
+.hor-grid > div:first-child { background: var(--head-bg); }
+.hor-block { overflow-wrap: anywhere; }
+@media print { .hor-grid > div:first-child, .hor-times { position: static; } }
+
+/* =====================================================================
+   TABLET Y PORTÁTIL PEQUEÑO  (≤ 900px): encabezado ordenado
+   ===================================================================== */
+@media (max-width: 900px) {
+    header { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px; padding: 16px 14px; border-radius: 18px; }
+    header h1 { order: 1; width: 100%; margin: 0 0 4px !important; font-size: clamp(1.1rem, 5vw, 1.6rem); overflow-wrap: anywhere; }
+    .coffee-btn, .theme-toggle, .fb-btn { position: static !important; order: 2; display: inline-flex !important; align-items: center; gap: 6px; margin: 0 !important; width: auto; }
+    .ver-chip { order: 3; margin: 0 !important; }
+    .tabs { order: 4; width: 100%; margin-top: 6px; }
+    .info-wrap, .info-grid { gap: 14px; }
+}
+
+/* =====================================================================
+   TELÉFONO  (≤ 640px)
+   ===================================================================== */
+@media (max-width: 640px) {
+    body { padding: 12px; padding-left: max(12px, env(safe-area-inset-left)); padding-right: max(12px, env(safe-area-inset-right)); padding-bottom: calc(12px + env(safe-area-inset-bottom)); }
+    body::before, body::after { filter: blur(60px); animation: none; opacity: 0.8; }
+    header { margin-bottom: 14px; }
+
+    /* Pestañas: una sola fila deslizable */
+    .tabs { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; gap: 6px; margin: 6px -14px 0; padding: 4px 14px 8px; scroll-snap-type: x proximity; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+    .tabs::-webkit-scrollbar { display: none; }
+    .tab-btn { flex: 0 0 auto; white-space: nowrap; scroll-snap-align: center; padding: 10px 14px; font-size: 0.76rem; }
+
+    /* Malla: columnas del ancho de la pantalla, con imán al deslizar */
+    .stats { gap: 8px; margin-bottom: 12px; }
+    .stat-badge { font-size: 0.74rem; padding: 7px 12px; }
+    .leyenda { gap: 8px 14px; padding: 10px; justify-content: flex-start; }
+    .leyenda-item { font-size: 0.68rem; align-items: flex-start; }
+    .malla-actions .btn-reset { flex: 1 1 calc(50% - 8px); }
+    .btn-reset { padding: 11px 14px; }
+    .plan-bar { padding: 12px; }
+    .plan-info { flex-basis: 100%; }
+    .plan-actions { width: 100%; justify-content: space-between; }
+    .malla-wrapper { gap: 56px; margin: 0 -12px; padding: 16px 16px 30px; scroll-snap-type: x proximity; scroll-padding-left: 16px; }
+    .semestre-col { flex: 0 0 min(76vw, 272px); min-width: 0; max-width: none; scroll-snap-align: start; }
+    .sem-add { min-width: 150px; min-height: 160px; }
+    .materia { padding: 13px; }
+    .m-name { font-size: 0.88rem; }
+    .materia .m-name { padding-right: 40px; }
+
+    /* Calculadora */
+    .header-stats { top: 6px; padding: 12px; gap: 10px; border-radius: 14px; }
+    .stat-val { font-size: 1.4rem; }
+    .stat-box { font-size: 0.68rem; }
+    .semestre-block { padding: 14px; border-radius: 14px; }
+    .sem-title { flex-wrap: wrap; gap: 8px; }
+    .materia-row { gap: 8px; padding: 10px; }
+    .materia-row select, .materia-row input[type="text"] { flex: 1 1 100%; min-width: 0; }
+    .materia-row input[type="number"] { flex: 1 1 calc(50% - 8px); width: auto; min-width: 0; }
+
+    /* Agrupaciones y libre elección */
+    .agrupaciones-container { gap: 14px; padding-bottom: 24px; }
+    .agr-table { font-size: 0.78rem; }
+    .agr-table td, .agr-table th { padding: 8px 6px; }
+    .libre-toolbar { padding: 10px; }
+    .libre-toolbar select, .libre-toolbar input[type="text"] { flex: 1 1 100%; }
+    .libre-toolbar button { flex: 1 1 auto; }
+
+    /* Horario */
+    .hor-panel { padding: 12px; border-radius: 14px; margin-bottom: 14px; }
+    .hor-bar select, .hor-bar input { flex: 1 1 100%; min-width: 0; }
+    .hor-bar .hor-btn { flex: 1 1 100%; }
+    .hor-planes { flex: 1 1 100%; overflow-x: auto; }
+    .hor-plan { flex: 1 0 auto; }
+    .hor-tools { gap: 6px; }
+    .hor-tools .hor-btn { flex: 1 1 calc(50% - 6px); padding: 10px 8px; font-size: 0.8rem; }
+    .hor-tools #hor-resumen { margin-left: 0; flex: 1 1 100%; text-align: center; }
+    .hor-grid { min-width: 620px; grid-template-columns: 42px repeat(6, minmax(84px, 1fr)); }
+    .hor-times div { font-size: 0.6rem; padding-right: 4px; }
+    .hm-head { padding: 10px; gap: 8px; }
+    .hm-name { font-size: 0.82rem; }
+    .hm-cupos { min-width: 56px; padding: 6px; font-size: 0.68rem; }
+    .hm-body { padding: 2px 8px 12px; }
+    .hg { gap: 8px; padding: 10px 2px; }
+    .hg-pill { padding: 5px 12px; }
+    .hor-g { padding: 10px; }
+
+    /* Info y calendario */
+    .info-card { padding: 16px; border-radius: 16px; }
+    .sem-hero { padding: 16px; gap: 18px; border-radius: 16px; }
+    .sh-title { font-size: 1.6rem; }
+    .cd-num { font-size: 1.5rem; }
+    .cal-grid { gap: 3px; grid-template-columns: 26px repeat(7, 1fr); }
+    .cal-day { min-height: 42px; font-size: 0.78rem; }
+    .lh-open { width: 100%; text-align: center; }
+    .ln-form input { flex: 1 1 100%; }
+    .tel-btn { padding: 9px 14px; }
+
+    /* Pie y agradecimientos */
+    .thanks { padding: 24px 16px 20px; margin-top: 28px; }
+    .site-footer { padding: 18px 16px; margin-top: 24px; }
+
+    /* Ventanas emergentes: hoja que sube desde abajo */
+    .modal-overlay { align-items: flex-end; height: 100vh; height: 100dvh; }
+    #nv-modal, #fb-modal, #plan-modal { padding: 0 !important; }
+    .modal-content { width: 100%; max-width: none !important; max-height: 90vh !important; max-height: 90dvh !important; border-radius: 22px 22px 0 0; padding: 20px 18px calc(20px + env(safe-area-inset-bottom)); }
+    .nv-card, #fb-modal .nv-card { max-width: none; max-height: 92vh; max-height: 92dvh; border-radius: 22px 22px 0 0; }
+    .plan-alert { max-width: none; }
+    .nv-foot, .pa-actions { padding-bottom: calc(14px + env(safe-area-inset-bottom)); }
+    .qr-box img { width: min(220px, 62vw); height: auto; aspect-ratio: 1; }
+    .no-toast { padding: 18px 20px; }
+
+    /* iOS hace zoom en campos menores de 16px: se evita */
+    input:not([type="checkbox"]):not([type="radio"]), select, textarea { font-size: 16px !important; }
+}
+
+/* Teléfono muy angosto */
+@media (max-width: 360px) {
+    .semestre-col { flex-basis: 82vw; }
+    .hor-tools .hor-btn { flex-basis: 100%; }
+    .malla-actions .btn-reset { flex-basis: 100%; }
+}
+
+/* Teléfono en horizontal (poca altura) */
+@media (max-height: 480px) and (orientation: landscape) {
+    .modal-overlay { align-items: center; }
+    .modal-content, .nv-card { max-height: 94vh; max-height: 94dvh; border-radius: 18px; }
+    .no-toast { padding: 12px 18px; }
+    .no-hand, .no-face { font-size: 2.4rem; }
+}
+
+/* =====================================================================
+   TÁCTIL (sin ratón): objetivos de 44px y sin efectos "hover" pegados
+   ===================================================================== */
+@media (hover: none) {
+    .materia:hover:not(.status-locked-total), .agrupacion-card:hover, .stat-badge:hover, .tab-btn:hover,
+    .hor-g:hover, .hg:hover, .grupo-item:hover, .up-item:hover, .lnk a:hover, .mm-item:hover, .stp:hover,
+    .t-chip:hover, .tel-btn:hover, .lh-open:hover, button:hover, .hor-block:hover { transform: none; }
+    .materia:hover:not(.status-locked-total) { box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12); border-color: inherit; }
+    .agr-table tr:hover td:nth-child(2) { padding-left: 8px; }
+    .dots-btn { opacity: 0.9; }
+}
+@media (pointer: coarse) {
+    .tab-btn, .hor-btn, .hor-plan, .btn-reset, .state-btn, .nv-cta, .cal-nav, .cal-hoy, .cal-com,
+    .libre-toolbar button, .libre-more, .lib-slot, .hm-pill-btn, .tt-go button, .mm-item { min-height: 44px; }
+    .dots-btn { width: 40px; height: 40px; top: 2px; right: 2px; font-size: 1.3rem; }
+    .materia .m-name { padding-right: 40px; }
+    .hm-x { width: 38px; height: 38px; }
+    .hg-heart { padding: 10px; }
+    .copy-btn, .lnk-x { min-width: 40px; min-height: 40px; }
+    .rv-pick button { width: 40px; height: 40px; }
+    .close-btn { font-size: 2rem; padding: 4px 10px; }
+    .hor-x { top: 0; right: 0; padding: 4px 8px; font-size: 1.1rem; }
+    .libre-toolbar label { min-height: 44px; }
+    .libre-toolbar input[type="checkbox"], #nivelacion-toggle { width: 20px; height: 20px; }
+    .mm-item { padding: 12px; }
+}
+
+</style>
 <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme_iq') || 'dark');</script>
 </head>
 <body>
@@ -921,11 +1123,11 @@ body.plan-dragging { user-select: none; -webkit-user-select: none; cursor: grabb
             <div class="leyenda-item"><div class="color-box" style="border-color: var(--cur); background: color-mix(in srgb, var(--cur) 28%, transparent);"></div> Cursando 📖</div>
         </div>
         
-        <div style="text-align: center;">
+        <div class="malla-actions">
             <button class="btn-reset" onclick="resetMalla()">Reiniciar Estado Manual</button>
+            <button class="btn-reset btn-links" id="links-toggle" onclick="toggleLinks()">🔗 Conexiones: ON</button>
+            <button class="btn-reset btn-plan" id="plan-toggle" onclick="togglePlan()" aria-pressed="false" title="Reorganiza las materias a tu manera">🧭 Mi planificación: OFF</button>
         </div>
-        <button class="btn-reset btn-links" id="links-toggle" onclick="toggleLinks()">🔗 Conexiones: ON</button>
-        <button class="btn-reset btn-plan" id="plan-toggle" onclick="togglePlan()" aria-pressed="false" title="Reorganiza las materias a tu manera">🧭 Mi planificación: OFF</button>
         <div class="plan-bar" id="plan-bar" hidden>
             <div class="plan-info"><b>🧭 Mi planificación</b>Arrastra las materias entre semestres para armar tu propio orden. La malla oficial no se modifica y tu avance se conserva.<small>Teclado: enfoca una materia y usa Mayús + flechas. Los ⚠️ avisan si algo queda antes de su prerrequisito.</small></div>
             <div class="plan-legend"><i style="background:var(--color-fundamentacion)"></i>Fundamentación <i style="background:var(--color-disciplinar)"></i>Disciplinar <i style="background:var(--color-libre)"></i>Libre elección</div>
@@ -2114,29 +2316,41 @@ try { planOn = localStorage.getItem(PLAN_ON_KEY) === '1'; } catch (e) {}
 let planLayout = null;                 // { sems: [[ids del semestre 1], [ids del semestre 2], ...] }
 let _drag = null, _planJustDragged = false, _planDropId = null;
 
-function planOfficial() { return { sems: data.map(s => s.mat.map(m => m.id)) }; }
+const planNivIds = () => nivelacionMaterias.map(m => m.id);
+const planVis = id => hasNivelacion || !String(id).startsWith('niv_');
+function planOfficial() { return { sems: data.map(s => s.mat.map(m => m.id)), niv: planNivIds() }; }
 
 function planLoad() {
     let saved = null;
     try { saved = JSON.parse(localStorage.getItem(PLAN_KEY)); } catch (e) {}
     if (!saved || !Array.isArray(saved.sems)) { planLayout = planOfficial(); return; }
-    const valid = new Set(data.flatMap(s => s.mat.map(m => m.id)));
-    const seen = new Set(), sems = [];
-    saved.sems.slice(0, PLAN_MAX).forEach(arr => {
-        const col = [];
-        (Array.isArray(arr) ? arr : []).forEach(id => { if (valid.has(id) && !seen.has(id)) { seen.add(id); col.push(id); } });
-        sems.push(col);
-    });
-    // lo que falte (p. ej. materias nuevas) vuelve a su semestre oficial
+    const nivIds = planNivIds();
+    const valid = new Set([...data.flatMap(s => s.mat.map(m => m.id)), ...nivIds]);
+    const seen = new Set(), sems = [], niv = [];
+    const clean = arr => { const col = []; (Array.isArray(arr) ? arr : []).forEach(id => { if (valid.has(id) && !seen.has(id)) { seen.add(id); col.push(id); } }); return col; };
+    clean(saved.niv).forEach(id => niv.push(id));
+    saved.sems.slice(0, PLAN_MAX).forEach(arr => sems.push(clean(arr)));
+    // lo que falte (p. ej. materias nuevas o planes guardados antes de que existiera la nivelación) vuelve a su sitio oficial
     data.forEach((s, i) => s.mat.forEach(m => { if (!seen.has(m.id)) { while (sems.length <= i) sems.push([]); sems[i].push(m.id); } }));
+    nivIds.forEach(id => { if (!seen.has(id)) niv.push(id); });
     while (sems.length < data.length) sems.push([]);
-    planLayout = { sems };
+    planLayout = { sems, niv };
 }
 function planTrim() { const s = planLayout.sems; while (s.length > data.length && !s[s.length - 1].length) s.pop(); }
 function planSave() { planTrim(); try { localStorage.setItem(PLAN_KEY, JSON.stringify(planLayout)); } catch (e) {} }
-function planColumns() {
-    if (!planLayout) planLoad();
-    return planLayout.sems.map((ids, i) => ({ sem: i + 1, mat: ids.map(getMatInfo).filter(Boolean) }));
+// Columnas del plan (la de nivelación va primero y se llama "semestre 0")
+function planColsOf(L) {
+    const cols = L.sems.map((ids, i) => ({ sem: i + 1, mat: ids.filter(planVis).map(getMatInfo).filter(Boolean) }));
+    if (hasNivelacion) cols.unshift({ sem: 0, mat: (L.niv || []).map(getMatInfo).filter(Boolean) });
+    return cols;
+}
+function planColumns() { if (!planLayout) planLoad(); return planColsOf(planLayout); }
+// Todas las listas del plan en orden, para mover con el teclado
+function planLists() { return hasNivelacion ? [planLayout.niv, ...planLayout.sems] : [...planLayout.sems]; }
+function planReqs(m) {
+    const r = [...(m.r || [])];
+    if (m.id === 'CD' && hasNivelacion && !r.includes('niv_mat')) r.push('niv_mat');   // con nivelación, Cálculo Diferencial pide Matemáticas básicas
+    return r;
 }
 
 // Avisos: materia antes (o junto) a su prerrequisito, o sin los créditos que pide
@@ -2144,12 +2358,13 @@ function planWarnMap(cols) {
     const semOf = {}, offOf = {};
     cols.forEach((c, i) => c.mat.forEach(m => { semOf[m.id] = i; }));
     data.forEach((s, i) => s.mat.forEach(m => { offOf[m.id] = i; }));   // la malla oficial también junta alguna (p. ej. Control y su laboratorio)
+    nivelacionMaterias.forEach(m => { offOf[m.id] = -1; });             // la nivelación oficial va toda en el semestre 0
     const warn = {}, conf = {}, pairs = [];
     const add = (id, msg) => { (warn[id] = warn[id] || []).push(msg); };
     let cred = 0, disc = 0;
     cols.forEach((c, i) => {
         c.mat.forEach(m => {
-            (m.r || []).forEach(r => {
+            planReqs(m).forEach(r => {
                 if (r === 'CRED_108') { if (cred < 108) add(m.id, `Pide 108 créditos aprobados y con tu plan llevarías ${cred} antes de este semestre`); }
                 else if (r === 'DISC_53') { if (disc < 53) add(m.id, `Pide 53 créditos disciplinares y con tu plan llevarías ${disc} antes de este semestre`); }
                 else if (r === 'DISC_60') { if (disc < 60) add(m.id, `Pide 60 créditos disciplinares y con tu plan llevarías ${disc} antes de este semestre`); }
@@ -2158,7 +2373,7 @@ function planWarnMap(cols) {
                     const before = semOf[r] > i, same = semOf[r] === i && offOf[r] !== offOf[m.id];
                     if (before || same) {
                         conf[m.id] = conf[r] = true;
-                        pairs.push({ sub: m.id, pre: r, kind: before ? 'before' : 'same', si: i + 1, pj: semOf[r] + 1 });
+                        pairs.push({ sub: m.id, pre: r, kind: before ? 'before' : 'same', si: c.sem, pj: cols[semOf[r]].sem });
                         add(m.id, before ? `Está antes de su prerrequisito: ${nm}` : `Comparte semestre con su prerrequisito: ${nm}`);
                         add(r, before ? `${m.n}, que la necesita como prerrequisito, quedó antes` : `${m.n}, que la necesita como prerrequisito, quedó en el mismo semestre`);
                     }
@@ -2169,14 +2384,15 @@ function planWarnMap(cols) {
     });
     return { warn, conf, pairs };
 }
-function planPairsOfSems(sems) { return planWarnMap(sems.map((ids, i) => ({ sem: i + 1, mat: ids.map(getMatInfo).filter(Boolean) }))).pairs; }
+function planPairsOfLayout(L) { return planWarnMap(planColsOf(L)).pairs; }
 function planSemDom(el) { const c = el && el.closest('.semestre-col'); return c ? (parseInt(c.dataset.sem, 10) || 0) : 0; }
 
 function planUpdateBar() {
     const el = document.getElementById('plan-moved'); if (!el || !planLayout) return;
     const off = {}; data.forEach((s, i) => s.mat.forEach(m => { off[m.id] = i; }));
     let moved = 0;
-    planLayout.sems.forEach((ids, i) => ids.forEach(id => { if (off[id] !== i) moved++; }));
+    planLayout.sems.forEach((ids, i) => ids.forEach(id => { if (planVis(id) && off[id] !== i) moved++; }));
+    if (hasNivelacion) (planLayout.niv || []).forEach(id => { if (off[id] !== undefined) moved++; });   // una materia regular puesta en la columna de nivelación
     el.textContent = moved ? `${moved} materia${moved === 1 ? '' : 's'} movida${moved === 1 ? '' : 's'}` : 'Igual a la oficial';
     el.classList.toggle('on', moved > 0);
 }
@@ -2226,12 +2442,12 @@ function planAnnounce(id, semNum) {
 function planCommit(id, prevJson) {
     planSave(); _planDropId = id;
     renderMalla();
-    const si = planLayout.sems.findIndex(a => a.includes(id));
-    planAnnounce(id, si + 1);
+    const sn = (planLayout.niv || []).includes(id) ? 0 : planLayout.sems.findIndex(a => a.includes(id)) + 1;
+    planAnnounce(id, sn);
     if (!prevJson) return;
     let prior = [];
-    try { prior = planPairsOfSems(JSON.parse(prevJson).sems); } catch (e) {}
-    const fresh = planPairsOfSems(planLayout.sems).filter(p => (p.sub === id || p.pre === id) && !prior.some(q => q.sub === p.sub && q.pre === p.pre && q.kind === p.kind));
+    try { prior = planPairsOfLayout(JSON.parse(prevJson)); } catch (e) {}
+    const fresh = planPairsOfLayout(planLayout).filter(p => (p.sub === id || p.pre === id) && !prior.some(q => q.sub === p.sub && q.pre === p.pre && q.kind === p.kind));
     if (fresh.length) setTimeout(() => planShowAlert(fresh, prevJson, id), 450);   // primero se ven los rayos rojos, luego el aviso
 }
 
@@ -2309,7 +2525,7 @@ function planPointerDown(e) {
     const card = e.target.closest('.materia');
     if (!card || e.target.closest('.dots-btn')) return;
     const col = card.closest('.semestre-col');
-    if (!col || col.dataset.sem === '0') return;
+    if (!col) return;
     const touch = e.pointerType !== 'mouse';
     if (touch && !e.target.closest('.plan-grip')) return;
     _drag = { card, id: card.dataset.id, sx: e.clientX, sy: e.clientY, x: e.clientX, y: e.clientY, on: false, touch };
@@ -2348,7 +2564,7 @@ function planTrack() {
     const d = _drag; if (!d || !d.on) return;
     d.ghost.style.transform = `translate(${d.x - d.ox}px, ${d.y - d.oy}px) rotate(2.5deg) scale(1.05)`;
     const grid = document.getElementById('grid');
-    const cols = [...grid.querySelectorAll('.semestre-col')].filter(c => c.dataset.sem !== '0');
+    const cols = [...grid.querySelectorAll('.semestre-col')];
     const add = grid.querySelector('.sem-add');
     let best = null, bd = Infinity;
     cols.forEach(c => { const dd = planDist(c.getBoundingClientRect(), d.x); if (dd < bd) { bd = dd; best = c; } });
@@ -2399,8 +2615,10 @@ function planPointerUp(e) {
     const grid = document.getElementById('grid'), cancel = e.type === 'pointercancel';
     const add = grid.querySelector('.sem-add');
     const overAdd = !cancel && add && add.classList.contains('drop-hover');
-    const sems = [...grid.querySelectorAll('.semestre-col')].filter(c => c.dataset.sem !== '0')
-        .map(c => [...c.querySelectorAll(':scope > .materia')].map(x => x.dataset.id));
+    const colIds = c => [...c.querySelectorAll(':scope > .materia')].map(x => x.dataset.id);
+    const nivCol = grid.querySelector('.semestre-col[data-sem="0"]');
+    let niv = nivCol ? colIds(nivCol) : [...(planLayout.niv || [])];
+    const sems = [...grid.querySelectorAll('.semestre-col')].filter(c => c.dataset.sem !== '0').map(colIds);
     let target = d.card.getBoundingClientRect();
     const finish = () => {
         d.ghost.remove();
@@ -2410,10 +2628,12 @@ function planPointerUp(e) {
         if (overAdd) {
             const i = sems.findIndex(a => a.includes(d.id));
             if (i >= 0) sems[i] = sems[i].filter(x => x !== d.id);
+            niv = niv.filter(x => x !== d.id);
             sems.push([d.id]);
         }
+        planNivIds().forEach(id => { if (!niv.includes(id) && !sems.some(a => a.includes(id))) niv.push(id); });   // por si la nivelación está oculta
         const prev = JSON.stringify(planLayout);
-        planLayout.sems = sems;
+        planLayout.sems = sems; planLayout.niv = niv;
         planCommit(d.id, prev);
     };
     if (overAdd) { d.ghost.style.transition = 'opacity .18s, transform .18s'; d.ghost.style.opacity = '0'; setTimeout(finish, 190); return; }
@@ -2431,15 +2651,15 @@ document.getElementById('grid').addEventListener('keydown', e => {
     const card = e.target.closest && e.target.closest('.materia'); if (!card) return;
     if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) return;
     const id = card.dataset.id;
-    let si = planLayout.sems.findIndex(a => a.includes(id)); if (si < 0) return;
+    let L = planLists(), si = L.findIndex(a => a.includes(id)); if (si < 0) return;
     const prevJson = JSON.stringify(planLayout);
-    const arr = planLayout.sems[si], pos = arr.indexOf(id);
+    const arr = L[si], pos = arr.indexOf(id);
     if (e.key === 'ArrowUp') { if (pos === 0) return; arr.splice(pos, 1); arr.splice(pos - 1, 0, id); }
     else if (e.key === 'ArrowDown') { if (pos >= arr.length - 1) return; arr.splice(pos, 1); arr.splice(pos + 1, 0, id); }
-    else if (e.key === 'ArrowLeft') { if (si === 0) return; arr.splice(pos, 1); planLayout.sems[si - 1].push(id); }
+    else if (e.key === 'ArrowLeft') { if (si === 0) return; arr.splice(pos, 1); L[si - 1].push(id); }
     else {
-        if (si + 1 >= planLayout.sems.length) { if (planLayout.sems.length >= PLAN_MAX) return; planLayout.sems.push([]); }
-        arr.splice(pos, 1); planLayout.sems[si + 1].push(id);
+        if (si + 1 >= L.length) { if (planLayout.sems.length >= PLAN_MAX) return; planLayout.sems.push([]); L = planLists(); }
+        arr.splice(pos, 1); L[si + 1].push(id);
     }
     e.preventDefault();
     planCommit(id, prevJson);
@@ -2461,11 +2681,12 @@ function renderMalla() {
     if (cb) { cb.hidden = !cs.n; cb.textContent = `📖 Cursando: ${cs.n} ${cs.n === 1 ? 'materia' : 'materias'} · ${cs.c} cr`; }
 
     grid.innerHTML = '';
-    let mallaData = planOn ? planColumns() : [...data];
+    let mallaData;
+    if (planOn) mallaData = planColumns();                       // ya incluye la columna 0 si hay nivelación
+    else { mallaData = [...data]; if (hasNivelacion) mallaData.unshift({ sem: 0, mat: nivelacionMaterias }); }
     const pwr = planOn ? planWarnMap(mallaData) : { warn: {}, conf: {}, pairs: [] };
     const pw = pwr.warn;
     let planIdx = 0;
-    if (hasNivelacion) mallaData.unshift({ sem: 0, mat: nivelacionMaterias });
 
     mallaData.forEach(semestre => {
         const col = document.createElement('div');
@@ -2473,7 +2694,7 @@ function renderMalla() {
         const head = document.createElement('div');
         head.className = 'sem-header';
         head.textContent = semestre.sem === 0 ? "Semestre 0 (Niv.)" : `Semestre ${semestre.sem}`;
-        if (planOn && semestre.sem !== 0) head.innerHTML = `Semestre ${semestre.sem}<span class="sem-cr">· ${semestre.mat.reduce((a, x) => a + x.c, 0)} cr</span>`;
+        if (planOn) head.innerHTML = `${semestre.sem === 0 ? 'Semestre 0 (Niv.)' : 'Semestre ' + semestre.sem}<span class="sem-cr">· ${semestre.mat.reduce((a, x) => a + x.c, 0)} cr</span>`;
         col.appendChild(head);
 
         let lastCat = "";
@@ -2512,11 +2733,9 @@ function renderMalla() {
                 card.dataset.cat = m.cat;
                 card.style.setProperty('--cat', PLAN_CAT_COLOR[m.cat] || 'var(--border)');
                 card.style.setProperty('--i', planIdx++);
-                if (semestre.sem !== 0) {
-                    card.tabIndex = 0;
-                    card.title = 'Arrastra para mover · Mayús + flechas con el teclado';
-                    card.insertAdjacentHTML('afterbegin', '<span class="plan-grip" aria-hidden="true">⠿</span>');
-                }
+                card.tabIndex = 0;
+                card.title = 'Arrastra para mover · Mayús + flechas con el teclado';
+                card.insertAdjacentHTML('afterbegin', '<span class="plan-grip" aria-hidden="true">⠿</span>');
                 if (pw[m.id]) { card.classList.add(pwr.conf[m.id] ? 'plan-conflict' : 'plan-bad'); card.insertAdjacentHTML('beforeend', `<span class="plan-warn" title="${siaEsc(pw[m.id].join(' · '))}">⚠️</span>`); }
             }
             col.appendChild(card);
@@ -3359,6 +3578,7 @@ function posIn(el, root) {
 }
 
 function drawLinks() {
+    const badSet = planOn ? new Set(planWarnMap(planColsOf(planLayout)).pairs.map(p => p.pre + '>' + p.sub)) : new Set();
     const grid = document.getElementById('grid');
     if (!grid || grid.offsetParent === null) return;            // pestaña oculta
     grid.querySelectorAll('.links-svg, .ports-svg').forEach(s => s.remove());
@@ -3385,7 +3605,7 @@ function drawLinks() {
 
             const sa = getCombinedState(rid) === 'approved';
             const cls = sa ? (st === 'approved' ? 'done' : 'on') : (getCombinedState(rid) === 'current' ? 'cur' : 'off');
-            const bad = planOn && planSemDom(s) >= planSemDom(t);
+            const bad = planOn && badSet.has(rid + '>' + id);
             const key = rid + '>' + id;
             let extra = '';
             if (cls === 'on') {
@@ -4326,6 +4546,28 @@ infoLinksRender();
             io.observe(box);
         } else box.classList.add('vis');
     }
+})();
+</script>
+<script id="responsive-v1-js">
+(function () {
+    var orig = window.switchTab;
+    if (typeof orig === 'function') {
+        window.switchTab = function (name) {
+            var r = orig.apply(this, arguments);
+            try {
+                var b = document.getElementById('tab-' + name), t = b && b.parentElement;
+                if (t && t.scrollWidth > t.clientWidth + 2) {
+                    var left = b.getBoundingClientRect().left - t.getBoundingClientRect().left + t.scrollLeft;
+                    t.scrollTo({ left: left - (t.clientWidth - b.offsetWidth) / 2, behavior: 'smooth' });
+                }
+            } catch (e) {}
+            return r;
+        };
+    }
+    // Si el teléfono gira, se vuelven a calcular las conexiones de la malla
+    window.addEventListener('orientationchange', function () {
+        setTimeout(function () { try { window.dispatchEvent(new Event('resize')); } catch (e) {} }, 250);
+    });
 })();
 </script>
 </body>
