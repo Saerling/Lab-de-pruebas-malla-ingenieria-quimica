@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#0c0e0d">
-    <title>Malla Curricular IQ · v4.2</title>
+    <title>Malla Curricular IQ · v4.7</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 
     <style>
@@ -562,7 +562,7 @@
 .up-item small { font-family: var(--mono); font-size: 0.68rem; color: var(--text-dim); }
 .up-item span { font-family: var(--mono); font-size: 0.7rem; color: var(--accent); font-weight: 700; white-space: nowrap; }
 
-/* ===== NOVEDADES v4.2 ===== */
+/* ===== NOVEDADES v4.7 ===== */
 .ver-chip { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 14px; padding: 7px 14px; border-radius: 999px; border: 1px solid var(--primary); background: var(--primary-soft); color: var(--primary); font-family: var(--mono); font-size: 0.74rem; font-weight: 700; cursor: pointer; transition: transform 0.3s var(--spring), box-shadow 0.25s, background 0.25s, color 0.25s; }
 .ver-chip:hover { transform: translateY(-2px); box-shadow: var(--glow); background: var(--primary); color: var(--on-primary); }
 .ver-chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
@@ -1093,7 +1093,7 @@ header, .site-footer, .thanks, .info-wrap, .hor-panel, .agrupaciones-container,
     <button class="fb-btn" id="fb-btn" onclick="openFeedback()" title="Dime tu opinión">💬 Comentarios</button>
     <button class="coffee-btn" onclick="openCoffeeModal()"><span class="coffee-ico">☕</span> Invítame un café</button>
     <h1 style="margin:0 0 10px">MALLA CURRICULAR IQ</h1>
-    <button class="ver-chip" id="nv-chip" onclick="openNovedades()" title="Qué hay de nuevo">✨ Novedades v4.2</button>
+    <button class="ver-chip" id="nv-chip" onclick="openNovedades()" title="Qué hay de nuevo">✨ Novedades v4.7</button>
     <div class="tabs">
         <button class="tab-btn active" id="tab-malla" onclick="switchTab('malla')">Malla Curricular</button>
         <button class="tab-btn" id="tab-calc" onclick="switchTab('calc')">Calculadora Histórica</button>
@@ -1396,21 +1396,21 @@ header, .site-footer, .thanks, .info-wrap, .hor-panel, .agrupaciones-container,
     </div>
 </div>
 
-<!-- NOVEDADES v4.2 (se muestra una vez al entrar; se reabre desde el botón del encabezado) -->
+<!-- NOVEDADES v4.7 (se muestra una vez al entrar; se reabre desde el botón del encabezado) -->
 <div class="modal-overlay" id="nv-modal" onclick="if(event.target===this)closeNovedades()">
     <div class="nv-card" role="dialog" aria-modal="true" aria-labelledby="nv-title">
         <div class="nv-prog" id="nv-prog"></div>
         <button class="close-btn nv-close" onclick="closeNovedades()" aria-label="Cerrar novedades">&times;</button>
         <div class="nv-scroll" id="nv-scroll" tabindex="0">
             <div class="nv-hero">
-                <h2 class="nv-sr" id="nv-title">Novedades de la versión 4.2</h2>
+                <h2 class="nv-sr" id="nv-title">Novedades de la versión 4.7</h2>
                 <div class="nv-term" id="nv-term" aria-hidden="true"></div>
                 <div class="nv-ver" aria-hidden="true">
-                    <span class="nv-old">v1.0</span>
+                    <span class="nv-old">v4.2</span>
                     <span class="nv-arrow">→</span>
                     <span class="nv-odo"><span class="nv-v">v</span><span class="nv-d" id="nv-d1"><span class="nv-strip"></span></span><span class="nv-dot">.</span><span class="nv-d" id="nv-d2"><span class="nv-strip"></span></span></span>
                 </div>
-                <p class="nv-lead">Pasamos de la versión 1.0 a la 4.2. Esto es lo que cambió y lo que ya puedes hacer.</p>
+                <p class="nv-lead">Pasamos de la versión 4.2 a la 4.7. Esto es lo que se añadió y lo que ya puedes hacer.</p>
                 <div class="nv-done" id="nv-done"></div>
                 <div class="nv-burst" id="nv-burst" aria-hidden="true"></div>
             </div>
@@ -4170,23 +4170,18 @@ infoLinksRender();
 </script>
 <script id="novedades-v42">
 (function () {
-    var VERSION = '4.2', KEY = 'malla_iq_novedades_visto';
+    var VERSION = '4.7', KEY = 'malla_iq_novedades_visto';
     var ITEMS = [
-        { s: 'new', e: '🌗', t: 'Modo noche y modo día', p: 'Nuevo diseño con dos temas. Cambia con el botón del encabezado y se recuerda tu elección.' },
-        { s: 'new', e: '🧮', t: 'Calculadora de promedios', p: 'Anota tus notas semestre a semestre y consulta tu PAPA. Incluye la nivelación como semestre 0.' },
-        { s: 'new', e: '✅', t: 'Aprobada, reprobada o pendiente', p: 'Clic para aprobar una materia; en ⋮ eliges reprobada o pendiente. Las notas de la calculadora actualizan la malla solas.' },
-        { s: 'new', e: '☝️', t: 'Prerrequisitos que se respetan', p: 'No puedes aprobar una materia sin sus prerrequisitos (incluidos los de 108, 53 y 60 créditos) y te dice qué te falta.' },
-        { s: 'new', e: '🔗', t: 'Conexiones entre materias', p: 'Líneas que unen cada materia con sus prerrequisitos; al pasar el cursor se resaltan. Actívalas o apágalas con el botón Conexiones.' },
-        { s: 'new', e: '🧭', t: 'Mi planificación', p: 'Arrastra las materias entre semestres para armar tu propio orden de la carrera. Te avisa si algo queda antes de su prerrequisito y la malla oficial no cambia.' },
-        { s: 'new', e: '🗂️', t: 'Programa por agrupaciones', p: 'Las asignaturas del plan agrupadas por componente, con créditos exigidos, obligatorios y optativos.' },
-        { s: 'new', e: '📊', t: 'Cupos y grupos en tiempo real', p: 'Consulta grupos, horarios, salones y cupos del SIA desde cualquier materia.' },
-        { s: 'new', e: '⭐', t: 'Reseñas anónimas de profesores', p: 'Mira la calificación de cada profesor y deja la tuya, sin cuenta ni correo.' },
-        { s: 'new', e: '📌', t: 'Libre elección con el catálogo del SIA', p: 'Busca materias de libre elección y fíjalas en los cupos de tu malla.' },
-        { s: 'new', e: '🗓️', t: 'Horario semanal', p: 'Arma hasta tres planes (A, B y C), detecta cruces, marca favoritas, copia o imprime tu horario.' },
-        { s: 'new', e: '📍', t: 'Info y calendario', p: 'Calendario del semestre con cuenta regresiva, líneas de emergencia, solicitud de sobrecupo y tus propios enlaces.' },
-        { s: 'new', e: '💬', t: 'Buzón de comentarios', p: 'Cuéntame tu opinión, sugerencias o quejas desde el botón Comentarios. Tu mensaje me llega solo a mí.' }
+        { s: 'new', e: '🧭', t: 'Mi planificación', p: 'Arrastra las materias entre semestres para armar tu propio orden (en el celular, desde el asa ⠿; con teclado, Mayús + flechas). Puedes añadir semestres, ves los créditos de cada uno y vuelves al orden oficial cuando quieras. La malla oficial no cambia y tu avance se conserva.' },
+        { s: 'new', e: '⚠️', t: 'Avisos de prerrequisitos al planificar', p: 'Si dejas una materia antes de su prerrequisito, se marca con franjas de alerta, su conexión se pone roja y un aviso te explica el choque. Puedes deshacer el movimiento al instante.' },
+        { s: 'new', e: '📖', t: 'Cursando actualmente', p: 'Marca desde el menú ⋮ las materias que estás viendo ahora. Se ven en azul con la etiqueta «Cursando», un contador suma cuántas llevas y sus créditos, y sus conexiones se animan. Igual que aprobar, pide tener los prerrequisitos.' },
+        { s: 'new', e: '📱', t: 'Se adapta a tu pantalla', p: 'Ahora se ve bien en celular, tablet y computador. En el celular las pestañas se deslizan, cada semestre ocupa la pantalla y las ventanas suben desde abajo; en pantallas grandes se aprovecha más ancho.' },
+        { s: 'new', e: '🗓️', t: 'Horario más cómodo en el celular', p: 'La columna de horas queda fija mientras deslizas los días, y los botones y campos se acomodan a la pantalla.' },
+        { s: 'fix', e: '📌', t: 'Info y calendario ya no se sale de la pantalla', p: 'En el celular esta pestaña se ensanchaba más que la pantalla; ahora todo cabe y se lee completo.' },
+        { s: 'fix', e: '👆', t: 'Botones fáciles de tocar', p: 'En pantallas táctiles los botones y el menú ⋮ son más grandes, y ya no quedan efectos de cursor «pegados» al tocar.' },
+        { s: 'fix', e: '🍎', t: 'Sin zoom al escribir en iPhone', p: 'Al tocar un campo de texto, la página ya no se acerca sola.' }
     ];
-    var CMD = 'malla actualizar 1.0 → 4.2';
+    var CMD = 'malla actualizar 4.2 → 4.7';
     var modal = document.getElementById('nv-modal');
     if (!modal) return;
     var timers = [], io = null, prevFocus = null, built = false;
@@ -4271,8 +4266,8 @@ infoLinksRender();
         timers.forEach(clearTimeout); timers = [];
         if (io) { io.disconnect(); io = null; }
         $('nv-term').innerHTML = termHtml(0, true);
-        setStrip('nv-d1', 1, 0, false);
-        setStrip('nv-d2', 0, 0, false);
+        setStrip('nv-d1', 4, 0, false);
+        setStrip('nv-d2', 2, 0, false);
         $('nv-done').classList.remove('on');
         $('nv-burst').innerHTML = '';
         [].forEach.call(document.querySelectorAll('#nv-list .nv-item'), function (e) { e.classList.remove('in'); });
@@ -4286,7 +4281,7 @@ infoLinksRender();
     function play() {
         if (reduce()) {
             $('nv-term').innerHTML = termHtml(CMD.length, false);
-            setStrip('nv-d1', 14, 0, false); setStrip('nv-d2', 22, 0, false);
+            setStrip('nv-d1', 14, 0, false); setStrip('nv-d2', 27, 0, false);
             land(); startReveal(); return;
         }
         later(function () {
@@ -4294,7 +4289,7 @@ infoLinksRender();
                 later(function () {
                     $('nv-term').innerHTML = termHtml(CMD.length, false);
                     setStrip('nv-d1', 14, 1.6, true);
-                    setStrip('nv-d2', 22, 2.2, true);
+                    setStrip('nv-d2', 27, 2.2, true);
                     later(startReveal, 900);
                     later(land, 2300);
                 }, 150);
@@ -4420,7 +4415,7 @@ infoLinksRender();
         fetch(API, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ tipo: tipo, mensaje: text, contacto: $('fb-contact').value.trim(), v: '4.2' }),
+            body: JSON.stringify({ tipo: tipo, mensaje: text, contacto: $('fb-contact').value.trim(), v: '4.7' }),
             signal: ctrl ? ctrl.signal : undefined
         }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok && j.ok !== false, j: j }; }); })
           .then(function (res) {
@@ -4453,7 +4448,7 @@ infoLinksRender();
     /* Si ya vio las novedades, el aviso sale solo; si no, sale al cerrar el pop-up de novedades */
     if (get(K_TIP) !== '1') {
         btn.classList.add('nuevo');
-        if (get(K_NV) === '4.2') setTimeout(window.fbShowTip, 1800);
+        if (get(K_NV) === '4.7') setTimeout(window.fbShowTip, 1800);
     }
 })();
 </script>
