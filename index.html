@@ -777,6 +777,83 @@ body.plan-dragging { user-select: none; -webkit-user-select: none; cursor: grabb
 .sem-cr { margin-left: 8px; font-size: 0.68rem; opacity: 0.75; font-weight: 400; }
 .lk.bad .lk-track { stroke: var(--danger) !important; stroke-dasharray: 5 5 !important; stroke-width: 1.8 !important; opacity: 0.85 !important; }
 .lk.bad .lk-end { fill: var(--danger) !important; opacity: 0.9 !important; }
+
+/* ===== Materia y prerrequisito en conflicto: franjas de alerta + luz que recorre el borde ===== */
+:root { --pa: #ee6a5b; }
+[data-theme="light"] { --pa: #d24b3d; }
+@property --pa-ang { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+
+.malla-wrapper.plan-on .materia.plan-conflict {
+    z-index: 4; opacity: 1 !important; border-style: solid; border-color: var(--pa) !important; color: var(--text);
+    background:
+        linear-gradient(45deg, color-mix(in srgb, var(--pa) 14%, transparent) 25%, transparent 25%, transparent 50%, color-mix(in srgb, var(--pa) 14%, transparent) 50%, color-mix(in srgb, var(--pa) 14%, transparent) 75%, transparent 75%) 0 0 / 22px 22px,
+        linear-gradient(135deg, color-mix(in srgb, var(--pa) 22%, var(--surface)), color-mix(in srgb, var(--pa) 8%, var(--surface))) !important;
+    animation: planStripes 1.6s linear infinite, planGlow 2.4s ease-in-out infinite;
+}
+.materia.plan-conflict .m-name { color: var(--text); }
+.materia.plan-conflict .m-cred { color: var(--text-dim); }
+/* Luz que recorre el borde, como un escáner */
+.materia.plan-conflict::before {
+    content: ''; position: absolute; inset: -3px; padding: 2px; box-sizing: border-box; border-radius: calc(var(--radius) + 3px); pointer-events: none;
+    background: conic-gradient(from var(--pa-ang), transparent 0 50%, color-mix(in srgb, var(--pa) 45%, transparent) 72%, var(--pa) 92%, #fff 99%, transparent 100%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+    filter: drop-shadow(0 0 5px var(--pa)); animation: paSweep 2.8s linear infinite;
+}
+.materia.plan-conflict .plan-warn { filter: drop-shadow(0 0 5px var(--pa)); }
+@keyframes paSweep { to { --pa-ang: 360deg; } }
+@keyframes planStripes { to { background-position: 22px 0, 0 0; } }
+@keyframes planGlow {
+    0%, 100% { box-shadow: 0 0 0 0 transparent, 0 6px 18px -6px color-mix(in srgb, var(--pa) 45%, transparent); }
+    50% { box-shadow: 0 0 0 5px color-mix(in srgb, var(--pa) 14%, transparent), 0 10px 30px -4px color-mix(in srgb, var(--pa) 70%, transparent); }
+}
+/* La línea de conexión del conflicto: guiones que avanzan */
+.lk.bad .lk-track { stroke: var(--pa) !important; stroke-dasharray: 6 6 !important; stroke-width: 2 !important; opacity: 0.95 !important; filter: drop-shadow(0 0 3px var(--pa)); animation: paMarch 0.9s linear infinite; }
+.lk.bad .lk-end { fill: var(--pa) !important; opacity: 1 !important; }
+@keyframes paMarch { to { stroke-dashoffset: -12; } }
+
+/* ===== Aviso emergente ===== */
+#plan-modal { z-index: 1100; padding: 12px; background: radial-gradient(circle at 50% 38%, color-mix(in srgb, var(--pa) 24%, var(--overlay)) 0%, var(--overlay) 72%); }
+#plan-modal.active .nv-card { animation: planAlertIn 0.55s var(--spring) both; }
+@keyframes planAlertIn { 0% { opacity: 0; transform: translateY(28px) scale(0.9); } 100% { opacity: 1; transform: none; } }
+.plan-alert { max-width: 470px; padding: 0; text-align: center; overflow-y: auto; border-color: color-mix(in srgb, var(--pa) 55%, var(--border)); box-shadow: var(--shadow-lg), 0 0 60px -10px color-mix(in srgb, var(--pa) 55%, transparent); }
+.pa-tape { flex: none; height: 8px; background: linear-gradient(45deg, var(--pa) 25%, transparent 25%, transparent 50%, var(--pa) 50%, var(--pa) 75%, transparent 75%) 0 0 / 20px 20px, color-mix(in srgb, var(--pa) 28%, var(--surface)); animation: paTape 0.9s linear infinite; }
+@keyframes paTape { to { background-position: 20px 0, 0 0; } }
+.pa-hero { position: relative; padding: 26px 24px 8px; }
+.pa-hero::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--pa) 22%, transparent), transparent 70%); }
+.pa-hero > * { position: relative; }
+.pa-icon { position: relative; width: 76px; height: 76px; margin: 0 auto 10px; display: grid; place-items: center; }
+.pa-icon::before, .pa-icon::after { content: ''; position: absolute; inset: 8px; border-radius: 50%; border: 2px solid var(--pa); opacity: 0; animation: paRipple 2.4s ease-out infinite; }
+.pa-icon::after { animation-delay: 1.2s; }
+@keyframes paRipple { 0% { transform: scale(0.8); opacity: 0.7; } 100% { transform: scale(1.9); opacity: 0; } }
+.pa-badge { width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(circle at 30% 25%, color-mix(in srgb, var(--pa) 65%, #fff), var(--pa) 70%); color: #fff; font-family: var(--mono); font-weight: 700; font-size: 1.7rem; box-shadow: 0 8px 22px -6px var(--pa), inset 0 -3px 6px rgba(0, 0, 0, 0.18); animation: paKnock 0.7s var(--spring) 0.25s both; }
+@keyframes paKnock { 0% { transform: scale(0.4) rotate(-20deg); opacity: 0; } 60% { transform: scale(1.12) rotate(6deg); opacity: 1; } 100% { transform: none; opacity: 1; } }
+.pa-eyebrow { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 1.6px; text-transform: uppercase; color: var(--pa); }
+.plan-alert h2 { margin: 4px 0 4px; font-family: var(--mono); font-size: 1.2rem; color: var(--text); }
+
+.pa-body { padding: 12px 22px 4px; text-align: left; font-size: 0.88rem; }
+.pa-pairs { list-style: none; margin: 0 0 12px; padding: 0; display: grid; gap: 10px; }
+.pa-pair { background: color-mix(in srgb, var(--pa) 7%, var(--surface-2)); border: 1px solid color-mix(in srgb, var(--pa) 28%, var(--border)); border-radius: 14px; padding: 12px; animation: fadeUp 0.5s var(--ease) both; animation-delay: calc(0.3s + var(--k) * 0.1s); }
+.pa-flow { display: flex; align-items: center; gap: 8px; }
+.pa-pill { flex: 1; min-width: 0; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 8px 10px; font-size: 0.8rem; font-weight: 800; line-height: 1.25; }
+.pa-pill small { display: block; margin-top: 3px; font-family: var(--mono); font-size: 0.6rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; }
+.pa-link { position: relative; flex: 0 0 48px; height: 22px; }
+.pa-link::before { content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 2px; margin-top: -1px; background: repeating-linear-gradient(90deg, var(--pa) 0 6px, transparent 6px 12px); animation: paDash 0.8s linear infinite; }
+@keyframes paDash { to { background-position: 12px 0; } }
+.pa-link::after { content: '✕'; position: absolute; left: 50%; top: 50%; width: 20px; height: 20px; margin: -10px 0 0 -10px; border-radius: 50%; background: var(--pa); color: #fff; font-size: 0.6rem; font-weight: 800; display: grid; place-items: center; box-shadow: 0 0 0 3px var(--surface-2); }
+.pa-why { margin-top: 8px; font-size: 0.78rem; line-height: 1.45; color: var(--text-dim); }
+.pa-why b { color: var(--text); }
+.pa-note { margin: 0 0 4px; padding: 10px 12px; border-left: 3px solid var(--pa); border-radius: 0 10px 10px 0; background: color-mix(in srgb, var(--pa) 6%, transparent); font-size: 0.82rem; line-height: 1.55; color: var(--text-dim); animation: fadeUp 0.5s var(--ease) 0.45s both; }
+.pa-note b { color: var(--text); }
+.pa-actions { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px; padding: 14px 22px 22px; }
+.plan-alert .nv-cta:not(.pa-undo) { background: var(--pa); color: #fff; }
+.pa-undo { background: transparent; color: var(--text-dim); border: 1px solid var(--border); }
+.pa-undo:hover { background: var(--surface-2); color: var(--text); box-shadow: none; }
+@media (max-width: 480px) {
+    .pa-actions .nv-cta { width: 100%; }
+    .pa-flow { flex-direction: column; align-items: stretch; }
+    .pa-link { flex-basis: 22px; width: 100%; }
+}
 </style>
 <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme_iq') || 'dark');</script>
 </head>
@@ -2037,26 +2114,32 @@ function planWarnMap(cols) {
     const semOf = {}, offOf = {};
     cols.forEach((c, i) => c.mat.forEach(m => { semOf[m.id] = i; }));
     data.forEach((s, i) => s.mat.forEach(m => { offOf[m.id] = i; }));   // la malla oficial también junta alguna (p. ej. Control y su laboratorio)
-    const out = {}; let cred = 0, disc = 0;
+    const warn = {}, conf = {}, pairs = [];
+    const add = (id, msg) => { (warn[id] = warn[id] || []).push(msg); };
+    let cred = 0, disc = 0;
     cols.forEach((c, i) => {
         c.mat.forEach(m => {
-            const w = [];
             (m.r || []).forEach(r => {
-                if (r === 'CRED_108') { if (cred < 108) w.push(`Pide 108 créditos aprobados y con tu plan llevarías ${cred} antes de este semestre`); }
-                else if (r === 'DISC_53') { if (disc < 53) w.push(`Pide 53 créditos disciplinares y con tu plan llevarías ${disc} antes de este semestre`); }
-                else if (r === 'DISC_60') { if (disc < 60) w.push(`Pide 60 créditos disciplinares y con tu plan llevarías ${disc} antes de este semestre`); }
+                if (r === 'CRED_108') { if (cred < 108) add(m.id, `Pide 108 créditos aprobados y con tu plan llevarías ${cred} antes de este semestre`); }
+                else if (r === 'DISC_53') { if (disc < 53) add(m.id, `Pide 53 créditos disciplinares y con tu plan llevarías ${disc} antes de este semestre`); }
+                else if (r === 'DISC_60') { if (disc < 60) add(m.id, `Pide 60 créditos disciplinares y con tu plan llevarías ${disc} antes de este semestre`); }
                 else if (semOf[r] !== undefined) {
                     const rm = getMatInfo(r), nm = rm ? rm.n : r;
-                    if (semOf[r] > i) w.push(`Está antes de su prerrequisito: ${nm}`);
-                    else if (semOf[r] === i && offOf[r] !== offOf[m.id]) w.push(`Comparte semestre con su prerrequisito: ${nm}`);
+                    const before = semOf[r] > i, same = semOf[r] === i && offOf[r] !== offOf[m.id];
+                    if (before || same) {
+                        conf[m.id] = conf[r] = true;
+                        pairs.push({ sub: m.id, pre: r, kind: before ? 'before' : 'same', si: i + 1, pj: semOf[r] + 1 });
+                        add(m.id, before ? `Está antes de su prerrequisito: ${nm}` : `Comparte semestre con su prerrequisito: ${nm}`);
+                        add(r, before ? `${m.n}, que la necesita como prerrequisito, quedó antes` : `${m.n}, que la necesita como prerrequisito, quedó en el mismo semestre`);
+                    }
                 }
             });
-            if (w.length) out[m.id] = w;
         });
         c.mat.forEach(m => { cred += m.c; if (m.cat === 'Disciplinar') disc += m.c; });
     });
-    return out;
+    return { warn, conf, pairs };
 }
+function planPairsOfSems(sems) { return planWarnMap(sems.map((ids, i) => ({ sem: i + 1, mat: ids.map(getMatInfo).filter(Boolean) }))).pairs; }
 function planSemDom(el) { const c = el && el.closest('.semestre-col'); return c ? (parseInt(c.dataset.sem, 10) || 0) : 0; }
 
 function planUpdateBar() {
@@ -2110,11 +2193,83 @@ function planAnnounce(id, semNum) {
     const m = getMatInfo(id), live = document.getElementById('plan-live');
     if (live && m) live.textContent = `${m.n} ahora está en el semestre ${semNum}`;
 }
-function planCommit(id) {
+function planCommit(id, prevJson) {
     planSave(); _planDropId = id;
     renderMalla();
     const si = planLayout.sems.findIndex(a => a.includes(id));
     planAnnounce(id, si + 1);
+    if (!prevJson) return;
+    let prior = [];
+    try { prior = planPairsOfSems(JSON.parse(prevJson).sems); } catch (e) {}
+    const fresh = planPairsOfSems(planLayout.sems).filter(p => (p.sub === id || p.pre === id) && !prior.some(q => q.sub === p.sub && q.pre === p.pre && q.kind === p.kind));
+    if (fresh.length) setTimeout(() => planShowAlert(fresh, prevJson, id), 450);   // primero se ven los rayos rojos, luego el aviso
+}
+
+// ---------- Aviso emergente: materia y prerrequisito en el mismo semestre (o al revés) ----------
+let _paPrev = null, _paId = null;
+function planEnsureModal() {
+    if (document.getElementById('plan-modal')) return;
+    const m = document.createElement('div');
+    m.className = 'modal-overlay'; m.id = 'plan-modal';
+    m.innerHTML = `<div class="nv-card plan-alert" role="alertdialog" aria-modal="true" aria-labelledby="pa-title" aria-describedby="pa-body">
+        <div class="pa-tape" aria-hidden="true"></div>
+        <div class="pa-hero">
+            <div class="pa-icon" aria-hidden="true"><div class="pa-badge">!</div></div>
+            <div class="pa-eyebrow">// Advertencia</div>
+            <h2 id="pa-title">¡Ten cuidado con ese orden!</h2>
+        </div>
+        <div class="pa-body" id="pa-body"></div>
+        <div class="pa-actions">
+            <button class="nv-cta pa-undo" id="pa-undo">↩ Deshacer movimiento</button>
+            <button class="nv-cta" id="pa-ok">Entendido</button>
+        </div></div>`;
+    document.body.appendChild(m);
+    m.addEventListener('click', e => { if (e.target === m) planCloseAlert(false); });
+    document.getElementById('pa-ok').onclick = () => planCloseAlert(false);
+    document.getElementById('pa-undo').onclick = () => planCloseAlert(true);
+    document.addEventListener('keydown', e => {
+        if (!m.classList.contains('active')) return;
+        if (e.key === 'Escape') { e.preventDefault(); planCloseAlert(false); }
+        else if (e.key === 'Tab') {
+            const a = document.getElementById('pa-undo'), b = document.getElementById('pa-ok');
+            if (e.shiftKey && document.activeElement === a) { e.preventDefault(); b.focus(); }
+            else if (!e.shiftKey && document.activeElement === b) { e.preventDefault(); a.focus(); }
+        }
+    });
+}
+function planShowAlert(pairs, prevJson, id) {
+    planEnsureModal();
+    const nm = x => { const m = getMatInfo(x); return siaEsc(m ? m.n : x); };
+    const items = pairs.map((p, k) => {
+        const why = p.kind === 'same'
+            ? `Quedaron juntas en el <b>semestre ${p.si}</b>.`
+            : `<b>${nm(p.sub)}</b> quedó en el <b>semestre ${p.si}</b>, antes de su prerrequisito (semestre ${p.pj}).`;
+        return `<li class="pa-pair" style="--k:${k}">
+            <div class="pa-flow">
+                <div class="pa-pill"><span>${nm(p.pre)}</span><small>Primero · Sem ${p.pj}</small></div>
+                <span class="pa-link" aria-hidden="true"></span>
+                <div class="pa-pill"><span>${nm(p.sub)}</span><small>Después · Sem ${p.si}</small></div>
+            </div>
+            <div class="pa-why">${why}</div>
+        </li>`;
+    }).join('');
+    document.getElementById('pa-body').innerHTML = `<ul class="pa-pairs">${items}</ul><p class="pa-note">Eso no se puede: <b>no son correquisitos</b>. Sí o sí debes ver una primero y luego la otra, en semestres distintos.</p>`;
+    _paPrev = prevJson; _paId = id;
+    document.getElementById('plan-modal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => { const b = document.getElementById('pa-ok'); if (b) b.focus({ preventScroll: true }); }, 80);
+}
+function planCloseAlert(undo) {
+    const m = document.getElementById('plan-modal');
+    if (!m || !m.classList.contains('active')) return;
+    m.classList.remove('active');
+    document.body.style.overflow = '';
+    if (undo && _paPrev) {
+        try { planLayout = JSON.parse(_paPrev); } catch (e) {}
+        planSave(); _planDropId = _paId; renderMalla();
+    }
+    const c = document.querySelector(`#grid .materia[data-id="${_paId}"]`);
+    if (c) { try { c.focus({ preventScroll: true }); } catch (e) {} }
 }
 
 // ---------- Arrastrar y soltar (ratón, lápiz y táctil por el asa ⠿) ----------
@@ -2227,8 +2382,9 @@ function planPointerUp(e) {
             if (i >= 0) sems[i] = sems[i].filter(x => x !== d.id);
             sems.push([d.id]);
         }
+        const prev = JSON.stringify(planLayout);
         planLayout.sems = sems;
-        planCommit(d.id);
+        planCommit(d.id, prev);
     };
     if (overAdd) { d.ghost.style.transition = 'opacity .18s, transform .18s'; d.ghost.style.opacity = '0'; setTimeout(finish, 190); return; }
     d.ghost.style.transition = 'transform .24s cubic-bezier(.2,.9,.3,1.2)';
@@ -2246,6 +2402,7 @@ document.getElementById('grid').addEventListener('keydown', e => {
     if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) return;
     const id = card.dataset.id;
     let si = planLayout.sems.findIndex(a => a.includes(id)); if (si < 0) return;
+    const prevJson = JSON.stringify(planLayout);
     const arr = planLayout.sems[si], pos = arr.indexOf(id);
     if (e.key === 'ArrowUp') { if (pos === 0) return; arr.splice(pos, 1); arr.splice(pos - 1, 0, id); }
     else if (e.key === 'ArrowDown') { if (pos >= arr.length - 1) return; arr.splice(pos, 1); arr.splice(pos + 1, 0, id); }
@@ -2255,7 +2412,7 @@ document.getElementById('grid').addEventListener('keydown', e => {
         arr.splice(pos, 1); planLayout.sems[si + 1].push(id);
     }
     e.preventDefault();
-    planCommit(id);
+    planCommit(id, prevJson);
     const again = document.querySelector(`#grid .materia[data-id="${id}"]`);
     if (again) again.focus();
 });
@@ -2273,7 +2430,8 @@ function renderMalla() {
 
     grid.innerHTML = '';
     let mallaData = planOn ? planColumns() : [...data];
-    const pw = planOn ? planWarnMap(mallaData) : {};
+    const pwr = planOn ? planWarnMap(mallaData) : { warn: {}, conf: {}, pairs: [] };
+    const pw = pwr.warn;
     let planIdx = 0;
     if (hasNivelacion) mallaData.unshift({ sem: 0, mat: nivelacionMaterias });
 
@@ -2324,7 +2482,7 @@ function renderMalla() {
                     card.title = 'Arrastra para mover · Mayús + flechas con el teclado';
                     card.insertAdjacentHTML('afterbegin', '<span class="plan-grip" aria-hidden="true">⠿</span>');
                 }
-                if (pw[m.id]) { card.classList.add('plan-bad'); card.insertAdjacentHTML('beforeend', `<span class="plan-warn" title="${siaEsc(pw[m.id].join(' · '))}">⚠️</span>`); }
+                if (pw[m.id]) { card.classList.add(pwr.conf[m.id] ? 'plan-conflict' : 'plan-bad'); card.insertAdjacentHTML('beforeend', `<span class="plan-warn" title="${siaEsc(pw[m.id].join(' · '))}">⚠️</span>`); }
             }
             col.appendChild(card);
         });
