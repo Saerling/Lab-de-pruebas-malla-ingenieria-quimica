@@ -854,6 +854,33 @@ body.plan-dragging { user-select: none; -webkit-user-select: none; cursor: grabb
     .pa-flow { flex-direction: column; align-items: stretch; }
     .pa-link { flex-basis: 22px; width: 100%; }
 }
+
+/* ===== CURSANDO ACTUALMENTE ===== */
+:root { --cur: #62b4ff; }
+[data-theme="light"] { --cur: #2b7bd6; }
+.status-current { border-color: var(--cur); border-left-width: 4px; padding-bottom: 24px; background: linear-gradient(160deg, color-mix(in srgb, var(--cur) 17%, var(--surface)), color-mix(in srgb, var(--cur) 5%, var(--surface))); box-shadow: 0 0 0 1px color-mix(in srgb, var(--cur) 22%, transparent), 0 10px 24px -12px color-mix(in srgb, var(--cur) 60%, transparent); }
+.status-current .m-cred { color: color-mix(in srgb, var(--cur) 70%, var(--text-dim)); font-weight: 700; }
+.status-current .icon-indicator { animation: curBook 2.6s ease-in-out infinite; }
+@keyframes curBook { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-2px) rotate(-8deg); } }
+.cur-pill { display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; padding: 3px 10px 3px 8px; border-radius: 999px; background: color-mix(in srgb, var(--cur) 18%, transparent); border: 1px solid color-mix(in srgb, var(--cur) 45%, transparent); color: var(--cur); font-family: var(--mono); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.7px; text-transform: uppercase; }
+.cur-pill i { width: 7px; height: 7px; border-radius: 50%; background: var(--cur); animation: curDot 1.6s ease-out infinite; }
+@keyframes curDot { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--cur) 70%, transparent); } 100% { box-shadow: 0 0 0 7px transparent; } }
+.cur-bar { position: absolute; left: 12px; right: 34px; bottom: 8px; height: 3px; border-radius: 3px; overflow: hidden; background: color-mix(in srgb, var(--cur) 16%, transparent); }
+.cur-bar::after { content: ''; position: absolute; top: 0; bottom: 0; left: 0; width: 38%; border-radius: 3px; background: linear-gradient(90deg, transparent, var(--cur), transparent); animation: curSweep 1.9s ease-in-out infinite; }
+@keyframes curSweep { from { transform: translateX(-100%); } to { transform: translateX(270%); } }
+.materia.cur-in { animation: curStamp 0.75s var(--spring) both; }
+@keyframes curStamp {
+    0% { transform: scale(0.88); box-shadow: 0 0 0 0 var(--cur); }
+    50% { transform: scale(1.05); box-shadow: 0 0 0 12px transparent, 0 0 34px color-mix(in srgb, var(--cur) 60%, transparent); }
+    100% { transform: none; }
+}
+.stat-badge.cur { background: color-mix(in srgb, var(--cur) 14%, transparent); color: var(--cur); border-color: color-mix(in srgb, var(--cur) 40%, var(--border)); animation: fadeUp 0.4s var(--ease) both; }
+.btn-current { border-color: var(--cur); color: var(--cur); }
+.btn-current.active, .btn-current:hover { background: var(--cur); color: var(--bg); }
+/* Línea desde una materia en curso: la energía va en camino */
+.lk.cur .lk-track { stroke-width: 2; stroke-dasharray: 3 6; opacity: 0.85; animation: curFlow 1s linear infinite; }
+.lk.cur .lk-end, .lk.cur .lk-start { opacity: 0.9; }
+@keyframes curFlow { to { stroke-dashoffset: -9; } }
 </style>
 <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme_iq') || 'dark');</script>
 </head>
@@ -881,6 +908,7 @@ body.plan-dragging { user-select: none; -webkit-user-select: none; cursor: grabb
         <div class="stats">
             <div class="stat-badge" id="total-c">Créditos Aprobados: 0 / 180</div>
             <div class="stat-badge progress" id="perc-c">0% completado</div>
+            <div class="stat-badge cur" id="cur-c" hidden></div>
         </div>
         <div class="progress-container"><div class="progress-bar" id="p-bar"></div></div>
         
@@ -890,6 +918,7 @@ body.plan-dragging { user-select: none; -webkit-user-select: none; cursor: grabb
             <div class="leyenda-item"><div class="color-box" style="border-color: var(--primary);"></div> Disponible</div>
             <div class="leyenda-item"><div class="color-box" style="border-color: var(--danger); background: rgba(239, 68, 68, 0.2);"></div> Reprobada ❌</div>
             <div class="leyenda-item"><div class="color-box" style="background: var(--success);"></div> Aprobada ✅</div>
+            <div class="leyenda-item"><div class="color-box" style="border-color: var(--cur); background: color-mix(in srgb, var(--cur) 28%, transparent);"></div> Cursando 📖</div>
         </div>
         
         <div style="text-align: center;">
@@ -1127,6 +1156,7 @@ body.plan-dragging { user-select: none; -webkit-user-select: none; cursor: grabb
             </p>
             <button id="btn-app" class="state-btn btn-approve" onclick="setStatus('approved')">✅ Aprobada</button>
             <button id="btn-fail" class="state-btn btn-fail" onclick="setStatus('failed')">❌ Reprobada</button>
+            <button id="btn-cur" class="state-btn btn-current" onclick="setStatus('current')">📖 Cursando actualmente</button>
             <button id="btn-pend" class="state-btn btn-pending" onclick="setStatus('pending')">⏳ Pendiente</button>
         </div>
     </div>
@@ -2427,6 +2457,8 @@ function renderMalla() {
     document.getElementById('total-c').innerText = `Créditos Aprobados: ${stats.totalApp} / 180`;
     document.getElementById('perc-c').innerText = `${stats.percentage}% completado`;
     document.getElementById('p-bar').style.width = `${stats.percentage}%`;
+    const cs = cursandoStats(), cb = document.getElementById('cur-c');
+    if (cb) { cb.hidden = !cs.n; cb.textContent = `📖 Cursando: ${cs.n} ${cs.n === 1 ? 'materia' : 'materias'} · ${cs.c} cr`; }
 
     grid.innerHTML = '';
     let mallaData = planOn ? planColumns() : [...data];
@@ -2458,12 +2490,14 @@ function renderMalla() {
 
             if (state === 'approved') { sClass = 'approved'; icon = '<span class="icon-indicator" title="Aprobada">✅</span>'; }
             else if (state === 'failed') { sClass = 'status-failed'; icon = '<span class="icon-indicator" title="Reprobada">❌</span>'; }
+            else if (state === 'current') { sClass = 'status-current'; icon = '<span class="icon-indicator" title="Cursando actualmente">📖</span>'; }
             else if (prog.status === 'ready') sClass = 'status-ready';
             else if (prog.status === 'partial') sClass = 'status-locked-partial';
             else sClass = 'status-locked-total';
 
             card.className = `materia ${sClass}`;
             card.dataset.id = m.id;
+            if (state === 'current' && _curFlashId === m.id) card.classList.add('cur-in');
             card.onclick = () => handleCardClick(card, m.id, prog.status, state);
             const failText = state === 'failed' ? `<br><small style="color:var(--danger)">Reprobada</small>` : '';
 
@@ -2471,6 +2505,7 @@ function renderMalla() {
                 <button class="dots-btn" title="Más opciones" aria-label="Más opciones" onclick="openMateriaMenu(event,'${m.id}')">⋮</button>
                 <span class="m-name">${m.n}${icon}</span>
                 <span class="m-cred">${m.c} Créditos ${failText}</span>
+                ${state === 'current' ? '<span class="cur-pill"><i></i>Cursando</span><span class="cur-bar" aria-hidden="true"></span>' : ''}
                 ${libreMalla[m.id] ? `<span class="m-libre" title="${siaEsc(libreMalla[m.id].codigo)}">📌 ${siaEsc(libreMalla[m.id].nombre)}</span>` : ''}
             `;
             if (planOn) {
@@ -2489,7 +2524,18 @@ function renderMalla() {
         grid.appendChild(col);
     });
     if (planOn) planAfterRender(grid);
+    _curFlashId = null;
     requestAnimationFrame(drawLinks);
+}
+
+// Materias que marcaste como "cursando actualmente"
+let _curFlashId = null;
+function cursandoStats() {
+    let n = 0, c = 0;
+    const all = [...data];
+    if (hasNivelacion) all.unshift({ mat: nivelacionMaterias });
+    all.forEach(sem => sem.mat.forEach(m => { if (getCombinedState(m.id) === 'current') { n++; c += m.c; } }));
+    return { n, c };
 }
     
 
@@ -2534,7 +2580,8 @@ function handleCardClick(card, id, progStatus, state) {
 }
 
 function quickSet(id, newState) {
-    if (newState === 'approved' && !canApprove(id)) { showNoToast(id); return; }
+    if ((newState === 'approved' || newState === 'current') && !canApprove(id)) { showNoToast(id); return; }
+    if (newState === 'current') _curFlashId = id;
     if (newState === 'pending') delete visualState[id];
     else visualState[id] = newState;
     localStorage.setItem('malla_iq_visual_v7', JSON.stringify(visualState));
@@ -2549,14 +2596,14 @@ function openMateriaMenu(ev, id) {
     const m = getMatInfo(id);
     const locked = getCalcNota(id) !== -1;
     const cur = getCombinedState(id) || 'pending';
-    const item = (st, label) => `<button class="mm-item ${cur === st ? 'on' : ''} ${st === 'approved' && !canApprove(id) ? 'mm-off' : ''}" onclick="event.stopPropagation(); quickSet('${id}','${st}')">${label}</button>`;
+    const item = (st, label) => `<button class="mm-item ${cur === st ? 'on' : ''} ${(st === 'approved' || st === 'current') && !canApprove(id) ? 'mm-off' : ''}" onclick="event.stopPropagation(); quickSet('${id}','${st}')">${label}</button>`;
 
     const menu = document.createElement('div');
     menu.id = 'materia-menu';
     menu.className = 'materia-menu';
     menu.innerHTML = locked
         ? `<div class="mm-note">Estado controlado por la Calculadora</div>`
-        : item('approved', '✅ Aprobada') + item('failed', '❌ Reprobada') + item('pending', '⏳ Pendiente');
+        : item('approved', '✅ Aprobada') + item('failed', '❌ Reprobada') + item('current', '📖 Cursando') + item('pending', '⏳ Pendiente');
     if (m.siaId && m.siaId.trim() !== '') {
         menu.innerHTML += `<div class="mm-sep"></div><button class="mm-item" onclick="closeMateriaMenu(); openCuposModal('${m.siaId}')">📊 Ver cupos SIA</button>`;
     }
@@ -2624,11 +2671,13 @@ window.addEventListener('scroll', closeMateriaMenu, true);
             calcMessage.style.display = 'none';
             document.getElementById('btn-app').classList.remove('active');
             document.getElementById('btn-fail').classList.remove('active');
+            document.getElementById('btn-cur').classList.remove('active');
             document.getElementById('btn-pend').classList.remove('active');
 
             const currentState = visualState[id] || 'pending';
             if(currentState === 'approved') document.getElementById('btn-app').classList.add('active');
             else if(currentState === 'failed') document.getElementById('btn-fail').classList.add('active');
+            else if(currentState === 'current') document.getElementById('btn-cur').classList.add('active');
             else document.getElementById('btn-pend').classList.add('active');
         }
         document.getElementById('status-modal').classList.add('active');
@@ -2637,7 +2686,8 @@ window.addEventListener('scroll', closeMateriaMenu, true);
     function closeStatusModal() { document.getElementById('status-modal').classList.remove('active'); }
 
     function setStatus(newState) {
-        if (newState === 'approved' && !canApprove(currentSubjId)) { closeStatusModal(); showNoToast(currentSubjId); return; }
+        if ((newState === 'approved' || newState === 'current') && !canApprove(currentSubjId)) { closeStatusModal(); showNoToast(currentSubjId); return; }
+        if (newState === 'current') _curFlashId = currentSubjId;
         if(newState === 'pending') delete visualState[currentSubjId];
         else visualState[currentSubjId] = newState;
         localStorage.setItem('malla_iq_visual_v7', JSON.stringify(visualState));
@@ -3334,7 +3384,7 @@ function drawLinks() {
             const d = `M${x1},${y1} C${x1 + dx},${y1} ${x2 - dx},${y2} ${x2},${y2}`;
 
             const sa = getCombinedState(rid) === 'approved';
-            const cls = sa ? (st === 'approved' ? 'done' : 'on') : 'off';
+            const cls = sa ? (st === 'approved' ? 'done' : 'on') : (getCombinedState(rid) === 'current' ? 'cur' : 'off');
             const bad = planOn && planSemDom(s) >= planSemDom(t);
             const key = rid + '>' + id;
             let extra = '';
