@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Malla Curricular IQ · v4.2</title>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 
     <style>
 /* ===== TEMA NOCHE (por defecto) ===== */
@@ -834,6 +834,103 @@ button:active { transform: scale(0.97); }
 .t-chip:hover { transform: translateY(-2px); border-color: var(--primary); color: var(--primary); background: var(--primary-soft); }
 .t-names { margin-top: 14px; font-size: 0.8rem; color: var(--text-dim); }
 .t-names:empty { display: none; }
+
+/* ===== v5.0 · MUNDO "AFICHE SERIGRAFIADO" ===== */
+:root, [data-theme="dark"] {
+    --paper: #17140f; --bg: #17140f; --surface: #1f1b15; --surface-2: #29241c; --border: #3a3329;
+    --text: #f1ead9; --text-dim: #a89d88;
+    --ink-blue: #4d7cff; --ink-pink: #ff5c8a; --ink-yellow: #ffd23f;
+    --primary: var(--ink-blue); --accent: var(--ink-pink); --success: var(--ink-blue); --warning: var(--ink-yellow); --danger: var(--ink-pink);
+    --primary-soft: rgba(77, 124, 255, 0.14); --accent-soft: rgba(255, 92, 138, 0.13); --danger-soft: rgba(255, 92, 138, 0.13); --warning-soft: rgba(255, 210, 63, 0.10);
+    --head-bg: var(--text); --head-text: var(--paper); --on-primary: #fff;
+    --approved: var(--ink-blue);
+    --shadow: 0 2px 0 rgba(0, 0, 0, 0.35), 0 8px 18px rgba(0, 0, 0, 0.28); --shadow-lg: 0 4px 0 rgba(0, 0, 0, 0.35), 0 16px 32px rgba(0, 0, 0, 0.4);
+    --ring: 0 0 0 3px rgba(77, 124, 255, 0.35); --glow: 0 0 0 transparent;
+    --grid: rgba(241, 234, 217, 0.05); --overlay: rgba(10, 8, 5, 0.72); --glass: rgba(23, 20, 15, 0.9);
+    --color-fundamentacion: var(--ink-yellow); --color-disciplinar: var(--ink-blue); --color-libre: var(--ink-pink);
+    --radius: 6px; --mono: 'Archivo', system-ui, sans-serif; --data: 'JetBrains Mono', ui-monospace, monospace;
+    --halftone: radial-gradient(rgba(241, 234, 217, 0.07) 1px, transparent 1.4px);
+}
+[data-theme="light"] {
+    --paper: #e9e7e0; --bg: #e9e7e0; --surface: #f5f4ef; --surface-2: #dfddd4; --border: #c9c5b8;
+    --text: #1d1b17; --text-dim: #5f5a4f;
+    --ink-blue: #1f4fe0; --ink-pink: #e8336b; --ink-yellow: #f2bb00;
+    --primary-soft: rgba(31, 79, 224, 0.10); --accent-soft: rgba(232, 51, 107, 0.10); --danger-soft: rgba(232, 51, 107, 0.10); --warning-soft: rgba(242, 187, 0, 0.14);
+    --head-bg: var(--text); --head-text: var(--paper); --on-primary: #fff;
+    --shadow: 0 2px 0 rgba(29, 27, 23, 0.10), 0 8px 18px rgba(29, 27, 23, 0.08); --shadow-lg: 0 4px 0 rgba(29, 27, 23, 0.12), 0 16px 30px rgba(29, 27, 23, 0.14);
+    --ring: 0 0 0 3px rgba(31, 79, 224, 0.28); --overlay: rgba(29, 27, 23, 0.45); --glass: rgba(233, 231, 224, 0.92);
+    --halftone: radial-gradient(rgba(29, 27, 23, 0.08) 1px, transparent 1.4px);
+}
+body { font-family: 'Archivo', system-ui, sans-serif; background-image: var(--halftone); background-size: 6px 6px; }
+body::before, body::after { display: none; }
+::selection { background: var(--ink-yellow); color: #1d1b17; }
+
+/* Rótulos: Archivo condensada, la voz del afiche */
+header h1, .tab-btn, .sem-header, .cat-tag, .agr-header, .stat-badge, .btn-reset, .modal-header h2, .hor-dayhead, .papi-semestre, .ver-chip, .theme-toggle, .fb-btn, .coffee-btn, .leyenda-item, .agr-table th, .foot-tag, .btn-add-sem, .hor-plan {
+    font-family: 'Archivo', system-ui, sans-serif; font-stretch: 70%; font-weight: 800; letter-spacing: 0.02em; }
+.m-cred, .stat-val, .cupo-badge, .hor-times div, .agr-table td:first-child, #hor-resumen, .hint { font-family: var(--data); }
+header h1 { font-size: clamp(1.6rem, 4vw, 2.6rem); font-weight: 900; font-stretch: 62%; text-transform: uppercase; letter-spacing: 0; line-height: 0.95;
+    color: var(--text); text-shadow: 3px 2px 0 var(--ink-pink); }
+header h1::before, header h1::after, .sem-header::before { content: none; }
+[data-theme="light"] header h1 { text-shadow: 3px 2px 0 color-mix(in srgb, var(--ink-pink) 80%, transparent); }
+
+/* Header: franja de papel con filete grueso, sin tarjeta flotante */
+header { background: var(--paper); border: 0; border-bottom: 3px solid var(--text); border-radius: 0; box-shadow: none; margin: -14px calc(-1 * clamp(10px, 2vw, 24px)) 16px; padding: 14px clamp(14px, 3vw, 32px) 0; max-width: none; }
+body.scrolled header { background: var(--glass); box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25); }
+.tabs { gap: 0; justify-content: flex-start; margin-top: 4px; }
+.tab-btn { border: 0; border-radius: 0; padding: 10px 16px 12px; font-size: 0.92rem; text-transform: uppercase; color: var(--text-dim); background: transparent; }
+.tab-btn:not(.active):hover { background: transparent; color: var(--text); }
+.tab-ink { border-radius: 0; background: var(--ink-yellow); box-shadow: none; }
+.ink-ready .tab-btn.active, .tab-btn.active { color: #1d1b17; }
+.theme-toggle, .fb-btn, .coffee-btn, .ver-chip { border-radius: 4px; text-transform: uppercase; font-size: 0.72rem; }
+.ver-chip { background: transparent; border-color: var(--ink-blue); }
+.coffee-btn { background: transparent; }
+
+/* Franja de estado de la malla */
+.malla-toolbar { border-radius: 0; border: 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: transparent; box-shadow: none; padding: 12px 0; }
+.stat-badge { border-radius: 3px; border: 0; background: var(--text); color: var(--paper); text-transform: uppercase; }
+.stat-badge.progress { background: var(--ink-yellow); color: #1d1b17; }
+.mt-progress .progress-container { height: 8px; border-radius: 0; border: 1px solid var(--text); background: transparent; }
+.progress-bar { border-radius: 0; background: var(--ink-blue); }
+.btn-reset { border-radius: 4px; text-transform: uppercase; }
+.color-box { border-radius: 2px; }
+
+/* Malla: retícula visible (filetes entre semestres) y tarjetas planas de tinta */
+.malla-wrapper { gap: 0; }
+.semestre-col { padding: 0 8px; border-right: 1px solid var(--border); }
+.sem-header { border-radius: 0; border: 0; background: var(--text); color: var(--paper); font-size: 0.9rem; text-transform: uppercase; }
+.cat-tag { color: var(--text-dim); border-bottom: 1px solid var(--border); font-size: 0.7rem; }
+.materia { border-radius: var(--radius); border: 1.5px solid var(--border); background: var(--surface); box-shadow: none; }
+.materia:hover:not(.status-locked-total) { border-color: var(--text); box-shadow: 0 3px 0 var(--border); transform: translateY(-2px); }
+.status-ready { border-color: var(--ink-yellow); background: color-mix(in srgb, var(--ink-yellow) 12%, var(--surface)); box-shadow: inset 4px 0 0 -2px transparent; }
+.status-locked-partial { border-style: dashed; border-color: var(--ink-yellow); background: var(--surface); }
+.status-failed { border-color: var(--ink-pink); background: color-mix(in srgb, var(--ink-pink) 14%, var(--surface)); }
+.status-failed .m-cred { color: var(--ink-pink); }
+.approved { background: var(--ink-blue) !important; border-color: var(--ink-blue) !important; color: #fff; box-shadow: 2px 2px 0 var(--ink-pink) !important; }
+.approved .m-cred { color: rgba(255, 255, 255, 0.85); }
+@keyframes approveIn { 0% { transform: scale(0.96); box-shadow: 6px 5px 0 var(--ink-pink); } 100% { transform: none; box-shadow: 2px 2px 0 var(--ink-pink); } }
+
+/* Agrupaciones, calculadora, horario: mismas tintas */
+.agrupacion-card, .semestre-block, .hor-panel, .modal-content, .site-footer, .header-stats { border-radius: 8px; border: 1.5px solid var(--border); box-shadow: var(--shadow); }
+.agrupacion-card:hover { border-color: var(--text); box-shadow: var(--shadow-lg); }
+.agr-header { color: #1d1b17; font-size: 0.86rem; text-transform: uppercase; }
+.agr-header.disciplinar { color: #fff; }
+.agr-table tr.obligatoria { background: color-mix(in srgb, var(--ink-yellow) 9%, transparent); }
+.stat-val { color: var(--text); font-size: 1.9rem; }
+.btn-add-sem { background: var(--ink-blue); border-radius: 6px; text-transform: uppercase; font-size: 1rem; box-shadow: 3px 3px 0 var(--ink-pink); }
+.hor-dayhead { background: var(--text); color: var(--paper); border-left: 1px solid var(--paper); }
+.hor-block { border-radius: 4px; box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.35); }
+.modal-header h2 { color: var(--text); text-transform: uppercase; font-size: 1.3rem; }
+.modal-header { border-bottom: 2px solid var(--text); }
+
+.thanks { max-width: 1680px; border-radius: 8px; border: 1.5px solid var(--border); }
+.thanks::before { height: 6px; background: linear-gradient(90deg, var(--ink-blue) 0 33.3%, var(--ink-yellow) 0 66.6%, var(--ink-pink) 0); }
+.thanks h2, .thanks h3 { font-stretch: 70%; font-weight: 900; text-transform: uppercase; letter-spacing: 0.01em; }
+.sem-bar i, .nv-prog { background: var(--ink-blue); border-radius: 0; }
+/* Movimiento: el "jalón de rasero" al cambiar de vista y de tema */
+.view-section.active { animation: inkPull 0.5s var(--ease-out) both; }
+@keyframes inkPull { from { clip-path: inset(0 100% 0 0); opacity: 0.4; } to { clip-path: inset(0 0 0 0); opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .view-section.active { animation: none; } }
 </style>
 <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme_iq') || 'dark');</script>
 </head>
@@ -2902,7 +2999,7 @@ function toggleTheme(ev) {
         const x = b.left + b.width / 2, y = b.top + b.height / 2;
         const r = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
         document.startViewTransition(save).ready.then(() => {
-            html.animate({ clipPath: [`circle(0 at ${x}px ${y}px)`, `circle(${r}px at ${x}px ${y}px)`] },
+            html.animate({ clipPath: ['inset(0 100% 0 0)', 'inset(0 0 0 0)'] },
                 { duration: 560, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', pseudoElement: '::view-transition-new(root)' });
         });
         return;
@@ -2925,8 +3022,9 @@ function pinHeader() {
     const h = document.querySelector('header'), t = h && h.querySelector('.tabs');
     if (t) h.style.top = -(t.offsetTop - 8) + 'px';
 }
-addEventListener('load', () => { moveTabInk(); pinHeader(); document.documentElement.classList.add('ink-ready'); });
+addEventListener('load', () => { moveTabInk(); pinHeader(); document.fonts && document.fonts.ready.then(() => { moveTabInk(); pinHeader(); }); document.documentElement.classList.add('ink-ready'); });
 addEventListener('resize', () => { moveTabInk(); pinHeader(); });
+if (window.ResizeObserver) addEventListener('DOMContentLoaded', () => new ResizeObserver(() => { pinHeader(); moveTabInk(); }).observe(document.querySelector('header')));
 addEventListener('scroll', () => document.body.classList.toggle('scrolled', scrollY > 40), { passive: true });
 
 function openCoffeeModal() { document.getElementById('coffee-modal').classList.add('active'); }
