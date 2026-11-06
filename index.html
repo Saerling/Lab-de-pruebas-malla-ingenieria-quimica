@@ -716,6 +716,25 @@ textarea.fb-field { min-height: 130px; resize: vertical; line-height: 1.5; }
 .thanks.vis .rv { animation: fadeUp 0.6s var(--ease) both; animation-delay: calc(var(--i) * 0.1s); }
 .t-icon { display: inline-grid; place-items: center; width: 50px; height: 50px; margin-bottom: 8px; border-radius: 50%; background: var(--primary-soft); border: 1px solid var(--border); font-size: 1.5rem; }
 .thanks.vis .t-icon { animation: fadeUp 0.6s var(--ease) both, softPulse 3.2s ease-in-out 1s infinite; }
+
+/* v4.3 · pestañas con indicador, header pegajoso, revelado por scroll */
+header { position: sticky; z-index: 50; transition: box-shadow 0.3s, background-color 0.3s; }
+body.scrolled header { background: var(--glass); backdrop-filter: blur(14px) saturate(1.2); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35); }
+body.scrolled header > .fb-btn, body.scrolled header > .theme-toggle, body.scrolled header > .coffee-btn { opacity: 0; pointer-events: none; transition: opacity 0.2s; }
+.tabs { position: relative; isolation: isolate; }
+.tab-ink { position: absolute; left: 0; top: 0; z-index: -1; border-radius: 10px; background: var(--primary); box-shadow: 0 4px 14px color-mix(in srgb, var(--primary) 35%, transparent); pointer-events: none; }
+.ink-ready .tab-ink { transition: transform 0.45s var(--ease-out), width 0.45s var(--ease-out), height 0.45s var(--ease-out); }
+.ink-ready .tab-btn.active { background: transparent; border-color: transparent; box-shadow: none; }
+.tab-btn.active { transition: color 0.25s 0.08s; }
+.tab-btn:not(.active):hover { background: var(--primary-soft); }
+::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+.malla-wrapper { mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent); }
+@supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+        .agrupacion-card, .semestre-block, .site-footer { animation: revealUp linear both; animation-timeline: view(); animation-range: entry 0% entry 35%; }
+        @keyframes revealUp { from { opacity: 0; transform: translateY(24px) scale(0.98); } to { opacity: 1; transform: none; } }
+    }
+}
 /* ===== v4.3 · REFINAMIENTO: espacio, calma y foco ===== */
 :root { --ease-out: cubic-bezier(0.16, 1, 0.3, 1); --tight: 10px; }
 body { padding: 14px clamp(10px, 2vw, 24px); }
@@ -821,7 +840,7 @@ button:active { transform: scale(0.97); }
 <body>
 
 <header>
-    <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">☀ Modo día</button>
+    <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme(event)">☀ Modo día</button>
     <button class="fb-btn" id="fb-btn" onclick="openFeedback()" title="Dime tu opinión">💬 Comentarios</button>
     <button class="coffee-btn" onclick="openCoffeeModal()"><span class="coffee-ico">☕</span> Invítame un café</button>
     <h1 style="margin:0 0 10px">MALLA CURRICULAR IQ</h1>
@@ -1253,6 +1272,8 @@ function switchTab(tab) {
     if (tab === 'libre') libreLoad();
     if (tab === 'info') infoRender();
     if (tab === 'malla') requestAnimationFrame(drawLinks);
+    moveTabInk();
+    if (scrollY > 200) scrollTo({ top: 0, behavior: 'smooth' });
 }
 
     // ==========================================
@@ -2871,14 +2892,42 @@ function applyTheme(t) {
     const b = document.getElementById('theme-toggle');
     if (b) b.textContent = t === 'dark' ? '☀ Modo día' : '☾ Modo noche';
 }
-function toggleTheme() {
+function toggleTheme(ev) {
     const html = document.documentElement;
     const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    html.classList.add('theme-anim');
-    applyTheme(next);
-    try { localStorage.setItem('theme_iq', next); } catch (e) {}
+    const save = () => { applyTheme(next); try { localStorage.setItem('theme_iq', next); } catch (e) {} };
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (document.startViewTransition && !reduce) {
+        const b = document.getElementById('theme-toggle').getBoundingClientRect();
+        const x = b.left + b.width / 2, y = b.top + b.height / 2;
+        const r = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+        document.startViewTransition(save).ready.then(() => {
+            html.animate({ clipPath: [`circle(0 at ${x}px ${y}px)`, `circle(${r}px at ${x}px ${y}px)`] },
+                { duration: 560, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', pseudoElement: '::view-transition-new(root)' });
+        });
+        return;
+    }
+    html.classList.add('theme-anim'); save();
     setTimeout(() => html.classList.remove('theme-anim'), 500);
 }
+
+/* v4.3 · indicador deslizante de pestañas + header que se queda pegado */
+function moveTabInk() {
+    const tabs = document.querySelector('.tabs'), act = tabs && tabs.querySelector('.tab-btn.active');
+    if (!act) return;
+    let ink = tabs.querySelector('.tab-ink');
+    if (!ink) { ink = document.createElement('span'); ink.className = 'tab-ink'; ink.setAttribute('aria-hidden', 'true'); tabs.prepend(ink); }
+    ink.style.transform = `translate(${act.offsetLeft}px, ${act.offsetTop}px)`;
+    ink.style.width = act.offsetWidth + 'px'; ink.style.height = act.offsetHeight + 'px';
+    if (tabs.scrollWidth > tabs.clientWidth) act.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+}
+function pinHeader() {
+    const h = document.querySelector('header'), t = h && h.querySelector('.tabs');
+    if (t) h.style.top = -(t.offsetTop - 8) + 'px';
+}
+addEventListener('load', () => { moveTabInk(); pinHeader(); document.documentElement.classList.add('ink-ready'); });
+addEventListener('resize', () => { moveTabInk(); pinHeader(); });
+addEventListener('scroll', () => document.body.classList.toggle('scrolled', scrollY > 40), { passive: true });
 
 function openCoffeeModal() { document.getElementById('coffee-modal').classList.add('active'); }
 function closeCoffeeModal() { document.getElementById('coffee-modal').classList.remove('active'); }
