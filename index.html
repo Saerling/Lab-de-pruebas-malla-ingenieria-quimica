@@ -971,6 +971,17 @@ header > .tabs { order: 8; }
     header > .coffee-btn, header > .fb-btn { margin: 0; }
     header > .tabs { flex: 1 1 100%; }
 }
+/* Ajustes de la revisión */
+.agr-table tr.obligatoria { background: transparent; font-weight: 600; }
+.agr-table tr.obligatoria td:nth-child(2)::before { content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 999px; background: var(--accent); margin-right: 8px; vertical-align: middle; }
+.agrupaciones-container { align-items: start; }
+.approved { background: color-mix(in srgb, var(--success) 22%, var(--surface)) !important; border-color: color-mix(in srgb, var(--success) 60%, transparent) !important; color: var(--text) !important; box-shadow: none !important; }
+.approved .m-cred { color: var(--success) !important; font-weight: 600; }
+.status-locked-total { opacity: 0.55; } .status-locked-total .m-cred { opacity: 0.8; }
+.tabs { background: color-mix(in srgb, var(--bg) 78%, transparent); }
+.hint { text-wrap: balance; }
+.mt-actions .btn-reset:not(.btn-links) { border-color: var(--border); background: var(--surface-2); color: var(--danger); }
+@media (max-width: 760px) { .tabs { mask-image: linear-gradient(90deg, #000 85%, transparent); } }
 /* Transición de vista: fundido + leve escala + desenfoque, curva iOS */
 .view-section.active { animation: viewIOS 0.45s var(--ease-ios) both; }
 @keyframes viewIOS { from { opacity: 0; transform: scale(0.985) translateY(6px); filter: blur(6px); } to { opacity: 1; transform: none; filter: none; } }
@@ -1011,8 +1022,8 @@ header > .tabs { order: 8; }
             <div class="leyenda-item"><div class="color-box" style="border-color: #334155; opacity: 0.4;"></div> Bloqueado</div>
             <div class="leyenda-item"><div class="color-box" style="border-color: var(--warning);"></div> Parcial</div>
             <div class="leyenda-item"><div class="color-box" style="border-color: var(--primary);"></div> Disponible</div>
-            <div class="leyenda-item"><div class="color-box" style="border-color: var(--danger); background: rgba(239, 68, 68, 0.2);"></div> Reprobada ❌</div>
-            <div class="leyenda-item"><div class="color-box" style="background: var(--success);"></div> Aprobada ✅</div>
+            <div class="leyenda-item"><div class="color-box" style="border-color: var(--danger); background: rgba(239, 68, 68, 0.2);"></div> Reprobada</div>
+            <div class="leyenda-item"><div class="color-box" style="background: var(--success);"></div> Aprobada</div>
         </div>
         
         <div class="mt-actions">
