@@ -44,3 +44,9 @@ Se leyeron los parámetros de animación de Mochy Music (github.com/realidkroo/M
 - Hasta 14 semestres; siempre hay uno vacío al final para soltar. Créditos por semestre en el encabezado (ámbar si pasa de 21).
 - Avisos no bloqueantes con **Deshacer**: prerrequisito después o en el mismo semestre, y requisitos de créditos (108, 53, 60). Las materias con problema quedan con borde rojo.
 - Se guarda por carrera en `malla_iq_plan_v1` / `malla_iq_plan_on`; al salir se ve la malla oficial.
+
+## v11 · Thinking orbs
+Indicadores de carga de [thinking-orbs](https://github.com/Jakubantalik/thinking-orbs) (MIT, Jakub Antalik). Se incrusta solo su motor de canvas 2D (~14 KB, sin React) y un elemento propio `<thinking-orb state size="64|20">`.
+- `searching` 64: consultas al SIA (cupos, horario, libre elección). `weaving` 64: cargar reseñas.
+- `solving` 20: revisión de una reseña. `composing` 20: enviar comentario. `connecting` 20: servidor dormido. `working` 20: lista de libre elección. `shaping` 20: aviso de carrera en construcción.
+- Un solo `requestAnimationFrame` para todos; se pausan fuera de pantalla o con la pestaña oculta; cuadro fijo con "reducir movimiento"; siguen el modo día/noche.
