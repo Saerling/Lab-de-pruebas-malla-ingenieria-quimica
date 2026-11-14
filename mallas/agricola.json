@@ -1,0 +1,1140 @@
+{
+ "programa": "Ingeniería Agrícola",
+ "sede": "Bogotá",
+ "fuente": "Acuerdo 030 de 2016 del Consejo de Facultad de Ingeniería",
+ "fuente_url": "https://ingenieria.bogota.unal.edu.co/images/recursos/pregrado/ingenieriaAgricola/Acuerdo_030_de_2016_-_planes_de_estudio.pdf",
+ "notas": [
+  "Extraído automáticamente de las tablas del acuerdo; revisar contra el SIA antes de publicar.",
+  "req: cada elemento es un prerrequisito; {cod} = asignatura, {creditos} = créditos aprobados, {texto} = condición escrita (ver req_txt).",
+  "ob = obligatoria. Falta la ubicación por semestre (está en la malla PDF).",
+  "Créditos exigidos: Fundamentación 59 + Disciplinar 85 = 144; el resto del plan es Libre Elección."
+ ],
+ "agrupaciones": [
+  {
+   "agrupacion": "Matemáticas, Probabilidad y Estadística",
+   "componente": "Fundamentación",
+   "exigidos": 23,
+   "materias": [
+    {
+     "cod": "1000004",
+     "n": "Cálculo diferencial",
+     "c": 4,
+     "ob": true,
+     "req": [
+      {
+       "cod": "1000001"
+      }
+     ],
+     "req_txt": "Matemáticas Básicas"
+    },
+    {
+     "cod": "1000005",
+     "n": "Cálculo integral",
+     "c": 4,
+     "ob": true,
+     "req": [
+      {
+       "cod": "1000004"
+      }
+     ],
+     "req_txt": "Cálculo diferencial"
+    },
+    {
+     "cod": "1000003",
+     "n": "Álgebra lineal",
+     "c": 4,
+     "ob": true,
+     "req": [
+      {
+       "cod": "1000004"
+      }
+     ],
+     "req_txt": "Cálculo diferencial"
+    },
+    {
+     "cod": "1000006",
+     "n": "Cálculo en varias variables",
+     "c": 4,
+     "ob": true,
+     "req": [
+      {
+       "cod": "1000005"
+      },
+      {
+       "cod": "1000003"
+      }
+     ],
+     "req_txt": "Cálculo integral Álgebra lineal"
+    },
+    {
+     "cod": "1000007",
+     "n": "Ecuaciones diferenciales",
+     "c": 4,
+     "ob": true,
+     "req": [
+      {
+       "cod": "1000005"
+      },
+      {
+       "cod": "1000003"
+      }
+     ],
+     "req_txt": "Cálculo integral Álgebra lineal"
+    },
+    {
+     "cod": "1000013",
+     "n": "Probabilidad y estadística fundamental",
+     "c": 3,
+     "ob": true,
+     "req": [
+      {
+       "cod": "1000004"
+      }
+     ],
+     "req_txt": "Cálculo diferencial"
+    }
+   ]
+  },
+  {
+   "agrupacion": "Física",
+   "componente": "Fundamentación",
+   "exigidos": 8,
+   "materias": [
+    {
+     "cod": "1000019",
+     "n": "Fundamentos de mecánica",
+     "c": 4,
+     "ob": true,
+     "req": [
+      {
+       "cod": "1000004"
+      }
+     ],
+     "req_txt": "Cálculo diferencial"
+    },
+    {
+     "cod": "1000017",
+     "n": "Fundamentos de electricidad y magnetismo",
+     "c": 4,
+     "ob": false,
+     "req": [
+      {
+       "cod": "1000019"
+      },
+      {
+       "cod": "1000005"
+      }
+     ],
+     "req_txt": "Fundamentos de mecánica Cálculo integral"
+    },
+    {
+     "cod": "1000020",
+     "n": "Fundamentos de oscilaciones, ondas y óptica",
+     "c": 4,
+     "ob": false,
+     "req": [
+      {
+       "cod": "1000019"
+      },
+      {
+       "cod": "1000007"
+      }
+     ],
+     "req_txt": "Fundamentos de mecánica Ecuaciones diferenciales"
+    }
+   ]
+  },
+  {
+   "agrupacion": "Química y Biología",
+   "componente": "Fundamentación",
+   "exigidos": 10,
+   "materias": [
+    {
+     "cod": "1000009",
+     "n": "Biología general",
+     "c": 3,
+     "ob": true,
+     "req": [],
+     "req_txt": ""
+    },
+    {
+     "cod": "1000024",
+     "n": "Principios de química",
+     "c": 3,
+     "ob": true,
+     "req": [],
+     "req_txt": ""
+    },
+    {
+     "cod": "2017538",
+     "n": "Fisiología vegetal",
+     "c": 4,
+     "ob": true,
+     "req": [
+      {
+       "cod": "1000024"
+      }
+     ],
+     "req_txt": "Principios de química"
+    }
+   ]
+  },
+  {
+   "agrupacion": "Expresión Gráfica",
+   "componente": "Fundamentación",
+   "exigidos": 3,
+   "materias": [
+    {
+     "cod": "2015711",
+     "n": "Dibujo básico",
+     "c": 3,
+     "ob": true,
+     "req": [],
+     "req_txt": ""
+    }
+   ]
+  },
+  {
+   "agrupacion": "Herramientas Informáticas y métodos numéricos",
+   "componente": "Fundamentación",
+   "exigidos": 6,
+   "materias": [
+    {
+     "cod": "2015734",
+     "n": "Programación de computadores",
+     "c": 3,
+     "ob": true,
+     "req": [],
+     "req_txt": ""
+    },
+    {
+     "cod": "2016375",
+     "n": "Programación orientada a objetos",
+     "c": 3,
+     "ob": false,
+     "req": [
+      {
+       "cod": "2015734"
+      }
+     ],
+     "req_txt": "Programación de computadores"
+    },
+    {
+     "cod": "2015970",
+     "n": "Métodos numéricos",
+     "c": 3,
+     "ob": false,
+     "req": [
+      {
+       "cod": "1000007"
+      }
+     ],
+     "req_txt": "Ecuaciones diferenciales"
+    },
+    {
+     "cod": "2017293",
+     "n": "Modelación matemática",
+     "c": 3,
+     "ob": false,
+     "req": [
+      {
+       "cod": "1000007"
+      }
+     ],
+     "req_txt": "Ecuaciones diferenciales"
+    },
+    {
+     "cod": "2015942",
+     "n": "Aplicación de elementos finitos",
+     "c": 3,
+     "ob": false,
+     "req": [
+      {
+       "cod": "1000007"
+      }
+     ],
+     "req_txt": "Ecuaciones diferenciales"
+    }
+   ]
+  },
+  {
+   "agrupacion": "Ciencias Económicas y Administrativas",
+   "componente": "Fundamentación",
+   "exigidos": 9,
+   "materias": [
+    {
+     "cod": "2015703",
+     "n": "Ingeniería económica",
+     "c": 3,
+     "ob": true,
+     "req": [
+      {
+       "cod": "1000005"
+      }
+     ],
+     "req_txt": "Cálculo integral"
+    },
+    {
+     "cod": "2015702",
+     "n": "Gerencia y gestión de proyectos",
+     "c": 3,
+     "ob": true,
+     "req": [
+      {
+       "cod": "2015703"
+      }
+     ],
+     "req_txt": "Ingeniería económica"
+    },
+    {
+     "cod": "2015698",
+     "n": "Administración de empresas",
+     "c": 3,
+     "ob": false,
+     "req": [
+      {
+       "cod": "2015702"
+      }
+     ],
+     "req_txt": "Gerencia y gestión de proyectos"
+    },
+    {
+     "cod": "2015699",
+     "n": "Administración de mercados",
+     "c": 3,
+     "ob": false,
+     "req": [
+      {
+       "cod": "2015702"
+      }
+     ],
+     "req_txt": "Gerencia y gestión de proyectos"
+    },
+    {
+     "cod": "2015694",
+     "n": "Derecho laboral",
+     "c": 3,
+     "ob": false,
+     "req": [
+      {
+       "cod": "2015702"
+      }
+     ],
+     "req_txt": "Gerencia y gestión de proyectos"
+    },
+    {
+     "cod": "2016592",
+     "n": "Economía general",
+     "c": 3,
+     "ob": false,
+     "req": [
+      {
+       "cod": "2015702"
+      }
+     ],
+     "req_txt": "Gerencia y gestión de proyectos"
+    },
+    {
+     "cod": "2016741",
+     "n": "Finanzas",
+     "c": 3,
+     "ob": false,
+     "req": [
+      {
+       "cod": "2015702"
+      }
+     ],
+     "req_txt": "Gerencia y gestión de proyectos"
+    },
+    {
+     "cod": "2016587",
+     "n": "Competitividad, productividad y benchmarking",
+     "c": 3,
+     "ob": false,
+     "req": [
+      {
+       "cod": "2015702"
+      }
+     ],
+     "req_txt": "Gerencia y gestión de proyectos"
+    },
+    {
+     "cod": "2015695",
+     "n": "Diseño, gestión y evaluación de proyectos",
+     "c": 3,
+     "ob": false,
+     "req": [
+      {
+       "cod": "2015702"
+      }
+     ],
+     "req_txt": "Gerencia y gestión de proyectos"
+    },
+    {
+     "cod": "2015700",
+     "n": "Fundamentos de contabilidad financiera",
+     "c": 3,
+     "ob": false,
+     "req": [
+      {
+       "cod": "2015702"
+      }
+     ],
+     "req_txt": "Gerencia y gestión de proyectos"
+    },
+    {
+     "cod": "2015701",
+     "n": "Gerencia de recursos humanos",
+     "c": 3,
+     "ob": false,
+     "req": [
+      {
+       "cod": "2015702"
+      }
+     ],
+     "req_txt": "Gerencia y gestión de proyectos"
+    },
+    {
+     "cod": "2016597",
+     "n": "Gerencia y planeación estratégica",
+     "c": 3,
+     "ob": false,
+     "req": [
+      {
+       "cod": "2015702"
+      }
+     ],
+     "req_txt": "Gerencia y gestión de proyectos"
+    },
+    {
+     "cod": "2016598",
+     "n": "Gestión ambiental empresarial",
+     "c": 3,
+     "ob": false,
+     "req": [
+      {
+       "cod": "2015702"
+      }
+     ],
+     "req_txt": "Gerencia y gestión de proyectos"
+    },
+    {
+     "cod": "2016602",
+     "n": "Investigación de mercados",
+     "c": 3,
+     "ob": false,
+     "req": [
+      {
+       "cod": "2015702"
+      }
+     ],
+     "req_txt": "Gerencia y gestión de proyectos"
+    },
+    {
+     "cod": "2015704",
+     "n": "Mercadeo internacional",
+     "c": 3,
+     "ob": false,
+     "req": [
+      {
+       "cod": "2015702"
+      }
+     ],
+     "req_txt": "Gerencia y gestión de proyectos"
+    },
+    {
+     "cod": "2016046",
+     "n": "Mercados I",
+     "c": 4,
+     "ob": false,
+     "req": [
+      {
+       "cod": "2015702"
+      }
+     ],
+     "req_txt": "Gerencia y gestión de proyectos"
+    },
+    {
+     "cod": "2016056",
+     "n": "Teoría de la decisión",
+     "c": 4,
+     "ob": false,
+     "req": [
+      {
+       "cod": "2015702"
+      }
+     ],
+     "req_txt": "Gerencia y gestión de proyectos"
+    },
+    {
+     "cod": "2016609",
+     "n": "Seguridad industrial",
+     "c": 3,
+     "ob": false,
+     "req": [
+      {
+       "cod": "2015702"
+      }
+     ],
+     "req_txt": "Gerencia y gestión de proyectos"
+    },
+    {
+     "cod": "2016610",
+     "n": "Sistemas de costos",
+     "c": 4,
+     "ob": false,
+     "req": [
+      {
+       "cod": "2015702"
+      }
+     ],
+     "req_txt": "Gerencia y gestión de proyectos"
+    }
+   ]
+  },
+  {
+   "agrupacion": "Asignaturas sin agrupación",
+   "componente": "Formación Disciplinar o Profesional",
+   "exigidos": 37,
+   "materias": [
+    {
+     "cod": "2016635",
+     "n": "Introducción a la ingeniería agrícola",
+     "c": 3,
+     "ob": true,
+     "req": [],
+     "req_txt": ""
+    },
+    {
+     "cod": "2026134",
+     "n": "Estática",
+     "c": 3,
+     "ob": true,
+     "req": [
+      {
+       "cod": "1000003"
+      },
+      {
+       "cod": "1000019"
+      }
+     ],
+     "req_txt": "Álgebra lineal Fundamentos de mecánica"
+    },
+    {
+     "cod": "2015958",
+     "n": "Geomática básica",
+     "c": 4,
+     "ob": true,
+     "req": [
+      {
+       "cod": "2015711"
+      },
+      {
+       "cod": "2016635"
+      }
+     ],
+     "req_txt": "Dibujo básico Introducción a la ingeniería agrícola"
+    },
+    {
+     "cod": "2015966",
+     "n": "Mecánica de fluidos",
+     "c": 4,
+     "ob": true,
+     "req": [
+      {
+       "cod": "1000006"
+      },
+      {
+       "cod": "1000007"
+      },
+      {
+       "cod": "2026134"
+      }
+     ],
+     "req_txt": "Cálculo en varias variables Ecuaciones diferenciales Estática"
+    },
+    {
+     "cod": "2015968",
+     "n": "Mecánica de sólidos",
+     "c": 4,
+     "ob": true,
+     "req": [
+      {
+       "cod": "1000006"
+      },
+      {
+       "cod": "2026134"
+      }
+     ],
+     "req_txt": "Cálculo en varias variables Estática"
+    },
+    {
+     "cod": "2015978",
+     "n": "Hidrología",
+     "c": 3,
+     "ob": true,
+     "req": [
+      {
+       "cod": "1000013"
+      },
+      {
+       "cod": "2015966"
+      }
+     ],
+     "req_txt": "Probabilidad y estadística Fundamental Mecánica de fluidos"
+    },
+    {
+     "cod": "2016632",
+     "n": "Suelos agrícolas",
+     "c": 3,
+     "ob": true,
+     "req": [
+      {
+       "cod": "1000024"
+      },
+      {
+       "cod": "1000009"
+      }
+     ],
+     "req_txt": "Principios de química Biología general"
+    },
+    {
+     "cod": "2015969",
+     "n": "Mecánica de suelos",
+     "c": 3,
+     "ob": true,
+     "req": [
+      {
+       "cod": "2015968"
+      },
+      {
+       "cod": "2016632"
+      }
+     ],
+     "req_txt": "Mecánica de sólidos Suelos agrícolas"
+    },
+    {
+     "cod": "2015961",
+     "n": "Hidráulica básica",
+     "c": 4,
+     "ob": true,
+     "req": [
+      {
+       "cod": "2015966"
+      }
+     ],
+     "req_txt": "Mecánica de fluidos"
+    },
+    {
+     "cod": "2016630",
+     "n": "Electrotecnia",
+     "c": 3,
+     "ob": true,
+     "req": [
+      {
+       "creditos": 40
+      },
+      {
+       "texto": "disciplinares c"
+      }
+     ],
+     "req_txt": "40 créditos aprobados Disciplinares C"
+    },
+    {
+     "cod": "2015741",
+     "n": "Termodinámica",
+     "c": 3,
+     "ob": true,
+     "req": [
+      {
+       "cod": "1000004"
+      }
+     ],
+     "req_txt": "Cálculo diferencial"
+    }
+   ]
+  },
+  {
+   "agrupacion": "Ingeniería de Riego y Drenaje",
+   "componente": "Formación Disciplinar o Profesional",
+   "exigidos": 9,
+   "materias": [
+    {
+     "cod": "2016634",
+     "n": "Ingeniería de riegos",
+     "c": 3,
+     "ob": true,
+     "req": [
+      {
+       "cod": "2015961"
+      },
+      {
+       "cod": "2016632"
+      }
+     ],
+     "req_txt": "Hidráulica básica Suelos agrícolas"
+    },
+    {
+     "cod": "2016629",
+     "n": "Drenaje de tierras agrícolas",
+     "c": 3,
+     "ob": true,
+     "req": [
+      {
+       "cod": "2016634"
+      },
+      {
+       "cod": "2015978"
+      }
+     ],
+     "req_txt": "Ingeniería de riegos Hidrología"
+    }
+   ]
+  },
+  {
+   "agrupacion": "Automatización y Control",
+   "componente": "Formación Disciplinar o Profesional",
+   "exigidos": 3,
+   "materias": [
+    {
+     "cod": "2016626",
+     "n": "Control en biosistemas",
+     "c": 3,
+     "ob": true,
+     "req": [
+      {
+       "cod": "2016630"
+      }
+     ],
+     "req_txt": "Electrotecnia"
+    }
+   ]
+  },
+  {
+   "agrupacion": "Poscosecha de Productos Agropecuarios",
+   "componente": "Formación Disciplinar o Profesional",
+   "exigidos": 9,
+   "materias": [
+    {
+     "cod": "2016643",
+     "n": "Transferencia de calor y masa",
+     "c": 3,
+     "ob": true,
+     "req": [
+      {
+       "cod": "2015741"
+      }
+     ],
+     "req_txt": "Termodinámica"
+    },
+    {
+     "cod": "2016638",
+     "n": "Poscosecha de frutas y hortalizas",
+     "c": 3,
+     "ob": true,
+     "req": [
+      {
+       "cod": "2016643"
+      },
+      {
+       "cod": "2017538"
+      }
+     ],
+     "req_txt": "Transferencia de calor y masa Fisiología vegetal"
+    },
+    {
+     "cod": "2016639",
+     "n": "Poscosecha de granos y semillas",
+     "c": 3,
+     "ob": true,
+     "req": [
+      {
+       "cod": "2016638"
+      }
+     ],
+     "req_txt": "Poscosecha de frutas y hortalizas"
+    }
+   ]
+  },
+  {
+   "agrupacion": "Construcciones Rurales",
+   "componente": "Formación Disciplinar o Profesional",
+   "exigidos": 9,
+   "materias": [
+    {
+     "cod": "2015941",
+     "n": "Análisis estructural básico",
+     "c": 3,
+     "ob": true,
+     "req": [
+      {
+       "cod": "2015968"
+      }
+     ],
+     "req_txt": "Mecánica de sólidos"
+    },
+    {
+     "cod": "2016627",
+     "n": "Diseño de estructuras de concreto",
+     "c": 3,
+     "ob": true,
+     "req": [
+      {
+       "cod": "2015941"
+      }
+     ],
+     "req_txt": "Análisis estructural básico"
+    },
+    {
+     "cod": "2016625",
+     "n": "Construcciones rurales: Manejo ambiental",
+     "c": 3,
+     "ob": false,
+     "req": [
+      {
+       "cod": "2016627"
+      }
+     ],
+     "req_txt": "Diseño de estructuras de concreto"
+    },
+    {
+     "cod": "2023219",
+     "n": "Construcciones rurales: Materiales y administración de obra",
+     "c": 3,
+     "ob": false,
+     "req": [
+      {
+       "cod": "2016627"
+      }
+     ],
+     "req_txt": "Diseño de estructuras de concreto"
+    }
+   ]
+  },
+  {
+   "agrupacion": "Maquinaria Agrícola y Mecanización",
+   "componente": "Formación Disciplinar o Profesional",
+   "exigidos": 9,
+   "materias": [
+    {
+     "cod": "2016631",
+     "n": "",
+     "c": 3,
+     "ob": true,
+     "req": [
+      {
+       "cod": "2015968"
+      }
+     ],
+     "req_txt": "Mecánica de sólidos"
+    },
+    {
+     "cod": "2016633",
+     "n": "Fuentes de potencia en la agricultura",
+     "c": 3,
+     "ob": true,
+     "req": [
+      {
+       "texto": "elementos de maquinas agricolas"
+      }
+     ],
+     "req_txt": "Elementos de máquinas agrícolas"
+    },
+    {
+     "cod": "2016636",
+     "n": "Máquinas agrícolas",
+     "c": 3,
+     "ob": true,
+     "req": [
+      {
+       "cod": "2016633"
+      }
+     ],
+     "req_txt": "Fuentes de potencia en la agricultura"
+    }
+   ]
+  },
+  {
+   "agrupacion": "Taller De Proyectos De Ingeniería",
+   "componente": "Formación Disciplinar o Profesional",
+   "exigidos": 3,
+   "materias": [
+    {
+     "cod": "2024045",
+     "n": "Taller de proyectos interdisciplinarios",
+     "c": 3,
+     "ob": true,
+     "req": [
+      {
+       "creditos": 65
+      },
+      {
+       "texto": "disciplinares c"
+      }
+     ],
+     "req_txt": "65 créditos aprobados Disciplinares C"
+    }
+   ]
+  },
+  {
+   "agrupacion": "Trabajo de Grado",
+   "componente": "Formación Disciplinar o Profesional",
+   "exigidos": 6,
+   "materias": [
+    {
+     "cod": "2015372",
+     "n": "Trabajo de Grado",
+     "c": 6,
+     "ob": false,
+     "req": [
+      {
+       "creditos": 68
+      },
+      {
+       "texto": "componente disciplinar"
+      }
+     ],
+     "req_txt": "68 créditos aprobados Componente Disciplinar"
+    },
+    {
+     "cod": "2015373",
+     "n": "Trabajo de Grado - Asignaturas de Posgrado",
+     "c": 6,
+     "ob": false,
+     "req": [
+      {
+       "creditos": 68
+      },
+      {
+       "texto": "componente disciplinar"
+      }
+     ],
+     "req_txt": "68 créditos aprobados Componente Disciplinar"
+    }
+   ]
+  },
+  {
+   "agrupacion": "Profundización",
+   "componente": "Libre Elección",
+   "exigidos": 0,
+   "materias": [
+    {
+     "cod": "2024029",
+     "n": "Administración de maquinaria",
+     "c": 3,
+     "ob": false,
+     "req": [
+      {
+       "creditos": 108
+      }
+     ],
+     "req_txt": "108 Créditos Aprobados"
+    },
+    {
+     "cod": "2022920",
+     "n": "Aplicación de pesticidas",
+     "c": 3,
+     "ob": false,
+     "req": [
+      {
+       "creditos": 108
+      }
+     ],
+     "req_txt": "108 Créditos Aprobados"
+    },
+    {
+     "cod": "2024030",
+     "n": "Bombas y estaciones de bombeo",
+     "c": 3,
+     "ob": false,
+     "req": [
+      {
+       "creditos": 108
+      }
+     ],
+     "req_txt": "108 Créditos Aprobados"
+    },
+    {
+     "cod": "2015954",
+     "n": "Estructuras hidráulicas",
+     "c": 3,
+     "ob": false,
+     "req": [
+      {
+       "creditos": 108
+      }
+     ],
+     "req_txt": "108 Créditos Aprobados"
+    },
+    {
+     "cod": "2024607",
+     "n": "Diseño de implementos de labranza",
+     "c": 3,
+     "ob": false,
+     "req": [
+      {
+       "creditos": 108
+      }
+     ],
+     "req_txt": "108 Créditos Aprobados"
+    },
+    {
+     "cod": "2024466",
+     "n": "Ingeniería de conservación de agua y suelos",
+     "c": 3,
+     "ob": false,
+     "req": [
+      {
+       "creditos": 108
+      }
+     ],
+     "req_txt": "108 Créditos Aprobados"
+    },
+    {
+     "cod": "2024612",
+     "n": "Manejo y conservaciones de perecederos",
+     "c": 3,
+     "ob": false,
+     "req": [
+      {
+       "creditos": 108
+      }
+     ],
+     "req_txt": "108 Créditos Aprobados"
+    },
+    {
+     "cod": "2024611",
+     "n": "Máquinas cosechadoras",
+     "c": 3,
+     "ob": false,
+     "req": [
+      {
+       "creditos": 108
+      }
+     ],
+     "req_txt": "108 Créditos Aprobados"
+    },
+    {
+     "cod": "2022923",
+     "n": "Riego por goteo",
+     "c": 3,
+     "ob": false,
+     "req": [
+      {
+       "creditos": 108
+      }
+     ],
+     "req_txt": "108 Créditos Aprobados"
+    },
+    {
+     "cod": "2022913",
+     "n": "Riego por superficie",
+     "c": 3,
+     "ob": false,
+     "req": [
+      {
+       "creditos": 108
+      }
+     ],
+     "req_txt": "108 Créditos Aprobados"
+    },
+    {
+     "cod": "2024608",
+     "n": "Invernaderos",
+     "c": 3,
+     "ob": false,
+     "req": [
+      {
+       "creditos": 108
+      }
+     ],
+     "req_txt": "108 Créditos Aprobados"
+    },
+    {
+     "cod": "2025988",
+     "n": "Taller de simulación procesos de manufactura y sistemas de servicios",
+     "c": 3,
+     "ob": false,
+     "req": [
+      {
+       "creditos": 108
+      }
+     ],
+     "req_txt": "108 Créditos Aprobados"
+    },
+    {
+     "cod": "2025987",
+     "n": "Modelos estocásticos para procesos de manufactura y sistemas de servicios",
+     "c": 3,
+     "ob": false,
+     "req": [
+      {
+       "creditos": 108
+      }
+     ],
+     "req_txt": "108 Créditos Aprobados"
+    },
+    {
+     "cod": "2025971",
+     "n": "Optimización",
+     "c": 3,
+     "ob": false,
+     "req": [
+      {
+       "creditos": 108
+      }
+     ],
+     "req_txt": "108 Créditos Aprobados"
+    },
+    {
+     "cod": "2016762",
+     "n": "Práctica Estudiantil I",
+     "c": 3,
+     "ob": false,
+     "req": [
+      {
+       "creditos": 126
+      }
+     ],
+     "req_txt": "126 Créditos Aprobados"
+    },
+    {
+     "cod": "2016763",
+     "n": "Práctica Estudiantil II",
+     "c": 6,
+     "ob": false,
+     "req": [
+      {
+       "creditos": 126
+      }
+     ],
+     "req_txt": "126 Créditos Aprobados"
+    },
+    {
+     "cod": "1000070",
+     "n": "Práctica Colombia I",
+     "c": 3,
+     "ob": false,
+     "req": [
+      {
+       "creditos": 126
+      }
+     ],
+     "req_txt": "126 Créditos Aprobados"
+    },
+    {
+     "cod": "1000071",
+     "n": "Práctica Colombia II",
+     "c": 6,
+     "ob": false,
+     "req": [
+      {
+       "creditos": 126
+      }
+     ],
+     "req_txt": "126 Créditos Aprobados"
+    }
+   ]
+  }
+ ]
+}

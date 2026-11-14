@@ -1,0 +1,194 @@
+{
+ "facultad": "Facultad de Ingeniería · Universidad Nacional de Colombia · Sede Bogotá",
+ "consultado": "2026-11-13",
+ "origen": "https://ingenieria.bogota.unal.edu.co/es/programas-academicos/",
+ "programas": [
+  {
+   "id": "quimica",
+   "nombre": "Ingeniería Química",
+   "snies": 29,
+   "creditos": 180,
+   "estado": "interactiva",
+   "pagina": "https://ingenieria.bogota.unal.edu.co/programas-academicos/ingenieria-quimica/",
+   "malla_pdf": "https://ingenieria.bogota.unal.edu.co/images/recursos/pregrado/IngQuimica/Malla_Curricular_-_Ingenier%C3%ADa_Qu%C3%ADmica.pdf",
+   "pep_pdf": "https://ingenieria.bogota.unal.edu.co/images/recursos/pregrado/IngQuimica/Proyecto_Educativo_del_Programa_-_Ingenier%C3%ADa_Qu%C3%ADmica.pdf",
+   "normas": [
+    {
+     "n": "Acuerdo 2 de 2013 (Consejo de Facultad)",
+     "u": "https://legal.unal.edu.co/rlunal/home/doc.jsp?d_i=58106"
+    },
+    {
+     "n": "Acuerdo 041 de 2009",
+     "u": "https://legal.unal.edu.co/rlunal/home/doc.jsp?d_i=3562"
+    }
+   ]
+  },
+  {
+   "id": "agricola",
+   "nombre": "Ingeniería Agrícola",
+   "snies": 24,
+   "estado": "plan por agrupaciones con prerrequisitos listo (mallas/agricola.json); falta ubicar por semestre",
+   "pagina": "https://ingenieria.bogota.unal.edu.co/programas-academicos/ingenieria-agricola/",
+   "malla_pdf": "https://ingenieria.bogota.unal.edu.co/images/recursos/pregrado/ingenieriaAgricola/Malla_Curricular_Agricola_2021.pdf",
+   "pep_pdf": "https://ingenieria.bogota.unal.edu.co/images/recursos/pregrado/ingenieriaAgricola/PEP_Ingeniera_Agricola_2021_Actualizado.pdf",
+   "normas": [
+    {
+     "n": "Acuerdo 030 de 2016 (Consejo de Facultad) — plan de estudios, PDF",
+     "u": "https://ingenieria.bogota.unal.edu.co/images/recursos/pregrado/ingenieriaAgricola/Acuerdo_030_de_2016_-_planes_de_estudio.pdf"
+    },
+    {
+     "n": "Acuerdo 038 de 2009",
+     "u": "https://legal.unal.edu.co/rlunal/home/doc.jsp?d_i=35625"
+    }
+   ]
+  },
+  {
+   "id": "civil",
+   "nombre": "Ingeniería Civil",
+   "snies": 25,
+   "creditos": 180,
+   "estado": "fuentes ubicadas",
+   "pagina": "https://ingenieria.bogota.unal.edu.co/programas-academicos/ingenieria-civil/",
+   "malla_pdf": "https://ingenieria.bogota.unal.edu.co/images/recursos/pregrado/ingenieriaCivil/PLAN_ING.pdf",
+   "pep_pdf": "https://ingenieria.bogota.unal.edu.co/wp-content/uploads/2026/06/PEP-CIVIL-2018.pdf",
+   "otros": [
+    {
+     "n": "Electivas por componentes (PDF)",
+     "u": "https://ingenieria.bogota.unal.edu.co/wp-content/uploads/2026/09/Electivas-Civil-Componentes.pdf"
+    }
+   ],
+   "normas": [
+    {
+     "n": "Acuerdo 27 de 2015 (Consejo de Facultad) — plan vigente",
+     "u": "https://legal.unal.edu.co/rlunal/home/doc.jsp?d_i=85846"
+    },
+    {
+     "n": "Acuerdo 257 de 2008",
+     "u": "https://legal.unal.edu.co/rlunal/home/doc.jsp?d_i=34478"
+    },
+    {
+     "n": "Acuerdo 01 de 2025 — equivalencias",
+     "u": "https://legal.unal.edu.co/rlunal/home/doc.jsp?d_i=112678"
+    }
+   ]
+  },
+  {
+   "id": "sistemas",
+   "nombre": "Ingeniería de Sistemas y Computación",
+   "snies": 106661,
+   "estado": "fuentes ubicadas",
+   "pagina": "https://ingenieria.bogota.unal.edu.co/programas-academicos/ingenieria-de-sistemas-y-computacion/",
+   "malla_pdf": "https://ingenieria.bogota.unal.edu.co/images/recursos/pregrado/ingenieriaSistemas/Malla_Plan_de_estudios_estndar_2023.pdf",
+   "pep_pdf": "https://ingenieria.bogota.unal.edu.co/wp-content/uploads/2026/08/PEP-ing-sistemas-y-computacion.pdf",
+   "normas": [
+    {
+     "n": "Acuerdo 11 de 2023 (Consejo de Facultad) — plan detallado",
+     "u": "https://legal.unal.edu.co/rlunal/home/doc.jsp?d_i=106142"
+    },
+    {
+     "n": "Acuerdo 003-A de 2022 (Consejo Académico) — estructura",
+     "u": "https://legal.unal.edu.co/rlunal/home/doc.jsp?d_i=103388"
+    }
+   ]
+  },
+  {
+   "id": "electrica",
+   "nombre": "Ingeniería Eléctrica",
+   "snies": 27,
+   "estado": "fuentes ubicadas",
+   "pagina": "https://ingenieria.bogota.unal.edu.co/programas-academicos/ingenieria-electrica/",
+   "malla_pdf": "https://ingenieria.bogota.unal.edu.co/wp-content/uploads/2026/08/Malla_Curricular_Electrica.pdf",
+   "pep_pdf": "https://ingenieria.bogota.unal.edu.co/images/userupload/640/Ingenier%C3%ADa_El%C3%A9ctrica_-_Bogot%C3%A1_1_b7d13.pdf",
+   "normas": [
+    {
+     "n": "Acuerdo 121 de 2021 (Consejo de Facultad)",
+     "u": "https://legal.unal.edu.co/rlunal/home/doc.jsp?d_i=97624"
+    },
+    {
+     "n": "Acuerdo 34 de 2016 (Consejo de Facultad)",
+     "u": "https://legal.unal.edu.co/rlunal/home/doc.jsp?d_i=87753"
+    },
+    {
+     "n": "Acuerdo 248 de 2008 (Consejo Académico)",
+     "u": "https://legal.unal.edu.co/rlunal/home/doc.jsp?d_i=34469"
+    }
+   ]
+  },
+  {
+   "id": "electronica",
+   "nombre": "Ingeniería Electrónica",
+   "snies": 16941,
+   "estado": "fuentes ubicadas",
+   "pagina": "https://ingenieria.bogota.unal.edu.co/programas-academicos/ingenieria-electronica/",
+   "malla_pdf": "https://ingenieria.bogota.unal.edu.co/images/Malla_Ing_Electrnica_2023.pdf",
+   "pep_pdf": "https://ingenieria.bogota.unal.edu.co/images/userupload/640/PEP_ELECTR%C3%93NICA_5df2d.pdf",
+   "normas": [
+    {
+     "n": "Acuerdo 17 de 2022 (Consejo de Facultad)",
+     "u": "https://legal.unal.edu.co/rlunal/home/doc.jsp?d_i=103128"
+    },
+    {
+     "n": "Acuerdo 125 de 2017 (Consejo Académico)",
+     "u": "https://legal.unal.edu.co/rlunal/home/doc.jsp?d_i=88697"
+    }
+   ]
+  },
+  {
+   "id": "industrial",
+   "nombre": "Ingeniería Industrial",
+   "snies": 16940,
+   "creditos": 168,
+   "estado": "fuentes ubicadas; el PEP trae las tablas con prerrequisitos (págs. 22–33), falta convertirlas",
+   "pagina": "https://ingenieria.bogota.unal.edu.co/programas-academicos/ingenieria-industrial/",
+   "malla_pdf": "https://ingenieria.bogota.unal.edu.co/images/recursos/pregrado/IngenieriaIndustrial/docs/MALLA_CURRICULAR_INGENIERIA_INDUSTRIAL_20201027.pdf",
+   "pep_pdf": "https://ingenieria.bogota.unal.edu.co/images/recursos/pregrado/IngenieriaIndustrial/docs/PROYECTO_EDUCATIVO_DEL_PROGRAMA_-_INGENIERIA_INDUSTRIAL.pdf",
+   "normas": [
+    {
+     "n": "Acuerdo 024 de 2014 (Consejo de Facultad)",
+     "u": "http://www.legal.unal.edu.co/sisjurun/normas/Norma1.jsp?i=73710"
+    },
+    {
+     "n": "Acuerdo 096 de 2014",
+     "u": "http://www.legal.unal.edu.co/sisjurun/normas/Norma1.jsp?i=73192"
+    },
+    {
+     "n": "Acuerdo 047 de 2017 — modificación parcial",
+     "u": "https://legal.unal.edu.co/rlunal/home/doc.jsp?d_i=89812"
+    },
+    {
+     "n": "Acuerdo 108 de 2020 — modificación parcial",
+     "u": "https://legal.unal.edu.co/rlunal/home/doc.jsp?d_i=95614"
+    }
+   ]
+  },
+  {
+   "id": "mecanica",
+   "nombre": "Ingeniería Mecánica",
+   "snies": 28,
+   "estado": "fuentes ubicadas; ojo: el PDF de malla publicado cita el Acuerdo 86 de 2018 y la norma enlazada es de 2023",
+   "pagina": "https://ingenieria.bogota.unal.edu.co/programas-academicos/ingenieria-mecanica/",
+   "malla_pdf": "https://ingenieria.bogota.unal.edu.co/images/recursos/pregrado/IngMecanica/MallaCurricular-IngenieraMecnicaUNAL_Ac_86_-18_.pdf",
+   "normas": [
+    {
+     "n": "Acuerdo 10 de 2023",
+     "u": "https://legal.unal.edu.co/rlunal/home/doc.jsp?d_i=109293"
+    }
+   ]
+  },
+  {
+   "id": "mecatronica",
+   "nombre": "Ingeniería Mecatrónica",
+   "snies": 16939,
+   "estado": "fuentes ubicadas",
+   "pagina": "https://ingenieria.bogota.unal.edu.co/programas-academicos/ingenieria-mecatronica/",
+   "malla_pdf": "https://ingenieria.bogota.unal.edu.co/images/recursos/pregrado/ingenieriaMecatronica/Malla_Curricular_Mecatronica_Acuerdo_6_2022.pdf",
+   "pep_pdf": "https://ingenieria.bogota.unal.edu.co/images/recursos/pregrado/ingenieriaMecatronica/PEP_Ingenier%C3%ADaMecatr%C3%B3nica.pdf",
+   "normas": [
+    {
+     "n": "Acuerdo 6 de 2022",
+     "u": "https://legal.unal.edu.co/rlunal/home/doc.jsp?d_i=100648"
+    }
+   ]
+  }
+ ]
+}
