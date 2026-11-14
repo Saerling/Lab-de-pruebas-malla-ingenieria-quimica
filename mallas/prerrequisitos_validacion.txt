@@ -1,0 +1,661 @@
+MALLAS CURRICULARES — FACULTAD DE INGENIERÍA, UNIVERSIDAD NACIONAL DE COLOMBIA (SEDE BOGOTÁ)
+Asignaturas y prerrequisitos organizados por semestre
+Programas: Ingeniería Agrícola, Eléctrica, Mecánica, Industrial, Mecatrónica, Electrónica, Sistemas y Computación, y Civil.
+
+ESTADO DE LA VALIDACIÓN DOCUMENTAL (actualización con los nuevos documentos)
+- INGENIERÍA AGRÍCOLA: requisitos contrastados con el Acuerdo 030 de 2016. El acuerdo incluye tablas expresas de asignaturas y requisitos y señala que todos los prerrequisitos son de matrícula.
+- INGENIERÍA INDUSTRIAL: requisitos contrastados con el PEP actualizado en julio de 2020, que identifica expresamente el Acuerdo 024 de 2014 y contiene tablas de prerrequisitos/correquisitos.
+- INGENIERÍA CIVIL: requisitos contrastados con el PEP aprobado en 2018, que incluye tablas de requisitos para el plan de 180 créditos. La malla adjunta y las tablas comparten códigos y asignaturas principales; para inscripción individual todavía prevalece la ficha vigente del SIA.
+- INGENIERÍA DE SISTEMAS Y COMPUTACIÓN: el PEP aportado describe el plan 2879 y la estructura anterior (Acuerdo 097 de 2014); la malla adjunta es Plan 2A74 e identifica normativa de 2023. Por tanto, ese PEP NO valida los prerrequisitos de la malla 2A74.
+- INGENIERÍA ELÉCTRICA, MECÁNICA, MECATRÓNICA y ELECTRÓNICA: por ahora solo hay mallas gráficas; faltan PEP/acuerdos con tablas expresas de requisitos o fichas del SIA.
+
+CRITERIOS DE LECTURA
+- [CONFIRMADO EN ACUERDO/PEP] = requisito escrito explícitamente en el documento normativo o PEP que corresponde al plan revisado.
+- [VISIBLE EN MALLA] = requisito o umbral escrito en la malla, pero no necesariamente desarrollado en una tabla normativa.
+- [POR VALIDAR EN SIA] = no se encontró una tabla inequívoca en los documentos disponibles; no se debe usar como requisito oficial para inscripción.
+- “Sin requisito consignado” significa que el Acuerdo/PEP revisado deja la casilla vacía; no garantiza que la ficha vigente del SIA no tenga cambios posteriores.
+- En los requisitos con “o” hay alternativas; los requisitos separados por “y” deben cumplirse conjuntamente, según la tabla consultada.
+- Las optativas dependen de la asignatura específica que se elija. Se detallan requisitos solo cuando el Acuerdo/PEP lista la opción.
+- “Libre elección” no se presenta como una asignatura individual con prerrequisito común; cada curso elegido puede tener sus propias condiciones.
+- La distribución por semestre reproduce la columna de la malla; no garantiza oferta efectiva ni cupo en ese semestre.
+
+CAPTURA DEL CATÁLOGO SIA COMPARTIDA EN EL CHAT
+La captura muestra una condición con una de dos asignaturas posibles (Cálculo Diferencial [1000004-B] o Matemáticas I [2001285], se requiere una) y un correquisito Matemáticas Básicas [1000001-B]. Sin embargo, en la captura no se ve el código/nombre de la asignatura consultada ni su plan curricular. No se asigna todavía esa condición a Cálculo Integral ni a un programa concreto. Para incorporarla necesito una captura que incluya el encabezado de la ficha con código, nombre y plan.
+
+CORRECCIONES IMPORTANTES DETECTADAS
+- Agrícola: se corrigieron requisitos de Fisiología Vegetal, Probabilidad, Termodinámica, Transferencia de Calor y Masa, Drenaje, Poscosecha de Granos y Semillas, y las materias de maquinaria. El Acuerdo 030 permite verificar estos datos directamente.
+- Industrial: se agregaron los prerrequisitos completos de Taller de Herramientas y Problemas, Ingeniería Económica y Análisis de Riesgo, Modelos y Simulación, Optimización, Modelos Estocásticos, talleres de producción, talleres de gestión y Trabajo de Grado.
+- Civil: se corrigieron, entre otros, los requisitos de Probabilidad, Geología, Materiales para Construcción, Ingeniería de Transporte, Mecánica de Suelos, Alcantarillados, Diseño Estructural, Pavimentos y Preparación y Evaluación de Proyectos.
+- Sistemas: el PEP aportado no se usa para confirmar la malla 2A74 porque corresponde a una versión anterior del plan.
+
+FUENTES DOCUMENTALES NUEVAS REVISADAS
+- Acuerdo 030 de 2016 — Ingeniería Agrícola (tablas de requisitos, págs. 3–9).
+- PEP Ingeniería Industrial, actualización julio de 2020 — plan Acuerdo 024 de 2014 (tablas de requisitos, págs. 22–31).
+- PEP Ingeniería Civil, aprobado en 2018 — tablas de asignaturas y requisitos del plan de 180 créditos (págs. 27–32).
+- PEP Ingeniería de Sistemas y Computación — documento del plan 2879 (págs. 5 y 13–18), identificado como anterior al Plan 2A74 de la malla aportada.
+
+NIVELACIÓN E IDIOMA (la oferta y el requisito de nivelación dependen de la historia académica)
+- Matemática Básica [1000001]: requisito de nivelación, cuando corresponda según diagnóstico o condición de ingreso.
+- Lecto-Escritura [1000002]: requisito de nivelación, cuando corresponda.
+- Inglés I [1000044], Inglés II [1000045], Inglés III [1000046], Inglés IV [1000047]: la malla presenta la secuencia I–IV; confirmar la condición exacta de inscripción en el SIA.
+
+=====================================================================
+1. INGENIERÍA AGRÍCOLA — Acuerdo 030 de 2016 — 180 créditos
+=====================================================================
+Fuente de requisitos: Acuerdo 030 de 2016. El Artículo 1 indica que todos los prerrequisitos son de matrícula.
+
+SEMESTRE I
+- Introducción a la Ingeniería Agrícola [2016635]: sin requisito consignado en el acuerdo.
+- Cálculo Diferencial [1000004]: Matemáticas Básicas [1000001]. [CONFIRMADO EN ACUERDO]
+- Principios de Química [1000024]: sin requisito consignado.
+- Biología General [1000009]: sin requisito consignado.
+- Dibujo Básico [2015711]: sin requisito consignado.
+- Libre elección.
+
+SEMESTRE II
+- Álgebra Lineal [1000003]: Cálculo Diferencial [1000004]. [CONFIRMADO EN ACUERDO]
+- Cálculo Integral [1000005]: Cálculo Diferencial [1000004]. [CONFIRMADO EN ACUERDO]
+- Fundamentos de Mecánica [1000019]: Cálculo Diferencial [1000004]. [CONFIRMADO EN ACUERDO]
+- Programación de Computadores [2015734]: sin requisito consignado.
+- Libre elección.
+
+SEMESTRE III
+- Cálculo en Varias Variables [1000006]: Cálculo Integral [1000005] y Álgebra Lineal [1000003]. [CONFIRMADO EN ACUERDO]
+- Probabilidad y Estadística Fundamental [1000013]: Cálculo Diferencial [1000004]. [CONFIRMADO EN ACUERDO]
+- Estática [2026134]: Álgebra Lineal [1000003] y Fundamentos de Mecánica [1000019]. [CONFIRMADO EN ACUERDO]
+- Geomática Básica [2015958]: Dibujo Básico [2015711] e Introducción a la Ingeniería Agrícola [2016635]. [CONFIRMADO EN ACUERDO]
+- Libre elección.
+
+SEMESTRE IV
+- Ecuaciones Diferenciales [1000007]: Cálculo Integral [1000005] y Álgebra Lineal [1000003]. [CONFIRMADO EN ACUERDO]
+- Fisiología Vegetal [2017538]: Principios de Química [1000024]. [CONFIRMADO EN ACUERDO]
+- Ingeniería Económica [2015703]: Cálculo Integral [1000005]. [CONFIRMADO EN ACUERDO]
+- Suelos Agrícolas [2016632]: Principios de Química [1000024] y Biología General [1000009]. [CONFIRMADO EN ACUERDO]
+- Libre elección.
+
+SEMESTRE V
+- Mecánica de Fluidos [2015966]: Cálculo en Varias Variables [1000006], Ecuaciones Diferenciales [1000007] y Estática [2026134]. [CONFIRMADO EN ACUERDO]
+- Optativa — Física: Fundamentos de Electricidad y Magnetismo [1000017] exige Fundamentos de Mecánica [1000019] y Cálculo Integral [1000005]; Fundamentos de Oscilaciones, Ondas y Óptica [1000020] exige Fundamentos de Mecánica [1000019] y Ecuaciones Diferenciales [1000007]. [CONFIRMADO EN ACUERDO]
+- Mecánica de Sólidos [2015968]: Cálculo en Varias Variables [1000006] y Estática [2026134]. [CONFIRMADO EN ACUERDO]
+- Termodinámica [2015741]: Cálculo Diferencial [1000004]. [CONFIRMADO EN ACUERDO]
+- Optativa — Herramientas Informáticas y Métodos Numéricos: revisar la opción escogida. Métodos Numéricos [2015970], Modelación Matemática [2017293], Aplicación de Elementos Finitos [2015942] y Modelos y Simulación [2025970] exigen Ecuaciones Diferenciales [1000007]. Programación Orientada a Objetos [2016375] exige Programación de Computadores [2015734]. [CONFIRMADO EN ACUERDO]
+- Libre elección.
+
+SEMESTRE VI
+- Hidráulica Básica [2015961]: Mecánica de Fluidos [2015966]. [CONFIRMADO EN ACUERDO]
+- Análisis Estructural Básico [2015941]: Mecánica de Sólidos [2015968]. [CONFIRMADO EN ACUERDO]
+- Mecánica de Suelos [2015969]: Mecánica de Sólidos [2015968] y Suelos Agrícolas [2016632]. [CONFIRMADO EN ACUERDO]
+- Transferencia de Calor y Masa [2016643]: Termodinámica [2015741]. [CONFIRMADO EN ACUERDO]
+- Elementos de Máquinas Agrícolas [2016631]: Mecánica de Sólidos [2015968]. [CONFIRMADO EN ACUERDO]
+- Libre elección.
+
+SEMESTRE VII
+- Ingeniería de Riegos [2016634]: Hidráulica Básica [2015961] y Suelos Agrícolas [2016632]. [CONFIRMADO EN ACUERDO]
+- Diseño de Estructuras en Concreto [2016627]: Análisis Estructural Básico [2015941]. [CONFIRMADO EN ACUERDO]
+- Hidrología [2015978]: Probabilidad y Estadística Fundamental [1000013] y Mecánica de Fluidos [2015966]. [CONFIRMADO EN ACUERDO]
+- Poscosecha de Frutas y Hortalizas [2016638]: Transferencia de Calor y Masa [2016643] y Fisiología Vegetal [2017538]. [CONFIRMADO EN ACUERDO]
+- Fuentes de Potencia en la Agricultura [2016633]: Elementos de Máquinas Agrícolas [2016631]. [CONFIRMADO EN ACUERDO]
+- Libre elección.
+
+SEMESTRE VIII
+- Diseño de Sistemas de Riego [2016628]: Ingeniería de Riegos [2016634]. [CONFIRMADO EN ACUERDO]
+- Drenaje de Tierras Agrícolas [2016629]: Geomática Básica [2015958], Ingeniería de Riegos [2016634] e Hidrología [2015978]. [CONFIRMADO EN ACUERDO]
+- Poscosecha de Granos y Semillas [2016639]: Poscosecha de Frutas y Hortalizas [2016638]. [CONFIRMADO EN ACUERDO]
+- Máquinas Agrícolas [2016636]: Fuentes de Potencia en la Agricultura [2016633]. [CONFIRMADO EN ACUERDO]
+- Gerencia y Gestión de Proyectos [2015702]: Ingeniería Económica [2015703]. [CONFIRMADO EN ACUERDO]
+- Optativa — Construcciones Rurales: las opciones 2016625 y 2023219 exigen Diseño de Estructuras en Concreto [2016627]. [CONFIRMADO EN ACUERDO]
+
+SEMESTRE IX
+- Electrotecnia [2016630]: 40 créditos aprobados del componente disciplinar (C). [CONFIRMADO EN ACUERDO]
+- Taller de Proyectos Interdisciplinarios [2024045]: 65 créditos aprobados del componente disciplinar (C). [CONFIRMADO EN ACUERDO]
+- Optativa — Ciencias Económicas y Administrativas: depende de la opción escogida; varias opciones del agrupamiento exigen Gerencia y Gestión de Proyectos [2015702]. Consultar la ficha de la opción específica.
+- Libre elección.
+
+SEMESTRE X
+- Control en Biosistemas [2016626]: Electrotecnia [2016630]. [CONFIRMADO EN ACUERDO]
+- Trabajo de Grado [2015372 o 2015373]: 68 créditos aprobados del componente disciplinar. [CONFIRMADO EN ACUERDO]
+- Libre elección.
+
+Otros umbrales de la agrupación de profundización del acuerdo: las asignaturas listadas en esa agrupación exigen 108 créditos aprobados; las prácticas exigen 126 créditos aprobados.
+
+
+2. INGENIERÍA ELÉCTRICA — Acuerdo 121 de 2021
+=====================================================================
+Corrección importante: se reordenó la distribución por semestre de acuerdo con las columnas del PDF. La malla tiene 10 columnas definidas; no es correcto presentar VI–X como una distribución aproximada.
+
+SEMESTRE I
+- Cálculo Diferencial [1000004]: no indicado.
+- Programación de Computadores [2015734]: no indicado.
+- Introducción a la Ingeniería Eléctrica [2016856]: no indicado.
+- Taller de Ingeniería Eléctrica [2016862]: no indicado.
+- Libre elección (3 créditos).
+
+SEMESTRE II
+- Cálculo Integral [1000005]: Cálculo Diferencial [1000004]. [POR VALIDAR en el Acuerdo/SIA]
+- Álgebra Lineal [1000003]: no identificable en la gráfica.
+- Fundamentos de Mecánica [1000019]: prerrequisito no identificable en la gráfica.
+- Libre elección (4 créditos).
+
+SEMESTRE III
+- Cálculo en Varias Variables [1000006]: relación con Cálculo Integral y Álgebra Lineal indicada en la malla; confirmar detalle en el Acuerdo.
+- Ecuaciones Diferenciales [1000007]: relación con cursos de cálculo indicada en la malla; confirmar detalle en el Acuerdo.
+- Fundamentos de Electricidad y Magnetismo [1000017]: relación gráfica no identificable con seguridad.
+- Introducción a la Ciencia de Materiales [1000040]: relación gráfica no identificable con seguridad.
+- Circuitos Eléctricos I [2016489]: relación gráfica no identificable con seguridad.
+
+SEMESTRE IV
+- Variable Compleja [2015159]: Cálculo en Varias Variables [1000006] (flecha en la malla; confirmar detalle en el Acuerdo).
+- Fundamentos de Oscilaciones, Ondas y Óptica [1000020]: relación gráfica no identificable con seguridad.
+- Fundamentos de Mecánica de Fluidos y Termodinámica [1000021]: relación gráfica no identificable con seguridad.
+- Mecánica para Ingeniería [2016845]: relación gráfica no identificable con seguridad.
+- Electrónica Análoga I [2016495]: Circuitos Eléctricos I [2016489] (flecha en la malla).
+
+SEMESTRE V
+- Optativa — Probabilidad y Estadística: depende de la asignatura elegida; revisar el Acuerdo.
+- Campos Electromagnéticos [2016487]: relación gráfica no identificable con seguridad.
+- Señales y Sistemas I [2016506]: relación gráfica no identificable con seguridad.
+- Circuitos Eléctricos II [2016490]: relación gráfica no identificable con seguridad.
+- Electrónica Digital I [2016498]: relación gráfica no identificable con seguridad.
+
+SEMESTRE VI
+- Optativa — Herramientas: depende de la asignatura elegida.
+- Señales y Sistemas II [2016507]: Señales y Sistemas I [2016506] (flecha en la malla).
+- Conversión Electromagnética [2016494]: relación gráfica no identificable con seguridad.
+- Transmisión y Distribución [2016865]: relación gráfica no identificable con seguridad.
+- Libre elección (4 créditos).
+
+SEMESTRE VII
+- Ingeniería Económica [2015703]: relación gráfica no identificable con seguridad.
+- Taller de Ingeniería [2016863]: relación gráfica no identificable con seguridad.
+- Control [2016493]: Señales y Sistemas II [2016507] (flecha en la malla).
+- Introducción a Sistemas de Energía Eléctrica [2016861]: relación gráfica no identificable con seguridad.
+- Instalaciones Eléctricas [2017003]: relación gráfica no identificable con seguridad.
+
+SEMESTRE VIII
+- Optativa — Administración (3 créditos).
+- Análisis de Sistemas de Potencia [2016851]: relación gráfica no identificable con seguridad.
+- Libre elección (4 créditos).
+- Optativa — Electrotecnia (2 créditos).
+- Libre elección (4 créditos).
+
+SEMESTRE IX
+- Optativa — Administración (3 créditos).
+- Subestaciones Eléctricas [2024049]: relación gráfica no identificable con seguridad.
+- Taller de Proyectos Interdisciplinarios [2024045]: requisito de créditos no detallado aquí; revisar Acuerdo/SIA.
+- Optativa — Contexto Profesional, Innovación e Investigación (CPI&I).
+- Libre elección (4 créditos).
+
+SEMESTRE X
+- Libre elección (3 créditos).
+- Libre elección (3 créditos).
+- Libre elección (4 créditos).
+- Trabajo de Grado [2016866]: 117 créditos aprobados (70% del plan) y 57 créditos del componente disciplinar (80%). [CONFIRMADO en la nota de la malla]
+
+
+=====================================================================
+3. INGENIERÍA MECÁNICA — Acuerdos 033 de 2007 y 086 de 2018
+=====================================================================
+
+Nota de prerrequisitos: los requisitos no señalados [CONFIRMADO] en el PDF están codificados por flechas/letras; las relaciones de texto heredadas del archivo anterior son [POR VALIDAR].
+
+SEMESTRE I
+- Calculo Diferencial [1000004]: -
+- Programacion de Computadores [2015734]: -
+- Dibujo Basico [2015711]: -
+- Tecnologia Mecanica Basica [2017278]: -
+- Ingenieria y Desarrollo Sostenible [2017265]: -
+
+SEMESTRE II
+- Calculo Integral [1000005]: [POR VALIDAR: Calculo Diferencial]
+- Algebra Lineal [1000003]: -
+- Fundamentos de Mecanica [1000019]: [POR VALIDAR: Calculo Diferencial]
+- Dibujo de Maquinas [2017257]: [POR VALIDAR: Dibujo Basico]
+- Libre eleccion
+
+SEMESTRE III
+- Calculo en Varias Variables [1000006]: [POR VALIDAR: requisitos exactos no legibles en la gráfica]
+- Probabilidad y Estadistica Fundamental [1000013]: [POR VALIDAR: requisitos exactos no legibles en la gráfica]
+- Optativa - Fisica: revisar prerrequisito de la opción elegida.
+- Principios de Quimica [1000024]: -
+- Principios de Estatica [2016640]: [POR VALIDAR: Fundamentos de Mecanica]
+
+SEMESTRE IV
+- Ecuaciones Diferenciales [1000007]: [POR VALIDAR: requisitos exactos no legibles en la gráfica]
+- Principios de Dinamica [2017271]: [POR VALIDAR: requisito indicado mediante clave gráfica]
+- Ciencia e Ingenieria de Materiales [2017256]: [POR VALIDAR: requisito indicado mediante clave gráfica]
+- Termodinamica Tecnica [2017279]: [POR VALIDAR: requisitos exactos no legibles en la gráfica]
+
+SEMESTRE V
+- Metodos Numericos [2015970]: [POR VALIDAR: Programacion de Computadores; Algebra Lineal; Ecuaciones Diferenciales]
+- Resistencia de Materiales [2017277]: [POR VALIDAR: Principios de Estatica; Ciencia e Ingenieria de Materiales]
+- Mecanismos [2017268]: [POR VALIDAR: Principios de Dinamica]
+- Materiales de Ingenieria [2017267]: [POR VALIDAR: Ciencia e Ingenieria de Materiales]
+- Principios de Mecanica de Fluidos [2017272]: [POR VALIDAR: Ecuaciones Diferenciales]
+- Instalaciones y Maquinas Electricas [2017266]: [POR VALIDAR: la relación aparece codificada en la gráfica; confirmar en el Acuerdo]
+
+SEMESTRE VI
+- Modelacion Matematica [2017293]: [POR VALIDAR: Metodos Numericos]
+- Ingenieria Economica [2015703]: [POR VALIDAR: Calculo Integral]
+- Procesos de Manufactura I [2017273]: [POR VALIDAR: Resistencia de Materiales; Materiales de Ingenieria]
+- Fundamentos de Transferencia de Calor [2017262]: [POR VALIDAR: Termodinamica Tecnica; Principios de Mecanica de Fluidos]
+- Electronica Basica [2017260]: [POR VALIDAR: Instalaciones y Maquinas Electricas]
+- Senales y Sistemas I [2016506]: [POR VALIDAR: Ecuaciones Diferenciales]
+- Taller de Proyectos Interdisciplinarios [2024045]: [POR VALIDAR: Ingenieria y Desarrollo Sostenible; 55% de creditos aprobados]
+
+SEMESTRE VII
+- Aplicaciones de Elementos Finitos [2015942]: [POR VALIDAR: Metodos Numericos; Resistencia de Materiales]
+- Gerencia y Gestion de Proyectos [2015702]: [POR VALIDAR: Ingenieria Economica]
+- Diseno de Elementos de Maquinas I [2017258]: [POR VALIDAR: Resistencia de Materiales; Dibujo de Maquinas; Mecanismos]
+- Procesos de Manufactura II [2017274]: [POR VALIDAR: Procesos de Manufactura I]
+- Optativa
+
+SEMESTRE VIII
+- Diseno de Elementos de Maquinas II [2017259]: [POR VALIDAR: Diseno de Elementos de Maquinas I]
+- Ingenieria de Manufactura [2017264]: [POR VALIDAR: Procesos de Manufactura II]
+- Analisis de Sistemas Dinamicos [2015215]: [POR VALIDAR: Senales y Sistemas I; Ecuaciones Diferenciales]
+- Optativa (Ingenieria Termica y Fluidos): depende de la asignatura elegida; revisar el requisito de esa opción en el Acuerdo/SIA.
+- Libre eleccion (2 asignaturas)
+
+SEMESTRE IX
+- Fundamentos de Control [2017261]: [POR VALIDAR: Analisis de Sistemas Dinamicos]
+- Proyecto Aplicado de Ingenieria [2017275]: 75% de créditos aprobados. [CONFIRMADO en la malla]
+- Libre eleccion (3 asignaturas)
+
+SEMESTRE X
+- Trabajo de Grado [2017295]: 80% de créditos aprobados. [CONFIRMADO en la malla]; además revisar los requisitos académicos del proyecto aplicado en el Acuerdo/SIA.
+- Libre eleccion (3 asignaturas)
+
+
+
+=====================================================================
+4. INGENIERÍA INDUSTRIAL — Acuerdo 024 de 2014 — 168 créditos
+=====================================================================
+Fuente de requisitos: PEP de Ingeniería Industrial (última actualización indicada: julio de 2020), que cita expresamente el Acuerdo 024 de 2014 del Consejo de Facultad. Las asignaturas siguientes se ubican conforme a la malla adjunta.
+
+SEMESTRE I
+- Cálculo Diferencial [1000004]: Matemáticas Básicas. [CONFIRMADO EN PEP]
+- Sociología Especial: Industrial y del Trabajo [2015811]: sin requisito consignado.
+- Introducción a la Ingeniería Industrial [2026805]: sin requisito consignado.
+- Programación de Computadores [2015734]: sin requisito consignado.
+
+SEMESTRE II
+- Cálculo Integral [1000005]: Cálculo Diferencial [1000004] o Cálculo Diferencial en una Variable [2016377]. [CONFIRMADO EN PEP]
+- Álgebra Lineal [1000003]: Cálculo Diferencial [1000004] o Cálculo Diferencial en una Variable [2016377]. [CONFIRMADO EN PEP]
+- Taller de Invención y Creatividad [2016615]: Introducción a la Ingeniería Industrial [2026805]. [CONFIRMADO EN PEP]
+- Programación Orientada a Objetos [2016375]: Programación de Computadores [2015734]. [CONFIRMADO EN PEP]
+- Libre elección.
+
+SEMESTRE III
+- Cálculo en Varias Variables [1000006]: Cálculo Integral [1000005] o Cálculo Integral en una Variable [2015556]. [CONFIRMADO EN PEP]
+- Fundamentos de Mecánica [1000019]: Cálculo Diferencial [1000004] o Cálculo Diferencial en una Variable [2016377]. [CONFIRMADO EN PEP]
+- Taller de Herramientas y Problemas en Ingeniería Industrial [2026488]: Cálculo Diferencial [1000004] o Cálculo Diferencial en una Variable [2016377]; Introducción a la Ingeniería Industrial [2026805]; y Programación Orientada a Objetos [2016375]. [CONFIRMADO EN PEP]
+- Probabilidad Fundamental [2027877]: Cálculo Integral [1000005] o Cálculo Integral en una Variable [2015556]. [CONFIRMADO EN PEP]
+- Optativa — Economía General [2016592] o Microeconomía I [2016017]: revisar la opción escogida. Economía General exige Cálculo Diferencial (o su alternativa en una variable) e Introducción a la Ingeniería Industrial; Microeconomía I exige Cálculo Diferencial en una Variable, Introducción a la Ingeniería Industrial y Fundamentos de Economía. [CONFIRMADO EN PEP]
+
+SEMESTRE IV
+- Ecuaciones Diferenciales [1000007]: Cálculo Integral [1000005] o Cálculo Integral en una Variable [2015556]; y Álgebra Lineal [1000003] o Álgebra Lineal Básica [2015555]. [CONFIRMADO EN PEP]
+- Fundamentos de Electricidad y Magnetismo [1000017]: Fundamentos de Mecánica [1000019] y Cálculo Integral [1000005] o Cálculo Integral en una Variable [2015556]. [CONFIRMADO EN PEP]
+- Taller de Ciencia y Tecnología de Materiales [2025993]: Fundamentos de Mecánica [1000019]. [CONFIRMADO EN PEP]
+- Optativa — Sistemas de Costos [2016610] o Fundamentos de Contabilidad de Gestión [2016038]: revisar la opción. Ambas opciones exigen Economía General [2016592] o Microeconomía I [2016017] y Taller de Herramientas y Problemas en Ingeniería Industrial [2026488]; Fundamentos de Contabilidad de Gestión añade Fundamentos de Contabilidad Financiera. [CONFIRMADO EN PEP]
+- Optativa — Gestión Empresarial: Creación y Gestión de Empresas [2026551] o Fundamentos de Administración [2016007]. El PEP lista Taller de Invención y Creatividad y Economía General o Microeconomía I como requisitos para estas opciones. [CONFIRMADO EN PEP]
+
+SEMESTRE V
+- Optativa — Modelos y Simulación: Modelos y Simulación [2025970] o Modelos Matemáticos [2015177]. Cada opción exige Ecuaciones Diferenciales [1000007] o Cálculo de Ecuaciones Diferenciales Ordinarias [2016342]; Cálculo en Varias Variables [1000006] o Cálculo Vectorial [2015162]; Probabilidad Fundamental [2027877]; y Taller de Herramientas y Problemas en Ingeniería Industrial [2026488]. [CONFIRMADO EN PEP]
+- Optativa — Optimización: Optimización [2025971] o Introducción a la Optimización [2015173]. Ambas exigen Cálculo en Varias Variables [1000006] o Cálculo Vectorial [2015162], y Álgebra Lineal [1000003] o Álgebra Lineal Básica [2015555]. [CONFIRMADO EN PEP]
+- Ingeniería Económica y Análisis de Riesgo [2025986]: Cálculo en Varias Variables [1000006] o Cálculo Vectorial [2015162]; y Sistemas de Costos [2016610] o Fundamentos de Contabilidad de Gestión [2016038]. [CONFIRMADO EN PEP]
+- Taller de Procesos Químicos y Biotecnológicos [2016619]: Taller de Ciencia y Tecnología de Materiales [2025993]. [CONFIRMADO EN PEP]
+- Taller de Procesos Metalmecánicos [2016618]: Taller de Ciencia y Tecnología de Materiales [2025993]. [CONFIRMADO EN PEP]
+- Inferencia Estadística Fundamental [2027878]: Probabilidad Fundamental [2027877]. [CONFIRMADO EN PEP]
+
+SEMESTRE VI
+- Modelos Estocásticos para Procesos de Manufactura y Sistemas de Servicios [2025987]: Optimización [2025971] o Introducción a la Optimización [2015173]; Modelos y Simulación [2025970] o Modelos Matemáticos [2015177]; e Inferencia Estadística Fundamental [2027878]. [CONFIRMADO EN PEP]
+- Optativa — Gerencia y Gestión de Proyectos: Gerencia y Gestión de Proyectos [2015702] o Diseño, Gestión y Evaluación de Proyectos [2016028]. Ambas exigen Ingeniería Económica y Análisis de Riesgo [2025986]. [CONFIRMADO EN PEP]
+- Optativa — Finanzas: Finanzas [2016741] exige Ingeniería Económica y Análisis de Riesgo [2025986]; Finanzas Avanzadas [2016037] exige además Fundamentos de Finanzas. [CONFIRMADO EN PEP]
+- Taller de Ergonomía e Ingeniería de Métodos [2016613]: Optimización [2025971] o Introducción a la Optimización [2015173], y Taller de Procesos Metalmecánicos [2016618]. [CONFIRMADO EN PEP]
+- Optativa — Control y Gestión de Calidad: las opciones 2016589, 2016316 y 2016317 listan Inferencia Estadística Fundamental [2027878], Creación y Gestión de Empresas [2026551] y Fundamentos de Administración [2016007] como requisitos. La tabla no aclara si los dos últimos son alternativas; confirmar esa lógica en el SIA antes de inscribir. [REQUISITOS LISTADOS EN PEP; LÓGICA ENTRE LAS DOS ÚLTIMAS POR VALIDAR]
+
+SEMESTRE VII
+- Taller de Simulación de Procesos de Manufactura y Sistemas de Servicios [2025988]: Modelos Estocásticos para Procesos de Manufactura y Sistemas de Servicios [2025987]. [CONFIRMADO EN PEP]
+- Optativa — Sistemas de Información: Sistemas de Información [2025982] o Sistemas de Información Gerencial [2016053]; ambas opciones exigen Gerencia y Gestión de Proyectos [2015702] o Diseño, Gestión y Evaluación de Proyectos [2016028]. [CONFIRMADO EN PEP]
+- Seguridad Industrial [2016609]: Fundamentos de Electricidad y Magnetismo [1000017]. [CONFIRMADO EN PEP]
+- Taller de Ingeniería de la Producción [2016614]: Taller de Ergonomía e Ingeniería de Métodos [2016613] y Modelos Estocásticos para Procesos de Manufactura y Sistemas de Servicios [2025987]. [CONFIRMADO EN PEP]
+- Taller de Metodología de la Investigación [2016616]: Taller de Invención y Creatividad [2016615] e Inferencia Estadística Fundamental [2027878]. [CONFIRMADO EN PEP]
+
+SEMESTRE VIII
+- Logística [2016605]: Taller de Simulación de Procesos de Manufactura y Sistemas de Servicios [2025988]. [CONFIRMADO EN PEP]
+- Optativa — Gestión Tecnológica: Gestión Tecnológica [2016600] o Gestión de la Ciencia, la Tecnología y la Innovación [2016599]. Ambas exigen Creación y Gestión de Empresas [2026551] o Fundamentos de Administración [2016007], y Sistemas de Información [2025982] o Sistemas de Información Gerencial [2016053]. [CONFIRMADO EN PEP]
+- Optativa — Gerencia de Recursos Humanos: Gerencia de Recursos Humanos [2015701] o Administración de Personal I [2016111]. El PEP lista Seguridad Industrial [2016609] y Creación y Gestión de Empresas [2026551] o Fundamentos de Administración [2016007] como requisitos. [CONFIRMADO EN PEP]
+- Taller de Diseño de Plantas [2016612]: Seguridad Industrial [2016609], Sistemas de Información [2025982] o Sistemas de Información Gerencial [2016053], y Taller de Ingeniería de la Producción [2016614]. [CONFIRMADO EN PEP]
+- Libre elección.
+
+SEMESTRE IX
+- Libre elección.
+
+SEMESTRE X
+- Trabajo de Grado [2025990, 2025989 o 2015321]: haber aprobado 70 créditos del componente de formación disciplinar o profesional. [CONFIRMADO EN PEP]
+- Libre elección.
+
+REQUISITOS DEL PEP QUE NO SON UNA MATERIA DE SEMESTRE FIJO
+- Taller de Proyectos Interdisciplinarios [2024045]: 40 créditos aprobados del componente de formación disciplinar o profesional y Gerencia y Gestión de Proyectos [2015702]. [CONFIRMADO EN PEP]
+- Prácticas Estudiantiles I, II o III [2016762, 2016763, 2016764] y Prácticas Colombia I, II o III [1000070, 1000071, 1000072]: 45 créditos aprobados del componente de formación disciplinar o profesional. [CONFIRMADO EN PEP]
+
+
+5. INGENIERÍA MECATRÓNICA — Acuerdo 006 de 2022 — 179 créditos
+=====================================================================
+
+Corrección: Automatización de Procesos de Manufactura [2017280] aparece en el SEMESTRE X, no en el IX. La malla muestra 65 créditos del componente disciplinar para Proyecto Aplicado y 69 para Trabajo de Grado.
+
+SEMESTRE I
+- Calculo Diferencial [1000004]: -
+- Programacion de Computadores [2015734]: -
+- Taller de Ingenieria Electronica [2016509]: -
+- Ingenieria y Desarrollo Sostenible [2017265]: -
+- Dibujo Basico [2015711]: -
+
+SEMESTRE II
+- Calculo Integral [1000005]: [POR VALIDAR: Calculo Diferencial]
+- Algebra Lineal [1000003]: -
+- Fundamentos de Mecanica [1000019]: [POR VALIDAR: Calculo Diferencial]
+- Tecnologia Mecanica Basica [2017278]: -
+
+SEMESTRE III
+- Calculo en Varias Variables [1000006]: [POR VALIDAR: Calculo Integral; Algebra Lineal]
+- Probabilidad y Estadistica Fundamental [1000013]: [POR VALIDAR: Algebra Lineal]
+- Fundamentos de Electricidad y Magnetismo [1000017]: [POR VALIDAR: Fundamentos de Mecanica]
+- Circuitos Electricos I [2016489]: [POR VALIDAR: Taller de Ingenieria Electronica; Fundamentos de Electricidad y Magnetismo]
+- Principios de Estatica [2016640]: [POR VALIDAR: Fundamentos de Mecanica]
+- Principios de Quimica [1000024]: -
+
+SEMESTRE IV
+- Ecuaciones Diferenciales [1000007]: [POR VALIDAR: Calculo Integral; Algebra Lineal]
+- Programacion Orientada a Objetos [2016375]: [POR VALIDAR: Programacion de Computadores]
+- Electronica Analoga I [2016495]: [POR VALIDAR: Circuitos Electricos I]
+- Principios de Dinamica [2017271]: [POR VALIDAR: Principios de Estatica]
+- Libre eleccion (2 asignaturas)
+
+SEMESTRE V
+- Variable Compleja [2015159]: [POR VALIDAR: Ecuaciones Diferenciales]
+- Optativa - Fisica: Fundamentos de Electricidad y Magnetismo
+- Senales y Sistemas I [2016506]: [POR VALIDAR: Ecuaciones Diferenciales; Circuitos Electricos I]
+- Estructura de Datos [2016699]: [POR VALIDAR: Programacion Orientada a Objetos]
+- Resistencia de Materiales [2017277]: [POR VALIDAR: Principios de Estatica]
+- Ciencia e Ingenieria de Materiales [2017256]: [POR VALIDAR: Tecnologia Mecanica Basica]
+
+SEMESTRE VI
+- Ingenieria Economica [2015703]: [POR VALIDAR: Calculo Integral]
+- Senales y Sistemas II [2016507]: [POR VALIDAR: Senales y Sistemas I]
+- Electronica Digital I [2016498]: [POR VALIDAR: Electronica Analoga I]
+- Taller de Proyectos Interdisciplinarios [2024045]: 52 créditos del componente disciplinar, según la etiqueta que aparece junto a la ruta en la malla; verificar la interpretación en el SIA.
+- Diseno Mecatronico [2017282]: [POR VALIDAR: Principios de Dinamica; Resistencia de Materiales]
+- Optativa (Ingenieria de Materiales y Procesos de Manufactura) [2017273]
+
+SEMESTRE VII
+- Control [2016493]: [POR VALIDAR: Senales y Sistemas II]
+- Sensores y Actuadores [2017287]: [POR VALIDAR: Electronica Digital I; Senales y Sistemas II]
+- Redes de Computadores [2025967]: [POR VALIDAR: Estructura de Datos]
+- Microcontroladores I [2016753]: [POR VALIDAR: Electronica Digital I; Programacion Orientada a Objetos]
+- Optativa - Ciencias Economicas y Administrativas
+- Optativa - Informatica y Herramientas de Ingenieria
+
+SEMESTRE VIII
+- Robotica [2017770]: [POR VALIDAR: Control; Sensores y Actuadores]
+- Servomecanismos [2017288]: [POR VALIDAR: Control; Diseno Mecatronico]
+- Optativa - Automatizacion, Control y Robotica
+- Libre eleccion / profundizacion (3 asignaturas; requieren 70% del programa)
+
+SEMESTRE IX
+- Proyecto Aplicado de Ingenieria [2017275]: 65 créditos aprobados del componente disciplinar. [CONFIRMADO en la malla]
+- Libre eleccion / profundizacion (asignaturas de la columna IX).
+
+
+SEMESTRE X
+- Trabajo de Grado [2017297]: 69 créditos aprobados del componente disciplinar. [CONFIRMADO en la malla]
+- Automatizacion de Procesos de Manufactura [2017280]: no identificable con seguridad en la clave gráfica; confirmar en el Acuerdo/SIA.
+- Libre eleccion / profundizacion (creditos restantes).
+
+
+
+=====================================================================
+6. INGENIERÍA ELECTRÓNICA — Plan de estudios 2545 (malla adjunta, 2023)
+=====================================================================
+
+Nota: se corrigió la secuencia de cursos según las columnas del PDF. Las dependencias codificadas por círculos/letras que no se pudieron asociar de forma inequívoca se deben verificar en el Acuerdo aplicable al plan 2545 o en el SIA.
+
+SEMESTRE I
+- Calculo Diferencial [1000004]: no indicado.
+- Libre eleccion recomendada sociohumanistica y complementaria.
+- Introduccion a la Ingenieria Electronica [2016502]: no indicado.
+- Programacion de Computadores [2015734]: no indicado.
+- Taller de Electronica [2016509]: no indicado.
+
+SEMESTRE II
+- Calculo Integral [1000005]: [POR VALIDAR: Calculo Diferencial]
+- Algebra Lineal [1000003]: -
+- Fundamentos de Mecanica [1000019]: [POR VALIDAR: Calculo Diferencial]
+- Programacion Orientada a Objetos [2016375]: [POR VALIDAR: Programacion de Computadores]
+- Libre eleccion
+
+SEMESTRE III
+- Calculo en Varias Variables [1000006]: [POR VALIDAR: Calculo Integral; Algebra Lineal]
+- Ecuaciones Diferenciales [1000007]: [POR VALIDAR: Calculo Integral; Algebra Lineal]
+- Fundamentos de Electricidad y Magnetismo [1000017]: [POR VALIDAR: Fundamentos de Mecanica]
+- Introduccion a la Ciencia de Materiales [1000040]: [POR VALIDAR: Fundamentos de Mecanica]
+- Circuitos Electricos I [2016489]: [POR VALIDAR: Taller de Electronica; Fundamentos de Electricidad y Magnetismo]
+
+SEMESTRE IV
+- Variable Compleja [2015159]: [POR VALIDAR: Calculo en Varias Variables]
+- Fundamentos de Oscilaciones, Ondas y Optica [1000020]: [POR VALIDAR: Fundamentos de Electricidad y Magnetismo]
+- Electronica Analoga I [2016495]: [POR VALIDAR: Circuitos Electricos I]
+- Circuitos Electricos II [2016490]: [POR VALIDAR: Circuitos Electricos I; Ecuaciones Diferenciales]
+- Libre eleccion
+
+SEMESTRE V
+- Optativa - Probabilidad y Estadistica: depende de la opción elegida; revisar el Acuerdo/SIA.
+- Senales y Sistemas I [2016506]: [POR VALIDAR: Ecuaciones Diferenciales; Circuitos Electricos I]
+- Instrumentacion y Medidas [2016501]: [POR VALIDAR: Circuitos Electricos II]
+- Electronica Analoga II [2016496]: [POR VALIDAR: Electronica Analoga I]
+- Electronica Digital I [2016498]: [POR VALIDAR: Electronica Analoga I; Programacion de Computadores]
+
+SEMESTRE VI
+- Fisica de Semiconductores [2016500]: [POR VALIDAR: Introduccion a la Ciencia de Materiales; Fundamentos de Oscilaciones, Ondas y Optica]
+- Senales y Sistemas II [2016507]: [POR VALIDAR: Senales y Sistemas I]
+- Campos Electromagneticos [2016487]: [POR VALIDAR: Fundamentos de Oscilaciones, Ondas y Optica; Calculo en Varias Variables]
+- Optativa - Electronica Analoga: depende de la opción elegida; revisar el requisito de esa asignatura.
+- Electronica Digital II [2016499]: [POR VALIDAR: Electronica Digital I]
+
+SEMESTRE VII
+- Ingenieria Economica [2015703]: [POR VALIDAR: Calculo Integral]
+- Control [2016493]: [POR VALIDAR: Senales y Sistemas II]
+- Lineas y Antenas [2016503]: [POR VALIDAR: Campos Electromagneticos]
+- Comunicaciones [2016492]: [POR VALIDAR: Senales y Sistemas II]
+- Optativa - Electronica Digital: depende de la opción elegida; revisar el requisito de esa asignatura.
+
+SEMESTRE VIII
+- Optativa - Administracion
+- Optativa - Telecomunicaciones
+- Electronica de Potencia [2016497]: [POR VALIDAR: Electronica Analoga II]
+- Libre eleccion (2 asignaturas)
+
+SEMESTRE IX
+- Optativa - Administracion
+- Taller de Proyectos Interdisciplinarios [2016510]: [POR VALIDAR: requisito por creditos aprobados]
+- Libre eleccion (3 asignaturas)
+
+SEMESTRE X
+- Diseno de Sistemas Electronicos [2016494]: [POR VALIDAR: Electronica Digital II; Electronica Analoga II]
+- Trabajo de Grado [2015316]: 121 créditos aprobados (70% del programa) y 63 créditos del componente disciplinar (80%). [CONFIRMADO en la malla]
+- Libre eleccion (3 asignaturas)
+
+
+
+=====================================================================
+7. INGENIERÍA DE SISTEMAS Y COMPUTACIÓN — Plan 2A74 — 165 créditos
+=====================================================================
+AVISO DOCUMENTAL: el PEP que se acaba de aportar identifica el plan 2879 y cita el Acuerdo 097 de 2014; la malla de este trabajo es Plan 2A74 y señala normativa de 2023 (Acuerdo 006 de 2023 en su cuadro normativo). No se deben trasladar requisitos del PEP 2879 a la malla 2A74. Todas las relaciones concretas de prerrequisitos de esta sección siguen [POR VALIDAR EN SIA/ACUERDO 2023]. La distribución de materias por semestre procede de la malla 2A74.
+
+SEMESTRE I
+- Calculo Diferencial [1000004]: -
+- Introduccion a la Ingenieria de Sistemas y Computacion [2025975]: -
+- Programacion de Computadores [2015734]: -
+- Pensamiento Sistemico [2016703]: -
+- Catedra Nacional de Induccion y Preparacion para la Vida Universitaria [1000089-B]: -
+
+SEMESTRE II
+- Calculo Integral [1000005]: Calculo Diferencial [1000004]. [POR VALIDAR en catálogo/SIA]
+- Algebra Lineal [1000003]: -
+- Fundamentos de Mecanica [1000019]: [POR VALIDAR: Calculo Diferencial]
+- Programacion Orientada a Objetos [2016375]: [POR VALIDAR: Programacion de Computadores]
+
+SEMESTRE III
+- Calculo en Varias Variables [1000006]: [POR VALIDAR: Calculo Integral; Algebra Lineal]
+- Fundamentos de Electricidad y Magnetismo [1000017]: [POR VALIDAR: Fundamentos de Mecanica]
+- Matematicas Discretas I [2025963]: [POR VALIDAR: Algebra Lineal]
+- Bases de Datos [2016353]: [POR VALIDAR: Programacion Orientada a Objetos]
+- Elementos de Computadores [2016698]: [POR VALIDAR: Programacion de Computadores; Fundamentos de Electricidad y Magnetismo]
+
+SEMESTRE IV
+- Probabilidad y Estadistica Fundamental [1000013]: [POR VALIDAR: Calculo Integral]
+- Ingenieria Economica [2015703]: [POR VALIDAR: Calculo Integral]
+- Matematicas Discretas II [2025964]: [POR VALIDAR: Matematicas Discretas I]
+- Estructuras de Datos [2016699]: [POR VALIDAR: Programacion Orientada a Objetos; Matematicas Discretas I]
+- Arquitectura de Computadores [2016697]: [POR VALIDAR: Elementos de Computadores]
+
+SEMESTRE V
+- Modelos y Simulacion [2025970]: [POR VALIDAR: Probabilidad y Estadistica Fundamental; Programacion de Computadores]
+- Gerencia y Gestion de Proyectos [2015702]: [POR VALIDAR: Ingenieria Economica]
+- Redes de Computadores [2025967]: [POR VALIDAR: Arquitectura de Computadores]
+- Ingenieria de Software I [2016701]: [POR VALIDAR: Estructuras de Datos; Bases de Datos]
+- Introduccion a la Teoria de la Computacion [2015174]: [POR VALIDAR: Matematicas Discretas II]
+
+SEMESTRE VI
+- Optimizacion [2025971]: [POR VALIDAR: Algebra Lineal; Modelos y Simulacion]
+- Sistemas de Informacion [2025982]: [POR VALIDAR: Gerencia y Gestion de Proyectos]
+- Metodos Numericos [2015970]: [POR VALIDAR: Calculo en Varias Variables; Algebra Lineal; Programacion de Computadores]
+- Ingenieria de Software II [2016702]: [POR VALIDAR: Ingenieria de Software I]
+- Algoritmos [2016696]: [POR VALIDAR: Estructuras de Datos; Matematicas Discretas II]
+- Sistemas Operativos [2016707]: [POR VALIDAR: Arquitectura de Computadores; Estructuras de Datos]
+
+SEMESTRE VII
+- Modelos Estocasticos y Simulacion en Computacion y Comunicaciones [2025969]: [POR VALIDAR: Probabilidad y Estadistica Fundamental; Modelos y Simulacion]
+- Arquitectura de Infraestructura y Gobierno de TICs [2025983]: [POR VALIDAR: Sistemas de Informacion; Redes de Computadores]
+- Teoria de la Informacion y Sistemas de Comunicaciones [2025994]: [POR VALIDAR: Probabilidad y Estadistica Fundamental; Redes de Computadores]
+- Arquitectura de Software [2016716]: [POR VALIDAR: Ingenieria de Software II]
+- Introduccion a los Sistemas Inteligentes [2025995]: [POR VALIDAR: Algoritmos; Probabilidad y Estadistica Fundamental]
+- Lenguajes de Programacion [2025966]: [POR VALIDAR: Estructuras de Datos; Introduccion a la Teoria de la Computacion]
+
+SEMESTRE VIII
+- Taller de Proyectos Interdisciplinarios [2024045]: [POR VALIDAR: requisito por creditos aprobados]
+- Computacion Paralela y Distribuida [2025968]: [POR VALIDAR: Sistemas Operativos; Redes de Computadores]
+- Introduccion a la Criptografia y a la Seguridad de la Informacion [2025972]: [POR VALIDAR: Matematicas Discretas II; Redes de Computadores]
+- Computacion Visual [2025960]: [POR VALIDAR: Algebra Lineal; Estructuras de Datos]
+- Libre eleccion
+
+SEMESTRE IX
+- Libre eleccion (4 asignaturas)
+
+SEMESTRE X
+- Trabajo de Grado: [POR VALIDAR: requisito por creditos aprobados]
+- Libre eleccion (3 asignaturas)
+
+
+
+=====================================================================
+8. INGENIERÍA CIVIL — malla adjunta, plan de abril de 2016 — 180 créditos
+=====================================================================
+Fuente de requisitos: PEP de Ingeniería Civil aprobado en 2018. El PEP reproduce tablas de asignaturas y requisitos del plan de 180 créditos; los códigos principales coinciden con la malla adjunta. La figura de malla incluida en el PEP se identifica como plan aprobado en 2014; por eso aquí los semestres se toman de la malla adjunta de abril de 2016 y los requisitos se aplican donde coincide el código de la asignatura. Para inscripciones de una cohorte concreta, confirmar la ficha vigente en el SIA.
+
+SEMESTRE I
+- Fundamentos de Ecología [1000011]: sin requisito consignado.
+- Cálculo Diferencial [1000004]: Matemáticas Básicas [1000001]. [CONFIRMADO EN PEP]
+- Principios de Química [1000024]: sin requisito consignado.
+- Dibujo Básico [2015711]: sin requisito consignado.
+- Introducción a la Ingeniería Civil [2026186]: sin requisito consignado.
+- Electiva (Humanidades).
+
+SEMESTRE II
+- Álgebra Lineal [1000003]: Cálculo Diferencial [1000004]. [CONFIRMADO EN PEP]
+- Cálculo Integral [1000005]: Cálculo Diferencial [1000004]. [CONFIRMADO EN PEP]
+- Fundamentos de Mecánica [1000019]: Cálculo Diferencial [1000004]. [CONFIRMADO EN PEP]
+- Herramientas de Ingeniería “A” (optativa): depende de la asignatura elegida. La agrupación incluye Programación de Computadores [2015734] (sin requisito consignado en el PEP), Programación Orientada a Objetos [2016375] (requiere Programación de Computadores), SIG para Ingeniería Civil [2022761] (requiere Geomática Aplicada), Métodos Numéricos [2015970], Modelación Matemática [2017293] y Aplicación de Elementos Finitos [2015942] (cada una requiere Ecuaciones Diferenciales), entre otras. Verifica la opción concreta. [CONFIRMADO EN PEP]
+- Electiva.
+
+SEMESTRE III
+- Cálculo en Varias Variables [1000006]: Cálculo Integral [1000005]. [CONFIRMADO EN PEP]
+- Probabilidad y Estadística Fundamental [1000013]: Cálculo Diferencial [1000004]. [CONFIRMADO EN PEP]
+- Estática [2026134]: Álgebra Lineal [1000003] y Fundamentos de Mecánica [1000019]. [CONFIRMADO EN PEP]
+- Geomática Básica [2015958]: Dibujo Básico [2015711] e Introducción a la Ingeniería Civil [2026186]. [CONFIRMADO EN PEP]
+- Ingeniería Económica [2015703]: Cálculo Integral [1000005]. [CONFIRMADO EN PEP]
+
+SEMESTRE IV
+- Ecuaciones Diferenciales [1000007]: Cálculo Integral [1000005] y Álgebra Lineal [1000003]. [CONFIRMADO EN PEP]
+- Dinámica [2015948]: Estática [2026134]. [CONFIRMADO EN PEP]
+- Geología [2015956]: Geomática Básica [2015958]. [CONFIRMADO EN PEP]
+- Geomática Aplicada [2015957]: Geomática Básica [2015958]. [CONFIRMADO EN PEP]
+- Electiva.
+
+SEMESTRE V
+- Mecánica de Fluidos [2015966]: Cálculo en Varias Variables [1000006], Ecuaciones Diferenciales [1000007] y Estática [2026134]. [CONFIRMADO EN PEP]
+- Mecánica de Sólidos [2015968]: Cálculo en Varias Variables [1000006] y Estática [2026134]. [CONFIRMADO EN PEP]
+- Materiales para Construcción [2015965]: Principios de Química [1000024] y Geología [2015956]. [CONFIRMADO EN PEP]
+- Herramientas de Ingeniería “B” (optativa): depende de la asignatura elegida; revisar el requisito de esa opción en la agrupación del PEP/SIA.
+- Electiva (Física).
+
+SEMESTRE VI
+- Hidráulica Básica [2015961]: Mecánica de Fluidos [2015966]. [CONFIRMADO EN PEP]
+- Hidrología [2015978]: Probabilidad y Estadística Fundamental [1000013] y Mecánica de Fluidos [2015966]. [CONFIRMADO EN PEP]
+- Análisis Estructural Básico [2015941]: Mecánica de Sólidos [2015968]. [CONFIRMADO EN PEP]
+- Mecánica de Suelos [2015969]: Mecánica de Sólidos [2015968]. [CONFIRMADO EN PEP]
+- Ingeniería de Transporte [2026138]: Fundamentos de Ecología [1000011] y Álgebra Lineal [1000003]. [CONFIRMADO EN PEP]
+- Electiva Técnica: 28 créditos aprobados del componente disciplinar (C). [CONFIRMADO EN MALLA/PEP]
+
+SEMESTRE VII
+- Estructuras Hidráulicas [2015954]: Hidráulica Básica [2015961]. [CONFIRMADO EN PEP]
+- Acueductos [2015938]: Hidráulica Básica [2015961]. [CONFIRMADO EN PEP]
+- Análisis Estructural Aplicado [2015940]: Análisis Estructural Básico [2015941] y Dinámica [2015948]. [CONFIRMADO EN PEP]
+- Geotecnia [2015959]: Mecánica de Suelos [2015969]. [CONFIRMADO EN PEP]
+- Ingeniería de Tránsito [2015963]: Ingeniería de Transporte [2026138]. [CONFIRMADO EN PEP]
+- Electiva.
+
+SEMESTRE VIII
+- Saneamiento Ambiental [2015973]: Fundamentos de Ecología [1000011] y Acueductos [2015938]. [CONFIRMADO EN PEP]
+- Alcantarillados [2015939]: Hidrología [2015978] y Acueductos [2015938]. [CONFIRMADO EN PEP]
+- Diseño Estructural [2015950]: Materiales para Construcción [2015965] y Análisis Estructural Aplicado [2015940]. [CONFIRMADO EN PEP]
+- Pavimentos [2015971]: Materiales para Construcción [2015965] y Geotecnia [2015959]. [CONFIRMADO EN PEP]
+- Diseño Geométrico de Vías [2015949]: Geomática Aplicada [2015957] e Ingeniería de Tránsito [2015963]. [CONFIRMADO EN PEP]
+- Electiva.
+
+SEMESTRE IX
+- Fundamentos de Construcción [2015955]: 67 créditos aprobados del componente disciplinar (C). [CONFIRMADO EN PEP]
+- Ingeniería Civil Sostenible [2026135]: 77 créditos aprobados del componente disciplinar (C). [CONFIRMADO EN PEP]
+- Preparación y Evaluación de Proyectos de Infraestructura [2015972]: Ingeniería de Transporte [2026138]. [CONFIRMADO EN PEP]
+- Electiva de Ingeniería Civil (2 asignaturas): 108 créditos aprobados del componente disciplinar (C), equivalentes al 60% del plan. [CONFIRMADO EN MALLA/PEP]
+- Electiva.
+
+SEMESTRE X
+- Construcción de Obras Civiles (optativa): las opciones de Construcción de Edificaciones [2015943], Construcción de Infraestructura Vial [2015944] y Construcción de Obras Fluviales y Litorales [2015945] exigen Fundamentos de Construcción [2015955]. [CONFIRMADO EN PEP]
+- Trabajo de Grado [2015296 o 2015299]: 77 créditos aprobados del componente disciplinar. [CONFIRMADO EN PEP]
+- Electiva de Ingeniería Civil (2 asignaturas): 108 créditos aprobados del componente disciplinar (C). [CONFIRMADO EN MALLA/PEP]
+- Electiva.
+
+OTRAS CONDICIONES EXPLÍCITAS EN EL PEP
+- Las asignaturas optativas de profundización listadas por el programa exigen 108 créditos aprobados del componente disciplinar (C).
+- Las prácticas estudiantiles/Prácticas Colombia listadas por el programa exigen 126 créditos aprobados del componente disciplinar (C).
+- La Electiva Técnica exige 28 créditos aprobados del componente disciplinar (C).
+
+RESUMEN: MALLAS QUE AÚN FALTAN POR VALIDAR CON PEP/ACUERDO ESPECÍFICO
+- Ingeniería Eléctrica — falta PEP o Acuerdo con tabla completa de prerrequisitos del plan Acuerdo 121 de 2021.
+- Ingeniería Mecánica — falta PEP o Acuerdo con tabla completa aplicable al plan de Acuerdo 86 de 2018.
+- Ingeniería Mecatrónica — falta PEP o documento normativo detallado aplicable al Acuerdo 006 de 2022.
+- Ingeniería Electrónica — falta PEP o Acuerdo/plan detallado aplicable al Plan 2545 (malla 2023).
+- Ingeniería de Sistemas y Computación — falta PEP/documento detallado de la versión Plan 2A74 / normativa 2023. El PEP recibido del plan 2879 no sirve para certificar el plan actual.
+
+VALIDACIÓN DOCUMENTAL DISPONIBLE
+- Agrícola: Acuerdo 030 de 2016.
+- Industrial: PEP julio de 2020 / Acuerdo 024 de 2014.
+- Civil: PEP 2018 / tablas de requisitos del plan de 180 créditos.
+
+El catálogo SIA sigue siendo la comprobación final para la matrícula actual: pueden existir cambios de oferta, de plan o requisitos parametrizados por cohorte que no estén reflejados en un PEP antiguo.
+
+=====================================================================
+FIN
+=====================================================================

@@ -58,7 +58,10 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Matemáticas, Probabilidad y Estadística",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "1000004"
+     ]
     },
     {
      "cod": "1000003",
@@ -74,7 +77,10 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Física",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "1000004"
+     ]
     },
     {
      "cod": "2017257",
@@ -82,7 +88,10 @@
      "c": 4,
      "cat": "Disciplinar",
      "agr": "Ingeniería de Diseño",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2015711"
+     ]
     },
     {
      "cod": "",
@@ -135,7 +144,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Ingeniería de Diseño",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "1000019"
+     ]
     }
    ]
   },
@@ -185,7 +197,12 @@
      "c": 3,
      "cat": "Fundamentación",
      "agr": "Herramientas para Ingeniería",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2015734",
+      "1000003",
+      "1000007"
+     ]
     },
     {
      "cod": "",
@@ -201,7 +218,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Ingeniería de Diseño",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2016640",
+      "2017256"
+     ]
     },
     {
      "cod": "2017268",
@@ -209,7 +230,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Ingeniería de Diseño",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2017271"
+     ]
     },
     {
      "cod": "2017267",
@@ -217,7 +241,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Ingeniería de Materiales y Procesos de Manufactura",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2017256"
+     ]
     },
     {
      "cod": "2017272",
@@ -225,7 +252,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Ingeniería Térmica y Fluidos",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "1000007"
+     ]
     },
     {
      "cod": "2017266",
@@ -246,7 +276,10 @@
      "c": 3,
      "cat": "Fundamentación",
      "agr": "Herramientas para Ingeniería",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2015970"
+     ]
     },
     {
      "cod": "2015703",
@@ -254,7 +287,10 @@
      "c": 3,
      "cat": "Fundamentación",
      "agr": "Ciencias Económicas y Administrativas",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "1000005"
+     ]
     },
     {
      "cod": "2017273",
@@ -262,7 +298,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Ingeniería de Materiales y Procesos de Manufactura",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2017277",
+      "2017267"
+     ]
     },
     {
      "cod": "2017262",
@@ -270,7 +310,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Ingeniería Térmica y Fluidos",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2017279",
+      "2017272"
+     ]
     },
     {
      "cod": "2017260",
@@ -278,7 +322,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Automatización, Control y Robótica",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2017266"
+     ]
     },
     {
      "cod": "2016506",
@@ -286,7 +333,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Automatización, Control y Robótica",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "1000007"
+     ]
     },
     {
      "cod": "2024045",
@@ -294,7 +344,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Investigación, Innovación y Desarrollo Tecnológico",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "CRED_99",
+      "2017265"
+     ]
     }
    ]
   },
@@ -307,7 +361,11 @@
      "c": 3,
      "cat": "Fundamentación",
      "agr": "Herramientas para Ingeniería",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2015970",
+      "2017277"
+     ]
     },
     {
      "cod": "2015702",
@@ -315,7 +373,10 @@
      "c": 3,
      "cat": "Fundamentación",
      "agr": "Ciencias Económicas y Administrativas",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2015703"
+     ]
     },
     {
      "cod": "2017258",
@@ -323,7 +384,12 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Ingeniería de Diseño",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2017277",
+      "2017257",
+      "2017268"
+     ]
     },
     {
      "cod": "2017274",
@@ -331,7 +397,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Ingeniería de Materiales y Procesos de Manufactura",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2017273"
+     ]
     },
     {
      "cod": "",
@@ -368,7 +437,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Ingeniería de Diseño",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2017258"
+     ]
     },
     {
      "cod": "2017264",
@@ -376,7 +448,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Ingeniería de Materiales y Procesos de Manufactura",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2017274"
+     ]
     },
     {
      "cod": "",
@@ -392,7 +467,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Automatización, Control y Robótica",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2016506",
+      "1000007"
+     ]
     }
    ]
   },
@@ -429,7 +508,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Automatización, Control y Robótica",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2015215"
+     ]
     },
     {
      "cod": "2017275",
@@ -437,7 +519,10 @@
      "c": 4,
      "cat": "Disciplinar",
      "agr": "Investigación, Innovación y Desarrollo Tecnológico",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "CRED_135"
+     ]
     }
    ]
   },
@@ -482,7 +567,10 @@
      "c": 6,
      "cat": "Disciplinar",
      "agr": "Investigación, Innovación y Desarrollo Tecnológico",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "CRED_144"
+     ]
     }
    ]
   }
@@ -492,5 +580,6 @@
   "Resumen de Fundamentación del PDF: obligatoria 50 y optativa 8 (total 58). Las tarjetas dan obligatoria 51 y optativa 7 (Optativa Física de 4 créditos en III y de 3 en V); el total 58 sí cuadra.",
   "Dibujo de Máquinas (2017257) aparece con 4 créditos en la tarjeta (coherente con el total 19 del semestre II).",
   "Las tarjetas optativas no nombran asignatura; solo la agrupación (Física en III y V; Ingeniería Térmica y Fluidos en VII y VIII)."
- ]
+ ],
+ "prerrequisitos": "Cargados de mallas/prerrequisitos_validacion.txt (14 nov 2026). r = confirmados en Acuerdo/PEP/malla; rv = por validar en el SIA (no bloquean)."
 }

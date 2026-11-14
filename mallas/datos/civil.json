@@ -66,7 +66,10 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Matemáticas y Estadística",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000004"
+     ]
     },
     {
      "cod": "1000005",
@@ -74,7 +77,10 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Matemáticas y Estadística",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000004"
+     ]
     },
     {
      "cod": "1000019",
@@ -82,7 +88,10 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Física",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000004"
+     ]
     },
     {
      "cod": "",
@@ -111,7 +120,10 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Matemáticas y Estadística",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000005"
+     ]
     },
     {
      "cod": "1000013",
@@ -119,7 +131,10 @@
      "c": 3,
      "cat": "Fundamentación",
      "agr": "Matemáticas y Estadística",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000004"
+     ]
     },
     {
      "cod": "2026134",
@@ -127,7 +142,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Básica Disciplinar",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000003",
+      "1000019"
+     ]
     },
     {
      "cod": "2015958",
@@ -135,7 +154,11 @@
      "c": 4,
      "cat": "Disciplinar",
      "agr": "Básica Disciplinar",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2015711",
+      "2026186"
+     ]
     },
     {
      "cod": "2015703",
@@ -143,7 +166,10 @@
      "c": 3,
      "cat": "Fundamentación",
      "agr": "Economía y Finanzas",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000005"
+     ]
     }
    ]
   },
@@ -156,7 +182,11 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Matemáticas y Estadística",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000005",
+      "1000003"
+     ]
     },
     {
      "cod": "2015948",
@@ -164,7 +194,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Básica Disciplinar",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2026134"
+     ]
     },
     {
      "cod": "2015956",
@@ -172,7 +205,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Básica Disciplinar",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2015958"
+     ]
     },
     {
      "cod": "2015957",
@@ -180,7 +216,10 @@
      "c": 4,
      "cat": "Disciplinar",
      "agr": "Básica Disciplinar",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2015958"
+     ]
     },
     {
      "cod": "",
@@ -201,7 +240,12 @@
      "c": 4,
      "cat": "Disciplinar",
      "agr": "Básica Disciplinar",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000006",
+      "1000007",
+      "2026134"
+     ]
     },
     {
      "cod": "2015968",
@@ -209,7 +253,11 @@
      "c": 4,
      "cat": "Disciplinar",
      "agr": "Básica Disciplinar",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000006",
+      "2026134"
+     ]
     },
     {
      "cod": "2015965",
@@ -217,7 +265,11 @@
      "c": 4,
      "cat": "Disciplinar",
      "agr": "Básica Disciplinar",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000024",
+      "2015956"
+     ]
     },
     {
      "cod": "",
@@ -246,7 +298,10 @@
      "c": 4,
      "cat": "Disciplinar",
      "agr": "Hidráulica",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2015966"
+     ]
     },
     {
      "cod": "2015978",
@@ -254,7 +309,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Básica Disciplinar",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000013",
+      "2015966"
+     ]
     },
     {
      "cod": "2015941",
@@ -262,7 +321,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Estructuras",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2015968"
+     ]
     },
     {
      "cod": "2015969",
@@ -270,7 +332,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Geotecnia",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2015968"
+     ]
     },
     {
      "cod": "2026138",
@@ -278,7 +343,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Vías y Transporte",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000011",
+      "1000003"
+     ]
     },
     {
      "cod": "",
@@ -286,7 +355,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Electiva Técnica",
-     "tipo": "optativa"
+     "tipo": "optativa",
+     "r": [
+      "DISC_28"
+     ]
     }
    ]
   },
@@ -299,7 +371,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Hidráulica",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2015961"
+     ]
     },
     {
      "cod": "2015938",
@@ -307,7 +382,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Saneamiento Básico",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2015961"
+     ]
     },
     {
      "cod": "2015940",
@@ -315,7 +393,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Estructuras",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2015941",
+      "2015948"
+     ]
     },
     {
      "cod": "2015959",
@@ -323,7 +405,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Geotecnia",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2015969"
+     ]
     },
     {
      "cod": "2015963",
@@ -331,7 +416,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Vías y Transporte",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2026138"
+     ]
     },
     {
      "cod": "",
@@ -352,7 +440,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Saneamiento Básico",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000011",
+      "2015938"
+     ]
     },
     {
      "cod": "2015939",
@@ -360,7 +452,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Saneamiento Básico",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2015978",
+      "2015938"
+     ]
     },
     {
      "cod": "2015950",
@@ -368,7 +464,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Estructuras",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2015965",
+      "2015940"
+     ]
     },
     {
      "cod": "2015971",
@@ -376,7 +476,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Geotecnia",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2015965",
+      "2015959"
+     ]
     },
     {
      "cod": "2015949",
@@ -384,7 +488,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Vías y Transporte",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2015957",
+      "2015963"
+     ]
     },
     {
      "cod": "",
@@ -405,7 +513,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Construcción",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "DISC_67"
+     ]
     },
     {
      "cod": "2026135",
@@ -413,7 +524,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Básica Disciplinar",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "DISC_77"
+     ]
     },
     {
      "cod": "",
@@ -445,7 +559,10 @@
      "c": 3,
      "cat": "Fundamentación",
      "agr": "Economía y Finanzas",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2026138"
+     ]
     }
    ]
   },
@@ -458,7 +575,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Construcción",
-     "tipo": "optativa"
+     "tipo": "optativa",
+     "r": [
+      "2015955"
+     ]
     },
     {
      "cod": "",
@@ -466,7 +586,10 @@
      "c": 6,
      "cat": "Disciplinar",
      "agr": "Asignatura Especial",
-     "tipo": "optativa"
+     "tipo": "optativa",
+     "r": [
+      "DISC_77"
+     ]
     },
     {
      "cod": "",
@@ -501,5 +624,6 @@
   "La tarjeta de sem. X 'Construcción de Obras Civiles' tiene 'OPTATIVA' en vez de código (se elige entre 2015943, 2015944 y 2015945); se transcribió como 'Optativa Construcción'.",
   "Las tarjetas de libre elección de sem. IX y X se titulan 'Electiva de Ingeniería Civil' (Libre Elección / Profundización); las demás solo 'Electiva'. Todas se numeraron como Libre Elección 1..12.",
   "El PDF dice 'Malla curricular propuesta', fechada el 19 de abril de 2016."
- ]
+ ],
+ "prerrequisitos": "Cargados de mallas/prerrequisitos_validacion.txt (14 nov 2026). r = confirmados en Acuerdo/PEP/malla; rv = por validar en el SIA (no bloquean)."
 }

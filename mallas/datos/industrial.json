@@ -50,7 +50,10 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Matemáticas",
-     "tipo": "optativa"
+     "tipo": "optativa",
+     "r": [
+      "Cálculo Diferencial"
+     ]
     },
     {
      "cod": "",
@@ -58,7 +61,10 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Matemáticas",
-     "tipo": "optativa"
+     "tipo": "optativa",
+     "r": [
+      "Cálculo Diferencial"
+     ]
     },
     {
      "cod": "2016615",
@@ -66,7 +72,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Sociohumanística",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2026805"
+     ]
     },
     {
      "cod": "2016375",
@@ -74,7 +83,10 @@
      "c": 3,
      "cat": "Fundamentación",
      "agr": "Programación",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2015734"
+     ]
     },
     {
      "cod": "",
@@ -95,7 +107,10 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Matemáticas",
-     "tipo": "optativa"
+     "tipo": "optativa",
+     "r": [
+      "Cálculo Integral"
+     ]
     },
     {
      "cod": "1000019",
@@ -103,7 +118,10 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Física",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "Cálculo Diferencial"
+     ]
     },
     {
      "cod": "",
@@ -119,7 +137,12 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Contexto Profesional y Proyectos de Ingeniería",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "Cálculo Diferencial",
+      "2026805",
+      "2016375"
+     ]
     },
     {
      "cod": "2027877",
@@ -127,7 +150,10 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Probabilidad y Estadística",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "Cálculo Integral"
+     ]
     }
    ]
   },
@@ -140,7 +166,11 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Matemáticas",
-     "tipo": "optativa"
+     "tipo": "optativa",
+     "r": [
+      "Cálculo Integral",
+      "Álgebra Lineal"
+     ]
     },
     {
      "cod": "1000017",
@@ -148,7 +178,11 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Física",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000019",
+      "Cálculo Integral"
+     ]
     },
     {
      "cod": "",
@@ -156,7 +190,11 @@
      "c": 4,
      "cat": "Disciplinar",
      "agr": "Economía y Finanzas",
-     "tipo": "optativa"
+     "tipo": "optativa",
+     "r": [
+      "Optativa Economía General",
+      "2026488"
+     ]
     },
     {
      "cod": "",
@@ -172,7 +210,10 @@
      "c": 4,
      "cat": "Disciplinar",
      "agr": "Materiales y Procesos",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000019"
+     ]
     }
    ]
   },
@@ -185,7 +226,13 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Sistemas, Modelos, Optimización y Simulación",
-     "tipo": "optativa"
+     "tipo": "optativa",
+     "r": [
+      "Ecuaciones Diferenciales",
+      "Cálculo en Varias Variables",
+      "2027877",
+      "2026488"
+     ]
     },
     {
      "cod": "",
@@ -193,7 +240,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Sistemas, Modelos, Optimización y Simulación",
-     "tipo": "optativa"
+     "tipo": "optativa",
+     "r": [
+      "Cálculo en Varias Variables",
+      "Álgebra Lineal"
+     ]
     },
     {
      "cod": "2025986",
@@ -201,7 +252,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Economía y Finanzas",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "Cálculo en Varias Variables",
+      "Optativa Sistemas de Costos"
+     ]
     },
     {
      "cod": "2016619",
@@ -209,7 +264,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Materiales y Procesos",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2025993"
+     ]
     },
     {
      "cod": "2016618",
@@ -217,7 +275,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Materiales y Procesos",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2025993"
+     ]
     },
     {
      "cod": "2027878",
@@ -225,7 +286,10 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Probabilidad y Estadística",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2027877"
+     ]
     }
    ]
   },
@@ -238,7 +302,12 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Sistemas, Modelos, Optimización y Simulación",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "Optativa Optimización",
+      "Optativa Modelos y Simulación",
+      "2027878"
+     ]
     },
     {
      "cod": "",
@@ -246,7 +315,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Administración y Gestión",
-     "tipo": "optativa"
+     "tipo": "optativa",
+     "r": [
+      "2025986"
+     ]
     },
     {
      "cod": "",
@@ -262,7 +334,11 @@
      "c": 4,
      "cat": "Disciplinar",
      "agr": "Producción y Operaciones",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "Optativa Optimización",
+      "2016618"
+     ]
     },
     {
      "cod": "",
@@ -283,7 +359,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Sistemas, Modelos, Optimización y Simulación",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2025987"
+     ]
     },
     {
      "cod": "",
@@ -291,7 +370,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Sistemas de Información",
-     "tipo": "optativa"
+     "tipo": "optativa",
+     "r": [
+      "Optativa Gerencia y Gestión de Proyectos"
+     ]
     },
     {
      "cod": "2016609",
@@ -299,7 +381,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Producción y Operaciones",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000017"
+     ]
     },
     {
      "cod": "2016614",
@@ -307,7 +392,11 @@
      "c": 4,
      "cat": "Disciplinar",
      "agr": "Producción y Operaciones",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2016613",
+      "2025987"
+     ]
     },
     {
      "cod": "2016616",
@@ -315,7 +404,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Sociohumanística",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2016615",
+      "2027878"
+     ]
     }
    ]
   },
@@ -328,7 +421,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Producción y Operaciones",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2025988"
+     ]
     },
     {
      "cod": "",
@@ -336,7 +432,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Administración y Gestión",
-     "tipo": "optativa"
+     "tipo": "optativa",
+     "r": [
+      "Optativa Gestión Empresarial",
+      "Optativa Sistemas de Información"
+     ]
     },
     {
      "cod": "",
@@ -352,7 +452,12 @@
      "c": 4,
      "cat": "Disciplinar",
      "agr": "Producción y Operaciones",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2016609",
+      "Optativa Sistemas de Información",
+      "2016614"
+     ]
     },
     {
      "cod": "",
@@ -410,7 +515,10 @@
      "c": 6,
      "cat": "Disciplinar",
      "agr": "Trabajo de Grado",
-     "tipo": "optativa"
+     "tipo": "optativa",
+     "r": [
+      "DISC_70"
+     ]
     },
     {
      "cod": "",
@@ -445,5 +553,6 @@
   "Las tarjetas no muestran la agrupación; 'agr' se tomó del listado de la página 2. En las optativas el nombre usa la subagrupación que muestra la tarjeta y 'agr' es la agrupación que la contiene.",
   "Erratas de la malla corregidas: 'Optativa - Sistema de costos' (pág. 2: Sistemas de Costos) y 'Gestión tecnólogica'. La tarjeta 2025987 dice '...sistemas de servicio' y la página 2 '...Sistemas de Servicios'; se dejó como en la tarjeta.",
   "El PDF solo imprime créditos por tarjeta (no las horas) y total por semestre."
- ]
+ ],
+ "prerrequisitos": "Cargados de mallas/prerrequisitos_validacion.txt (14 nov 2026). r = confirmados en Acuerdo/PEP/malla; rv = por validar en el SIA (no bloquean)."
 }

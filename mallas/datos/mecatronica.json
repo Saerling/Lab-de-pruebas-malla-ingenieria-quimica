@@ -58,7 +58,10 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Matemáticas, Probabilidad y Estadística",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "1000004"
+     ]
     },
     {
      "cod": "1000003",
@@ -74,7 +77,10 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Física",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "1000004"
+     ]
     },
     {
      "cod": "2017278",
@@ -95,7 +101,11 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Matemáticas, Probabilidad y Estadística",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "1000005",
+      "1000003"
+     ]
     },
     {
      "cod": "1000013",
@@ -103,7 +113,10 @@
      "c": 3,
      "cat": "Fundamentación",
      "agr": "Matemáticas, Probabilidad y Estadística",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "1000003"
+     ]
     },
     {
      "cod": "1000017",
@@ -111,7 +124,10 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Física",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "1000019"
+     ]
     },
     {
      "cod": "2016489",
@@ -119,7 +135,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Ingeniería Electrónica",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2016509",
+      "1000017"
+     ]
     },
     {
      "cod": "2016640",
@@ -127,7 +147,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Ingeniería de Diseño",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "1000019"
+     ]
     },
     {
      "cod": "1000024",
@@ -148,7 +171,11 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Matemáticas, Probabilidad y Estadística",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "1000005",
+      "1000003"
+     ]
     },
     {
      "cod": "",
@@ -164,7 +191,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Ingeniería Informática",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2015734"
+     ]
     },
     {
      "cod": "2016495",
@@ -172,7 +202,10 @@
      "c": 4,
      "cat": "Disciplinar",
      "agr": "Ingeniería Electrónica",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2016489"
+     ]
     },
     {
      "cod": "2017271",
@@ -180,7 +213,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Ingeniería de Diseño",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2016640"
+     ]
     },
     {
      "cod": "",
@@ -201,7 +237,10 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Matemáticas, Probabilidad y Estadística",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "1000007"
+     ]
     },
     {
      "cod": "",
@@ -217,7 +256,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Automatización, Control y Robótica",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "1000007",
+      "2016489"
+     ]
     },
     {
      "cod": "2016699",
@@ -225,7 +268,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Ingeniería Informática",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2016375"
+     ]
     },
     {
      "cod": "2017277",
@@ -233,7 +279,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Ingeniería de Diseño",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2016640"
+     ]
     },
     {
      "cod": "2017256",
@@ -241,7 +290,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Ingeniería de Materiales y Procesos de Manufactura",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2017278"
+     ]
     }
    ]
   },
@@ -254,7 +306,10 @@
      "c": 3,
      "cat": "Fundamentación",
      "agr": "Ciencias Económicas y Administrativas",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "1000005"
+     ]
     },
     {
      "cod": "2016507",
@@ -262,7 +317,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Automatización, Control y Robótica",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2016506"
+     ]
     },
     {
      "cod": "2016498",
@@ -270,7 +328,10 @@
      "c": 4,
      "cat": "Disciplinar",
      "agr": "Ingeniería Electrónica",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2016495"
+     ]
     },
     {
      "cod": "2024045",
@@ -278,7 +339,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Investigación, Innovación y Desarrollo Tecnológico",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "DISC_52"
+     ]
     },
     {
      "cod": "2017282",
@@ -286,7 +350,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Ingeniería de Diseño",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2017271",
+      "2017277"
+     ]
     },
     {
      "cod": "",
@@ -315,7 +383,10 @@
      "c": 4,
      "cat": "Disciplinar",
      "agr": "Automatización, Control y Robótica",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2016507"
+     ]
     },
     {
      "cod": "2017287",
@@ -323,7 +394,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Automatización, Control y Robótica",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2016498",
+      "2016507"
+     ]
     },
     {
      "cod": "2025967",
@@ -331,7 +406,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Ingeniería Informática",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2016699"
+     ]
     },
     {
      "cod": "2016753",
@@ -339,7 +417,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Ingeniería Electrónica",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2016498",
+      "2016375"
+     ]
     },
     {
      "cod": "",
@@ -368,7 +450,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Automatización, Control y Robótica",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2016493",
+      "2017287"
+     ]
     },
     {
      "cod": "",
@@ -392,7 +478,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Ingeniería de Diseño",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2016493",
+      "2017282"
+     ]
     },
     {
      "cod": "",
@@ -437,8 +527,16 @@
      "c": 4,
      "cat": "Disciplinar",
      "agr": "Investigación, Innovación y Desarrollo Tecnológico",
-     "tipo": "obligatoria"
-    },
+     "tipo": "obligatoria",
+     "r": [
+      "DISC_65"
+     ]
+    }
+   ]
+  },
+  {
+   "sem": 10,
+   "mat": [
     {
      "cod": "2017280",
      "n": "Automatización de Procesos de Manufactura",
@@ -446,12 +544,7 @@
      "cat": "Disciplinar",
      "agr": "Ingeniería de Materiales y Procesos de Manufactura",
      "tipo": "obligatoria"
-    }
-   ]
-  },
-  {
-   "sem": 10,
-   "mat": [
+    },
     {
      "cod": "",
      "n": "Libre Elección 9",
@@ -474,7 +567,10 @@
      "c": 6,
      "cat": "Disciplinar",
      "agr": "Investigación, Innovación y Desarrollo Tecnológico",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "DISC_69"
+     ]
     }
    ]
   }
@@ -486,6 +582,8 @@
   "Sem X: el PDF imprime 15/18; las tarjetas suman 18 (libre 3 + libre 9 + Trabajo de Grado 6). Con 18 cuadran libre = 36 y total = 179. La tarjeta de 9 créditos es un solo bloque de libre elección.",
   "Sem VI: la tarjeta 'Optativa' de Ingeniería de Materiales y Procesos de Manufactura trae impreso el código 2017273 (Procesos de Manufactura I en la malla de Mecánica); se dejó como optativa sin código porque el resumen del PDF cuenta 6 créditos de Disciplinar Optativa.",
   "'Cálculo Varias Variables' se transcribió literal (el nombre oficial de 1000006 es 'Cálculo en Varias Variables'). La agrupación de Ingeniería Económica aparece como 'Ciencia Económicas y Administrativas' en la tarjeta; se normalizó a 'Ciencias Económicas y Administrativas'.",
-  "Las tarjetas de libre elección de VIII, IX y X dicen 'Libre/Profundización' con requisito de 70% del programa; se transcribieron como libre elección."
- ]
+  "Las tarjetas de libre elección de VIII, IX y X dicen 'Libre/Profundización' con requisito de 70% del programa; se transcribieron como libre elección.",
+  "Automatización de Procesos de Manufactura [2017280] se movió al semestre X según la revisión del 14 nov 2026; los créditos impresos por semestre (IX y X) quedan por confirmar."
+ ],
+ "prerrequisitos": "Cargados de mallas/prerrequisitos_validacion.txt (14 nov 2026). r = confirmados en Acuerdo/PEP/malla; rv = por validar en el SIA (no bloquean)."
 }

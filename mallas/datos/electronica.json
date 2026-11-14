@@ -58,7 +58,10 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Matemáticas, Probabilidad y Estadística",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "1000004"
+     ]
     },
     {
      "cod": "1000003",
@@ -74,7 +77,10 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Física",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "1000004"
+     ]
     },
     {
      "cod": "2016375",
@@ -82,7 +88,10 @@
      "c": 3,
      "cat": "Fundamentación",
      "agr": "Informática",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2015734"
+     ]
     },
     {
      "cod": "",
@@ -103,7 +112,11 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Matemáticas, Probabilidad y Estadística",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "1000005",
+      "1000003"
+     ]
     },
     {
      "cod": "1000007",
@@ -111,7 +124,11 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Matemáticas, Probabilidad y Estadística",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "1000005",
+      "1000003"
+     ]
     },
     {
      "cod": "1000017",
@@ -119,7 +136,10 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Física",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "1000019"
+     ]
     },
     {
      "cod": "1000040",
@@ -127,7 +147,10 @@
      "c": 3,
      "cat": "Fundamentación",
      "agr": "Ciencia de los Materiales",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "1000019"
+     ]
     },
     {
      "cod": "2016489",
@@ -135,7 +158,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Circuitos y Campos",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2016509",
+      "1000017"
+     ]
     }
    ]
   },
@@ -148,7 +175,10 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Matemáticas, Probabilidad y Estadística",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "1000006"
+     ]
     },
     {
      "cod": "",
@@ -164,7 +194,10 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Física",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "1000017"
+     ]
     },
     {
      "cod": "2016495",
@@ -172,7 +205,10 @@
      "c": 4,
      "cat": "Disciplinar",
      "agr": "Electrónica Análoga",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2016489"
+     ]
     },
     {
      "cod": "2016490",
@@ -180,7 +216,11 @@
      "c": 4,
      "cat": "Disciplinar",
      "agr": "Circuitos y Campos",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2016489",
+      "1000007"
+     ]
     }
    ]
   },
@@ -201,7 +241,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Señales, Sistemas y Control",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "1000007",
+      "2016489"
+     ]
     },
     {
      "cod": "2016501",
@@ -209,7 +253,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Electrónica Análoga",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2016490"
+     ]
     },
     {
      "cod": "2016496",
@@ -217,7 +264,10 @@
      "c": 4,
      "cat": "Disciplinar",
      "agr": "Electrónica Análoga",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2016495"
+     ]
     },
     {
      "cod": "2016498",
@@ -225,7 +275,11 @@
      "c": 4,
      "cat": "Disciplinar",
      "agr": "Electrónica Digital",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2016495",
+      "2015734"
+     ]
     }
    ]
   },
@@ -238,7 +292,10 @@
      "c": 3,
      "cat": "Fundamentación",
      "agr": "Física",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "1000040"
+     ]
     },
     {
      "cod": "2016507",
@@ -246,7 +303,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Señales, Sistemas y Control",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2016506"
+     ]
     },
     {
      "cod": "2016487",
@@ -254,7 +314,10 @@
      "c": 4,
      "cat": "Disciplinar",
      "agr": "Circuitos y Campos",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "1000006"
+     ]
     },
     {
      "cod": "",
@@ -270,7 +333,10 @@
      "c": 4,
      "cat": "Disciplinar",
      "agr": "Electrónica Digital",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2016498"
+     ]
     }
    ]
   },
@@ -283,7 +349,10 @@
      "c": 3,
      "cat": "Fundamentación",
      "agr": "Ciencias Económicas y Administrativas",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "1000005"
+     ]
     },
     {
      "cod": "2016493",
@@ -291,7 +360,10 @@
      "c": 4,
      "cat": "Disciplinar",
      "agr": "Señales, Sistemas y Control",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2016507"
+     ]
     },
     {
      "cod": "2016503",
@@ -299,7 +371,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Telecomunicaciones",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2016487"
+     ]
     },
     {
      "cod": "2016492",
@@ -307,7 +382,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Telecomunicaciones",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2016507"
+     ]
     },
     {
      "cod": "",
@@ -360,7 +438,10 @@
      "c": 4,
      "cat": "Disciplinar",
      "agr": "Electrónica Análoga",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2016496"
+     ]
     }
    ]
   },
@@ -442,7 +523,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Circuitos y Campos",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "2016499",
+      "2016496"
+     ]
     },
     {
      "cod": "2015316",
@@ -450,7 +535,11 @@
      "c": 6,
      "cat": "Disciplinar",
      "agr": "Trabajo de Grado",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "DISC_63",
+      "CRED_121"
+     ]
     }
    ]
   }
@@ -461,5 +550,6 @@
   "El código de Control se imprime como '201 6493' (con espacio); se transcribió 2016493.",
   "Introducción a la Ciencia de Materiales (1000040) tiene franja 'Básica disciplinar: Ciencia de los Materiales' pero componente CF; se dejó en Fundamentación.",
   "Con pdfplumber el texto sale con letras intercaladas y solo 8 de los 34 códigos aparecen; los 34 sí aparecen en el texto extraído con pypdfium2 (Control como '201 6493'). Nombres y agrupaciones se leyeron de la imagen."
- ]
+ ],
+ "prerrequisitos": "Cargados de mallas/prerrequisitos_validacion.txt (14 nov 2026). r = confirmados en Acuerdo/PEP/malla; rv = por validar en el SIA (no bloquean)."
 }

@@ -18,7 +18,18 @@ Facultad de Ingeniería, sede Bogotá (UNAL). Consultado el 13 de noviembre de 2
 
 Las 8 carreras ya están en la página en modo beta. Sus datos están en `datos/<id>.json`, transcritos de la malla PDF oficial (sumas de créditos verificadas por semestre y total; cada archivo trae un campo `dudas`). `embed.py` los incrusta en `index.html`.
 
-Para agregar prerrequisitos: en `datos/<id>.json` pon en cada materia `"r": ["<código o id del requisito>", ...]` y corre `python3 mallas/embed.py`.
+Prerrequisitos (14 nov 2026): `prerrequisitos_validacion.txt` es la revisión documental; `prerreq.py` la convierte en los campos `r` (confirmados: bloquean) y `rv` (por validar: solo se muestran) de cada `datos/<id>.json`. Fichas: código, nombre (tarjetas sin código), `A|B` (basta una), `CRED_n`, `DISC_n`. Después: `python3 mallas/embed.py`.
+
+| Carrera | Confirmados | Por validar | Fuente |
+|---|---|---|---|
+| Agrícola | 34 | 0 | Acuerdo 030 de 2016 |
+| Industrial | 30 | 0 | PEP 2020 (Acuerdo 024 de 2014) |
+| Civil | 36 | 0 | PEP 2018 |
+| Eléctrica | 1 | 5 | malla |
+| Mecánica | 2 | 24 | malla |
+| Mecatrónica | 2 | 27 | malla |
+| Electrónica | 1 | 26 | malla |
+| Sistemas | 0 | 33 | malla (el PEP es del plan 2879) |
 
 Códigos de plan del SIA (confirmados contra el catálogo): Agrícola 2541, Civil 2542, Eléctrica 2544, Electrónica 2545, Industrial 2546, Mecánica 2547, Mecatrónica 2548, Química 2549, Sistemas 2A74.
 

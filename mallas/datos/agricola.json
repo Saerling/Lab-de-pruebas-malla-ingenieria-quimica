@@ -66,7 +66,10 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Matemáticas, Probabilidad y Estadística",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000004"
+     ]
     },
     {
      "cod": "1000005",
@@ -74,7 +77,10 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Matemáticas, Probabilidad y Estadística",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000004"
+     ]
     },
     {
      "cod": "1000019",
@@ -82,7 +88,10 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Física",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000004"
+     ]
     },
     {
      "cod": "2015734",
@@ -111,7 +120,11 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Matemáticas, Probabilidad y Estadística",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000005",
+      "1000003"
+     ]
     },
     {
      "cod": "1000013",
@@ -119,7 +132,10 @@
      "c": 3,
      "cat": "Fundamentación",
      "agr": "Matemáticas, Probabilidad y Estadística",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000004"
+     ]
     },
     {
      "cod": "2026134",
@@ -127,7 +143,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Asignaturas sin Agrupación",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000003",
+      "1000019"
+     ]
     },
     {
      "cod": "2015958",
@@ -135,7 +155,11 @@
      "c": 4,
      "cat": "Disciplinar",
      "agr": "Asignaturas sin Agrupación",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2015711",
+      "2016635"
+     ]
     },
     {
      "cod": "",
@@ -156,7 +180,11 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Matemáticas, Probabilidad y Estadística",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000005",
+      "1000003"
+     ]
     },
     {
      "cod": "2017538",
@@ -164,7 +192,10 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Química y Biología",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000024"
+     ]
     },
     {
      "cod": "2016632",
@@ -172,7 +203,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Asignaturas sin Agrupación",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000024",
+      "1000009"
+     ]
     },
     {
      "cod": "2015703",
@@ -180,7 +215,10 @@
      "c": 3,
      "cat": "Fundamentación",
      "agr": "Ciencias Económicas y Administrativas",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000005"
+     ]
     },
     {
      "cod": "",
@@ -201,7 +239,12 @@
      "c": 4,
      "cat": "Disciplinar",
      "agr": "Asignaturas sin Agrupación",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000006",
+      "1000007",
+      "2026134"
+     ]
     },
     {
      "cod": "",
@@ -217,7 +260,11 @@
      "c": 4,
      "cat": "Disciplinar",
      "agr": "Asignaturas sin Agrupación",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000006",
+      "2026134"
+     ]
     },
     {
      "cod": "2015741",
@@ -225,7 +272,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Asignaturas sin Agrupación",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000004"
+     ]
     },
     {
      "cod": "",
@@ -246,7 +296,10 @@
      "c": 4,
      "cat": "Disciplinar",
      "agr": "Asignaturas sin Agrupación",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2015966"
+     ]
     },
     {
      "cod": "2015969",
@@ -254,7 +307,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Asignaturas sin Agrupación",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2015968",
+      "2016632"
+     ]
     },
     {
      "cod": "2015941",
@@ -262,7 +319,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Construcciones Rurales",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2015968"
+     ]
     },
     {
      "cod": "2016631",
@@ -270,7 +330,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Maquinaria Agrícola y Mecanización",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2015968"
+     ]
     },
     {
      "cod": "2016643",
@@ -278,7 +341,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Poscosecha de Productos Agropecuarios",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2015741"
+     ]
     },
     {
      "cod": "",
@@ -299,7 +365,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Ingeniería de Riego y Drenaje",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2015961",
+      "2016632"
+     ]
     },
     {
      "cod": "2015978",
@@ -307,7 +377,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Asignaturas sin Agrupación",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000013",
+      "2015966"
+     ]
     },
     {
      "cod": "2016627",
@@ -315,7 +389,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Construcciones Rurales",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2015941"
+     ]
     },
     {
      "cod": "2016633",
@@ -323,7 +400,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Maquinaria Agrícola y Mecanización",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2016631"
+     ]
     },
     {
      "cod": "2016638",
@@ -331,7 +411,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Poscosecha de Productos Agropecuarios",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2016643",
+      "2017538"
+     ]
     },
     {
      "cod": "",
@@ -352,7 +436,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Ingeniería de Riego y Drenaje",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2016634"
+     ]
     },
     {
      "cod": "2016629",
@@ -360,7 +447,12 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Ingeniería de Riego y Drenaje",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2015958",
+      "2016634",
+      "2015978"
+     ]
     },
     {
      "cod": "",
@@ -368,7 +460,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Construcciones Rurales",
-     "tipo": "optativa"
+     "tipo": "optativa",
+     "r": [
+      "2016627"
+     ]
     },
     {
      "cod": "2016636",
@@ -376,7 +471,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Maquinaria Agrícola y Mecanización",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2016633"
+     ]
     },
     {
      "cod": "2016639",
@@ -384,7 +482,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Poscosecha de Productos Agropecuarios",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2016638"
+     ]
     },
     {
      "cod": "2015702",
@@ -392,7 +493,10 @@
      "c": 3,
      "cat": "Fundamentación",
      "agr": "Ciencias Económicas y Administrativas",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2015703"
+     ]
     }
    ]
   },
@@ -405,7 +509,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Asignaturas sin Agrupación",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "DISC_40"
+     ]
     },
     {
      "cod": "2024045",
@@ -413,7 +520,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Taller de Proyectos de Ingeniería",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "DISC_65"
+     ]
     },
     {
      "cod": "",
@@ -458,7 +568,10 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Automatización y Control",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2016630"
+     ]
     },
     {
      "cod": "",
@@ -466,7 +579,10 @@
      "c": 6,
      "cat": "Disciplinar",
      "agr": "Trabajo de Grado",
-     "tipo": "optativa"
+     "tipo": "optativa",
+     "r": [
+      "DISC_68"
+     ]
     },
     {
      "cod": "",
@@ -501,5 +617,6 @@
   "Las tarjetas no muestran la agrupación; 'agr' se tomó del listado de agrupaciones de la página 2 del PDF.",
   "Nombres con diferencia entre páginas: la malla dice 'Diseño de Estructuras en Concreto' y 'Optativa - Herramientas Informáticas y Métodos Numéros' (errata); la página 2 dice 'Diseño de estructuras de concreto' y 'Métodos Numéricos'. Se dejó el nombre de la tarjeta en el primero y se corrigió la errata en el segundo.",
   "Gerencia y Gestión de Proyectos (2015702) aparece en la fila de libre elección del sem. VIII pero es de Fundamentación (Ciencias Económicas y Administrativas)."
- ]
+ ],
+ "prerrequisitos": "Cargados de mallas/prerrequisitos_validacion.txt (14 nov 2026). r = confirmados en Acuerdo/PEP/malla; rv = por validar en el SIA (no bloquean)."
 }
