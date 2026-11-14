@@ -38,3 +38,9 @@ Se leyeron los parámetros de animación de Mochy Music (github.com/realidkroo/M
 - **Emergentes:** `--glass` casi opaco (90%) con desenfoque en menús, avisos y modales.
 - **Ventanas:** cupos hasta 1040 px con los grupos en rejilla; reseñas y libre elección 720 px; en celular, hoja inferior.
 - **Carreras:** `PROG` define la carrera activa; las que no son Química guardan su estado con prefijo `<id>:`.
+
+## v10 · Planificar
+- Botón **Planificar** en la barra de la malla: cada materia se arrastra a otro semestre (ratón de inmediato; en táctil, tras mantener presionado 320 ms para no bloquear el desplazamiento) o se mueve con ‹ ›.
+- Hasta 14 semestres; siempre hay uno vacío al final para soltar. Créditos por semestre en el encabezado (ámbar si pasa de 21).
+- Avisos no bloqueantes con **Deshacer**: prerrequisito después o en el mismo semestre, y requisitos de créditos (108, 53, 60). Las materias con problema quedan con borde rojo.
+- Se guarda por carrera en `malla_iq_plan_v1` / `malla_iq_plan_on`; al salir se ve la malla oficial.
