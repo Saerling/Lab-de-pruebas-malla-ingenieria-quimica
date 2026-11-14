@@ -1205,9 +1205,9 @@ thinking-orb[size="20"] { margin: -2px 6px 0 0; }
    se pausan fuera de pantalla o con la pestaña oculta; con "reducir movimiento" muestran un cuadro fijo. */
 (function () {
     if (!window.OrbEngine || !window.customElements) return;
-    var E = OrbEngine, vivos = new Set(), raf = 0, quieto = matchMedia('(prefers-reduced-motion: reduce)');
+    var E = OrbEngine, vivos = new Set(), memo = {}, raf = 0, quieto = matchMedia('(prefers-reduced-motion: reduce)');
     var oscuro = function () { return document.documentElement.getAttribute('data-theme') !== 'light'; };
-    function tick() { raf = 0; if (document.hidden || !vivos.size) return; var t = performance.now() / 1000, d = oscuro(); vivos.forEach(function (o) { if (o._vis) o._draw(t, d); }); raf = requestAnimationFrame(tick); }
+    function tick() { raf = 0; if (document.hidden || !vivos.size) return; var t = performance.now() / 1000, d = oscuro(); var ms = Date.now(); vivos.forEach(function (o) { if (o._vis) o._draw(t, d); if (memo[o._k]) memo[o._k].t = ms; }); raf = requestAnimationFrame(tick); }
     function arrancar() { if (!raf && vivos.size && !document.hidden && !quieto.matches) raf = requestAnimationFrame(tick); }
     document.addEventListener('visibilitychange', arrancar);
     new MutationObserver(function () { if (quieto.matches) vivos.forEach(function (o) { o._draw(0.6, oscuro()); }); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
@@ -1216,7 +1216,15 @@ thinking-orb[size="20"] { margin: -2px 6px 0 0; }
     Orb.prototype = Object.create(HTMLElement.prototype); Orb.prototype.constructor = Orb; Object.setPrototypeOf(Orb, HTMLElement);
     Orb.prototype.connectedCallback = function () {
         var size = +this.getAttribute('size') === 20 ? 20 : 64, r;
-        try { r = E.resolvePreset(this.getAttribute('state') || 'working', size); } catch (e) { r = E.resolvePreset('working', size); }
+        // state admite varias opciones ("searching connecting working"): cada espera elige una distinta a la anterior.
+        // Si el mismo aviso se vuelve a pintar enseguida (contadores que refrescan cada medio segundo) conserva la elegida.
+        var op = (this.getAttribute('state') || 'working').split(/[\s,|]+/).filter(function (x) { return E.STATE_TO_MODE[x]; }), k, m, ahora = Date.now(), st;
+        if (!op.length) op = ['working'];
+        k = this.getAttribute('k') || op.join(' ') + size; m = memo[k];
+        if (m && ahora - m.t < 2500 && op.indexOf(m.s) >= 0) st = m.s;
+        else { var resto = op.filter(function (x) { return !m || x !== m.s; }); if (!resto.length) resto = op; st = resto[Math.floor(Math.random() * resto.length)]; }
+        memo[k] = { s: st, t: ahora }; this._k = k; this.dataset.s = st;
+        r = E.resolvePreset(st, size);
         var dpr = Math.min(2, window.devicePixelRatio || 1), c = document.createElement('canvas'), ctx = c.getContext('2d'), draw = E.MODE_DRAWS[r.mode];
         c.width = c.height = Math.round(size * dpr); c.style.cssText = 'display:block;width:' + size + 'px;height:' + size + 'px';
         this._draw = function (t, d) { ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, size, size); draw(ctx, size, t * r.speed, d, r.opts); };
@@ -2133,7 +2141,7 @@ function switchTab(tab) {
 
         document.getElementById('cupos-modal-body').innerHTML = `
             <div class="cupos-box" style="text-align:center;">
-                <div class="orb-load"><thinking-orb state="searching" size="64"></thinking-orb></div><div style="font-size:0.85rem; color:var(--text-dim); margin-bottom:8px;">Consultando el catálogo del SIA...<br>
+                <div class="orb-load"><thinking-orb state="searching connecting working weaving solving" size="64" k="cupos"></thinking-orb></div><div style="font-size:0.85rem; color:var(--text-dim); margin-bottom:8px;">Consultando el catálogo del SIA...<br>
                     <span style="font-size:0.72rem;">Puede tardar unos segundos la primera vez.</span></div>
                 <div id="sia-timer-display" style="font-size:1.5rem; font-weight:bold; color:var(--primary);">0.0s</div>
                 <div id="sia-retry-msg" style="font-size:0.75rem; color:var(--warning); margin-top:8px; min-height:15px;"></div>
@@ -2220,7 +2228,7 @@ function switchTab(tab) {
         libreData = null;
         document.getElementById('libre-body').innerHTML = '';
         const t0 = Date.now();
-        const paint = () => { if (seq === libreSeq) libreStatus(`<span class="orb-load"><thinking-orb state="searching" size="64"></thinking-orb></span>Consultando el catálogo del SIA... ${Math.floor((Date.now() - t0) / 1000)}s<br><span style="font-size:0.72rem;">Puede tardar un poco la primera vez.</span>`); };
+        const paint = () => { if (seq === libreSeq) libreStatus(`<span class="orb-load"><thinking-orb state="searching connecting working weaving solving" size="64" k="libre"></thinking-orb></span>Consultando el catálogo del SIA... ${Math.floor((Date.now() - t0) / 1000)}s<br><span style="font-size:0.72rem;">Puede tardar un poco la primera vez.</span>`); };
         paint();
         const timer = setInterval(paint, 500);
         const url = `${SIA_API}/libre?${fuente}`;
@@ -2398,7 +2406,7 @@ function switchTab(tab) {
                 .map(([id, v]) => ({ codigo: id, nombre: v.nombre, creditos: v.creditos, libre: v.fuente }))
             : libreVistas.slice(0, 8);
         const nota = q ? (libPickItems.length ? `${libPickItems.length} resultado(s)` : 'Sin resultados.')
-            : (libreVistas.length ? 'Las últimas que viste:' : (todas.size ? `Escribe para buscar entre ${todas.size} materias de libre elección.` : '<thinking-orb state="working" size="20"></thinking-orb>Cargando la lista de libre elección…'));
+            : (libreVistas.length ? 'Las últimas que viste:' : (todas.size ? `Escribe para buscar entre ${todas.size} materias de libre elección.` : '<thinking-orb state="working breathing shaping searching" size="20" k="pick"></thinking-orb>Cargando la lista de libre elección…'));
         document.getElementById('libpick-body').innerHTML =
             `<div class="hor-msg" style="padding:6px;">${nota}</div>` +
             libPickItems.map((v, i) => `<div class="hor-g"><div><strong>${siaEsc(v.nombre)}</strong><small>${siaEsc(v.codigo)}${v.creditos ? ' · ' + siaEsc(v.creditos) + ' créd.' : ''}</small></div>
@@ -3125,7 +3133,7 @@ function horSlotsTxt(slots) {
 function horGruposHTML(code) {
     const gs = horGrupos[code];
     if (horErr[code] && !gs) return `<div class="hor-msg" style="color:var(--danger)">⚠️ ${siaEsc(horErr[code])}<br><button class="hor-btn sec" style="margin-top:8px" onclick="horLoad('${siaEsc(code)}', true)">Reintentar</button></div>`;
-    if (!gs) return '<div class="hor-msg orb-load"><thinking-orb state="searching" size="64"></thinking-orb><span>Consultando el catálogo del SIA… puede tardar hasta 45 s la primera vez.</span></div>';
+    if (!gs) return '<div class="hor-msg orb-load"><thinking-orb state="searching connecting working weaving solving" size="64" k="hor"></thinking-orb><span>Consultando el catálogo del SIA… puede tardar hasta 45 s la primera vez.</span></div>';
     if (!gs.length) return '<div class="hor-msg">No hay grupos ofertados para esta materia.</div>';
     const f = horN(horFilter.trim());
     const rows = gs.map((g, i) => {
@@ -3944,7 +3952,7 @@ infoLinksRender();
     async function rvCargar(inicial) {
         const body = document.getElementById('resenas-body');
         const seq = ++rvSeq;
-        if (inicial) body.innerHTML = '<div class="rv-msg orb-load" style="color:var(--text-dim)"><thinking-orb state="weaving" size="64"></thinking-orb><span>Cargando reseñas…</span></div>';
+        if (inicial) body.innerHTML = '<div class="rv-msg orb-load" style="color:var(--text-dim)"><thinking-orb state="weaving listening composing breathing connecting" size="64" k="rv"></thinking-orb><span>Cargando reseñas…</span></div>';
         try {
             const r = await fetch(`${RV_API}?profesor=${encodeURIComponent(rv.prof)}&offset=${rv.offset}`);
             const j = await r.json();
@@ -4007,7 +4015,7 @@ infoLinksRender();
     async function rvEnviar() {
         if (!rv.cal) { rvMsg('Elige una calificación de 1 a 5.', false); return; }
         const btn = document.getElementById('rv-send');
-        btn.disabled = true; rvMsg('Revisando tu comentario…', true); document.getElementById('rv-msg').insertAdjacentHTML('afterbegin', '<thinking-orb state="solving" size="20"></thinking-orb>');
+        btn.disabled = true; rvMsg('Revisando tu comentario…', true); document.getElementById('rv-msg').insertAdjacentHTML('afterbegin', '<thinking-orb state="solving weaving shaping listening" size="20" k="rvsend"></thinking-orb>');
         try {
             const r = await fetch(RV_API, {
                 method: 'POST', headers: { 'Content-Type': 'application/json' },
@@ -4272,8 +4280,8 @@ infoLinksRender();
         var last = parseInt(get(K_LAST) || '0', 10);
         if (Date.now() - last < 30000) { status('Espera unos segundos antes de enviar otro mensaje.', true); return; }
 
-        send.disabled = true; send.innerHTML = '<thinking-orb state="composing" size="20"></thinking-orb>Enviando…'; status('');
-        slowTimer = setTimeout(function () { status('El servidor estaba dormido, puede tardar hasta un minuto…'); $('fb-status').insertAdjacentHTML('afterbegin', '<thinking-orb state="connecting" size="20"></thinking-orb>'); }, 6000);
+        send.disabled = true; send.innerHTML = '<thinking-orb state="composing weaving working breathing" size="20" k="fb"></thinking-orb>Enviando…'; status('');
+        slowTimer = setTimeout(function () { status('El servidor estaba dormido, puede tardar hasta un minuto…'); $('fb-status').insertAdjacentHTML('afterbegin', '<thinking-orb state="connecting searching breathing" size="20" k="dorm"></thinking-orb>'); }, 6000);
         var ctrl = window.AbortController ? new AbortController() : null;
         var to = setTimeout(function () { if (ctrl) ctrl.abort(); }, 60000);
         fetch(API, {
@@ -4454,7 +4462,7 @@ infoLinksRender();
     if (PROG.wip) {
         var sh = document.querySelector('#malla-view .malla-shell'), av = document.createElement('div');
         av.className = 'prog-aviso';
-        av.innerHTML = '<thinking-orb state="shaping" size="20" style="margin-top:1px"></thinking-orb><div><b>' + PROG.nombre + ' está en construcción.</b> Las materias, créditos y semestres vienen de la malla oficial' + (PROG.pdf ? ' (<a href="' + PROG.pdf + '" target="_blank" rel="noopener">PDF</a>)' : '') + '. Todavía no tiene prerrequisitos, así que no bloquea materias. Si ves un error, cuéntame en Comentarios.</div>';
+        av.innerHTML = '<thinking-orb state="shaping breathing working weaving" size="20" style="margin-top:1px"></thinking-orb><div><b>' + PROG.nombre + ' está en construcción.</b> Las materias, créditos y semestres vienen de la malla oficial' + (PROG.pdf ? ' (<a href="' + PROG.pdf + '" target="_blank" rel="noopener">PDF</a>)' : '') + '. Todavía no tiene prerrequisitos, así que no bloquea materias. Si ves un error, cuéntame en Comentarios.</div>';
         if (sh) sh.prepend(av);
     }
 

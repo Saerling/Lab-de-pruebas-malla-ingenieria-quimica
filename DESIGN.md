@@ -50,3 +50,4 @@ Indicadores de carga de [thinking-orbs](https://github.com/Jakubantalik/thinking
 - `searching` 64: consultas al SIA (cupos, horario, libre elección). `weaving` 64: cargar reseñas.
 - `solving` 20: revisión de una reseña. `composing` 20: enviar comentario. `connecting` 20: servidor dormido. `working` 20: lista de libre elección. `shaping` 20: aviso de carrera en construcción.
 - Un solo `requestAnimationFrame` para todos; se pausan fuera de pantalla o con la pestaña oculta; cuadro fijo con "reducir movimiento"; siguen el modo día/noche.
+- **Variación:** cada lugar tiene varios estados posibles (`state="searching connecting working"`) y cada espera elige uno distinto al anterior; si el mismo aviso se repinta en menos de 2,5 s (contadores) conserva el que tenía.
