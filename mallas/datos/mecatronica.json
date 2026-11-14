@@ -1,0 +1,491 @@
+{
+ "id": "mecatronica",
+ "nombre": "Ingeniería Mecatrónica",
+ "plan": "Acuerdo 6 de 2022 del Consejo de Facultad de Ingeniería",
+ "creditos": 179,
+ "semestres": [
+  {
+   "sem": 1,
+   "mat": [
+    {
+     "cod": "1000004",
+     "n": "Cálculo Diferencial",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas, Probabilidad y Estadística",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015734",
+     "n": "Programación de Computadores",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Informática y Herramientas de Ingeniería",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016509",
+     "n": "Taller de Ingeniería Electrónica",
+     "c": 2,
+     "cat": "Disciplinar",
+     "agr": "Ingeniería Electrónica",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2017265",
+     "n": "Ingeniería y Desarrollo Sostenible",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Investigación, Innovación y Desarrollo Tecnológico",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015711",
+     "n": "Dibujo Básico",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Expresión Gráfica",
+     "tipo": "obligatoria"
+    }
+   ]
+  },
+  {
+   "sem": 2,
+   "mat": [
+    {
+     "cod": "1000005",
+     "n": "Cálculo Integral",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas, Probabilidad y Estadística",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "1000003",
+     "n": "Álgebra Lineal",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas, Probabilidad y Estadística",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "1000019",
+     "n": "Fundamentos de Mecánica",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Física",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2017278",
+     "n": "Tecnología Mecánica Básica",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Ingeniería de Materiales y Procesos de Manufactura",
+     "tipo": "obligatoria"
+    }
+   ]
+  },
+  {
+   "sem": 3,
+   "mat": [
+    {
+     "cod": "1000006",
+     "n": "Cálculo Varias Variables",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas, Probabilidad y Estadística",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "1000013",
+     "n": "Probabilidad y Estadística Fundamental",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas, Probabilidad y Estadística",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "1000017",
+     "n": "Fundamentos de Electricidad y Magnetismo",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Física",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016489",
+     "n": "Circuitos Eléctricos I",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Ingeniería Electrónica",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016640",
+     "n": "Principios de Estática",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Ingeniería de Diseño",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "1000024",
+     "n": "Principios de Química",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Química",
+     "tipo": "obligatoria"
+    }
+   ]
+  },
+  {
+   "sem": 4,
+   "mat": [
+    {
+     "cod": "1000007",
+     "n": "Ecuaciones Diferenciales",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas, Probabilidad y Estadística",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 1",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "2016375",
+     "n": "Programación Orientada a Objetos",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Ingeniería Informática",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016495",
+     "n": "Electrónica Análoga I",
+     "c": 4,
+     "cat": "Disciplinar",
+     "agr": "Ingeniería Electrónica",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2017271",
+     "n": "Principios de Dinámica",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Ingeniería de Diseño",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 2",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    }
+   ]
+  },
+  {
+   "sem": 5,
+   "mat": [
+    {
+     "cod": "2015159",
+     "n": "Variable Compleja",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas, Probabilidad y Estadística",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Optativa Física",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Física",
+     "tipo": "optativa"
+    },
+    {
+     "cod": "2016506",
+     "n": "Señales y Sistemas I",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Automatización, Control y Robótica",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016699",
+     "n": "Estructura de Datos",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Ingeniería Informática",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2017277",
+     "n": "Resistencia de Materiales",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Ingeniería de Diseño",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2017256",
+     "n": "Ciencia e Ingeniería de Materiales",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Ingeniería de Materiales y Procesos de Manufactura",
+     "tipo": "obligatoria"
+    }
+   ]
+  },
+  {
+   "sem": 6,
+   "mat": [
+    {
+     "cod": "2015703",
+     "n": "Ingeniería Económica",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Ciencias Económicas y Administrativas",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016507",
+     "n": "Señales y Sistemas II",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Automatización, Control y Robótica",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016498",
+     "n": "Electrónica Digital I",
+     "c": 4,
+     "cat": "Disciplinar",
+     "agr": "Ingeniería Electrónica",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2024045",
+     "n": "Taller de Proyectos Interdisciplinarios",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Investigación, Innovación y Desarrollo Tecnológico",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2017282",
+     "n": "Diseño Mecatrónico",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Ingeniería de Diseño",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Optativa Ingeniería de Materiales y Procesos de Manufactura",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Ingeniería de Materiales y Procesos de Manufactura",
+     "tipo": "optativa"
+    }
+   ]
+  },
+  {
+   "sem": 7,
+   "mat": [
+    {
+     "cod": "",
+     "n": "Optativa Ciencias Económicas y Administrativas",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Ciencias Económicas y Administrativas",
+     "tipo": "optativa"
+    },
+    {
+     "cod": "2016493",
+     "n": "Control",
+     "c": 4,
+     "cat": "Disciplinar",
+     "agr": "Automatización, Control y Robótica",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2017287",
+     "n": "Sensores y Actuadores",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Automatización, Control y Robótica",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2025967",
+     "n": "Redes de Computadores",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Ingeniería Informática",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016753",
+     "n": "Microcontroladores I",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Ingeniería Electrónica",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Optativa Informática y Herramientas de Ingeniería",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Informática y Herramientas de Ingeniería",
+     "tipo": "optativa"
+    }
+   ]
+  },
+  {
+   "sem": 8,
+   "mat": [
+    {
+     "cod": "",
+     "n": "Libre Elección 3",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "2017770",
+     "n": "Robótica",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Automatización, Control y Robótica",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Optativa Automatización, Control y Robótica",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Automatización, Control y Robótica",
+     "tipo": "optativa"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 4",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "2017288",
+     "n": "Servomecanismos",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Ingeniería de Diseño",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 5",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    }
+   ]
+  },
+  {
+   "sem": 9,
+   "mat": [
+    {
+     "cod": "",
+     "n": "Libre Elección 6",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 7",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 8",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "2017275",
+     "n": "Proyecto Aplicado de Ingeniería",
+     "c": 4,
+     "cat": "Disciplinar",
+     "agr": "Investigación, Innovación y Desarrollo Tecnológico",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2017280",
+     "n": "Automatización de Procesos de Manufactura",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Ingeniería de Materiales y Procesos de Manufactura",
+     "tipo": "obligatoria"
+    }
+   ]
+  },
+  {
+   "sem": 10,
+   "mat": [
+    {
+     "cod": "",
+     "n": "Libre Elección 9",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 10",
+     "c": 9,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "2017297",
+     "n": "Trabajo de Grado",
+     "c": 6,
+     "cat": "Disciplinar",
+     "agr": "Investigación, Innovación y Desarrollo Tecnológico",
+     "tipo": "obligatoria"
+    }
+   ]
+  }
+ ],
+ "dudas": [
+  "Ingeniería y Desarrollo Sostenible: el PDF imprime el código incompleto '201765' (6 dígitos); se puso 2017265, que es el código de la misma asignatura en la malla de Ingeniería Mecánica.",
+  "Optativa Física (sem V) figura con '3/4' créditos; se dejó 3 porque así cuadran Fundamental Optativa = 9 y el total 179. El PDF imprime 19/20 para el semestre.",
+  "Sem IX: la primera Libre/Profundización figura con '3/6' créditos; se dejó 3 (así Libre Elección = 36 y total = 179). El PDF imprime 16/19 para el semestre.",
+  "Sem X: el PDF imprime 15/18; las tarjetas suman 18 (libre 3 + libre 9 + Trabajo de Grado 6). Con 18 cuadran libre = 36 y total = 179. La tarjeta de 9 créditos es un solo bloque de libre elección.",
+  "Sem VI: la tarjeta 'Optativa' de Ingeniería de Materiales y Procesos de Manufactura trae impreso el código 2017273 (Procesos de Manufactura I en la malla de Mecánica); se dejó como optativa sin código porque el resumen del PDF cuenta 6 créditos de Disciplinar Optativa.",
+  "'Cálculo Varias Variables' se transcribió literal (el nombre oficial de 1000006 es 'Cálculo en Varias Variables'). La agrupación de Ingeniería Económica aparece como 'Ciencia Económicas y Administrativas' en la tarjeta; se normalizó a 'Ciencias Económicas y Administrativas'.",
+  "Las tarjetas de libre elección de VIII, IX y X dicen 'Libre/Profundización' con requisito de 70% del programa; se transcribieron como libre elección."
+ ]
+}

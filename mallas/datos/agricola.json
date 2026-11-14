@@ -1,0 +1,505 @@
+{
+ "id": "agricola",
+ "nombre": "Ingeniería Agrícola",
+ "plan": "Acuerdo 30 de 2016 de la Facultad de Ingeniería",
+ "creditos": 180,
+ "semestres": [
+  {
+   "sem": 1,
+   "mat": [
+    {
+     "cod": "2016635",
+     "n": "Introducción a la Ingeniería Agrícola",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Asignaturas sin Agrupación",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "1000004",
+     "n": "Cálculo Diferencial",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas, Probabilidad y Estadística",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "1000024",
+     "n": "Principios de Química",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Química y Biología",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "1000009",
+     "n": "Biología General",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Química y Biología",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015711",
+     "n": "Dibujo Básico",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Expresión Gráfica",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 1",
+     "c": 2,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    }
+   ]
+  },
+  {
+   "sem": 2,
+   "mat": [
+    {
+     "cod": "1000003",
+     "n": "Álgebra Lineal",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas, Probabilidad y Estadística",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "1000005",
+     "n": "Cálculo Integral",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas, Probabilidad y Estadística",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "1000019",
+     "n": "Fundamentos de Mecánica",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Física",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015734",
+     "n": "Programación de Computadores",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Herramientas Informáticas y Métodos Numéricos",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 2",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    }
+   ]
+  },
+  {
+   "sem": 3,
+   "mat": [
+    {
+     "cod": "1000006",
+     "n": "Cálculo en Varias Variables",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas, Probabilidad y Estadística",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "1000013",
+     "n": "Probabilidad y Estadística Fundamental",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas, Probabilidad y Estadística",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2026134",
+     "n": "Estática",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Asignaturas sin Agrupación",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015958",
+     "n": "Geomática Básica",
+     "c": 4,
+     "cat": "Disciplinar",
+     "agr": "Asignaturas sin Agrupación",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 3",
+     "c": 4,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    }
+   ]
+  },
+  {
+   "sem": 4,
+   "mat": [
+    {
+     "cod": "1000007",
+     "n": "Ecuaciones Diferenciales",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas, Probabilidad y Estadística",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2017538",
+     "n": "Fisiología Vegetal",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Química y Biología",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016632",
+     "n": "Suelos Agrícolas",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Asignaturas sin Agrupación",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015703",
+     "n": "Ingeniería Económica",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Ciencias Económicas y Administrativas",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 4",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    }
+   ]
+  },
+  {
+   "sem": 5,
+   "mat": [
+    {
+     "cod": "2015966",
+     "n": "Mecánica de Fluidos",
+     "c": 4,
+     "cat": "Disciplinar",
+     "agr": "Asignaturas sin Agrupación",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Optativa Física",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Física",
+     "tipo": "optativa"
+    },
+    {
+     "cod": "2015968",
+     "n": "Mecánica de Sólidos",
+     "c": 4,
+     "cat": "Disciplinar",
+     "agr": "Asignaturas sin Agrupación",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015741",
+     "n": "Termodinámica",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Asignaturas sin Agrupación",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Optativa Herramientas Informáticas y Métodos Numéricos",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Herramientas Informáticas y Métodos Numéricos",
+     "tipo": "optativa"
+    }
+   ]
+  },
+  {
+   "sem": 6,
+   "mat": [
+    {
+     "cod": "2015961",
+     "n": "Hidráulica Básica",
+     "c": 4,
+     "cat": "Disciplinar",
+     "agr": "Asignaturas sin Agrupación",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015969",
+     "n": "Mecánica de Suelos",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Asignaturas sin Agrupación",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015941",
+     "n": "Análisis Estructural Básico",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Construcciones Rurales",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016631",
+     "n": "Elementos de Máquinas Agrícolas",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Maquinaria Agrícola y Mecanización",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016643",
+     "n": "Transferencia de Calor y Masa",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Poscosecha de Productos Agropecuarios",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 5",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    }
+   ]
+  },
+  {
+   "sem": 7,
+   "mat": [
+    {
+     "cod": "2016634",
+     "n": "Ingeniería de Riegos",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Ingeniería de Riego y Drenaje",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015978",
+     "n": "Hidrología",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Asignaturas sin Agrupación",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016627",
+     "n": "Diseño de Estructuras en Concreto",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Construcciones Rurales",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016633",
+     "n": "Fuentes de Potencia en la Agricultura",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Maquinaria Agrícola y Mecanización",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016638",
+     "n": "Poscosecha de Frutas y Hortalizas",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Poscosecha de Productos Agropecuarios",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 6",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    }
+   ]
+  },
+  {
+   "sem": 8,
+   "mat": [
+    {
+     "cod": "2016628",
+     "n": "Diseño de Sistemas de Riego",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Ingeniería de Riego y Drenaje",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016629",
+     "n": "Drenaje de Tierras Agrícolas",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Ingeniería de Riego y Drenaje",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Optativa Construcciones Rurales",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Construcciones Rurales",
+     "tipo": "optativa"
+    },
+    {
+     "cod": "2016636",
+     "n": "Máquinas Agrícolas",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Maquinaria Agrícola y Mecanización",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016639",
+     "n": "Poscosecha de Granos y Semillas",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Poscosecha de Productos Agropecuarios",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015702",
+     "n": "Gerencia y Gestión de Proyectos",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Ciencias Económicas y Administrativas",
+     "tipo": "obligatoria"
+    }
+   ]
+  },
+  {
+   "sem": 9,
+   "mat": [
+    {
+     "cod": "2016630",
+     "n": "Electrotecnia",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Asignaturas sin Agrupación",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2024045",
+     "n": "Taller de Proyectos Interdisciplinarios",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Taller de Proyectos de Ingeniería",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 7",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 8",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 9",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "",
+     "n": "Optativa Ciencias Económicas y Administrativas",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Ciencias Económicas y Administrativas",
+     "tipo": "optativa"
+    }
+   ]
+  },
+  {
+   "sem": 10,
+   "mat": [
+    {
+     "cod": "2016626",
+     "n": "Control en Biosistemas",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Automatización y Control",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Optativa Trabajo de Grado",
+     "c": 6,
+     "cat": "Disciplinar",
+     "agr": "Trabajo de Grado",
+     "tipo": "optativa"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 10",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 11",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 12",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    }
+   ]
+  }
+ ],
+ "dudas": [
+  "Ingeniería de Riegos (sem. VII): la tarjeta de la malla imprime 2016628, el mismo código de Diseño de Sistemas de Riego (sem. VIII); se usó 2016634, que es el que da el listado de agrupaciones de la página 2 del mismo PDF.",
+  "Colores de tarjeta invertidos frente a la leyenda (Cálculo, Química, etc. salen en verde 'disciplinar' y las disciplinares en cian); 'cat' se asignó por agrupación según la página 2, y así cuadran los totales impresos: Fundamentación 59, Disciplinar 85, Libre 36.",
+  "Las tarjetas no muestran la agrupación; 'agr' se tomó del listado de agrupaciones de la página 2 del PDF.",
+  "Nombres con diferencia entre páginas: la malla dice 'Diseño de Estructuras en Concreto' y 'Optativa - Herramientas Informáticas y Métodos Numéros' (errata); la página 2 dice 'Diseño de estructuras de concreto' y 'Métodos Numéricos'. Se dejó el nombre de la tarjeta en el primero y se corrigió la errata en el segundo.",
+  "Gerencia y Gestión de Proyectos (2015702) aparece en la fila de libre elección del sem. VIII pero es de Fundamentación (Ciencias Económicas y Administrativas)."
+ ]
+}

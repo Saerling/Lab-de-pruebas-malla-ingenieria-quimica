@@ -1,0 +1,449 @@
+{
+ "id": "industrial",
+ "nombre": "Ingeniería Industrial",
+ "plan": "Acuerdo 024 de 2014",
+ "creditos": 168,
+ "semestres": [
+  {
+   "sem": 1,
+   "mat": [
+    {
+     "cod": "",
+     "n": "Cálculo Diferencial",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas",
+     "tipo": "optativa"
+    },
+    {
+     "cod": "2015811",
+     "n": "Sociología Especial: Industrial y del Trabajo",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Sociohumanística",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2026805",
+     "n": "Introducción a la Ingeniería Industrial",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Contexto Profesional y Proyectos de Ingeniería",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015734",
+     "n": "Programación de Computadores",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Programación",
+     "tipo": "obligatoria"
+    }
+   ]
+  },
+  {
+   "sem": 2,
+   "mat": [
+    {
+     "cod": "",
+     "n": "Cálculo Integral",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas",
+     "tipo": "optativa"
+    },
+    {
+     "cod": "",
+     "n": "Álgebra Lineal",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas",
+     "tipo": "optativa"
+    },
+    {
+     "cod": "2016615",
+     "n": "Taller de Invención y Creatividad",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Sociohumanística",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016375",
+     "n": "Programación Orientada a Objetos",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Programación",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 1",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    }
+   ]
+  },
+  {
+   "sem": 3,
+   "mat": [
+    {
+     "cod": "",
+     "n": "Cálculo en Varias Variables",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas",
+     "tipo": "optativa"
+    },
+    {
+     "cod": "1000019",
+     "n": "Fundamentos de Mecánica",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Física",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Optativa Economía General",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Economía y Finanzas",
+     "tipo": "optativa"
+    },
+    {
+     "cod": "2026488",
+     "n": "Taller de Herramientas y Problemas en Ingeniería Industrial",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Contexto Profesional y Proyectos de Ingeniería",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2027877",
+     "n": "Probabilidad Fundamental",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Probabilidad y Estadística",
+     "tipo": "obligatoria"
+    }
+   ]
+  },
+  {
+   "sem": 4,
+   "mat": [
+    {
+     "cod": "",
+     "n": "Ecuaciones Diferenciales",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas",
+     "tipo": "optativa"
+    },
+    {
+     "cod": "1000017",
+     "n": "Fundamentos de Electricidad y Magnetismo",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Física",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Optativa Sistemas de Costos",
+     "c": 4,
+     "cat": "Disciplinar",
+     "agr": "Economía y Finanzas",
+     "tipo": "optativa"
+    },
+    {
+     "cod": "",
+     "n": "Optativa Gestión Empresarial",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Administración y Gestión",
+     "tipo": "optativa"
+    },
+    {
+     "cod": "2025993",
+     "n": "Taller de Ciencia y Tecnología de Materiales",
+     "c": 4,
+     "cat": "Disciplinar",
+     "agr": "Materiales y Procesos",
+     "tipo": "obligatoria"
+    }
+   ]
+  },
+  {
+   "sem": 5,
+   "mat": [
+    {
+     "cod": "",
+     "n": "Optativa Modelos y Simulación",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Sistemas, Modelos, Optimización y Simulación",
+     "tipo": "optativa"
+    },
+    {
+     "cod": "",
+     "n": "Optativa Optimización",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Sistemas, Modelos, Optimización y Simulación",
+     "tipo": "optativa"
+    },
+    {
+     "cod": "2025986",
+     "n": "Ingeniería Económica y Análisis de Riesgo",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Economía y Finanzas",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016619",
+     "n": "Taller de Procesos Químicos y Biotecnológicos",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Materiales y Procesos",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016618",
+     "n": "Taller de Procesos Metalmecánicos",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Materiales y Procesos",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2027878",
+     "n": "Inferencia Estadística Fundamental",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Probabilidad y Estadística",
+     "tipo": "obligatoria"
+    }
+   ]
+  },
+  {
+   "sem": 6,
+   "mat": [
+    {
+     "cod": "2025987",
+     "n": "Modelos Estocásticos para Procesos de Manufactura y Sistemas de Servicio",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Sistemas, Modelos, Optimización y Simulación",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Optativa Gerencia y Gestión de Proyectos",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Administración y Gestión",
+     "tipo": "optativa"
+    },
+    {
+     "cod": "",
+     "n": "Optativa Finanzas",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Economía y Finanzas",
+     "tipo": "optativa"
+    },
+    {
+     "cod": "2016613",
+     "n": "Taller de Ergonomía e Ingeniería de Métodos",
+     "c": 4,
+     "cat": "Disciplinar",
+     "agr": "Producción y Operaciones",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Optativa Control y Gestión de Calidad",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Producción y Operaciones",
+     "tipo": "optativa"
+    }
+   ]
+  },
+  {
+   "sem": 7,
+   "mat": [
+    {
+     "cod": "2025988",
+     "n": "Taller de Simulación de Procesos de Manufactura y Sistemas de Servicios",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Sistemas, Modelos, Optimización y Simulación",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Optativa Sistemas de Información",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Sistemas de Información",
+     "tipo": "optativa"
+    },
+    {
+     "cod": "2016609",
+     "n": "Seguridad Industrial",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Producción y Operaciones",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016614",
+     "n": "Taller de Ingeniería de la Producción",
+     "c": 4,
+     "cat": "Disciplinar",
+     "agr": "Producción y Operaciones",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016616",
+     "n": "Taller de Metodología de la Investigación",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Sociohumanística",
+     "tipo": "obligatoria"
+    }
+   ]
+  },
+  {
+   "sem": 8,
+   "mat": [
+    {
+     "cod": "2016605",
+     "n": "Logística",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Producción y Operaciones",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Optativa Gestión Tecnológica",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Administración y Gestión",
+     "tipo": "optativa"
+    },
+    {
+     "cod": "",
+     "n": "Optativa Gerencia de Recursos Humanos",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Administración y Gestión",
+     "tipo": "optativa"
+    },
+    {
+     "cod": "2016612",
+     "n": "Taller de Diseño de Plantas",
+     "c": 4,
+     "cat": "Disciplinar",
+     "agr": "Producción y Operaciones",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 2",
+     "c": 4,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    }
+   ]
+  },
+  {
+   "sem": 9,
+   "mat": [
+    {
+     "cod": "",
+     "n": "Libre Elección 3",
+     "c": 4,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 4",
+     "c": 4,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 5",
+     "c": 4,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 6",
+     "c": 4,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    }
+   ]
+  },
+  {
+   "sem": 10,
+   "mat": [
+    {
+     "cod": "",
+     "n": "Trabajo de Grado",
+     "c": 6,
+     "cat": "Disciplinar",
+     "agr": "Trabajo de Grado",
+     "tipo": "optativa"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 7",
+     "c": 4,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 8",
+     "c": 4,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 9",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    }
+   ]
+  }
+ ],
+ "dudas": [
+  "Cálculo Diferencial, Cálculo Integral, Álgebra Lineal, Cálculo en Varias Variables y Ecuaciones Diferenciales llevan asterisco y no tienen código en la tarjeta: son optativas por subagrupación de Matemáticas (20 créditos optativos, 0 obligatorios; p. ej. 1000004 o 2016377). Se dejaron con el nombre de la tarjeta, cod '' y tipo 'optativa'.",
+  "Trabajo de Grado (sem. X) no tiene código en la tarjeta: la página 2 da tres modalidades (2025990, 2025989, 2015321), 6 créditos optativos; se puso tipo 'optativa' con el nombre de la tarjeta.",
+  "Las tarjetas no muestran la agrupación; 'agr' se tomó del listado de la página 2. En las optativas el nombre usa la subagrupación que muestra la tarjeta y 'agr' es la agrupación que la contiene.",
+  "Erratas de la malla corregidas: 'Optativa - Sistema de costos' (pág. 2: Sistemas de Costos) y 'Gestión tecnólogica'. La tarjeta 2025987 dice '...sistemas de servicio' y la página 2 '...Sistemas de Servicios'; se dejó como en la tarjeta.",
+  "El PDF solo imprime créditos por tarjeta (no las horas) y total por semestre."
+ ]
+}

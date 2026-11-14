@@ -31,3 +31,10 @@ Se leyeron los parámetros de animación de Mochy Music (github.com/realidkroo/M
 - **Malla:** los semestres entran escalonados (32 ms) solo al abrir la pestaña; ya no se re-animan en cada clic.
 - **Estados:** "disponible" va en contorno verde y "aprobada" rellena.
 - **Avisos flotantes:** fondo casi opaco; el de comentarios es una cápsula fija abajo a la derecha.
+
+## v9 · Azul, requisitos por color y varias carreras
+- **Acento:** azul (`#6ea8ff` de noche, `#2f6fed` de día); brillo superior azul y violeta. Verde solo para "aprobada".
+- **Requisitos:** ya no hay líneas permanentes. Al pasar el cursor, o con ⋮ → Ver requisitos, la materia se enfoca: sus requisitos en morado (`--req`), lo que abre en azul, lo demás atenuado, y solo esas líneas.
+- **Emergentes:** `--glass` casi opaco (90%) con desenfoque en menús, avisos y modales.
+- **Ventanas:** cupos hasta 1040 px con los grupos en rejilla; reseñas y libre elección 720 px; en celular, hoja inferior.
+- **Carreras:** `PROG` define la carrera activa; las que no son Química guardan su estado con prefijo `<id>:`.

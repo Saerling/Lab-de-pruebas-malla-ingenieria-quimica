@@ -1,0 +1,465 @@
+{
+ "id": "electronica",
+ "nombre": "Ingeniería Electrónica",
+ "plan": "2545",
+ "creditos": 172,
+ "semestres": [
+  {
+   "sem": 1,
+   "mat": [
+    {
+     "cod": "1000004",
+     "n": "Cálculo Diferencial",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas, Probabilidad y Estadística",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 1",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "2016502",
+     "n": "Introducción a la Ingeniería Electrónica",
+     "c": 5,
+     "cat": "Disciplinar",
+     "agr": "Contexto Profesional, Innovación e Investigación",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015734",
+     "n": "Programación de Computadores",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Informática",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016509",
+     "n": "Taller de Electrónica",
+     "c": 2,
+     "cat": "Disciplinar",
+     "agr": "Contexto Profesional, Innovación e Investigación",
+     "tipo": "obligatoria"
+    }
+   ]
+  },
+  {
+   "sem": 2,
+   "mat": [
+    {
+     "cod": "1000005",
+     "n": "Cálculo Integral",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas, Probabilidad y Estadística",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "1000003",
+     "n": "Álgebra Lineal",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas, Probabilidad y Estadística",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "1000019",
+     "n": "Fundamentos de Mecánica",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Física",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016375",
+     "n": "Programación Orientada a Objetos",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Informática",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 2",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    }
+   ]
+  },
+  {
+   "sem": 3,
+   "mat": [
+    {
+     "cod": "1000006",
+     "n": "Cálculo en Varias Variables",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas, Probabilidad y Estadística",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "1000007",
+     "n": "Ecuaciones Diferenciales",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas, Probabilidad y Estadística",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "1000017",
+     "n": "Fundamentos de Electricidad y Magnetismo",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Física",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "1000040",
+     "n": "Introducción a la Ciencia de Materiales",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Ciencia de los Materiales",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016489",
+     "n": "Circuitos Eléctricos I",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Circuitos y Campos",
+     "tipo": "obligatoria"
+    }
+   ]
+  },
+  {
+   "sem": 4,
+   "mat": [
+    {
+     "cod": "2015159",
+     "n": "Variable Compleja",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas, Probabilidad y Estadística",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 3",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "1000020",
+     "n": "Fundamentos de Oscilaciones, Ondas y Óptica",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Física",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016495",
+     "n": "Electrónica Análoga I",
+     "c": 4,
+     "cat": "Disciplinar",
+     "agr": "Electrónica Análoga",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016490",
+     "n": "Circuitos Eléctricos II",
+     "c": 4,
+     "cat": "Disciplinar",
+     "agr": "Circuitos y Campos",
+     "tipo": "obligatoria"
+    }
+   ]
+  },
+  {
+   "sem": 5,
+   "mat": [
+    {
+     "cod": "",
+     "n": "Optativa Probabilidad y Estadística",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas, Probabilidad y Estadística",
+     "tipo": "optativa"
+    },
+    {
+     "cod": "2016506",
+     "n": "Señales y Sistemas I",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Señales, Sistemas y Control",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016501",
+     "n": "Instrumentación y Medidas",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Electrónica Análoga",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016496",
+     "n": "Electrónica Análoga II",
+     "c": 4,
+     "cat": "Disciplinar",
+     "agr": "Electrónica Análoga",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016498",
+     "n": "Electrónica Digital I",
+     "c": 4,
+     "cat": "Disciplinar",
+     "agr": "Electrónica Digital",
+     "tipo": "obligatoria"
+    }
+   ]
+  },
+  {
+   "sem": 6,
+   "mat": [
+    {
+     "cod": "2016500",
+     "n": "Física de Semiconductores",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Física",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016507",
+     "n": "Señales y Sistemas II",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Señales, Sistemas y Control",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016487",
+     "n": "Campos Electromagnéticos",
+     "c": 4,
+     "cat": "Disciplinar",
+     "agr": "Circuitos y Campos",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Optativa Electrónica Análoga",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Electrónica Análoga",
+     "tipo": "optativa"
+    },
+    {
+     "cod": "2016499",
+     "n": "Electrónica Digital II",
+     "c": 4,
+     "cat": "Disciplinar",
+     "agr": "Electrónica Digital",
+     "tipo": "obligatoria"
+    }
+   ]
+  },
+  {
+   "sem": 7,
+   "mat": [
+    {
+     "cod": "2015703",
+     "n": "Ingeniería Económica",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Ciencias Económicas y Administrativas",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016493",
+     "n": "Control",
+     "c": 4,
+     "cat": "Disciplinar",
+     "agr": "Señales, Sistemas y Control",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016503",
+     "n": "Líneas y Antenas",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Telecomunicaciones",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016492",
+     "n": "Comunicaciones",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Telecomunicaciones",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Optativa Electrónica Digital",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Electrónica Digital",
+     "tipo": "optativa"
+    }
+   ]
+  },
+  {
+   "sem": 8,
+   "mat": [
+    {
+     "cod": "",
+     "n": "Optativa Ciencias Económicas y Administrativas",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Ciencias Económicas y Administrativas",
+     "tipo": "optativa"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 4",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 5",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "2019125",
+     "n": "Optativa Telecomunicaciones",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Telecomunicaciones",
+     "tipo": "optativa"
+    },
+    {
+     "cod": "2016497",
+     "n": "Electrónica de Potencia",
+     "c": 4,
+     "cat": "Disciplinar",
+     "agr": "Electrónica Análoga",
+     "tipo": "obligatoria"
+    }
+   ]
+  },
+  {
+   "sem": 9,
+   "mat": [
+    {
+     "cod": "",
+     "n": "Optativa Ciencias Económicas y Administrativas",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Ciencias Económicas y Administrativas",
+     "tipo": "optativa"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 6",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 7",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 8",
+     "c": 4,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "2016510",
+     "n": "Taller de Proyectos Interdisciplinarios",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Contexto Profesional, Innovación e Investigación",
+     "tipo": "obligatoria"
+    }
+   ]
+  },
+  {
+   "sem": 10,
+   "mat": [
+    {
+     "cod": "",
+     "n": "Libre Elección 9",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 10",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 11",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "2016494",
+     "n": "Diseño de Sistemas Electrónicos",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Circuitos y Campos",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015316",
+     "n": "Trabajo de Grado",
+     "c": 6,
+     "cat": "Disciplinar",
+     "agr": "Trabajo de Grado",
+     "tipo": "obligatoria"
+    }
+   ]
+  }
+ ],
+ "dudas": [
+  "Diseño de Sistemas Electrónicos (sem. X) aparece con otra tipografía, franja en inglés ('Basic disciplinary: electrical circuits and fields') y código 2016494, que en la malla de Ing. Eléctrica corresponde a Conversión Electromagnética; el código y la agrupación (Circuitos y Campos) pueden estar mal en el PDF.",
+  "'Optativa Telecomunicaciones' (sem. VIII) trae código fijo 2019125 y el PDF la cuenta dentro de los 72 créditos obligatorios disciplinares (el total optativo disciplinar impreso es 6 = Electrónica Análoga + Electrónica Digital); se dejó tipo 'optativa' conservando el código.",
+  "El código de Control se imprime como '201 6493' (con espacio); se transcribió 2016493.",
+  "Introducción a la Ciencia de Materiales (1000040) tiene franja 'Básica disciplinar: Ciencia de los Materiales' pero componente CF; se dejó en Fundamentación.",
+  "Con pdfplumber el texto sale con letras intercaladas y solo 8 de los 34 códigos aparecen; los 34 sí aparecen en el texto extraído con pypdfium2 (Control como '201 6493'). Nombres y agrupaciones se leyeron de la imagen."
+ ]
+}

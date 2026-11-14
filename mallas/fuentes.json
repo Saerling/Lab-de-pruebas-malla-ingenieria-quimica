@@ -21,13 +21,14 @@
      "n": "Acuerdo 041 de 2009",
      "u": "https://legal.unal.edu.co/rlunal/home/doc.jsp?d_i=3562"
     }
-   ]
+   ],
+   "plan_sia": "2549"
   },
   {
    "id": "agricola",
    "nombre": "Ingeniería Agrícola",
    "snies": 24,
-   "estado": "plan por agrupaciones con prerrequisitos listo (mallas/agricola.json); falta ubicar por semestre",
+   "estado": "en la página (beta): materias, créditos y semestres transcritos de la malla PDF; faltan prerrequisitos",
    "pagina": "https://ingenieria.bogota.unal.edu.co/programas-academicos/ingenieria-agricola/",
    "malla_pdf": "https://ingenieria.bogota.unal.edu.co/images/recursos/pregrado/ingenieriaAgricola/Malla_Curricular_Agricola_2021.pdf",
    "pep_pdf": "https://ingenieria.bogota.unal.edu.co/images/recursos/pregrado/ingenieriaAgricola/PEP_Ingeniera_Agricola_2021_Actualizado.pdf",
@@ -40,14 +41,15 @@
      "n": "Acuerdo 038 de 2009",
      "u": "https://legal.unal.edu.co/rlunal/home/doc.jsp?d_i=35625"
     }
-   ]
+   ],
+   "plan_sia": "2541"
   },
   {
    "id": "civil",
    "nombre": "Ingeniería Civil",
    "snies": 25,
    "creditos": 180,
-   "estado": "fuentes ubicadas",
+   "estado": "en la página (beta): materias, créditos y semestres transcritos de la malla PDF; faltan prerrequisitos",
    "pagina": "https://ingenieria.bogota.unal.edu.co/programas-academicos/ingenieria-civil/",
    "malla_pdf": "https://ingenieria.bogota.unal.edu.co/images/recursos/pregrado/ingenieriaCivil/PLAN_ING.pdf",
    "pep_pdf": "https://ingenieria.bogota.unal.edu.co/wp-content/uploads/2026/06/PEP-CIVIL-2018.pdf",
@@ -70,13 +72,14 @@
      "n": "Acuerdo 01 de 2025 — equivalencias",
      "u": "https://legal.unal.edu.co/rlunal/home/doc.jsp?d_i=112678"
     }
-   ]
+   ],
+   "plan_sia": "2542"
   },
   {
    "id": "sistemas",
    "nombre": "Ingeniería de Sistemas y Computación",
    "snies": 106661,
-   "estado": "fuentes ubicadas",
+   "estado": "en la página (beta): materias, créditos y semestres transcritos de la malla PDF; faltan prerrequisitos",
    "pagina": "https://ingenieria.bogota.unal.edu.co/programas-academicos/ingenieria-de-sistemas-y-computacion/",
    "malla_pdf": "https://ingenieria.bogota.unal.edu.co/images/recursos/pregrado/ingenieriaSistemas/Malla_Plan_de_estudios_estndar_2023.pdf",
    "pep_pdf": "https://ingenieria.bogota.unal.edu.co/wp-content/uploads/2026/08/PEP-ing-sistemas-y-computacion.pdf",
@@ -89,13 +92,14 @@
      "n": "Acuerdo 003-A de 2022 (Consejo Académico) — estructura",
      "u": "https://legal.unal.edu.co/rlunal/home/doc.jsp?d_i=103388"
     }
-   ]
+   ],
+   "plan_sia": "2A74"
   },
   {
    "id": "electrica",
    "nombre": "Ingeniería Eléctrica",
    "snies": 27,
-   "estado": "fuentes ubicadas",
+   "estado": "en la página (beta): materias, créditos y semestres transcritos de la malla PDF; faltan prerrequisitos",
    "pagina": "https://ingenieria.bogota.unal.edu.co/programas-academicos/ingenieria-electrica/",
    "malla_pdf": "https://ingenieria.bogota.unal.edu.co/wp-content/uploads/2026/08/Malla_Curricular_Electrica.pdf",
    "pep_pdf": "https://ingenieria.bogota.unal.edu.co/images/userupload/640/Ingenier%C3%ADa_El%C3%A9ctrica_-_Bogot%C3%A1_1_b7d13.pdf",
@@ -112,13 +116,14 @@
      "n": "Acuerdo 248 de 2008 (Consejo Académico)",
      "u": "https://legal.unal.edu.co/rlunal/home/doc.jsp?d_i=34469"
     }
-   ]
+   ],
+   "plan_sia": "2544"
   },
   {
    "id": "electronica",
    "nombre": "Ingeniería Electrónica",
    "snies": 16941,
-   "estado": "fuentes ubicadas",
+   "estado": "en la página (beta): materias, créditos y semestres transcritos de la malla PDF; faltan prerrequisitos",
    "pagina": "https://ingenieria.bogota.unal.edu.co/programas-academicos/ingenieria-electronica/",
    "malla_pdf": "https://ingenieria.bogota.unal.edu.co/images/Malla_Ing_Electrnica_2023.pdf",
    "pep_pdf": "https://ingenieria.bogota.unal.edu.co/images/userupload/640/PEP_ELECTR%C3%93NICA_5df2d.pdf",
@@ -131,14 +136,15 @@
      "n": "Acuerdo 125 de 2017 (Consejo Académico)",
      "u": "https://legal.unal.edu.co/rlunal/home/doc.jsp?d_i=88697"
     }
-   ]
+   ],
+   "plan_sia": "2545"
   },
   {
    "id": "industrial",
    "nombre": "Ingeniería Industrial",
    "snies": 16940,
    "creditos": 168,
-   "estado": "fuentes ubicadas; el PEP trae las tablas con prerrequisitos (págs. 22–33), falta convertirlas",
+   "estado": "en la página (beta): materias, créditos y semestres transcritos de la malla PDF; faltan prerrequisitos",
    "pagina": "https://ingenieria.bogota.unal.edu.co/programas-academicos/ingenieria-industrial/",
    "malla_pdf": "https://ingenieria.bogota.unal.edu.co/images/recursos/pregrado/IngenieriaIndustrial/docs/MALLA_CURRICULAR_INGENIERIA_INDUSTRIAL_20201027.pdf",
    "pep_pdf": "https://ingenieria.bogota.unal.edu.co/images/recursos/pregrado/IngenieriaIndustrial/docs/PROYECTO_EDUCATIVO_DEL_PROGRAMA_-_INGENIERIA_INDUSTRIAL.pdf",
@@ -159,13 +165,14 @@
      "n": "Acuerdo 108 de 2020 — modificación parcial",
      "u": "https://legal.unal.edu.co/rlunal/home/doc.jsp?d_i=95614"
     }
-   ]
+   ],
+   "plan_sia": "2546"
   },
   {
    "id": "mecanica",
    "nombre": "Ingeniería Mecánica",
    "snies": 28,
-   "estado": "fuentes ubicadas; ojo: el PDF de malla publicado cita el Acuerdo 86 de 2018 y la norma enlazada es de 2023",
+   "estado": "en la página (beta): materias, créditos y semestres transcritos de la malla PDF; faltan prerrequisitos",
    "pagina": "https://ingenieria.bogota.unal.edu.co/programas-academicos/ingenieria-mecanica/",
    "malla_pdf": "https://ingenieria.bogota.unal.edu.co/images/recursos/pregrado/IngMecanica/MallaCurricular-IngenieraMecnicaUNAL_Ac_86_-18_.pdf",
    "normas": [
@@ -173,13 +180,14 @@
      "n": "Acuerdo 10 de 2023",
      "u": "https://legal.unal.edu.co/rlunal/home/doc.jsp?d_i=109293"
     }
-   ]
+   ],
+   "plan_sia": "2547"
   },
   {
    "id": "mecatronica",
    "nombre": "Ingeniería Mecatrónica",
    "snies": 16939,
-   "estado": "fuentes ubicadas",
+   "estado": "en la página (beta): materias, créditos y semestres transcritos de la malla PDF; faltan prerrequisitos",
    "pagina": "https://ingenieria.bogota.unal.edu.co/programas-academicos/ingenieria-mecatronica/",
    "malla_pdf": "https://ingenieria.bogota.unal.edu.co/images/recursos/pregrado/ingenieriaMecatronica/Malla_Curricular_Mecatronica_Acuerdo_6_2022.pdf",
    "pep_pdf": "https://ingenieria.bogota.unal.edu.co/images/recursos/pregrado/ingenieriaMecatronica/PEP_Ingenier%C3%ADaMecatr%C3%B3nica.pdf",
@@ -188,7 +196,8 @@
      "n": "Acuerdo 6 de 2022",
      "u": "https://legal.unal.edu.co/rlunal/home/doc.jsp?d_i=100648"
     }
-   ]
+   ],
+   "plan_sia": "2548"
   }
  ]
 }

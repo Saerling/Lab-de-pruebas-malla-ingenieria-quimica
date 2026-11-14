@@ -1,0 +1,447 @@
+{
+ "id": "electrica",
+ "nombre": "Ingeniería Eléctrica",
+ "plan": "Acuerdo 121 de 2021 del Consejo de Facultad de Ingeniería",
+ "creditos": 167,
+ "semestres": [
+  {
+   "sem": 1,
+   "mat": [
+    {
+     "cod": "1000004",
+     "n": "Cálculo Diferencial",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas, Probabilidad y Estadística",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015734",
+     "n": "Programación de Computadores",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Informática",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016856",
+     "n": "Introducción a la Ingeniería Eléctrica",
+     "c": 5,
+     "cat": "Disciplinar",
+     "agr": "Contexto Profesional, Innovación e Investigación",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016862",
+     "n": "Taller de Ingeniería Eléctrica",
+     "c": 2,
+     "cat": "Disciplinar",
+     "agr": "Contexto Profesional, Innovación e Investigación",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 1",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    }
+   ]
+  },
+  {
+   "sem": 2,
+   "mat": [
+    {
+     "cod": "1000005",
+     "n": "Cálculo Integral",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas, Probabilidad y Estadística",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "1000003",
+     "n": "Álgebra Lineal",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas, Probabilidad y Estadística",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "1000019",
+     "n": "Fundamentos de Mecánica",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Física",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 2",
+     "c": 4,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    }
+   ]
+  },
+  {
+   "sem": 3,
+   "mat": [
+    {
+     "cod": "1000006",
+     "n": "Cálculo en Varias Variables",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas, Probabilidad y Estadística",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "1000007",
+     "n": "Ecuaciones Diferenciales",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas, Probabilidad y Estadística",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "1000017",
+     "n": "Fundamentos de Electricidad y Magnetismo",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Física",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "1000040",
+     "n": "Introducción a la Ciencia de Materiales",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Ciencia de los Materiales",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016489",
+     "n": "Circuitos Eléctricos I",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Circuitos y Campos",
+     "tipo": "obligatoria"
+    }
+   ]
+  },
+  {
+   "sem": 4,
+   "mat": [
+    {
+     "cod": "2015159",
+     "n": "Variable Compleja",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas, Probabilidad y Estadística",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "1000020",
+     "n": "Fundamentos de Oscilaciones, Ondas y Óptica",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Física",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "1000021",
+     "n": "Fundamentos de Mecánica de Fluidos y Termodinámica",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Física",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016845",
+     "n": "Mecánica para Ingeniería",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Herramientas de Ingeniería",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016495",
+     "n": "Electrónica Análoga I",
+     "c": 4,
+     "cat": "Disciplinar",
+     "agr": "Electrónica",
+     "tipo": "obligatoria"
+    }
+   ]
+  },
+  {
+   "sem": 5,
+   "mat": [
+    {
+     "cod": "",
+     "n": "Optativa Probabilidad y Estadística",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas, Probabilidad y Estadística",
+     "tipo": "optativa"
+    },
+    {
+     "cod": "2016487",
+     "n": "Campos Electromagnéticos",
+     "c": 4,
+     "cat": "Disciplinar",
+     "agr": "Circuitos y Campos",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016506",
+     "n": "Señales y Sistemas I",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Señales, Sistemas y Control",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016490",
+     "n": "Circuitos Eléctricos II",
+     "c": 4,
+     "cat": "Disciplinar",
+     "agr": "Circuitos y Campos",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016498",
+     "n": "Electrónica Digital I",
+     "c": 4,
+     "cat": "Disciplinar",
+     "agr": "Electrónica",
+     "tipo": "obligatoria"
+    }
+   ]
+  },
+  {
+   "sem": 6,
+   "mat": [
+    {
+     "cod": "",
+     "n": "Optativa Herramientas de Ingeniería",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Herramientas de Ingeniería",
+     "tipo": "optativa"
+    },
+    {
+     "cod": "2016507",
+     "n": "Señales y Sistemas II",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Señales, Sistemas y Control",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016494",
+     "n": "Conversión Electromagnética",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Electrotecnia",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016865",
+     "n": "Transmisión y Distribución",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Sistemas de Potencia",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 3",
+     "c": 4,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    }
+   ]
+  },
+  {
+   "sem": 7,
+   "mat": [
+    {
+     "cod": "2015703",
+     "n": "Ingeniería Económica",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Ciencias Económicas y Administrativas",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016863",
+     "n": "Taller de Ingeniería",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Contexto Profesional, Innovación e Investigación",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016493",
+     "n": "Control",
+     "c": 4,
+     "cat": "Disciplinar",
+     "agr": "Señales, Sistemas y Control",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016861",
+     "n": "Introducción a Sistemas de Energía Eléctrica",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Sistemas de Potencia",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2017003",
+     "n": "Instalaciones Eléctricas",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Electrotecnia",
+     "tipo": "obligatoria"
+    }
+   ]
+  },
+  {
+   "sem": 8,
+   "mat": [
+    {
+     "cod": "",
+     "n": "Optativa Ciencias Económicas y Administrativas",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Ciencias Económicas y Administrativas",
+     "tipo": "optativa"
+    },
+    {
+     "cod": "",
+     "n": "Optativa Electrotecnia",
+     "c": 2,
+     "cat": "Disciplinar",
+     "agr": "Electrotecnia",
+     "tipo": "optativa"
+    },
+    {
+     "cod": "2016851",
+     "n": "Análisis de Sistemas de Potencia",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Sistemas de Potencia",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 4",
+     "c": 4,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 5",
+     "c": 4,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    }
+   ]
+  },
+  {
+   "sem": 9,
+   "mat": [
+    {
+     "cod": "",
+     "n": "Optativa Ciencias Económicas y Administrativas",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Ciencias Económicas y Administrativas",
+     "tipo": "optativa"
+    },
+    {
+     "cod": "",
+     "n": "Optativa Contexto Profesional, Innovación e Investigación",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Contexto Profesional, Innovación e Investigación",
+     "tipo": "optativa"
+    },
+    {
+     "cod": "2024049",
+     "n": "Subestaciones Eléctricas",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Sistemas de Potencia",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2024045",
+     "n": "Taller de Proyectos Interdisciplinarios",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Contexto Profesional, Innovación e Investigación",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 6",
+     "c": 4,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    }
+   ]
+  },
+  {
+   "sem": 10,
+   "mat": [
+    {
+     "cod": "",
+     "n": "Libre Elección 7",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 8",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 9",
+     "c": 4,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "2016866",
+     "n": "Trabajo de Grado",
+     "c": 6,
+     "cat": "Disciplinar",
+     "agr": "Contexto Profesional, Innovación e Investigación",
+     "tipo": "obligatoria"
+    }
+   ]
+  }
+ ],
+ "dudas": [
+  "La tarjeta optativa del semestre V dice 'Optativa: Probabilidad y Estadística' con franja 'MATEMÁTICAS'; se asignó a la agrupación 'Matemáticas, Probabilidad y Estadística' (la leyenda la escribe sin coma).",
+  "Trabajo de Grado (2016866) tiene el color de la agrupación CPI&I (Contexto Profesional, Innovación e Investigación); el PDF no muestra una agrupación propia de trabajo de grado.",
+  "Las optativas solo muestran la franja abreviada (HERRAMIENTAS, ADMINISTRACIÓN, ELECTROTECNIA, CPI&I); el nombre completo de la agrupación se tomó de la leyenda de colores."
+ ]
+}

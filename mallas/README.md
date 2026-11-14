@@ -14,10 +14,16 @@ Facultad de Ingeniería, sede Bogotá (UNAL). Consultado el 13 de noviembre de 2
 | [Ingeniería Mecánica](https://ingenieria.bogota.unal.edu.co/programas-academicos/ingenieria-mecanica/) | 28 | [PDF](https://ingenieria.bogota.unal.edu.co/images/recursos/pregrado/IngMecanica/MallaCurricular-IngenieraMecnicaUNAL_Ac_86_-18_.pdf) | [Acuerdo 10 de 2023](https://legal.unal.edu.co/rlunal/home/doc.jsp?d_i=109293) | — | fuentes ubicadas; ojo: el PDF de malla publicado cita el Acuerdo 86 de 2018 y la norma enlazada es de 2023 |
 | [Ingeniería Mecatrónica](https://ingenieria.bogota.unal.edu.co/programas-academicos/ingenieria-mecatronica/) | 16939 | [PDF](https://ingenieria.bogota.unal.edu.co/images/recursos/pregrado/ingenieriaMecatronica/Malla_Curricular_Mecatronica_Acuerdo_6_2022.pdf) | [Acuerdo 6 de 2022](https://legal.unal.edu.co/rlunal/home/doc.jsp?d_i=100648) | [PDF](https://ingenieria.bogota.unal.edu.co/images/recursos/pregrado/ingenieriaMecatronica/PEP_Ingenier%C3%ADaMecatr%C3%B3nica.pdf) | fuentes ubicadas |
 
-## Qué falta para volverlas interactivas
+## Estado (14 nov 2026)
 
-1. **Prerrequisitos:** están en los acuerdos de `legal.unal.edu.co`, que pide captcha y no se puede leer de forma automática. Solo Agrícola (acuerdo en PDF) e Industrial (tablas en el PEP) los tienen en documentos descargables.
-2. **Ubicación por semestre:** sale de la malla PDF de cada carrera.
-3. **Código:** `index.html` todavía tiene los datos de Química incrustados (`data`, `agrupacionesInfo`, reglas `CRED_108`, `DISC_53`, `DISC_60` y el tope de 180 créditos); hay que volverlos datos por carrera.
+Las 8 carreras ya están en la página en modo beta. Sus datos están en `datos/<id>.json`, transcritos de la malla PDF oficial (sumas de créditos verificadas por semestre y total; cada archivo trae un campo `dudas`). `embed.py` los incrusta en `index.html`.
 
-`fuentes.json` tiene estos mismos enlaces en formato de datos y `agricola.json` el plan de Agrícola por agrupaciones.
+Para agregar prerrequisitos: en `datos/<id>.json` pon en cada materia `"r": ["<código o id del requisito>", ...]` y corre `python3 mallas/embed.py`.
+
+Códigos de plan del SIA (confirmados contra el catálogo): Agrícola 2541, Civil 2542, Eléctrica 2544, Electrónica 2545, Industrial 2546, Mecánica 2547, Mecatrónica 2548, Química 2549, Sistemas 2A74.
+
+## Qué falta
+
+1. **Prerrequisitos** de las 8 carreras (están en los acuerdos de `legal.unal.edu.co`, que pide captcha).
+2. **Listas de optativas y créditos exigidos por agrupación** (la pestaña Agrupaciones solo muestra lo que aparece en la malla sugerida).
+3. Resolver las `dudas` de cada archivo.

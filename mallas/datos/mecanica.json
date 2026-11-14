@@ -1,0 +1,496 @@
+{
+ "id": "mecanica",
+ "nombre": "Ingeniería Mecánica",
+ "plan": "Acuerdo 033 de 2007 (Universidad Nacional de Colombia) / Acuerdo No. 68 de 2018 del Consejo de Facultad de Ingeniería",
+ "creditos": 180,
+ "semestres": [
+  {
+   "sem": 1,
+   "mat": [
+    {
+     "cod": "1000004",
+     "n": "Cálculo Diferencial",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas, Probabilidad y Estadística",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015734",
+     "n": "Programación de Computadores",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Herramientas para Ingeniería",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015711",
+     "n": "Dibujo Básico",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Expresión Gráfica",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2017278",
+     "n": "Tecnología Mecánica Básica",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Ingeniería de Materiales y Procesos de Manufactura",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2017265",
+     "n": "Ingeniería y Desarrollo Sostenible",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Investigación, Innovación y Desarrollo Tecnológico",
+     "tipo": "obligatoria"
+    }
+   ]
+  },
+  {
+   "sem": 2,
+   "mat": [
+    {
+     "cod": "1000005",
+     "n": "Cálculo Integral",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas, Probabilidad y Estadística",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "1000003",
+     "n": "Álgebra Lineal",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas, Probabilidad y Estadística",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "1000019",
+     "n": "Fundamentos de Mecánica",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Física",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2017257",
+     "n": "Dibujo de Máquinas",
+     "c": 4,
+     "cat": "Disciplinar",
+     "agr": "Ingeniería de Diseño",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 1",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    }
+   ]
+  },
+  {
+   "sem": 3,
+   "mat": [
+    {
+     "cod": "1000006",
+     "n": "Cálculo en Varias Variables",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas, Probabilidad y Estadística",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "1000013",
+     "n": "Probabilidad y Estadística Fundamental",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas, Probabilidad y Estadística",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Optativa Física",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Física",
+     "tipo": "optativa"
+    },
+    {
+     "cod": "1000024",
+     "n": "Principios de Química",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Química",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016640",
+     "n": "Principios de Estática",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Ingeniería de Diseño",
+     "tipo": "obligatoria"
+    }
+   ]
+  },
+  {
+   "sem": 4,
+   "mat": [
+    {
+     "cod": "1000007",
+     "n": "Ecuaciones Diferenciales",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas, Probabilidad y Estadística",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2017271",
+     "n": "Principios de Dinámica",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Ingeniería de Diseño",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2017256",
+     "n": "Ciencia e Ingeniería de Materiales",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Ingeniería de Materiales y Procesos de Manufactura",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2017279",
+     "n": "Termodinámica Técnica",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Ingeniería Térmica y Fluidos",
+     "tipo": "obligatoria"
+    }
+   ]
+  },
+  {
+   "sem": 5,
+   "mat": [
+    {
+     "cod": "2015970",
+     "n": "Métodos Numéricos",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Herramientas para Ingeniería",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Optativa Física",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Física",
+     "tipo": "optativa"
+    },
+    {
+     "cod": "2017277",
+     "n": "Resistencia de Materiales",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Ingeniería de Diseño",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2017268",
+     "n": "Mecanismos",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Ingeniería de Diseño",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2017267",
+     "n": "Materiales de Ingeniería",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Ingeniería de Materiales y Procesos de Manufactura",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2017272",
+     "n": "Principios de Mecánica de Fluidos",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Ingeniería Térmica y Fluidos",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2017266",
+     "n": "Instalaciones y Máquinas Eléctricas",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Automatización, Control y Robótica",
+     "tipo": "obligatoria"
+    }
+   ]
+  },
+  {
+   "sem": 6,
+   "mat": [
+    {
+     "cod": "2017293",
+     "n": "Modelación Matemática",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Herramientas para Ingeniería",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015703",
+     "n": "Ingeniería Económica",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Ciencias Económicas y Administrativas",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2017273",
+     "n": "Procesos de Manufactura I",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Ingeniería de Materiales y Procesos de Manufactura",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2017262",
+     "n": "Fundamentos de Transferencia de Calor",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Ingeniería Térmica y Fluidos",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2017260",
+     "n": "Electrónica Básica",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Automatización, Control y Robótica",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016506",
+     "n": "Señales y Sistemas I",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Automatización, Control y Robótica",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2024045",
+     "n": "Taller de Proyectos Interdisciplinarios",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Investigación, Innovación y Desarrollo Tecnológico",
+     "tipo": "obligatoria"
+    }
+   ]
+  },
+  {
+   "sem": 7,
+   "mat": [
+    {
+     "cod": "2015942",
+     "n": "Aplicaciones de Elementos Finitos",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Herramientas para Ingeniería",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015702",
+     "n": "Gerencia y Gestión de Proyectos",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Ciencias Económicas y Administrativas",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2017258",
+     "n": "Diseño de Elementos de Máquinas I",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Ingeniería de Diseño",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2017274",
+     "n": "Procesos de Manufactura II",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Ingeniería de Materiales y Procesos de Manufactura",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Optativa Ingeniería Térmica y Fluidos",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Ingeniería Térmica y Fluidos",
+     "tipo": "optativa"
+    }
+   ]
+  },
+  {
+   "sem": 8,
+   "mat": [
+    {
+     "cod": "",
+     "n": "Libre Elección 2",
+     "c": 4,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 3",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "2017259",
+     "n": "Diseño de Elementos de Máquinas II",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Ingeniería de Diseño",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2017264",
+     "n": "Ingeniería de Manufactura",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Ingeniería de Materiales y Procesos de Manufactura",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Optativa Ingeniería Térmica y Fluidos",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Ingeniería Térmica y Fluidos",
+     "tipo": "optativa"
+    },
+    {
+     "cod": "2015215",
+     "n": "Análisis de Sistemas Dinámicos",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Automatización, Control y Robótica",
+     "tipo": "obligatoria"
+    }
+   ]
+  },
+  {
+   "sem": 9,
+   "mat": [
+    {
+     "cod": "",
+     "n": "Libre Elección 4",
+     "c": 4,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 5",
+     "c": 4,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 6",
+     "c": 4,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "2017261",
+     "n": "Fundamentos de Control",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Automatización, Control y Robótica",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2017275",
+     "n": "Proyecto Aplicado de Ingeniería",
+     "c": 4,
+     "cat": "Disciplinar",
+     "agr": "Investigación, Innovación y Desarrollo Tecnológico",
+     "tipo": "obligatoria"
+    }
+   ]
+  },
+  {
+   "sem": 10,
+   "mat": [
+    {
+     "cod": "",
+     "n": "Libre Elección 7",
+     "c": 4,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 8",
+     "c": 4,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 9",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 10",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "2017295",
+     "n": "Trabajo de Grado",
+     "c": 6,
+     "cat": "Disciplinar",
+     "agr": "Investigación, Innovación y Desarrollo Tecnológico",
+     "tipo": "obligatoria"
+    }
+   ]
+  }
+ ],
+ "dudas": [
+  "Semestre VII: el PDF imprime 18 créditos, pero las 5 tarjetas del semestre suman 15 (3+3+3+3+3). Con 15 el total da exactamente 180 (créditos del programa); la suma de los totales impresos por semestre daría 183.",
+  "Resumen de Fundamentación del PDF: obligatoria 50 y optativa 8 (total 58). Las tarjetas dan obligatoria 51 y optativa 7 (Optativa Física de 4 créditos en III y de 3 en V); el total 58 sí cuadra.",
+  "Dibujo de Máquinas (2017257) aparece con 4 créditos en la tarjeta (coherente con el total 19 del semestre II).",
+  "Las tarjetas optativas no nombran asignatura; solo la agrupación (Física en III y V; Ingeniería Térmica y Fluidos en VII y VIII)."
+ ]
+}

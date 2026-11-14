@@ -1,0 +1,505 @@
+{
+ "id": "civil",
+ "nombre": "Ingeniería Civil",
+ "plan": "Acuerdo 257 de 2008 del Consejo Académico; Acuerdo 26 de 2015 del Consejo de Facultad de Ingeniería",
+ "creditos": 180,
+ "semestres": [
+  {
+   "sem": 1,
+   "mat": [
+    {
+     "cod": "1000011",
+     "n": "Fundamentos de Ecología",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Biología y Química",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "1000004",
+     "n": "Cálculo Diferencial",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas y Estadística",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "1000024",
+     "n": "Principios de Química",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Biología y Química",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015711",
+     "n": "Dibujo Básico",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Expresión Gráfica",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2026186",
+     "n": "Introducción a la Ingeniería Civil",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Básica Disciplinar",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 1",
+     "c": 2,
+     "cat": "Libre",
+     "agr": "Humanidades",
+     "tipo": "libre"
+    }
+   ]
+  },
+  {
+   "sem": 2,
+   "mat": [
+    {
+     "cod": "1000003",
+     "n": "Álgebra Lineal",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas y Estadística",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "1000005",
+     "n": "Cálculo Integral",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas y Estadística",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "1000019",
+     "n": "Fundamentos de Mecánica",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Física",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Optativa Herramientas de Ingeniería",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Herramientas de Ingeniería",
+     "tipo": "optativa"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 2",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Humanidades",
+     "tipo": "libre"
+    }
+   ]
+  },
+  {
+   "sem": 3,
+   "mat": [
+    {
+     "cod": "1000006",
+     "n": "Cálculo en Varias Variables",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas y Estadística",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "1000013",
+     "n": "Probabilidad y Estadística Fundamental",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas y Estadística",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2026134",
+     "n": "Estática",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Básica Disciplinar",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015958",
+     "n": "Geomática Básica",
+     "c": 4,
+     "cat": "Disciplinar",
+     "agr": "Básica Disciplinar",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015703",
+     "n": "Ingeniería Económica",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Economía y Finanzas",
+     "tipo": "obligatoria"
+    }
+   ]
+  },
+  {
+   "sem": 4,
+   "mat": [
+    {
+     "cod": "1000007",
+     "n": "Ecuaciones Diferenciales",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas y Estadística",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015948",
+     "n": "Dinámica",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Básica Disciplinar",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015956",
+     "n": "Geología",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Básica Disciplinar",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015957",
+     "n": "Geomática Aplicada",
+     "c": 4,
+     "cat": "Disciplinar",
+     "agr": "Básica Disciplinar",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 3",
+     "c": 4,
+     "cat": "Libre",
+     "agr": "Física",
+     "tipo": "libre"
+    }
+   ]
+  },
+  {
+   "sem": 5,
+   "mat": [
+    {
+     "cod": "2015966",
+     "n": "Mecánica de Fluidos",
+     "c": 4,
+     "cat": "Disciplinar",
+     "agr": "Básica Disciplinar",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015968",
+     "n": "Mecánica de Sólidos",
+     "c": 4,
+     "cat": "Disciplinar",
+     "agr": "Básica Disciplinar",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015965",
+     "n": "Materiales para Construcción",
+     "c": 4,
+     "cat": "Disciplinar",
+     "agr": "Básica Disciplinar",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Optativa Herramientas de Ingeniería",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Herramientas de Ingeniería",
+     "tipo": "optativa"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 4",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Herramientas de Ingeniería",
+     "tipo": "libre"
+    }
+   ]
+  },
+  {
+   "sem": 6,
+   "mat": [
+    {
+     "cod": "2015961",
+     "n": "Hidráulica Básica",
+     "c": 4,
+     "cat": "Disciplinar",
+     "agr": "Hidráulica",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015978",
+     "n": "Hidrología",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Básica Disciplinar",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015941",
+     "n": "Análisis Estructural Básico",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Estructuras",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015969",
+     "n": "Mecánica de Suelos",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Geotecnia",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2026138",
+     "n": "Ingeniería de Transporte",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Vías y Transporte",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Optativa Electiva Técnica",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Electiva Técnica",
+     "tipo": "optativa"
+    }
+   ]
+  },
+  {
+   "sem": 7,
+   "mat": [
+    {
+     "cod": "2015954",
+     "n": "Estructuras Hidráulicas",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Hidráulica",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015938",
+     "n": "Acueductos",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Saneamiento Básico",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015940",
+     "n": "Análisis Estructural Aplicado",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Estructuras",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015959",
+     "n": "Geotecnia",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Geotecnia",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015963",
+     "n": "Ingeniería de Tránsito",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Vías y Transporte",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 5",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Electiva Técnica",
+     "tipo": "libre"
+    }
+   ]
+  },
+  {
+   "sem": 8,
+   "mat": [
+    {
+     "cod": "2015973",
+     "n": "Saneamiento Ambiental",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Saneamiento Básico",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015939",
+     "n": "Alcantarillados",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Saneamiento Básico",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015950",
+     "n": "Diseño Estructural",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Estructuras",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015971",
+     "n": "Pavimentos",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Geotecnia",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015949",
+     "n": "Diseño Geométrico de Vías",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Vías y Transporte",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 6",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Economía y Finanzas",
+     "tipo": "libre"
+    }
+   ]
+  },
+  {
+   "sem": 9,
+   "mat": [
+    {
+     "cod": "2015955",
+     "n": "Fundamentos de Construcción",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Construcción",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2026135",
+     "n": "Ingeniería Civil Sostenible",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Básica Disciplinar",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 7",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Profundización",
+     "tipo": "libre"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 8",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Profundización",
+     "tipo": "libre"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 9",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Profundización",
+     "tipo": "libre"
+    },
+    {
+     "cod": "2015972",
+     "n": "Preparación y Evaluación de Proyectos de Infraestructura",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Economía y Finanzas",
+     "tipo": "obligatoria"
+    }
+   ]
+  },
+  {
+   "sem": 10,
+   "mat": [
+    {
+     "cod": "",
+     "n": "Optativa Construcción",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Construcción",
+     "tipo": "optativa"
+    },
+    {
+     "cod": "",
+     "n": "Trabajo de Grado",
+     "c": 6,
+     "cat": "Disciplinar",
+     "agr": "Asignatura Especial",
+     "tipo": "optativa"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 10",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Profundización",
+     "tipo": "libre"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 11",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Profundización",
+     "tipo": "libre"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 12",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Economía y Finanzas",
+     "tipo": "libre"
+    }
+   ]
+  }
+ ],
+ "dudas": [
+  "En las tarjetas de dos franjas se tomó como 'agr' la franja inferior (p. ej. 'Matemáticas y Estadística', 'Básica Disciplinar'); la franja superior dice 'Ciencias Básicas', 'Ingeniería Civil' o 'Libre Elección'. En las de libre elección 'agr' es la sub-franja (Humanidades, Física, Herramientas de Ingeniería, Electiva Técnica, Economía y Finanzas, Profundización).",
+  "Trabajo de Grado (sem. X, 6 créditos) aparece con 'OPTATIVA' en la casilla de código y agrupación 'Asignatura Especial'; el PDF lo cuenta dentro de los 12 créditos optativos disciplinares, por eso se marcó tipo 'optativa' conservando el nombre 'Trabajo de Grado'.",
+  "La tarjeta de sem. X 'Construcción de Obras Civiles' tiene 'OPTATIVA' en vez de código (se elige entre 2015943, 2015944 y 2015945); se transcribió como 'Optativa Construcción'.",
+  "Las tarjetas de libre elección de sem. IX y X se titulan 'Electiva de Ingeniería Civil' (Libre Elección / Profundización); las demás solo 'Electiva'. Todas se numeraron como Libre Elección 1..12.",
+  "El PDF dice 'Malla curricular propuesta', fechada el 19 de abril de 2016."
+ ]
+}

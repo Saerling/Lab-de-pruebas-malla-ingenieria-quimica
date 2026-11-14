@@ -1,0 +1,459 @@
+{
+ "id": "sistemas",
+ "nombre": "Ingeniería de Sistemas y Computación",
+ "plan": "2A74",
+ "creditos": 165,
+ "semestres": [
+  {
+   "sem": 1,
+   "mat": [
+    {
+     "cod": "1000004",
+     "n": "Cálculo Diferencial",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2025975",
+     "n": "Introducción a la Ingeniería de Sistemas y Computación",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Contexto Profesional y Proyectos de Ingeniería",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015734",
+     "n": "Programación de Computadores",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Métodos y Tecnologías de Software",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016703",
+     "n": "Pensamiento Sistémico",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Sistemas, Modelos, Optimización y Simulación",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "1000089",
+     "n": "Cátedra Nacional de Inducción y Preparación para la Vida Universitaria",
+     "c": 2,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    }
+   ]
+  },
+  {
+   "sem": 2,
+   "mat": [
+    {
+     "cod": "1000019",
+     "n": "Fundamentos de Mecánica",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Física",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "1000005",
+     "n": "Cálculo Integral",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "1000003",
+     "n": "Álgebra Lineal",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016375",
+     "n": "Programación Orientada a Objetos",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Métodos y Tecnologías de Software",
+     "tipo": "obligatoria"
+    }
+   ]
+  },
+  {
+   "sem": 3,
+   "mat": [
+    {
+     "cod": "1000017",
+     "n": "Fundamentos de Electricidad y Magnetismo",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Física",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "1000006",
+     "n": "Cálculo en Varias Variables",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Matemáticas",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2025963",
+     "n": "Matemáticas Discretas I",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Ciencias de la Computación",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016353",
+     "n": "Bases de Datos",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Infraestructura Computacional, de Comunicaciones y de Información",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016698",
+     "n": "Elementos de Computadores",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Infraestructura Computacional, de Comunicaciones y de Información",
+     "tipo": "obligatoria"
+    }
+   ]
+  },
+  {
+   "sem": 4,
+   "mat": [
+    {
+     "cod": "1000013",
+     "n": "Probabilidad y Estadística Fundamental",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Probabilidad y Estadística",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015703",
+     "n": "Ingeniería Económica",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Ciencias Económicas y Administrativas",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2025964",
+     "n": "Matemáticas Discretas II",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Ciencias de la Computación",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016699",
+     "n": "Estructuras de Datos",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Métodos y Tecnologías de Software",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016697",
+     "n": "Arquitectura de Computadores",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Infraestructura Computacional, de Comunicaciones y de Información",
+     "tipo": "obligatoria"
+    }
+   ]
+  },
+  {
+   "sem": 5,
+   "mat": [
+    {
+     "cod": "2025970",
+     "n": "Modelos y Simulación",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Sistemas, Modelos, Optimización y Simulación",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015702",
+     "n": "Gerencia y Gestión de Proyectos",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Ciencias Económicas y Administrativas",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2025967",
+     "n": "Redes de Computadores",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Infraestructura Computacional, de Comunicaciones y de Información",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016701",
+     "n": "Ingeniería de Software I",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Métodos y Tecnologías de Software",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015174",
+     "n": "Introducción a la Teoría de la Computación",
+     "c": 4,
+     "cat": "Fundamentación",
+     "agr": "Ciencias de la Computación",
+     "tipo": "obligatoria"
+    }
+   ]
+  },
+  {
+   "sem": 6,
+   "mat": [
+    {
+     "cod": "2025971",
+     "n": "Optimización",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Sistemas, Modelos, Optimización y Simulación",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2025982",
+     "n": "Sistemas de Información",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Infraestructura Computacional, de Comunicaciones y de Información",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2015970",
+     "n": "Métodos Numéricos",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Ciencias de la Computación",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016702",
+     "n": "Ingeniería de Software II",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Métodos y Tecnologías de Software",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016696",
+     "n": "Algoritmos",
+     "c": 3,
+     "cat": "Fundamentación",
+     "agr": "Ciencias de la Computación",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016707",
+     "n": "Sistemas Operativos",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Infraestructura Computacional, de Comunicaciones y de Información",
+     "tipo": "obligatoria"
+    }
+   ]
+  },
+  {
+   "sem": 7,
+   "mat": [
+    {
+     "cod": "2025969",
+     "n": "Modelos Estocásticos y Simulación en Computación y Comunicaciones",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Sistemas, Modelos, Optimización y Simulación",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2025983",
+     "n": "Arquitectura de Infraestructura y Gobierno de TICs",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Infraestructura Computacional, de Comunicaciones y de Información",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2025994",
+     "n": "Teoría de la Información y Sistemas de Comunicaciones",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Infraestructura Computacional, de Comunicaciones y de Información",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2016716",
+     "n": "Arquitectura de Software",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Métodos y Tecnologías de Software",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2025995",
+     "n": "Introducción a los Sistemas Inteligentes",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Sistemas Inteligentes",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2025966",
+     "n": "Lenguajes de Programación",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Métodos y Tecnologías de Software",
+     "tipo": "obligatoria"
+    }
+   ]
+  },
+  {
+   "sem": 8,
+   "mat": [
+    {
+     "cod": "2024045",
+     "n": "Taller de Proyectos Interdisciplinarios",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Contexto Profesional y Proyectos de Ingeniería",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2025968",
+     "n": "Computación Paralela y Distribuida",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Infraestructura Computacional, de Comunicaciones y de Información",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2025972",
+     "n": "Introducción a la Criptografía y a la Seguridad de la Información",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Infraestructura Computacional, de Comunicaciones y de Información",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "2025960",
+     "n": "Computación Visual",
+     "c": 3,
+     "cat": "Disciplinar",
+     "agr": "Computación Aplicada",
+     "tipo": "obligatoria"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 1",
+     "c": 3,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    }
+   ]
+  },
+  {
+   "sem": 9,
+   "mat": [
+    {
+     "cod": "",
+     "n": "Libre Elección 2",
+     "c": 4,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 3",
+     "c": 4,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 4",
+     "c": 4,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 5",
+     "c": 4,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    }
+   ]
+  },
+  {
+   "sem": 10,
+   "mat": [
+    {
+     "cod": "",
+     "n": "Libre Elección 6",
+     "c": 4,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 7",
+     "c": 4,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "",
+     "n": "Libre Elección 8",
+     "c": 4,
+     "cat": "Libre",
+     "agr": "Libre Elección",
+     "tipo": "libre"
+    },
+    {
+     "cod": "",
+     "n": "Trabajo de Grado",
+     "c": 6,
+     "cat": "Disciplinar",
+     "agr": "Trabajo de Grado",
+     "tipo": "obligatoria"
+    }
+   ]
+  }
+ ],
+ "dudas": [
+  "El PDF es inconsistente con el total: el cuadro de componentes dice TOTAL 165 (51 B + 81 C + 33 L) pero abajo dice 'Créditos del programa 167'. Las tarjetas suman 165; se usó 165.",
+  "Semestre VIII: el PDF imprime 17 créditos, pero solo hay 5 tarjetas de 3 créditos (15). Los demás semestres cuadran con lo impreso (15,15,18,16,16,18,18,16,18). Esa diferencia de 2 explica el 167.",
+  "La Cátedra Nacional de Inducción (sem. I, 2 créditos, componente L) tiene código impreso '1000089-B'; se dejó cod '1000089', cat 'Libre', tipo 'libre' y su nombre propio en vez de 'Libre Elección N'. Las tarjetas vacías se numeraron Libre Elección 1..8.",
+  "Computación Visual: la tarjeta dice agrupación 'Computación Aplicada', pero la leyenda de agrupaciones la llama 'Compuración [sic] Visual'.",
+  "Agrupación abreviada en la tarjeta como 'Cienc. Econom. y Administrativas'; se expandió según la leyenda a 'Ciencias Económicas y Administrativas'.",
+  "Trabajo de Grado (sem. X, 6 créditos, componente C) no tiene código en el PDF.",
+  "Normatividad impresa: Acuerdo 003-A de 2022 del Consejo Académico (estructura) y Acuerdo 006 de 2023 del Consejo de Facultad (plan detallado); el pie conserva un texto de plantilla 'Acuerdo XXX de 2014'."
+ ]
+}
