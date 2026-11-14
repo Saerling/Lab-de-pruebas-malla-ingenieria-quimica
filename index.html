@@ -6,7 +6,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Malla Curricular IQ · v4.2</title>
+    <title>Mallas · Ingeniería Química UNAL · v4.2</title>
     <!-- Etiqueta de Google (Analytics) -->
     <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-WT9LTMW5"></script>
     <script>
@@ -993,6 +993,100 @@ header > .tabs { order: 8; }
 .view-section.active { animation: viewIOS 0.45s var(--ease-ios) both; }
 @keyframes viewIOS { from { opacity: 0; transform: scale(0.985) translateY(6px); filter: blur(6px); } to { opacity: 1; transform: none; filter: none; } }
 @media (prefers-reduced-motion: reduce) { .view-section.active, .approved, .modal-overlay.active .modal-content { animation: none; } }
+
+/* ===== v8.0 · MALLAS: movimiento con los valores de Mochy (resortes, curvas y duraciones) + correcciones ===== */
+:root {
+    --ease-emph: cubic-bezier(0.2, 0, 0, 1);           /* curva principal de Mochy */
+    --ease-menu: cubic-bezier(0.57, 0.53, 0, 1);       /* menús y hojas, 440 ms */
+    --spring-smooth: cubic-bezier(0.2, 0.9, 0.3, 1);   /* respaldo si no hay linear() */
+    --spring-bounce: cubic-bezier(0.34, 1.36, 0.64, 1);
+    --spring-snap: cubic-bezier(0.34, 1.45, 0.6, 1);
+}
+@supports (transition-timing-function: linear(0, 1)) {
+    :root {
+        /* resortes de Mochy: amortiguación 0.8 / rigidez 500, 0.55 / 380 y 0.54 / 720 */
+        --spring-smooth: linear(0, 0.044, 0.148, 0.279, 0.415, 0.544, 0.657, 0.753, 0.83, 0.889, 0.934, 0.966, 0.988, 1.002, 1.01, 1.014, 1.015, 1.015, 1.013, 1.011, 1.009, 1.007, 1.005, 1.004, 1);
+        --spring-bounce: linear(0, 0.092, 0.301, 0.545, 0.767, 0.939, 1.052, 1.11, 1.126, 1.114, 1.088, 1.057, 1.029, 1.008, 0.993, 0.986, 0.984, 0.986, 0.989, 0.993, 0.996, 0.999, 1.001, 1.002, 1);
+        --spring-snap: linear(0, 0.096, 0.312, 0.562, 0.788, 0.96, 1.07, 1.123, 1.133, 1.115, 1.085, 1.051, 1.023, 1.001, 0.989, 0.983, 0.983, 0.985, 0.99, 0.994, 0.998, 1, 1.002, 1.002, 1);
+    }
+}
+
+/* Título y selector de carrera */
+header > h1 { text-transform: none; letter-spacing: -0.035em; }
+.prog-chip { display: inline-flex; align-items: center; gap: 8px; font: inherit; font-weight: 600; font-size: 0.82rem; color: var(--text); background: var(--surface); border: 1px solid var(--border); border-radius: 999px; padding: 7px 14px; cursor: pointer; backdrop-filter: blur(20px) saturate(1.6); -webkit-backdrop-filter: blur(20px) saturate(1.6); }
+.prog-chip:hover { background: var(--surface-2); }
+.prog-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--primary); }
+.prog-caret { color: var(--text-dim); font-size: 0.7rem; }
+header > .prog-chip { order: 6; margin: 2px 0 6px; }
+.prog-list { display: grid; gap: 8px; margin-top: 14px; }
+.prog-item { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 16px; background: var(--surface); border: 1px solid var(--border); text-align: left; color: var(--text); font: inherit; }
+.prog-item.on { border-color: color-mix(in srgb, var(--primary) 60%, transparent); background: var(--primary-soft); }
+.prog-item b { display: block; font-weight: 600; font-size: 0.9rem; letter-spacing: -0.01em; }
+.prog-item small { display: block; color: var(--text-dim); font-size: 0.74rem; margin-top: 2px; }
+.prog-item .prog-main { flex: 1; min-width: 0; }
+.prog-tag { flex: none; font-size: 0.7rem; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: var(--surface-2); color: var(--text-dim); text-decoration: none; white-space: nowrap; }
+.prog-item.on .prog-tag { background: var(--primary); color: var(--on-primary); }
+a.prog-tag:hover { color: var(--text); }
+.prog-note { color: var(--text-dim); font-size: 0.76rem; line-height: 1.45; margin: 14px 2px 0; }
+
+/* Presión con resorte (Mochy: 0.86–0.96 según el tamaño) */
+.tab-btn, .theme-toggle, .fb-btn, .coffee-btn, .ver-chip, .prog-chip, .hor-plan, .btn-add-mat, .modal-content button, .malla-toolbar button, .hor-bar button, .libre-toolbar button, .cal-nav button { transition: transform 0.43s var(--spring-snap), background 0.2s var(--ease-emph), border-color 0.2s var(--ease-emph), color 0.2s var(--ease-emph), opacity 0.2s; }
+.tab-btn:active, .theme-toggle:active, .fb-btn:active, .coffee-btn:active, .ver-chip:active, .prog-chip:active, .hor-plan:active, .btn-add-mat:active, .modal-content button:active, .malla-toolbar button:active, .hor-bar button:active, .libre-toolbar button:active, .cal-nav button:active { transform: scale(0.94); transition-duration: 0.11s, 0.2s, 0.2s, 0.2s, 0.2s; }
+.ink-ready .tab-ink { transition: transform 0.35s var(--spring-smooth), width 0.35s var(--spring-smooth), height 0.35s var(--spring-smooth); }
+.progress-bar { transition: width 0.6s var(--spring-smooth); }
+
+/* Materias: resorte al soltar, rebote al aprobar; "disponible" va en contorno y "aprobada" rellena */
+.materia { transition: transform 0.35s var(--spring-smooth), background 0.2s var(--ease-emph), border-color 0.2s var(--ease-emph), box-shadow 0.3s var(--ease-emph), opacity 0.3s var(--ease-emph); }
+.materia:active { transform: scale(0.96) !important; transition-duration: 0.11s; }
+.status-ready { background: var(--surface); border-color: color-mix(in srgb, var(--primary) 70%, transparent); }
+.approved { animation: approveSpring 0.58s var(--spring-bounce); }
+@keyframes approveSpring { 0% { transform: scale(0.9); } 100% { transform: none; } }
+.materia-menu { background: var(--glass); border-color: var(--glass-line); border-radius: 18px; backdrop-filter: blur(40px) saturate(1.8); -webkit-backdrop-filter: blur(40px) saturate(1.8); animation: menuPop 0.44s var(--ease-menu) both; }
+@keyframes menuPop { from { opacity: 0; transform: scale(0.8) translateY(-8px); } 40% { opacity: 1; } to { opacity: 1; transform: none; } }
+.mm-item { border-radius: 12px; transition: background 0.16s var(--ease-emph), transform 0.43s var(--spring-snap); }
+.mm-item:active { transform: scale(0.96); }
+
+/* Los semestres ya no se re-animan en cada clic (antes toda la malla volvía a entrar al aprobar una materia) */
+.semestre-col { animation: none; }
+/* Entrada escalonada de los semestres (solo al abrir la pestaña; sin mover geometría para no descuadrar las conexiones) */
+#grid.enter .semestre-col { animation: colIn 0.42s var(--ease-emph) both; animation-delay: calc(var(--i, 0) * 32ms); }
+#grid.enter .links-svg { animation: colIn 0.5s var(--ease-emph) 0.25s both; }
+@keyframes colIn { from { opacity: 0; filter: blur(6px); } to { opacity: 1; filter: none; } }
+.lk.off .lk-track { opacity: 0.2; } .lk.off .lk-end { opacity: 0.22; }
+
+/* Vistas: 300 ms con la curva principal */
+.view-section.active { animation: viewIOS 0.3s var(--ease-emph); }
+
+/* Modales: entran y salen (antes desaparecían de golpe). En celular son hojas que suben desde abajo */
+.modal-overlay { animation: none !important; opacity: 0; transition: opacity 0.22s var(--ease-emph), display 0.22s allow-discrete, overlay 0.22s allow-discrete; }
+.modal-overlay.active { opacity: 1; animation: none !important; }
+.modal-overlay .modal-content { animation: none !important; opacity: 0; transform: translateY(22px) scale(0.95); transition: transform 0.44s var(--ease-menu), opacity 0.2s var(--ease-emph); }
+.modal-overlay.active .modal-content { opacity: 1; transform: none; }
+@starting-style {
+    .modal-overlay.active { opacity: 0; }
+    .modal-overlay.active .modal-content { opacity: 0; transform: translateY(22px) scale(0.95); }
+}
+@media (max-width: 600px) {
+    .modal-overlay { align-items: flex-end; }
+    .modal-overlay .modal-content { width: 100%; max-width: none; margin: 0; border-radius: 28px 28px 0 0; border-bottom: 0; max-height: 88vh; max-height: 88dvh; padding-bottom: calc(22px + env(safe-area-inset-bottom)); transform: translateY(100%); opacity: 1; }
+    .modal-overlay .modal-content::before { content: ''; display: block; width: 36px; height: 4px; border-radius: 4px; background: var(--border); margin: -8px auto 12px; }
+    @starting-style { .modal-overlay.active .modal-content { opacity: 1; transform: translateY(100%); } }
+}
+
+/* Aviso de comentarios: ahora es una cápsula fija abajo; antes tapaba las pestañas */
+.fb-tip { position: fixed; left: auto !important; top: auto !important; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); width: min(300px, calc(100vw - 32px)) !important; background: var(--glass); border-color: var(--glass-line); border-radius: 20px; backdrop-filter: blur(40px) saturate(1.8); -webkit-backdrop-filter: blur(40px) saturate(1.8); cursor: pointer; transform: translateY(16px) scale(0.96); transition: opacity 0.3s var(--ease-emph), transform 0.44s var(--ease-menu); }
+.fb-tip.on { transform: none; }
+.fb-tip .fb-arrow, #fb-arrow { display: none; }
+
+/* Avisos flotantes legibles: fondo casi opaco con desenfoque (antes se mezclaban con lo de atrás) */
+.fb-tip, .tabs-tip { background: color-mix(in srgb, var(--bg) 84%, var(--text) 6%); backdrop-filter: blur(30px) saturate(1.6); -webkit-backdrop-filter: blur(30px) saturate(1.6); }
+/* Las cajas de texto largas no son cápsulas */
+textarea { border-radius: 18px !important; }
+
+@media (prefers-reduced-motion: reduce) {
+    #grid.enter .semestre-col, #grid.enter .links-svg, .materia-menu, .approved { animation: none; }
+    .modal-overlay, .modal-overlay .modal-content, .fb-tip { transition: none; }
+}
 </style>
 <script>document.documentElement.setAttribute('data-theme', (function(){try{return localStorage.getItem('theme_iq')}catch(e){return null}})() || 'dark');</script>
 </head>
@@ -1002,7 +1096,8 @@ header > .tabs { order: 8; }
     <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme(event)">☀ Modo día</button>
     <button class="fb-btn" id="fb-btn" onclick="openFeedback()" title="Dime tu opinión">💬 Comentarios</button>
     <button class="coffee-btn" onclick="openCoffeeModal()"><span class="coffee-ico">☕</span> Invítame un café</button>
-    <h1 style="margin:0 0 10px">MALLA CURRICULAR IQ</h1>
+    <h1 style="margin:0 0 10px">Mallas</h1>
+    <button class="prog-chip" id="prog-chip" onclick="openProgramas()" aria-haspopup="dialog" title="Cambiar de carrera"><span class="prog-dot"></span>Ingeniería Química<span class="prog-caret" aria-hidden="true">▾</span></button>
     <button class="ver-chip" id="nv-chip" onclick="openNovedades()" title="Qué hay de nuevo">✨ Novedades v4.2</button>
     <div class="tabs">
         <button class="tab-btn active" id="tab-malla" onclick="switchTab('malla')">Malla Curricular</button>
@@ -1377,6 +1472,18 @@ header > .tabs { order: 8; }
     </div>
 </div>
 
+
+<!-- Selector de carrera (v8): Química activa; las demás enlazan a su malla oficial mientras se integran -->
+<div id="prog-modal" class="modal-overlay" onclick="if(event.target===this)closeProgramas()" role="dialog" aria-modal="true" aria-labelledby="prog-title">
+    <div class="modal-content" style="max-width:460px">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+            <h3 id="prog-title" style="margin:0">Carreras · Facultad de Ingeniería</h3>
+            <button onclick="closeProgramas()" aria-label="Cerrar" style="background:none;border:none;color:var(--text-dim);font-size:1.3rem;cursor:pointer;padding:4px 8px">✕</button>
+        </div>
+        <div class="prog-list" id="prog-list"></div>
+        <p class="prog-note">Sede Bogotá. Las demás carreras se están integrando; por ahora abren la malla oficial de la Facultad en PDF.</p>
+    </div>
+</div>
 <script id="migracion-v42">
 // Migra una sola vez el progreso guardado por la v1.0 (oficial) y por el lab al formato de la v4.2.
 (function () {
@@ -1430,7 +1537,7 @@ function switchTab(tab) {
     if (tab === 'horario') renderHorario();
     if (tab === 'libre') libreLoad();
     if (tab === 'info') infoRender();
-    if (tab === 'malla') requestAnimationFrame(drawLinks);
+    if (tab === 'malla') { requestAnimationFrame(drawLinks); if (window.mallaEnter) mallaEnter(); }
     moveTabInk();
     if (window.gtag) gtag('event', 'cambiar_pestana', { pestana: tab });
     if (scrollY > 200) scrollTo({ top: 0, behavior: 'smooth' });
@@ -3889,16 +3996,7 @@ infoLinksRender();
     var set = function (k, v) { try { localStorage.setItem(k, v); } catch (e) { /* sin almacenamiento */ } };
 
     /* ---- Aviso con flecha punteada ---- */
-    function placeTip() {
-        var b = btn.getBoundingClientRect(), sx = window.pageXOffset, sy = window.pageYOffset;
-        var w = Math.min(250, window.innerWidth - 24);
-        tip.style.width = w + 'px';
-        var left = Math.max(12, Math.min(b.right + sx - w, sx + window.innerWidth - w - 12));
-        tip.style.left = left + 'px';
-        tip.style.top = (b.bottom + sy + 76) + 'px';
-        var ax = (b.left + b.width / 2 + sx) - left - 40;
-        $('fb-arrow').style.left = Math.max(0, Math.min(w - 48, ax)) + 'px';
-    }
+    function placeTip() { /* v8: el aviso es una cápsula fija (CSS); no necesita posición */ }
     window.fbShowTip = function () {
         if (get(K_TIP) === '1' || modal.classList.contains('active')) return;
         set(K_TIP, '1');
@@ -3908,7 +4006,7 @@ infoLinksRender();
         window.addEventListener('scroll', onScroll, { passive: true });
         tipTimer = setTimeout(window.fbHideTip, 14000);
     };
-    function onScroll() { if (Math.abs(window.pageYOffset) > 120) window.fbHideTip(); }
+    function onScroll() { /* v8: al ser fijo ya no se oculta al bajar */ }
     window.fbHideTip = function () {
         clearTimeout(tipTimer);
         tip.classList.remove('on');
@@ -4081,6 +4179,65 @@ infoLinksRender();
             io.observe(box);
         } else box.classList.add('vis');
     }
+})();
+</script>
+
+<script id="mallas-v8">
+(function () {
+    // Carreras de pregrado de la Facultad de Ingeniería, sede Bogotá, con su malla oficial
+    var F = 'https://ingenieria.bogota.unal.edu.co/';
+    var PROGRAMAS = [
+        { n: 'Ingeniería Química', activo: true },
+        { n: 'Ingeniería Agrícola', u: F + 'images/recursos/pregrado/ingenieriaAgricola/Malla_Curricular_Agricola_2021.pdf' },
+        { n: 'Ingeniería Civil', u: F + 'images/recursos/pregrado/ingenieriaCivil/PLAN_ING.pdf' },
+        { n: 'Ingeniería de Sistemas y Computación', u: F + 'images/recursos/pregrado/ingenieriaSistemas/Malla_Plan_de_estudios_estndar_2023.pdf' },
+        { n: 'Ingeniería Eléctrica', u: F + 'wp-content/uploads/2026/08/Malla_Curricular_Electrica.pdf' },
+        { n: 'Ingeniería Electrónica', u: F + 'images/Malla_Ing_Electrnica_2023.pdf' },
+        { n: 'Ingeniería Industrial', u: F + 'images/recursos/pregrado/IngenieriaIndustrial/docs/MALLA_CURRICULAR_INGENIERIA_INDUSTRIAL_20201027.pdf' },
+        { n: 'Ingeniería Mecánica', u: F + 'images/recursos/pregrado/IngMecanica/MallaCurricular-IngenieraMecnicaUNAL_Ac_86_-18_.pdf' },
+        { n: 'Ingeniería Mecatrónica', u: F + 'images/recursos/pregrado/ingenieriaMecatronica/Malla_Curricular_Mecatronica_Acuerdo_6_2022.pdf' }
+    ];
+    var modal = document.getElementById('prog-modal'), prev = null;
+    function pintar() {
+        document.getElementById('prog-list').innerHTML = PROGRAMAS.map(function (p) {
+            return p.activo
+                ? '<div class="prog-item on"><div class="prog-main"><b>' + p.n + '</b><small>Malla interactiva</small></div><span class="prog-tag">Aquí estás</span></div>'
+                : '<div class="prog-item"><div class="prog-main"><b>' + p.n + '</b><small>Próximamente interactiva</small></div><a class="prog-tag" href="' + p.u + '" target="_blank" rel="noopener">Malla oficial ↗</a></div>';
+        }).join('');
+    }
+    window.openProgramas = function () {
+        if (!modal) return;
+        prev = document.activeElement; pintar(); modal.classList.add('active');
+        if (window.gtag) gtag('event', 'abrir_carreras');
+    };
+    window.closeProgramas = function () { if (modal) modal.classList.remove('active'); if (prev && prev.focus) prev.focus(); };
+
+    // Escape cierra cualquier modal abierto (estado, cupos, reseñas, libre elección y carreras no lo hacían)
+    var CIERRES = { 'status-modal': 'closeStatusModal', 'cupos-modal': 'closeCuposModal', 'resenas-modal': 'closeResenas', 'libre-pick-modal': 'libPickCerrar', 'prog-modal': 'closeProgramas' };
+    document.addEventListener('keydown', function (e) {
+        if (e.key !== 'Escape') return;
+        Object.keys(CIERRES).forEach(function (id) {
+            var m = document.getElementById(id);
+            if (m && m.classList.contains('active') && typeof window[CIERRES[id]] === 'function') window[CIERRES[id]]();
+        });
+    });
+
+    // Entrada escalonada de los semestres al abrir la pestaña Malla
+    var tEnter;
+    window.mallaEnter = function () {
+        var g = document.getElementById('grid'); if (!g) return;
+        [].forEach.call(g.querySelectorAll('.semestre-col'), function (c, i) { c.style.setProperty('--i', i); });
+        g.classList.remove('enter'); void g.offsetWidth; g.classList.add('enter');
+        clearTimeout(tEnter); tEnter = setTimeout(function () { g.classList.remove('enter'); }, 1100);
+    };
+    if (document.readyState === 'complete') mallaEnter(); else addEventListener('load', mallaEnter);
+
+    // El aviso de comentarios abre el buzón al tocarlo
+    var tip = document.getElementById('fb-tip');
+    if (tip) tip.addEventListener('click', function (e) {
+        if (e.target.closest('button')) return;
+        if (window.fbHideTip) fbHideTip(); if (window.openFeedback) openFeedback();
+    });
 })();
 </script>
 </body>

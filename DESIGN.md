@@ -21,3 +21,13 @@ Inter (con -apple-system y SF Pro en Apple), `letter-spacing: -0.011em`, cifras 
 - `--ease-ios: cubic-bezier(0.32, 0.72, 0, 1)`, duraciones de 0.25–0.5s.
 - **Vista:** fundido, escala 0.985 y desenfoque de 6px. **Modal:** sube como una hoja. **Tema:** View Transitions.
 - Todo se desactiva con `prefers-reduced-motion`.
+
+## v8 · Movimiento con los valores de Mochy
+Se leyeron los parámetros de animación de Mochy Music (github.com/realidkroo/Mochy-Music) y se reescribieron en CSS; no se copió código (es Kotlin y GPL-3).
+- **Curvas:** `--ease-emph: cubic-bezier(0.2, 0, 0, 1)` (principal) y `--ease-menu: cubic-bezier(0.57, 0.53, 0, 1)` a 440 ms (menús y hojas).
+- **Resortes** (como `linear()`): `--spring-smooth` (amortiguación 0.8, rigidez 500), `--spring-bounce` (0.55 / 380) y `--spring-snap` (0.54 / 720).
+- **Presión:** botones a escala 0.94 y materias a 0.96, bajan en 110 ms y vuelven con resorte.
+- **Modales:** entran y salen; en celular son hojas que suben desde abajo.
+- **Malla:** los semestres entran escalonados (32 ms) solo al abrir la pestaña; ya no se re-animan en cada clic.
+- **Estados:** "disponible" va en contorno verde y "aprobada" rellena.
+- **Avisos flotantes:** fondo casi opaco; el de comentarios es una cápsula fija abajo a la derecha.

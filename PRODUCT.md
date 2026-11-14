@@ -1,4 +1,4 @@
-# MallaIQ — Producto
+# Mallas (antes MallaIQ) — Producto
 
 ## Qué es
 Herramienta web independiente y sin ánimo de lucro para estudiantes de Ingeniería Química de la Universidad Nacional de Colombia, sede Bogotá (Facultad de Ingeniería). Un solo `index.html` desplegado en Vercel (mallaiq.vercel.app); backend propio en Render (`proxy-sia`) para catálogo del SIA (grupos, cupos, horarios) y reseñas anónimas de profesores.
@@ -25,4 +25,4 @@ Operate: el estudiante completa una tarea. Escaneo rápido, estados claros y den
 - Ligero: sin frameworks, sin build.
 
 ## Compromisos de marca
-Nombre "Malla Curricular IQ" / MallaIQ. Proyecto estudiantil, cercano, en español colombiano informal.
+Nombre "Mallas" (antes "Malla Curricular IQ" / MallaIQ): pasa a cubrir todas las carreras de la Facultad de Ingeniería, sede Bogotá. Proyecto estudiantil, cercano, en español colombiano informal.
