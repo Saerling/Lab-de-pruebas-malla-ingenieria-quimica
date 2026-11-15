@@ -1423,12 +1423,12 @@ html.ld-desde-app .kpi, html.landing .kpi { animation: none; }
 html:not(.fxo-scroll) #scroll-prog { display: none !important; }
 
 /* --- Blur Fade / In View / Animated Group --- */
-html.fxo-reveal .fx-rv:not(.fx-in) { opacity: 0; filter: blur(6px); transform: translateY(10px); }
-html.fxo-reveal .fx-rv { transition: opacity calc(0.5s * var(--fx-speed)) ease, filter calc(0.5s * var(--fx-speed)) ease, transform calc(0.6s * var(--fx-speed)) cubic-bezier(.2, .9, .3, 1); transition-delay: calc(var(--fx-i, 0) * 45ms * var(--fx-speed)); }
+html.fxo-reveal .fx-rv:not(.fx-in) { opacity: 0; transform: translateY(10px); }
+html.fxo-reveal .fx-rv { transition: opacity calc(0.5s * var(--fx-speed)) ease, transform calc(0.6s * var(--fx-speed)) cubic-bezier(.2, .9, .3, 1); transition-delay: calc(var(--fx-i, 0) * 45ms * var(--fx-speed)); }
 
 /* --- Animated Beam entre prerrequisitos --- */
-html.fxo-beam .malla-wrapper .lk.hl .lk-track { stroke-dasharray: 7 9 !important; animation: fxDash calc(0.8s * var(--fx-speed)) linear infinite; stroke-width: 2.4; filter: drop-shadow(0 0 3px var(--primary)); }
-html.fxo-beam .malla-wrapper .lk.hl.lk-in .lk-track { filter: drop-shadow(0 0 3px var(--req, #b9a0ff)); animation-direction: reverse; }
+html.fxo-beam .malla-wrapper .lk.hl .lk-track { stroke-dasharray: 7 9 !important; animation: fxDash calc(0.8s * var(--fx-speed)) linear infinite; stroke-width: 2.4; }
+html.fxo-beam .malla-wrapper .lk.hl.lk-in .lk-track { animation-direction: reverse; }
 @keyframes fxDash { to { stroke-dashoffset: -32; } }
 
 /* --- Shine Border / Pulsating: materias disponibles --- */
@@ -1626,6 +1626,42 @@ header > .fx-tag { order: 6; flex-basis: 100%; text-align: center; margin: -2px 
 header > .fx-cd { order: 6; margin: 2px 0 6px; }
 .fx-rot { text-align: center; min-width: 0; }
 @media (max-width: 640px) { header > .fx-open-btn { display: inline-flex; width: auto; padding: 8px 11px; } .fx-open-btn .fx-lbl { display: none; } }
+
+/* ===== v17: orden, centrado y rendimiento ===== */
+header > .fx-hside { order: 1; flex: 1 1 0; min-width: 0; display: flex; align-items: center; gap: 8px; }
+header > .fx-hl { justify-content: flex-start; } header > .fx-hr { justify-content: flex-end; order: 3; }
+header > h1 { order: 2; text-align: center; }
+.fx-hside > button { position: static !important; margin: 0 !important; display: inline-flex; align-items: center; justify-content: center; gap: 6px; line-height: 1; height: 34px; padding: 0 14px; white-space: nowrap; }
+header > .fx-tag { order: 6; }
+@media (max-width: 760px) {
+    header > h1 { order: 0; flex-basis: 100%; }
+    header > .fx-hside { flex: 0 1 auto; order: 1; }
+    header > .fx-hr { order: 1; }
+}
+@media (max-width: 640px) { .fx-hside > .fx-open-btn { width: 34px; padding: 0; } .fx-open-btn .fx-lbl { display: none; } }
+/* iconos centrados en su figura */
+.tb-dyn-btn { padding: 0 !important; min-width: 32px; margin: 0 !important; line-height: 0; }
+.tb-dyn-btn svg { display: block; }
+.fx-cd, .prog-chip, .ver-chip { line-height: 1; height: 34px; padding-top: 0; padding-bottom: 0; display: inline-flex; align-items: center; }
+.ico-sia { opacity: .5; font-size: .75rem; white-space: nowrap; }
+.fx-cmd-i .ic, .mm-item { display: inline-flex; align-items: center; justify-content: center; }
+/* agrupaciones en mampostería: sin huecos entre tarjetas */
+.agrupaciones-container { display: block !important; columns: 340px auto; column-gap: 16px; }
+.agrupaciones-container > * { break-inside: avoid; margin: 0 0 16px; width: 100%; }
+.agrupaciones-container > .agrupacion-card { display: flex; }
+/* el contenido no queda debajo de las pestañas fijas */
+.view-section { scroll-margin-top: 80px; }
+/* KPI: proporción estable con el anillo */
+html.fxo-ring .kpi:first-child { padding-right: 16px; }
+.fx-ring { width: 40px; height: 40px; top: 12px; right: 12px; }
+/* rendimiento: el desenfoque en vivo solo donde aporta (ventanas, pestañas fijas, dock, paleta) */
+:is(.materia, .kpi, .agrupacion-card, th, .semestre-block, .malla-toolbar, .header-stats, .leyenda, .hor-panel, .thanks, .site-footer, .theme-toggle, .fb-btn, .coffee-btn, .prog-chip, .ver-chip, .ld-back, .fx-open-btn, .tabs-tip, .fb-tip, .modal-overlay:not(.active)) { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+.modal-overlay.active .modal-content { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+.materia.status-locked-total { filter: none !important; opacity: .55; }
+.materia, .kpi, .agrupacion-card { contain: layout paint; }
+.agrupacion-card, .semestre-block { content-visibility: auto; contain-intrinsic-size: auto 420px; }
+/* tarjetas opacas: sin desenfoque, el fondo y las líneas ya no se transparentan */
+:is(.materia, .kpi, .agrupacion-card, .malla-toolbar, .hor-panel, .fx-seg, .fx-heat, .respaldo, .header-stats) { background-color: var(--bg); background-image: linear-gradient(var(--surface), var(--surface)); }
 @media print { #fx-dock, #fx-pomo, #fx-cmd, .fx-cd, .fx-seg, .fx-heat, .fx-open-btn, .fx-tag { display: none !important; } }
 @media (prefers-reduced-motion: reduce) { html.fxo-reveal .fx-rv:not(.fx-in) { opacity: 1; filter: none; transform: none; } }
 </style>
@@ -2329,7 +2365,7 @@ function switchTab(tab) {
                         ${agr.materias.map(m => `
                             <tr class="${m.ob ? 'obligatoria' : ''}" style="cursor:pointer;" onclick="openCuposModal('${m.id}')" title="Ver cupos y grupos en tiempo real (SIA)">
                                 <td>${m.id}</td>
-                                <td>${m.n} <span style="opacity:0.5; font-size:0.75rem;">📊</span></td>
+                                <td>${m.n}&nbsp;<span class="ico-sia" aria-hidden="true">📊</span></td>
                                 <td style="text-align:center;">${m.c}</td>
                             </tr>
                         `).join('')}
@@ -2672,7 +2708,7 @@ function switchTab(tab) {
         const rows = libreView.slice(0, libreShown).map((a, i) => `
             <tr style="cursor:pointer;" data-i="${i}" title="Ver grupos y cupos">
                 <td>${siaEsc(a.codigo)}</td>
-                <td>${siaEsc(a.nombre)} <span style="opacity:0.5; font-size:0.75rem;">📊</span>${a.sinProgramar ? ' <span class="libre-tag">sin programar</span>' : ''}</td>
+                <td>${siaEsc(a.nombre)}&nbsp;<span class="ico-sia" aria-hidden="true">📊</span>${a.sinProgramar ? ' <span class="libre-tag">sin programar</span>' : ''}</td>
                 <td style="text-align:center;">${siaEsc(a.creditos ?? '')}</td>
             </tr>`).join('');
         body.innerHTML = `
@@ -5198,7 +5234,9 @@ infoLinksRender();
 (function () {
     'use strict';
     const $ = id => document.getElementById(id), H = document.documentElement;
-    const KEY = 'mallas_fx_v1';
+    const KEY = 'mallas_fx_v2';
+    const MOB = matchMedia('(pointer: coarse)').matches || innerWidth <= 760;
+    const dv = v => v === 'm' ? MOB : v === 'd' ? !MOB : !!v;
     const fine = matchMedia('(pointer: fine)').matches;
     const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
     const norm = t => String(t || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
@@ -5208,42 +5246,42 @@ infoLinksRender();
     // ---------- Catálogo de efectos: [clave, nombre, descripción, origen, por defecto, grupo] ----------
     const FX = [
         ['scroll', 'Barra de progreso al desplazar', 'Línea fina arriba que muestra cuánto has bajado.', 'Magic UI · Scroll Progress', true, 'Navegación'],
-        ['cmdk', 'Paleta de comandos (Ctrl+K)', 'Busca materias, pestañas y acciones desde cualquier parte.', 'blocks.so · Command Menu', true, 'Navegación'],
-        ['dock', 'Dock inferior en celular', 'Barra flotante con las pestañas al alcance del pulgar.', 'Magic UI · Dock', false, 'Navegación'],
+        ['cmdk', 'Paleta de comandos (Ctrl+K)', 'Busca materias, pestañas y acciones desde cualquier parte.', 'blocks.so · Command Menu', 'd', 'Navegación'],
+        ['dock', 'Dock inferior en celular', 'Barra flotante con las pestañas al alcance del pulgar.', 'Magic UI · Dock', 'm', 'Navegación'],
         ['countdown', 'Cuenta regresiva del calendario', 'Muestra cuántos días faltan para el próximo evento académico.', 'opensourceui · Event Countdown', true, 'Navegación'],
-        ['tips', 'Tooltips con estilo', 'Reemplaza los avisos nativos del navegador al pasar el cursor.', 'coss ui · Tooltip', true, 'Navegación'],
+        ['tips', 'Tooltips con estilo', 'Reemplaza los avisos nativos del navegador al pasar el cursor.', 'coss ui · Tooltip', 'd', 'Navegación'],
         ['ring', 'Anillo de créditos', 'Porcentaje de créditos aprobados en un anillo animado.', 'Magic UI · Circular Progress', true, 'Tu avance'],
-        ['seg', 'Barra por componente', 'Créditos aprobados por componente en una barra segmentada.', 'blocks.so · Stats Segmented Progress', true, 'Tu avance'],
+        ['seg', 'Barra por componente', 'Créditos aprobados por componente en una barra segmentada.', 'blocks.so · Stats Segmented Progress', false, 'Tu avance'],
         ['heat', 'Mapa de avance', 'Cuadritos por semestre, estilo contribuciones de GitHub.', 'opensourceui · Github Contribution', false, 'Tu avance'],
-        ['confetti', 'Confeti al completar un semestre', 'Celebra cuando apruebas todas las materias de un semestre.', 'Magic UI · Confetti', true, 'Tu avance'],
         ['beam', 'Haz animado en requisitos', 'Las conexiones de la materia enfocada fluyen con luz, en vez de líneas fijas.', 'Magic UI · Animated Beam', true, 'Malla'],
-        ['shine', 'Brillo en materias disponibles', 'Las materias que ya puedes inscribir laten suavemente.', 'Magic UI · Shine Border / Pulsating', true, 'Malla'],
+        ['shine', 'Brillo en materias disponibles', 'Las materias que ya puedes inscribir laten suavemente.', 'Magic UI · Shine Border / Pulsating', false, 'Malla'],
         ['edge', 'Bordes difuminados al desplazar', 'Difumina el borde de la malla solo hacia donde hay más contenido.', 'Motion Primitives · Progressive Blur', true, 'Malla'],
-        ['spot', 'Brillo que sigue el cursor', 'Tarjetas con un foco de luz bajo el puntero.', 'Magic UI · Magic Card', true, 'Interacción'],
+        ['spot', 'Brillo que sigue el cursor', 'Tarjetas con un foco de luz bajo el puntero.', 'Magic UI · Magic Card', 'd', 'Interacción'],
         ['tilt', 'Inclinación 3D', 'Las tarjetas se inclinan levemente al pasar el cursor.', 'Motion Primitives · Tilt', false, 'Interacción'],
         ['magnet', 'Botones magnéticos', 'Los botones de la cabecera se acercan al cursor.', 'Motion Primitives · Magnetic', false, 'Interacción'],
-        ['ripple', 'Onda al tocar botones', 'Un círculo se expande desde donde tocas.', 'Magic UI · Ripple Button', true, 'Interacción'],
+        ['ripple', 'Onda al tocar botones', 'Un círculo se expande desde donde tocas.', 'Magic UI · Ripple Button', 'm', 'Interacción'],
         ['cool', 'Modo fiesta', 'Lanza emojis al hacer clic en botones.', 'Magic UI · Cool Mode', false, 'Interacción'],
         ['hold', 'Mantener para vaciar', '"Vaciar" el horario pide mantener pulsado en lugar de confirmar.', 'opensourceui · Hold to Delete', false, 'Interacción'],
-        ['morph', 'Ventanas que nacen del clic', 'Los modales crecen desde el botón que los abrió.', 'Motion Primitives · Morphing Dialog', true, 'Ventanas'],
-        ['swipe', 'Deslizar para cerrar (celular)', 'Arrastra hacia abajo las hojas emergentes para cerrarlas.', 'coss ui · Drawer', true, 'Ventanas'],
-        ['reveal', 'Aparición suave al bajar', 'Tarjetas y listas entran con desenfoque.', 'Magic UI · Blur Fade / Motion Primitives · In View', true, 'Texto y animación'],
+        ['morph', 'Ventanas que nacen del clic', 'Los modales crecen desde el botón que los abrió.', 'Motion Primitives · Morphing Dialog', 'd', 'Ventanas'],
+        ['swipe', 'Deslizar para cerrar (celular)', 'Arrastra hacia abajo las hojas emergentes para cerrarlas.', 'coss ui · Drawer', 'm', 'Ventanas'],
+        ['reveal', 'Aparición suave al bajar', 'Tarjetas y listas entran con desenfoque.', 'Magic UI · Blur Fade / Motion Primitives · In View', false, 'Texto y animación'],
         ['shimmer', 'Texto brillante al cargar', '"Cargando…" y "Actualizando…" brillan mientras esperas.', 'Motion Primitives · Text Shimmer', true, 'Texto y animación'],
-        ['gradTitle', 'Título con degradado', 'El título "Mallas" con un degradado animado.', 'Magic UI · Animated Gradient Text', true, 'Texto y animación'],
-        ['rotate', 'Frase que rota', 'Debajo del título: tu malla, tu PAPA, tu horario…', 'Magic UI · Word Rotate', true, 'Texto y animación'],
+        ['gradTitle', 'Título con degradado', 'El título "Mallas" con un degradado animado.', 'Magic UI · Animated Gradient Text', false, 'Texto y animación'],
+        ['rotate', 'Frase que rota', 'Debajo del título: tu malla, tu PAPA, tu horario…', 'Magic UI · Word Rotate', false, 'Texto y animación'],
         ['scramble', 'Título que se revuelve', 'Las letras del título se mezclan al pasar el cursor.', 'Motion Primitives · Text Scramble', false, 'Texto y animación'],
-        ['annot', 'Anotaciones a mano', 'Encierra en círculo tus materias disponibles y marca el mejor plan.', 'opensourceui · Annotated Text', true, 'Texto y animación'],
-        ['sparkle', 'Destellos', 'Brillitos en lo destacado, como el mejor plan.', 'Magic UI · Sparkles Text', true, 'Texto y animación'],
+        ['annot', 'Anotaciones a mano', 'Encierra en círculo tus materias disponibles y marca el mejor plan.', 'opensourceui · Annotated Text', false, 'Texto y animación'],
+        ['sparkle', 'Destellos', 'Brillitos en lo destacado, como el mejor plan.', 'Magic UI · Sparkles Text', false, 'Texto y animación'],
         ['cursorSpot', 'Foco de fondo con el cursor', 'Una luz suave sigue al puntero sobre el fondo.', 'Motion Primitives · Spotlight', false, 'Extras'],
         ['pomo', 'Pomodoro para estudiar', 'Temporizador flotante 25/5 abajo a la izquierda.', 'opensourceui · Pomodoro', false, 'Extras'],
     ];
     const PRESETS = [
+        ['Blanco y negro', '#f2f2f2', '#141414', '#8e8e93'],
         ['Azul', '#6ea8ff', '#2f6fed', '#b9a0ff'], ['Esmeralda', '#5fd3a6', '#2f8f6a', '#e0a56f'], ['Violeta', '#a78bfa', '#7c3aed', '#f0abfc'],
         ['Coral', '#ff8a7a', '#e0533f', '#ffc46b'], ['Ámbar', '#f5b544', '#b7791f', '#6ea8ff'], ['Rosa', '#f472b6', '#db2777', '#a78bfa'],
         ['Cian', '#5ccfe6', '#0e8fa8', '#a3e635'], ['Grafito', '#c7ccd6', '#4b5563', '#9ca3af']
     ];
-    const DEF = { preset: '', p1: '', p2: '', acc: '', radius: 0, scale: 100, font: '', density: 'normal', glass: 0, bg: '', speed: 1, css: '' };
-    FX.forEach(f => DEF[f[0]] = f[4]);
+    const DEF = { preset: 'Blanco y negro', p1: '#f2f2f2', p2: '#141414', acc: '#8e8e93', radius: 0, scale: 100, font: '', density: 'normal', glass: 0, bg: 'dots', speed: 1, css: '' };
+    FX.forEach(f => DEF[f[0]] = dv(f[4]));
     let S = (() => { try { return Object.assign({}, DEF, JSON.parse(localStorage.getItem(KEY)) || {}); } catch (e) { return Object.assign({}, DEF); } })();
     const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { } };
     const sp = () => S.speed || 1;
@@ -5260,7 +5298,7 @@ infoLinksRender();
             css += `${sel}{--primary:${p};--primary-soft:color-mix(in srgb, ${p} 15%, transparent);--on-primary:${on};--ring:0 0 0 4px color-mix(in srgb, ${p} 25%, transparent);--head-text:${p};--glow-a:color-mix(in srgb, ${p} 34%, transparent);}`;
         };
         vars(S.p1, ':root,[data-theme="dark"]'); vars(S.p2, '[data-theme="light"]');
-        if (S.acc) css += `:root,[data-theme]{--accent:${S.acc};--accent-soft:color-mix(in srgb, ${S.acc} 12%, transparent);--req:${S.acc};}`;
+        if (S.acc) css += `:root,[data-theme]{--accent:${S.acc};--accent-soft:color-mix(in srgb, ${S.acc} 12%, transparent);--req:${S.acc};--on-req:${lum(S.acc) > .45 ? '#111' : '#fff'};}`;
         if (S.radius) css += `:root{--radius:${S.radius}px}.materia,.kpi,.hor-g,.stat-box,.agrupacion-card,.fx-seg,.fx-heat,.respaldo{border-radius:${S.radius}px!important}header,.modal-content{border-radius:${Math.round(S.radius * 1.4)}px!important}`;
         if (S.scale && S.scale !== 100) css += `html{font-size:${S.scale}%}`;
         if (S.font && FONTS[S.font]) css += `body,button,input,select,textarea{font-family:${FONTS[S.font]}!important}`;
@@ -5282,6 +5320,11 @@ infoLinksRender();
     if (header) {
         const b = add('<button class="fx-open-btn" id="fx-open" onclick="fxOpen()" title="Cambia colores, fondo, fuente y efectos" aria-label="Personalizar">🎨<span class="fx-lbl"> Personalizar</span></button>', header);
         if (h1) {
+            const L = document.createElement('div'), R = document.createElement('div');
+            L.className = 'fx-hside fx-hl'; R.className = 'fx-hside fx-hr';
+            [header.querySelector(':scope > .coffee-btn'), b].forEach(x => x && L.appendChild(x));
+            [header.querySelector(':scope > .fb-btn'), header.querySelector(':scope > .theme-toggle')].forEach(x => x && R.appendChild(x));
+            header.insertBefore(L, h1); h1.after(R);
             h1.insertAdjacentHTML('afterend', '<div class="fx-tag" aria-hidden="true">Planea <span class="fx-rot"><span>tu malla</span></span></div>');
             const nv = $('nv-chip') || h1;
             nv.insertAdjacentHTML('afterend', '<button class="fx-cd" id="fx-cd" onclick="switchTab(\'info\')" title="Abrir el calendario académico"><span class="dot"></span><span id="fx-cd-t"></span></button>');
@@ -5327,8 +5370,8 @@ infoLinksRender();
     let moT;
     new MutationObserver(ms => {
         clearTimeout(moT);
-        moT = setTimeout(() => { scanReveal(document); scanShimmer(); fixTitles(); }, 60);
-    }).observe(document.body, { childList: true, subtree: true, characterData: true });
+        moT = setTimeout(() => { if (on('reveal')) scanReveal(document); if (on('shimmer')) scanShimmer(); }, 150);
+    }).observe(document.body, { childList: true, subtree: true });
 
     // ---------- Cursor: spotlight, tilt, magnetic, fondo ----------
     let pm = null, pmT = false;
@@ -5450,22 +5493,6 @@ infoLinksRender();
         });
     }
 
-    // ---------- Confeti ----------
-    window.fxConfetti = function (o) {
-        if (S.speed === 0 && !(o && o.force)) return;
-        const cv = document.createElement('canvas'); cv.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:7000';
-        document.body.appendChild(cv); const dpr = devicePixelRatio || 1; cv.width = innerWidth * dpr; cv.height = innerHeight * dpr;
-        const ctx = cv.getContext('2d'); ctx.scale(dpr, dpr);
-        const cs = getComputedStyle(H), cols = ['--primary', '--accent', '--success', '--warning', '--req'].map(v => cs.getPropertyValue(v).trim()).filter(Boolean);
-        const P = Array.from({ length: 160 }, () => ({ x: innerWidth / 2 + (Math.random() - .5) * 200, y: innerHeight * .65, vx: (Math.random() - .5) * 16, vy: -Math.random() * 17 - 7, s: 5 + Math.random() * 6, r: Math.random() * 6, vr: (Math.random() - .5) * .4, c: cols[Math.random() * cols.length | 0] || '#6ea8ff', life: 0 }));
-        let fr = 0;
-        (function tick() {
-            ctx.clearRect(0, 0, innerWidth, innerHeight); let alive = 0;
-            P.forEach(p => { p.vy += .42; p.vx *= .985; p.x += p.vx; p.y += p.vy; p.r += p.vr; if (p.y < innerHeight + 20) alive++; ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.r); ctx.fillStyle = p.c; ctx.globalAlpha = Math.max(0, 1 - fr / 170); ctx.fillRect(-p.s / 2, -p.s / 4, p.s, p.s / 2); ctx.restore(); });
-            if (alive && ++fr < 200) requestAnimationFrame(tick); else cv.remove();
-        })();
-    };
-
     // ---------- KPIs extra: anillo, barra segmentada, mapa, confeti ----------
     const kpiRow = $('kpi-row');
     if (kpiRow) {
@@ -5474,7 +5501,6 @@ infoLinksRender();
         kpiRow.insertAdjacentHTML('afterend', '<div class="fx-seg" id="fx-seg"></div><div class="fx-heat" id="fx-heat"></div>');
     }
     const CAT_C = { 'Fundamentación': 'var(--color-fundamentacion)', 'Disciplinar': 'var(--color-disciplinar)', 'Libre Elección': 'var(--color-libre)', 'Libre elección': 'var(--color-libre)', 'Libre': 'var(--color-libre)' };
-    let semDone = null;
     function fxKpis() {
         let all, st, tot;
         try { all = data.flatMap(s => s.mat.map(m => Object.assign({ sem: s.sem }, m))); st = getVisualStats(); tot = (window.PROG && PROG.creditos) || (typeof PROG !== 'undefined' && PROG.creditos) || 180; } catch (e) { return; }
@@ -5499,10 +5525,6 @@ infoLinksRender();
             heat.innerHTML = `<div class="fx-heat-t"><span>Mapa de avance</span><span>${all.filter(m => stOf(m) === 'ap').length}/${all.length} materias</span></div><div class="fx-heat-g">` +
                 data.map(s => `<div class="fx-heat-c"><small>${s.sem}</small>${s.mat.map(m => `<i class="${stOf(m)}" data-id="${esc(m.id)}" title="${esc(m.n)}"></i>`).join('')}</div>`).join('') + '</div>';
         }
-        // confeti por semestre completo
-        const done = data.map(s => s.mat.length > 0 && s.mat.every(m => getCombinedState(m.id) === 'approved'));
-        if (semDone && on('confetti')) { const i = done.findIndex((d, k) => d && !semDone[k]); if (i !== -1) { fxConfetti(); ga('fx_confeti', { semestre: data[i].sem }); } }
-        semDone = done;
         // anotación de disponibles
         annotate();
     }
@@ -5578,7 +5600,7 @@ infoLinksRender();
     const pomo = add('<div id="fx-pomo" role="button" tabindex="0" title="Clic: iniciar o pausar · doble clic: reiniciar"><svg viewBox="0 0 30 30"><circle class="t" cx="15" cy="15" r="12"/><circle class="v" cx="15" cy="15" r="12" stroke-dasharray="75.4" stroke-dashoffset="0"/></svg><span id="fx-pomo-t">25:00</span><span class="x" id="fx-pomo-s">▶</span></div>');
     let pBrk = false, pLeft = 25 * 60, pRun = false, pInt = null;
     const pDraw = () => { const tot = (pBrk ? 5 : 25) * 60; $('fx-pomo-t').textContent = String(pLeft / 60 | 0).padStart(2, '0') + ':' + String(pLeft % 60).padStart(2, '0'); pomo.querySelector('.v').style.strokeDashoffset = (75.4 * (1 - pLeft / tot)).toFixed(1); pomo.classList.toggle('brk', pBrk); $('fx-pomo-s').textContent = pRun ? '❚❚' : '▶'; };
-    const pTick = () => { if (--pLeft <= 0) { pBrk = !pBrk; pLeft = (pBrk ? 5 : 25) * 60; try { new Audio('data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA=').play(); } catch (e) { } if (navigator.vibrate) navigator.vibrate([120, 60, 120]); if (pBrk && on('confetti')) fxConfetti(); } pDraw(); };
+    const pTick = () => { if (--pLeft <= 0) { pBrk = !pBrk; pLeft = (pBrk ? 5 : 25) * 60; try { new Audio('data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA=').play(); } catch (e) { } if (navigator.vibrate) navigator.vibrate([120, 60, 120]); } pDraw(); };
     pomo.addEventListener('click', () => { pRun = !pRun; clearInterval(pInt); if (pRun) pInt = setInterval(pTick, 1000); pDraw(); });
     pomo.addEventListener('dblclick', () => { pRun = false; clearInterval(pInt); pBrk = false; pLeft = 25 * 60; pDraw(); });
     pDraw();
@@ -5606,7 +5628,6 @@ infoLinksRender();
             { ic: '✨', t: 'Ver novedades', run: call('openNovedades') },
             { ic: '💬', t: 'Enviar comentarios', run: call('openFeedback') },
             { ic: '☕', t: 'Invítame un café', run: call('openCoffeeModal') },
-            { ic: '🎉', t: 'Lanzar confeti', run: () => fxConfetti({ force: true }) },
             { ic: '🍅', t: S.pomo ? 'Ocultar pomodoro' : 'Mostrar pomodoro', run: () => { S.pomo = !S.pomo; save(); applyFlags(); } },
         ].map(a => Object.assign({ g: 'Acciones' }, a));
         let mats = [];
@@ -5675,7 +5696,7 @@ infoLinksRender();
             <div class="fx-row"><div><b>Opacidad de ventanas</b><small>Sube el valor si te cuesta leer sobre el fondo</small></div><span style="display:flex;align-items:center;gap:8px"><input type="range" min="60" max="100" step="2" data-r="glass" value="${S.glass || 94}"><span class="fx-val" id="fx-v-glass">${S.glass ? S.glass + '%' : 'auto'}</span></span></div>
             <div class="fx-row"><div><b>Animaciones</b></div>${segBtns('speed', [['0', 'Ninguna'], ['0.6', 'Rápidas'], ['1', 'Normales'], ['1.6', 'Lentas']])}</div></div>`;
         $('fx-p1').innerHTML = GROUPS.map(g => `<div class="fx-sec"><h4>${g}</h4>${FX.filter(f => f[5] === g).map(([k, n, d, src]) => `<div class="fx-row"><div><b>${n}</b><small>${d}</small><span class="fx-src">${src}</span></div>${swHTML(k)}</div>`).join('')}</div>`).join('') +
-            `<div class="fx-actions"><button class="hor-btn sec" data-act="all1">Activar todo</button><button class="hor-btn sec" data-act="all0">Desactivar todo</button><button class="hor-btn sec" data-act="conf">🎉 Probar confeti</button></div>`;
+            `<div class="fx-actions"><button class="hor-btn" data-act="rec">Recomendados para este dispositivo</button><button class="hor-btn sec" data-act="all1">Activar todo</button><button class="hor-btn sec" data-act="all0">Desactivar todo</button></div>`;
         $('fx-p2').innerHTML = `<div class="fx-sec"><h4>CSS personalizado</h4><small style="color:var(--text-dim)">Se aplica encima de todo. Ejemplo: <code>.materia { border-width: 2px; }</code> o <code>:root { --primary: #ff5c8a; }</code></small>
             <textarea id="fx-css" spellcheck="false" placeholder="/* tu CSS aquí */">${esc(S.css)}</textarea>
             <div class="fx-actions"><button class="hor-btn" data-act="css">Aplicar CSS</button><button class="hor-btn sec" data-act="exp">⬇️ Exportar estilo</button><button class="hor-btn sec" data-act="imp">⬆️ Importar estilo</button><button class="hor-btn del" data-act="reset">Restablecer todo</button></div>
@@ -5700,8 +5721,7 @@ infoLinksRender();
         const sg = t.closest('.fx-seg2');
         if (sg) { const k = sg.dataset.k; S[k] = k === 'speed' ? +t.dataset.v : t.dataset.v; sg.querySelectorAll('button').forEach(b => b.classList.toggle('on', b === t)); apply(); return; }
         const a = t.dataset.act;
-        if (a === 'all1' || a === 'all0') { FX.forEach(f => S[f[0]] = a === 'all1'); apply(); panel(); fxTab(1); }
-        if (a === 'conf') fxConfetti({ force: true });
+        if (a === 'all1' || a === 'all0' || a === 'rec') { FX.forEach(f => S[f[0]] = a === 'rec' ? dv(f[4]) : a === 'all1'); apply(); panel(); fxTab(1); }
         if (a === 'css') { S.css = $('fx-css').value; apply(); t.textContent = '✓ Aplicado'; setTimeout(() => t.textContent = 'Aplicar CSS', 1200); }
         if (a === 'reset') { if (!confirm('¿Volver al estilo y efectos originales?')) return; S = Object.assign({}, DEF); apply(); panel(); fxTab(2); }
         if (a === 'exp') { const bl = new Blob([JSON.stringify({ formato: 'mallas-estilo/1', estilo: S }, null, 1)], { type: 'application/json' }); const l = document.createElement('a'); l.href = URL.createObjectURL(bl); l.download = 'mallas-estilo.json'; document.body.appendChild(l); l.click(); l.remove(); }
