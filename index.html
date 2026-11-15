@@ -234,7 +234,7 @@
         .hor-comp td { background: var(--surface-2); padding: 8px 10px; vertical-align: middle; }
         .hor-comp td:first-child { border-radius: 14px 0 0 14px; white-space: nowrap; }
         .hor-comp td:last-child { border-radius: 0 14px 14px 0; }
-        .hor-comp tr.on td { outline: 1px solid var(--primary); outline-offset: -1px; }
+        .hor-comp tr.on td { background: color-mix(in srgb, var(--primary) 12%, var(--surface-2)); }
         .hor-comp td.bad { color: #e5484d; font-weight: 600; }
         .hor-comp td.ok { color: #30a46c; font-weight: 600; }
         .hor-comp .hor-solo { color: var(--text-dim); font-size: 0.9em; }
@@ -1409,6 +1409,227 @@ html.ld-desde-app .kpi, html.landing .kpi { animation: none; }
 })();
 </script>
 <script>document.documentElement.setAttribute('data-theme', (function(){try{return localStorage.getItem('theme_iq')}catch(e){return null}})() || 'dark');</script>
+<style id="fx-v16-css">
+/* ===== FX v16: efectos de Magic UI, Motion Primitives, coss ui, blocks.so, opensourceui y NumberFlow, recreados sin dependencias ===== */
+:root { --fx-speed: 1; --fx-grad: linear-gradient(90deg, var(--primary), var(--req, #b9a0ff), var(--accent), var(--primary)); }
+
+/* --- Botón Personalizar en la cabecera --- */
+.fx-open-btn { position: absolute; top: 58px; left: 16px; display: inline-flex; align-items: center; gap: 6px; background: var(--surface-2); color: var(--text-dim); border: 1px solid var(--border); padding: 8px 14px; border-radius: 999px; font-family: var(--mono); font-size: 0.75rem; cursor: pointer; }
+.fx-open-btn:hover { color: var(--text); border-color: var(--primary); }
+.fx-k { font-size: 0.68rem; padding: 1px 6px; border-radius: 6px; border: 1px solid var(--border); background: var(--surface); color: var(--text-dim); font-family: var(--mono); }
+@media (max-width: 640px) { .fx-open-btn { position: static; display: flex; margin: 0 auto 14px; width: max-content; } .fx-open-btn .fx-k { display: none; } }
+
+/* --- Scroll Progress (Magic UI / Motion Primitives) --- */
+html:not(.fxo-scroll) #scroll-prog { display: none !important; }
+
+/* --- Blur Fade / In View / Animated Group --- */
+html.fxo-reveal .fx-rv:not(.fx-in) { opacity: 0; filter: blur(6px); transform: translateY(10px); }
+html.fxo-reveal .fx-rv { transition: opacity calc(0.5s * var(--fx-speed)) ease, filter calc(0.5s * var(--fx-speed)) ease, transform calc(0.6s * var(--fx-speed)) cubic-bezier(.2, .9, .3, 1); transition-delay: calc(var(--fx-i, 0) * 45ms * var(--fx-speed)); }
+
+/* --- Animated Beam entre prerrequisitos --- */
+html.fxo-beam .malla-wrapper .lk.hl .lk-track { stroke-dasharray: 7 9 !important; animation: fxDash calc(0.8s * var(--fx-speed)) linear infinite; stroke-width: 2.4; filter: drop-shadow(0 0 3px var(--primary)); }
+html.fxo-beam .malla-wrapper .lk.hl.lk-in .lk-track { filter: drop-shadow(0 0 3px var(--req, #b9a0ff)); animation-direction: reverse; }
+@keyframes fxDash { to { stroke-dashoffset: -32; } }
+
+/* --- Shine Border / Pulsating: materias disponibles --- */
+html.fxo-shine .materia.status-ready:not(.approved) { animation: fxPulse calc(2.6s * var(--fx-speed)) ease-in-out infinite; }
+@keyframes fxPulse { 0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--primary) 0%, transparent); } 50% { box-shadow: 0 0 0 4px color-mix(in srgb, var(--primary) 22%, transparent), 0 0 18px color-mix(in srgb, var(--primary) 18%, transparent); } }
+
+/* --- Magic Card / Spotlight al pasar el cursor --- */
+html.fxo-spot :is(.materia, .kpi, .agrupacion-card, .stat-box, .hor-g, .respaldo) { position: relative; }
+html.fxo-spot :is(.materia, .kpi, .agrupacion-card, .stat-box, .hor-g, .respaldo)::before { content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .25s; z-index: 0;
+    background: radial-gradient(180px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--primary) 16%, transparent), transparent 70%); }
+html.fxo-spot :is(.materia, .kpi, .agrupacion-card, .stat-box, .hor-g, .respaldo):hover::before { opacity: 1; }
+
+/* --- Tilt --- */
+html.fxo-tilt :is(.kpi, .agrupacion-card, .stat-box, .ld-card) { transition: transform .25s cubic-bezier(.2, .9, .3, 1); will-change: transform; }
+
+/* --- Ripple Button --- */
+.fx-rel { position: relative; }
+.fx-clip { overflow: hidden !important; }
+.fx-ripple { position: absolute; border-radius: 50%; pointer-events: none; transform: scale(0); background: currentColor; opacity: .28; animation: fxRipple calc(.6s * var(--fx-speed)) ease-out forwards; }
+@keyframes fxRipple { to { transform: scale(1); opacity: 0; } }
+
+/* --- Cool Mode --- */
+.fx-cool { position: fixed; z-index: 4000; pointer-events: none; font-size: 18px; will-change: transform, opacity; }
+
+/* --- Text Shimmer (estados de carga) --- */
+html.fxo-shimmer .fx-shim { background: linear-gradient(90deg, var(--text-dim) 0%, var(--text-dim) 35%, var(--text) 50%, var(--text-dim) 65%, var(--text-dim) 100%); background-size: 250% 100%; -webkit-background-clip: text; background-clip: text; color: transparent !important; animation: fxShim calc(1.6s * var(--fx-speed)) linear infinite; }
+@keyframes fxShim { from { background-position: 100% 0; } to { background-position: -150% 0; } }
+
+/* --- Tooltip (coss ui) --- */
+#fx-tip { position: fixed; z-index: 5000; max-width: 280px; padding: 7px 11px; border-radius: 10px; font-size: 0.78rem; line-height: 1.35; white-space: pre-line; pointer-events: none; background: var(--text); color: var(--bg); box-shadow: var(--shadow-lg); opacity: 0; transform: translateY(4px) scale(.97); transition: opacity .15s, transform .18s cubic-bezier(.2, .9, .3, 1); }
+#fx-tip.on { opacity: 1; transform: none; }
+
+/* --- Animated Gradient Text / Aurora en el título --- */
+html.fxo-gradTitle header h1 { background: var(--fx-grad); background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: fxGrad calc(8s * var(--fx-speed)) linear infinite; }
+@keyframes fxGrad { to { background-position: 300% 0; } }
+
+/* --- Word Rotate / Text Loop --- */
+.fx-tag { display: none; margin: -4px 0 12px; font-size: 0.92rem; color: var(--text-dim); }
+html.fxo-rotate .fx-tag { display: block; }
+.fx-rot { display: inline-block; min-width: 7.5em; text-align: left; color: var(--primary); font-weight: 700; }
+.fx-rot span { display: inline-block; animation: fxRot calc(.5s * var(--fx-speed)) cubic-bezier(.2, .9, .3, 1) both; }
+@keyframes fxRot { from { opacity: 0; transform: translateY(60%); filter: blur(4px); } to { opacity: 1; transform: none; filter: none; } }
+
+/* --- Circular Progress en el KPI (Magic UI / blocks Stats with Circular Progress) --- */
+.fx-ring { display: none; position: absolute; top: 10px; right: 10px; width: 46px; height: 46px; }
+html.fxo-ring .fx-ring { display: block; }
+html.fxo-ring .kpi:first-child { position: relative; padding-right: 64px; }
+.fx-ring circle { fill: none; stroke-width: 5; }
+.fx-ring .t { stroke: var(--border); }
+.fx-ring .v { stroke: var(--primary); stroke-linecap: round; transform: rotate(-90deg); transform-origin: 50% 50%; transition: stroke-dashoffset calc(1s * var(--fx-speed)) cubic-bezier(.2, .9, .3, 1); }
+.fx-ring text { font-size: 11px; font-weight: 700; fill: var(--text); text-anchor: middle; dominant-baseline: central; font-family: var(--mono); }
+
+/* --- Segmented Progress (blocks.so Stats) --- */
+.fx-seg { display: none; margin: 0 0 12px; padding: 12px 14px; border-radius: 16px; background: var(--surface); border: 1px solid var(--border); }
+html.fxo-seg .fx-seg { display: block; }
+.fx-seg-top { display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-dim); margin-bottom: 8px; }
+.fx-seg-top b { color: var(--text); }
+.fx-seg-bar { display: flex; height: 10px; border-radius: 999px; overflow: hidden; background: var(--surface-2); gap: 2px; }
+.fx-seg-bar i { display: block; height: 100%; transition: width calc(.8s * var(--fx-speed)) cubic-bezier(.2, .9, .3, 1); }
+.fx-seg-leg { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 8px; font-size: 0.75rem; color: var(--text-dim); }
+.fx-seg-leg span::before { content: ''; display: inline-block; width: 8px; height: 8px; border-radius: 3px; margin-right: 5px; background: var(--c); }
+
+/* --- Mapa de avance (opensourceui Github Contribution) --- */
+.fx-heat { display: none; margin: 0 0 12px; padding: 12px 14px; border-radius: 16px; background: var(--surface); border: 1px solid var(--border); overflow-x: auto; }
+html.fxo-heat .fx-heat { display: block; }
+.fx-heat-t { font-size: 0.8rem; color: var(--text-dim); margin-bottom: 8px; display: flex; justify-content: space-between; gap: 8px; }
+.fx-heat-g { display: flex; gap: 4px; }
+.fx-heat-c { display: flex; flex-direction: column; gap: 4px; align-items: center; }
+.fx-heat-c small { font-size: 0.62rem; color: var(--text-dim); font-family: var(--mono); }
+.fx-heat-c i { width: 14px; height: 14px; border-radius: 4px; background: var(--surface-2); border: 1px solid var(--border); cursor: pointer; transition: transform .15s; }
+.fx-heat-c i:hover { transform: scale(1.35); }
+.fx-heat-c i.ap { background: var(--primary); border-color: transparent; }
+.fx-heat-c i.rd { background: color-mix(in srgb, var(--primary) 30%, transparent); }
+.fx-heat-c i.pa { background: color-mix(in srgb, var(--warning) 35%, transparent); }
+.fx-heat-c i.fa { background: var(--danger); border-color: transparent; }
+
+/* --- Dock (Magic UI Dock / opensourceui Mac Dock) --- */
+#fx-dock { display: none; }
+@media (max-width: 760px) {
+    html.fxo-dock #fx-dock { display: flex; position: fixed; left: 50%; bottom: calc(10px + env(safe-area-inset-bottom)); transform: translateX(-50%); z-index: 2500; gap: 4px; padding: 6px; border-radius: 999px; background: color-mix(in srgb, var(--surface) 82%, transparent); backdrop-filter: blur(18px) saturate(1.4); -webkit-backdrop-filter: blur(18px) saturate(1.4); border: 1px solid var(--border); box-shadow: var(--shadow-lg); }
+    html.fxo-dock body { padding-bottom: 86px; }
+    #fx-dock button { width: 44px; height: 44px; border-radius: 50%; border: 0; background: transparent; font-size: 1.2rem; display: grid; place-items: center; transition: transform .3s cubic-bezier(.34, 1.56, .64, 1), background .2s; }
+    #fx-dock button.on { background: var(--primary-soft); transform: translateY(-4px) scale(1.08); }
+    #fx-dock button:active { transform: scale(.88); }
+}
+
+/* --- Progressive Blur en los bordes de la malla --- */
+html.fxo-edge .malla-wrapper.fx-l.fx-r { mask-image: linear-gradient(90deg, transparent, #000 32px, #000 calc(100% - 32px), transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 32px, #000 calc(100% - 32px), transparent); }
+html.fxo-edge .malla-wrapper.fx-l:not(.fx-r) { mask-image: linear-gradient(90deg, transparent, #000 32px); -webkit-mask-image: linear-gradient(90deg, transparent, #000 32px); }
+html.fxo-edge .malla-wrapper.fx-r:not(.fx-l) { mask-image: linear-gradient(90deg, #000 calc(100% - 32px), transparent); -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 32px), transparent); }
+html.fxo-edge .malla-wrapper:not(.fx-l):not(.fx-r) { mask-image: none; -webkit-mask-image: none; }
+
+/* --- Fondos (Magic UI Backgrounds / opensourceui) --- */
+#fx-bg { position: fixed; inset: 0; z-index: -1; pointer-events: none; display: none; }
+html[data-fx-bg] body::before, html[data-fx-bg] body::after { display: none !important; }
+html[data-fx-bg] body { background-image: none; }
+html[data-fx-bg="dots"] body { background-image: radial-gradient(var(--grid) 1.4px, transparent 1.6px); background-size: 22px 22px; }
+html[data-fx-bg="dots"] { --grid: color-mix(in srgb, var(--text) 14%, transparent); }
+html[data-fx-bg="graph"] body { background-image: linear-gradient(var(--fx-gl) 1px, transparent 1px), linear-gradient(90deg, var(--fx-gl) 1px, transparent 1px), linear-gradient(var(--fx-gs) 1px, transparent 1px), linear-gradient(90deg, var(--fx-gs) 1px, transparent 1px); background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px; }
+html[data-fx-bg="graph"] { --fx-gl: color-mix(in srgb, var(--primary) 14%, transparent); --fx-gs: color-mix(in srgb, var(--primary) 6%, transparent); }
+html[data-fx-bg="diagonal"] body { background-image: repeating-linear-gradient(45deg, color-mix(in srgb, var(--text) 5%, transparent) 0 1px, transparent 1px 12px); }
+html[data-fx-bg="noise"] #fx-bg { display: block; opacity: .09; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+html[data-fx-bg="aurora"] #fx-bg, html[data-fx-bg="mesh"] #fx-bg { display: block; }
+html[data-fx-bg="aurora"] #fx-bg { background: radial-gradient(40% 50% at 20% 10%, color-mix(in srgb, var(--primary) 26%, transparent), transparent 70%), radial-gradient(35% 45% at 80% 20%, color-mix(in srgb, var(--req, #b9a0ff) 22%, transparent), transparent 70%), radial-gradient(40% 40% at 60% 90%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 70%); filter: blur(40px); animation: fxAurora calc(18s * var(--fx-speed)) ease-in-out infinite alternate; }
+@keyframes fxAurora { to { transform: translate3d(0, -4%, 0) scale(1.12) rotate(4deg); } }
+html[data-fx-bg="mesh"] #fx-bg { background: linear-gradient(var(--grid) 1px, transparent 1px) 0 0 / 40px 40px, linear-gradient(90deg, var(--grid) 1px, transparent 1px) 0 0 / 40px 40px, radial-gradient(60% 50% at 50% 0%, color-mix(in srgb, var(--primary) 18%, transparent), transparent 70%); -webkit-mask-image: radial-gradient(90% 70% at 50% 10%, #000, transparent); mask-image: radial-gradient(90% 70% at 50% 10%, #000, transparent); }
+#fx-cursor { position: fixed; inset: 0; z-index: -1; pointer-events: none; display: none; background: radial-gradient(500px circle at var(--cx, 50%) var(--cy, 30%), color-mix(in srgb, var(--primary) 10%, transparent), transparent 60%); }
+html.fxo-cursorSpot #fx-cursor { display: block; }
+
+/* --- Command Menu (blocks.so) / Spotlight Bar (opensourceui) / Command (coss) --- */
+#fx-cmd { position: fixed; inset: 0; z-index: 6000; display: none; align-items: flex-start; justify-content: center; padding: 12vh 14px 14px; background: var(--overlay); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+#fx-cmd.on { display: flex; animation: fxFade .18s ease both; }
+@keyframes fxFade { from { opacity: 0; } }
+.fx-cmd-box { width: min(620px, 100%); max-height: 70vh; display: flex; flex-direction: column; overflow: hidden; border-radius: 22px; background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow-lg); animation: fxCmdIn calc(.3s * var(--fx-speed)) cubic-bezier(.2, .9, .3, 1) both; }
+@keyframes fxCmdIn { from { opacity: 0; transform: translateY(-10px) scale(.97); } }
+.fx-cmd-in { display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-bottom: 1px solid var(--border); }
+.fx-cmd-in input { flex: 1; border: 0; outline: 0; background: transparent; color: var(--text); font: inherit; font-size: 1rem; }
+.fx-cmd-list { overflow-y: auto; padding: 6px; }
+.fx-cmd-g { padding: 10px 10px 4px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--text-dim); }
+.fx-cmd-i { display: flex; align-items: center; gap: 10px; width: 100%; text-align: left; padding: 9px 10px; border: 0; border-radius: 12px; background: transparent; color: var(--text); font: inherit; font-size: 0.9rem; cursor: pointer; }
+.fx-cmd-i small { margin-left: auto; color: var(--text-dim); font-size: 0.75rem; }
+.fx-cmd-i.on { background: var(--primary-soft); }
+.fx-cmd-i .ic { width: 22px; text-align: center; }
+.fx-cmd-foot { display: flex; gap: 14px; padding: 8px 14px; border-top: 1px solid var(--border); font-size: 0.72rem; color: var(--text-dim); }
+.fx-cmd-empty { padding: 24px; text-align: center; color: var(--text-dim); font-size: 0.9rem; }
+
+/* --- Event Countdown (opensourceui) --- */
+.fx-cd { display: none; margin: 4px auto 10px; width: max-content; max-width: 100%; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; font-size: 0.78rem; background: var(--surface-2); border: 1px solid var(--border); color: var(--text-dim); cursor: pointer; }
+html.fxo-countdown .fx-cd.has { display: flex; }
+.fx-cd b { color: var(--text); font-family: var(--mono); }
+.fx-cd .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--primary); box-shadow: 0 0 0 0 var(--primary); animation: fxPing 1.8s ease-out infinite; }
+@keyframes fxPing { 70% { box-shadow: 0 0 0 7px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
+
+/* --- Sparkles Text --- */
+html.fxo-sparkle .hor-best { position: relative; }
+html.fxo-sparkle .hor-best::after { content: '✦'; position: absolute; top: -8px; right: -6px; font-size: 9px; color: var(--warning); animation: fxSpark calc(1.4s * var(--fx-speed)) ease-in-out infinite; }
+@keyframes fxSpark { 0%, 100% { opacity: 0; transform: scale(.4) rotate(0); } 50% { opacity: 1; transform: scale(1.1) rotate(90deg); } }
+
+/* --- Pomodoro (opensourceui) --- */
+#fx-pomo { display: none; position: fixed; left: 14px; bottom: calc(14px + env(safe-area-inset-bottom)); z-index: 2400; align-items: center; gap: 8px; padding: 6px 12px 6px 6px; border-radius: 999px; background: color-mix(in srgb, var(--surface) 88%, transparent); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid var(--border); box-shadow: var(--shadow); font-family: var(--mono); font-size: 0.85rem; color: var(--text); cursor: pointer; user-select: none; }
+html.fxo-pomo #fx-pomo { display: flex; }
+html.fxo-pomo.fxo-dock #fx-pomo { bottom: calc(80px + env(safe-area-inset-bottom)); }
+#fx-pomo svg { width: 30px; height: 30px; }
+#fx-pomo circle { fill: none; stroke-width: 3.5; }
+#fx-pomo .t { stroke: var(--border); } #fx-pomo .v { stroke: var(--danger); stroke-linecap: round; transform: rotate(-90deg); transform-origin: 50% 50%; }
+#fx-pomo.brk .v { stroke: var(--success); }
+#fx-pomo .x { margin-left: 2px; opacity: .55; font-size: .8rem; }
+
+/* --- Hold to Delete (opensourceui) --- */
+html.fxo-hold .fx-holdbtn { position: relative; overflow: hidden; }
+.fx-holdbtn .fx-hold-f { position: absolute; inset: 0; transform-origin: 0 50%; transform: scaleX(0); background: color-mix(in srgb, var(--danger) 35%, transparent); pointer-events: none; }
+
+/* --- Download with States --- */
+.fx-done { background: var(--success) !important; color: #fff !important; border-color: transparent !important; }
+
+/* --- Panel de Personalización (coss: Tabs, Switch, Slider, Segmented Control, Field) --- */
+#fx-modal .modal-content { max-width: 640px; width: 94%; max-height: 86vh; overflow-y: auto; }
+.fx-tabs { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); padding: 4px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--border); margin-bottom: 14px; }
+.fx-tabs button { position: relative; z-index: 1; border: 0; background: transparent; color: var(--text-dim); padding: 8px; border-radius: 999px; font: inherit; font-size: .85rem; font-weight: 600; cursor: pointer; transition: color .2s; }
+.fx-tabs button.on { color: var(--on-primary); }
+.fx-tabs .fx-ink { position: absolute; top: 4px; bottom: 4px; left: 4px; width: calc((100% - 8px) / 3); border-radius: 999px; background: var(--primary); transition: transform calc(.4s * var(--fx-speed)) cubic-bezier(.34, 1.3, .64, 1); }
+.fx-pane { display: none; } .fx-pane.on { display: block; animation: fxPane calc(.3s * var(--fx-speed)) ease both; }
+@keyframes fxPane { from { opacity: 0; transform: translateY(6px); } }
+.fx-sec { margin: 4px 0 14px; } .fx-sec h4 { margin: 14px 0 8px; font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; color: var(--text-dim); }
+.fx-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 12px; border-radius: 14px; background: var(--surface-2); margin-bottom: 6px; }
+.fx-row > div { min-width: 0; } .fx-row b { display: block; font-size: .9rem; } .fx-row small { display: block; color: var(--text-dim); font-size: .76rem; line-height: 1.3; }
+.fx-src { display: inline-block; margin-top: 3px; font-size: .62rem; font-weight: 700; padding: 1px 7px; border-radius: 999px; background: var(--primary-soft); color: var(--primary); }
+.fx-sw { position: relative; flex: none; width: 44px; height: 26px; border-radius: 999px; border: 0; background: var(--border); cursor: pointer; transition: background .2s; }
+.fx-sw::after { content: ''; position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0, 0, 0, .3); transition: transform .3s cubic-bezier(.34, 1.56, .64, 1); }
+.fx-sw[aria-checked="true"] { background: var(--primary); } .fx-sw[aria-checked="true"]::after { transform: translateX(18px); }
+.fx-row input[type=range] { width: 150px; accent-color: var(--primary); }
+.fx-row input[type=color] { width: 42px; height: 30px; border: 1px solid var(--border); border-radius: 10px; background: none; padding: 2px; cursor: pointer; }
+.fx-seg2 { display: flex; flex-wrap: wrap; gap: 4px; padding: 3px; border-radius: 12px; background: var(--surface); border: 1px solid var(--border); }
+.fx-seg2 button { border: 0; background: transparent; color: var(--text-dim); padding: 6px 10px; border-radius: 9px; font: inherit; font-size: .78rem; cursor: pointer; }
+.fx-seg2 button.on { background: var(--primary); color: var(--on-primary); }
+.fx-presets { display: flex; flex-wrap: wrap; gap: 8px; }
+.fx-preset { display: flex; align-items: center; gap: 6px; padding: 6px 10px 6px 6px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text); font: inherit; font-size: .8rem; cursor: pointer; }
+.fx-preset i { width: 18px; height: 18px; border-radius: 50%; background: linear-gradient(135deg, var(--a), var(--b)); }
+.fx-preset.on { border-color: var(--primary); box-shadow: var(--ring); }
+#fx-css { width: 100%; min-height: 140px; border-radius: 14px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text); font-family: var(--mono); font-size: .8rem; padding: 10px; resize: vertical; }
+.fx-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.fx-val { font-family: var(--mono); font-size: .78rem; color: var(--text-dim); min-width: 42px; text-align: right; }
+
+/* --- Densidad y animaciones --- */
+html[data-fx-density="compact"] .materia { padding: 8px 10px; }
+html[data-fx-density="compact"] .kpi { padding: 10px 12px; }
+html[data-fx-density="compact"] header { padding: 16px; }
+html[data-fx-density="comfy"] .materia { padding: 15px 16px; }
+html[data-fx-density="comfy"] .kpi { padding: 18px 20px; }
+html.fx-nomotion *, html.fx-nomotion *::before, html.fx-nomotion *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+
+
+header > .fx-open-btn { position: static; order: 4; margin: 0; }
+header > .fx-tag { order: 6; flex-basis: 100%; text-align: center; margin: -2px 0 0; }
+header > .fx-cd { order: 6; margin: 2px 0 6px; }
+.fx-rot { text-align: center; min-width: 0; }
+@media (max-width: 640px) { header > .fx-open-btn { display: inline-flex; width: auto; padding: 8px 11px; } .fx-open-btn .fx-lbl { display: none; } }
+@media print { #fx-dock, #fx-pomo, #fx-cmd, .fx-cd, .fx-seg, .fx-heat, .fx-open-btn, .fx-tag { display: none !important; } }
+@media (prefers-reduced-motion: reduce) { html.fxo-reveal .fx-rv:not(.fx-in) { opacity: 1; filter: none; transform: none; } }
+</style>
+
 </head>
 <body>
 <div id="scroll-prog" aria-hidden="true"></div>
@@ -4973,5 +5194,536 @@ infoLinksRender();
     if (sub && !matchMedia('(prefers-reduced-motion: reduce)').matches) sub.innerHTML = sub.textContent.split(' ').map((w, i) => '<span class="tw" style="--w:' + i + '">' + w + '</span>').join(' ');
 })();
 </script>
+<script id="fx-v16">
+(function () {
+    'use strict';
+    const $ = id => document.getElementById(id), H = document.documentElement;
+    const KEY = 'mallas_fx_v1';
+    const fine = matchMedia('(pointer: fine)').matches;
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const norm = t => String(t || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+    const esc = t => String(t == null ? '' : t).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+    const ga = (n, p) => { try { if (window.gtag) gtag('event', n, p || {}); } catch (e) { } };
+
+    // ---------- Catálogo de efectos: [clave, nombre, descripción, origen, por defecto, grupo] ----------
+    const FX = [
+        ['scroll', 'Barra de progreso al desplazar', 'Línea fina arriba que muestra cuánto has bajado.', 'Magic UI · Scroll Progress', true, 'Navegación'],
+        ['cmdk', 'Paleta de comandos (Ctrl+K)', 'Busca materias, pestañas y acciones desde cualquier parte.', 'blocks.so · Command Menu', true, 'Navegación'],
+        ['dock', 'Dock inferior en celular', 'Barra flotante con las pestañas al alcance del pulgar.', 'Magic UI · Dock', false, 'Navegación'],
+        ['countdown', 'Cuenta regresiva del calendario', 'Muestra cuántos días faltan para el próximo evento académico.', 'opensourceui · Event Countdown', true, 'Navegación'],
+        ['tips', 'Tooltips con estilo', 'Reemplaza los avisos nativos del navegador al pasar el cursor.', 'coss ui · Tooltip', true, 'Navegación'],
+        ['ring', 'Anillo de créditos', 'Porcentaje de créditos aprobados en un anillo animado.', 'Magic UI · Circular Progress', true, 'Tu avance'],
+        ['seg', 'Barra por componente', 'Créditos aprobados por componente en una barra segmentada.', 'blocks.so · Stats Segmented Progress', true, 'Tu avance'],
+        ['heat', 'Mapa de avance', 'Cuadritos por semestre, estilo contribuciones de GitHub.', 'opensourceui · Github Contribution', false, 'Tu avance'],
+        ['confetti', 'Confeti al completar un semestre', 'Celebra cuando apruebas todas las materias de un semestre.', 'Magic UI · Confetti', true, 'Tu avance'],
+        ['beam', 'Haz animado en requisitos', 'Las conexiones de la materia enfocada fluyen con luz, en vez de líneas fijas.', 'Magic UI · Animated Beam', true, 'Malla'],
+        ['shine', 'Brillo en materias disponibles', 'Las materias que ya puedes inscribir laten suavemente.', 'Magic UI · Shine Border / Pulsating', true, 'Malla'],
+        ['edge', 'Bordes difuminados al desplazar', 'Difumina el borde de la malla solo hacia donde hay más contenido.', 'Motion Primitives · Progressive Blur', true, 'Malla'],
+        ['spot', 'Brillo que sigue el cursor', 'Tarjetas con un foco de luz bajo el puntero.', 'Magic UI · Magic Card', true, 'Interacción'],
+        ['tilt', 'Inclinación 3D', 'Las tarjetas se inclinan levemente al pasar el cursor.', 'Motion Primitives · Tilt', false, 'Interacción'],
+        ['magnet', 'Botones magnéticos', 'Los botones de la cabecera se acercan al cursor.', 'Motion Primitives · Magnetic', false, 'Interacción'],
+        ['ripple', 'Onda al tocar botones', 'Un círculo se expande desde donde tocas.', 'Magic UI · Ripple Button', true, 'Interacción'],
+        ['cool', 'Modo fiesta', 'Lanza emojis al hacer clic en botones.', 'Magic UI · Cool Mode', false, 'Interacción'],
+        ['hold', 'Mantener para vaciar', '"Vaciar" el horario pide mantener pulsado en lugar de confirmar.', 'opensourceui · Hold to Delete', false, 'Interacción'],
+        ['morph', 'Ventanas que nacen del clic', 'Los modales crecen desde el botón que los abrió.', 'Motion Primitives · Morphing Dialog', true, 'Ventanas'],
+        ['swipe', 'Deslizar para cerrar (celular)', 'Arrastra hacia abajo las hojas emergentes para cerrarlas.', 'coss ui · Drawer', true, 'Ventanas'],
+        ['reveal', 'Aparición suave al bajar', 'Tarjetas y listas entran con desenfoque.', 'Magic UI · Blur Fade / Motion Primitives · In View', true, 'Texto y animación'],
+        ['shimmer', 'Texto brillante al cargar', '"Cargando…" y "Actualizando…" brillan mientras esperas.', 'Motion Primitives · Text Shimmer', true, 'Texto y animación'],
+        ['gradTitle', 'Título con degradado', 'El título "Mallas" con un degradado animado.', 'Magic UI · Animated Gradient Text', true, 'Texto y animación'],
+        ['rotate', 'Frase que rota', 'Debajo del título: tu malla, tu PAPA, tu horario…', 'Magic UI · Word Rotate', true, 'Texto y animación'],
+        ['scramble', 'Título que se revuelve', 'Las letras del título se mezclan al pasar el cursor.', 'Motion Primitives · Text Scramble', false, 'Texto y animación'],
+        ['annot', 'Anotaciones a mano', 'Encierra en círculo tus materias disponibles y marca el mejor plan.', 'opensourceui · Annotated Text', true, 'Texto y animación'],
+        ['sparkle', 'Destellos', 'Brillitos en lo destacado, como el mejor plan.', 'Magic UI · Sparkles Text', true, 'Texto y animación'],
+        ['cursorSpot', 'Foco de fondo con el cursor', 'Una luz suave sigue al puntero sobre el fondo.', 'Motion Primitives · Spotlight', false, 'Extras'],
+        ['pomo', 'Pomodoro para estudiar', 'Temporizador flotante 25/5 abajo a la izquierda.', 'opensourceui · Pomodoro', false, 'Extras'],
+    ];
+    const PRESETS = [
+        ['Azul', '#6ea8ff', '#2f6fed', '#b9a0ff'], ['Esmeralda', '#5fd3a6', '#2f8f6a', '#e0a56f'], ['Violeta', '#a78bfa', '#7c3aed', '#f0abfc'],
+        ['Coral', '#ff8a7a', '#e0533f', '#ffc46b'], ['Ámbar', '#f5b544', '#b7791f', '#6ea8ff'], ['Rosa', '#f472b6', '#db2777', '#a78bfa'],
+        ['Cian', '#5ccfe6', '#0e8fa8', '#a3e635'], ['Grafito', '#c7ccd6', '#4b5563', '#9ca3af']
+    ];
+    const DEF = { preset: '', p1: '', p2: '', acc: '', radius: 0, scale: 100, font: '', density: 'normal', glass: 0, bg: '', speed: 1, css: '' };
+    FX.forEach(f => DEF[f[0]] = f[4]);
+    let S = (() => { try { return Object.assign({}, DEF, JSON.parse(localStorage.getItem(KEY)) || {}); } catch (e) { return Object.assign({}, DEF); } })();
+    const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { } };
+    const sp = () => S.speed || 1;
+
+    // ---------- Estilos del usuario ----------
+    const userStyle = document.createElement('style'); userStyle.id = 'fx-user'; document.head.appendChild(userStyle);
+    const lum = hex => { const m = String(hex).match(/^#?([\da-f]{2})([\da-f]{2})([\da-f]{2})$/i); if (!m) return .5; const [r, g, b] = m.slice(1).map(x => { x = parseInt(x, 16) / 255; return x <= .03928 ? x / 12.92 : Math.pow((x + .055) / 1.055, 2.4); }); return .2126 * r + .7152 * g + .0722 * b; };
+    const FONTS = { '': '', inter: "'Inter', system-ui, sans-serif", system: "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif", mono: "'JetBrains Mono', ui-monospace, Consolas, monospace", serif: "Georgia, 'Times New Roman', serif", rounded: "ui-rounded, 'SF Pro Rounded', 'Nunito', system-ui, sans-serif" };
+    function applyStyles() {
+        let css = '';
+        const vars = (p, sel) => {
+            if (!p) return;
+            const on = lum(p) > .45 ? '#0b1020' : '#ffffff';
+            css += `${sel}{--primary:${p};--primary-soft:color-mix(in srgb, ${p} 15%, transparent);--on-primary:${on};--ring:0 0 0 4px color-mix(in srgb, ${p} 25%, transparent);--head-text:${p};--glow-a:color-mix(in srgb, ${p} 34%, transparent);}`;
+        };
+        vars(S.p1, ':root,[data-theme="dark"]'); vars(S.p2, '[data-theme="light"]');
+        if (S.acc) css += `:root,[data-theme]{--accent:${S.acc};--accent-soft:color-mix(in srgb, ${S.acc} 12%, transparent);--req:${S.acc};}`;
+        if (S.radius) css += `:root{--radius:${S.radius}px}.materia,.kpi,.hor-g,.stat-box,.agrupacion-card,.fx-seg,.fx-heat,.respaldo{border-radius:${S.radius}px!important}header,.modal-content{border-radius:${Math.round(S.radius * 1.4)}px!important}`;
+        if (S.scale && S.scale !== 100) css += `html{font-size:${S.scale}%}`;
+        if (S.font && FONTS[S.font]) css += `body,button,input,select,textarea{font-family:${FONTS[S.font]}!important}`;
+        if (S.glass) css += `.modal-overlay .modal-content{background:color-mix(in srgb, var(--surface) ${S.glass}%, transparent)!important;backdrop-filter:blur(${Math.round((100 - S.glass) / 2 + 8)}px) saturate(1.3);-webkit-backdrop-filter:blur(${Math.round((100 - S.glass) / 2 + 8)}px) saturate(1.3)}`;
+        css += S.css || '';
+        userStyle.textContent = css;
+        H.style.setProperty('--fx-speed', sp());
+        if (S.bg) H.dataset.fxBg = S.bg; else delete H.dataset.fxBg;
+        if (S.density !== 'normal') H.dataset.fxDensity = S.density; else delete H.dataset.fxDensity;
+        H.classList.toggle('fx-nomotion', S.speed === 0);
+    }
+    function applyFlags() { FX.forEach(([k]) => H.classList.toggle('fxo-' + k, !!S[k] && !(reduced && ['reveal', 'shine', 'beam', 'cool', 'tilt', 'magnet', 'cursorSpot'].includes(k)))); }
+    const on = k => H.classList.contains('fxo-' + k);
+
+    // ---------- Elementos fijos ----------
+    const add = (html, where = document.body) => { const t = document.createElement('template'); t.innerHTML = html.trim(); const el = t.content.firstChild; where.appendChild(el); return el; };
+    add('<div id="fx-bg"></div>'); add('<div id="fx-cursor"></div>'); add('<div id="fx-tip" role="tooltip"></div>');
+    const header = document.querySelector('header'), h1 = header && header.querySelector('h1');
+    if (header) {
+        const b = add('<button class="fx-open-btn" id="fx-open" onclick="fxOpen()" title="Cambia colores, fondo, fuente y efectos" aria-label="Personalizar">🎨<span class="fx-lbl"> Personalizar</span></button>', header);
+        if (h1) {
+            h1.insertAdjacentHTML('afterend', '<div class="fx-tag" aria-hidden="true">Planea <span class="fx-rot"><span>tu malla</span></span></div>');
+            const nv = $('nv-chip') || h1;
+            nv.insertAdjacentHTML('afterend', '<button class="fx-cd" id="fx-cd" onclick="switchTab(\'info\')" title="Abrir el calendario académico"><span class="dot"></span><span id="fx-cd-t"></span></button>');
+        }
+    }
+
+    // ---------- Scroll progress + bordes de la malla ----------
+    let sTick = false;
+    const onScroll = () => {
+        if (sTick) return; sTick = true;
+        requestAnimationFrame(() => {
+            sTick = false;
+        });
+    };
+    addEventListener('scroll', onScroll, { passive: true }); addEventListener('resize', onScroll);
+    function edges(w) {
+        if (!w) return;
+        const max = w.scrollWidth - w.clientWidth;
+        w.classList.toggle('fx-l', max > 4 && w.scrollLeft > 4); w.classList.toggle('fx-r', max > 4 && w.scrollLeft < max - 4);
+    }
+    document.querySelectorAll('.malla-wrapper').forEach(w => { w.addEventListener('scroll', () => edges(w), { passive: true }); edges(w); });
+    addEventListener('resize', () => document.querySelectorAll('.malla-wrapper').forEach(edges));
+
+    // ---------- Blur fade (In View) ----------
+    const RV_SEL = '.kpi, .agrupacion-card, .stat-box, .hor-g, .materia-row, .respaldo, .fx-seg, .fx-heat, .hor-comp tbody tr, .nv-item, .info-card, .cal-card';
+    const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('fx-in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -5% 0px' }) : null;
+    function scanReveal(root) {
+        if (!io || !on('reveal')) return;
+        (root.querySelectorAll ? root : document).querySelectorAll(RV_SEL).forEach(el => {
+            if (el.classList.contains('fx-rv') || el.closest('.modal-overlay')) return;
+            const i = [...el.parentNode.children].indexOf(el);
+            el.style.setProperty('--fx-i', Math.min(i, 8)); el.classList.add('fx-rv'); io.observe(el);
+        });
+    }
+
+    // ---------- Shimmer en textos de carga ----------
+    const LOAD_RE = /(cargando|actualizando|consultando|buscando|conectando)/i;
+    function scanShimmer() {
+        document.querySelectorAll('.hor-msg, #hor-estado, [id$="-estado"], [id$="-status"], .libre-msg, .sia-msg').forEach(el => el.classList.toggle('fx-shim', on('shimmer') && LOAD_RE.test(el.textContent) && el.textContent.length < 140));
+    }
+
+    // ---------- Observador general (debounce) ----------
+    let moT;
+    new MutationObserver(ms => {
+        clearTimeout(moT);
+        moT = setTimeout(() => { scanReveal(document); scanShimmer(); fixTitles(); }, 60);
+    }).observe(document.body, { childList: true, subtree: true, characterData: true });
+
+    // ---------- Cursor: spotlight, tilt, magnetic, fondo ----------
+    let pm = null, pmT = false;
+    document.addEventListener('pointermove', e => {
+        pm = e; if (pmT) return; pmT = true;
+        requestAnimationFrame(() => {
+            pmT = false; const ev = pm, t = ev.target;
+            if (on('cursorSpot')) { H.style.setProperty('--cx', ev.clientX + 'px'); H.style.setProperty('--cy', ev.clientY + 'px'); }
+            if (!t || !t.closest) return;
+            if (on('spot')) { const c = t.closest('.materia, .kpi, .agrupacion-card, .stat-box, .hor-g, .respaldo'); if (c) { const r = c.getBoundingClientRect(); c.style.setProperty('--mx', (ev.clientX - r.left) + 'px'); c.style.setProperty('--my', (ev.clientY - r.top) + 'px'); } }
+            if (on('tilt') && fine) {
+                const c = t.closest('.kpi, .agrupacion-card, .stat-box, .ld-card');
+                if (tiltEl && tiltEl !== c) { tiltEl.style.transform = ''; tiltEl = null; }
+                if (c) { const r = c.getBoundingClientRect(), x = (ev.clientX - r.left) / r.width - .5, y = (ev.clientY - r.top) / r.height - .5; c.style.transform = `perspective(700px) rotateX(${(-y * 7).toFixed(2)}deg) rotateY(${(x * 7).toFixed(2)}deg)`; tiltEl = c; }
+            }
+            if (on('magnet') && fine) {
+                const c = t.closest('header > button');
+                if (magEl && magEl !== c) { magEl.style.translate = ''; magEl = null; }
+                if (c) { const r = c.getBoundingClientRect(), x = ev.clientX - r.left - r.width / 2, y = ev.clientY - r.top - r.height / 2; c.style.translate = `${(x * .25).toFixed(1)}px ${(y * .35).toFixed(1)}px`; magEl = c; }
+            }
+        });
+    }, { passive: true });
+    let tiltEl = null, magEl = null;
+    document.addEventListener('pointerleave', () => { if (tiltEl) tiltEl.style.transform = ''; if (magEl) magEl.style.translate = ''; });
+
+    // ---------- Ripple + Cool mode + posición del último clic ----------
+    let lastClick = null;
+    document.addEventListener('pointerdown', e => {
+        lastClick = { x: e.clientX, y: e.clientY, t: Date.now() };
+        const b = e.target.closest && e.target.closest('button, .tab-btn');
+        if (!b || b.disabled) return;
+        if (on('ripple') && !b.classList.contains('fx-sw')) {
+            const cs = getComputedStyle(b); if (cs.position === 'static') b.classList.add('fx-rel');
+            const r = b.getBoundingClientRect(), d = Math.max(r.width, r.height) * 2.2, s = document.createElement('span');
+            s.className = 'fx-ripple'; s.style.cssText = `width:${d}px;height:${d}px;left:${e.clientX - r.left - d / 2}px;top:${e.clientY - r.top - d / 2}px;animation-duration:${.6 * sp()}s`;
+            b.classList.add('fx-clip'); b.appendChild(s);
+            setTimeout(() => { s.remove(); if (!b.querySelector('.fx-ripple')) b.classList.remove('fx-clip'); }, 650 * sp());
+        }
+        if (on('cool')) {
+            const em = ['🎓', '📚', '✨', '🧪', '📐', '⚗️', '💡', '⭐'];
+            for (let i = 0; i < 7; i++) {
+                const p = document.createElement('span'); p.className = 'fx-cool'; p.textContent = em[Math.random() * em.length | 0];
+                p.style.left = e.clientX + 'px'; p.style.top = e.clientY + 'px'; document.body.appendChild(p);
+                const a = Math.random() * Math.PI * 2, v = 60 + Math.random() * 90;
+                p.animate([{ transform: 'translate(-50%,-50%) scale(.6)', opacity: 1 }, { transform: `translate(calc(-50% + ${Math.cos(a) * v}px), calc(-50% + ${Math.sin(a) * v - 60}px)) scale(1.1) rotate(${(Math.random() - .5) * 120}deg)`, opacity: 0 }], { duration: 900, easing: 'cubic-bezier(.2,.8,.3,1)' }).onfinish = () => p.remove();
+            }
+        }
+    }, { passive: true });
+
+    // ---------- Morphing dialog + swipe para cerrar ----------
+    const modalObs = new MutationObserver(ms => ms.forEach(m => {
+        const ov = m.target;
+        if (!ov.classList.contains('active') || m.oldValue && /\bactive\b/.test(m.oldValue)) return;
+        if (!on('morph') || innerWidth <= 600 || S.speed === 0 || !lastClick || Date.now() - lastClick.t > 1500) return;
+        const c = ov.querySelector('.modal-content'); if (!c) return;
+        requestAnimationFrame(() => {
+            const r = c.getBoundingClientRect(); if (!r.width) return;
+            const dx = lastClick.x - (r.left + r.width / 2), dy = lastClick.y - (r.top + r.height / 2);
+            c.animate([{ transform: `translate(${dx}px, ${dy}px) scale(.18)`, opacity: 0, filter: 'blur(6px)' }, { transform: 'none', opacity: 1, filter: 'blur(0)' }], { duration: 460 * sp(), easing: 'cubic-bezier(.2,.9,.25,1)' });
+        });
+    }));
+    const watchModals = () => document.querySelectorAll('.modal-overlay').forEach(ov => { if (!ov.dataset.fxw) { ov.dataset.fxw = 1; modalObs.observe(ov, { attributes: true, attributeFilter: ['class'], attributeOldValue: true }); } });
+    watchModals();
+    function closeModal(ov) {
+        const x = ov.querySelector('.close-btn'); if (x) { x.click(); return; }
+        ov.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+        if (ov.classList.contains('active')) ov.classList.remove('active');
+    }
+    let sw = null;
+    document.addEventListener('touchstart', e => {
+        if (!on('swipe') || innerWidth > 600) return;
+        const c = e.target.closest && e.target.closest('.modal-overlay.active .modal-content'); if (!c) return;
+        const top = e.touches[0].clientY - c.getBoundingClientRect().top;
+        if (c.scrollTop > 0 && top > 48) return;
+        sw = { c, y0: e.touches[0].clientY, dy: 0 };
+    }, { passive: true });
+    document.addEventListener('touchmove', e => {
+        if (!sw) return; sw.dy = Math.max(0, e.touches[0].clientY - sw.y0);
+        sw.c.style.transition = 'none'; sw.c.style.transform = `translateY(${sw.dy}px)`;
+    }, { passive: true });
+    document.addEventListener('touchend', () => {
+        if (!sw) return; const { c, dy } = sw; sw = null;
+        c.style.transition = ''; c.style.transform = '';
+        if (dy > 110) closeModal(c.closest('.modal-overlay'));
+    });
+
+    // ---------- Tooltips ----------
+    const tip = $('fx-tip'); let tipEl = null;
+    function fixTitles() { /* los title se convierten al vuelo al pasar el cursor */ }
+    document.addEventListener('pointerover', e => {
+        if (!on('tips') || !fine) return;
+        const el = e.target.closest && e.target.closest('[title], [data-fx-tip]'); if (!el || el === tipEl) return;
+        if (el.closest('#grid') && el.classList.contains('materia')) return;
+        if (el.hasAttribute('title')) { const t = el.getAttribute('title'); if (!t) return; el.dataset.fxTip = t; el.removeAttribute('title'); }
+        tipEl = el; tip.textContent = el.dataset.fxTip;
+        const r = el.getBoundingClientRect(); tip.classList.add('on');
+        const tw = tip.offsetWidth, th = tip.offsetHeight;
+        let x = Math.max(8, Math.min(innerWidth - tw - 8, r.left + r.width / 2 - tw / 2)), y = r.top - th - 8; if (y < 8) y = r.bottom + 8;
+        tip.style.left = x + 'px'; tip.style.top = y + 'px';
+    });
+    document.addEventListener('pointerout', e => { if (tipEl && (!e.relatedTarget || !tipEl.contains(e.relatedTarget))) { tip.classList.remove('on'); tipEl = null; } });
+    addEventListener('scroll', () => { if (tipEl) { tip.classList.remove('on'); tipEl = null; } }, { passive: true });
+
+    // ---------- Word rotate ----------
+    const ROT = ['tu malla', 'tu PAPA', 'tu horario', 'tus cupos', 'tu semestre', 'tus planes'];
+    let ri = 0;
+    setInterval(() => {
+        if (!on('rotate') || document.hidden) return;
+        const r = document.querySelector('.fx-rot'); if (!r) return;
+        ri = (ri + 1) % ROT.length; r.innerHTML = '<span>' + ROT[ri] + '</span>';
+    }, 2600);
+
+    // ---------- Text scramble ----------
+    if (h1) {
+        const orig = h1.textContent; let st = null;
+        h1.addEventListener('pointerenter', () => {
+            if (!on('scramble')) return; clearInterval(st); let f = 0; const L = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ#%&@';
+            st = setInterval(() => { h1.textContent = orig.split('').map((ch, i) => i < f / 2 ? ch : L[Math.random() * L.length | 0]).join(''); if (++f > orig.length * 2) { clearInterval(st); h1.textContent = orig; } }, 35);
+        });
+    }
+
+    // ---------- Confeti ----------
+    window.fxConfetti = function (o) {
+        if (S.speed === 0 && !(o && o.force)) return;
+        const cv = document.createElement('canvas'); cv.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:7000';
+        document.body.appendChild(cv); const dpr = devicePixelRatio || 1; cv.width = innerWidth * dpr; cv.height = innerHeight * dpr;
+        const ctx = cv.getContext('2d'); ctx.scale(dpr, dpr);
+        const cs = getComputedStyle(H), cols = ['--primary', '--accent', '--success', '--warning', '--req'].map(v => cs.getPropertyValue(v).trim()).filter(Boolean);
+        const P = Array.from({ length: 160 }, () => ({ x: innerWidth / 2 + (Math.random() - .5) * 200, y: innerHeight * .65, vx: (Math.random() - .5) * 16, vy: -Math.random() * 17 - 7, s: 5 + Math.random() * 6, r: Math.random() * 6, vr: (Math.random() - .5) * .4, c: cols[Math.random() * cols.length | 0] || '#6ea8ff', life: 0 }));
+        let fr = 0;
+        (function tick() {
+            ctx.clearRect(0, 0, innerWidth, innerHeight); let alive = 0;
+            P.forEach(p => { p.vy += .42; p.vx *= .985; p.x += p.vx; p.y += p.vy; p.r += p.vr; if (p.y < innerHeight + 20) alive++; ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.r); ctx.fillStyle = p.c; ctx.globalAlpha = Math.max(0, 1 - fr / 170); ctx.fillRect(-p.s / 2, -p.s / 4, p.s, p.s / 2); ctx.restore(); });
+            if (alive && ++fr < 200) requestAnimationFrame(tick); else cv.remove();
+        })();
+    };
+
+    // ---------- KPIs extra: anillo, barra segmentada, mapa, confeti ----------
+    const kpiRow = $('kpi-row');
+    if (kpiRow) {
+        const k1 = kpiRow.querySelector('.kpi');
+        if (k1) k1.insertAdjacentHTML('beforeend', '<svg class="fx-ring" viewBox="0 0 46 46" aria-hidden="true"><circle class="t" cx="23" cy="23" r="19"/><circle class="v" cx="23" cy="23" r="19" stroke-dasharray="119.4" stroke-dashoffset="119.4"/><text x="23" y="23">0%</text></svg>');
+        kpiRow.insertAdjacentHTML('afterend', '<div class="fx-seg" id="fx-seg"></div><div class="fx-heat" id="fx-heat"></div>');
+    }
+    const CAT_C = { 'Fundamentación': 'var(--color-fundamentacion)', 'Disciplinar': 'var(--color-disciplinar)', 'Libre Elección': 'var(--color-libre)', 'Libre elección': 'var(--color-libre)', 'Libre': 'var(--color-libre)' };
+    let semDone = null;
+    function fxKpis() {
+        let all, st, tot;
+        try { all = data.flatMap(s => s.mat.map(m => Object.assign({ sem: s.sem }, m))); st = getVisualStats(); tot = (window.PROG && PROG.creditos) || (typeof PROG !== 'undefined' && PROG.creditos) || 180; } catch (e) { return; }
+        const pct = Math.min(100, st.totalApp / tot * 100);
+        const ring = document.querySelector('.fx-ring');
+        if (ring) { ring.querySelector('.v').style.strokeDashoffset = (119.4 * (1 - pct / 100)).toFixed(1); ring.querySelector('text').textContent = Math.round(pct) + '%'; }
+        const stOf = m => { const s = getCombinedState(m.id); if (s === 'approved') return 'ap'; if (s === 'failed') return 'fa'; const p = checkProgress(m.id).status; return p === 'ready' ? 'rd' : p === 'partial' ? 'pa' : ''; };
+        // barra segmentada
+        const seg = $('fx-seg');
+        if (seg) {
+            const by = {}; all.forEach(m => { if (m.cat === 'Nivelación') return; by[m.cat] = by[m.cat] || 0; if (stOf(m) === 'ap') by[m.cat] += m.c; });
+            const libre = Math.max(0, st.totalApp - Object.values(by).reduce((a, b) => a + b, 0));
+            if (libre) by['Libre elección'] = (by['Libre elección'] || 0) + libre;
+            const cats = Object.keys(by).filter(k => by[k] > 0 || k !== 'Libre elección');
+            seg.innerHTML = `<div class="fx-seg-top"><span>Créditos por componente</span><span><b>${st.totalApp}</b> de ${tot}</span></div>
+                <div class="fx-seg-bar">${cats.map(k => `<i style="width:${(by[k] / tot * 100).toFixed(2)}%;background:${CAT_C[k] || 'var(--primary)'}" title="${esc(k)}: ${by[k]} créditos"></i>`).join('')}</div>
+                <div class="fx-seg-leg">${cats.map(k => `<span style="--c:${CAT_C[k] || 'var(--primary)'}">${esc(k)} · ${by[k]}</span>`).join('')}</div>`;
+        }
+        // mapa de avance
+        const heat = $('fx-heat');
+        if (heat) {
+            heat.innerHTML = `<div class="fx-heat-t"><span>Mapa de avance</span><span>${all.filter(m => stOf(m) === 'ap').length}/${all.length} materias</span></div><div class="fx-heat-g">` +
+                data.map(s => `<div class="fx-heat-c"><small>${s.sem}</small>${s.mat.map(m => `<i class="${stOf(m)}" data-id="${esc(m.id)}" title="${esc(m.n)}"></i>`).join('')}</div>`).join('') + '</div>';
+        }
+        // confeti por semestre completo
+        const done = data.map(s => s.mat.length > 0 && s.mat.every(m => getCombinedState(m.id) === 'approved'));
+        if (semDone && on('confetti')) { const i = done.findIndex((d, k) => d && !semDone[k]); if (i !== -1) { fxConfetti(); ga('fx_confeti', { semestre: data[i].sem }); } }
+        semDone = done;
+        // anotación de disponibles
+        annotate();
+    }
+    document.addEventListener('click', e => {
+        const c = e.target.closest && e.target.closest('.fx-heat-c i'); if (!c) return;
+        const m = document.querySelector(`#grid .materia[data-id="${CSS.escape(c.dataset.id)}"]`);
+        if (m) { m.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' }); m.classList.add('find', 'find-1'); setTimeout(() => m.classList.remove('find', 'find-1'), 1800); }
+    });
+    const prevKpi = window.kpiRender;
+    if (prevKpi) window.kpiRender = function () { const r = prevKpi.apply(this, arguments); try { fxKpis(); } catch (e) { } return r; };
+
+    // ---------- Anotaciones a mano (rough-notation) ----------
+    let annDis = null, annBest = null;
+    function annotate() {
+        if (!window.roughAnnotate) return;
+        const d = $('kpi-dis');
+        if (annDis) { annDis.remove(); annDis = null; }
+        if (on('annot') && d && d.offsetParent && parseInt(d.textContent, 10) > 0) {
+            annDis = roughAnnotate(d, { type: 'circle', color: getComputedStyle(H).getPropertyValue('--primary').trim(), padding: 6, strokeWidth: 2, animationDuration: 700 * sp() }); annDis.show();
+        }
+        const b = document.querySelector('.hor-best');
+        if (annBest) { annBest.remove(); annBest = null; }
+        if (on('annot') && b && b.offsetParent) { annBest = roughAnnotate(b, { type: 'box', color: getComputedStyle(H).getPropertyValue('--warning').trim(), padding: 3, animationDuration: 600 * sp() }); annBest.show(); }
+    }
+    const prevRH = window.renderHorario;
+    if (prevRH) window.renderHorario = function () { const r = prevRH.apply(this, arguments); setTimeout(annotate, 50); applyHold(); return r; };
+    const prevST = window.switchTab;
+    if (prevST) window.switchTab = function (t) { const r = prevST.apply(this, arguments); dockSync(t); setTimeout(() => { annotate(); document.querySelectorAll('.malla-wrapper').forEach(edges); }, 120); return r; };
+
+    // ---------- Hold to delete ----------
+    function applyHold() {
+        const b = document.querySelector('.hor-btn.del[onclick^="horLimpiar"]'); if (!b) return;
+        if (!on('hold')) { if (b.dataset.fxHold) { b.setAttribute('onclick', b.dataset.fxHold); delete b.dataset.fxHold; b.classList.remove('fx-holdbtn'); b.textContent = 'Vaciar'; } return; }
+        if (b.dataset.fxHold) return;
+        b.dataset.fxHold = b.getAttribute('onclick'); b.removeAttribute('onclick'); b.classList.add('fx-holdbtn');
+        b.innerHTML = '<span class="fx-hold-f"></span>Mantén para vaciar';
+        let anim = null;
+        const start = () => { const f = b.querySelector('.fx-hold-f'); anim = f.animate([{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: 1100, fill: 'forwards' }); anim.onfinish = () => { const c = window.confirm; window.confirm = () => true; try { horLimpiar(); } finally { window.confirm = c; } if (navigator.vibrate) navigator.vibrate(30); }; };
+        const stop = () => { if (anim && anim.playState === 'running') anim.cancel(); };
+        b.addEventListener('pointerdown', start); ['pointerup', 'pointerleave', 'pointercancel'].forEach(ev => b.addEventListener(ev, stop));
+    }
+
+    // ---------- Download with states (respaldo) ----------
+    const prevExp = window.respaldoExportar;
+    if (prevExp) window.respaldoExportar = function () {
+        const r = prevExp.apply(this, arguments);
+        const b = document.querySelector('.respaldo-btns .hor-btn'); if (b) { const t = b.textContent; b.textContent = '✓ Descargado'; b.classList.add('fx-done'); setTimeout(() => { b.textContent = t; b.classList.remove('fx-done'); }, 1800); }
+        return r;
+    };
+
+    // ---------- Cuenta regresiva ----------
+    function countdown() {
+        const el = $('fx-cd'), t = $('fx-cd-t'); if (!el) return;
+        let ev = null;
+        try {
+            const hoy = new Date(); hoy.setHours(0, 0, 0, 0);
+            ev = EV_LISTA.map(e => ({ e, d: new Date(e.k + 'T00:00:00'), f: new Date((e.fin || e.k) + 'T00:00:00') })).filter(x => x.f >= hoy).sort((a, b) => a.d - b.d)[0];
+            if (ev) { ev.dias = Math.round((ev.d - hoy) / 864e5); ev.n = (typeof EV_TIPOS !== 'undefined' && EV_TIPOS[ev.e.t] && EV_TIPOS[ev.e.t].n) || ev.e.t; }
+        } catch (e) { ev = null; }
+        el.classList.toggle('has', !!ev);
+        if (ev) t.innerHTML = ev.dias < 0 ? `<b>En curso</b> · ${esc(ev.n)}` : ev.dias === 0 ? `<b>Hoy</b> · ${esc(ev.n)}` : `Faltan <b>${ev.dias}</b> día${ev.dias === 1 ? '' : 's'} · ${esc(ev.n)}`;
+    }
+
+    // ---------- Dock ----------
+    const DOCK = [['malla', '🗺️', 'Malla'], ['calc', '🧮', 'Calculadora'], ['agrupaciones', '🧩', 'Agrupaciones'], ['libre', '🎯', 'Libre elección'], ['horario', '📅', 'Horario'], ['info', '📌', 'Info']];
+    add('<nav id="fx-dock" aria-label="Pestañas">' + DOCK.map(([k, i, n]) => `<button data-t="${k}" onclick="switchTab('${k}')" aria-label="${n}" title="${n}">${i}</button>`).join('') + '</nav>');
+    function dockSync(t) {
+        if (!t) { const a = document.querySelector('.tab-btn.active'); t = a && a.id.replace('tab-', ''); }
+        document.querySelectorAll('#fx-dock button').forEach(b => b.classList.toggle('on', b.dataset.t === t));
+    }
+
+    // ---------- Pomodoro ----------
+    const pomo = add('<div id="fx-pomo" role="button" tabindex="0" title="Clic: iniciar o pausar · doble clic: reiniciar"><svg viewBox="0 0 30 30"><circle class="t" cx="15" cy="15" r="12"/><circle class="v" cx="15" cy="15" r="12" stroke-dasharray="75.4" stroke-dashoffset="0"/></svg><span id="fx-pomo-t">25:00</span><span class="x" id="fx-pomo-s">▶</span></div>');
+    let pBrk = false, pLeft = 25 * 60, pRun = false, pInt = null;
+    const pDraw = () => { const tot = (pBrk ? 5 : 25) * 60; $('fx-pomo-t').textContent = String(pLeft / 60 | 0).padStart(2, '0') + ':' + String(pLeft % 60).padStart(2, '0'); pomo.querySelector('.v').style.strokeDashoffset = (75.4 * (1 - pLeft / tot)).toFixed(1); pomo.classList.toggle('brk', pBrk); $('fx-pomo-s').textContent = pRun ? '❚❚' : '▶'; };
+    const pTick = () => { if (--pLeft <= 0) { pBrk = !pBrk; pLeft = (pBrk ? 5 : 25) * 60; try { new Audio('data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA=').play(); } catch (e) { } if (navigator.vibrate) navigator.vibrate([120, 60, 120]); if (pBrk && on('confetti')) fxConfetti(); } pDraw(); };
+    pomo.addEventListener('click', () => { pRun = !pRun; clearInterval(pInt); if (pRun) pInt = setInterval(pTick, 1000); pDraw(); });
+    pomo.addEventListener('dblclick', () => { pRun = false; clearInterval(pInt); pBrk = false; pLeft = 25 * 60; pDraw(); });
+    pDraw();
+
+    // ---------- Paleta de comandos ----------
+    add(`<div id="fx-cmd" role="dialog" aria-modal="true" aria-label="Paleta de comandos"><div class="fx-cmd-box">
+        <div class="fx-cmd-in"><span>🔎</span><input id="fx-cmd-q" placeholder="Busca una materia, pestaña o acción…" autocomplete="off" spellcheck="false"><span class="fx-k">Esc</span></div>
+        <div class="fx-cmd-list" id="fx-cmd-list"></div>
+        <div class="fx-cmd-foot"><span><span class="fx-k">↑↓</span> moverse</span><span><span class="fx-k">Enter</span> abrir</span><span><span class="fx-k">Ctrl K</span> abrir/cerrar</span></div></div></div>`);
+    const cmd = $('fx-cmd'), cq = $('fx-cmd-q'), cl = $('fx-cmd-list');
+    let cItems = [], cSel = 0;
+    const call = (fn, ...a) => () => { if (typeof window[fn] === 'function') window[fn](...a); };
+    function cmdSource() {
+        const tabs = DOCK.map(([k, i, n]) => ({ g: 'Pestañas', ic: i, t: n, run: () => switchTab(k) }));
+        const acts = [
+            { ic: '🎨', t: 'Personalizar la página', run: () => fxOpen() },
+            { ic: '🌓', t: 'Cambiar modo día/noche', run: () => window.toggleTheme && toggleTheme({ clientX: innerWidth - 40, clientY: 30 }) },
+            { ic: '🎓', t: 'Cambiar de carrera', run: call('openProgramas') },
+            { ic: '⚖️', t: 'Comparar planes de horario', run: () => { switchTab('horario'); if (window.horToggleComparar && !document.querySelector('.hor-comp-wrap, #hor-comparar .hor-msg')) horToggleComparar(); } },
+            { ic: '🔄', t: 'Actualizar cupos del horario', run: () => { switchTab('horario'); window.horRefrescar && horRefrescar(); } },
+            { ic: '📋', t: 'Copiar horario', run: () => { switchTab('horario'); window.horCopiar && horCopiar(); } },
+            { ic: '🖨', t: 'Imprimir horario', run: () => { switchTab('horario'); setTimeout(() => print(), 300); } },
+            { ic: '⬇️', t: 'Exportar mi avance', run: call('respaldoExportar') },
+            { ic: '⬆️', t: 'Importar un respaldo', run: () => { const f = $('respaldo-file'); if (f) f.click(); } },
+            { ic: '✨', t: 'Ver novedades', run: call('openNovedades') },
+            { ic: '💬', t: 'Enviar comentarios', run: call('openFeedback') },
+            { ic: '☕', t: 'Invítame un café', run: call('openCoffeeModal') },
+            { ic: '🎉', t: 'Lanzar confeti', run: () => fxConfetti({ force: true }) },
+            { ic: '🍅', t: S.pomo ? 'Ocultar pomodoro' : 'Mostrar pomodoro', run: () => { S.pomo = !S.pomo; save(); applyFlags(); } },
+        ].map(a => Object.assign({ g: 'Acciones' }, a));
+        let mats = [];
+        try { mats = data.flatMap(s => s.mat.map(m => ({ g: 'Materias', ic: getCombinedState(m.id) === 'approved' ? '✅' : '📘', t: m.n, sub: `Sem. ${s.sem} · ${m.c} cr.${m.siaId ? ' · ' + m.siaId : ''}`, k: m.siaId + ' ' + m.id, run: () => fxGoMateria(m) }))); } catch (e) { }
+        return [...tabs, ...acts, ...mats];
+    }
+    window.fxGoMateria = function (m) {
+        switchTab('malla');
+        setTimeout(() => {
+            if (window.tbFind && $('tb-q')) { tbFind(true); setTimeout(() => { $('tb-q').value = m.n; tbFindApply(true); }, 120); }
+            else { const c = document.querySelector(`#grid .materia[data-id="${CSS.escape(m.id)}"]`); if (c) c.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' }); }
+        }, 80);
+    };
+    function cmdRender() {
+        const q = norm(cq.value.trim()), src = cmdSource();
+        cItems = (q ? src.filter(x => norm(x.t + ' ' + (x.sub || '') + ' ' + (x.k || '')).includes(q)) : src.filter(x => x.g !== 'Materias')).slice(0, 60);
+        cSel = Math.min(cSel, Math.max(0, cItems.length - 1));
+        if (!cItems.length) { cl.innerHTML = '<div class="fx-cmd-empty">Sin resultados para “' + esc(cq.value) + '”</div>'; return; }
+        let g = '', i = 0;
+        cl.innerHTML = cItems.map(x => (x.g !== g ? `<div class="fx-cmd-g">${g = x.g}</div>` : '') + `<button class="fx-cmd-i ${i === cSel ? 'on' : ''}" data-i="${i++}"><span class="ic">${x.ic}</span><span>${esc(x.t)}</span>${x.sub ? `<small>${esc(x.sub)}</small>` : ''}</button>`).join('');
+    }
+    function cmdRun(i) { const x = cItems[i]; if (!x) return; cmdToggle(false); ga('fx_comando', { grupo: x.g }); setTimeout(x.run, 30); }
+    function cmdToggle(v) {
+        if (v == null) v = !cmd.classList.contains('on');
+        if (v && !on('cmdk')) return;
+        cmd.classList.toggle('on', v);
+        if (v) { cq.value = ''; cSel = 0; cmdRender(); setTimeout(() => cq.focus(), 30); }
+    }
+    window.fxCmd = cmdToggle;
+    cq.addEventListener('input', () => { cSel = 0; cmdRender(); });
+    cq.addEventListener('keydown', e => {
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); cSel = (cSel + (e.key === 'ArrowDown' ? 1 : -1) + cItems.length) % Math.max(1, cItems.length); cmdRender(); const o = cl.querySelector('.fx-cmd-i.on'); if (o) o.scrollIntoView({ block: 'nearest' }); }
+        if (e.key === 'Enter') { e.preventDefault(); cmdRun(cSel); }
+        if (e.key === 'Escape') { e.stopPropagation(); cmdToggle(false); }
+    });
+    cl.addEventListener('click', e => { const b = e.target.closest('.fx-cmd-i'); if (b) cmdRun(+b.dataset.i); });
+    cmd.addEventListener('click', e => { if (e.target === cmd) cmdToggle(false); });
+    document.addEventListener('keydown', e => {
+        if ((e.ctrlKey || e.metaKey) && (e.key === 'k' || e.key === 'K')) { if (!on('cmdk')) return; e.preventDefault(); cmdToggle(); }
+    });
+
+    // ---------- Panel de personalización ----------
+    const GROUPS = [...new Set(FX.map(f => f[5]))];
+    const BGS = [['', 'Original'], ['dots', 'Puntos'], ['graph', 'Milimetrado'], ['diagonal', 'Rayado'], ['noise', 'Grano'], ['aurora', 'Aurora'], ['mesh', 'Malla luz'], ['plain', 'Liso']];
+    const FONT_OPTS = [['', 'Original'], ['inter', 'Inter'], ['system', 'Sistema'], ['rounded', 'Redonda'], ['serif', 'Serif'], ['mono', 'Mono']];
+    const segBtns = (key, opts) => `<div class="fx-seg2" data-k="${key}">${opts.map(([v, n]) => `<button data-v="${v}" class="${String(S[key]) === String(v) ? 'on' : ''}">${n}</button>`).join('')}</div>`;
+    const swHTML = k => `<button class="fx-sw" role="switch" aria-checked="${!!S[k]}" data-k="${k}" aria-label="Activar"></button>`;
+    add(`<div class="modal-overlay" id="fx-modal" onclick="if(event.target===this)fxClose()"><div class="modal-content" role="dialog" aria-labelledby="fx-title">
+        <div class="modal-header"><h2 id="fx-title">🎨 Personalizar</h2><button class="close-btn" onclick="fxClose()" aria-label="Cerrar">&times;</button></div>
+        <div class="fx-tabs" role="tablist"><span class="fx-ink"></span><button class="on" data-p="0">Estilos</button><button data-p="1">Efectos</button><button data-p="2">Avanzado</button></div>
+        <div class="fx-pane on" data-p="0" id="fx-p0"></div><div class="fx-pane" data-p="1" id="fx-p1"></div><div class="fx-pane" data-p="2" id="fx-p2"></div>
+    </div></div>`);
+    function panel() {
+        const pre = S.preset;
+        $('fx-p0').innerHTML = `
+        <div class="fx-sec"><h4>Color</h4><div class="fx-presets">${[['', 'Original', 'var(--surface-2)', 'var(--border)']].concat(PRESETS).map(([n, a, b]) => `<button class="fx-preset ${pre === n ? 'on' : ''}" data-preset="${n}" style="--a:${a};--b:${b}"><i></i>${n || 'Original'}</button>`).join('')}</div>
+            <div class="fx-row" style="margin-top:10px"><div><b>Color principal</b><small>Botones, enlaces y resaltados (modo noche · modo día)</small></div><span><input type="color" data-c="p1" value="${S.p1 || '#6ea8ff'}"> <input type="color" data-c="p2" value="${S.p2 || '#2f6fed'}"></span></div>
+            <div class="fx-row"><div><b>Color de acento</b><small>Requisitos y detalles secundarios</small></div><input type="color" data-c="acc" value="${S.acc || '#b9a0ff'}"></div></div>
+        <div class="fx-sec"><h4>Fondo</h4>${segBtns('bg', BGS)}</div>
+        <div class="fx-sec"><h4>Forma y texto</h4>
+            <div class="fx-row"><div><b>Esquinas</b><small>Qué tan redondeadas son las tarjetas</small></div><span style="display:flex;align-items:center;gap:8px"><input type="range" min="0" max="28" step="1" data-r="radius" value="${S.radius || 14}"><span class="fx-val" id="fx-v-radius">${S.radius ? S.radius + 'px' : 'auto'}</span></span></div>
+            <div class="fx-row"><div><b>Tamaño de letra</b></div><span style="display:flex;align-items:center;gap:8px"><input type="range" min="85" max="125" step="5" data-r="scale" value="${S.scale}"><span class="fx-val" id="fx-v-scale">${S.scale}%</span></span></div>
+            <div class="fx-row"><div><b>Fuente</b></div>${segBtns('font', FONT_OPTS)}</div>
+            <div class="fx-row"><div><b>Densidad</b><small>Espacio dentro de materias y tarjetas</small></div>${segBtns('density', [['compact', 'Compacta'], ['normal', 'Normal'], ['comfy', 'Amplia']])}</div></div>
+        <div class="fx-sec"><h4>Ventanas y movimiento</h4>
+            <div class="fx-row"><div><b>Opacidad de ventanas</b><small>Sube el valor si te cuesta leer sobre el fondo</small></div><span style="display:flex;align-items:center;gap:8px"><input type="range" min="60" max="100" step="2" data-r="glass" value="${S.glass || 94}"><span class="fx-val" id="fx-v-glass">${S.glass ? S.glass + '%' : 'auto'}</span></span></div>
+            <div class="fx-row"><div><b>Animaciones</b></div>${segBtns('speed', [['0', 'Ninguna'], ['0.6', 'Rápidas'], ['1', 'Normales'], ['1.6', 'Lentas']])}</div></div>`;
+        $('fx-p1').innerHTML = GROUPS.map(g => `<div class="fx-sec"><h4>${g}</h4>${FX.filter(f => f[5] === g).map(([k, n, d, src]) => `<div class="fx-row"><div><b>${n}</b><small>${d}</small><span class="fx-src">${src}</span></div>${swHTML(k)}</div>`).join('')}</div>`).join('') +
+            `<div class="fx-actions"><button class="hor-btn sec" data-act="all1">Activar todo</button><button class="hor-btn sec" data-act="all0">Desactivar todo</button><button class="hor-btn sec" data-act="conf">🎉 Probar confeti</button></div>`;
+        $('fx-p2').innerHTML = `<div class="fx-sec"><h4>CSS personalizado</h4><small style="color:var(--text-dim)">Se aplica encima de todo. Ejemplo: <code>.materia { border-width: 2px; }</code> o <code>:root { --primary: #ff5c8a; }</code></small>
+            <textarea id="fx-css" spellcheck="false" placeholder="/* tu CSS aquí */">${esc(S.css)}</textarea>
+            <div class="fx-actions"><button class="hor-btn" data-act="css">Aplicar CSS</button><button class="hor-btn sec" data-act="exp">⬇️ Exportar estilo</button><button class="hor-btn sec" data-act="imp">⬆️ Importar estilo</button><button class="hor-btn del" data-act="reset">Restablecer todo</button></div>
+            <input type="file" id="fx-imp" accept=".json,application/json" hidden></div>
+            <div class="fx-sec"><h4>Atajos</h4><div class="fx-row"><div><b>Paleta de comandos</b></div><span class="fx-k">Ctrl K</span></div><div class="fx-row"><div><b>Buscar en la malla</b></div><span class="fx-k">/</span></div></div>
+            <div class="fx-sec"><small style="color:var(--text-dim)">Tu estilo se guarda en este navegador y viaja con "Exportar mi avance". Componentes inspirados en Magic UI, Motion Primitives, coss ui, blocks.so, opensourceui y NumberFlow (todos MIT), recreados sin dependencias.</small></div>`;
+    }
+    function apply() { applyStyles(); applyFlags(); save(); onScroll(); countdown(); dockSync(); applyHold(); scanShimmer(); scanReveal(document); try { fxKpis(); } catch (e) { } if (!on('reveal')) document.querySelectorAll('.fx-rv').forEach(el => el.classList.add('fx-in')); }
+    const modal = () => $('fx-modal');
+    window.fxOpen = function () { panel(); fxTab(0); modal().classList.add('active'); ga('fx_abrir'); };
+    window.fxClose = function () { modal().classList.remove('active'); };
+    function fxTab(i) { modal().querySelectorAll('.fx-tabs button').forEach((b, k) => b.classList.toggle('on', k === i)); modal().querySelectorAll('.fx-pane').forEach((p, k) => p.classList.toggle('on', k === i)); modal().querySelector('.fx-ink').style.transform = `translateX(${i * 100}%)`; }
+    modal().addEventListener('click', e => {
+        const t = e.target.closest('button'); if (!t) return;
+        if (t.closest('.fx-tabs')) return fxTab(+t.dataset.p);
+        if (t.classList.contains('fx-sw')) { const k = t.dataset.k; S[k] = !S[k]; t.setAttribute('aria-checked', S[k]); apply(); ga('fx_toggle', { efecto: k, on: S[k] }); return; }
+        if (t.dataset.preset != null) {
+            const p = PRESETS.find(x => x[0] === t.dataset.preset);
+            S.preset = t.dataset.preset; S.p1 = p ? p[1] : ''; S.p2 = p ? p[2] : ''; S.acc = p ? p[3] : '';
+            apply(); panel(); return;
+        }
+        const sg = t.closest('.fx-seg2');
+        if (sg) { const k = sg.dataset.k; S[k] = k === 'speed' ? +t.dataset.v : t.dataset.v; sg.querySelectorAll('button').forEach(b => b.classList.toggle('on', b === t)); apply(); return; }
+        const a = t.dataset.act;
+        if (a === 'all1' || a === 'all0') { FX.forEach(f => S[f[0]] = a === 'all1'); apply(); panel(); fxTab(1); }
+        if (a === 'conf') fxConfetti({ force: true });
+        if (a === 'css') { S.css = $('fx-css').value; apply(); t.textContent = '✓ Aplicado'; setTimeout(() => t.textContent = 'Aplicar CSS', 1200); }
+        if (a === 'reset') { if (!confirm('¿Volver al estilo y efectos originales?')) return; S = Object.assign({}, DEF); apply(); panel(); fxTab(2); }
+        if (a === 'exp') { const bl = new Blob([JSON.stringify({ formato: 'mallas-estilo/1', estilo: S }, null, 1)], { type: 'application/json' }); const l = document.createElement('a'); l.href = URL.createObjectURL(bl); l.download = 'mallas-estilo.json'; document.body.appendChild(l); l.click(); l.remove(); }
+        if (a === 'imp') $('fx-imp').click();
+    });
+    modal().addEventListener('input', e => {
+        const t = e.target;
+        if (t.dataset.c) { S[t.dataset.c] = t.value; S.preset = 'custom'; applyStyles(); save(); }
+        if (t.dataset.r) { const k = t.dataset.r; S[k] = +t.value; const v = $('fx-v-' + k); if (v) v.textContent = t.value + (k === 'radius' ? 'px' : '%'); applyStyles(); save(); }
+    });
+    modal().addEventListener('change', e => {
+        if (e.target.id !== 'fx-imp') return;
+        const f = e.target.files[0]; e.target.value = ''; if (!f) return;
+        f.text().then(txt => { try { const j = JSON.parse(txt); if (j.formato !== 'mallas-estilo/1') throw 0; S = Object.assign({}, DEF, j.estilo); apply(); panel(); fxTab(2); } catch (er) { alert('Ese archivo no es un estilo de Mallas.'); } });
+    });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal().classList.contains('active')) fxClose(); });
+
+    // ---------- Arranque ----------
+    apply(); watchModals(); setInterval(countdown, 36e5);
+    if (prevKpi) try { fxKpis(); } catch (e) { }
+})();
+</script>
+
 </body>
 </html>
