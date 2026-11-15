@@ -51,3 +51,9 @@ Indicadores de carga de [thinking-orbs](https://github.com/Jakubantalik/thinking
 - `solving` 20: revisión de una reseña. `composing` 20: enviar comentario. `connecting` 20: servidor dormido. `working` 20: lista de libre elección. `shaping` 20: aviso de carrera en construcción.
 - Un solo `requestAnimationFrame` para todos; se pausan fuera de pantalla o con la pestaña oculta; cuadro fijo con "reducir movimiento"; siguen el modo día/noche.
 - **Variación:** cada lugar tiene varios estados posibles (`state="searching connecting working"`) y cada espera elige uno distinto al anterior; si el mismo aviso se repinta en menos de 2,5 s (contadores) conserva el que tenía.
+
+## v13 · Portada, NumberFlow y barra de lectura
+- **Portada** (`#landing`): en la primera visita se elige carrera; tarjetas con créditos por semestre en barras, materias y estado. La cápsula de carrera la vuelve a abrir (con ✕ / Escape). Quien ya tenía avance en Química entra directo.
+- **NumberFlow** (MIT, Maxwell Barvian): créditos aprobados, % completado, PAPA y créditos de la calculadora ruedan al cambiar (`nfSet`).
+- **rough-notation** (MIT): resaltado a mano de «estudias» en la portada.
+- **Barra de lectura** arriba (CSS `animation-timeline: scroll()`, con respaldo JS para Safari), idea de Magic UI Scroll Progress.
