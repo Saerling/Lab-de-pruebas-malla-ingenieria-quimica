@@ -1658,10 +1658,33 @@ html.fxo-ring .kpi:first-child { padding-right: 16px; }
 :is(.materia, .kpi, .agrupacion-card, th, .semestre-block, .malla-toolbar, .header-stats, .leyenda, .hor-panel, .thanks, .site-footer, .theme-toggle, .fb-btn, .coffee-btn, .prog-chip, .ver-chip, .ld-back, .fx-open-btn, .tabs-tip, .fb-tip, .modal-overlay:not(.active)) { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
 .modal-overlay.active .modal-content { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
 .materia.status-locked-total { filter: none !important; opacity: .55; }
-.materia, .kpi, .agrupacion-card { contain: layout paint; }
 .agrupacion-card, .semestre-block { content-visibility: auto; contain-intrinsic-size: auto 420px; }
 /* tarjetas opacas: sin desenfoque, el fondo y las líneas ya no se transparentan */
 :is(.materia, .kpi, .agrupacion-card, .malla-toolbar, .hor-panel, .fx-seg, .fx-heat, .respaldo, .header-stats) { background-color: var(--bg); background-image: linear-gradient(var(--surface), var(--surface)); }
+
+/* ===== v18: grupos, profes, comentarios y proporciones ===== */
+.g-info { display: grid; gap: 6px; color: var(--text-dim); line-height: 1.45; margin: 4px 0 2px; }
+.g-row { display: flex; align-items: flex-start; gap: 8px; min-width: 0; }
+.g-row > span:last-child { min-width: 0; }
+.g-ic { flex: none; width: 20px; height: 1.45em; display: inline-flex; align-items: center; justify-content: center; font-size: .9rem; }
+.g-prof { align-items: center; } .g-prof .g-ic { height: 28px; }
+.g-profs { display: flex; flex-wrap: wrap; gap: 6px; min-width: 0; }
+.rv-chip { display: inline-flex !important; align-items: center; justify-content: space-between; gap: 8px; max-width: 100%; min-height: 28px; margin: 0 !important; padding: 3px 10px 3px 12px !important; text-align: left; line-height: 1.25; }
+.rv-chip .rv-name { min-width: 0; overflow-wrap: anywhere; }
+.rv-chip .rv-score { flex: none; white-space: nowrap; font-size: .72rem; }
+.grupo-item .hor-addbtn, .grupo-item > button { margin-top: 8px; }
+.cupo-badge { display: inline-flex; align-items: center; justify-content: center; white-space: nowrap; line-height: 1; }
+.hor-btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; line-height: 1.1; text-align: center; }
+/* encabezado de ventanas: opaco al desplazar, sin contenido asomando por arriba */
+.modal-overlay .modal-content { background: linear-gradient(var(--glass), var(--glass)), var(--bg); }
+.modal-header { background: linear-gradient(var(--glass), var(--glass)), var(--bg) !important; }
+.modal-header::before { content: ''; position: absolute; left: 0; right: 0; bottom: 100%; height: 40px; background: inherit; pointer-events: none; }
+.modal-header h2, .modal-header h3 { min-width: 0; line-height: 1.25; }
+.close-btn { display: inline-flex; align-items: center; justify-content: center; flex: none; line-height: 1; }
+/* comentarios: tres tipos del mismo ancho, en una fila */
+.fb-types { display: grid !important; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px !important; }
+.fb-types label { display: block; min-width: 0; }
+.fb-types span { display: flex !important; align-items: center; justify-content: center; gap: 4px; width: 100%; padding: 8px 6px !important; white-space: nowrap; text-align: center; font-size: .78rem !important; }
 @media print { #fx-dock, #fx-pomo, #fx-cmd, .fx-cd, .fx-seg, .fx-heat, .fx-open-btn, .fx-tag { display: none !important; } }
 @media (prefers-reduced-motion: reduce) { html.fxo-reveal .fx-rv:not(.fx-in) { opacity: 1; filter: none; transform: none; } }
 </style>
@@ -2137,6 +2160,12 @@ html.fxo-ring .kpi:first-child { padding-right: 16px; }
     // LÓGICA DE NAVEGACIÓN (TABS)
     // ==========================================
 // Número animado (NumberFlow) dentro de un texto fijo; devuelve false si no está disponible
+// "SANDRA NATALIA FLOREZ" -> "Sandra Natalia Florez" (solo si viene todo en mayúsculas)
+function nomPropio(t) {
+    t = String(t || '').trim();
+    if (!t || t !== t.toUpperCase()) return t;
+    return t.toLowerCase().replace(/(^|[\s\-'])([a-záéíóúñü])/g, (m, a, c) => a + c.toUpperCase()).replace(/\b(De|Del|La|Las|Los|Y)\b/g, w => w.toLowerCase());
+}
 function nfSet(id, v, pre, suf, fmt) {
     const el = document.getElementById(id); if (!el || !customElements.get('number-flow')) return false;
     const k = (pre || '') + '\u0000' + (suf || '') + JSON.stringify(fmt || {});
@@ -2504,10 +2533,10 @@ function switchTab(tab) {
                         <strong>${siaEsc(label)}${variosTipos ? ` <span style="font-weight:400; font-size:0.7rem; color:var(--text-dim);">${siaEsc(g._tipo)}</span>` : ''}</strong>
                         <span class="cupo-badge ${lleno ? 'cupo-lleno' : ''}">${siaEsc(cupoTxt)}</span>
                     </div>
-                    <div style="color:var(--text-dim); line-height:1.6;">
-                        👤 ${profesHtml}<br>
-                        🕐 ${siaEsc(g.jornada || '')}${g.jornada ? ' · ' : ''}${siaEsc(horario)}<br>
-                        📍 ${siaEsc(salones || 'Salón sin asignar')}
+                    <div class="g-info">
+                        <div class="g-row g-prof"><span class="g-ic" aria-hidden="true">👤</span><div class="g-profs">${profesHtml}</div></div>
+                        <div class="g-row"><span class="g-ic" aria-hidden="true">🕐</span><span>${siaEsc(g.jornada || '')}${g.jornada ? ' · ' : ''}${siaEsc(horario)}</span></div>
+                        <div class="g-row"><span class="g-ic" aria-hidden="true">📍</span><span>${siaEsc(salones || 'Salón sin asignar')}</span></div>
                     </div>
                     ${addBtn}
                 </div>
@@ -3568,7 +3597,7 @@ function horGruposHTML(code) {
         const cruces = enHor ? [] : horCruces(g);
         const fav = horFavs.has(g.key);
         const lleno = g.cupos === 0;
-        const prof = g.profes || 'No informado';
+        const prof = g.profes ? String(g.profes).split(/\s*,\s*/).map(nomPropio).join(', ') : 'No informado';
         const slotsTxt = g.slots.map(x => `${(HOR_DIAS.find(d => d[0] === x.d)?.[1] || x.d).toUpperCase()} ${horFmt(x.s)} - ${horFmt(x.e)}`);
         if (f && !horN(`${g.grupo} ${prof} ${slotsTxt.join(' ')}`).includes(f)) return '';
         if (horSoloFav && !fav) return '';
@@ -3822,7 +3851,7 @@ function renderHorario() {
             const lleno = h.cupos === 0;
             return `<div class="hor-g ${lleno ? 'lleno' : ''}" style="border-left-color:${horColor(h.codigo)};">
             <div><strong>${siaEsc(h.nombre)}</strong> · ${siaEsc(h.grupo)}${h.libre ? ' <span class="libre-tag">libre elección</span>' : ''}${lleno ? ' <span class="cupo-badge cupo-lleno">LLENO</span>' : ''}
-            <small>👤 ${siaEsc(h.profes || 'Docente sin asignar')}<br>🕐 ${siaEsc(horSlotsTxt(h.slots))} · ${horCreditos(h)} créd.</small></div>
+            <small>👤 ${siaEsc(h.profes ? h.profes.split(/\s*,\s*/).map(nomPropio).join(', ') : 'Docente sin asignar')}<br>🕐 ${siaEsc(horSlotsTxt(h.slots))} · ${horCreditos(h)} créd.</small></div>
             <button class="hor-btn del" onclick="horQuitar('${siaEsc(h.key)}')">Quitar</button></div>`;
         }).join('')
         : '<div class="hor-msg">Plan vacío. Busca una materia arriba (también las de libre elección) o usa "📅 Agregar al horario" desde el modal de cupos.</div>';
@@ -4140,7 +4169,7 @@ const COM_MAP = (() => {
 let calCom = (() => { try { return localStorage.getItem('cal_com_iq') !== '0'; } catch (e) { return true; } })();
 const evsDe = k => [...(EV_MAP[k] || []), ...(calCom ? (COM_MAP[k] || []) : [])];
 function calToggleCom() { calCom = !calCom; try { localStorage.setItem('cal_com_iq', calCom ? '1' : '0'); } catch (e) {} calRender(new Date()); }
-let comOpen = true;
+let comOpen = null;   // null: plegado en celular, desplegado en escritorio
 
 function comRango(arr) {
     const ds = arr.map(comD), m3 = d => MESES[d.getMonth()].slice(0, 3);
@@ -4186,7 +4215,7 @@ function comRender(now) {
         <p class="ic-note">Ten en cuenta las fechas establecidas para el ${SEM_Y} por el Consejo de Facultad para la <b>recepción, análisis y aprobación de solicitudes</b>, con el fin de hacer seguimiento a la misma.</p>
         <div class="com-top">${nextHtml}<a class="hor-btn lh-open" href="${FORM_URL}" target="_blank" rel="noopener noreferrer">Abrir formulario ↗</a></div>
         ${steps}
-        <details class="com-det" ${comOpen ? 'open' : ''} ontoggle="comOpen = this.open">
+        <details class="com-det" ${(comOpen ?? !matchMedia('(max-width: 760px)').matches) ? 'open' : ''} ontoggle="comOpen = this.open">
             <summary>📅 Todas las fechas ${SEM_Y}</summary>
             <div class="com-scroll"><table class="com-table">
                 <thead><tr><th>MES</th>
@@ -4429,7 +4458,7 @@ infoLinksRender();
 
     function rvChip(nombre, codigo) {
         return `<button type="button" class="rv-chip" data-prof="${rvEsc(nombre)}" data-asig="${rvEsc(codigo || '')}"
-                    onclick="openResenas(this.dataset.prof, this.dataset.asig)">${rvEsc(nombre)} <span class="rv-score">⭐ …</span></button>`;
+                    onclick="openResenas(this.dataset.prof, this.dataset.asig)"><span class="rv-name">${rvEsc(nomPropio(nombre))}</span><span class="rv-score">⭐ …</span></button>`;
     }
 
     async function rvLlenarResumenes(root) {
@@ -5234,7 +5263,7 @@ infoLinksRender();
 (function () {
     'use strict';
     const $ = id => document.getElementById(id), H = document.documentElement;
-    const KEY = 'mallas_fx_v2';
+    const KEY = 'mallas_fx_v3';
     const MOB = matchMedia('(pointer: coarse)').matches || innerWidth <= 760;
     const dv = v => v === 'm' ? MOB : v === 'd' ? !MOB : !!v;
     const fine = matchMedia('(pointer: fine)').matches;
@@ -5247,7 +5276,7 @@ infoLinksRender();
     const FX = [
         ['scroll', 'Barra de progreso al desplazar', 'Línea fina arriba que muestra cuánto has bajado.', 'Magic UI · Scroll Progress', true, 'Navegación'],
         ['cmdk', 'Paleta de comandos (Ctrl+K)', 'Busca materias, pestañas y acciones desde cualquier parte.', 'blocks.so · Command Menu', 'd', 'Navegación'],
-        ['dock', 'Dock inferior en celular', 'Barra flotante con las pestañas al alcance del pulgar.', 'Magic UI · Dock', 'm', 'Navegación'],
+        ['dock', 'Dock inferior en celular', 'Barra flotante con las pestañas al alcance del pulgar.', 'Magic UI · Dock', false, 'Navegación'],
         ['countdown', 'Cuenta regresiva del calendario', 'Muestra cuántos días faltan para el próximo evento académico.', 'opensourceui · Event Countdown', true, 'Navegación'],
         ['tips', 'Tooltips con estilo', 'Reemplaza los avisos nativos del navegador al pasar el cursor.', 'coss ui · Tooltip', 'd', 'Navegación'],
         ['ring', 'Anillo de créditos', 'Porcentaje de créditos aprobados en un anillo animado.', 'Magic UI · Circular Progress', true, 'Tu avance'],
