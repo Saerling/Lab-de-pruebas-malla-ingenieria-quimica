@@ -1253,6 +1253,48 @@ html.landing .fb-tip, html.landing .tabs-tip, html.landing #nv-modal { display: 
 html.landing.ld-desde-app .ld-back { display: block; }
 @media (max-width: 520px) { .ld-grid { grid-template-columns: 1fr; } .ld-card { padding: 16px; } }
 @media (prefers-reduced-motion: reduce) { .ld-card, .ld-spark i, html.landing #landing { animation: none; opacity: 1; transform: none; } }
+
+/* ===== v14 · barra dinámica, KPIs, tablas, texto brillante, borde animado y texto por palabras ===== */
+/* Toolbar dinámica (idea de Motion Primitives): la lupa se abre en un buscador */
+.tb-dyn { display: inline-flex; align-items: center; height: 34px; width: 34px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); overflow: hidden; transition: width 0.44s var(--spring-smooth), border-color 0.2s, background 0.2s; flex: none; }
+.tb-dyn.open { width: min(300px, 70vw); border-color: color-mix(in srgb, var(--primary) 55%, transparent); background: var(--surface-2); }
+.tb-dyn-btn { flex: none; width: 32px; height: 32px; border: 0; background: none; color: var(--text); display: grid; place-items: center; cursor: pointer; border-radius: 50%; }
+.tb-dyn input { flex: 1; min-width: 0; border: 0 !important; background: none !important; color: var(--text); font: inherit; font-size: 0.82rem; padding: 0 4px; outline: 0; box-shadow: none !important; opacity: 0; transition: opacity 0.2s 0.1s; }
+.tb-dyn.open input { opacity: 1; }
+.tb-dyn input::-webkit-search-cancel-button { display: none; }
+#tb-n { flex: none; font-size: 0.7rem; color: var(--text-dim); padding: 0 4px; font-variant-numeric: tabular-nums; }
+.tb-dyn-x { flex: none; width: 28px; height: 28px; margin-right: 3px; border: 0; border-radius: 50%; background: var(--surface-2); color: var(--text-dim); cursor: pointer; font-size: 0.75rem; opacity: 0; transition: opacity 0.2s; }
+.tb-dyn.open .tb-dyn-x { opacity: 1; }
+.malla-wrapper.finding .materia:not(.find) { opacity: 0.18 !important; filter: grayscale(1); }
+.materia.find { border-color: var(--primary) !important; box-shadow: 0 0 0 3px var(--primary-soft) !important; opacity: 1 !important; }
+.materia.find.find-1 { animation: approveSpring 0.5s var(--spring-bounce); }
+/* KPIs (estilo blocks.so) */
+.kpi-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 0 0 12px; }
+.kpi { display: flex; flex-direction: column; gap: 2px; padding: 14px 16px; border-radius: 20px; border: 1px solid var(--border); background: var(--surface); backdrop-filter: blur(20px) saturate(1.6); -webkit-backdrop-filter: blur(20px) saturate(1.6); animation: ldCard 0.5s var(--ease-emph) both; }
+.kpi:nth-child(2) { animation-delay: 40ms; } .kpi:nth-child(3) { animation-delay: 80ms; } .kpi:nth-child(4) { animation-delay: 120ms; }
+.kpi span { font-size: 0.72rem; color: var(--text-dim); font-weight: 500; }
+.kpi b { font-size: 1.7rem; font-weight: 700; letter-spacing: -0.04em; line-height: 1.15; color: var(--text); font-variant-numeric: tabular-nums; }
+.kpi small { font-size: 0.7rem; color: var(--text-dim); }
+@media (max-width: 760px) { .kpi-row { grid-template-columns: repeat(2, minmax(0, 1fr)); } .kpi { padding: 12px 14px; } .kpi b { font-size: 1.4rem; } }
+html.ld-desde-app .kpi, html.landing .kpi { animation: none; }
+/* Tablas (estilo coss ui): encabezado fijo, filas limpias que se resaltan */
+.agr-table, .com-table, #libre-body table { border-collapse: separate !important; border-spacing: 0; width: 100%; font-variant-numeric: tabular-nums; }
+.agr-table th, .com-table th, #libre-body th { position: sticky; top: 0; z-index: 1; background: var(--glass); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); font-size: 0.68rem !important; font-weight: 600 !important; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-dim) !important; border-bottom: 1px solid var(--border) !important; padding: 9px 12px !important; }
+.agr-table td, .com-table td, #libre-body td { padding: 9px 12px !important; border-bottom: 1px solid color-mix(in srgb, var(--border) 70%, transparent) !important; transition: background 0.15s var(--ease-emph); }
+.agr-table tbody tr:last-child td, .com-table tbody tr:last-child td, #libre-body tbody tr:last-child td { border-bottom: 0 !important; }
+.agr-table tbody tr:hover td, #libre-body tbody tr:hover td { background: var(--primary-soft) !important; }
+.agr-table td:first-child { color: var(--text-dim); font-size: 0.78rem; }
+/* Texto brillante mientras carga (Text Shimmer) */
+.shimmer { color: transparent !important; background: linear-gradient(100deg, var(--text-dim) 35%, var(--text) 50%, var(--text-dim) 65%) 0 0 / 250% 100%; -webkit-background-clip: text; background-clip: text; animation: shimmer 1.8s linear infinite; }
+@keyframes shimmer { from { background-position: 100% 0; } to { background-position: -150% 0; } }
+/* Borde animado en la carrera actual de la portada (Border Beam) */
+@property --ang { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+.ld-card.on::before { content: ''; position: absolute; inset: -1px; border-radius: inherit; padding: 1.5px; pointer-events: none; background: conic-gradient(from var(--ang), transparent 0 70%, var(--primary) 85%, var(--req) 92%, transparent 100%); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; animation: beam 3.2s linear infinite; }
+@keyframes beam { to { --ang: 360deg; } }
+/* Texto que aparece por palabras (Text Effect) */
+.tw { display: inline-block; opacity: 0; filter: blur(6px); transform: translateY(6px); animation: tw 0.5s var(--ease-emph) forwards; animation-delay: calc(150ms + var(--w) * 28ms); }
+@keyframes tw { to { opacity: 1; filter: none; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .shimmer { animation: none; color: var(--text-dim) !important; background: none; } .ld-card.on::before, .tw, .kpi { animation: none; opacity: 1; filter: none; transform: none; } }
 </style>
 <script id="thinking-orbs">
 /*! thinking-orbs 0.3.1 (motor) · MIT License · Copyright (c) 2026 Jakub Antalik · https://github.com/Jakubantalik/thinking-orbs */
@@ -1386,6 +1428,12 @@ html.landing.ld-desde-app .ld-back { display: block; }
 <!-- VISTA 1: MALLA CURRICULAR -->
 <div id="malla-view" class="view-section active">
     <div class="malla-shell">
+      <div class="kpi-row" id="kpi-row" aria-label="Resumen de tu avance">
+        <div class="kpi"><span>Materias aprobadas</span><b id="kpi-ap">0</b><small id="kpi-ap-s"></small></div>
+        <div class="kpi"><span>Disponibles ahora</span><b id="kpi-dis">0</b><small>puedes inscribirlas</small></div>
+        <div class="kpi"><span>Créditos disciplinares</span><b id="kpi-disc">0</b><small id="kpi-disc-s"></small></div>
+        <div class="kpi"><span>PAPA</span><b id="kpi-papa">—</b><small>según tu Calculadora</small></div>
+      </div>
       <div class="malla-toolbar">
         <div class="mt-progress">
             <div class="stats">
@@ -1403,6 +1451,7 @@ html.landing.ld-desde-app .ld-back { display: block; }
         </div>
         
         <div class="mt-actions">
+            <div class="tb-dyn" id="tb-dyn"><button type="button" class="tb-dyn-btn" id="tb-find" aria-label="Buscar materia" aria-expanded="false" onclick="tbFind(true)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button><input id="tb-q" type="search" placeholder="Buscar materia o código…" aria-label="Buscar materia en la malla" autocomplete="off" spellcheck="false" tabindex="-1"><span id="tb-n" aria-live="polite"></span><button type="button" class="tb-dyn-x" aria-label="Cerrar búsqueda" onclick="tbFind(false)" tabindex="-1">✕</button></div>
             <span id="plan-info" role="status"></span>
             <button class="btn-reset btn-links" id="plan-reset" onclick="MallaPlan.reset()" hidden>Restablecer</button>
             <button class="btn-reset btn-links" id="plan-toggle" onclick="MallaPlan.toggle()" aria-pressed="false">🧭 Planificar</button>
@@ -2232,7 +2281,7 @@ function switchTab(tab) {
 
         document.getElementById('cupos-modal-body').innerHTML = `
             <div class="cupos-box" style="text-align:center;">
-                <div class="orb-load"><thinking-orb state="searching connecting working weaving solving" size="64" k="cupos"></thinking-orb></div><div style="font-size:0.85rem; color:var(--text-dim); margin-bottom:8px;">Consultando el catálogo del SIA...<br>
+                <div class="orb-load"><thinking-orb state="searching connecting working weaving solving" size="64" k="cupos"></thinking-orb></div><div class="shimmer" style="font-size:0.85rem; margin-bottom:8px;">Consultando el catálogo del SIA...<br>
                     <span style="font-size:0.72rem;">Puede tardar unos segundos la primera vez.</span></div>
                 <div id="sia-timer-display" style="font-size:1.5rem; font-weight:bold; color:var(--primary);">0.0s</div>
                 <div id="sia-retry-msg" style="font-size:0.75rem; color:var(--warning); margin-top:8px; min-height:15px;"></div>
@@ -2319,7 +2368,7 @@ function switchTab(tab) {
         libreData = null;
         document.getElementById('libre-body').innerHTML = '';
         const t0 = Date.now();
-        const paint = () => { if (seq === libreSeq) libreStatus(`<span class="orb-load"><thinking-orb state="searching connecting working weaving solving" size="64" k="libre"></thinking-orb></span>Consultando el catálogo del SIA... ${Math.floor((Date.now() - t0) / 1000)}s<br><span style="font-size:0.72rem;">Puede tardar un poco la primera vez.</span>`); };
+        const paint = () => { if (seq === libreSeq) libreStatus(`<span class="orb-load"><thinking-orb state="searching connecting working weaving solving" size="64" k="libre"></thinking-orb></span><span class="shimmer">Consultando el catálogo del SIA... ${Math.floor((Date.now() - t0) / 1000)}s</span><br><span style="font-size:0.72rem;">Puede tardar un poco la primera vez.</span>`); };
         paint();
         const timer = setInterval(paint, 500);
         const url = `${SIA_API}/libre?${fuente}`;
@@ -2663,6 +2712,8 @@ head.innerHTML = (semestre.sem === 0 ? "Semestre 0 (Niv.)" : `Semestre ${semestr
         grid.appendChild(col);
     });
     if (PL) PL.after();
+    if (window.tbFindApply) tbFindApply();
+    if (window.kpiRender) kpiRender();
     requestAnimationFrame(drawLinks);
 }
     
@@ -2975,6 +3026,7 @@ window.addEventListener('scroll', closeMateriaMenu, true);
             if(el) el.innerText = `PAPI Semestral: ${papi}`;
         });
         const papa = totalCreds > 0 ? (totalPuntos / totalCreds).toFixed(2) : "0.00";
+        window._papa = totalCreds > 0 ? +papa : null; if (window.kpiRender) kpiRender();
         if (!nfSet('total-papa', +papa, '', '', { minimumFractionDigits: 2, maximumFractionDigits: 2 })) document.getElementById('total-papa').innerText = papa;
         if (!nfSet('total-creds', totalCreds)) document.getElementById('total-creds').innerText = totalCreds;
     }
@@ -3225,7 +3277,7 @@ function horSlotsTxt(slots) {
 function horGruposHTML(code) {
     const gs = horGrupos[code];
     if (horErr[code] && !gs) return `<div class="hor-msg" style="color:var(--danger)">⚠️ ${siaEsc(horErr[code])}<br><button class="hor-btn sec" style="margin-top:8px" onclick="horLoad('${siaEsc(code)}', true)">Reintentar</button></div>`;
-    if (!gs) return '<div class="hor-msg orb-load"><thinking-orb state="searching connecting working weaving solving" size="64" k="hor"></thinking-orb><span>Consultando el catálogo del SIA… puede tardar hasta 45 s la primera vez.</span></div>';
+    if (!gs) return '<div class="hor-msg orb-load"><thinking-orb state="searching connecting working weaving solving" size="64" k="hor"></thinking-orb><span class="shimmer">Consultando el catálogo del SIA… puede tardar hasta 45 s la primera vez.</span></div>';
     if (!gs.length) return '<div class="hor-msg">No hay grupos ofertados para esta materia.</div>';
     const f = horN(horFilter.trim());
     const rows = gs.map((g, i) => {
@@ -4046,7 +4098,7 @@ infoLinksRender();
     async function rvCargar(inicial) {
         const body = document.getElementById('resenas-body');
         const seq = ++rvSeq;
-        if (inicial) body.innerHTML = '<div class="rv-msg orb-load" style="color:var(--text-dim)"><thinking-orb state="weaving listening composing breathing connecting" size="64" k="rv"></thinking-orb><span>Cargando reseñas…</span></div>';
+        if (inicial) body.innerHTML = '<div class="rv-msg orb-load" style="color:var(--text-dim)"><thinking-orb state="weaving listening composing breathing connecting" size="64" k="rv"></thinking-orb><span class="shimmer">Cargando reseñas…</span></div>';
         try {
             const r = await fetch(`${RV_API}?profesor=${encodeURIComponent(rv.prof)}&offset=${rv.offset}`);
             const j = await r.json();
@@ -4771,6 +4823,52 @@ infoLinksRender();
         var sp = document.getElementById('scroll-prog'), f = 0;
         addEventListener('scroll', function () { if (f) return; f = requestAnimationFrame(function () { f = 0; var h = document.documentElement.scrollHeight - innerHeight; sp.style.transform = 'scaleX(' + (h > 0 ? scrollY / h : 0) + ')'; }); }, { passive: true });
     }
+})();
+</script>
+
+<script id="ux-v14">
+(function () {
+    const $ = id => document.getElementById(id), norm = t => String(t || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+    // --- búsqueda en la malla ---
+    const box = $('tb-dyn'), q = $('tb-q');
+    let tq;
+    window.tbFind = function (abrir) {
+        box.classList.toggle('open', abrir); $('tb-find').setAttribute('aria-expanded', abrir);
+        q.tabIndex = abrir ? 0 : -1; box.querySelector('.tb-dyn-x').tabIndex = abrir ? 0 : -1;
+        if (abrir) setTimeout(() => q.focus(), 80); else { q.value = ''; tbFindApply(); }
+    };
+    window.tbFindApply = function (saltar) {
+        const t = norm(q.value.trim()), grid = $('grid'); let n = 0, first = null;
+        grid.querySelectorAll('.materia').forEach(c => {
+            const m = getMatInfo(c.dataset.id), hit = !!t && !!m && (norm(m.n).includes(t) || norm(m.siaId).includes(t) || norm(c.textContent).includes(t));
+            c.classList.toggle('find', hit); c.classList.remove('find-1'); if (hit) { n++; if (!first) first = c; }
+        });
+        grid.classList.toggle('finding', !!t);
+        $('tb-n').textContent = t ? (n ? n + '' : '0') : '';
+        if (saltar && first) { first.classList.add('find-1'); first.scrollIntoView({ block: 'center', inline: 'center', behavior: 'smooth' }); }
+    };
+    q.addEventListener('input', () => { clearTimeout(tq); tq = setTimeout(() => tbFindApply(true), 180); });
+    q.addEventListener('keydown', e => {
+        if (e.key === 'Escape') { e.stopPropagation(); tbFind(false); $('tb-find').focus(); }
+        if (e.key === 'Enter') { const ms = [...document.querySelectorAll('#grid .materia.find')]; if (!ms.length) return; const i = (ms.findIndex(c => c.classList.contains('find-1')) + 1) % ms.length; ms.forEach(c => c.classList.remove('find-1')); ms[i].classList.add('find-1'); ms[i].scrollIntoView({ block: 'center', inline: 'center', behavior: 'smooth' }); }
+    });
+    document.addEventListener('keydown', e => { if (e.key === '/' && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName) && $('malla-view').classList.contains('active')) { e.preventDefault(); tbFind(true); } });
+    // --- KPIs ---
+    window.kpiRender = function () {
+        const all = data.flatMap(s => s.mat), st = getVisualStats();
+        const ap = all.filter(m => getCombinedState(m.id) === 'approved').length;
+        const dis = all.filter(m => !getCombinedState(m.id) && checkProgress(m.id).status === 'ready').length;
+        const discTot = all.filter(m => m.cat === 'Disciplinar').reduce((a, m) => a + m.c, 0);
+        nfSet('kpi-ap', ap) || ($('kpi-ap').textContent = ap); $('kpi-ap-s').textContent = 'de ' + all.length + ' en tu malla';
+        nfSet('kpi-dis', dis) || ($('kpi-dis').textContent = dis);
+        nfSet('kpi-disc', st.disc) || ($('kpi-disc').textContent = st.disc); $('kpi-disc-s').textContent = 'de ' + discTot + ' del componente';
+        if (window._papa != null) nfSet('kpi-papa', window._papa, '', '', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) || ($('kpi-papa').textContent = window._papa.toFixed(2));
+        else { $('kpi-papa').textContent = '—'; $('kpi-papa').dataset.nf = ''; }
+    };
+    kpiRender();
+    // --- portada: subtítulo por palabras ---
+    const sub = document.querySelector('.ld-sub');
+    if (sub && !matchMedia('(prefers-reduced-motion: reduce)').matches) sub.innerHTML = sub.textContent.split(' ').map((w, i) => '<span class="tw" style="--w:' + i + '">' + w + '</span>').join(' ');
 })();
 </script>
 </body>

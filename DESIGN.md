@@ -57,3 +57,9 @@ Indicadores de carga de [thinking-orbs](https://github.com/Jakubantalik/thinking
 - **NumberFlow** (MIT, Maxwell Barvian): créditos aprobados, % completado, PAPA y créditos de la calculadora ruedan al cambiar (`nfSet`).
 - **rough-notation** (MIT): resaltado a mano de «estudias» en la portada.
 - **Barra de lectura** arriba (CSS `animation-timeline: scroll()`, con respaldo JS para Safari), idea de Magic UI Scroll Progress.
+
+## v14 · Más piezas de las librerías
+- **Buscador dinámico** (Motion Primitives, Toolbar Dynamic): la lupa de la barra se abre en un campo; resalta las coincidencias, atenúa el resto, salta a la primera; Enter recorre, Escape cierra, tecla `/` lo abre.
+- **KPIs** (blocks.so): materias aprobadas, disponibles ahora, créditos disciplinares y PAPA, con NumberFlow.
+- **Tablas** (coss ui): encabezado fijo con vidrio, mayúsculas pequeñas, filas que se resaltan.
+- **Text Shimmer** en los textos de carga, **Border Beam** en la carrera actual de la portada y **Text Effect** (palabra por palabra) en el subtítulo de la portada.
