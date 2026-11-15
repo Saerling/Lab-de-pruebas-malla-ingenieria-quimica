@@ -226,6 +226,22 @@
         .hor-planes { display: flex; gap: 4px; }
         .hor-plan { background: var(--surface-2); color: var(--text-dim); border: 1px solid var(--border); padding: 7px 12px; }
         .hor-plan.on { background: var(--primary); color: var(--on-primary); border-color: var(--primary); }
+        .hor-pn { display: inline-block; min-width: 18px; padding: 0 5px; margin-left: 2px; border-radius: 999px; font-size: 0.75em; background: color-mix(in srgb, currentColor 18%, transparent); }
+        .hor-pw { font-size: 0.8em; }
+        .hor-comp-wrap { margin: 10px 0; overflow-x: auto; }
+        .hor-comp { width: 100%; border-collapse: separate; border-spacing: 0 6px; font-size: 0.9em; }
+        .hor-comp th { text-align: left; font-weight: 600; color: var(--text-dim); padding: 0 10px; font-size: 0.85em; }
+        .hor-comp td { background: var(--surface-2); padding: 8px 10px; vertical-align: middle; }
+        .hor-comp td:first-child { border-radius: 14px 0 0 14px; white-space: nowrap; }
+        .hor-comp td:last-child { border-radius: 0 14px 14px 0; }
+        .hor-comp tr.on td { outline: 1px solid var(--primary); outline-offset: -1px; }
+        .hor-comp td.bad { color: #e5484d; font-weight: 600; }
+        .hor-comp td.ok { color: #30a46c; font-weight: 600; }
+        .hor-comp .hor-solo { color: var(--text-dim); font-size: 0.9em; }
+        .hor-best { font-size: 0.75em; padding: 2px 7px; border-radius: 999px; background: color-mix(in srgb, var(--primary) 20%, transparent); color: var(--text); }
+        .respaldo { max-width: 1100px; margin: 24px auto 0; padding: 14px 18px; border-radius: 20px; background: var(--surface-2); border: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; font-size: 0.9em; }
+        .respaldo-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+        @media print { .respaldo, #hor-comparar { display: none !important; } }
         .hor-x { position: absolute; top: 1px; right: 4px; cursor: pointer; font-size: 0.9rem; line-height: 1; opacity: 0.75; }
         .hor-x:hover { opacity: 1; }
         .hor-print-title { display: none; font-family: var(--mono); font-weight: 700; margin-bottom: 8px; }
@@ -1552,6 +1568,7 @@ html.ld-desde-app .kpi, html.landing .kpi { animation: none; }
         </div>
         <div id="hor-estado" class="hor-msg"></div>
         <div id="hor-print-title" class="hor-print-title"></div>
+        <div id="hor-comparar"></div>
         <div id="hor-conflictos"></div>
         <div class="hor-scroll"><div id="hor-calendario"></div></div>
         <div id="hor-lista" style="margin-top:12px;"></div>
@@ -1644,6 +1661,15 @@ html.ld-desde-app .kpi, html.landing .kpi { animation: none; }
     <span class="t-chip">🐛 Cazadores de bugs</span>
   </div>
   <div class="t-names rv" style="--i:5" id="t-names"></div>
+</section>
+
+<section class="respaldo" aria-label="Respaldo de tu avance">
+    <div><strong>💾 Tu avance vive en este navegador.</strong> Guárdalo en un archivo para pasarlo a otro dispositivo o no perderlo si borras datos.</div>
+    <div class="respaldo-btns">
+        <button class="hor-btn" onclick="respaldoExportar()">⬇️ Exportar mi avance</button>
+        <button class="hor-btn sec" onclick="document.getElementById('respaldo-file').click()">⬆️ Importar</button>
+        <input type="file" id="respaldo-file" accept="application/json,.json" hidden onchange="respaldoImportar(this)">
+    </div>
 </section>
 
 <footer class="site-footer">
@@ -3459,13 +3485,49 @@ function horConflictos() {
     return { conf, pares };
 }
 
+// Resumen de cualquier plan (A/B/C) para compararlos sin cambiar de plan
+function horResumenPlan(p) {
+    let l = [];
+    try { l = JSON.parse(localStorage.getItem(p === 'A' ? HOR_KEY : `${HOR_KEY}_${p}`)) || []; } catch (e) { l = []; }
+    let cruces = 0;
+    for (let i = 0; i < l.length; i++) for (let j = i + 1; j < l.length; j++) if (horChoca(l[i], l[j])) cruces++;
+    return { p, l, n: l.length, cred: l.reduce((s, h) => s + horCreditos(h), 0), cruces, llenos: l.filter(h => h.cupos === 0).length, cods: new Set(l.map(h => h.codigo)) };
+}
+let horCompOn = false;
+function horToggleComparar() { horCompOn = !horCompOn; renderHorario(); if (window.gtag) gtag('event', 'hor_comparar'); }
+function horCompararHTML(res) {
+    const usados = res.filter(r => r.n);
+    if (usados.length < 2) return '<div class="hor-msg">Arma al menos dos planes para compararlos.</div>';
+    const todas = new Set(usados.flatMap(r => [...r.cods]));
+    const enTodos = [...todas].filter(c => usados.every(r => r.cods.has(c)));
+    const nom = c => { for (const r of usados) { const h = r.l.find(x => x.codigo === c); if (h) return h.nombre; } return c; };
+    const mejor = usados.slice().sort((a, b) => a.cruces - b.cruces || a.llenos - b.llenos || b.cred - a.cred)[0];
+    const fila = r => {
+        const solo = [...r.cods].filter(c => !enTodos.includes(c));
+        return `<tr class="${r.p === horPlan ? 'on' : ''}">
+            <td><button class="hor-plan ${r.p === horPlan ? 'on' : ''}" onclick="horCambiarPlan('${r.p}')">Plan ${r.p}</button>${r === mejor ? ' <span class="hor-best" title="Menos cruces y grupos llenos">★ mejor</span>' : ''}</td>
+            <td>${r.n}</td><td>${r.cred}</td>
+            <td class="${r.cruces ? 'bad' : 'ok'}">${r.cruces ? '⚠️ ' + r.cruces : '✓ 0'}</td>
+            <td class="${r.llenos ? 'bad' : ''}">${r.llenos}</td>
+            <td class="hor-solo">${solo.length ? solo.map(c => siaEsc(nom(c))).join(', ') : '—'}</td></tr>`;
+    };
+    return `<div class="hor-comp-wrap"><table class="hor-comp">
+        <thead><tr><th>Plan</th><th>Materias</th><th>Créd.</th><th>Cruces</th><th>Llenos</th><th>Solo en este plan</th></tr></thead>
+        <tbody>${usados.map(fila).join('')}</tbody></table>
+        <div class="hor-msg">${enTodos.length ? 'En todos los planes: ' + enTodos.map(c => siaEsc(nom(c))).join(', ') : 'No hay materias en común entre los planes.'}</div></div>`;
+}
+
 function renderHorario() {
     if (!document.getElementById('hor-calendario')) return;
     horPoblarLista();
     libreCargarDefault();   // en segundo plano: así la libre elección aparece en el buscador
 
-    document.getElementById('hor-planes').innerHTML = HOR_PLANES.map(p =>
-        `<button class="hor-plan ${p === horPlan ? 'on' : ''}" onclick="horCambiarPlan('${p}')">Plan ${p}</button>`).join('');
+    const horRes = HOR_PLANES.map(horResumenPlan);
+    document.getElementById('hor-planes').innerHTML = horRes.map(r =>
+        `<button class="hor-plan ${r.p === horPlan ? 'on' : ''}" onclick="horCambiarPlan('${r.p}')" title="${r.n} materias · ${r.cred} créditos${r.cruces ? ' · ' + r.cruces + ' cruce(s)' : ''}">Plan ${r.p}${r.n ? ` <span class="hor-pn">${r.n}</span>` : ''}${r.cruces ? ' <span class="hor-pw">⚠️</span>' : ''}</button>`).join('')
+        + `<button class="hor-plan ${horCompOn ? 'on' : ''}" onclick="horToggleComparar()" title="Compara tus planes A, B y C">⚖️ Comparar</button>`;
+    const compEl = document.getElementById('hor-comparar');
+    if (compEl) compEl.innerHTML = horCompOn ? horCompararHTML(horRes) : '';
     document.getElementById('hor-print-title').textContent = `Horario semanal · Plan ${horPlan}`;
     const cred = horario.reduce((s, h) => s + horCreditos(h), 0);
     document.getElementById('hor-resumen').textContent = `${horario.length} materia${horario.length === 1 ? '' : 's'} · ${cred} créditos`;
@@ -3508,6 +3570,46 @@ function renderHorario() {
         }).join('')
         : '<div class="hor-msg">Plan vacío. Busca una materia arriba (también las de libre elección) o usa "📅 Agregar al horario" desde el modal de cupos.</div>';
 }
+// ==========================================
+// RESPALDO: exportar / importar todo el estado local
+// ==========================================
+const RESP_RE = /^(malla_iq|calc_iq|horario_iq|mallas_|theme_iq|cal_com_iq|links_iq|info_links_iq)/;
+const RESP_FMT = 'mallas-respaldo/1';
+function respaldoExportar() {
+    const datos = {};
+    for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (RESP_RE.test(k)) datos[k] = localStorage.getItem(k); }
+    const blob = new Blob([JSON.stringify({ formato: RESP_FMT, fecha: new Date().toISOString(), datos }, null, 1)], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `mallas-respaldo-${new Date().toISOString().slice(0, 10)}.json`;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+    if (window.gtag) gtag('event', 'respaldo_exportar');
+}
+function respaldoImportar(input) {
+    const f = input.files && input.files[0]; input.value = '';
+    if (!f) return;
+    const r = new FileReader();
+    r.onload = () => {
+        let j;
+        try { j = JSON.parse(r.result); } catch (e) { alert('Ese archivo no es un respaldo válido.'); return; }
+        if (!j || j.formato !== RESP_FMT || typeof j.datos !== 'object') { alert('Ese archivo no es un respaldo de Mallas.'); return; }
+        const claves = Object.keys(j.datos).filter(k => RESP_RE.test(k) && typeof j.datos[k] === 'string');
+        if (!claves.length) { alert('El respaldo está vacío.'); return; }
+        const fecha = j.fecha ? new Date(j.fecha).toLocaleDateString('es-CO') : 'sin fecha';
+        if (!confirm(`Importar respaldo del ${fecha} (${claves.length} datos).\nReemplaza tu avance actual en este navegador. ¿Continuar?`)) return;
+        try {
+            const viejas = [];
+            for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (RESP_RE.test(k)) viejas.push(k); }
+            viejas.forEach(k => localStorage.removeItem(k));
+            claves.forEach(k => localStorage.setItem(k, j.datos[k]));
+        } catch (e) { alert('No se pudo guardar el respaldo (¿sin espacio?).'); return; }
+        if (window.gtag) gtag('event', 'respaldo_importar');
+        location.reload();
+    };
+    r.readAsText(f);
+}
+
 function applyTheme(t) {
     document.documentElement.setAttribute('data-theme', t);
     const b = document.getElementById('theme-toggle');
