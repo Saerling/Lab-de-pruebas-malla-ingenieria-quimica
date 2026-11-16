@@ -33,7 +33,7 @@ Orden para regenerar: `python3 mallas/prereq.py` → `python3 mallas/sia.py` →
 | Mecatrónica | 38 | `DISC_52` de Taller de Proyectos Interdisciplinarios |
 | Sistemas | 39 | `DISC_60` (Trabajo de Grado) y `DISC_40` (Taller), de ceis-unal.com |
 
-Química (en `index.html`) también se cotejó: el SIA cambió 3 materias (Termodinámica pide además Cálculo Diferencial; Ecuaciones Diferenciales solo Cálculo Integral; Lab. Fluidos y Calor pide Fluidos, Manejo de Sólidos y Transferencia de Calor).
+Química (en `index.html`) también se cotejó: se aplicaron 2 cambios del SIA (Termodinámica pide además Cálculo Diferencial; Lab. Fluidos y Calor pide Fluidos, Manejo de Sólidos y Transferencia de Calor). Ecuaciones Diferenciales sigue pidiendo Cálculo Integral y Álgebra Lineal, como en las demás ingenierías (el catálogo del SIA del plan 2549 solo muestra Cálculo Integral).
 
 Códigos corregidos con el SIA: Electrónica 2016494→2028816 (Diseño de Sistemas Electrónicos) y 2016510→2024045 (Taller de Proyectos Interdisciplinarios); Mecatrónica 2017770→2016770 (Robótica); Sistemas 2025968→2016722 (Computación Paralela y Distribuida).
 

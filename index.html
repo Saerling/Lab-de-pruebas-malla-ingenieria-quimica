@@ -1922,7 +1922,7 @@ html.fxo-ring .kpi:first-child { padding-right: 16px; }
 <div id="scroll-prog" aria-hidden="true"></div>
 <section id="landing" aria-labelledby="ld-title">
     <div class="ld-glow" aria-hidden="true"><i></i><i></i></div>
-    <button class="ld-back" id="ld-back" type="button" onclick="closeLanding()" aria-label="Volver a mi malla">✕</button>
+    <button class="ld-back" id="ld-back" type="button" onclick="closeLanding()" aria-label="Volver a mi malla"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
     <div class="ld-wrap">
         <p class="ld-eyebrow">Facultad de Ingeniería · UNAL Bogotá <span class="nof-pill" title="Proyecto independiente hecho por estudiantes. No es un sitio de la Universidad Nacional de Colombia.">No oficial</span></p>
         <h2 id="ld-title">¿Qué <span id="ld-mark">estudias</span>?</h2>
@@ -1939,6 +1939,7 @@ html.fxo-ring .kpi:first-child { padding-right: 16px; }
         </div>
         <div class="ld-grid" id="ld-grid"></div>
         <p class="ld-foot">Puedes cambiar de carrera cuando quieras desde la cápsula con su nombre. Cada carrera guarda su avance por separado.</p>
+        <button type="button" class="ld-volver" onclick="closeLanding()">← Volver a mi malla</button>
         <p class="ld-legal">🤝 <b>Hecho por estudiantes, para estudiantes.</b> Sin ánimo de lucro, solo para ayudar. No es un sitio oficial de la Universidad Nacional de Colombia: confirma siempre tu información en el SIA y con tu coordinación curricular.</p>
     </div>
     <div class="ld-sheet" id="ld-sheet" role="dialog" aria-modal="false" aria-labelledby="ld-sheet-t">
@@ -2452,7 +2453,7 @@ function switchTab(tab) {
         { sem: 1, mat: [{ id: "PQ", siaId: "1000024", n: "Principios de Química", c: 3, r: [], cat: "Fundamentación" }, { id: "LTB", siaId: "1000025", n: "Lab. Técnicas Básicas", c: 3, r: [], cat: "Fundamentación" }, { id: "CD", siaId: "1000004", n: "Cálculo Diferencial", c: 4, r: [], cat: "Fundamentación" }, { id: "OHI", siaId: "", n: "Opt. Herramientas Ing.", c: 3, r: [], cat: "Fundamentación" }, { id: "IIQ", siaId: "2015718", n: "Intro. Ing. Química", c: 3, r: [], cat: "Disciplinar" }] },
         { sem: 2, mat: [{ id: "PAQ", siaId: "1000026", n: "Principios Análisis Q.", c: 3, r: ["PQ"], cat: "Fundamentación" }, { id: "AL", siaId: "1000003", n: "Álgebra Lineal", c: 4, r: ["CD"], cat: "Fundamentación" }, { id: "CI", siaId: "1000005", n: "Cálculo Integral", c: 4, r: ["CD"], cat: "Fundamentación" }, { id: "FM", siaId: "1000019", n: "Fund. de Mecánica", c: 4, r: ["CD"], cat: "Fundamentación" }, { id: "BM", siaId: "2015708", n: "Balance de Materia", c: 3, r: [], cat: "Disciplinar" }] },
         { sem: 3, mat: [{ id: "LPAQ", siaId: "1000027", n: "Lab. Princ. Análisis", c: 3, r: ["PQ"], cat: "Fundamentación" }, { id: "BIO", siaId: "1000010", n: "Biología Molecular", c: 3, r: [], cat: "Fundamentación" }, { id: "CVV", siaId: "1000006", n: "Cálculo Varias Var.", c: 4, r: ["AL", "CI"], cat: "Fundamentación" }, { id: "FEM", siaId: "1000017", n: "Fund. Elec. y Magnetismo", c: 4, r: ["CI", "FM"], cat: "Fundamentación" }, { id: "TERM", siaId: "2015741", n: "Termodinámica", c: 3, r: ["BM", "CD"], cat: "Disciplinar" }, { id: "L1", siaId: "", n: "Libre Elección 1", c: 3, r: [], cat: "Libre" }] },
-        { sem: 4, mat: [{ id: "QO", siaId: "1000028", n: "Principios Q. Inorgánica", c: 3, r: ["PQ"], cat: "Fundamentación" }, { id: "PE", siaId: "1000013", n: "Probabilidad y Est.", c: 3, r: ["CD"], cat: "Fundamentación" }, { id: "ED", siaId: "1000007", n: "Ecuaciones Diferenciales", c: 4, r: ["CI"], cat: "Fundamentación" }, { id: "FLUI", siaId: "2015714", n: "Fluidos", c: 3, r: ["FM", "TERM"], cat: "Disciplinar" }, { id: "T1", siaId: "2015735", n: "Taller 1", c: 1, r: ["CVV", "TERM"], cat: "Disciplinar" }, { id: "TQ", siaId: "2015740", n: "Termodinámica Química", c: 3, r: ["CVV", "TERM"], cat: "Disciplinar" }] },
+        { sem: 4, mat: [{ id: "QO", siaId: "1000028", n: "Principios Q. Inorgánica", c: 3, r: ["PQ"], cat: "Fundamentación" }, { id: "PE", siaId: "1000013", n: "Probabilidad y Est.", c: 3, r: ["CD"], cat: "Fundamentación" }, { id: "ED", siaId: "1000007", n: "Ecuaciones Diferenciales", c: 4, r: ["AL", "CI"], cat: "Fundamentación" }, { id: "FLUI", siaId: "2015714", n: "Fluidos", c: 3, r: ["FM", "TERM"], cat: "Disciplinar" }, { id: "T1", siaId: "2015735", n: "Taller 1", c: 1, r: ["CVV", "TERM"], cat: "Disciplinar" }, { id: "TQ", siaId: "2015740", n: "Termodinámica Química", c: 3, r: ["CVV", "TERM"], cat: "Disciplinar" }] },
         { sem: 5, mat: [{ id: "QO2", siaId: "1000030", n: "Principios Q. Orgánica", c: 3, r: ["PQ"], cat: "Fundamentación" }, { id: "MN", siaId: "2015970", n: "Métodos Numéricos", c: 3, r: ["ED"], cat: "Fundamentación" }, { id: "TC", siaId: "2015743", n: "Transf. Calor", c: 4, r: ["TERM", "ED"], cat: "Disciplinar" }, { id: "MS", siaId: "2015726", n: "Manejo de Sólidos", c: 3, r: ["FLUI"], cat: "Disciplinar" }, { id: "BE", siaId: "2015707", n: "Balance Energía y Equil.", c: 3, r: ["TQ"], cat: "Disciplinar" }, { id: "L2", siaId: "", n: "Libre Elección 2", c: 3, r: [], cat: "Libre" }] },
         { sem: 6, mat: [{ id: "LQO", siaId: "1000031", n: "Lab. Química Orgánica", c: 2, r: ["PQ"], cat: "Fundamentación" }, { id: "IE", siaId: "2015703", n: "Ingeniería Económica", c: 3, r: ["CI"], cat: "Fundamentación" }, { id: "TM", siaId: "2015744", n: "Transf. Masa", c: 3, r: ["ED"], cat: "Disciplinar" }, { id: "T2", siaId: "2015736", n: "Taller 2", c: 1, r: ["ED"], cat: "Disciplinar" }, { id: "LPT", siaId: "2015721", n: "Lab. Prop. Termodinámicas", c: 3, r: ["BE"], cat: "Disciplinar" }, { id: "OTE", siaId: "", n: "Opt. Termodinámica", c: 3, r: ["BE"], cat: "Disciplinar" }, { id: "L3", siaId: "", n: "Libre Elección 3", c: 3, r: [], cat: "Libre" }] },
         { sem: 7, mat: [{ id: "OEA", siaId: "", n: "Opt. Econ-Admin", c: 3, r: [], cat: "Fundamentación" }, { id: "GP", siaId: "2015702", n: "Gerencia Proyectos", c: 3, r: ["IE"], cat: "Fundamentación" }, { id: "OSEP", siaId: "2015731", n: "Operaciones Separación", c: 3, r: ["TM", "BE"], cat: "Disciplinar" }, { id: "LFC", siaId: "2015719", n: "Lab. Fluidos y Calor", c: 3, r: ["FLUI", "MS", "TC"], cat: "Disciplinar" }, { id: "IRQ", siaId: "2015716", n: "Ing. Reacciones Quím.", c: 3, r: ["BE"], cat: "Disciplinar" }, { id: "L4", siaId: "", n: "Libre Elección 4", c: 3, r: [], cat: "Libre" }] },
@@ -4881,7 +4882,7 @@ infoLinksRender();
         { s: 'new', e: '📈', t: 'Tu avance en la portada', p: 'Cada carrera muestra cuánto llevas completado.' },
         { s: 'new', e: '🔦', t: 'Conexiones más claras', p: 'Al pasar el cursor o tocar una materia, todo lo que no tiene que ver con ella se oscurece, aprobadas incluidas.' },
         { s: 'new', e: '✨', t: 'Diseño más tranquilo', p: 'Transición suave entre la portada y la malla, más espacio entre materias y menos elementos en pantalla.' },
-        { s: 'fix', e: '🧪', t: 'Prerrequisitos de Química según el SIA', p: 'Termodinámica pide también Cálculo Diferencial; Ecuaciones Diferenciales, solo Cálculo Integral; Lab. Fluidos y Calor, Fluidos, Manejo de Sólidos y Transferencia de Calor.' },
+        { s: 'fix', e: '🧪', t: 'Prerrequisitos de Química según el SIA', p: 'Termodinámica pide también Cálculo Diferencial; Lab. Fluidos y Calor, Fluidos, Manejo de Sólidos y Transferencia de Calor.' },
         { s: 'fix', e: '🔢', t: 'Códigos corregidos', p: 'Se arreglaron códigos mal transcritos en Electrónica, Mecatrónica y Sistemas.' },
         { s: 'fix', e: '🏷️', t: 'Sitio no oficial y sin anuncios', p: 'Hecho por estudiantes para estudiantes, sin ánimo de lucro. Se quitaron los anuncios.' },
         { s: 'v42', e: '🌗', t: 'Modo noche y modo día', p: 'Nuevo diseño con dos temas. Cambia con el botón del encabezado y se recuerda tu elección.' },
@@ -6446,6 +6447,11 @@ infoLinksRender();
 })();
 </script>
 <style id="aire-v1">
+.ld-back { position: absolute !important; display: none; place-items: center; padding: 0; line-height: 0; }
+html.landing.ld-desde-app .ld-back { display: grid !important; }
+.ld-volver { display: none; margin: 22px auto 0; border: 1px solid var(--border); background: var(--surface); color: var(--text); border-radius: 999px; padding: 10px 20px; font: inherit; font-weight: 600; font-size: .88rem; cursor: pointer; transition: border-color .2s, transform .3s var(--spring-smooth, ease); }
+.ld-volver:hover { border-color: var(--primary); transform: translateY(-1px); }
+html.landing.ld-desde-app .ld-volver { display: block; }
 /* Quitados: cuenta regresiva del encabezado y lupa de búsqueda */
 #fx-cd, #tb-dyn { display: none !important; }
 /* Al enfocar una materia, todo lo no relacionado (también aprobadas y reprobadas) se oscurece */
@@ -6458,7 +6464,7 @@ header { margin-bottom: 30px !important; row-gap: 12px !important; column-gap: 1
 .kpi-row { gap: 16px; margin-bottom: 20px; }
 .kpi { padding: 18px 20px; }
 .malla-shell > .stats, #malla-view .stats { margin-bottom: 22px; }
-.malla-wrapper { gap: 24px !important; padding: 22px 6px 48px !important; }
+.malla-wrapper { gap: 24px !important; padding: 22px 16px 48px !important; scroll-padding-inline: 16px; }
 .semestre-col { gap: 12px !important; min-width: 210px; flex-basis: 210px; }
 .materia { padding: 14px 16px !important; }
 .materia .m-name { margin-bottom: 6px; line-height: 1.35; }
