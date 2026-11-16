@@ -4356,9 +4356,16 @@ const EV_TIPOS = {
     fin:         { n: 'Finalización de clases',         c: '#f472b6' },
     notas:       { n: 'Reporte 100% de calificaciones', c: '#5fbf8f' },
     cierre:      { n: 'Cierre de notas',                c: '#f9a8d4' },
-    vacdoc:      { n: 'Vacaciones docentes',            c: '#facc15' }
+    vacdoc:      { n: 'Vacaciones docentes',            c: '#facc15' },
+    santa:       { n: 'Semana Santa',                   c: '#94a3b8' },
+    inter:       { n: 'Período intersemestral',         c: '#64748b' },
+    semu:        { n: 'Semana Universitaria',           c: '#34d399' },
+    gradoins:    { n: 'Inscripción de candidatos a grado', c: '#fbbf24' },
+    grado:       { n: 'Ceremonia de grados',            c: '#f97316' }
 };
-const SEM = {
+// Semestres: el activo se elige solo según la fecha. 2027: Resolución de Rectoría del 22 de octubre de 2026
+// (todas las sedes) + festivos nacionales. Para un semestre nuevo basta con agregar un objeto.
+const SEMS = [{
     nombre: '2026-2',
     inicio: '2026-08-27',      // primer día de clases
     fin: '2026-12-16',         // último día de clases
@@ -4374,7 +4381,26 @@ const SEM = {
         ['2026-12-08', 'festivo'], ['2026-12-16', 'fin'], ['2026-12-20', 'notas']
     ],
     rangos: [['2026-12-17', '2026-12-20', 'cierre'], ['2026-12-21', '2026-12-31', 'vacdoc']]
-};
+}, {
+    nombre: '2027-1',
+    inicio: '2027-02-01', fin: '2027-05-29', cierreFin: '2027-06-04', semana1: '2027-01-31', semanas: 17,   // 16 de clase + Semana Santa
+    eventos: [
+        ['2027-01-01', 'festivo'], ['2027-01-11', 'festivo'], ['2027-01-31', 'inscripcion'], ['2027-02-01', 'inicio'],
+        ['2027-03-22', 'festivo'], ['2027-03-25', 'festivo'], ['2027-03-26', 'festivo'],
+        ['2027-05-01', 'festivo'], ['2027-05-10', 'festivo'], ['2027-05-29', 'fin'], ['2027-05-31', 'festivo'], ['2027-06-04', 'notas']
+    ],
+    rangos: [['2027-02-08', '2027-02-22', 'gradoins'], ['2027-03-22', '2027-03-26', 'santa'], ['2027-04-12', '2027-04-24', 'grado'], ['2027-06-01', '2027-07-02', 'inter']]
+}, {
+    nombre: '2027-2',
+    inicio: '2027-08-02', fin: '2027-11-27', cierreFin: '2027-12-03', semana1: '2027-08-01', semanas: 17,   // 16 de clase + Semana Universitaria
+    eventos: [
+        ['2027-06-07', 'festivo'], ['2027-07-05', 'festivo'], ['2027-07-20', 'festivo'],
+        ['2027-08-01', 'inscripcion'], ['2027-08-02', 'inicio'], ['2027-08-07', 'festivo'], ['2027-08-16', 'festivo'],
+        ['2027-10-18', 'festivo'], ['2027-11-01', 'festivo'], ['2027-11-15', 'festivo'], ['2027-11-27', 'fin'],
+        ['2027-12-03', 'notas'], ['2027-12-08', 'festivo'], ['2027-12-25', 'festivo']
+    ],
+    rangos: [['2027-07-12', '2027-07-26', 'gradoins'], ['2027-09-06', '2027-09-18', 'grado'], ['2027-09-20', '2027-09-25', 'semu']]
+}];
 const MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
 const DIAS_N = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
 const pDate = t => { const [y, m, d] = t.split('-').map(Number); return new Date(y, m - 1, d); };
@@ -4383,12 +4409,18 @@ const dNum = d => Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()
 const fmtFecha = d => `${DIAS_N[d.getDay()]} ${d.getDate()} de ${MESES[d.getMonth()]}`;
 const cap1 = t => t.charAt(0).toUpperCase() + t.slice(1);
 const relDias = n => n === 0 ? 'hoy' : n === 1 ? 'mañana' : n === -1 ? 'ayer' : n > 0 ? `en ${n} días` : `hace ${-n} días`;
+const SEM = (() => { const t = dNum(new Date()); return SEMS.find(x => t <= dNum(pDate(x.cierreFin))) || SEMS[SEMS.length - 1]; })();
 const SEM_Y = pDate(SEM.inicio).getFullYear();
+const COM_Y = 2026;   // fechas de solicitudes del Consejo de Facultad publicadas para 2026
+const semOf = d => { const n = dNum(d); return SEMS.find(x => n >= dNum(pDate(x.semana1)) && n <= dNum(pDate(x.fin))) || null; };
+const CAL_MIN = (() => { const d = pDate(SEMS.map(x => x.eventos[0][0]).sort()[0]); return d.getFullYear() * 12 + d.getMonth(); })();
+const CAL_MAX = (() => { const ks = SEMS.flatMap(x => [...x.eventos.map(e => e[0]), ...x.rangos.map(r => r[1])]).sort(); const d = pDate(ks[ks.length - 1]); return d.getFullYear() * 12 + d.getMonth(); })();
+const calClamp = i => Math.min(CAL_MAX, Math.max(CAL_MIN, i));
 
 const EV_MAP = (() => {
     const m = {}, add = (k, t) => { (m[k] = m[k] || []).push(t); };
-    SEM.eventos.forEach(([k, t]) => add(k, t));
-    SEM.rangos.forEach(([a, b, t]) => { for (const d = pDate(a); d <= pDate(b); d.setDate(d.getDate() + 1)) add(dKey(d), t); });
+    SEMS.forEach(S => S.eventos.forEach(([k, t]) => add(k, t)));
+    SEMS.forEach(S => S.rangos.forEach(([a, b, t]) => { for (const d = pDate(a); d <= pDate(b); d.setDate(d.getDate() + 1)) add(dKey(d), t); }));
     return m;
 })();
 
@@ -4419,10 +4451,10 @@ const COM_FILAS = [
 ].map(f => ({ mes: f[0], doc: f[1].split(','), ses: f[2].split(','), del: f[3].split(','), pre: f[4].split(','), con: f[5].split(',') }));
 const COM_RECESO = 'Receso intersemestral (junio 22 – julio 6)';   // se muestra después de la fila 1
 const COM_PASOS = [['doc', 'Recepción de documentos', 'jueves'], ['ses', 'Sesiones de comités', 'lun–mié'], ['del', 'Comisión Delegataria', 'viernes'], ['pre', 'Preconsejo Asuntos Docentes', 'martes'], ['con', 'Consejo de Facultad', 'jueves']];
-const comD = k => pDate(SEM_Y + '-' + k);
+const comD = k => pDate(COM_Y + '-' + k);
 const COM_MAP = (() => {
     const m = {};
-    COM_FILAS.forEach(f => COM_PASOS.forEach(([t]) => f[t].forEach(k => { const key = SEM_Y + '-' + k, tt = 'c_' + t; (m[key] = m[key] || []); if (!m[key].includes(tt)) m[key].push(tt); })));
+    COM_FILAS.forEach(f => COM_PASOS.forEach(([t]) => f[t].forEach(k => { const key = COM_Y + '-' + k, tt = 'c_' + t; (m[key] = m[key] || []); if (!m[key].includes(tt)) m[key].push(tt); })));
     return m;
 })();
 let calCom = (() => { try { return localStorage.getItem('cal_com_iq') !== '0'; } catch (e) { return true; } })();
@@ -4470,12 +4502,12 @@ function comRender(now) {
     }).join('');
 
     el.innerHTML = `
-        <h3>📑 Solicitudes · Consejo de Facultad ${SEM_Y}</h3>
-        <p class="ic-note">Ten en cuenta las fechas establecidas para el ${SEM_Y} por el Consejo de Facultad para la <b>recepción, análisis y aprobación de solicitudes</b>, con el fin de hacer seguimiento a la misma.</p>
+        <h3>📑 Solicitudes · Consejo de Facultad ${COM_Y}</h3>
+        <p class="ic-note">Ten en cuenta las fechas establecidas para el ${COM_Y} por el Consejo de Facultad para la <b>recepción, análisis y aprobación de solicitudes</b>, con el fin de hacer seguimiento a la misma.</p>
         <div class="com-top">${nextHtml}<a class="hor-btn lh-open" href="${FORM_URL}" target="_blank" rel="noopener noreferrer">Abrir formulario ↗</a></div>
         ${steps}
         <details class="com-det" ${(comOpen ?? !matchMedia('(max-width: 760px)').matches) ? 'open' : ''} ontoggle="comOpen = this.open">
-            <summary>📅 Todas las fechas ${SEM_Y}</summary>
+            <summary>📅 Todas las fechas ${COM_Y}</summary>
             <div class="com-scroll"><table class="com-table">
                 <thead><tr><th>MES</th>
                     <th>Recepción doc. comités<small>(jueves)</small></th><th>Sesiones comités<small>(lun-mar-mié)</small></th>
@@ -4487,10 +4519,10 @@ function comRender(now) {
         <div class="ic-src">Estas fechas también aparecen en el calendario de arriba (botón «Fechas de solicitudes»).</div>`;
 }
 
-const EV_LISTA = [...SEM.eventos.map(([k, t]) => ({ k, t })), ...SEM.rangos.map(([a, b, t]) => ({ k: a, t, fin: b }))].sort((x, y) => x.k < y.k ? -1 : 1);
+const EV_LISTA = SEMS.flatMap(S => [...S.eventos.map(([k, t]) => ({ k, t })), ...S.rangos.map(([a, b, t]) => ({ k: a, t, fin: b }))]).sort((x, y) => x.k < y.k ? -1 : 1);
 
-function semNum(d) {                       // 0 = antes de la Semana 1
-    const dn = dNum(d), s1 = dNum(pDate(SEM.semana1));
+function semNum(d) {                       // 0 = fuera de la Semana 1..N de su semestre
+    const S = semOf(d) || SEM, dn = dNum(d), s1 = dNum(pDate(S.semana1));
     return dn < s1 ? 0 : Math.floor((dn - s1) / 7) + 1;
 }
 function semEstado(now) {
@@ -4501,13 +4533,13 @@ function semEstado(now) {
     return { fase: 'fin', sem: 0, texto: 'Semestre terminado' };
 }
 
-let calMes = null, calSel = null, _infoDay = '';
+let calMes = null, calY = SEM_Y, calSel = null, _infoDay = '';
 
 function infoRender() {
     const now = new Date();
     _infoDay = dKey(now);
-    if (calMes === null) calMes = Math.min(11, Math.max(7, now.getMonth()));
-    if (!calSel) calSel = (now.getFullYear() === SEM_Y && now.getMonth() === calMes) ? dKey(now) : `${SEM_Y}-${String(calMes + 1).padStart(2, '0')}-01`;
+    if (calMes === null) { const i = calClamp(now.getFullYear() * 12 + now.getMonth()); calY = Math.floor(i / 12); calMes = i % 12; }
+    if (!calSel) calSel = (now.getFullYear() === calY && now.getMonth() === calMes) ? dKey(now) : `${calY}-${String(calMes + 1).padStart(2, '0')}-01`;
     heroRender(now);
     calRender(now);
     comRender(now);
@@ -4572,19 +4604,19 @@ function infoCountdown() {
 function calRender(now) {
     const todayKey = dKey(now), todayDn = dNum(now), st = semEstado(now);
     const iniDn = dNum(pDate(SEM.inicio)), finDn = dNum(pDate(SEM.fin));
-    const first = new Date(SEM_Y, calMes, 1), dim = new Date(SEM_Y, calMes + 1, 0).getDate(), lead = first.getDay();
+    const first = new Date(calY, calMes, 1), dim = new Date(calY, calMes + 1, 0).getDate(), lead = first.getDay();
     const rows = Math.ceil((lead + dim) / 7);
 
     let g = `<div class="cal-grid"><div class="cal-dow">Sem</div>${['D', 'L', 'M', 'M', 'J', 'V', 'S'].map(x => `<div class="cal-dow">${x}</div>`).join('')}`;
     for (let r = 0; r < rows; r++) {
-        const sun = new Date(SEM_Y, calMes, 1 - lead + r * 7), wn = semNum(sun);
-        const show = wn >= 1 && wn <= SEM.semanas;
-        g += `<div class="cal-wk ${st.fase === 'curso' && st.sem === wn && show ? 'cur' : ''}">${show ? wn : ''}</div>`;
+        const sun = new Date(calY, calMes, 1 - lead + r * 7), wS = semOf(sun) || semOf(new Date(calY, calMes, 7 - lead + r * 7)), wn = wS ? semNum(wS === semOf(sun) ? sun : new Date(calY, calMes, 7 - lead + r * 7)) : 0;
+        const show = !!wS && wn >= 1 && wn <= wS.semanas;
+        g += `<div class="cal-wk ${st.fase === 'curso' && st.sem === wn && show && wS === SEM ? 'cur' : ''}">${show ? wn : ''}</div>`;
         for (let c = 0; c < 7; c++) {
             const n = r * 7 + c - lead + 1;
             if (n < 1 || n > dim) { g += '<div class="cal-day out"></div>'; continue; }
-            const d = new Date(SEM_Y, calMes, n), k = dKey(d), dn = dNum(d), evsB = EV_MAP[k] || [], evs = evsDe(k);
-            const cls = ['cal-day', dn >= iniDn && dn <= finDn ? 'insem' : '', evsB.length ? 'ev' : '', k === todayKey ? 'today' : '', k === calSel ? 'sel' : ''].join(' ');
+            const d = new Date(calY, calMes, n), k = dKey(d), dn = dNum(d), evsB = EV_MAP[k] || [], evs = evsDe(k);
+            const cls = ['cal-day', SEMS.some(x => dn >= dNum(pDate(x.inicio)) && dn <= dNum(pDate(x.fin))) ? 'insem' : '', evsB.length ? 'ev' : '', k === todayKey ? 'today' : '', k === calSel ? 'sel' : ''].join(' ');
             const dots = evs.length ? `<span class="cal-dots">${evs.map(t => `<i style="background:${EV_TIPOS[t].c}"></i>`).join('')}</span>` : '';
             g += `<div class="${cls}" style="--ec:${evsB.length ? EV_TIPOS[evsB[0]].c : 'transparent'}" onclick="calSelect('${k}')" title="${siaEsc(evs.map(t => EV_TIPOS[t].n).join(' · '))}">${n}${dots}</div>`;
         }
@@ -4592,9 +4624,9 @@ function calRender(now) {
     g += '</div>';
 
     // detalle del día elegido
-    const sd = pDate(calSel), evs = evsDe(calSel), w = semNum(sd), sdn = dNum(sd);
-    const inSem = sdn >= iniDn && sdn <= finDn;
-    const semTxt = inSem ? (w >= 1 ? `Semana ${w} de ${SEM.semanas}` : 'Semana de arranque') : '';
+    const sd = pDate(calSel), evs = evsDe(calSel), w = semNum(sd), sdn = dNum(sd), sS = SEMS.find(x => sdn >= dNum(pDate(x.inicio)) && sdn <= dNum(pDate(x.fin)));
+    const inSem = !!sS;
+    const semTxt = inSem ? (w >= 1 ? `Semana ${w} de ${sS.semanas} · ${sS.nombre}` : 'Semana de arranque') : '';
     const detalle = `<div class="cal-detail">
         <div class="cd-date">${siaEsc(cap1(fmtFecha(sd)))}</div>
         <div class="cd-sub">${siaEsc([semTxt, relDias(sdn - todayDn)].filter(Boolean).join(' · '))}</div>
@@ -4612,12 +4644,12 @@ function calRender(now) {
     const leyenda = Object.entries(EV_TIPOS).filter(([k]) => calCom || !k.startsWith('c_')).map(([, t]) => `<span class="lg"><i style="background:${t.c}"></i>${siaEsc(t.n)}</span>`).join('');
 
     document.getElementById('cal-card').innerHTML = `
-        <h3>🗓️ Calendario académico ${siaEsc(SEM.nombre)}</h3>
+        <h3>🗓️ Calendario académico ${siaEsc((semOf(new Date(calY, calMes, 15)) || SEM).nombre)}</h3>
         <div class="cal-layout">
             <div>
                 <div class="cal-head">
                     <button class="cal-nav" onclick="calMover(-1)" ${calMes <= 7 ? 'disabled' : ''}>‹</button>
-                    <div class="cal-mes">${cap1(MESES[calMes])} ${SEM_Y}</div>
+                    <div class="cal-mes">${cap1(MESES[calMes])} ${calY}</div>
                     <button class="cal-nav" onclick="calMover(1)" ${calMes >= 11 ? 'disabled' : ''}>›</button>
                     <button class="cal-hoy" onclick="calIr('${todayKey}')">Hoy</button>
                 </div>
@@ -4631,15 +4663,15 @@ function calRender(now) {
 
 function calSelect(k) { calSel = k; calRender(new Date()); }
 function calMover(dl) {
-    calMes = Math.min(11, Math.max(7, calMes + dl));
+    const i = calClamp(calY * 12 + calMes + dl); calY = Math.floor(i / 12); calMes = i % 12;
     const t = new Date();
-    calSel = (t.getFullYear() === SEM_Y && t.getMonth() === calMes) ? dKey(t) : `${SEM_Y}-${String(calMes + 1).padStart(2, '0')}-01`;
+    calSel = (t.getFullYear() === calY && t.getMonth() === calMes) ? dKey(t) : `${calY}-${String(calMes + 1).padStart(2, '0')}-01`;
     calRender(t);
 }
 function calIr(k) {
     const d = pDate(k);
-    if (d.getFullYear() === SEM_Y) calMes = Math.min(11, Math.max(7, d.getMonth()));
-    calSel = (d.getFullYear() === SEM_Y && d.getMonth() === calMes) ? k : `${SEM_Y}-${String(calMes + 1).padStart(2, '0')}-01`;
+    const i = calClamp(d.getFullYear() * 12 + d.getMonth()); calY = Math.floor(i / 12); calMes = i % 12;
+    calSel = (d.getFullYear() === calY && d.getMonth() === calMes) ? k : `${calY}-${String(calMes + 1).padStart(2, '0')}-01`;
     calRender(new Date());
 }
 
