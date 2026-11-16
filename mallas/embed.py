@@ -33,7 +33,7 @@ for f in sorted(glob.glob(os.path.join(R, 'datos', '*.json'))):
     c = d.get('sia_catalogo')
     if c:
         o['sia_fecha'] = c['fecha']; o['tg'] = c['trabajo_grado']
-        if not d.get('agrupaciones'):
+        if not d.get('agrupaciones') or d.get('sia_opt_siempre'):
             o['sia_opt'] = [g for g in ({'t': 'OPTATIVAS DE FUNDAMENTACIÓN · SIA', 'k': 'fundamentacion', 'm': c['fund_optativas']},
                                         {'t': 'OPTATIVAS DISCIPLINARES · SIA', 'k': 'disciplinar', 'm': c['disc_optativas']}) if g['m']]
     out[d['id']] = o

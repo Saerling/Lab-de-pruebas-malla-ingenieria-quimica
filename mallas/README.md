@@ -31,22 +31,22 @@ Orden para regenerar: `python3 mallas/prereq.py` → `python3 mallas/sia.py` →
 | Industrial | 22 | 0 (las de matemáticas son optativas sin código en la malla) |
 | Mecánica | 40 | `CRED_99` de Taller de Proyectos Interdisciplinarios |
 | Mecatrónica | 38 | `DISC_52` de Taller de Proyectos Interdisciplinarios |
-| Sistemas | 39 | 0 |
+| Sistemas | 39 | `DISC_60` (Trabajo de Grado) y `DISC_40` (Taller), de ceis-unal.com |
 
 Química (en `index.html`) también se cotejó: el SIA cambió 3 materias (Termodinámica pide además Cálculo Diferencial; Ecuaciones Diferenciales solo Cálculo Integral; Lab. Fluidos y Calor pide Fluidos, Manejo de Sólidos y Transferencia de Calor).
 
 Códigos corregidos con el SIA: Electrónica 2016494→2028816 (Diseño de Sistemas Electrónicos) y 2016510→2024045 (Taller de Proyectos Interdisciplinarios); Mecatrónica 2017770→2016770 (Robótica); Sistemas 2025968→2016722 (Computación Paralela y Distribuida).
 
-Acuerdos de plan a confirmar: Civil (la malla de 2016 dice 26 de 2015; la Facultad y `fuentes.json`, 27 de 2015); Mecánica (86 de 2018, se había escrito 68); Sistemas (la malla dice 006 de 2023; `fuentes.json`, 11 de 2023).
+Acuerdos de plan a confirmar: Civil (la malla de 2016 dice 26 de 2015; la Facultad y `fuentes.json`, 27 de 2015); Mecánica (86 de 2018, se había escrito 68). Sistemas: el vigente es el Acuerdo 11 de 2023, que deroga el 006 de 2023 que imprime la malla.
 
 Códigos de plan del SIA (confirmados contra el catálogo): Agrícola 2541, Civil 2542, Eléctrica 2544, Electrónica 2545, Industrial 2546, Mecánica 2547, Mecatrónica 2548, Química 2549, Sistemas 2A74.
 
-**Agrupaciones.** Civil tiene sus agrupaciones completas con créditos exigidos y listas de optativas (sección «Componente flexible» de la malla). En las demás, la pestaña Agrupaciones muestra lo de la malla sugerida más las optativas que el SIA registra para el plan (`sia_catalogo` en cada `datos/<id>.json`).
+**Agrupaciones.** Civil tiene sus agrupaciones completas con créditos exigidos y listas de optativas (sección «Componente flexible» de la malla). Sistemas tiene agrupaciones y subagrupaciones del Acuerdo 11 de 2023 tomadas de la malla de estudiantes [ceis-unal.com](https://ceis-unal.com/?view=malla) (con sus asignaturas alternativas), más el requisito de 60 créditos disciplinares del Trabajo de Grado y 40 del Taller de Proyectos Interdisciplinarios (por validar). En las demás, la pestaña Agrupaciones muestra lo de la malla sugerida más las optativas que el SIA registra para el plan (`sia_catalogo` en cada `datos/<id>.json`).
 
 **Modalidades de grado.** Sección interactiva en Info y calendario (y en el ⋮ del Trabajo de Grado): Acuerdo 026 de 2012 del Consejo Académico y Acuerdo 037 de 2017 del Consejo de Facultad.
 
 ## Qué falta
 
-1. Créditos exigidos por agrupación y listas de optativas por agrupación de las demás carreras (están en los acuerdos de `legal.unal.edu.co`, que pide captcha).
+1. Créditos exigidos por agrupación y listas de optativas por agrupación de Agrícola, Eléctrica, Electrónica, Industrial, Mecánica y Mecatrónica (están en los acuerdos de `legal.unal.edu.co`, que pide captcha).
 2. Las 5 materias de Eléctrica que el SIA no encontró y los dos requisitos por créditos por validar.
 3. Resolver las `dudas` de cada archivo.

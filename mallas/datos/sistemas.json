@@ -1,7 +1,7 @@
 {
  "id": "sistemas",
  "nombre": "Ingeniería de Sistemas y Computación",
- "plan": "Acuerdo 003-A de 2022 del Consejo Académico; Acuerdo 006 de 2023 del Consejo de Facultad (impreso en la malla)",
+ "plan": "Acuerdo 11 de 2023 del Consejo de Facultad de Ingeniería (deroga los Acuerdos 026 de 2014 y 006 de 2023); estructura: Acuerdo 003-A de 2022 del Consejo Académico",
  "creditos": 165,
  "semestres": [
   {
@@ -482,7 +482,10 @@
      "r": [
       "2015702"
      ],
-     "sia": true
+     "sia": true,
+     "rv": [
+      "DISC_40"
+     ]
     },
     {
      "cod": "2016722",
@@ -600,7 +603,10 @@
      "c": 6,
      "cat": "Disciplinar",
      "agr": "Trabajo de Grado",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "rv": [
+      "DISC_60"
+     ]
     }
    ]
   }
@@ -612,8 +618,10 @@
   "Computación Visual: la tarjeta dice agrupación 'Computación Aplicada', pero la leyenda de agrupaciones la llama 'Compuración [sic] Visual'.",
   "Agrupación abreviada en la tarjeta como 'Cienc. Econom. y Administrativas'; se expandió según la leyenda a 'Ciencias Económicas y Administrativas'.",
   "Trabajo de Grado (sem. X, 6 créditos, componente C) no tiene código en el PDF.",
-  "Normatividad impresa: Acuerdo 003-A de 2022 del Consejo Académico (estructura) y Acuerdo 006 de 2023 del Consejo de Facultad (plan detallado); el pie conserva un texto de plantilla 'Acuerdo XXX de 2014'.",
-  "Verificado con el catálogo del SIA (15 nov 2026): se corrigieron códigos 2025968→2016722."
+  "Verificado con el catálogo del SIA (15 nov 2026): se corrigieron códigos 2025968→2016722.",
+  "Normatividad: la malla PDF imprime el Acuerdo 006 de 2023, pero el plan vigente es el Acuerdo 11 de 2023 del Consejo de Facultad (Acta 36 del 7 dic 2023), que deroga los Acuerdos 026 de 2014 y 006 de 2023 (según ceis-unal.com).",
+  "Requisitos por créditos tomados de ceis-unal.com (Acuerdo 11 de 2023): Trabajo de Grado 60 créditos disciplinares; Taller de Proyectos Interdisciplinarios 40. Quedan como «por validar» (bloquean igual).",
+  "ceis-unal.com agrega Pensamiento Sistémico (2016703) como prerrequisito de Ingeniería de Software I y de Sistemas de Información; el catálogo del SIA (15 nov 2026) no lo pide. Se dejó lo del SIA."
  ],
  "prerrequisitos": "Cargados de mallas/prerrequisitos_validacion.txt (14 nov 2026). r = confirmados en Acuerdo/PEP/malla; rv = por validar en el SIA (no bloquean).",
  "prerrequisitos_sia": "2026-11-15",
@@ -915,5 +923,674 @@
     3
    ]
   ]
- }
+ },
+ "agrupaciones": [
+  {
+   "title": "MATEMÁTICAS",
+   "type": "fundamentacion",
+   "req": 16,
+   "obl": 0,
+   "opt": 16,
+   "materias": [
+    {
+     "id": "1000004",
+     "n": "Cálculo Diferencial",
+     "c": 4,
+     "ob": false
+    },
+    {
+     "id": "2016377",
+     "n": "Cálculo Diferencial en una Variable",
+     "c": 4,
+     "ob": false
+    },
+    {
+     "id": "1000005",
+     "n": "Cálculo Integral",
+     "c": 4,
+     "ob": false
+    },
+    {
+     "id": "2015556",
+     "n": "Cálculo integral en una variable",
+     "c": 4,
+     "ob": false
+    },
+    {
+     "id": "1000003",
+     "n": "Álgebra Lineal",
+     "c": 4,
+     "ob": false
+    },
+    {
+     "id": "2015555",
+     "n": "Álgebra Lineal Básica",
+     "c": 4,
+     "ob": false
+    },
+    {
+     "id": "1000006",
+     "n": "Cálculo en Varias Variables",
+     "c": 4,
+     "ob": false
+    },
+    {
+     "id": "2015162",
+     "n": "Cálculo Vectorial",
+     "c": 4,
+     "ob": false
+    }
+   ],
+   "nota": "Subagrupaciones (cursas una opción de cada una): Cálculo Diferencial, 4 cr. (2 opciones) · Cálculo Integral, 4 cr. (2 opciones) · Álgebra Lineal, 4 cr. (2 opciones) · Cálculo en Varias Variables, 4 cr. (2 opciones)"
+  },
+  {
+   "title": "FÍSICA",
+   "type": "fundamentacion",
+   "req": 8,
+   "obl": 8,
+   "opt": 0,
+   "materias": [
+    {
+     "id": "1000019",
+     "n": "Fundamentos de Mecánica",
+     "c": 4,
+     "ob": true
+    },
+    {
+     "id": "1000017",
+     "n": "Fundamentos de Electricidad y Magnetismo",
+     "c": 4,
+     "ob": true
+    }
+   ]
+  },
+  {
+   "title": "CIENCIAS DE LA COMPUTACIÓN",
+   "type": "fundamentacion",
+   "req": 18,
+   "obl": 7,
+   "opt": 11,
+   "materias": [
+    {
+     "id": "2015174",
+     "n": "Introducción a la Teoría de la Computación",
+     "c": 4,
+     "ob": true
+    },
+    {
+     "id": "2016696",
+     "n": "Algoritmos",
+     "c": 3,
+     "ob": true
+    },
+    {
+     "id": "2025963",
+     "n": "Matemáticas Discretas I",
+     "c": 4,
+     "ob": false
+    },
+    {
+     "id": "2015168",
+     "n": "Fundamentos de Matemáticas",
+     "c": 4,
+     "ob": false
+    },
+    {
+     "id": "2025964",
+     "n": "Matemáticas Discretas II",
+     "c": 4,
+     "ob": false
+    },
+    {
+     "id": "2015181",
+     "n": "Sistemas numéricos",
+     "c": 4,
+     "ob": false
+    },
+    {
+     "id": "2015970",
+     "n": "Métodos Numéricos",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2019072",
+     "n": "Análisis Numérico I",
+     "c": 4,
+     "ob": false
+    }
+   ],
+   "nota": "Subagrupaciones (cursas una opción de cada una): Matemáticas Discretas I, 4 cr. (2 opciones) · Matemáticas Discretas II, 4 cr. (2 opciones) · Métodos Numéricos, 3 cr. (2 opciones)"
+  },
+  {
+   "title": "PROBABILIDAD Y ESTADÍSTICA",
+   "type": "fundamentacion",
+   "req": 3,
+   "obl": 0,
+   "opt": 3,
+   "materias": [
+    {
+     "id": "1000013",
+     "n": "Probabilidad y Estadística Fundamental",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2027877",
+     "n": "Probabilidad Fundamental",
+     "c": 4,
+     "ob": false
+    },
+    {
+     "id": "2015178",
+     "n": "Probabilidad",
+     "c": 4,
+     "ob": false
+    }
+   ],
+   "nota": "Subagrupaciones (cursas una opción de cada una): Probabilidad y Estadística Fundamental, 3 cr. (3 opciones)"
+  },
+  {
+   "title": "CIENCIAS ECONÓMICAS Y ADMINISTRATIVAS",
+   "type": "fundamentacion",
+   "req": 6,
+   "obl": 0,
+   "opt": 6,
+   "materias": [
+    {
+     "id": "2015703",
+     "n": "Ingeniería Económica",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2025986",
+     "n": "Ingeniería Económica y Análisis de Riesgo",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2016047",
+     "n": "Modelos Económicos Computacionales",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2015702",
+     "n": "Gerencia y Gestión de Proyectos",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2016028",
+     "n": "Diseño, Gestión y Evaluación de Proyectos",
+     "c": 4,
+     "ob": false
+    }
+   ],
+   "nota": "Subagrupaciones (cursas una opción de cada una): Ingeniería Económica, 3 cr. (3 opciones) · Gerencia y Gestión de Proyectos, 3 cr. (2 opciones)"
+  },
+  {
+   "title": "CONTEXTO PROFESIONAL E INTERDISCIPLINARIO",
+   "type": "disciplinar",
+   "req": 6,
+   "obl": 3,
+   "opt": 3,
+   "materias": [
+    {
+     "id": "2025975",
+     "n": "Introducción a la Ingeniería de Sistemas y Computación",
+     "c": 3,
+     "ob": true
+    },
+    {
+     "id": "2024045",
+     "n": "Taller de Proyectos Interdisciplinarios",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2016615",
+     "n": "Taller de Invención y Creatividad",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2017275",
+     "n": "Proyecto aplicado de ingeniería",
+     "c": 4,
+     "ob": false
+    },
+    {
+     "id": "2016093",
+     "n": "Taller de énfasis en animación y narrativas audiovisuales I",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2016091",
+     "n": "Taller de énfasis en multimedia e imagen digital I",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2026551",
+     "n": "Creación y Gestión de Empresas",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2016007",
+     "n": "Fundamentos de Administración",
+     "c": 4,
+     "ob": false
+    },
+    {
+     "id": "2016600",
+     "n": "Gestión Tecnológica",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2016599",
+     "n": "Gestión de la Ciencia, la Tecnología y la Innovación",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2016741",
+     "n": "Finanzas",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2016037",
+     "n": "Finanzas Avanzadas",
+     "c": 4,
+     "ob": false
+    }
+   ],
+   "nota": "Subagrupaciones (cursas una opción de cada una): Taller Interdisciplinario de Proyectos de Creación y Gestión, 3 cr. (11 opciones)"
+  },
+  {
+   "title": "MÉTODOS Y TECNOLOGÍAS DE SOFTWARE",
+   "type": "disciplinar",
+   "req": 21,
+   "obl": 15,
+   "opt": 6,
+   "materias": [
+    {
+     "id": "2016375",
+     "n": "Programación Orientada a Objetos",
+     "c": 3,
+     "ob": true
+    },
+    {
+     "id": "2016699",
+     "n": "Estructuras de Datos",
+     "c": 3,
+     "ob": true
+    },
+    {
+     "id": "2016701",
+     "n": "Ingeniería de Software I",
+     "c": 3,
+     "ob": true
+    },
+    {
+     "id": "2016702",
+     "n": "Ingeniería de Software II",
+     "c": 3,
+     "ob": true
+    },
+    {
+     "id": "2016716",
+     "n": "Arquitectura de Software",
+     "c": 3,
+     "ob": true
+    },
+    {
+     "id": "2015734",
+     "n": "Programación de Computadores",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2026573",
+     "n": "Introducción a las ciencias de la computación y a la programación",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2025966",
+     "n": "Lenguajes de Programación",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2027642",
+     "n": "Compiladores",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2027628",
+     "n": "Teoría de Lenguajes Formales",
+     "c": 3,
+     "ob": false
+    }
+   ],
+   "nota": "Subagrupaciones (cursas una opción de cada una): Programación de Computadores, 3 cr. (2 opciones) · Lenguajes, 3 cr. (3 opciones)"
+  },
+  {
+   "title": "MODELOS, SISTEMAS, OPTIMIZACIÓN Y SIMULACIÓN",
+   "type": "disciplinar",
+   "req": 12,
+   "obl": 6,
+   "opt": 6,
+   "materias": [
+    {
+     "id": "2016703",
+     "n": "Pensamiento Sistémico",
+     "c": 3,
+     "ob": true
+    },
+    {
+     "id": "2025969",
+     "n": "Modelos Estocásticos y Simulación en Computación y Comunicaciones",
+     "c": 3,
+     "ob": true
+    },
+    {
+     "id": "2025970",
+     "n": "Modelos y Simulación",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2019082",
+     "n": "Modelos matemáticos I",
+     "c": 4,
+     "ob": false
+    },
+    {
+     "id": "2017293",
+     "n": "Modelación matemática",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2025971",
+     "n": "Optimización",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2015173",
+     "n": "Introducción a la Optimización",
+     "c": 4,
+     "ob": false
+    }
+   ],
+   "nota": "Subagrupaciones (cursas una opción de cada una): Modelos y Sistemas, 3 cr. (3 opciones) · Optimización, 3 cr. (2 opciones)"
+  },
+  {
+   "title": "INFRAESTRUCTURA COMPUTACIONAL, DE COMUNICACIONES Y DE INFORMACIÓN",
+   "type": "disciplinar",
+   "req": 30,
+   "obl": 15,
+   "opt": 15,
+   "materias": [
+    {
+     "id": "2016697",
+     "n": "Arquitectura de Computadores",
+     "c": 3,
+     "ob": true
+    },
+    {
+     "id": "2025967",
+     "n": "Redes de Computadores",
+     "c": 3,
+     "ob": true
+    },
+    {
+     "id": "2016707",
+     "n": "Sistemas Operativos",
+     "c": 3,
+     "ob": true
+    },
+    {
+     "id": "2025983",
+     "n": "Arquitectura de Infraestructura y Gobierno de TICs",
+     "c": 3,
+     "ob": true
+    },
+    {
+     "id": "2016722",
+     "n": "Computación Paralela y Distribuida",
+     "c": 3,
+     "ob": true
+    },
+    {
+     "id": "2016353",
+     "n": "Bases de Datos",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2027641",
+     "n": "Análisis de bases de datos",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2016698",
+     "n": "Elementos de Computadores",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2016498",
+     "n": "Electrónica Digital I",
+     "c": 4,
+     "ob": false
+    },
+    {
+     "id": "2025982",
+     "n": "Sistemas de Información",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2016053",
+     "n": "Sistemas de Información Gerencial",
+     "c": 4,
+     "ob": false
+    },
+    {
+     "id": "2025994",
+     "n": "Teoría de la Información y Sistemas de Comunicaciones",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2016492",
+     "n": "Comunicaciones",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2025972",
+     "n": "Introducción a la Criptografía y a la Seguridad de la Información",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2027311",
+     "n": "Introducción a la criptografía y a la teoría de información",
+     "c": 4,
+     "ob": false
+    },
+    {
+     "id": "2027313",
+     "n": "Teoría de la codificación",
+     "c": 4,
+     "ob": false
+    },
+    {
+     "id": "2027310",
+     "n": "Criptografía",
+     "c": 3,
+     "ob": false
+    }
+   ],
+   "nota": "Subagrupaciones (cursas una opción de cada una): Bases de Datos, 3 cr. (2 opciones) · Elementos de Computadores, 3 cr. (2 opciones) · Sistemas de Información, 3 cr. (2 opciones) · Información y Comunicaciones, 3 cr. (2 opciones) · Criptografía y Seguridad de la Información, 3 cr. (4 opciones)"
+  },
+  {
+   "title": "SISTEMAS INTELIGENTES",
+   "type": "disciplinar",
+   "req": 3,
+   "obl": 0,
+   "opt": 3,
+   "materias": [
+    {
+     "id": "2025995",
+     "n": "Introducción a los Sistemas Inteligentes",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2016748",
+     "n": "Inteligencia artificial",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2023251",
+     "n": "Inteligencia artificial y minirobots",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2027631",
+     "n": "Introducción a la inteligencia artificial",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2028837",
+     "n": "Matemáticas del aprendizaje de máquinas",
+     "c": 4,
+     "ob": false
+    },
+    {
+     "id": "2017290",
+     "n": "Técnicas de Inteligencia Artificial",
+     "c": 3,
+     "ob": false
+    }
+   ],
+   "nota": "Subagrupaciones (cursas una opción de cada una): Introducción a los Sistemas Inteligentes, 3 cr. (6 opciones)"
+  },
+  {
+   "title": "COMPUTACIÓN APLICADA",
+   "type": "disciplinar",
+   "req": 3,
+   "obl": 0,
+   "opt": 3,
+   "materias": [
+    {
+     "id": "2025960",
+     "n": "Computación Visual",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2016788",
+     "n": "Tecnología Digital",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2016753",
+     "n": "Microcontroladores",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2016080",
+     "n": "Aplicaciones gráficas tridimensionales",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2025196",
+     "n": "Introducción a la biología computacional",
+     "c": 4,
+     "ob": false
+    },
+    {
+     "id": "2026548",
+     "n": "Introducción al Análisis Combinatorio",
+     "c": 4,
+     "ob": false
+    },
+    {
+     "id": "2028837",
+     "n": "Matemáticas del aprendizaje de máquinas",
+     "c": 4,
+     "ob": false
+    },
+    {
+     "id": "2027309",
+     "n": "Análisis forense digital",
+     "c": 4,
+     "ob": false
+    },
+    {
+     "id": "2029297",
+     "n": "Introducción a la Computación de Alto Rendimiento",
+     "c": 4,
+     "ob": false
+    },
+    {
+     "id": "2016770",
+     "n": "Robótica",
+     "c": 3,
+     "ob": false
+    }
+   ],
+   "nota": "Subagrupaciones (cursas una opción de cada una): Computación Visual, 3 cr. (10 opciones)"
+  },
+  {
+   "title": "TRABAJO DE GRADO",
+   "type": "disciplinar",
+   "req": 6,
+   "obl": 6,
+   "opt": 0,
+   "nota": "Requiere 60 créditos aprobados del componente disciplinar. Modalidades en Info y calendario.",
+   "materias": [
+    {
+     "id": "2016843",
+     "n": "Trabajo de grado - asignaturas de posgrado",
+     "c": 6,
+     "ob": false
+    },
+    {
+     "id": "2025973",
+     "n": "Trabajo de grado - modalidad practica de extensión",
+     "c": 6,
+     "ob": false
+    },
+    {
+     "id": "2025974",
+     "n": "Trabajo de grado - modalidad trabajos investigativos",
+     "c": 6,
+     "ob": false
+    }
+   ]
+  }
+ ],
+ "agrupaciones_fuente": "Acuerdo 11 de 2023 del Consejo de Facultad, tal como lo transcribe la malla de estudiantes <a href=\"https://ceis-unal.com/?view=malla\" target=\"_blank\" rel=\"noopener\">ceis-unal.com</a>. Créditos por componente: Fundamentación 51 (15 obligatorios + 36 optativos), Disciplinar 81 (39 obligatorios + 42 optativos; la malla sugerida cubre 36, el resto con otras optativas disciplinares), Libre elección 33. Total 165",
+ "sia_opt_siempre": true
 }
