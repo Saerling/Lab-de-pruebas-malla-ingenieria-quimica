@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3774049994253639"
-     crossorigin="anonymous"></script>
 
     <meta charset="UTF-8">
+    <script>/* transición portada → malla: el velo se pinta antes del primer frame */
+    try { var mt = JSON.parse(sessionStorage.getItem('mallas_trans') || 'null'); sessionStorage.removeItem('mallas_trans');
+        if (mt && Date.now() - mt.at < 8000 && !matchMedia('(prefers-reduced-motion: reduce)').matches) { document.documentElement.classList.add('mt-in'); document.documentElement.setAttribute('data-mt-name', mt.n || ''); } } catch (e) {}</script>
     <!-- Seguridad: sin plugins, sin <base> inyectado, formularios solo a esta página o Google, y todo lo externo por HTTPS -->
     <meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'self'; form-action 'self' https://docs.google.com; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -1322,7 +1323,68 @@ html.ld-doble .ld-card .ld-shared { display: block; }
 .ld-sheet-go:hover { transform: translateY(-2px); } .ld-sheet-go:active { transform: scale(.98); }
 @media (max-width: 520px) { .ld-sheet-stats { grid-template-columns: 1fr 1fr 1fr; } .ld-sheet-stats b { font-size: 1.05rem; } .ld-mode button { padding: 8px 13px; font-size: 0.84rem; } }
 @media (prefers-reduced-motion: reduce) { .ld-sheet, .ld-mode-ink, .ld-badge.pct::before { transition: none; } .ld-card .ld-role, .ld-step.pop { animation: none; } }
+/* ===== Camino de doble titulación ===== */
+.ld-sheet-path { margin: 4px 0 12px; max-height: min(46vh, 420px); overflow: auto; overscroll-behavior: contain; padding-right: 4px; }
+.ld-sheet-pt { font-size: .82rem; font-weight: 700; color: var(--text); margin-bottom: 8px; display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.ld-sheet-pt small { font-weight: 500; color: var(--text-dim); font-size: .72rem; }
+.dtp { --node: 30px; position: relative; list-style: none; margin: 0; padding: 0; }
+.dtp-step:not(:last-child)::before { content: ''; position: absolute; left: calc(var(--node) / 2 - 1px); top: calc(6px + var(--node) / 2); height: 100%; width: 2px; border-radius: 2px; background: var(--border); transform-origin: top; animation: dtpFill .8s var(--ease-emph, ease) both; animation-delay: calc(150ms + var(--i) * 90ms); }
+.dtp-step.done::before { background: var(--primary); }
+.dtp-step.cur::before { background: linear-gradient(var(--primary) var(--p, 0%), var(--border) 0); }
+@keyframes dtpFill { from { transform: scaleY(0); } }
+.dtp-step { position: relative; opacity: 0; transform: translateY(8px); animation: ldCard .5s var(--ease-emph, ease) both; animation-delay: calc(80ms + var(--i) * 70ms); }
+.dtp-h { width: 100%; display: grid; grid-template-columns: var(--node) 1fr auto; gap: 12px; align-items: center; padding: 6px 4px 6px 0; border: 0; background: none; color: var(--text); font: inherit; text-align: left; cursor: pointer; border-radius: 12px; }
+.dtp-h:hover .dtp-tx b { color: var(--primary); }
+.dtp-n { position: relative; z-index: 1; width: var(--node); height: var(--node); border-radius: 50%; display: grid; place-items: center; font-size: .82rem; font-weight: 700; background: var(--surface-2); border: 2px solid var(--border); color: var(--text-dim); transition: transform .3s var(--spring-smooth, ease); }
+.dtp-step.done .dtp-n { background: var(--primary); border-color: var(--primary); color: var(--on-primary); }
+.dtp-step.cur .dtp-n { border-color: var(--primary); color: var(--text); box-shadow: 0 0 0 4px var(--primary-soft); animation: dtpPulse 2.2s ease-in-out infinite; }
+@keyframes dtpPulse { 50% { box-shadow: 0 0 0 8px transparent; } }
+.dtp-h:hover .dtp-n { transform: scale(1.08); }
+.dtp-tx { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.dtp-tx b { font-size: .86rem; font-weight: 650; transition: color .2s; }
+.dtp-tx small { font-size: .74rem; color: var(--text-dim); }
+.dtp-step.next .dtp-tx b { color: var(--text-dim); }
+.dtp-bar { display: block; height: 4px; margin-top: 4px; border-radius: 4px; background: var(--surface-2); overflow: hidden; max-width: 220px; }
+.dtp-bar i { display: block; height: 100%; background: var(--primary); border-radius: inherit; }
+.dtp-car { color: var(--text-dim); transition: transform .3s var(--spring-smooth, ease); }
+.dtp-h[aria-expanded="true"] .dtp-car { transform: rotate(90deg); }
+.dtp-d { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .35s var(--ease-emph, ease); margin-left: calc(var(--node) + 12px); }
+.dtp-d > p { overflow: hidden; margin: 0; font-size: .78rem; line-height: 1.5; color: var(--text-dim); }
+.dtp-h[aria-expanded="true"] + .dtp-d { grid-template-rows: 1fr; }
+.dtp-h[aria-expanded="true"] + .dtp-d > p { padding: 2px 0 10px; }
+.dtp-src { margin: 8px 0 0; font-size: .68rem; color: var(--text-dim); }
+@media (prefers-reduced-motion: reduce) { .dtp-step, .dtp-step::before, .dtp-step.cur .dtp-n { animation: none; opacity: 1; transform: none; } .dtp-d { transition: none; } }
+/* ===== Transición portada → malla ===== */
+.mt-veil { position: fixed; z-index: 6000; background: var(--bg); border: 1px solid var(--border); display: grid; place-items: center; overflow: hidden; pointer-events: none; box-shadow: 0 30px 80px -30px rgba(0,0,0,.7); }
+.mt-veil-n, html.mt-in::after { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif; font-size: clamp(1.8rem, 6vw, 3.4rem); font-weight: 700; letter-spacing: -0.045em; color: var(--text); text-align: center; padding: 0 24px; opacity: 0; }
+html.mt-in::before { content: ''; position: fixed; inset: 0; z-index: 6000; background: var(--bg); }
+html.mt-in::after { content: attr(data-mt-name); position: fixed; inset: 0; z-index: 6001; display: grid; place-items: center; opacity: 1; }
+html.mt-in.mt-go::before { animation: mtVeil .7s cubic-bezier(.2,.8,.2,1) .15s both; }
+html.mt-in.mt-go::after { animation: mtName .6s cubic-bezier(.5,0,.2,1) both; }
+@keyframes mtVeil { to { opacity: 0; visibility: hidden; } }
+@keyframes mtName { to { opacity: 0; transform: translateY(-34vh) scale(.42); filter: blur(2px); } }
+html.mt-go header, html.mt-go .dt-bar, html.mt-go #grid > *, html.mt-go .view-section.active > :not(#grid) { animation: mtUp .7s cubic-bezier(.2,.8,.2,1) both; animation-delay: calc(var(--mt-d, 0) * 1ms); }
+@keyframes mtUp { from { opacity: 0; transform: translateY(18px) scale(.985); } }
+@media (prefers-reduced-motion: reduce) { html.mt-in::before, html.mt-in::after { display: none; } html.mt-go * { animation: none !important; } }
 /* ===== Interruptor de doble titulación en la app ===== */
+.dt-bar { display: none; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px; margin: 0 auto 14px; font-size: .8rem; color: var(--text-dim); }
+html.doble .dt-bar { display: flex; }
+.dt-bar b { color: var(--text); }
+.dt-bar-b { border: 1px solid var(--border); background: var(--surface); color: var(--text); border-radius: 999px; padding: 7px 14px; font: inherit; font-weight: 600; cursor: pointer; transition: background .2s, border-color .2s, transform .3s var(--spring-smooth, ease); }
+.dt-bar-b:hover { border-color: var(--primary); transform: translateY(-1px); }
+.dt-bar-b.on { background: var(--primary); color: var(--on-primary); border-color: var(--primary); }
+.materia.dt-com { box-shadow: inset 3px 0 0 var(--accent, var(--primary)); }
+.materia.dt-com-ok { box-shadow: inset 3px 0 0 var(--success); }
+.dt-tag { display: inline-flex; align-self: flex-start; margin-top: 6px; font-size: .64rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--accent, var(--primary)) 55%, transparent); color: var(--accent, var(--primary)); background: color-mix(in srgb, var(--accent, var(--primary)) 10%, transparent); width: max-content; max-width: 100%; }
+.dt-com-ok .dt-tag { color: var(--success); border-color: color-mix(in srgb, var(--success) 55%, transparent); background: color-mix(in srgb, var(--success) 10%, transparent); }
+.malla-wrapper.dt-solo .materia:not(.dt-com) { opacity: .28; filter: grayscale(.6); transform: scale(.97); }
+.malla-wrapper.dt-solo .materia.dt-com { transform: translateY(-2px); box-shadow: inset 3px 0 0 var(--accent, var(--primary)), 0 0 0 2px color-mix(in srgb, var(--accent, var(--primary)) 45%, transparent); }
+html.doble .malla-wrapper .materia { transition: opacity .35s, filter .35s, transform .35s var(--spring-smooth, ease), box-shadow .3s; }
+.materia.dt-flash { animation: dtFlash 1.4s ease 1; }
+@keyframes dtFlash { 0%, 100% { outline: 0 solid transparent; } 25%, 60% { outline: 3px solid var(--primary); outline-offset: 3px; } }
+.dt-mm { line-height: 1.45; max-width: 240px; }
+.dt-row[data-id] { cursor: pointer; transition: border-color .2s; } .dt-row[data-id]:hover { border-color: var(--primary); }
+
 .dt-switch { display: none; position: relative; margin: 8px auto 0; padding: 3px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); width: max-content; max-width: 100%; }
 html.doble .dt-switch { display: inline-flex; }
 .dt-switch button { border: 0; background: none; font: inherit; font-size: 0.78rem; font-weight: 600; color: var(--text-dim); padding: 6px 12px; border-radius: 999px; cursor: pointer; white-space: nowrap; display: inline-flex; gap: 6px; align-items: center; }
@@ -1514,6 +1576,56 @@ html.ld-desde-app .kpi, html.landing .kpi { animation: none; }
     // Doble titulación: { p: principal, s: segunda }
     P.doble = null;
     try { var dt = JSON.parse(RAWGET.call(localStorage, 'mallas_doble') || 'null'); if (dt && dt.p && dt.s && dt.p !== dt.s && (dt.p === 'quimica' || M[dt.p]) && (dt.s === 'quimica' || M[dt.s])) P.doble = dt; } catch (e) {}
+    // Camino de la doble titulación (Acuerdo 008 de 2008, arts. 47-48; Acuerdo 155 de 2014 del CSU)
+    P.dtPasos = function (dp, ds) {
+        var avP = P.avance(dp), totS = P.avance(ds).total, c = P.comunes ? P.comunes(dp, ds) : { n: 0, cr: 0, lista: [] };
+        var apP = P.aprobadas(dp), crYa = c.lista.filter(function (x) { return apP[x.a]; }).reduce(function (t, x) { return t + x.c; }, 0);
+        var meta = Math.ceil(avP.total * 0.4), ok = avP.cr >= meta, pct = Math.min(100, Math.round(avP.cr / meta * 100));
+        var corto = P.corto;
+        var pasos = [
+            { e: '📈', t: 'Cursa el 40 % de ' + corto(dp), s: ok ? 'Listo · ' + avP.cr + ' de ' + meta + ' créditos' : avP.cr + ' de ' + meta + ' créditos', bar: pct,
+              d: 'Debes haber cursado al menos el 40 % de los créditos de tu carrera principal (' + meta + ' de ' + avP.total + '), estar matriculado o en reserva de cupo y sin sanciones disciplinarias.' },
+            { e: '🖥️', t: 'Pídela en el SIA', s: 'En las fechas del calendario de la sede',
+              d: 'La solicitud se hace por el SIA (opción Doble titulación). Solo en un programa donde nunca hayas sido estudiante.' },
+            { e: '⇄', t: 'El Comité estudia tus materias', s: c.n + ' en común por código · ' + c.cr + ' créditos',
+              d: 'El Comité Asesor de ' + corto(ds) + ' revisa qué materias aprobadas te reconoce por <b>equivalencia</b> (mismo contenido) o <b>convalidación</b>. Las ' + c.n + ' en común que ves aquí comparten código; el resto lo decide el Comité.' },
+            { e: '🎟️', t: 'Revisa tu cupo de créditos', s: 'Solo el cupo que no usaste en la primera',
+              d: 'Con PAPA ≥ 4,3 el Consejo de Facultad puede darte cupo extraordinario si necesitas más de 10 créditos. Con PAPA menor, una sola vez, si te faltan 10 o menos.' },
+            { e: '🏛️', t: 'El Consejo de Sede formaliza', s: 'Antes de recibir tu primer título',
+              d: 'La admisión y ubicación en el segundo plan se formaliza ante el Consejo de Sede antes del primer grado. Conservas tu historia académica, sin nuevas reservas de cupo automáticas.' },
+            { e: '🎓', t: 'Termina y gradúate dos veces', s: '~' + Math.max(0, totS - crYa) + ' créditos por hacer en ' + corto(ds),
+              d: 'Cursas lo que falte del segundo plan. Ya llevas ' + crYa + ' créditos de materias en común aprobadas en ' + corto(dp) + '.' }
+        ];
+        var cur = ok ? 1 : 0;
+        return '<ol class="dtp">' + pasos.map(function (x, i) {
+            var st = i < cur ? 'done' : i === cur ? 'cur' : 'next';
+            return '<li class="dtp-step ' + st + '" style="--i:' + i + (st === 'cur' && x.bar != null ? ';--p:' + x.bar + '%' : '') + '"><button type="button" class="dtp-h" aria-expanded="' + (i === cur) + '">' +
+                '<span class="dtp-n" aria-hidden="true">' + (st === 'done' ? '✓' : x.e) + '</span>' +
+                '<span class="dtp-tx"><b>' + x.t + '</b><small>' + x.s + '</small>' + (x.bar != null && !ok ? '<span class="dtp-bar"><i style="width:' + x.bar + '%"></i></span>' : '') + '</span>' +
+                '<span class="dtp-car" aria-hidden="true">›</span></button><div class="dtp-d"><p>' + x.d + '</p></div></li>';
+        }).join('') + '</ol><p class="dtp-src">Acuerdo 008 de 2008 (arts. 47 y 48) y Acuerdo 155 de 2014 del Consejo Superior Universitario. Confirma con la Secretaría de tu Facultad.</p>';
+    };
+    document.addEventListener('click', function (e) {
+        var h = e.target.closest && e.target.closest('.dtp-h'); if (!h) return;
+        var li = h.parentNode, open = h.getAttribute('aria-expanded') !== 'true';
+        li.parentNode.querySelectorAll('.dtp-h').forEach(function (x) { x.setAttribute('aria-expanded', 'false'); });
+        h.setAttribute('aria-expanded', String(open));
+    });
+    // Transición: la tarjeta se expande hasta llenar la pantalla y la malla nueva aparece desde ese velo
+    window.mallasIr = function (k, from) {
+        var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches, nombre = P.nombreDe(k);
+        try { sessionStorage.setItem('mallas_trans', JSON.stringify({ n: nombre, at: Date.now() })); } catch (e) {}
+        if (reduce || !document.body.animate) { setPrograma(k); return; }
+        var r = from && from.getBoundingClientRect ? from.getBoundingClientRect() : { left: innerWidth / 2 - 60, top: innerHeight / 2 - 30, width: 120, height: 60 };
+        var v = document.createElement('div'); v.className = 'mt-veil';
+        v.innerHTML = '<span class="mt-veil-n">' + nombre.replace(/</g, '&lt;') + '</span>';
+        document.body.appendChild(v);
+        var ease = 'cubic-bezier(.2,.8,.2,1)';
+        v.animate([{ left: r.left + 'px', top: r.top + 'px', width: r.width + 'px', height: r.height + 'px', borderRadius: '24px', opacity: .6 },
+                   { left: '0px', top: '0px', width: innerWidth + 'px', height: innerHeight + 'px', borderRadius: '0px', opacity: 1 }], { duration: 520, easing: ease, fill: 'forwards' });
+        v.firstChild.animate([{ opacity: 0, transform: 'translateY(10px) scale(.9)' }, { opacity: 1, transform: 'none' }], { duration: 420, delay: 140, easing: ease, fill: 'forwards' });
+        setTimeout(function () { setPrograma(k); }, 560);
+    };
     P.setDoble = function (dt) { try { if (dt) localStorage.setItem('mallas_doble', JSON.stringify(dt)); else localStorage.removeItem('mallas_doble'); } catch (e) {} P.doble = dt; };
     window.PROG = P;
     window.setPrograma = function (nid) {
@@ -1833,7 +1945,7 @@ html.fxo-ring .kpi:first-child { padding-right: 16px; }
         <div class="ld-sheet-in">
             <div class="ld-sheet-h"><b id="ld-sheet-t"></b><button type="button" class="ld-sheet-x" id="ld-sheet-x" aria-label="Cambiar la segunda carrera">Cambiar</button></div>
             <div class="ld-sheet-stats" id="ld-sheet-stats"></div>
-            <details class="ld-sheet-req"><summary>¿Qué pide la Universidad?</summary><ul id="ld-sheet-req"></ul></details>
+            <div class="ld-sheet-path"><div class="ld-sheet-pt">Tu camino <small>toca un paso para ver el detalle</small></div><div id="ld-sheet-req"></div></div>
             <button type="button" class="ld-sheet-go" id="ld-sheet-go">Entrar a mi doble titulación →</button>
         </div>
     </div>
@@ -5385,14 +5497,7 @@ infoLinksRender();
             '<div><b>' + c.n + '</b><span>materias en común (' + c.cr + ' cr.)</span></div>' +
             '<div><b>' + crYa + '</b><span>créditos que ya llevas de ' + PROG.corto(DT.s) + '</span></div>' +
             '<div><b>~' + Math.max(0, totS - crYa) + '</b><span>créditos por hacer en la segunda</span></div>';
-        var cuarenta = Math.ceil(avP.total * 0.4);
-        document.getElementById('ld-sheet-req').innerHTML =
-            '<li>Haber cursado al menos el <b>40 %</b> de los créditos de tu carrera principal (' + cuarenta + ' de ' + avP.total + '; llevas ' + avP.cr + ' aprobados).</li>' +
-            '<li>Pedirla por el <b>SIA</b> en las fechas del calendario, en un programa donde nunca hayas sido estudiante.</li>' +
-            '<li>El Comité Asesor estudia qué materias se reconocen por <b>equivalencia o convalidación</b>; las «en común» de aquí son un estimado por código.</li>' +
-            '<li>Solo usas el <b>cupo de créditos</b> que no gastaste en la primera. Con <b>PAPA ≥ 4,3</b> el Consejo de Facultad puede darte cupo extra; con menos, una sola vez si te faltan 10 créditos o menos.</li>' +
-            '<li>Formaliza la admisión ante el Consejo de Sede <b>antes de recibir el primer título</b>. No hay reservas de cupo automáticas nuevas.</li>' +
-            '<li style="list-style:none;margin-left:-18px;margin-top:6px;font-size:.72rem">Acuerdo 008 de 2008 (arts. 47 y 48) y Acuerdo 155 de 2014 del Consejo Superior Universitario.</li>';
+        document.getElementById('ld-sheet-req').innerHTML = PROG.dtPasos(DT.p, DT.s);
         sheet.classList.add('open');
     }
     function elegirDoble(k) {
@@ -5422,8 +5527,8 @@ infoLinksRender();
         if (!DT.p || !DT.s) return;
         PROG.setDoble({ p: DT.p, s: DT.s });
         if (window.gtag) gtag('event', 'doble_entrar', { principal: DT.p, segunda: DT.s });
-        sheet.classList.remove('open'); ld.classList.add('out');
-        setTimeout(function () { setPrograma(DT.p); }, 300);
+        sheet.classList.remove('open');
+        mallasIr(DT.p, document.getElementById('ld-sheet-go'));
     });
     addEventListener('resize', inkMode);
     window.openLanding = function (desdeApp) {
@@ -5436,7 +5541,7 @@ infoLinksRender();
     window.closeLanding = function () {
         if (PROG.primera && !root.classList.contains('ld-desde-app')) return;
         ld.classList.add('out');
-        setTimeout(function () { root.classList.remove('landing', 'ld-desde-app'); ld.classList.remove('out'); if (window.moveTabInk) moveTabInk(); }, 360);
+        setTimeout(function () { root.classList.remove('landing', 'ld-desde-app'); ld.classList.remove('out'); if (window.moveTabInk) moveTabInk(); if (window.mallasEntrada) mallasEntrada(false); }, 360);
     };
     window.openProgramas = function () { openLanding(true); };
     window.closeProgramas = window.closeLanding;
@@ -5448,7 +5553,7 @@ infoLinksRender();
         if (PROG.doble) PROG.setDoble(null);   // eligió una sola carrera
         if (window.gtag) gtag('event', 'elegir_carrera', { carrera: k });
         if (k === PROG.id) { try { localStorage.setItem('mallas_programa', k); } catch (e) {} PROG.primera = false; root.classList.add('ld-desde-app'); setTimeout(closeLanding, 220); return; }
-        setTimeout(function () { ld.classList.add('out'); setTimeout(function () { setPrograma(k); }, 300); }, 200);
+        mallasIr(k, b);
     });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && root.classList.contains('landing')) closeLanding(); });
     if (PROG.primera) openLanding(false);
@@ -6194,8 +6299,7 @@ infoLinksRender();
         sw.addEventListener('click', function (e) {
             var b = e.target.closest('button[data-k]'); if (!b || b.dataset.k === PROG.id) return;
             if (window.gtag) gtag('event', 'doble_cambiar', { a: b.dataset.k });
-            document.body.style.transition = 'opacity .25s'; document.body.style.opacity = '0';
-            setTimeout(function () { setPrograma(b.dataset.k); }, 220);
+            mallasIr(b.dataset.k, b);
         });
     }
 
@@ -6214,11 +6318,9 @@ infoLinksRender();
         card.hidden = false;
         card.innerHTML = '<h3>🎓 Doble titulación · ' + esc(PROG.corto(D.p)) + ' + ' + esc(PROG.corto(D.s)) + '</h3>' +
             '<p class="ic-note" style="margin:0 0 10px">Estás en tu <b>' + (soyP ? 'carrera principal' : 'segunda carrera') + '</b>. Cambia de malla con el interruptor de arriba; cada una guarda su avance.</p>' +
-            '<div class="gr-top"><div class="gr-meter"><div class="gr-meter-l"><span>Requisito del 40 % en ' + esc(PROG.corto(D.p)) + '</span><span>' + avP.cr + ' / ' + cuarenta + '</span></div><div class="gr-bar"><i style="width:' + Math.min(100, Math.round(avP.cr / cuarenta * 100)) + '%"></i></div></div>' +
-            '<span class="gr-state' + (ok40 ? ' ok' : '') + '">' + (ok40 ? '✓ Ya puedes pedirla' : 'Te faltan ' + (cuarenta - avP.cr) + ' créditos') + '</span></div>' +
             '<p class="ic-note" style="margin:6px 0 0"><b>' + c.n + ' materias en común</b> (' + c.cr + ' créditos, mismo código en ambos planes). El Comité Asesor decide las equivalencias y convalidaciones; esto es un estimado.</p>' +
             '<div class="dt-list">' + (c.lista.length ? c.lista.map(function (x) {
-                return '<div class="dt-row"><span>' + esc(x.n) + ' <code>' + esc(x.cod) + '</code></span>' +
+                return '<div class="dt-row" data-id="' + esc(x.a) + '" role="button" tabindex="0" title="Ver en la malla"><span>' + esc(x.n) + ' <code>' + esc(x.cod) + '</code></span>' +
                     '<span class="dt-dot' + (apAqui[x.a] ? ' ap' : '') + '" title="' + esc(PROG.corto(PROG.id)) + '">' + (apAqui[x.a] ? '✓ ' : '') + esc(PROG.corto(PROG.id)) + '</span>' +
                     '<span class="dt-dot' + (apOtra[x.b] ? ' ap' : '') + '" title="' + esc(PROG.corto(otra)) + '">' + (apOtra[x.b] ? '✓ ' : '') + esc(PROG.corto(otra)) + '</span></div>';
             }).join('') : '<div class="dt-row"><span>No comparten materias con el mismo código.</span></div>') + '</div>' +
@@ -6226,12 +6328,7 @@ infoLinksRender();
             '<button type="button" class="dt-btn pri" id="dt-pasar"' + (pasar.length ? '' : ' disabled') + '>' + (pasar.length ? 'Marcar aquí las ' + pasar.length + ' que aprobaste en ' + esc(PROG.corto(otra)) : 'Nada por pasar desde ' + esc(PROG.corto(otra))) + '</button>' +
             '<button type="button" class="dt-btn" id="dt-cambiar">Cambiar carreras</button>' +
             '<button type="button" class="dt-btn" id="dt-salir">Salir de doble titulación</button></div>' +
-            '<details class="ld-sheet-req" style="margin-top:12px"><summary>¿Qué pide la Universidad?</summary><ul>' +
-            '<li>Haber cursado al menos el 40 % de los créditos de la carrera principal, sin sanciones disciplinarias.</li>' +
-            '<li>Pedirla por el SIA en las fechas del calendario, en un programa donde nunca hayas sido estudiante.</li>' +
-            '<li>Solo usas el cupo de créditos que no gastaste en la primera. Con PAPA ≥ 4,3 el Consejo de Facultad puede darte cupo extra; con menos, una sola vez si te faltan 10 créditos o menos.</li>' +
-            '<li>Formaliza la admisión ante el Consejo de Sede antes de recibir el primer título. No hay nuevas reservas de cupo automáticas.</li>' +
-            '</ul><p class="gr-src">Acuerdo 008 de 2008 (arts. 47 y 48) y Acuerdo 155 de 2014 del Consejo Superior Universitario. Confirma con la Secretaría de tu Facultad.</p></details>';
+            '<div class="ld-sheet-pt" style="margin-top:14px">Tu camino <small>toca un paso para ver el detalle</small></div>' + PROG.dtPasos(D.p, D.s);
     }
     document.addEventListener('click', function (e) {
         if (!card || !card.contains(e.target)) return;
@@ -6252,6 +6349,64 @@ infoLinksRender();
     var sw0 = window.switchTab;
     if (typeof sw0 === 'function') window.switchTab = function (t) { var r = sw0.apply(this, arguments); if (t === 'info') pintar(); return r; };
     pintar();
+
+    // ---- Materias en común dentro de la malla ----
+    var nomO = PROG.corto(otra), solo = false;
+    function mapa() {
+        var c = PROG.comunes(PROG.id, otra), apO = PROG.aprobadas(otra), m = {};
+        c.lista.forEach(function (x) { m[x.a] = { ok: !!apO[x.b], cod: x.cod }; });
+        return { m: m, n: c.n, cr: c.cr };
+    }
+    var grid = document.getElementById('grid');
+    var bar = document.createElement('div'); bar.className = 'dt-bar'; bar.id = 'dt-bar';
+    grid.parentNode.insertBefore(bar, grid);
+    function decorar() {
+        var M = mapa(), nOk = 0;
+        grid.querySelectorAll('.materia[data-id]').forEach(function (card) {
+            var x = M.m[card.dataset.id]; card.classList.toggle('dt-com', !!x); card.classList.toggle('dt-com-ok', !!(x && x.ok));
+            var t = card.querySelector('.dt-tag'); if (t) t.remove();
+            if (!x) return; if (x.ok) nOk++;
+            card.insertAdjacentHTML('beforeend', '<span class="dt-tag" title="' + (x.ok ? 'Ya la aprobaste en ' + esc(nomO) + ': puede reconocerse por equivalencia' : 'También está en ' + esc(nomO) + ' (mismo código ' + esc(x.cod) + ')') + '">⇄ ' + esc(nomO) + (x.ok ? ' ✓' : '') + '</span>');
+        });
+        grid.classList.toggle('dt-solo', solo);
+        bar.innerHTML = '<button type="button" class="dt-bar-b' + (solo ? ' on' : '') + '" aria-pressed="' + solo + '">⇄ ' + (solo ? 'Mostrar toda la malla' : 'Resaltar lo que comparte con ' + esc(nomO)) + '</button>' +
+            '<span class="dt-bar-i"><b>' + M.n + '</b> en común · <b>' + M.cr + '</b> cr.' + (nOk ? ' · <b>' + nOk + '</b> ya aprobadas en ' + esc(nomO) : '') + '</span>';
+    }
+    bar.addEventListener('click', function (e) { if (!e.target.closest('.dt-bar-b')) return; solo = !solo; if (window.gtag) gtag('event', 'doble_resaltar', { on: solo }); decorar(); });
+    var rm0 = window.renderMalla;
+    if (typeof rm0 === 'function') window.renderMalla = function () { var r = rm0.apply(this, arguments); try { decorar(); } catch (e) {} return r; };
+    decorar();
+    // Detalle en el menú ⋮ de cada materia
+    var om0 = window.openMateriaMenu;
+    if (typeof om0 === 'function') window.openMateriaMenu = function (ev, id) {
+        var r = om0.apply(this, arguments), x = mapa().m[id], mn = document.getElementById('materia-menu');
+        if (x && mn) mn.insertAdjacentHTML('afterbegin', '<div class="mm-note dt-mm">⇄ <b>En común con ' + esc(nomO) + '</b><br>' + (x.ok ? '✓ Ya la aprobaste allá: se puede reconocer por equivalencia.' : 'Mismo código (' + esc(x.cod) + '): al aprobarla aquí también te sirve allá.') + '</div><div class="mm-sep"></div>');
+        return r;
+    };
+    // Desde el panel de Info: ir a la materia en la malla
+    document.addEventListener('click', function (e) {
+        var row = e.target.closest && e.target.closest('#dt-card .dt-row[data-id]'); if (!row) return;
+        switchTab('malla');
+        setTimeout(function () { var c = grid.querySelector('.materia[data-id="' + row.dataset.id + '"]'); if (!c) return; c.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' }); c.classList.remove('dt-flash'); void c.offsetWidth; c.classList.add('dt-flash'); }, 120);
+    });
+})();
+</script>
+<script id="trans-v1">
+/* Entrada a la malla: el nombre de la carrera sube hacia el encabezado y la malla aparece en cascada */
+(function () {
+    var root = document.documentElement;
+    window.mallasEntrada = function (veil) {
+        if (matchMedia('(prefers-reduced-motion: reduce)').matches) { root.classList.remove('mt-in'); return; }
+        var h = document.querySelector('header'); if (h) h.style.setProperty('--mt-d', 0);
+        var b = document.getElementById('dt-bar'); if (b) b.style.setProperty('--mt-d', 120);
+        document.querySelectorAll('#grid > *').forEach(function (c, i) { c.style.setProperty('--mt-d', 160 + i * 55); });
+        root.classList.remove('mt-go'); void root.offsetWidth; root.classList.add('mt-go');
+        setTimeout(function () { root.classList.remove('mt-go', 'mt-in'); }, 1500);
+    };
+    if (root.classList.contains('mt-in')) {
+        if (root.classList.contains('landing')) { root.classList.remove('mt-in'); return; }
+        requestAnimationFrame(function () { setTimeout(function () { mallasEntrada(true); }, 40); });
+    }
 })();
 </script>
 </body>

@@ -4,7 +4,7 @@ Sitio estático (un `index.html`). Los datos dinámicos (catálogo, reseñas, co
 
 | # | Punto | Estado |
 |---|---|---|
-| 1 | Ocultar API keys | ✅ El frontend no tiene claves; solo IDs públicos de Analytics/AdSense. |
+| 1 | Ocultar API keys | ✅ El frontend no tiene claves; solo el ID público de Google Analytics. Sin anuncios. |
 | 2 | Secretos fuera de Git | ✅ Historial revisado: sin secretos. |
 | 3 | Key pública para DB | ✅ El navegador no toca la DB; habla con proxy-sia. |
 | 4 | Row-Level Security | ✅ En Neon (vía proxy-sia). |
