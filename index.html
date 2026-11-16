@@ -1958,7 +1958,7 @@ html.fxo-ring .kpi:first-child { padding-right: 16px; }
     <h1 style="margin:0 0 10px">Mallas <span class="nof-pill" title="Proyecto independiente hecho por estudiantes, sin ánimo de lucro. No es un sitio de la Universidad Nacional de Colombia.">No oficial</span></h1>
     <button class="prog-chip" id="prog-chip" onclick="openProgramas()" aria-haspopup="dialog" title="Cambiar de carrera"><span class="prog-dot"></span><span id="prog-nombre">Ingeniería Química</span><span class="prog-caret" aria-hidden="true">▾</span></button>
     <div class="dt-switch" id="dt-switch" role="tablist" aria-label="Tus dos carreras"></div>
-    <button class="ver-chip" id="nv-chip" onclick="openNovedades()" title="Qué hay de nuevo">✨ Novedades v4.2</button>
+    <button class="ver-chip" id="nv-chip" onclick="openNovedades()" title="Qué hay de nuevo">✨ Novedades v5.0</button>
     <div class="tabs">
         <button class="tab-btn active" id="tab-malla" onclick="switchTab('malla')">Malla Curricular</button>
         <button class="tab-btn" id="tab-calc" onclick="switchTab('calc')">Calculadora Histórica</button>
@@ -2285,14 +2285,14 @@ html.fxo-ring .kpi:first-child { padding-right: 16px; }
         <button class="close-btn nv-close" onclick="closeNovedades()" aria-label="Cerrar novedades">&times;</button>
         <div class="nv-scroll" id="nv-scroll" tabindex="0">
             <div class="nv-hero">
-                <h2 class="nv-sr" id="nv-title">Novedades de la versión 4.2</h2>
+                <h2 class="nv-sr" id="nv-title">Novedades de la versión 5.0</h2>
                 <div class="nv-term" id="nv-term" aria-hidden="true"></div>
                 <div class="nv-ver" aria-hidden="true">
-                    <span class="nv-old">v1.0</span>
+                    <span class="nv-old">v4.2</span>
                     <span class="nv-arrow">→</span>
                     <span class="nv-odo"><span class="nv-v">v</span><span class="nv-d" id="nv-d1"><span class="nv-strip"></span></span><span class="nv-dot">.</span><span class="nv-d" id="nv-d2"><span class="nv-strip"></span></span></span>
                 </div>
-                <p class="nv-lead">Pasamos de la versión 1.0 a la 4.2. Esto es lo que cambió y lo que ya puedes hacer.</p>
+                <p class="nv-lead">Pasamos de la versión 4.2 a la 5.0: de una malla a nueve carreras. Abajo está lo nuevo y el historial de la 4.2.</p>
                 <div class="nv-done" id="nv-done"></div>
                 <div class="nv-burst" id="nv-burst" aria-hidden="true"></div>
             </div>
@@ -4839,24 +4839,34 @@ infoLinksRender();
 </script>
 <script id="novedades-v42">
 (function () {
-    var VERSION = '4.2', KEY = 'malla_iq_novedades_visto';
+    var VERSION = '5.0', KEY = 'malla_iq_novedades_visto';
     var ITEMS = [
-        { s: 'new', e: '🌗', t: 'Modo noche y modo día', p: 'Nuevo diseño con dos temas. Cambia con el botón del encabezado y se recuerda tu elección.' },
-        { s: 'new', e: '🧮', t: 'Calculadora de promedios', p: 'Anota tus notas semestre a semestre y consulta tu PAPA. Incluye la nivelación como semestre 0.' },
-        { s: 'new', e: '✅', t: 'Aprobada, reprobada o pendiente', p: 'Clic para aprobar una materia; en ⋮ eliges reprobada o pendiente. Las notas de la calculadora actualizan la malla solas.' },
-        { s: 'new', e: '☝️', t: 'Prerrequisitos que se respetan', p: 'No puedes aprobar una materia sin sus prerrequisitos (' + (window.PROG && PROG.id !== 'quimica' ? 'también los de créditos aprobados y los que siguen por validar' : 'incluidos los de 108, 53 y 60 créditos') + ') y te dice qué te falta.' },
-        { s: 'new', e: '🔗', t: 'Conexiones entre materias', p: 'Líneas que unen cada materia con sus prerrequisitos; al pasar el cursor se resaltan. Actívalas o apágalas con el botón Conexiones.' },
-        { s: 'new', e: '🧭', t: 'Mi planificación', p: 'Con el botón Planificar arrastras las materias entre semestres (o usas ‹ ›) para armar tu propio orden. Te avisa si algo queda antes de su prerrequisito y la malla oficial no cambia.' },
-        { s: 'new', e: '🗂️', t: 'Programa por agrupaciones', p: 'Las asignaturas del plan agrupadas por componente, con créditos exigidos, obligatorios y optativos.' },
-        { s: 'new', e: '📊', t: 'Cupos y grupos en tiempo real', p: 'Consulta grupos, horarios, salones y cupos del SIA desde cualquier materia.' },
-        { s: 'new', e: '⭐', t: 'Reseñas anónimas de profesores', p: 'Mira la calificación de cada profesor y deja la tuya, sin cuenta ni correo.' },
-        { s: 'new', e: '📌', t: 'Libre elección con el catálogo del SIA', p: 'Busca materias de libre elección y fíjalas en los cupos de tu malla.' },
-        { s: 'new', e: '🗓️', t: 'Horario semanal', p: 'Arma hasta tres planes (A, B y C), detecta cruces, marca favoritas, copia o imprime tu horario.' },
-        { s: 'new', e: '📍', t: 'Info y calendario', p: 'Calendario del semestre con cuenta regresiva, líneas de emergencia, solicitud de sobrecupo y tus propios enlaces.' },
-        { s: 'new', e: '🎓', t: 'Modalidades de grado', p: 'Trabajos investigativos, prácticas de extensión (pasantía, emprendimiento, proyecto social) y asignaturas de posgrado, con fechas, requisitos y cuánto te falta. Está en Info y calendario y en el ⋮ del Trabajo de Grado.' },
-        { s: 'new', e: '💬', t: 'Buzón de comentarios', p: 'Cuéntame tu opinión, sugerencias o quejas desde el botón Comentarios. Tu mensaje me llega solo a mí.' }
+        { s: 'new', e: '🏛️', t: 'Nueve carreras de la Facultad', p: 'Además de Química están Agrícola, Civil, Eléctrica, Electrónica, Industrial, Mecánica, Mecatrónica y Sistemas, armadas con su malla oficial. Eliges la tuya en la portada.' },
+        { s: 'new', e: '✅', t: 'Prerrequisitos verificados con el SIA', p: 'Los requisitos de las nueve carreras se cotejaron con el catálogo del SIA. Los que aún dicen «por validar» también bloquean, solo se ven punteados.' },
+        { s: 'new', e: '🎓', t: 'Doble titulación', p: 'En la portada eliges tu carrera principal y la segunda. Ves el camino paso a paso, las materias en común marcadas en la malla y pasas de una carrera a otra con un toque.' },
+        { s: 'new', e: '🧭', t: 'Modalidades de grado', p: 'Trabajos investigativos, prácticas de extensión y asignaturas de posgrado, con fechas, requisitos y cuánto te falta. Está en Info y calendario y en el ⋮ del Trabajo de Grado.' },
+        { s: 'new', e: '🗂️', t: 'Agrupaciones más completas', p: 'Civil y Sistemas tienen sus agrupaciones con créditos exigidos y optativas; en las demás ves las optativas que registra el SIA.' },
+        { s: 'new', e: '📈', t: 'Tu avance en la portada', p: 'Cada carrera muestra cuánto llevas completado.' },
+        { s: 'new', e: '🔦', t: 'Conexiones más claras', p: 'Al pasar el cursor o tocar una materia, todo lo que no tiene que ver con ella se oscurece, aprobadas incluidas.' },
+        { s: 'new', e: '✨', t: 'Diseño más tranquilo', p: 'Transición suave entre la portada y la malla, más espacio entre materias y menos elementos en pantalla.' },
+        { s: 'fix', e: '🧪', t: 'Prerrequisitos de Química según el SIA', p: 'Termodinámica pide también Cálculo Diferencial; Ecuaciones Diferenciales, solo Cálculo Integral; Lab. Fluidos y Calor, Fluidos, Manejo de Sólidos y Transferencia de Calor.' },
+        { s: 'fix', e: '🔢', t: 'Códigos corregidos', p: 'Se arreglaron códigos mal transcritos en Electrónica, Mecatrónica y Sistemas.' },
+        { s: 'fix', e: '🏷️', t: 'Sitio no oficial y sin anuncios', p: 'Hecho por estudiantes para estudiantes, sin ánimo de lucro. Se quitaron los anuncios.' },
+        { s: 'v42', e: '🌗', t: 'Modo noche y modo día', p: 'Nuevo diseño con dos temas. Cambia con el botón del encabezado y se recuerda tu elección.' },
+        { s: 'v42', e: '🧮', t: 'Calculadora de promedios', p: 'Anota tus notas semestre a semestre y consulta tu PAPA. Incluye la nivelación como semestre 0.' },
+        { s: 'v42', e: '✅', t: 'Aprobada, reprobada o pendiente', p: 'Clic para aprobar una materia; en ⋮ eliges reprobada o pendiente. Las notas de la calculadora actualizan la malla solas.' },
+        { s: 'v42', e: '☝️', t: 'Prerrequisitos que se respetan', p: 'No puedes aprobar una materia sin sus prerrequisitos (' + (window.PROG && PROG.id !== 'quimica' ? 'también los de créditos aprobados y los que siguen por validar' : 'incluidos los de 108, 53 y 60 créditos') + ') y te dice qué te falta.' },
+        { s: 'v42', e: '🔗', t: 'Conexiones entre materias', p: 'Líneas que unen cada materia con sus prerrequisitos; al pasar el cursor se resaltan. Actívalas o apágalas con el botón Conexiones.' },
+        { s: 'v42', e: '🧭', t: 'Mi planificación', p: 'Con el botón Planificar arrastras las materias entre semestres (o usas ‹ ›) para armar tu propio orden. Te avisa si algo queda antes de su prerrequisito y la malla oficial no cambia.' },
+        { s: 'v42', e: '🗂️', t: 'Programa por agrupaciones', p: 'Las asignaturas del plan agrupadas por componente, con créditos exigidos, obligatorios y optativos.' },
+        { s: 'v42', e: '📊', t: 'Cupos y grupos en tiempo real', p: 'Consulta grupos, horarios, salones y cupos del SIA desde cualquier materia.' },
+        { s: 'v42', e: '⭐', t: 'Reseñas anónimas de profesores', p: 'Mira la calificación de cada profesor y deja la tuya, sin cuenta ni correo.' },
+        { s: 'v42', e: '📌', t: 'Libre elección con el catálogo del SIA', p: 'Busca materias de libre elección y fíjalas en los cupos de tu malla.' },
+        { s: 'v42', e: '🗓️', t: 'Horario semanal', p: 'Arma hasta tres planes (A, B y C), detecta cruces, marca favoritas, copia o imprime tu horario.' },
+        { s: 'v42', e: '📍', t: 'Info y calendario', p: 'Calendario del semestre con cuenta regresiva, líneas de emergencia, solicitud de sobrecupo y tus propios enlaces.' },
+        { s: 'v42', e: '💬', t: 'Buzón de comentarios', p: 'Cuéntame tu opinión, sugerencias o quejas desde el botón Comentarios. Tu mensaje me llega solo a mí.' }
     ];
-    var CMD = 'malla actualizar 1.0 → 4.2';
+    var CMD = 'malla actualizar 4.2 → 5.0';
     if (window.PROG && PROG.id !== 'quimica') {   // las demás carreras no tuvieron versión 1.0
         CMD = 'mallas abrir ' + PROG.id;
         var lead = document.querySelector('#nv-modal .nv-lead');
@@ -4877,10 +4887,10 @@ infoLinksRender();
         ITEMS.forEach(function (it) {
             if (it.s !== last) {
                 last = it.s;
-                h += '<div class="nv-sec">' + (it.s === 'new' ? '✨ Lo nuevo' : '🛠️ Lo corregido') + '</div>';
+                h += '<div class="nv-sec' + (it.s === 'v42' ? ' nv-log' : '') + '">' + ({ new: '✨ Lo nuevo en la 5.0', fix: '🛠️ Lo corregido en la 5.0', v42: '📜 Historial · versión 4.2 (de la 1.0 a la 4.2)' })[it.s] + '</div>';
             }
             n++;
-            h += '<div class="nv-item ' + it.s + '"><div class="nv-n">' + n + '</div><div><div class="nv-t">' + it.e + ' ' + it.t + '</div><p class="nv-p">' + it.p + '</p></div></div>';
+            h += '<div class="nv-item ' + (it.s === 'v42' ? 'log' : it.s) + '"><div class="nv-n">' + n + '</div><div><div class="nv-t">' + it.e + ' ' + it.t + '</div><p class="nv-p">' + it.p + '</p></div></div>';
         });
         $('nv-list').innerHTML = h;
         ['nv-d1', 'nv-d2'].forEach(function (id) {
@@ -4923,7 +4933,7 @@ infoLinksRender();
 
     function land() {
         var d = $('nv-done');
-        d.innerHTML = '<b>✓</b> Actualizada a la versión ' + VERSION + ' · ' + ITEMS.length + ' cambios';
+        d.innerHTML = '<b>✓</b> Actualizada a la versión ' + VERSION + ' · ' + ITEMS.filter(function (x) { return x.s !== 'v42'; }).length + ' cambios';
         d.classList.add('on');
         if (!reduce()) burst();
     }
@@ -4947,8 +4957,8 @@ infoLinksRender();
         timers.forEach(clearTimeout); timers = [];
         if (io) { io.disconnect(); io = null; }
         $('nv-term').innerHTML = termHtml(0, true);
-        setStrip('nv-d1', 1, 0, false);
-        setStrip('nv-d2', 0, 0, false);
+        setStrip('nv-d1', 4, 0, false);
+        setStrip('nv-d2', 2, 0, false);
         $('nv-done').classList.remove('on');
         $('nv-burst').innerHTML = '';
         [].forEach.call(document.querySelectorAll('#nv-list .nv-item'), function (e) { e.classList.remove('in'); });
@@ -4962,15 +4972,15 @@ infoLinksRender();
     function play() {
         if (reduce()) {
             $('nv-term').innerHTML = termHtml(CMD.length, false);
-            setStrip('nv-d1', 14, 0, false); setStrip('nv-d2', 22, 0, false);
+            setStrip('nv-d1', 15, 0, false); setStrip('nv-d2', 20, 0, false);
             land(); startReveal(); return;
         }
         later(function () {
             typeTerm(function () {
                 later(function () {
                     $('nv-term').innerHTML = termHtml(CMD.length, false);
-                    setStrip('nv-d1', 14, 1.6, true);
-                    setStrip('nv-d2', 22, 2.2, true);
+                    setStrip('nv-d1', 15, 1.6, true);
+                    setStrip('nv-d2', 20, 2.2, true);
                     later(startReveal, 900);
                     later(land, 2300);
                 }, 150);
@@ -5087,7 +5097,7 @@ infoLinksRender();
         fetch(API, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ tipo: tipo, mensaje: text, contacto: $('fb-contact').value.trim(), v: '4.2' }),
+            body: JSON.stringify({ tipo: tipo, mensaje: text, contacto: $('fb-contact').value.trim(), v: '5.0' }),
             signal: ctrl ? ctrl.signal : undefined
         }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok && j.ok !== false, j: j }; }); })
           .then(function (res) {
@@ -5120,7 +5130,7 @@ infoLinksRender();
     /* Si ya vio las novedades, el aviso sale solo; si no, sale al cerrar el pop-up de novedades */
     if (get(K_TIP) !== '1') {
         btn.classList.add('nuevo');
-        if (get(K_NV) === '4.2') setTimeout(window.fbShowTip, 1800);
+        if (get(K_NV) === '5.0') setTimeout(window.fbShowTip, 1800);
     }
 })();
 </script>
@@ -5259,12 +5269,6 @@ infoLinksRender();
 
     // Nombre de la carrera y aviso de "en construcción"
     var pn = document.getElementById('prog-nombre'); if (pn) pn.textContent = PROG.nombre;
-    if (PROG.wip) {
-        var sh = document.querySelector('#malla-view .malla-shell'), av = document.createElement('div');
-        av.className = 'prog-aviso';
-        av.innerHTML = '<thinking-orb state="shaping breathing working weaving" size="20" style="margin-top:1px"></thinking-orb><div><b>' + PROG.nombre + ' está en construcción.</b> Las materias, créditos y semestres vienen de la malla oficial' + (PROG.pdf ? ' (<a href="' + PROG.pdf + '" target="_blank" rel="noopener">PDF</a>)' : '') + '. ' + (PROG.fuente ? 'Los prerrequisitos vienen del ' + PROG.fuente + ' y bloquean materias.' : 'Sus prerrequisitos están <b>por validar</b>.') + (PROG.data.some(function (s) { return s.mat.some(function (m) { return m.rv && m.rv.length; }); }) ? ' Los que dicen <b>por validar</b> (línea punteada) también bloquean mientras se confirman.' : '') + ' Confírmalos en el SIA antes de inscribir.' + ' Si ves un error, cuéntame en Comentarios.</div>';
-        if (sh) sh.prepend(av);
-    }
 
     // El aviso de comentarios abre el buzón al tocarlo
     var tip = document.getElementById('fb-tip');
@@ -6409,5 +6413,35 @@ infoLinksRender();
     }
 })();
 </script>
+<style id="aire-v1">
+/* Quitados: cuenta regresiva del encabezado y lupa de búsqueda */
+#fx-cd, #tb-dyn { display: none !important; }
+/* Al enfocar una materia, todo lo no relacionado (también aprobadas y reprobadas) se oscurece */
+.malla-wrapper.has-focus .materia:not(.is-focus):not(.rel-req):not(.rel-open) { opacity: .2 !important; filter: grayscale(.85) brightness(.75) !important; box-shadow: none !important; }
+.malla-wrapper.has-focus .materia:not(.is-focus):not(.rel-req):not(.rel-open) * { opacity: 1; }
+.malla-wrapper.has-focus .materia.is-focus, .malla-wrapper.has-focus .materia.rel-req, .malla-wrapper.has-focus .materia.rel-open { filter: none !important; z-index: 3; }
+.malla-wrapper.has-focus .lk:not(.hl) { opacity: .08 !important; }
+/* Más aire */
+header { margin-bottom: 30px !important; row-gap: 12px !important; column-gap: 10px !important; }
+.kpi-row { gap: 16px; margin-bottom: 20px; }
+.kpi { padding: 18px 20px; }
+.malla-shell > .stats, #malla-view .stats { margin-bottom: 22px; }
+.malla-wrapper { gap: 24px !important; padding: 22px 6px 48px !important; }
+.semestre-col { gap: 12px !important; min-width: 210px; flex-basis: 210px; }
+.materia { padding: 14px 16px !important; }
+.materia .m-name { margin-bottom: 6px; line-height: 1.35; }
+.tabs { margin-top: 6px; margin-bottom: 8px !important; }
+.info-wrap, .agrupaciones-container { gap: 22px !important; }
+.view-section { padding-top: 6px; }
+@media (max-width: 760px) {
+  header { margin-bottom: 20px !important; }
+  .kpi-row { gap: 10px; } .kpi { padding: 14px 16px; }
+  .malla-wrapper { gap: 16px !important; }
+  .semestre-col { min-width: 190px; flex-basis: 190px; }
+}
+ .nv-sec.nv-log { margin-top: 22px; opacity: .85; }
+.nv-item.log { opacity: .72; }
+.nv-item.log .nv-t { font-size: .92em; }
+</style>
 </body>
 </html>
