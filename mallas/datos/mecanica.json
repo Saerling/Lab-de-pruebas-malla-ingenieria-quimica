@@ -1,7 +1,7 @@
 {
  "id": "mecanica",
  "nombre": "Ingeniería Mecánica",
- "plan": "Acuerdo 033 de 2007 (Universidad Nacional de Colombia) / Acuerdo No. 68 de 2018 del Consejo de Facultad de Ingeniería",
+ "plan": "Acuerdo 033 de 2007 (Universidad Nacional de Colombia) / Acuerdo No. 86 de 2018 del Consejo de Facultad de Ingeniería",
  "creditos": 180,
  "semestres": [
   {
@@ -13,7 +13,8 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Matemáticas, Probabilidad y Estadística",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "sia": true
     },
     {
      "cod": "2015734",
@@ -21,7 +22,8 @@
      "c": 3,
      "cat": "Fundamentación",
      "agr": "Herramientas para Ingeniería",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "sia": true
     },
     {
      "cod": "2015711",
@@ -29,7 +31,8 @@
      "c": 3,
      "cat": "Fundamentación",
      "agr": "Expresión Gráfica",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "sia": true
     },
     {
      "cod": "2017278",
@@ -37,7 +40,8 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Ingeniería de Materiales y Procesos de Manufactura",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "sia": true
     },
     {
      "cod": "2017265",
@@ -45,7 +49,8 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Investigación, Innovación y Desarrollo Tecnológico",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "sia": true
     }
    ]
   },
@@ -59,9 +64,10 @@
      "cat": "Fundamentación",
      "agr": "Matemáticas, Probabilidad y Estadística",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "1000004"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "1000003",
@@ -69,7 +75,8 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Matemáticas, Probabilidad y Estadística",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "sia": true
     },
     {
      "cod": "1000019",
@@ -78,9 +85,10 @@
      "cat": "Fundamentación",
      "agr": "Física",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "1000004"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2017257",
@@ -89,9 +97,10 @@
      "cat": "Disciplinar",
      "agr": "Ingeniería de Diseño",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "2015711"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "",
@@ -112,7 +121,12 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Matemáticas, Probabilidad y Estadística",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000005",
+      "1000003"
+     ],
+     "sia": true
     },
     {
      "cod": "1000013",
@@ -120,7 +134,11 @@
      "c": 3,
      "cat": "Fundamentación",
      "agr": "Matemáticas, Probabilidad y Estadística",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000004"
+     ],
+     "sia": true
     },
     {
      "cod": "",
@@ -136,7 +154,8 @@
      "c": 3,
      "cat": "Fundamentación",
      "agr": "Química",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "sia": true
     },
     {
      "cod": "2016640",
@@ -145,9 +164,10 @@
      "cat": "Disciplinar",
      "agr": "Ingeniería de Diseño",
      "tipo": "obligatoria",
-     "rv": [
-      "1000019"
-     ]
+     "r": [
+      "1000003"
+     ],
+     "sia": true
     }
    ]
   },
@@ -160,7 +180,12 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Matemáticas, Probabilidad y Estadística",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000005",
+      "1000003"
+     ],
+     "sia": true
     },
     {
      "cod": "2017271",
@@ -168,7 +193,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Ingeniería de Diseño",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000003"
+     ],
+     "sia": true
     },
     {
      "cod": "2017256",
@@ -176,7 +205,12 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Ingeniería de Materiales y Procesos de Manufactura",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000024",
+      "2017278"
+     ],
+     "sia": true
     },
     {
      "cod": "2017279",
@@ -184,7 +218,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Ingeniería Térmica y Fluidos",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000024"
+     ],
+     "sia": true
     }
    ]
   },
@@ -198,11 +236,10 @@
      "cat": "Fundamentación",
      "agr": "Herramientas para Ingeniería",
      "tipo": "obligatoria",
-     "rv": [
-      "2015734",
-      "1000003",
+     "r": [
       "1000007"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "",
@@ -219,10 +256,10 @@
      "cat": "Disciplinar",
      "agr": "Ingeniería de Diseño",
      "tipo": "obligatoria",
-     "rv": [
-      "2016640",
-      "2017256"
-     ]
+     "r": [
+      "2016640"
+     ],
+     "sia": true
     },
     {
      "cod": "2017268",
@@ -231,9 +268,10 @@
      "cat": "Disciplinar",
      "agr": "Ingeniería de Diseño",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "2017271"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2017267",
@@ -242,9 +280,10 @@
      "cat": "Disciplinar",
      "agr": "Ingeniería de Materiales y Procesos de Manufactura",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "2017256"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2017272",
@@ -253,9 +292,10 @@
      "cat": "Disciplinar",
      "agr": "Ingeniería Térmica y Fluidos",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "1000007"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2017266",
@@ -263,7 +303,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Automatización, Control y Robótica",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000003"
+     ],
+     "sia": true
     }
    ]
   },
@@ -277,9 +321,10 @@
      "cat": "Fundamentación",
      "agr": "Herramientas para Ingeniería",
      "tipo": "obligatoria",
-     "rv": [
-      "2015970"
-     ]
+     "r": [
+      "1000007"
+     ],
+     "sia": true
     },
     {
      "cod": "2015703",
@@ -288,9 +333,10 @@
      "cat": "Fundamentación",
      "agr": "Ciencias Económicas y Administrativas",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "1000005"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2017273",
@@ -299,10 +345,11 @@
      "cat": "Disciplinar",
      "agr": "Ingeniería de Materiales y Procesos de Manufactura",
      "tipo": "obligatoria",
-     "rv": [
-      "2017277",
-      "2017267"
-     ]
+     "r": [
+      "2017267",
+      "2017277"
+     ],
+     "sia": true
     },
     {
      "cod": "2017262",
@@ -311,10 +358,11 @@
      "cat": "Disciplinar",
      "agr": "Ingeniería Térmica y Fluidos",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "2017279",
       "2017272"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2017260",
@@ -323,9 +371,10 @@
      "cat": "Disciplinar",
      "agr": "Automatización, Control y Robótica",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "2017266"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2016506",
@@ -334,9 +383,10 @@
      "cat": "Disciplinar",
      "agr": "Automatización, Control y Robótica",
      "tipo": "obligatoria",
-     "rv": [
-      "1000007"
-     ]
+     "r": [
+      "2017266"
+     ],
+     "sia": true
     },
     {
      "cod": "2024045",
@@ -346,9 +396,12 @@
      "agr": "Investigación, Innovación y Desarrollo Tecnológico",
      "tipo": "obligatoria",
      "rv": [
-      "CRED_99",
+      "CRED_99"
+     ],
+     "r": [
       "2017265"
-     ]
+     ],
+     "sia": true
     }
    ]
   },
@@ -362,10 +415,10 @@
      "cat": "Fundamentación",
      "agr": "Herramientas para Ingeniería",
      "tipo": "obligatoria",
-     "rv": [
-      "2015970",
-      "2017277"
-     ]
+     "r": [
+      "1000007"
+     ],
+     "sia": true
     },
     {
      "cod": "2015702",
@@ -374,9 +427,10 @@
      "cat": "Fundamentación",
      "agr": "Ciencias Económicas y Administrativas",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "2015703"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2017258",
@@ -385,11 +439,11 @@
      "cat": "Disciplinar",
      "agr": "Ingeniería de Diseño",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "2017277",
-      "2017257",
       "2017268"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2017274",
@@ -398,9 +452,11 @@
      "cat": "Disciplinar",
      "agr": "Ingeniería de Materiales y Procesos de Manufactura",
      "tipo": "obligatoria",
-     "rv": [
-      "2017273"
-     ]
+     "r": [
+      "2017267",
+      "2017277"
+     ],
+     "sia": true
     },
     {
      "cod": "",
@@ -438,9 +494,11 @@
      "cat": "Disciplinar",
      "agr": "Ingeniería de Diseño",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
+      "2017257",
       "2017258"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2017264",
@@ -449,9 +507,11 @@
      "cat": "Disciplinar",
      "agr": "Ingeniería de Materiales y Procesos de Manufactura",
      "tipo": "obligatoria",
-     "rv": [
-      "2017274"
-     ]
+     "r": [
+      "2017274",
+      "1000013"
+     ],
+     "sia": true
     },
     {
      "cod": "",
@@ -468,10 +528,11 @@
      "cat": "Disciplinar",
      "agr": "Automatización, Control y Robótica",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "2016506",
-      "1000007"
-     ]
+      "2017260"
+     ],
+     "sia": true
     }
    ]
   },
@@ -509,9 +570,10 @@
      "cat": "Disciplinar",
      "agr": "Automatización, Control y Robótica",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "2015215"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2017275",
@@ -522,7 +584,8 @@
      "tipo": "obligatoria",
      "r": [
       "CRED_135"
-     ]
+     ],
+     "sia": true
     }
    ]
   },
@@ -570,7 +633,8 @@
      "tipo": "obligatoria",
      "r": [
       "CRED_144"
-     ]
+     ],
+     "sia": true
     }
    ]
   }
@@ -579,7 +643,63 @@
   "Semestre VII: el PDF imprime 18 créditos, pero las 5 tarjetas del semestre suman 15 (3+3+3+3+3). Con 15 el total da exactamente 180 (créditos del programa); la suma de los totales impresos por semestre daría 183.",
   "Resumen de Fundamentación del PDF: obligatoria 50 y optativa 8 (total 58). Las tarjetas dan obligatoria 51 y optativa 7 (Optativa Física de 4 créditos en III y de 3 en V); el total 58 sí cuadra.",
   "Dibujo de Máquinas (2017257) aparece con 4 créditos en la tarjeta (coherente con el total 19 del semestre II).",
-  "Las tarjetas optativas no nombran asignatura; solo la agrupación (Física en III y V; Ingeniería Térmica y Fluidos en VII y VIII)."
+  "Las tarjetas optativas no nombran asignatura; solo la agrupación (Física en III y V; Ingeniería Térmica y Fluidos en VII y VIII).",
+  "El plan se había transcrito como Acuerdo 68 de 2018; el nombre del PDF y las preguntas frecuentes de la Facultad dicen Acuerdo 86 de 2018."
  ],
- "prerrequisitos": "Cargados de mallas/prerrequisitos_validacion.txt (14 nov 2026). r = confirmados en Acuerdo/PEP/malla; rv = por validar en el SIA (no bloquean)."
+ "prerrequisitos": "Cargados de mallas/prerrequisitos_validacion.txt (14 nov 2026). r = confirmados en Acuerdo/PEP/malla; rv = por validar en el SIA (no bloquean).",
+ "prerrequisitos_sia": "2026-11-15",
+ "sia_catalogo": {
+  "fecha": "15 nov 2026",
+  "trabajo_grado": [
+   [
+    "2017295",
+    "Trabajo de Grado",
+    6
+   ],
+   [
+    "2017296",
+    "Trabajo de Grado - Asignaturas de Posgrado",
+    6
+   ]
+  ],
+  "fund_optativas": [
+   [
+    "1000017",
+    "Fundamentos de electricidad y magnetismo",
+    4
+   ],
+   [
+    "1000018",
+    "Fundamentos de física moderna",
+    3
+   ],
+   [
+    "1000021",
+    "Fundamentos de mecánica de fluidos",
+    3
+   ],
+   [
+    "1000020",
+    "Fundamentos de oscilaciones, ondas y óptica",
+    4
+   ]
+  ],
+  "disc_optativas": [
+   [
+    "2017263",
+    "Fundamentos de turbomaquinaria",
+    3
+   ],
+   [
+    "2017270",
+    "Plantas Térmicas",
+    3
+   ],
+   [
+    "2027953",
+    "Termodinámica de sistemas energéticos",
+    3
+   ]
+  ]
+ }
 }

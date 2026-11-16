@@ -21,7 +21,8 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Sociohumanística",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "sia": true
     },
     {
      "cod": "2026805",
@@ -29,7 +30,8 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Contexto Profesional y Proyectos de Ingeniería",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "sia": true
     },
     {
      "cod": "2015734",
@@ -37,7 +39,8 @@
      "c": 3,
      "cat": "Fundamentación",
      "agr": "Programación",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "sia": true
     }
    ]
   },
@@ -75,7 +78,8 @@
      "tipo": "obligatoria",
      "r": [
       "2026805"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2016375",
@@ -86,7 +90,8 @@
      "tipo": "obligatoria",
      "r": [
       "2015734"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "",
@@ -121,7 +126,8 @@
      "tipo": "obligatoria",
      "r": [
       "Cálculo Diferencial"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "",
@@ -142,7 +148,8 @@
       "Cálculo Diferencial",
       "2026805",
       "2016375"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2027877",
@@ -153,7 +160,8 @@
      "tipo": "obligatoria",
      "r": [
       "Cálculo Integral"
-     ]
+     ],
+     "sia": true
     }
    ]
   },
@@ -182,7 +190,8 @@
      "r": [
       "1000019",
       "Cálculo Integral"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "",
@@ -213,7 +222,8 @@
      "tipo": "obligatoria",
      "r": [
       "1000019"
-     ]
+     ],
+     "sia": true
     }
    ]
   },
@@ -256,7 +266,8 @@
      "r": [
       "Cálculo en Varias Variables",
       "Optativa Sistemas de Costos"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2016619",
@@ -267,7 +278,8 @@
      "tipo": "obligatoria",
      "r": [
       "2025993"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2016618",
@@ -278,7 +290,8 @@
      "tipo": "obligatoria",
      "r": [
       "2025993"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2027878",
@@ -289,7 +302,8 @@
      "tipo": "obligatoria",
      "r": [
       "2027877"
-     ]
+     ],
+     "sia": true
     }
    ]
   },
@@ -307,7 +321,8 @@
       "Optativa Optimización",
       "Optativa Modelos y Simulación",
       "2027878"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "",
@@ -336,9 +351,10 @@
      "agr": "Producción y Operaciones",
      "tipo": "obligatoria",
      "r": [
-      "Optativa Optimización",
-      "2016618"
-     ]
+      "2016618",
+      "Optativa Optimización"
+     ],
+     "sia": true
     },
     {
      "cod": "",
@@ -362,7 +378,8 @@
      "tipo": "obligatoria",
      "r": [
       "2025987"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "",
@@ -384,7 +401,8 @@
      "tipo": "obligatoria",
      "r": [
       "1000017"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2016614",
@@ -396,7 +414,8 @@
      "r": [
       "2016613",
       "2025987"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2016616",
@@ -406,9 +425,10 @@
      "agr": "Sociohumanística",
      "tipo": "obligatoria",
      "r": [
-      "2016615",
-      "2027878"
-     ]
+      "2027878",
+      "2016615"
+     ],
+     "sia": true
     }
    ]
   },
@@ -424,7 +444,8 @@
      "tipo": "obligatoria",
      "r": [
       "2025988"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "",
@@ -454,10 +475,11 @@
      "agr": "Producción y Operaciones",
      "tipo": "obligatoria",
      "r": [
+      "2016614",
       "2016609",
-      "Optativa Sistemas de Información",
-      "2016614"
-     ]
+      "Optativa Sistemas de Información"
+     ],
+     "sia": true
     },
     {
      "cod": "",
@@ -554,5 +576,150 @@
   "Erratas de la malla corregidas: 'Optativa - Sistema de costos' (pág. 2: Sistemas de Costos) y 'Gestión tecnólogica'. La tarjeta 2025987 dice '...sistemas de servicio' y la página 2 '...Sistemas de Servicios'; se dejó como en la tarjeta.",
   "El PDF solo imprime créditos por tarjeta (no las horas) y total por semestre."
  ],
- "prerrequisitos": "Cargados de mallas/prerrequisitos_validacion.txt (14 nov 2026). r = confirmados en Acuerdo/PEP/malla; rv = por validar en el SIA (no bloquean)."
+ "prerrequisitos": "Cargados de mallas/prerrequisitos_validacion.txt (14 nov 2026). r = confirmados en Acuerdo/PEP/malla; rv = por validar en el SIA (no bloquean).",
+ "prerrequisitos_sia": "2026-11-15",
+ "sia_catalogo": {
+  "fecha": "15 nov 2026",
+  "trabajo_grado": [
+   [
+    "2015321",
+    "Trabajo de Grado - Asignaturas de Posgrado",
+    6
+   ],
+   [
+    "2025989",
+    "Trabajo de grado - Modalidad practica de extension",
+    6
+   ],
+   [
+    "2025990",
+    "Trabajo de grado - Modalidad trabajos investigativos",
+    6
+   ]
+  ],
+  "fund_optativas": [
+   [
+    "1000003",
+    "Álgebra Lineal",
+    4
+   ],
+   [
+    "2016342",
+    "Cálculo de ecuaciones diferenciales ordinarias",
+    4
+   ],
+   [
+    "1000004",
+    "Cálculo diferencial",
+    4
+   ],
+   [
+    "2016377",
+    "Cálculo diferencial en una variable",
+    4
+   ],
+   [
+    "1000006",
+    "Cálculo en varias variables",
+    4
+   ],
+   [
+    "1000005",
+    "Cálculo Integral",
+    4
+   ],
+   [
+    "1000007",
+    "Ecuaciones Diferenciales",
+    4
+   ]
+  ],
+  "disc_optativas": [
+   [
+    "2016317",
+    "Control estadístico de calidad",
+    3
+   ],
+   [
+    "2016589",
+    "Control y gestión de calidad",
+    3
+   ],
+   [
+    "2026551",
+    "Creación y gestión de empresas",
+    3
+   ],
+   [
+    "2016028",
+    "Diseño, gestión y evaluación de proyectos",
+    4
+   ],
+   [
+    "2016592",
+    "Economía general",
+    3
+   ],
+   [
+    "2016741",
+    "Finanzas",
+    3
+   ],
+   [
+    "2016037",
+    "Finanzas avanzadas",
+    4
+   ],
+   [
+    "2016007",
+    "Fundamentos de administración",
+    4
+   ],
+   [
+    "2015701",
+    "Gerencia de recursos humanos",
+    3
+   ],
+   [
+    "2015702",
+    "Gerencia y gestión de proyectos",
+    3
+   ],
+   [
+    "2016600",
+    "Gestión tecnológica",
+    3
+   ],
+   [
+    "2016017",
+    "Microeconomía I",
+    4
+   ],
+   [
+    "2025970",
+    "Modelos y simulación",
+    3
+   ],
+   [
+    "2025971",
+    "Optimización",
+    3
+   ],
+   [
+    "2016610",
+    "Sistemas de costos",
+    4
+   ],
+   [
+    "2025982",
+    "Sistemas de información",
+    3
+   ],
+   [
+    "2016053",
+    "Sistemas de Información Gerencial",
+    4
+   ]
+  ]
+ }
 }

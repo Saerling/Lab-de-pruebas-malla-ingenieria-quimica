@@ -13,7 +13,8 @@
      "c": 3,
      "cat": "Fundamentación",
      "agr": "Biología y Química",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "sia": true
     },
     {
      "cod": "1000004",
@@ -21,7 +22,8 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Matemáticas y Estadística",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "sia": true
     },
     {
      "cod": "1000024",
@@ -29,7 +31,8 @@
      "c": 3,
      "cat": "Fundamentación",
      "agr": "Biología y Química",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "sia": true
     },
     {
      "cod": "2015711",
@@ -37,7 +40,8 @@
      "c": 3,
      "cat": "Fundamentación",
      "agr": "Expresión Gráfica",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "sia": true
     },
     {
      "cod": "2026186",
@@ -45,7 +49,8 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Básica Disciplinar",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "sia": true
     },
     {
      "cod": "",
@@ -53,7 +58,8 @@
      "c": 2,
      "cat": "Libre",
      "agr": "Humanidades",
-     "tipo": "libre"
+     "tipo": "libre",
+     "sugerida": "Humanidades"
     }
    ]
   },
@@ -69,7 +75,8 @@
      "tipo": "obligatoria",
      "r": [
       "1000004"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "1000005",
@@ -80,7 +87,8 @@
      "tipo": "obligatoria",
      "r": [
       "1000004"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "1000019",
@@ -91,7 +99,8 @@
      "tipo": "obligatoria",
      "r": [
       "1000004"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "",
@@ -107,7 +116,8 @@
      "c": 3,
      "cat": "Libre",
      "agr": "Humanidades",
-     "tipo": "libre"
+     "tipo": "libre",
+     "sugerida": "Humanidades"
     }
    ]
   },
@@ -122,8 +132,10 @@
      "agr": "Matemáticas y Estadística",
      "tipo": "obligatoria",
      "r": [
+      "1000003",
       "1000005"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "1000013",
@@ -134,7 +146,8 @@
      "tipo": "obligatoria",
      "r": [
       "1000004"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2026134",
@@ -144,9 +157,10 @@
      "agr": "Básica Disciplinar",
      "tipo": "obligatoria",
      "r": [
-      "1000003",
-      "1000019"
-     ]
+      "1000019",
+      "1000003"
+     ],
+     "sia": true
     },
     {
      "cod": "2015958",
@@ -158,7 +172,8 @@
      "r": [
       "2015711",
       "2026186"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2015703",
@@ -169,7 +184,8 @@
      "tipo": "obligatoria",
      "r": [
       "1000005"
-     ]
+     ],
+     "sia": true
     }
    ]
   },
@@ -184,9 +200,10 @@
      "agr": "Matemáticas y Estadística",
      "tipo": "obligatoria",
      "r": [
-      "1000005",
-      "1000003"
-     ]
+      "1000003",
+      "1000005"
+     ],
+     "sia": true
     },
     {
      "cod": "2015948",
@@ -197,7 +214,8 @@
      "tipo": "obligatoria",
      "r": [
       "2026134"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2015956",
@@ -208,7 +226,8 @@
      "tipo": "obligatoria",
      "r": [
       "2015958"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2015957",
@@ -219,7 +238,8 @@
      "tipo": "obligatoria",
      "r": [
       "2015958"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "",
@@ -227,7 +247,8 @@
      "c": 4,
      "cat": "Libre",
      "agr": "Física",
-     "tipo": "libre"
+     "tipo": "libre",
+     "sugerida": "Física"
     }
    ]
   },
@@ -245,7 +266,8 @@
       "1000006",
       "1000007",
       "2026134"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2015968",
@@ -255,9 +277,10 @@
      "agr": "Básica Disciplinar",
      "tipo": "obligatoria",
      "r": [
-      "1000006",
-      "2026134"
-     ]
+      "2026134",
+      "1000006"
+     ],
+     "sia": true
     },
     {
      "cod": "2015965",
@@ -269,7 +292,8 @@
      "r": [
       "1000024",
       "2015956"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "",
@@ -285,7 +309,8 @@
      "c": 3,
      "cat": "Libre",
      "agr": "Herramientas de Ingeniería",
-     "tipo": "libre"
+     "tipo": "libre",
+     "sugerida": "Herramientas de Ingeniería"
     }
    ]
   },
@@ -301,7 +326,8 @@
      "tipo": "obligatoria",
      "r": [
       "2015966"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2015978",
@@ -313,7 +339,8 @@
      "r": [
       "1000013",
       "2015966"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2015941",
@@ -324,7 +351,8 @@
      "tipo": "obligatoria",
      "r": [
       "2015968"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2015969",
@@ -335,7 +363,8 @@
      "tipo": "obligatoria",
      "r": [
       "2015968"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2026138",
@@ -345,9 +374,9 @@
      "agr": "Vías y Transporte",
      "tipo": "obligatoria",
      "r": [
-      "1000011",
       "1000003"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "",
@@ -374,7 +403,8 @@
      "tipo": "obligatoria",
      "r": [
       "2015961"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2015938",
@@ -385,7 +415,8 @@
      "tipo": "obligatoria",
      "r": [
       "2015961"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2015940",
@@ -397,7 +428,8 @@
      "r": [
       "2015941",
       "2015948"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2015959",
@@ -408,7 +440,8 @@
      "tipo": "obligatoria",
      "r": [
       "2015969"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2015963",
@@ -419,7 +452,8 @@
      "tipo": "obligatoria",
      "r": [
       "2026138"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "",
@@ -427,7 +461,8 @@
      "c": 3,
      "cat": "Libre",
      "agr": "Electiva Técnica",
-     "tipo": "libre"
+     "tipo": "libre",
+     "sugerida": "Electiva Técnica"
     }
    ]
   },
@@ -444,7 +479,8 @@
      "r": [
       "1000011",
       "2015938"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2015939",
@@ -454,9 +490,10 @@
      "agr": "Saneamiento Básico",
      "tipo": "obligatoria",
      "r": [
-      "2015978",
-      "2015938"
-     ]
+      "2015938",
+      "2015978"
+     ],
+     "sia": true
     },
     {
      "cod": "2015950",
@@ -466,9 +503,10 @@
      "agr": "Estructuras",
      "tipo": "obligatoria",
      "r": [
-      "2015965",
-      "2015940"
-     ]
+      "2015940",
+      "2015965"
+     ],
+     "sia": true
     },
     {
      "cod": "2015971",
@@ -478,9 +516,10 @@
      "agr": "Geotecnia",
      "tipo": "obligatoria",
      "r": [
-      "2015965",
-      "2015959"
-     ]
+      "2015959",
+      "2015965"
+     ],
+     "sia": true
     },
     {
      "cod": "2015949",
@@ -490,9 +529,10 @@
      "agr": "Vías y Transporte",
      "tipo": "obligatoria",
      "r": [
-      "2015957",
-      "2015963"
-     ]
+      "2015963",
+      "2015957"
+     ],
+     "sia": true
     },
     {
      "cod": "",
@@ -500,7 +540,8 @@
      "c": 3,
      "cat": "Libre",
      "agr": "Economía y Finanzas",
-     "tipo": "libre"
+     "tipo": "libre",
+     "sugerida": "Economía y Finanzas"
     }
    ]
   },
@@ -516,7 +557,8 @@
      "tipo": "obligatoria",
      "r": [
       "DISC_67"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2026135",
@@ -527,7 +569,8 @@
      "tipo": "obligatoria",
      "r": [
       "DISC_77"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "",
@@ -535,7 +578,10 @@
      "c": 3,
      "cat": "Libre",
      "agr": "Profundización",
-     "tipo": "libre"
+     "tipo": "libre",
+     "r": [
+      "CRED_108"
+     ]
     },
     {
      "cod": "",
@@ -543,7 +589,10 @@
      "c": 3,
      "cat": "Libre",
      "agr": "Profundización",
-     "tipo": "libre"
+     "tipo": "libre",
+     "r": [
+      "CRED_108"
+     ]
     },
     {
      "cod": "",
@@ -551,7 +600,10 @@
      "c": 3,
      "cat": "Libre",
      "agr": "Profundización",
-     "tipo": "libre"
+     "tipo": "libre",
+     "r": [
+      "CRED_108"
+     ]
     },
     {
      "cod": "2015972",
@@ -562,7 +614,8 @@
      "tipo": "obligatoria",
      "r": [
       "2026138"
-     ]
+     ],
+     "sia": true
     }
    ]
   },
@@ -597,7 +650,10 @@
      "c": 3,
      "cat": "Libre",
      "agr": "Profundización",
-     "tipo": "libre"
+     "tipo": "libre",
+     "r": [
+      "CRED_108"
+     ]
     },
     {
      "cod": "",
@@ -605,7 +661,10 @@
      "c": 3,
      "cat": "Libre",
      "agr": "Profundización",
-     "tipo": "libre"
+     "tipo": "libre",
+     "r": [
+      "CRED_108"
+     ]
     },
     {
      "cod": "",
@@ -613,7 +672,8 @@
      "c": 3,
      "cat": "Libre",
      "agr": "Economía y Finanzas",
-     "tipo": "libre"
+     "tipo": "libre",
+     "sugerida": "Economía y Finanzas"
     }
    ]
   }
@@ -623,7 +683,688 @@
   "Trabajo de Grado (sem. X, 6 créditos) aparece con 'OPTATIVA' en la casilla de código y agrupación 'Asignatura Especial'; el PDF lo cuenta dentro de los 12 créditos optativos disciplinares, por eso se marcó tipo 'optativa' conservando el nombre 'Trabajo de Grado'.",
   "La tarjeta de sem. X 'Construcción de Obras Civiles' tiene 'OPTATIVA' en vez de código (se elige entre 2015943, 2015944 y 2015945); se transcribió como 'Optativa Construcción'.",
   "Las tarjetas de libre elección de sem. IX y X se titulan 'Electiva de Ingeniería Civil' (Libre Elección / Profundización); las demás solo 'Electiva'. Todas se numeraron como Libre Elección 1..12.",
-  "El PDF dice 'Malla curricular propuesta', fechada el 19 de abril de 2016."
+  "El PDF dice 'Malla curricular propuesta', fechada el 19 de abril de 2016.",
+  "Catálogo del SIA (15 nov 2026): 2026136, 2015975, 2026137, 2015952, 2016183 (Electiva Técnica) y 2015945 (Construcción) están en la malla de 2016 pero no en el catálogo actual del plan 2542; en la página se marcan así.",
+  "La malla (2016) cita el Acuerdo 26 de 2015 del Consejo de Facultad; las preguntas frecuentes de la Facultad y fuentes.json citan el Acuerdo 27 de 2015. Se dejan ambos hasta confirmar cuál está vigente."
  ],
- "prerrequisitos": "Cargados de mallas/prerrequisitos_validacion.txt (14 nov 2026). r = confirmados en Acuerdo/PEP/malla; rv = por validar en el SIA (no bloquean)."
+ "prerrequisitos": "Cargados de mallas/prerrequisitos_validacion.txt (14 nov 2026). r = confirmados en Acuerdo/PEP/malla; rv = por validar en el SIA (no bloquean).",
+ "agrupaciones": [
+  {
+   "title": "MATEMÁTICAS Y ESTADÍSTICA",
+   "type": "fundamentacion",
+   "req": 23,
+   "obl": 23,
+   "opt": 0,
+   "materias": [
+    {
+     "id": "1000004",
+     "n": "Cálculo Diferencial",
+     "c": 4,
+     "ob": true
+    },
+    {
+     "id": "1000003",
+     "n": "Álgebra Lineal",
+     "c": 4,
+     "ob": true
+    },
+    {
+     "id": "1000005",
+     "n": "Cálculo Integral",
+     "c": 4,
+     "ob": true
+    },
+    {
+     "id": "1000006",
+     "n": "Cálculo en Varias Variables",
+     "c": 4,
+     "ob": true
+    },
+    {
+     "id": "1000013",
+     "n": "Probabilidad y Estadística Fundamental",
+     "c": 3,
+     "ob": true
+    },
+    {
+     "id": "1000007",
+     "n": "Ecuaciones Diferenciales",
+     "c": 4,
+     "ob": true
+    }
+   ]
+  },
+  {
+   "title": "FÍSICA",
+   "type": "fundamentacion",
+   "req": 4,
+   "obl": 4,
+   "opt": 0,
+   "materias": [
+    {
+     "id": "1000019",
+     "n": "Fundamentos de Mecánica",
+     "c": 4,
+     "ob": true
+    }
+   ]
+  },
+  {
+   "title": "HERRAMIENTAS DE INGENIERÍA",
+   "type": "fundamentacion",
+   "req": 6,
+   "obl": 0,
+   "opt": 6,
+   "materias": [
+    {
+     "id": "2015734",
+     "n": "Programación de Computadores",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2016375",
+     "n": "Programación Orientada a Objetos",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2025971",
+     "n": "Optimización",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2025970",
+     "n": "Modelos y Simulación",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2017293",
+     "n": "Modelación Matemática",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2015942",
+     "n": "Aplicación de Elementos Finitos",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2015970",
+     "n": "Métodos Numéricos",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2022761",
+     "n": "SIG para Ingeniería Civil",
+     "c": 3,
+     "ob": false
+    }
+   ]
+  },
+  {
+   "title": "EXPRESIÓN GRÁFICA",
+   "type": "fundamentacion",
+   "req": 3,
+   "obl": 3,
+   "opt": 0,
+   "materias": [
+    {
+     "id": "2015711",
+     "n": "Dibujo Básico",
+     "c": 3,
+     "ob": true
+    }
+   ]
+  },
+  {
+   "title": "BIOLOGÍA Y QUÍMICA",
+   "type": "fundamentacion",
+   "req": 6,
+   "obl": 6,
+   "opt": 0,
+   "materias": [
+    {
+     "id": "1000011",
+     "n": "Fundamentos de Ecología",
+     "c": 3,
+     "ob": true
+    },
+    {
+     "id": "1000024",
+     "n": "Principios de Química",
+     "c": 3,
+     "ob": true
+    }
+   ]
+  },
+  {
+   "title": "ECONOMÍA Y FINANZAS",
+   "type": "fundamentacion",
+   "req": 6,
+   "obl": 6,
+   "opt": 0,
+   "materias": [
+    {
+     "id": "2015703",
+     "n": "Ingeniería Económica",
+     "c": 3,
+     "ob": true
+    },
+    {
+     "id": "2015972",
+     "n": "Preparación y Evaluación de Proyectos de Infraestructura",
+     "c": 3,
+     "ob": true
+    }
+   ]
+  },
+  {
+   "title": "BÁSICA DISCIPLINAR",
+   "type": "disciplinar",
+   "req": 38,
+   "obl": 38,
+   "opt": 0,
+   "materias": [
+    {
+     "id": "2026186",
+     "n": "Introducción a la Ingeniería Civil",
+     "c": 3,
+     "ob": true
+    },
+    {
+     "id": "2026134",
+     "n": "Estática",
+     "c": 3,
+     "ob": true
+    },
+    {
+     "id": "2015958",
+     "n": "Geomática Básica",
+     "c": 4,
+     "ob": true
+    },
+    {
+     "id": "2015948",
+     "n": "Dinámica",
+     "c": 3,
+     "ob": true
+    },
+    {
+     "id": "2015956",
+     "n": "Geología",
+     "c": 3,
+     "ob": true
+    },
+    {
+     "id": "2015957",
+     "n": "Geomática Aplicada",
+     "c": 4,
+     "ob": true
+    },
+    {
+     "id": "2015966",
+     "n": "Mecánica de Fluidos",
+     "c": 4,
+     "ob": true
+    },
+    {
+     "id": "2015968",
+     "n": "Mecánica de Sólidos",
+     "c": 4,
+     "ob": true
+    },
+    {
+     "id": "2015965",
+     "n": "Materiales para Construcción",
+     "c": 4,
+     "ob": true
+    },
+    {
+     "id": "2015978",
+     "n": "Hidrología",
+     "c": 3,
+     "ob": true
+    },
+    {
+     "id": "2026135",
+     "n": "Ingeniería Civil Sostenible",
+     "c": 3,
+     "ob": true
+    }
+   ]
+  },
+  {
+   "title": "ELECTIVA TÉCNICA",
+   "type": "disciplinar",
+   "req": 3,
+   "obl": 0,
+   "opt": 3,
+   "materias": [
+    {
+     "id": "2015977",
+     "n": "Transporte Sostenible",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2026136",
+     "n": "Tecnología del Concreto",
+     "c": 3,
+     "ob": false,
+     "nosia": true
+    },
+    {
+     "id": "2024045",
+     "n": "Taller de Proyectos Interdisciplinarios",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2015975",
+     "n": "Taller de Experimentación y Modelación",
+     "c": 3,
+     "ob": false,
+     "nosia": true
+    },
+    {
+     "id": "2026137",
+     "n": "Pacificación del Tráfico",
+     "c": 3,
+     "ob": false,
+     "nosia": true
+    },
+    {
+     "id": "2015952",
+     "n": "Métodos Numéricos para Ingeniería Civil",
+     "c": 3,
+     "ob": false,
+     "nosia": true
+    },
+    {
+     "id": "2015967",
+     "n": "Mecánica de Rocas",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2022760",
+     "n": "Gestión en Construcción",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2015229",
+     "n": "Colombia Contemporánea",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2016183",
+     "n": "Análisis de Incertidumbre en Ingeniería Civil",
+     "c": 3,
+     "ob": false,
+     "nosia": true
+    }
+   ]
+  },
+  {
+   "title": "HIDRÁULICA",
+   "type": "disciplinar",
+   "req": 7,
+   "obl": 7,
+   "opt": 0,
+   "materias": [
+    {
+     "id": "2015961",
+     "n": "Hidráulica Básica",
+     "c": 4,
+     "ob": true
+    },
+    {
+     "id": "2015954",
+     "n": "Estructuras Hidráulicas",
+     "c": 3,
+     "ob": true
+    }
+   ]
+  },
+  {
+   "title": "SANEAMIENTO BÁSICO",
+   "type": "disciplinar",
+   "req": 9,
+   "obl": 9,
+   "opt": 0,
+   "materias": [
+    {
+     "id": "2015938",
+     "n": "Acueductos",
+     "c": 3,
+     "ob": true
+    },
+    {
+     "id": "2015973",
+     "n": "Saneamiento Ambiental",
+     "c": 3,
+     "ob": true
+    },
+    {
+     "id": "2015939",
+     "n": "Alcantarillados",
+     "c": 3,
+     "ob": true
+    }
+   ]
+  },
+  {
+   "title": "ESTRUCTURAS",
+   "type": "disciplinar",
+   "req": 9,
+   "obl": 9,
+   "opt": 0,
+   "materias": [
+    {
+     "id": "2015941",
+     "n": "Análisis Estructural Básico",
+     "c": 3,
+     "ob": true
+    },
+    {
+     "id": "2015940",
+     "n": "Análisis Estructural Aplicado",
+     "c": 3,
+     "ob": true
+    },
+    {
+     "id": "2015950",
+     "n": "Diseño Estructural",
+     "c": 3,
+     "ob": true
+    }
+   ]
+  },
+  {
+   "title": "GEOTECNIA",
+   "type": "disciplinar",
+   "req": 9,
+   "obl": 9,
+   "opt": 0,
+   "materias": [
+    {
+     "id": "2015969",
+     "n": "Mecánica de Suelos",
+     "c": 3,
+     "ob": true
+    },
+    {
+     "id": "2015959",
+     "n": "Geotecnia",
+     "c": 3,
+     "ob": true
+    },
+    {
+     "id": "2015971",
+     "n": "Pavimentos",
+     "c": 3,
+     "ob": true
+    }
+   ]
+  },
+  {
+   "title": "CONSTRUCCIÓN",
+   "type": "disciplinar",
+   "req": 6,
+   "obl": 3,
+   "opt": 3,
+   "materias": [
+    {
+     "id": "2015955",
+     "n": "Fundamentos de Construcción",
+     "c": 3,
+     "ob": true
+    },
+    {
+     "id": "2015943",
+     "n": "Construcción de Edificaciones",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2015944",
+     "n": "Construcción de Infraestructura Vial",
+     "c": 3,
+     "ob": false
+    },
+    {
+     "id": "2015945",
+     "n": "Construcción de Obras Fluviales y Litorales",
+     "c": 3,
+     "ob": false,
+     "nosia": true
+    }
+   ]
+  },
+  {
+   "title": "VÍAS Y TRANSPORTE",
+   "type": "disciplinar",
+   "req": 9,
+   "obl": 9,
+   "opt": 0,
+   "materias": [
+    {
+     "id": "2026138",
+     "n": "Ingeniería de Transporte",
+     "c": 3,
+     "ob": true
+    },
+    {
+     "id": "2015963",
+     "n": "Ingeniería de Tránsito",
+     "c": 3,
+     "ob": true
+    },
+    {
+     "id": "2015949",
+     "n": "Diseño Geométrico de Vías",
+     "c": 3,
+     "ob": true
+    }
+   ]
+  },
+  {
+   "title": "TRABAJO DE GRADO (ASIGNATURA ESPECIAL)",
+   "type": "disciplinar",
+   "req": 6,
+   "obl": 0,
+   "opt": 6,
+   "materias": [
+    {
+     "id": "2015296",
+     "n": "Trabajo de Grado",
+     "c": 6,
+     "ob": false
+    },
+    {
+     "id": "2015299",
+     "n": "Trabajo de Grado - Asignaturas de Posgrado",
+     "c": 6,
+     "ob": false
+    }
+   ]
+  }
+ ],
+ "agrupaciones_fuente": "Malla curricular propuesta (PLAN_ING.pdf, 19 abr 2016), sección «Componente flexible»",
+ "electivas": {
+  "titulo": "Electivas de Ingeniería Civil (libre elección · profundización)",
+  "nota": "Requieren 108 créditos aprobados (60 %) las asignaturas y 126 (70 %) las prácticas.",
+  "materias": [
+   {
+    "id": "2025343",
+    "n": "Taller de Modelación de Hidrosistemas: Hidráulica"
+   },
+   {
+    "id": "2025342",
+    "n": "Taller de Modelación de Hidrosistemas: Hidrología"
+   },
+   {
+    "id": "2022916",
+    "n": "Taller de Instalaciones Hidráulicas"
+   },
+   {
+    "id": "2026185",
+    "n": "Gerencia de Proyectos de Infraestructura"
+   },
+   {
+    "id": "2022894",
+    "n": "Diseño Básico de Estructuras Metálicas"
+   },
+   {
+    "id": "2022895",
+    "n": "Diseño Básico de Puentes"
+   },
+   {
+    "id": "2025987",
+    "n": "Modelos Estocásticos"
+   },
+   {
+    "id": "2026184",
+    "n": "Complemento de Ingeniería Civil"
+   },
+   {
+    "id": "2025988",
+    "n": "Taller de Simulación de Procesos"
+   },
+   {
+    "id": "2020481",
+    "n": "Túneles"
+   },
+   {
+    "id": "2020486",
+    "n": "Cimentaciones"
+   },
+   {
+    "id": "2022914",
+    "n": "Riesgos Geotécnicos"
+   },
+   {
+    "id": "2020322",
+    "n": "Evaluación Geoambiental"
+   },
+   {
+    "id": "2016762",
+    "n": "Práctica Estudiantil I (3 créditos)"
+   },
+   {
+    "id": "2016763",
+    "n": "Práctica Estudiantil II (6 créditos)"
+   },
+   {
+    "id": "1000070",
+    "n": "Práctica Colombia I (3 créditos)"
+   },
+   {
+    "id": "1000071",
+    "n": "Práctica Colombia II (6 créditos)"
+   }
+  ]
+ },
+ "prerrequisitos_sia": "2026-11-15",
+ "sia_catalogo": {
+  "fecha": "15 nov 2026",
+  "trabajo_grado": [
+   [
+    "2015296",
+    "Trabajo de Grado",
+    6
+   ],
+   [
+    "2015299",
+    "Trabajo de Grado - Asignaturas de Posgrado",
+    6
+   ]
+  ],
+  "fund_optativas": [
+   [
+    "2015942",
+    "Aplicaciones de elementos finitos",
+    3
+   ],
+   [
+    "2015970",
+    "Métodos numéricos",
+    3
+   ],
+   [
+    "2017293",
+    "Modelación matemática",
+    3
+   ],
+   [
+    "2025970",
+    "Modelos y simulación",
+    3
+   ],
+   [
+    "2025971",
+    "Optimización",
+    3
+   ],
+   [
+    "2015734",
+    "Programación de computadores",
+    3
+   ],
+   [
+    "2016375",
+    "Programación orientada a objetos",
+    3
+   ],
+   [
+    "2022761",
+    "SIG para Ingeniería Civil",
+    3
+   ]
+  ],
+  "disc_optativas": [
+   [
+    "2015229",
+    "Colombia Contemporánea",
+    3
+   ],
+   [
+    "2015943",
+    "Construcción de edificaciones",
+    3
+   ],
+   [
+    "2015944",
+    "Construcción de Infraestructura Vial",
+    3
+   ],
+   [
+    "2022760",
+    "Gestión en construcción",
+    3
+   ],
+   [
+    "2015967",
+    "Mecánica de Rocas",
+    3
+   ],
+   [
+    "2024045",
+    "Taller de proyectos interdisciplinarios",
+    3
+   ],
+   [
+    "2015977",
+    "Transporte Sostenible",
+    3
+   ]
+  ]
+ }
 }

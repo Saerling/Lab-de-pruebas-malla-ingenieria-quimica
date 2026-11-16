@@ -1,7 +1,7 @@
 {
  "id": "electronica",
  "nombre": "Ingeniería Electrónica",
- "plan": "2545",
+ "plan": "Acuerdo 17 de 2022 del Consejo de Facultad de Ingeniería",
  "creditos": 172,
  "semestres": [
   {
@@ -13,7 +13,8 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Matemáticas, Probabilidad y Estadística",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "sia": true
     },
     {
      "cod": "",
@@ -29,7 +30,8 @@
      "c": 5,
      "cat": "Disciplinar",
      "agr": "Contexto Profesional, Innovación e Investigación",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "sia": true
     },
     {
      "cod": "2015734",
@@ -37,7 +39,8 @@
      "c": 3,
      "cat": "Fundamentación",
      "agr": "Informática",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "sia": true
     },
     {
      "cod": "2016509",
@@ -45,7 +48,8 @@
      "c": 2,
      "cat": "Disciplinar",
      "agr": "Contexto Profesional, Innovación e Investigación",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "sia": true
     }
    ]
   },
@@ -59,9 +63,10 @@
      "cat": "Fundamentación",
      "agr": "Matemáticas, Probabilidad y Estadística",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "1000004"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "1000003",
@@ -69,7 +74,11 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Matemáticas, Probabilidad y Estadística",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000004"
+     ],
+     "sia": true
     },
     {
      "cod": "1000019",
@@ -78,9 +87,10 @@
      "cat": "Fundamentación",
      "agr": "Física",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "1000004"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2016375",
@@ -89,9 +99,10 @@
      "cat": "Fundamentación",
      "agr": "Informática",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "2015734"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "",
@@ -113,10 +124,11 @@
      "cat": "Fundamentación",
      "agr": "Matemáticas, Probabilidad y Estadística",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "1000005",
       "1000003"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "1000007",
@@ -125,10 +137,11 @@
      "cat": "Fundamentación",
      "agr": "Matemáticas, Probabilidad y Estadística",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "1000005",
       "1000003"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "1000017",
@@ -137,9 +150,11 @@
      "cat": "Fundamentación",
      "agr": "Física",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
+      "1000005",
       "1000019"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "1000040",
@@ -148,9 +163,10 @@
      "cat": "Fundamentación",
      "agr": "Ciencia de los Materiales",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "1000019"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2016489",
@@ -159,10 +175,11 @@
      "cat": "Disciplinar",
      "agr": "Circuitos y Campos",
      "tipo": "obligatoria",
-     "rv": [
-      "2016509",
-      "1000017"
-     ]
+     "r": [
+      "1000003",
+      "2016509"
+     ],
+     "sia": true
     }
    ]
   },
@@ -176,9 +193,10 @@
      "cat": "Fundamentación",
      "agr": "Matemáticas, Probabilidad y Estadística",
      "tipo": "obligatoria",
-     "rv": [
-      "1000006"
-     ]
+     "r": [
+      "1000007"
+     ],
+     "sia": true
     },
     {
      "cod": "",
@@ -195,9 +213,11 @@
      "cat": "Fundamentación",
      "agr": "Física",
      "tipo": "obligatoria",
-     "rv": [
-      "1000017"
-     ]
+     "r": [
+      "1000019",
+      "1000007"
+     ],
+     "sia": true
     },
     {
      "cod": "2016495",
@@ -206,9 +226,10 @@
      "cat": "Disciplinar",
      "agr": "Electrónica Análoga",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "2016489"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2016490",
@@ -217,10 +238,11 @@
      "cat": "Disciplinar",
      "agr": "Circuitos y Campos",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "2016489",
       "1000007"
-     ]
+     ],
+     "sia": true
     }
    ]
   },
@@ -242,10 +264,11 @@
      "cat": "Disciplinar",
      "agr": "Señales, Sistemas y Control",
      "tipo": "obligatoria",
-     "rv": [
-      "1000007",
-      "2016489"
-     ]
+     "r": [
+      "2016489",
+      "1000007"
+     ],
+     "sia": true
     },
     {
      "cod": "2016501",
@@ -254,9 +277,10 @@
      "cat": "Disciplinar",
      "agr": "Electrónica Análoga",
      "tipo": "obligatoria",
-     "rv": [
-      "2016490"
-     ]
+     "r": [
+      "2016495"
+     ],
+     "sia": true
     },
     {
      "cod": "2016496",
@@ -265,9 +289,11 @@
      "cat": "Disciplinar",
      "agr": "Electrónica Análoga",
      "tipo": "obligatoria",
-     "rv": [
-      "2016495"
-     ]
+     "r": [
+      "2016495",
+      "2016490"
+     ],
+     "sia": true
     },
     {
      "cod": "2016498",
@@ -276,10 +302,10 @@
      "cat": "Disciplinar",
      "agr": "Electrónica Digital",
      "tipo": "obligatoria",
-     "rv": [
-      "2016495",
-      "2015734"
-     ]
+     "r": [
+      "2016495"
+     ],
+     "sia": true
     }
    ]
   },
@@ -293,9 +319,10 @@
      "cat": "Fundamentación",
      "agr": "Física",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "1000040"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2016507",
@@ -304,9 +331,11 @@
      "cat": "Disciplinar",
      "agr": "Señales, Sistemas y Control",
      "tipo": "obligatoria",
-     "rv": [
-      "2016506"
-     ]
+     "r": [
+      "2016506",
+      "2015159"
+     ],
+     "sia": true
     },
     {
      "cod": "2016487",
@@ -315,9 +344,11 @@
      "cat": "Disciplinar",
      "agr": "Circuitos y Campos",
      "tipo": "obligatoria",
-     "rv": [
-      "1000006"
-     ]
+     "r": [
+      "1000006",
+      "1000017"
+     ],
+     "sia": true
     },
     {
      "cod": "",
@@ -334,9 +365,10 @@
      "cat": "Disciplinar",
      "agr": "Electrónica Digital",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "2016498"
-     ]
+     ],
+     "sia": true
     }
    ]
   },
@@ -350,9 +382,10 @@
      "cat": "Fundamentación",
      "agr": "Ciencias Económicas y Administrativas",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "1000005"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2016493",
@@ -361,9 +394,10 @@
      "cat": "Disciplinar",
      "agr": "Señales, Sistemas y Control",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "2016507"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2016503",
@@ -372,9 +406,11 @@
      "cat": "Disciplinar",
      "agr": "Telecomunicaciones",
      "tipo": "obligatoria",
-     "rv": [
-      "2016487"
-     ]
+     "r": [
+      "2016487",
+      "1000020"
+     ],
+     "sia": true
     },
     {
      "cod": "2016492",
@@ -383,9 +419,11 @@
      "cat": "Disciplinar",
      "agr": "Telecomunicaciones",
      "tipo": "obligatoria",
-     "rv": [
-      "2016507"
-     ]
+     "r": [
+      "2016507",
+      "Optativa Probabilidad y Estadística"
+     ],
+     "sia": true
     },
     {
      "cod": "",
@@ -430,7 +468,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Telecomunicaciones",
-     "tipo": "optativa"
+     "tipo": "optativa",
+     "r": [
+      "2016492"
+     ],
+     "sia": true
     },
     {
      "cod": "2016497",
@@ -439,9 +481,11 @@
      "cat": "Disciplinar",
      "agr": "Electrónica Análoga",
      "tipo": "obligatoria",
-     "rv": [
-      "2016496"
-     ]
+     "r": [
+      "2016495",
+      "2016490"
+     ],
+     "sia": true
     }
    ]
   },
@@ -481,12 +525,13 @@
      "tipo": "libre"
     },
     {
-     "cod": "2016510",
+     "cod": "2024045",
      "n": "Taller de Proyectos Interdisciplinarios",
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Contexto Profesional, Innovación e Investigación",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "sia": true
     }
    ]
   },
@@ -518,16 +563,13 @@
      "tipo": "libre"
     },
     {
-     "cod": "2016494",
+     "cod": "2028816",
      "n": "Diseño de Sistemas Electrónicos",
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Circuitos y Campos",
      "tipo": "obligatoria",
-     "rv": [
-      "2016499",
-      "2016496"
-     ]
+     "sia": true
     },
     {
      "cod": "2015316",
@@ -539,7 +581,8 @@
      "r": [
       "DISC_63",
       "CRED_121"
-     ]
+     ],
+     "sia": true
     }
    ]
   }
@@ -549,7 +592,88 @@
   "'Optativa Telecomunicaciones' (sem. VIII) trae código fijo 2019125 y el PDF la cuenta dentro de los 72 créditos obligatorios disciplinares (el total optativo disciplinar impreso es 6 = Electrónica Análoga + Electrónica Digital); se dejó tipo 'optativa' conservando el código.",
   "El código de Control se imprime como '201 6493' (con espacio); se transcribió 2016493.",
   "Introducción a la Ciencia de Materiales (1000040) tiene franja 'Básica disciplinar: Ciencia de los Materiales' pero componente CF; se dejó en Fundamentación.",
-  "Con pdfplumber el texto sale con letras intercaladas y solo 8 de los 34 códigos aparecen; los 34 sí aparecen en el texto extraído con pypdfium2 (Control como '201 6493'). Nombres y agrupaciones se leyeron de la imagen."
+  "Con pdfplumber el texto sale con letras intercaladas y solo 8 de los 34 códigos aparecen; los 34 sí aparecen en el texto extraído con pypdfium2 (Control como '201 6493'). Nombres y agrupaciones se leyeron de la imagen.",
+  "Verificado con el catálogo del SIA (15 nov 2026): se corrigieron códigos 2016494→2028816, 2016510→2024045."
  ],
- "prerrequisitos": "Cargados de mallas/prerrequisitos_validacion.txt (14 nov 2026). r = confirmados en Acuerdo/PEP/malla; rv = por validar en el SIA (no bloquean)."
+ "prerrequisitos": "Cargados de mallas/prerrequisitos_validacion.txt (14 nov 2026). r = confirmados en Acuerdo/PEP/malla; rv = por validar en el SIA (no bloquean).",
+ "prerrequisitos_sia": "2026-11-15",
+ "sia_catalogo": {
+  "fecha": "15 nov 2026",
+  "trabajo_grado": [
+   [
+    "2015316",
+    "Trabajo de Grado",
+    6
+   ],
+   [
+    "2015317",
+    "Trabajo de Grado - Asignaturas de Posgrado",
+    6
+   ]
+  ],
+  "fund_optativas": [
+   [
+    "2015698",
+    "Administración de empresas",
+    3
+   ],
+   [
+    "2016592",
+    "Economía general",
+    3
+   ],
+   [
+    "2016741",
+    "Finanzas",
+    3
+   ],
+   [
+    "2015701",
+    "Gerencia de recursos humanos",
+    3
+   ],
+   [
+    "2015702",
+    "Gerencia y gestión de proyectos",
+    3
+   ],
+   [
+    "1000013",
+    "Probabilidad y estadística fundamental",
+    3
+   ],
+   [
+    "2016609",
+    "Seguridad industrial",
+    3
+   ]
+  ],
+  "disc_optativas": [
+   [
+    "2016488",
+    "Circuitos de RF",
+    3
+   ],
+   [
+    "2028211",
+    "Circuitos integrados lineales y aplicaciones",
+    3
+   ],
+   [
+    "2019125",
+    "Redes de telecomunicaciones",
+    3
+   ],
+   [
+    "2016508",
+    "Sistemas embebidos",
+    3
+   ],
+   [
+    "2016512",
+    "Verificación de sistemas digitales",
+    3
+   ]
+  ]
+ }
 }

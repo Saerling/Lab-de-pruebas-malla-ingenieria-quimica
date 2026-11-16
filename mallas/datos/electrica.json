@@ -13,7 +13,8 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Matemáticas, Probabilidad y Estadística",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "sia": true
     },
     {
      "cod": "2015734",
@@ -21,7 +22,8 @@
      "c": 3,
      "cat": "Fundamentación",
      "agr": "Informática",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "sia": true
     },
     {
      "cod": "2016856",
@@ -29,7 +31,8 @@
      "c": 5,
      "cat": "Disciplinar",
      "agr": "Contexto Profesional, Innovación e Investigación",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "sia": true
     },
     {
      "cod": "2016862",
@@ -59,9 +62,10 @@
      "cat": "Fundamentación",
      "agr": "Matemáticas, Probabilidad y Estadística",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "1000004"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "1000003",
@@ -69,7 +73,11 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Matemáticas, Probabilidad y Estadística",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000004"
+     ],
+     "sia": true
     },
     {
      "cod": "1000019",
@@ -77,7 +85,11 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Física",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000004"
+     ],
+     "sia": true
     },
     {
      "cod": "",
@@ -98,7 +110,12 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Matemáticas, Probabilidad y Estadística",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000005",
+      "1000003"
+     ],
+     "sia": true
     },
     {
      "cod": "1000007",
@@ -106,7 +123,12 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Matemáticas, Probabilidad y Estadística",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000005",
+      "1000003"
+     ],
+     "sia": true
     },
     {
      "cod": "1000017",
@@ -114,7 +136,12 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Física",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000005",
+      "1000019"
+     ],
+     "sia": true
     },
     {
      "cod": "1000040",
@@ -122,7 +149,11 @@
      "c": 3,
      "cat": "Fundamentación",
      "agr": "Ciencia de los Materiales",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000019"
+     ],
+     "sia": true
     },
     {
      "cod": "2016489",
@@ -130,7 +161,12 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Circuitos y Campos",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000003",
+      "2016862"
+     ],
+     "sia": true
     }
    ]
   },
@@ -144,9 +180,10 @@
      "cat": "Fundamentación",
      "agr": "Matemáticas, Probabilidad y Estadística",
      "tipo": "obligatoria",
-     "rv": [
-      "1000006"
-     ]
+     "r": [
+      "1000007"
+     ],
+     "sia": true
     },
     {
      "cod": "1000020",
@@ -154,7 +191,12 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Física",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000007",
+      "1000019"
+     ],
+     "sia": true
     },
     {
      "cod": "1000021",
@@ -162,7 +204,11 @@
      "c": 3,
      "cat": "Fundamentación",
      "agr": "Física",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000019"
+     ],
+     "sia": true
     },
     {
      "cod": "2016845",
@@ -170,7 +216,11 @@
      "c": 3,
      "cat": "Fundamentación",
      "agr": "Herramientas de Ingeniería",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000003"
+     ],
+     "sia": true
     },
     {
      "cod": "2016495",
@@ -179,9 +229,10 @@
      "cat": "Disciplinar",
      "agr": "Electrónica",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "2016489"
-     ]
+     ],
+     "sia": true
     }
    ]
   },
@@ -202,7 +253,12 @@
      "c": 4,
      "cat": "Disciplinar",
      "agr": "Circuitos y Campos",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000006",
+      "1000017"
+     ],
+     "sia": true
     },
     {
      "cod": "2016506",
@@ -218,7 +274,12 @@
      "c": 4,
      "cat": "Disciplinar",
      "agr": "Circuitos y Campos",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000007",
+      "2016489"
+     ],
+     "sia": true
     },
     {
      "cod": "2016498",
@@ -226,7 +287,11 @@
      "c": 4,
      "cat": "Disciplinar",
      "agr": "Electrónica",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2016495"
+     ],
+     "sia": true
     }
    ]
   },
@@ -266,7 +331,12 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Sistemas de Potencia",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2016487",
+      "2016490"
+     ],
+     "sia": true
     },
     {
      "cod": "",
@@ -287,7 +357,11 @@
      "c": 3,
      "cat": "Fundamentación",
      "agr": "Ciencias Económicas y Administrativas",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000005"
+     ],
+     "sia": true
     },
     {
      "cod": "2016863",
@@ -295,7 +369,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Contexto Profesional, Innovación e Investigación",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2016498"
+     ],
+     "sia": true
     },
     {
      "cod": "2016493",
@@ -304,9 +382,10 @@
      "cat": "Disciplinar",
      "agr": "Señales, Sistemas y Control",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "2016507"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2016861",
@@ -322,7 +401,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Electrotecnia",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2016490"
+     ],
+     "sia": true
     }
    ]
   },
@@ -351,7 +434,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Sistemas de Potencia",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2016861"
+     ],
+     "sia": true
     },
     {
      "cod": "",
@@ -396,7 +483,11 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Sistemas de Potencia",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2016851"
+     ],
+     "sia": true
     },
     {
      "cod": "2024045",
@@ -404,7 +495,8 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Contexto Profesional, Innovación e Investigación",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "sia": true
     },
     {
      "cod": "",
@@ -453,7 +545,8 @@
      "r": [
       "DISC_57",
       "CRED_117"
-     ]
+     ],
+     "sia": true
     }
    ]
   }
@@ -461,7 +554,103 @@
  "dudas": [
   "La tarjeta optativa del semestre V dice 'Optativa: Probabilidad y Estadística' con franja 'MATEMÁTICAS'; se asignó a la agrupación 'Matemáticas, Probabilidad y Estadística' (la leyenda la escribe sin coma).",
   "Trabajo de Grado (2016866) tiene el color de la agrupación CPI&I (Contexto Profesional, Innovación e Investigación); el PDF no muestra una agrupación propia de trabajo de grado.",
-  "Las optativas solo muestran la franja abreviada (HERRAMIENTAS, ADMINISTRACIÓN, ELECTROTECNIA, CPI&I); el nombre completo de la agrupación se tomó de la leyenda de colores."
+  "Las optativas solo muestran la franja abreviada (HERRAMIENTAS, ADMINISTRACIÓN, ELECTROTECNIA, CPI&I); el nombre completo de la agrupación se tomó de la leyenda de colores.",
+  "Catálogo del SIA, plan 2544 (15 nov 2026): no aparecen 2016494 Conversión Electromagnética, 2016506/2016507 Señales y Sistemas I y II, 2016861 Introducción a Sistemas de Energía Eléctrica ni 2016862 Taller de Ingeniería Eléctrica; sus prerrequisitos siguen por validar."
  ],
- "prerrequisitos": "Cargados de mallas/prerrequisitos_validacion.txt (14 nov 2026). r = confirmados en Acuerdo/PEP/malla; rv = por validar en el SIA (no bloquean)."
+ "prerrequisitos": "Cargados de mallas/prerrequisitos_validacion.txt (14 nov 2026). r = confirmados en Acuerdo/PEP/malla; rv = por validar en el SIA (no bloquean).",
+ "prerrequisitos_sia": "2026-11-15",
+ "sia_catalogo": {
+  "fecha": "15 nov 2026",
+  "trabajo_grado": [
+   [
+    "2016866",
+    "Trabajo de Grado",
+    6
+   ],
+   [
+    "2016867",
+    "Trabajo de Grado - Asignaturas de Posgrado",
+    6
+   ]
+  ],
+  "fund_optativas": [
+   [
+    "2016592",
+    "Economía general",
+    3
+   ],
+   [
+    "2016741",
+    "Finanzas",
+    3
+   ],
+   [
+    "2016500",
+    "Física de Semiconductores",
+    3
+   ],
+   [
+    "1000018",
+    "Fundamentos de física moderna",
+    3
+   ],
+   [
+    "2015701",
+    "Gerencia de recursos humanos",
+    3
+   ],
+   [
+    "2015702",
+    "Gerencia y gestión de proyectos",
+    3
+   ],
+   [
+    "2016603",
+    "Investigación de operaciones I",
+    3
+   ],
+   [
+    "2015970",
+    "Métodos numéricos",
+    3
+   ],
+   [
+    "1000013",
+    "Probabilidad y estadística fundamental",
+    3
+   ],
+   [
+    "2016375",
+    "Programación orientada a objetos",
+    3
+   ],
+   [
+    "2016609",
+    "Seguridad industrial",
+    3
+   ]
+  ],
+  "disc_optativas": [
+   [
+    "2016850",
+    "Aislamiento eléctrico",
+    3
+   ],
+   [
+    "2016854",
+    "Estabilidad de sistemas de potencia",
+    3
+   ],
+   [
+    "2016858",
+    "Laboratorio de conversión electromagnética",
+    2
+   ],
+   [
+    "2024049",
+    "Subestaciones eléctricas",
+    3
+   ]
+  ]
+ }
 }

@@ -1,0 +1,4473 @@
+{
+ "consultado": "2026-11-15",
+ "fuente": "Catálogo público de asignaturas del SIA (sia.unal.edu.co/Catalogo), sede Bogotá, facultad 2055, consultado con el cliente catalogo.js de proxy-sia",
+ "planes": {
+  "agricola": {
+   "1000003": {
+    "nombre": "Álgebra Lineal",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000004-B Cálculo diferencial",
+       "2001285 Matematicas i"
+      ]
+     }
+    ]
+   },
+   "1000004": {
+    "nombre": "Cálculo diferencial",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": []
+   },
+   "1000005": {
+    "nombre": "Cálculo Integral",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000004-B Cálculo diferencial",
+       "2001285 Matematicas i"
+      ]
+     }
+    ]
+   },
+   "1000006": {
+    "nombre": "Cálculo en varias variables",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000005-B Cálculo Integral",
+       "2019617 Matematicas ii"
+      ]
+     },
+     {
+      "una_de": [
+       "1000003-B Álgebra Lineal",
+       "2000927 Matematicas iii"
+      ]
+     }
+    ]
+   },
+   "1000007": {
+    "nombre": "Ecuaciones Diferenciales",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000005-B Cálculo Integral",
+       "2019617 Matematicas ii"
+      ]
+     },
+     {
+      "una_de": [
+       "1000003-B Álgebra Lineal",
+       "2000927 Matematicas iii"
+      ]
+     }
+    ]
+   },
+   "1000009": {
+    "nombre": "Biología general",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": []
+   },
+   "1000013": {
+    "nombre": "Probabilidad y estadística fundamental",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000004-B Cálculo diferencial",
+       "2001285 Matematicas i"
+      ]
+     }
+    ]
+   },
+   "1000019": {
+    "nombre": "Fundamentos de mecánica",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000004-B Cálculo diferencial",
+       "2001285 Matematicas i"
+      ]
+     }
+    ]
+   },
+   "1000024": {
+    "nombre": "Principios de química",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": []
+   },
+   "2015372": {
+    "nombre": "Trabajo de Grado",
+    "tipologia": "TRABAJO DE GRADO",
+    "creditos": 6,
+    "prerrequisitos": []
+   },
+   "2015373": {
+    "nombre": "Trabajo de Grado - Asignaturas de Posgrado",
+    "tipologia": "TRABAJO DE GRADO",
+    "creditos": 6,
+    "prerrequisitos": []
+   },
+   "2015702": {
+    "nombre": "Gerencia y gestión de proyectos",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2010263 Fundamentos de economia",
+       "2015703 Ingeniería económica"
+      ]
+     }
+    ]
+   },
+   "2015703": {
+    "nombre": "Ingeniería económica",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000005-B Cálculo Integral",
+       "2019617 Matematicas ii"
+      ]
+     }
+    ]
+   },
+   "2015711": {
+    "nombre": "Dibujo básico",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": []
+   },
+   "2015734": {
+    "nombre": "Programación de computadores",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": []
+   },
+   "2015741": {
+    "nombre": "Termodinámica",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000004-B Cálculo diferencial",
+       "2001285 Matematicas i"
+      ]
+     }
+    ]
+   },
+   "2015941": {
+    "nombre": "Análisis estructural básico",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "todas": [
+       "2015968 Mecánica de sólidos"
+      ]
+     }
+    ]
+   },
+   "2015958": {
+    "nombre": "Geomática básica",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2015711 Dibujo básico",
+       "2003039 Expresion grafica"
+      ]
+     },
+     {
+      "todas": [
+       "2016635 Introducción a la ingeniería agrícola"
+      ]
+     }
+    ]
+   },
+   "2015961": {
+    "nombre": "Hidráulica básica",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "todas": [
+       "2015966 Mecánica de fluidos"
+      ]
+     }
+    ]
+   },
+   "2015966": {
+    "nombre": "Mecánica de fluidos",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000006-B Cálculo en varias variables",
+       "2000927 Matematicas iii"
+      ]
+     },
+     {
+      "una_de": [
+       "1000007-B Ecuaciones Diferenciales",
+       "2019619 Matematicas iv"
+      ]
+     },
+     {
+      "una_de": [
+       "2026134 Estática",
+       "2001733 Estatica",
+       "2016640 Principios de Estática"
+      ]
+     }
+    ]
+   },
+   "2015968": {
+    "nombre": "Mecánica de sólidos",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000006-B Cálculo en varias variables",
+       "2000927 Matematicas iii"
+      ]
+     },
+     {
+      "una_de": [
+       "2026134 Estática",
+       "2001733 Estatica",
+       "2016640 Principios de Estática"
+      ]
+     }
+    ]
+   },
+   "2015969": {
+    "nombre": "Mecánica de suelos",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "todas": [
+       "2015968 Mecánica de sólidos"
+      ]
+     },
+     {
+      "una_de": [
+       "2005843 Suelos",
+       "2016632 Suelos agrícolas"
+      ]
+     }
+    ]
+   },
+   "2015978": {
+    "nombre": "Hidrología",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2001065 Probabilidad y estadistica",
+       "1000013-B Probabilidad y estadística fundamental"
+      ]
+     },
+     {
+      "todas": [
+       "2015966 Mecánica de fluidos"
+      ]
+     }
+    ]
+   },
+   "2016626": {
+    "nombre": "Control en biosistemas",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2016630 Electrotecnia",
+       "2019607 Fisica ii"
+      ]
+     }
+    ]
+   },
+   "2016627": {
+    "nombre": "Diseño de estructuras de concreto",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2016624 Análisis de Estructuras",
+       "2015941 Análisis estructural básico"
+      ]
+     }
+    ]
+   },
+   "2016628": {
+    "nombre": "Diseño de sistemas de riego",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2016634 Ingeniería de riegos",
+       "2000219 Ingenieria de riegos i"
+      ]
+     },
+     {
+      "una_de": [
+       "2015958 Geomática básica",
+       "2000789 Topografia"
+      ]
+     }
+    ]
+   },
+   "2016629": {
+    "nombre": "Drenaje de tierras agricolas",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2015978 Hidrología",
+       "2000218 Hidrologia y climatologia",
+       "2015588 Hidrología y climatología"
+      ]
+     },
+     {
+      "una_de": [
+       "2016634 Ingeniería de riegos",
+       "2000219 Ingenieria de riegos i"
+      ]
+     }
+    ]
+   },
+   "2016630": {
+    "nombre": "Electrotecnia",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": []
+   },
+   "2016631": {
+    "nombre": "Elementos de máquinas agrícolas",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "todas": [
+       "2015968 Mecánica de sólidos"
+      ]
+     }
+    ]
+   },
+   "2016632": {
+    "nombre": "Suelos agrícolas",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2000088 Ecologia",
+       "1000024-B Principios de química",
+       "1000041-B Química básica"
+      ]
+     },
+     {
+      "una_de": [
+       "2019606 Biologia",
+       "1000009-B Biología general"
+      ]
+     }
+    ]
+   },
+   "2016633": {
+    "nombre": "Fuentes de potencia en la agricultura",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2000210 Elementos de maquinas",
+       "2016631 Elementos de máquinas agrícolas"
+      ]
+     }
+    ]
+   },
+   "2016634": {
+    "nombre": "Ingeniería de riegos",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2001567 Hidraulica",
+       "2015961 Hidráulica básica"
+      ]
+     },
+     {
+      "una_de": [
+       "2005843 Suelos",
+       "2016632 Suelos agrícolas"
+      ]
+     }
+    ]
+   },
+   "2016635": {
+    "nombre": "Introducción a la ingeniería agrícola",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": []
+   },
+   "2016636": {
+    "nombre": "Máquinas agrícolas",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2000211 Fuentes de potencia",
+       "2016633 Fuentes de potencia en la agricultura"
+      ]
+     }
+    ]
+   },
+   "2016638": {
+    "nombre": "Poscosecha de frutas y hortalizas",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2001933 Ingenieria de postcosecha i",
+       "2016643 Transferencia de calor y masa"
+      ]
+     },
+     {
+      "una_de": [
+       "2000052 Fisiologia vegetal",
+       "2017538 Fisiología vegetal"
+      ]
+     }
+    ]
+   },
+   "2016639": {
+    "nombre": "Poscosecha de granos y semillas",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2001934 Ingenieria de postcosecha ii",
+       "2016638 Poscosecha de frutas y hortalizas"
+      ]
+     }
+    ]
+   },
+   "2016643": {
+    "nombre": "Transferencia de calor y masa",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2016642 Termodinámica",
+       "2015741 Termodinámica"
+      ]
+     }
+    ]
+   },
+   "2017538": {
+    "nombre": "Fisiología vegetal",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2000088 Ecologia",
+       "1000024-B Principios de química",
+       "1000041-B Química básica"
+      ]
+     }
+    ]
+   },
+   "2024045": {
+    "nombre": "Taller de proyectos interdisciplinarios",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": []
+   },
+   "2026134": {
+    "nombre": "Estática",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000003-B Álgebra Lineal",
+       "2000927 Matematicas iii"
+      ]
+     },
+     {
+      "una_de": [
+       "2000438 Fisica i",
+       "1000019-B Fundamentos de mecánica"
+      ]
+     }
+    ]
+   }
+  },
+  "civil": {
+   "1000003": {
+    "nombre": "Álgebra Lineal",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000004-B Cálculo diferencial",
+       "2001285 Matematicas i"
+      ]
+     }
+    ]
+   },
+   "1000004": {
+    "nombre": "Cálculo diferencial",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": []
+   },
+   "1000005": {
+    "nombre": "Cálculo Integral",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000004-B Cálculo diferencial",
+       "2001285 Matematicas i"
+      ]
+     }
+    ]
+   },
+   "1000006": {
+    "nombre": "Cálculo en varias variables",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000003-B Álgebra Lineal",
+       "2000927 Matematicas iii"
+      ]
+     },
+     {
+      "una_de": [
+       "1000005-B Cálculo Integral",
+       "2019617 Matematicas ii"
+      ]
+     }
+    ]
+   },
+   "1000007": {
+    "nombre": "Ecuaciones Diferenciales",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000003-B Álgebra Lineal",
+       "2000927 Matematicas iii"
+      ]
+     },
+     {
+      "una_de": [
+       "1000005-B Cálculo Integral",
+       "2019617 Matematicas ii"
+      ]
+     }
+    ]
+   },
+   "1000011": {
+    "nombre": "Fundamentos de ecología",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": []
+   },
+   "1000013": {
+    "nombre": "Probabilidad y estadística fundamental",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000004-B Cálculo diferencial",
+       "2001285 Matematicas i"
+      ]
+     }
+    ]
+   },
+   "1000019": {
+    "nombre": "Fundamentos de mecánica",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000004-B Cálculo diferencial",
+       "2001285 Matematicas i"
+      ]
+     }
+    ]
+   },
+   "1000024": {
+    "nombre": "Principios de química",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": []
+   },
+   "2015296": {
+    "nombre": "Trabajo de Grado",
+    "tipologia": "TRABAJO DE GRADO",
+    "creditos": 6,
+    "prerrequisitos": []
+   },
+   "2015299": {
+    "nombre": "Trabajo de Grado - Asignaturas de Posgrado",
+    "tipologia": "TRABAJO DE GRADO",
+    "creditos": 6,
+    "prerrequisitos": []
+   },
+   "2015703": {
+    "nombre": "Ingeniería económica",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000005-B Cálculo Integral",
+       "2019617 Matematicas ii"
+      ]
+     }
+    ]
+   },
+   "2015711": {
+    "nombre": "Dibujo básico",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": []
+   },
+   "2015938": {
+    "nombre": "Acueductos",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2015961 Hidráulica básica",
+       "2001565 Hidraulica i"
+      ]
+     }
+    ]
+   },
+   "2015939": {
+    "nombre": "Alcantarillados",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2000776 Abastecimiento de agua potable",
+       "2015938 Acueductos"
+      ]
+     },
+     {
+      "todas": [
+       "2015978 Hidrología"
+      ]
+     }
+    ]
+   },
+   "2015940": {
+    "nombre": "Análisis estructural aplicado",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2015941 Análisis estructural básico",
+       "2000807 Analisis estructural i"
+      ]
+     },
+     {
+      "una_de": [
+       "2015948 Dinámica",
+       "2019607 Fisica ii"
+      ]
+     }
+    ]
+   },
+   "2015941": {
+    "nombre": "Análisis estructural básico",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "todas": [
+       "2015968 Mecánica de sólidos"
+      ]
+     }
+    ]
+   },
+   "2015948": {
+    "nombre": "Dinámica",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2015953 Estática",
+       "2026134 Estática",
+       "2000803 Mecanica"
+      ]
+     }
+    ]
+   },
+   "2015949": {
+    "nombre": "Diseño geométrico de Vías",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "todas": [
+       "2015963 Ingeniería de Tránsito"
+      ]
+     },
+     {
+      "una_de": [
+       "2000791 Fotogrametria y fotointerpretacion",
+       "2015957 Geomática Aplicada"
+      ]
+     }
+    ]
+   },
+   "2015950": {
+    "nombre": "Diseño estructural",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2015940 Análisis estructural aplicado",
+       "2001550 Analisis estructural ii"
+      ]
+     },
+     {
+      "una_de": [
+       "2001574 Materiales",
+       "2015965 Materiales para construcción"
+      ]
+     }
+    ]
+   },
+   "2015954": {
+    "nombre": "Estructuras hidráulicas",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2015961 Hidráulica básica",
+       "2001565 Hidraulica i"
+      ]
+     }
+    ]
+   },
+   "2015955": {
+    "nombre": "Fundamentos de construcción",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": []
+   },
+   "2015956": {
+    "nombre": "Geología",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2015958 Geomática básica",
+       "2000789 Topografia"
+      ]
+     }
+    ]
+   },
+   "2015957": {
+    "nombre": "Geomática Aplicada",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2015958 Geomática básica",
+       "2000789 Topografia"
+      ]
+     }
+    ]
+   },
+   "2015958": {
+    "nombre": "Geomática básica",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2015711 Dibujo básico",
+       "2003039 Expresion grafica"
+      ]
+     },
+     {
+      "una_de": [
+       "2015964 Introducción a la Ingeniería Civil",
+       "2026186 Introducción a la ingeniería civil"
+      ]
+     }
+    ]
+   },
+   "2015959": {
+    "nombre": "Geotecnia",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2001576 Geotecnia i",
+       "2015969 Mecánica de suelos"
+      ]
+     }
+    ]
+   },
+   "2015961": {
+    "nombre": "Hidráulica básica",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "todas": [
+       "2015966 Mecánica de fluidos"
+      ]
+     }
+    ]
+   },
+   "2015963": {
+    "nombre": "Ingeniería de Tránsito",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2026138 Ingenieria de transporte",
+       "2015974 Sistemas Integrados de Transporte",
+       "2000795 Transporte urbano"
+      ]
+     }
+    ]
+   },
+   "2015965": {
+    "nombre": "Materiales para construcción",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000024-B Principios de química",
+       "2000187 Quimica",
+       "1000041-B Química básica"
+      ]
+     },
+     {
+      "una_de": [
+       "2015956 Geología"
+      ]
+     }
+    ]
+   },
+   "2015966": {
+    "nombre": "Mecánica de fluidos",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000006-B Cálculo en varias variables",
+       "2000927 Matematicas iii"
+      ]
+     },
+     {
+      "una_de": [
+       "1000007-B Ecuaciones Diferenciales",
+       "2019619 Matematicas iv"
+      ]
+     },
+     {
+      "una_de": [
+       "2015953 Estática",
+       "2026134 Estática",
+       "2000803 Mecanica"
+      ]
+     }
+    ]
+   },
+   "2015968": {
+    "nombre": "Mecánica de sólidos",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2015953 Estática",
+       "2026134 Estática",
+       "2000803 Mecanica"
+      ]
+     },
+     {
+      "una_de": [
+       "1000006-B Cálculo en varias variables",
+       "2000927 Matematicas iii"
+      ]
+     }
+    ]
+   },
+   "2015969": {
+    "nombre": "Mecánica de suelos",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "todas": [
+       "2015968 Mecánica de sólidos"
+      ]
+     }
+    ]
+   },
+   "2015971": {
+    "nombre": "Pavimentos",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2015959 Geotecnia",
+       "2001578 Geotecnia ii"
+      ]
+     },
+     {
+      "una_de": [
+       "2001574 Materiales",
+       "2015965 Materiales para construcción"
+      ]
+     }
+    ]
+   },
+   "2015972": {
+    "nombre": "Preparación y evaluación de proyectos de infraestructura",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2026138 Ingenieria de transporte",
+       "2015974 Sistemas Integrados de Transporte",
+       "2000795 Transporte urbano"
+      ]
+     }
+    ]
+   },
+   "2015973": {
+    "nombre": "Saneamiento ambiental",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2015951 Ecología e Ingeniería",
+       "1000011-B Fundamentos de ecología",
+       "2001539 Taller i"
+      ]
+     },
+     {
+      "una_de": [
+       "2000776 Abastecimiento de agua potable",
+       "2015938 Acueductos"
+      ]
+     }
+    ]
+   },
+   "2015978": {
+    "nombre": "Hidrología",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2001065 Probabilidad y estadistica",
+       "1000013-B Probabilidad y estadística fundamental"
+      ]
+     },
+     {
+      "una_de": [
+       "2015966 Mecánica de fluidos"
+      ]
+     }
+    ]
+   },
+   "2026134": {
+    "nombre": "Estática",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2000438 Fisica i",
+       "1000019-B Fundamentos de mecánica"
+      ]
+     },
+     {
+      "una_de": [
+       "1000003-B Álgebra Lineal",
+       "2000927 Matematicas iii"
+      ]
+     }
+    ]
+   },
+   "2026135": {
+    "nombre": "Ingeniería civil sostenible",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": []
+   },
+   "2026138": {
+    "nombre": "Ingenieria de transporte",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000003-B Álgebra Lineal",
+       "2000927 Matematicas iii"
+      ]
+     }
+    ]
+   },
+   "2026186": {
+    "nombre": "Introducción a la ingeniería civil",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": []
+   }
+  },
+  "electrica": {
+   "1000003": {
+    "nombre": "Álgebra Lineal",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000004-B Cálculo diferencial",
+       "2001285 Matematicas i"
+      ]
+     }
+    ]
+   },
+   "1000004": {
+    "nombre": "Cálculo diferencial",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": []
+   },
+   "1000005": {
+    "nombre": "Cálculo Integral",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000004-B Cálculo diferencial",
+       "2001285 Matematicas i"
+      ]
+     }
+    ]
+   },
+   "1000006": {
+    "nombre": "Cálculo en varias variables",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000005-B Cálculo Integral",
+       "2019617 Matematicas ii"
+      ]
+     },
+     {
+      "una_de": [
+       "1000003-B Álgebra Lineal",
+       "2000927 Matematicas iii"
+      ]
+     }
+    ]
+   },
+   "1000007": {
+    "nombre": "Ecuaciones Diferenciales",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000005-B Cálculo Integral",
+       "2019617 Matematicas ii"
+      ]
+     },
+     {
+      "una_de": [
+       "1000003-B Álgebra Lineal",
+       "2000927 Matematicas iii"
+      ]
+     }
+    ]
+   },
+   "1000017": {
+    "nombre": "Fundamentos de electricidad y magnetismo",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000005-B Cálculo Integral",
+       "2019617 Matematicas ii"
+      ]
+     },
+     {
+      "una_de": [
+       "2000438 Fisica i",
+       "1000019-B Fundamentos de mecánica"
+      ]
+     }
+    ]
+   },
+   "1000019": {
+    "nombre": "Fundamentos de mecánica",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000004-B Cálculo diferencial",
+       "2001285 Matematicas i"
+      ]
+     }
+    ]
+   },
+   "1000020": {
+    "nombre": "Fundamentos de oscilaciones, ondas y óptica",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000007-B Ecuaciones Diferenciales",
+       "2019619 Matematicas iv"
+      ]
+     },
+     {
+      "una_de": [
+       "2000438 Fisica i",
+       "1000019-B Fundamentos de mecánica"
+      ]
+     }
+    ]
+   },
+   "1000021": {
+    "nombre": "Fundamentos de mecánica de fluidos",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2000438 Fisica i",
+       "1000019-B Fundamentos de mecánica"
+      ]
+     }
+    ]
+   },
+   "1000040": {
+    "nombre": "Introducción a la ciencia de materiales",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2000438 Fisica i",
+       "1000019-B Fundamentos de mecánica"
+      ]
+     }
+    ]
+   },
+   "2015159": {
+    "nombre": "Variable compleja",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000007-B Ecuaciones Diferenciales",
+       "2019619 Matematicas iv"
+      ]
+     }
+    ]
+   },
+   "2015703": {
+    "nombre": "Ingeniería económica",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000005-B Cálculo Integral",
+       "2019617 Matematicas ii"
+      ]
+     }
+    ]
+   },
+   "2015734": {
+    "nombre": "Programación de computadores",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": []
+   },
+   "2016487": {
+    "nombre": "Campos electromagnéticos",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000006-B Cálculo en varias variables",
+       "2000927 Matematicas iii"
+      ]
+     },
+     {
+      "una_de": [
+       "2000439 Fisica II",
+       "1000017-B Fundamentos de electricidad y magnetismo"
+      ]
+     }
+    ]
+   },
+   "2016489": {
+    "nombre": "Circuitos Eléctricos I",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000003-B Álgebra Lineal",
+       "2000927 Matematicas iii"
+      ]
+     },
+     {
+      "una_de": [
+       "2019602 Expresion grafica",
+       "2019604 Geografia economica de colombia",
+       "2016862 Taller de ingeniería eléctrica"
+      ]
+     }
+    ]
+   },
+   "2016490": {
+    "nombre": "Circuitos Eléctricos II",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000007-B Ecuaciones Diferenciales",
+       "2019619 Matematicas iv"
+      ]
+     },
+     {
+      "una_de": [
+       "2016489 Circuitos Eléctricos I",
+       "2001601 Circuitos electricos i"
+      ]
+     }
+    ]
+   },
+   "2016493": {
+    "nombre": "Control",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2001619 Analisis de sistemas dinamicos",
+       "2016507 Señales y Sistemas II"
+      ]
+     }
+    ]
+   },
+   "2016494": {
+    "error": "No encontré la asignatura \"2016494\" en esa búsqueda"
+   },
+   "2016495": {
+    "nombre": "Electrónica análoga I",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2016489 Circuitos Eléctricos I",
+       "2001601 Circuitos electricos i"
+      ]
+     }
+    ]
+   },
+   "2016498": {
+    "nombre": "Electrónica digital I",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2001332 Electronica analoga i",
+       "2016495 Electrónica análoga I"
+      ]
+     }
+    ]
+   },
+   "2016506": {
+    "error": "No encontré la asignatura \"2016506\" en esa búsqueda"
+   },
+   "2016507": {
+    "error": "No encontré la asignatura \"2016507\" en esa búsqueda"
+   },
+   "2016845": {
+    "nombre": "Mecánica para Ingeniería",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000003-B Álgebra Lineal",
+       "2000927 Matematicas iii"
+      ]
+     }
+    ]
+   },
+   "2016851": {
+    "nombre": "Análisis de Sistemas de Potencia",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2016861 Introducción a los sistemas de energía eléctrica",
+       "2001624 Seminario de ingenieria electrica"
+      ]
+     }
+    ]
+   },
+   "2016856": {
+    "nombre": "Introducción a ingeniería eléctrica",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 5,
+    "prerrequisitos": []
+   },
+   "2016861": {
+    "error": "No encontré la asignatura \"2016861\" en esa búsqueda"
+   },
+   "2016862": {
+    "error": "No encontré la asignatura \"2016862\" en esa búsqueda"
+   },
+   "2016863": {
+    "nombre": "Taller de ingeniería",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2019616 Electronica digital i",
+       "2016498 Electrónica digital I"
+      ]
+     }
+    ]
+   },
+   "2016865": {
+    "nombre": "Transmisión y Distribución",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2001608 Campos electromagneticos",
+       "2016487 Campos electromagnéticos"
+      ]
+     },
+     {
+      "una_de": [
+       "2016490 Circuitos Eléctricos II",
+       "2019620 Circuitos electricos ii"
+      ]
+     }
+    ]
+   },
+   "2016866": {
+    "nombre": "Trabajo de Grado",
+    "tipologia": "TRABAJO DE GRADO",
+    "creditos": 6,
+    "prerrequisitos": []
+   },
+   "2016867": {
+    "nombre": "Trabajo de Grado - Asignaturas de Posgrado",
+    "tipologia": "TRABAJO DE GRADO",
+    "creditos": 6,
+    "prerrequisitos": []
+   },
+   "2017003": {
+    "nombre": "Instalaciones eléctricas",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2016490 Circuitos Eléctricos II",
+       "2019620 Circuitos electricos ii"
+      ]
+     }
+    ]
+   },
+   "2024045": {
+    "nombre": "Taller de proyectos interdisciplinarios",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": []
+   },
+   "2024049": {
+    "nombre": "Subestaciones eléctricas",
+    "tipologia": "DISCIPLINAR OPTATIVA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2016851 Análisis de Sistemas de Potencia",
+       "2001615 Sistemas de potencia"
+      ]
+     }
+    ]
+   }
+  },
+  "electronica": {
+   "1000003": {
+    "nombre": "Álgebra Lineal",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000004-B Cálculo diferencial",
+       "2001285 Matematicas i"
+      ]
+     }
+    ]
+   },
+   "1000004": {
+    "nombre": "Cálculo diferencial",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": []
+   },
+   "1000005": {
+    "nombre": "Cálculo Integral",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000004-B Cálculo diferencial",
+       "2001285 Matematicas i"
+      ]
+     }
+    ]
+   },
+   "1000006": {
+    "nombre": "Cálculo en varias variables",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000005-B Cálculo Integral",
+       "2019617 Matematicas ii"
+      ]
+     },
+     {
+      "una_de": [
+       "1000003-B Álgebra Lineal",
+       "2000927 Matematicas iii"
+      ]
+     }
+    ]
+   },
+   "1000007": {
+    "nombre": "Ecuaciones Diferenciales",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000005-B Cálculo Integral",
+       "2019617 Matematicas ii"
+      ]
+     },
+     {
+      "una_de": [
+       "1000003-B Álgebra Lineal",
+       "2000927 Matematicas iii"
+      ]
+     }
+    ]
+   },
+   "1000017": {
+    "nombre": "Fundamentos de electricidad y magnetismo",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000005-B Cálculo Integral",
+       "2019617 Matematicas ii"
+      ]
+     },
+     {
+      "una_de": [
+       "2000438 Fisica i",
+       "1000019-B Fundamentos de mecánica"
+      ]
+     }
+    ]
+   },
+   "1000019": {
+    "nombre": "Fundamentos de mecánica",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000004-B Cálculo diferencial",
+       "2001285 Matematicas i"
+      ]
+     }
+    ]
+   },
+   "1000020": {
+    "nombre": "Fundamentos de oscilaciones, ondas y óptica",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2000438 Fisica i",
+       "1000019-B Fundamentos de mecánica"
+      ]
+     },
+     {
+      "una_de": [
+       "1000007-B Ecuaciones Diferenciales",
+       "2019619 Matematicas iv"
+      ]
+     }
+    ]
+   },
+   "1000040": {
+    "nombre": "Introducción a la ciencia de materiales",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2000438 Fisica i",
+       "1000019-B Fundamentos de mecánica"
+      ]
+     }
+    ]
+   },
+   "2015159": {
+    "nombre": "Variable compleja",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000007-B Ecuaciones Diferenciales",
+       "2019619 Matematicas iv"
+      ]
+     }
+    ]
+   },
+   "2015316": {
+    "nombre": "Trabajo de Grado",
+    "tipologia": "TRABAJO DE GRADO",
+    "creditos": 6,
+    "prerrequisitos": []
+   },
+   "2015317": {
+    "nombre": "Trabajo de Grado - Asignaturas de Posgrado",
+    "tipologia": "TRABAJO DE GRADO",
+    "creditos": 6,
+    "prerrequisitos": []
+   },
+   "2015703": {
+    "nombre": "Ingeniería económica",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000005-B Cálculo Integral",
+       "2019617 Matematicas ii"
+      ]
+     }
+    ]
+   },
+   "2015734": {
+    "nombre": "Programación de computadores",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": []
+   },
+   "2016375": {
+    "nombre": "Programación orientada a objetos",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "todas": [
+       "2015734 Programación de computadores"
+      ]
+     }
+    ]
+   },
+   "2016487": {
+    "nombre": "Campos electromagnéticos",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000006-B Cálculo en varias variables",
+       "2000927 Matematicas iii"
+      ]
+     },
+     {
+      "una_de": [
+       "2000439 Fisica II",
+       "1000017-B Fundamentos de electricidad y magnetismo"
+      ]
+     }
+    ]
+   },
+   "2016489": {
+    "nombre": "Circuitos Eléctricos I",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000003-B Álgebra Lineal",
+       "2000927 Matematicas iii"
+      ]
+     },
+     {
+      "una_de": [
+       "2001331 Taller de electronica",
+       "2016509 Taller de ingeniería electrónica"
+      ]
+     }
+    ]
+   },
+   "2016490": {
+    "nombre": "Circuitos Eléctricos II",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "todas": [
+       "2016489 Circuitos Eléctricos I"
+      ]
+     },
+     {
+      "una_de": [
+       "1000007-B Ecuaciones Diferenciales",
+       "2019619 Matematicas iv"
+      ]
+     }
+    ]
+   },
+   "2016492": {
+    "nombre": "Comunicaciones",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2001619 Analisis de sistemas dinamicos",
+       "2016507 Señales y Sistemas II"
+      ]
+     },
+     {
+      "una_de": [
+       "1000015-B Probabilidad fundamental",
+       "2001065 Probabilidad y estadistica",
+       "1000013-B Probabilidad y estadística fundamental"
+      ]
+     }
+    ]
+   },
+   "2016493": {
+    "nombre": "Control",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2001619 Analisis de sistemas dinamicos",
+       "2016507 Señales y Sistemas II"
+      ]
+     }
+    ]
+   },
+   "2016494": {
+    "error": "No encontré la asignatura \"2016494\" en esa búsqueda"
+   },
+   "2016495": {
+    "nombre": "Electrónica análoga I",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "todas": [
+       "2016489 Circuitos Eléctricos I"
+      ]
+     }
+    ]
+   },
+   "2016496": {
+    "nombre": "Electrónica análoga II",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "todas": [
+       "2016495 Electrónica análoga I"
+      ]
+     },
+     {
+      "una_de": [
+       "2016490 Circuitos Eléctricos II",
+       "2001603 Circuitos electricos ii"
+      ]
+     }
+    ]
+   },
+   "2016497": {
+    "nombre": "Electrónica de potencia",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "todas": [
+       "2016495 Electrónica análoga I"
+      ]
+     },
+     {
+      "una_de": [
+       "2016490 Circuitos Eléctricos II",
+       "2001603 Circuitos electricos ii"
+      ]
+     }
+    ]
+   },
+   "2016498": {
+    "nombre": "Electrónica digital I",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "todas": [
+       "2016495 Electrónica análoga I"
+      ]
+     }
+    ]
+   },
+   "2016499": {
+    "nombre": "Electrónica digital II",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "todas": [
+       "2016498 Electrónica digital I"
+      ]
+     }
+    ]
+   },
+   "2016500": {
+    "nombre": "Física de Semiconductores",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000040-B Introducción a la ciencia de materiales",
+       "2000174 Materiales para ingenieria"
+      ]
+     }
+    ]
+   },
+   "2016501": {
+    "nombre": "Instrumentación y medidas",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "todas": [
+       "2016495 Electrónica análoga I"
+      ]
+     }
+    ]
+   },
+   "2016502": {
+    "nombre": "Introducción a ingeniería electrónica",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 5,
+    "prerrequisitos": []
+   },
+   "2016503": {
+    "nombre": "Líneas y antenas",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2001608 Campos electromagneticos",
+       "2016487 Campos electromagnéticos"
+      ]
+     },
+     {
+      "una_de": [
+       "2019615 Fisica iii",
+       "1000020-B Fundamentos de oscilaciones, ondas y óptica"
+      ]
+     }
+    ]
+   },
+   "2016506": {
+    "nombre": "Señales y sistemas I",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "todas": [
+       "2016489 Circuitos Eléctricos I"
+      ]
+     },
+     {
+      "una_de": [
+       "1000007-B Ecuaciones Diferenciales",
+       "2019619 Matematicas iv"
+      ]
+     }
+    ]
+   },
+   "2016507": {
+    "nombre": "Señales y Sistemas II",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2016506 Señales y sistemas I",
+       "2000490 Tratamiento de señales"
+      ]
+     },
+     {
+      "una_de": [
+       "2000967 Matematicas v",
+       "2015159 Variable compleja"
+      ]
+     }
+    ]
+   },
+   "2016509": {
+    "nombre": "Taller de ingeniería electrónica",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 2,
+    "prerrequisitos": []
+   },
+   "2016510": {
+    "error": "No encontré la asignatura \"2016510\" en esa búsqueda"
+   },
+   "2019125": {
+    "nombre": "Redes de telecomunicaciones",
+    "tipologia": "DISCIPLINAR OPTATIVA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "todas": [
+       "2016492 Comunicaciones"
+      ]
+     }
+    ]
+   },
+   "2024045": {
+    "nombre": "Taller de proyectos interdisciplinarios",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": []
+   },
+   "2028816": {
+    "nombre": "Diseño de sistemas electrónicos",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": []
+   }
+  },
+  "industrial": {
+   "1000017": {
+    "nombre": "Fundamentos de electricidad y magnetismo",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2000438 Fisica i",
+       "1000019-B Fundamentos de mecánica"
+      ]
+     },
+     {
+      "una_de": [
+       "1000005-B Cálculo Integral",
+       "2015556 Cálculo integral en una variable",
+       "2019617 Matematicas ii"
+      ]
+     }
+    ]
+   },
+   "1000019": {
+    "nombre": "Fundamentos de mecánica",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000004-B Cálculo diferencial",
+       "2016377 Cálculo diferencial en una variable",
+       "2001285 Matematicas i"
+      ]
+     }
+    ]
+   },
+   "2015321": {
+    "nombre": "Trabajo de Grado - Asignaturas de Posgrado",
+    "tipologia": "TRABAJO DE GRADO",
+    "creditos": 6,
+    "prerrequisitos": []
+   },
+   "2015734": {
+    "nombre": "Programación de computadores",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": []
+   },
+   "2015811": {
+    "nombre": "Sociología especial: Industrial y del trabajo",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": []
+   },
+   "2016375": {
+    "nombre": "Programación orientada a objetos",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "todas": [
+       "2015734 Programación de computadores"
+      ]
+     }
+    ]
+   },
+   "2016605": {
+    "nombre": "Logística",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2007880 Control de calidad",
+       "2016607 Modelamiento y simulación",
+       "2025988 Taller de simulación procesos de manufactura y sistemas de servicios"
+      ]
+     }
+    ]
+   },
+   "2016609": {
+    "nombre": "Seguridad industrial",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2000371 Fisica ii",
+       "1000017-B Fundamentos de electricidad y magnetismo"
+      ]
+     }
+    ]
+   },
+   "2016612": {
+    "nombre": "Taller de diseño de plantas",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2007879 Taller de ingenieria de la produccion",
+       "2016614 Taller de ingeniería de la producción"
+      ]
+     },
+     {
+      "todas": [
+       "2016609 Seguridad industrial"
+      ]
+     },
+     {
+      "una_de": [
+       "2016586 Análisis y Diseño de Sistemas de Información",
+       "2025982 Sistemas de información",
+       "2016053 Sistemas de Información Gerencial"
+      ]
+     }
+    ]
+   },
+   "2016613": {
+    "nombre": "Taller de ergonomía e ingeniería de métodos",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2001530 Taller de procesos",
+       "2016618 Taller de Procesos Metalmecánicos"
+      ]
+     },
+     {
+      "una_de": [
+       "2015173 Introducción a la optimización",
+       "2016603 Investigación de operaciones I",
+       "2025971 Optimización"
+      ]
+     }
+    ]
+   },
+   "2016614": {
+    "nombre": "Taller de ingeniería de la producción",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2016613 Taller de ergonomía e ingeniería de métodos",
+       "2007875 Taller de ingenieria de metodos"
+      ]
+     },
+     {
+      "una_de": [
+       "2016604 Investigación de Operaciones II",
+       "2025987 Modelos estocásticos para procesos de manufactura y sistemas de servicios"
+      ]
+     }
+    ]
+   },
+   "2016615": {
+    "nombre": "Taller de invención y creatividad",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2016601 Introducción a la Ingeniería Industrial",
+       "2026805 Introducción a la ingeniería industrial",
+       "2001526 Taller de fundamentos de ingenieria"
+      ]
+     }
+    ]
+   },
+   "2016616": {
+    "nombre": "Taller de metodología de la investigación",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2007277 Estadistica industrial",
+       "2016379 Inferencia estadística",
+       "1000016-B Inferencia estadística fundamental",
+       "2027878 Inferencia estadística fundamental"
+      ]
+     },
+     {
+      "una_de": [
+       "2019610 Taller de creatividad",
+       "2016615 Taller de invención y creatividad"
+      ]
+     }
+    ]
+   },
+   "2016618": {
+    "nombre": "Taller de Procesos Metalmecánicos",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2025993 Taller de ciencia y tecnología de materiales",
+       "2007750 Taller de ingenieria de materiales",
+       "2016620 Taller de Química e Ingeniería de Materiales"
+      ]
+     }
+    ]
+   },
+   "2016619": {
+    "nombre": "Taller de Procesos Químicos y Biotecnológicos",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2025993 Taller de ciencia y tecnología de materiales",
+       "2007750 Taller de ingenieria de materiales",
+       "2016620 Taller de Química e Ingeniería de Materiales"
+      ]
+     }
+    ]
+   },
+   "2025986": {
+    "nombre": "Ingeniería económica y análisis de riesgo",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000006-B Cálculo en varias variables",
+       "2015162 Calculo vectorial",
+       "2000927 Matematicas iii"
+      ]
+     },
+     {
+      "una_de": [
+       "2016038 Fundamentos de contabilidad de gestión",
+       "2016610 Sistemas de costos"
+      ]
+     }
+    ]
+   },
+   "2025987": {
+    "nombre": "Modelos estocásticos para procesos de manufactura y sistemas de servicios",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2015173 Introducción a la optimización",
+       "2016603 Investigación de operaciones I",
+       "2025971 Optimización"
+      ]
+     },
+     {
+      "una_de": [
+       "2015177 Modelos matemáticos",
+       "2025970 Modelos y simulación",
+       "2016617 Taller de Modelamiento y Solución de Problemas en Ingeniería"
+      ]
+     },
+     {
+      "una_de": [
+       "2025985 Complemento inferencia fundamental",
+       "2007277 Estadistica industrial",
+       "2016379 Inferencia estadística",
+       "1000016-B Inferencia estadística fundamental",
+       "2027878 Inferencia estadística fundamental"
+      ]
+     }
+    ]
+   },
+   "2025988": {
+    "nombre": "Taller de simulación procesos de manufactura y sistemas de servicios",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2016603 Investigación de operaciones I",
+       "2025987 Modelos estocásticos para procesos de manufactura y sistemas de servicios"
+      ]
+     }
+    ]
+   },
+   "2025989": {
+    "nombre": "Trabajo de grado - Modalidad practica de extension",
+    "tipologia": "TRABAJO DE GRADO",
+    "creditos": 6,
+    "prerrequisitos": []
+   },
+   "2025990": {
+    "nombre": "Trabajo de grado - Modalidad trabajos investigativos",
+    "tipologia": "TRABAJO DE GRADO",
+    "creditos": 6,
+    "prerrequisitos": []
+   },
+   "2025993": {
+    "nombre": "Taller de ciencia y tecnología de materiales",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2000438 Fisica i",
+       "1000019-B Fundamentos de mecánica"
+      ]
+     }
+    ]
+   },
+   "2026488": {
+    "nombre": "Taller de herramientas y problemas en ingeniería industrial",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000004-B Cálculo diferencial",
+       "2016377 Cálculo diferencial en una variable",
+       "2001285 Matematicas i"
+      ]
+     },
+     {
+      "una_de": [
+       "2016601 Introducción a la Ingeniería Industrial",
+       "2026805 Introducción a la ingeniería industrial",
+       "2001526 Taller de fundamentos de ingenieria"
+      ]
+     },
+     {
+      "todas": [
+       "2016375 Programación orientada a objetos"
+      ]
+     }
+    ]
+   },
+   "2026805": {
+    "nombre": "Introducción a la ingeniería industrial",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": []
+   },
+   "2027877": {
+    "nombre": "Probabilidad fundamental",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000005-B Cálculo Integral",
+       "2015556 Cálculo integral en una variable",
+       "2019617 Matematicas ii"
+      ]
+     }
+    ]
+   },
+   "2027878": {
+    "nombre": "Inferencia estadística fundamental",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2015178 Probabilidad",
+       "1000015-B Probabilidad fundamental",
+       "2027877 Probabilidad fundamental"
+      ]
+     }
+    ]
+   }
+  },
+  "mecanica": {
+   "1000003": {
+    "nombre": "Álgebra Lineal",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": []
+   },
+   "1000004": {
+    "nombre": "Cálculo diferencial",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": []
+   },
+   "1000005": {
+    "nombre": "Cálculo Integral",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000004-B Cálculo diferencial",
+       "2001285 Matematicas i"
+      ]
+     }
+    ]
+   },
+   "1000006": {
+    "nombre": "Cálculo en varias variables",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000005-B Cálculo Integral",
+       "2000916 Matematicas ii"
+      ]
+     },
+     {
+      "una_de": [
+       "1000003-B Álgebra Lineal",
+       "2000916 Matematicas ii"
+      ]
+     }
+    ]
+   },
+   "1000007": {
+    "nombre": "Ecuaciones Diferenciales",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000005-B Cálculo Integral",
+       "2000916 Matematicas ii"
+      ]
+     },
+     {
+      "una_de": [
+       "1000003-B Álgebra Lineal",
+       "2000916 Matematicas ii"
+      ]
+     }
+    ]
+   },
+   "1000013": {
+    "nombre": "Probabilidad y estadística fundamental",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000004-B Cálculo diferencial",
+       "2001285 Matematicas i"
+      ]
+     }
+    ]
+   },
+   "1000019": {
+    "nombre": "Fundamentos de mecánica",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000004-B Cálculo diferencial",
+       "2001285 Matematicas i"
+      ]
+     }
+    ]
+   },
+   "1000024": {
+    "nombre": "Principios de química",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": []
+   },
+   "2015215": {
+    "nombre": "Análisis de sistemas dinámicos",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2000967 Matematicas v",
+       "2022341 Matematicas v",
+       "2016506 Señales y sistemas I"
+      ]
+     },
+     {
+      "una_de": [
+       "2001771 Electronica basica",
+       "2017260 Electrónica básica"
+      ]
+     }
+    ]
+   },
+   "2015702": {
+    "nombre": "Gerencia y gestión de proyectos",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2001810 Fundamentos de economia",
+       "2010263 Fundamentos de economia",
+       "2015703 Ingeniería económica"
+      ]
+     }
+    ]
+   },
+   "2015703": {
+    "nombre": "Ingeniería económica",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000005-B Cálculo Integral",
+       "2000916 Matematicas ii"
+      ]
+     }
+    ]
+   },
+   "2015711": {
+    "nombre": "Dibujo básico",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": []
+   },
+   "2015734": {
+    "nombre": "Programación de computadores",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": []
+   },
+   "2015942": {
+    "nombre": "Aplicaciones de elementos finitos",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000007-B Ecuaciones Diferenciales",
+       "2017294 Ecuaciones diferenciales",
+       "2019609 Matematicas iv"
+      ]
+     }
+    ]
+   },
+   "2015970": {
+    "nombre": "Métodos numéricos",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000007-B Ecuaciones Diferenciales",
+       "2017294 Ecuaciones diferenciales",
+       "2019609 Matematicas iv"
+      ]
+     }
+    ]
+   },
+   "2016506": {
+    "nombre": "Señales y sistemas I",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2001612 Instalaciones y maquinas electricas",
+       "2017266 Instalaciones y máquinas eléctricas"
+      ]
+     }
+    ]
+   },
+   "2016640": {
+    "nombre": "Principios de Estática",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000003-B Álgebra Lineal",
+       "2000916 Matematicas ii"
+      ]
+     }
+    ]
+   },
+   "2017256": {
+    "nombre": "Ciencia e ingeniería de materiales",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2001753 Materiales i",
+       "1000024-B Principios de química"
+      ]
+     },
+     {
+      "una_de": [
+       "2001747 Tecnologia mecanica basica",
+       "2017278 Tecnología mecánica básica"
+      ]
+     }
+    ]
+   },
+   "2017257": {
+    "nombre": "Dibujo de Máquinas",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2001731 Dibujo basico",
+       "2015711 Dibujo básico"
+      ]
+     },
+     {
+      "una_de": [
+       "2015711 Dibujo básico",
+       "2001730 Geometria descriptiva"
+      ]
+     }
+    ]
+   },
+   "2017258": {
+    "nombre": "Diseño de elementos de máquinas I",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2017277 Resistencia de Materiales",
+       "2001737 Resistencia de materiales"
+      ]
+     },
+     {
+      "una_de": [
+       "2001736 Cinetica",
+       "2017268 Mecanismos"
+      ]
+     }
+    ]
+   },
+   "2017259": {
+    "nombre": "Diseño de elementos de máquinas II",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2017257 Dibujo de Máquinas",
+       "2001732 Dibujo de maquinas"
+      ]
+     },
+     {
+      "una_de": [
+       "2017258 Diseño de elementos de máquinas I",
+       "2001739 Elementos de maquinas i"
+      ]
+     }
+    ]
+   },
+   "2017260": {
+    "nombre": "Electrónica básica",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2001612 Instalaciones y maquinas electricas",
+       "2017266 Instalaciones y máquinas eléctricas"
+      ]
+     }
+    ]
+   },
+   "2017261": {
+    "nombre": "Fundamentos de control",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2015215 Análisis de sistemas dinámicos",
+       "2001772 Sistemas dinamicos y control"
+      ]
+     }
+    ]
+   },
+   "2017262": {
+    "nombre": "Fundamentos de transferencia de calor",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2019611 TERMODINAMICA",
+       "2001762 Termodinamica",
+       "2017279 Termodinámica técnica"
+      ]
+     },
+     {
+      "una_de": [
+       "2001563 Mecanica de fluidos",
+       "2017272 Principios de mecánica de fluidos"
+      ]
+     }
+    ]
+   },
+   "2017264": {
+    "nombre": "Ingeniería de Manufactura",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2017274 Procesos de Manufactura II",
+       "2001748 Procesos de mecanizado"
+      ]
+     },
+     {
+      "una_de": [
+       "2001065 Probabilidad y estadistica",
+       "1000013-B Probabilidad y estadística fundamental"
+      ]
+     }
+    ]
+   },
+   "2017265": {
+    "nombre": "Ingeniería y desarrollo sostenible",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": []
+   },
+   "2017266": {
+    "nombre": "Instalaciones y máquinas eléctricas",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000003-B Álgebra Lineal",
+       "2000916 Matematicas ii"
+      ]
+     }
+    ]
+   },
+   "2017267": {
+    "nombre": "Materiales de Ingeniería",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2017256 Ciencia e ingeniería de materiales",
+       "2022886 Materiales I-B"
+      ]
+     }
+    ]
+   },
+   "2017268": {
+    "nombre": "Mecanismos",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2001735 Cinematica",
+       "2017271 Principios de dinámica"
+      ]
+     }
+    ]
+   },
+   "2017271": {
+    "nombre": "Principios de dinámica",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000003-B Álgebra Lineal",
+       "2000916 Matematicas ii"
+      ]
+     }
+    ]
+   },
+   "2017272": {
+    "nombre": "Principios de mecánica de fluidos",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000007-B Ecuaciones Diferenciales",
+       "2017294 Ecuaciones diferenciales",
+       "2019609 Matematicas iv"
+      ]
+     }
+    ]
+   },
+   "2017273": {
+    "nombre": "Procesos de Manufactura I",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2017267 Materiales de Ingeniería",
+       "2001754 Materiales ii"
+      ]
+     },
+     {
+      "una_de": [
+       "2017277 Resistencia de Materiales",
+       "2001737 Resistencia de materiales"
+      ]
+     }
+    ]
+   },
+   "2017274": {
+    "nombre": "Procesos de Manufactura II",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2017267 Materiales de Ingeniería",
+       "2001754 Materiales ii"
+      ]
+     },
+     {
+      "una_de": [
+       "2017277 Resistencia de Materiales",
+       "2001737 Resistencia de materiales"
+      ]
+     }
+    ]
+   },
+   "2017275": {
+    "nombre": "Proyecto aplicado de ingeniería",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": []
+   },
+   "2017277": {
+    "nombre": "Resistencia de Materiales",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2001733 Estatica",
+       "2016640 Principios de Estática"
+      ]
+     }
+    ]
+   },
+   "2017278": {
+    "nombre": "Tecnología mecánica básica",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": []
+   },
+   "2017279": {
+    "nombre": "Termodinámica técnica",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2001753 Materiales i",
+       "1000024-B Principios de química"
+      ]
+     }
+    ]
+   },
+   "2017293": {
+    "nombre": "Modelación matemática",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000007-B Ecuaciones Diferenciales",
+       "2017294 Ecuaciones diferenciales",
+       "2019609 Matematicas iv"
+      ]
+     }
+    ]
+   },
+   "2017295": {
+    "nombre": "Trabajo de Grado",
+    "tipologia": "TRABAJO DE GRADO",
+    "creditos": 6,
+    "prerrequisitos": []
+   },
+   "2017296": {
+    "nombre": "Trabajo de Grado - Asignaturas de Posgrado",
+    "tipologia": "TRABAJO DE GRADO",
+    "creditos": 6,
+    "prerrequisitos": []
+   },
+   "2024045": {
+    "nombre": "Taller de proyectos interdisciplinarios",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2017265 Ingeniería y desarrollo sostenible",
+       "2001722 Introduccion a la ingenieria mecanica"
+      ]
+     }
+    ]
+   }
+  },
+  "mecatronica": {
+   "1000003": {
+    "nombre": "Álgebra Lineal",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": []
+   },
+   "1000004": {
+    "nombre": "Cálculo diferencial",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": []
+   },
+   "1000005": {
+    "nombre": "Cálculo Integral",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000004-B Cálculo diferencial",
+       "2001285 Matematicas i"
+      ]
+     }
+    ]
+   },
+   "1000006": {
+    "nombre": "Cálculo en varias variables",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000005-B Cálculo Integral",
+       "2000916 Matematicas ii"
+      ]
+     },
+     {
+      "una_de": [
+       "1000003-B Álgebra Lineal",
+       "2000916 Matematicas ii"
+      ]
+     }
+    ]
+   },
+   "1000007": {
+    "nombre": "Ecuaciones Diferenciales",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000005-B Cálculo Integral",
+       "2000916 Matematicas ii"
+      ]
+     },
+     {
+      "una_de": [
+       "1000003-B Álgebra Lineal",
+       "2000916 Matematicas ii"
+      ]
+     }
+    ]
+   },
+   "1000013": {
+    "nombre": "Probabilidad y estadística fundamental",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000004-B Cálculo diferencial",
+       "2001285 Matematicas i"
+      ]
+     }
+    ]
+   },
+   "1000017": {
+    "nombre": "Fundamentos de electricidad y magnetismo",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000005-B Cálculo Integral",
+       "2000916 Matematicas ii"
+      ]
+     },
+     {
+      "una_de": [
+       "2000438 Fisica i",
+       "1000019-B Fundamentos de mecánica"
+      ]
+     }
+    ]
+   },
+   "1000019": {
+    "nombre": "Fundamentos de mecánica",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000004-B Cálculo diferencial",
+       "2001285 Matematicas i"
+      ]
+     }
+    ]
+   },
+   "1000024": {
+    "nombre": "Principios de química",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": []
+   },
+   "2015159": {
+    "nombre": "Variable compleja",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000007-B Ecuaciones Diferenciales",
+       "2017294 Ecuaciones diferenciales",
+       "2000953 Matematicas iv"
+      ]
+     }
+    ]
+   },
+   "2015703": {
+    "nombre": "Ingeniería económica",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000005-B Cálculo Integral",
+       "2000916 Matematicas ii"
+      ]
+     }
+    ]
+   },
+   "2015711": {
+    "nombre": "Dibujo básico",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": []
+   },
+   "2015734": {
+    "nombre": "Programación de computadores",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": []
+   },
+   "2016375": {
+    "nombre": "Programación orientada a objetos",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2015734 Programación de computadores"
+      ]
+     }
+    ]
+   },
+   "2016489": {
+    "nombre": "Circuitos Eléctricos I",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000003-B Álgebra Lineal",
+       "2001285 Matematicas i"
+      ]
+     },
+     {
+      "una_de": [
+       "2016509 Taller de ingeniería electrónica",
+       "2017289 Taller Electrónica"
+      ]
+     }
+    ]
+   },
+   "2016493": {
+    "nombre": "Control",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2001619 Analisis de sistemas dinamicos",
+       "2016507 Señales y Sistemas II"
+      ]
+     }
+    ]
+   },
+   "2016495": {
+    "nombre": "Electrónica análoga I",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2016489 Circuitos Eléctricos I",
+       "2001601 Circuitos electricos i"
+      ]
+     }
+    ]
+   },
+   "2016498": {
+    "nombre": "Electrónica digital I",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2016495 Electrónica análoga I",
+       "2000477 Electronica digital i"
+      ]
+     }
+    ]
+   },
+   "2016506": {
+    "nombre": "Señales y sistemas I",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2016489 Circuitos Eléctricos I",
+       "2001601 Circuitos electricos i"
+      ]
+     },
+     {
+      "una_de": [
+       "1000007-B Ecuaciones Diferenciales"
+      ]
+     }
+    ]
+   },
+   "2016507": {
+    "nombre": "Señales y Sistemas II",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2001860 Procesamiento de señales",
+       "2016506 Señales y sistemas I"
+      ]
+     },
+     {
+      "una_de": [
+       "2000953 Matematicas iv",
+       "2015159 Variable compleja"
+      ]
+     }
+    ]
+   },
+   "2016509": {
+    "nombre": "Taller de ingeniería electrónica",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 2,
+    "prerrequisitos": []
+   },
+   "2016640": {
+    "nombre": "Principios de Estática",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000003-B Álgebra Lineal",
+       "2000916 Matematicas ii"
+      ]
+     }
+    ]
+   },
+   "2016699": {
+    "nombre": "Estructuras de datos",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2001853 Ingenieria de software i",
+       "2016375 Programación orientada a objetos"
+      ]
+     }
+    ]
+   },
+   "2016753": {
+    "nombre": "Microcontroladores",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2000477 Electronica digital i",
+       "2016498 Electrónica digital I"
+      ]
+     }
+    ]
+   },
+   "2016770": {
+    "nombre": "Robótica",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2016726 Control",
+       "2016493 Control"
+      ]
+     }
+    ]
+   },
+   "2017256": {
+    "nombre": "Ciencia e ingeniería de materiales",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2013653 Primer trabajo de proyecto experimental",
+       "1000024-B Principios de química"
+      ]
+     },
+     {
+      "todas": [
+       "2017278 Tecnología mecánica básica"
+      ]
+     }
+    ]
+   },
+   "2017265": {
+    "nombre": "Ingeniería y desarrollo sostenible",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": []
+   },
+   "2017271": {
+    "nombre": "Principios de dinámica",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000003-B Álgebra Lineal",
+       "2000916 Matematicas ii"
+      ]
+     }
+    ]
+   },
+   "2017275": {
+    "nombre": "Proyecto aplicado de ingeniería",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": []
+   },
+   "2017277": {
+    "nombre": "Resistencia de Materiales",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2007399 Mecanica analitica",
+       "2016640 Principios de Estática"
+      ]
+     }
+    ]
+   },
+   "2017278": {
+    "nombre": "Tecnología mecánica básica",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "todas": [
+       "2015711 Dibujo básico",
+       "2017265 Ingeniería y desarrollo sostenible"
+      ]
+     }
+    ]
+   },
+   "2017280": {
+    "nombre": "Automatización de Procesos de Manufactura",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2007400 Procesos de manufactura",
+       "2017273 Procesos de Manufactura I",
+       "2017274 Procesos de Manufactura II"
+      ]
+     },
+     {
+      "todas": [
+       "2016770 Robótica",
+       "2017287 Sensores y actuadores",
+       "2017288 Servomecanismos"
+      ]
+     }
+    ]
+   },
+   "2017282": {
+    "nombre": "Diseño Mecatrónico",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "todas": [
+       "2017271 Principios de dinámica",
+       "2017277 Resistencia de Materiales"
+      ]
+     }
+    ]
+   },
+   "2017287": {
+    "nombre": "Sensores y actuadores",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2001619 Analisis de sistemas dinamicos",
+       "2016507 Señales y Sistemas II"
+      ]
+     }
+    ]
+   },
+   "2017288": {
+    "nombre": "Servomecanismos",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2007401 Diseño",
+       "2017282 Diseño Mecatrónico"
+      ]
+     }
+    ]
+   },
+   "2017297": {
+    "nombre": "Trabajo de Grado",
+    "tipologia": "TRABAJO DE GRADO",
+    "creditos": 6,
+    "prerrequisitos": []
+   },
+   "2017298": {
+    "nombre": "Trabajo de Grado - Asignaturas de Posgrado",
+    "tipologia": "TRABAJO DE GRADO",
+    "creditos": 6,
+    "prerrequisitos": []
+   },
+   "2017770": {
+    "error": "No encontré la asignatura \"2017770\" en esa búsqueda"
+   },
+   "2024045": {
+    "nombre": "Taller de proyectos interdisciplinarios",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "todas": [
+       "2017265 Ingeniería y desarrollo sostenible"
+      ]
+     }
+    ]
+   },
+   "2025967": {
+    "nombre": "Redes de computadores",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2016699 Estructuras de datos",
+       "2001412 Estructuras de informacion"
+      ]
+     }
+    ]
+   }
+  },
+  "sistemas": {
+   "1000003": {
+    "nombre": "Álgebra Lineal",
+    "tipologia": "FUND. OPTATIVA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000004-B Cálculo diferencial",
+       "2016377 Cálculo diferencial en una variable"
+      ]
+     }
+    ]
+   },
+   "1000004": {
+    "nombre": "Cálculo diferencial",
+    "tipologia": "FUND. OPTATIVA",
+    "creditos": 4,
+    "prerrequisitos": []
+   },
+   "1000005": {
+    "nombre": "Cálculo Integral",
+    "tipologia": "FUND. OPTATIVA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000004-B Cálculo diferencial",
+       "2016377 Cálculo diferencial en una variable"
+      ]
+     }
+    ]
+   },
+   "1000006": {
+    "nombre": "Cálculo en varias variables",
+    "tipologia": "FUND. OPTATIVA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000005-B Cálculo Integral",
+       "2015556 Cálculo integral en una variable"
+      ]
+     }
+    ]
+   },
+   "1000013": {
+    "nombre": "Probabilidad y estadística fundamental",
+    "tipologia": "FUND. OPTATIVA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000005-B Cálculo Integral",
+       "2015556 Cálculo integral en una variable"
+      ]
+     }
+    ]
+   },
+   "1000017": {
+    "nombre": "Fundamentos de electricidad y magnetismo",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000005-B Cálculo Integral",
+       "2015556 Cálculo integral en una variable"
+      ]
+     },
+     {
+      "todas": [
+       "1000019-B Fundamentos de mecánica"
+      ]
+     }
+    ]
+   },
+   "1000019": {
+    "nombre": "Fundamentos de mecánica",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000004-B Cálculo diferencial",
+       "2016377 Cálculo diferencial en una variable"
+      ]
+     }
+    ]
+   },
+   "1000089": {
+    "error": "No encontré la asignatura \"1000089\" en esa búsqueda"
+   },
+   "2015174": {
+    "nombre": "Introducción a la teoría de la computación",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2015168 Fundamentos de matemáticas",
+       "2025963 Matemáticas discretas I"
+      ]
+     }
+    ]
+   },
+   "2015702": {
+    "nombre": "Gerencia y gestión de proyectos",
+    "tipologia": "FUND. OPTATIVA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2015703 Ingeniería económica",
+       "2025986 Ingeniería económica y análisis de riesgo",
+       "2016047 Modelos económicos computacionales"
+      ]
+     }
+    ]
+   },
+   "2015703": {
+    "nombre": "Ingeniería económica",
+    "tipologia": "FUND. OPTATIVA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000005-B Cálculo Integral",
+       "2015556 Cálculo integral en una variable"
+      ]
+     }
+    ]
+   },
+   "2015734": {
+    "nombre": "Programación de computadores",
+    "tipologia": "DISCIPLINAR OPTATIVA",
+    "creditos": 3,
+    "prerrequisitos": []
+   },
+   "2015970": {
+    "nombre": "Métodos numéricos",
+    "tipologia": "FUND. OPTATIVA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000006-B Cálculo en varias variables",
+       "2015162 Calculo vectorial"
+      ]
+     }
+    ]
+   },
+   "2016353": {
+    "nombre": "Bases de datos",
+    "tipologia": "DISCIPLINAR OPTATIVA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "todas": [
+       "2016375 Programación orientada a objetos"
+      ]
+     }
+    ]
+   },
+   "2016375": {
+    "nombre": "Programación orientada a objetos",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2026573 Introducción a las ciencias de la computación y a la programación",
+       "2015734 Programación de computadores"
+      ]
+     }
+    ]
+   },
+   "2016696": {
+    "nombre": "Algoritmos",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "todas": [
+       "2016699 Estructuras de datos"
+      ]
+     },
+     {
+      "una_de": [
+       "2025964 Matemáticas discretas II",
+       "2015181 Sistemas numéricos"
+      ]
+     },
+     {
+      "una_de": [
+       "2015178 Probabilidad",
+       "2027877 Probabilidad fundamental",
+       "1000013-B Probabilidad y estadística fundamental"
+      ]
+     }
+    ]
+   },
+   "2016697": {
+    "nombre": "Arquitectura de computadores",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2016498 Electrónica digital I",
+       "2016698 Elementos de computadores"
+      ]
+     }
+    ]
+   },
+   "2016698": {
+    "nombre": "Elementos de computadores",
+    "tipologia": "DISCIPLINAR OPTATIVA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "todas": [
+       "2025975 Introducción a la ingeniería de sistemas y computación"
+      ]
+     }
+    ]
+   },
+   "2016699": {
+    "nombre": "Estructuras de datos",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "todas": [
+       "2016375 Programación orientada a objetos"
+      ]
+     }
+    ]
+   },
+   "2016701": {
+    "nombre": "Ingeniería de software I",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "todas": [
+       "2016699 Estructuras de datos"
+      ]
+     },
+     {
+      "una_de": [
+       "2027641 Análisis de bases de datos",
+       "2016353 Bases de datos"
+      ]
+     }
+    ]
+   },
+   "2016702": {
+    "nombre": "Ingeniería de software II",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "todas": [
+       "2016701 Ingeniería de software I",
+       "2025967 Redes de computadores"
+      ]
+     }
+    ]
+   },
+   "2016703": {
+    "nombre": "Pensamiento sistémico",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": []
+   },
+   "2016707": {
+    "nombre": "Sistemas operativos",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "todas": [
+       "2016697 Arquitectura de computadores"
+      ]
+     }
+    ]
+   },
+   "2016716": {
+    "nombre": "Arquitectura de Software",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "todas": [
+       "2016702 Ingeniería de software II"
+      ]
+     }
+    ]
+   },
+   "2016722": {
+    "nombre": "Computación paralela y distribuida",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "todas": [
+       "2016696 Algoritmos"
+      ]
+     }
+    ]
+   },
+   "2016843": {
+    "nombre": "Trabajo de grado - asignaturas de posgrado",
+    "tipologia": "TRABAJO DE GRADO",
+    "creditos": 6,
+    "prerrequisitos": []
+   },
+   "2024045": {
+    "nombre": "Taller de proyectos interdisciplinarios",
+    "tipologia": "DISCIPLINAR OPTATIVA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2016028 Diseño, gestión y evaluación de proyectos",
+       "2015702 Gerencia y gestión de proyectos"
+      ]
+     }
+    ]
+   },
+   "2025960": {
+    "nombre": "Computación visual",
+    "tipologia": "DISCIPLINAR OPTATIVA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "todas": [
+       "2016696 Algoritmos"
+      ]
+     }
+    ]
+   },
+   "2025963": {
+    "nombre": "Matemáticas discretas I",
+    "tipologia": "FUND. OPTATIVA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000003-B Álgebra Lineal",
+       "2015555 Álgebra lineal básica"
+      ]
+     }
+    ]
+   },
+   "2025964": {
+    "nombre": "Matemáticas discretas II",
+    "tipologia": "FUND. OPTATIVA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2015168 Fundamentos de matemáticas",
+       "2025963 Matemáticas discretas I"
+      ]
+     }
+    ]
+   },
+   "2025966": {
+    "nombre": "Lenguajes de programación",
+    "tipologia": "DISCIPLINAR OPTATIVA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "todas": [
+       "2016699 Estructuras de datos",
+       "2015174 Introducción a la teoría de la computación"
+      ]
+     }
+    ]
+   },
+   "2025967": {
+    "nombre": "Redes de computadores",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "todas": [
+       "2016697 Arquitectura de computadores",
+       "2016699 Estructuras de datos",
+       "1000017-B Fundamentos de electricidad y magnetismo"
+      ]
+     }
+    ]
+   },
+   "2025968": {
+    "error": "No encontré la asignatura \"2025968\" en esa búsqueda"
+   },
+   "2025969": {
+    "nombre": "Modelos estocásticos y simulación en computación y comunicaciones",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2015173 Introducción a la optimización",
+       "2025971 Optimización"
+      ]
+     }
+    ]
+   },
+   "2025970": {
+    "nombre": "Modelos y simulación",
+    "tipologia": "DISCIPLINAR OPTATIVA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000006-B Cálculo en varias variables",
+       "2015162 Calculo vectorial"
+      ]
+     },
+     {
+      "una_de": [
+       "2025964 Matemáticas discretas II",
+       "2015181 Sistemas numéricos"
+      ]
+     },
+     {
+      "una_de": [
+       "2015178 Probabilidad",
+       "2027877 Probabilidad fundamental",
+       "1000013-B Probabilidad y estadística fundamental"
+      ]
+     },
+     {
+      "todas": [
+       "2016375 Programación orientada a objetos"
+      ]
+     }
+    ]
+   },
+   "2025971": {
+    "nombre": "Optimización",
+    "tipologia": "DISCIPLINAR OPTATIVA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2017293 Modelación matemática",
+       "2019082 Modelos matemáticos I",
+       "2025970 Modelos y simulación"
+      ]
+     }
+    ]
+   },
+   "2025972": {
+    "nombre": "Introducción a la criptografía y a la seguridad de la Información",
+    "tipologia": "DISCIPLINAR OPTATIVA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "todas": [
+       "2016696 Algoritmos"
+      ]
+     }
+    ]
+   },
+   "2025973": {
+    "nombre": "Trabajo de grado - modalidad practica de extensión",
+    "tipologia": "TRABAJO DE GRADO",
+    "creditos": 6,
+    "prerrequisitos": []
+   },
+   "2025974": {
+    "nombre": "Trabajo de grado - modalidad trabajos investigativos",
+    "tipologia": "TRABAJO DE GRADO",
+    "creditos": 6,
+    "prerrequisitos": []
+   },
+   "2025975": {
+    "nombre": "Introducción a la ingeniería de sistemas y computación",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": []
+   },
+   "2025982": {
+    "nombre": "Sistemas de información",
+    "tipologia": "DISCIPLINAR OPTATIVA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2027641 Análisis de bases de datos",
+       "2016353 Bases de datos"
+      ]
+     },
+     {
+      "una_de": [
+       "2016028 Diseño, gestión y evaluación de proyectos",
+       "2015702 Gerencia y gestión de proyectos"
+      ]
+     }
+    ]
+   },
+   "2025983": {
+    "nombre": "Arquitectura de infraestructura y gobierno de tics",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "todas": [
+       "2016702 Ingeniería de software II",
+       "2025982 Sistemas de información"
+      ]
+     }
+    ]
+   },
+   "2025994": {
+    "nombre": "Teoría de la información y sistemas de comunicacion",
+    "tipologia": "DISCIPLINAR OPTATIVA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "todas": [
+       "2025967 Redes de computadores"
+      ]
+     },
+     {
+      "una_de": [
+       "2015178 Probabilidad",
+       "2027877 Probabilidad fundamental",
+       "1000013-B Probabilidad y estadística fundamental"
+      ]
+     }
+    ]
+   },
+   "2025995": {
+    "nombre": "Introducción a los sistemas inteligentes",
+    "tipologia": "DISCIPLINAR OPTATIVA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "todas": [
+       "2016696 Algoritmos"
+      ]
+     }
+    ]
+   }
+  },
+  "quimica": {
+   "1000003": {
+    "nombre": "Álgebra Lineal",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000004-B Cálculo diferencial",
+       "2001285 Matematicas i"
+      ]
+     }
+    ]
+   },
+   "1000004": {
+    "nombre": "Cálculo diferencial",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": []
+   },
+   "1000005": {
+    "nombre": "Cálculo Integral",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000004-B Cálculo diferencial",
+       "2001285 Matematicas i"
+      ]
+     }
+    ]
+   },
+   "1000006": {
+    "nombre": "Cálculo en varias variables",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000005-B Cálculo Integral",
+       "2019617 Matematicas ii"
+      ]
+     },
+     {
+      "una_de": [
+       "1000003-B Álgebra Lineal",
+       "2000927 Matematicas iii"
+      ]
+     }
+    ]
+   },
+   "1000007": {
+    "nombre": "Ecuaciones Diferenciales",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000005-B Cálculo Integral",
+       "2019617 Matematicas ii"
+      ]
+     }
+    ]
+   },
+   "1000010": {
+    "nombre": "Biología molecular y celular",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": []
+   },
+   "1000013": {
+    "nombre": "Probabilidad y estadística fundamental",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000004-B Cálculo diferencial",
+       "2001285 Matematicas i"
+      ]
+     }
+    ]
+   },
+   "1000017": {
+    "nombre": "Fundamentos de electricidad y magnetismo",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000005-B Cálculo Integral",
+       "2019617 Matematicas ii"
+      ]
+     },
+     {
+      "una_de": [
+       "2000438 Fisica i",
+       "1000019-B Fundamentos de mecánica"
+      ]
+     }
+    ]
+   },
+   "1000019": {
+    "nombre": "Fundamentos de mecánica",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000004-B Cálculo diferencial",
+       "2001285 Matematicas i"
+      ]
+     }
+    ]
+   },
+   "1000024": {
+    "nombre": "Principios de química",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": []
+   },
+   "1000025": {
+    "nombre": "Laboratorio tecnicas básicas en química",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": []
+   },
+   "1000026": {
+    "nombre": "Principios de análisis químico",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000024-B Principios de química",
+       "2000185 Quimica general"
+      ]
+     }
+    ]
+   },
+   "1000027": {
+    "nombre": "Laboratorio principios de análisis químico",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000024-B Principios de química",
+       "2000185 Quimica general"
+      ]
+     }
+    ]
+   },
+   "1000028": {
+    "nombre": "Principios de química inorgánica",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000024-B Principios de química",
+       "2000185 Quimica general"
+      ]
+     }
+    ]
+   },
+   "1000030": {
+    "nombre": "Principios de química orgánica",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000024-B Principios de química",
+       "2000185 Quimica general"
+      ]
+     }
+    ]
+   },
+   "1000031": {
+    "nombre": "Laboratorio principios de química orgánica",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 2,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000024-B Principios de química",
+       "2000185 Quimica general"
+      ]
+     }
+    ]
+   },
+   "2015289": {
+    "nombre": "Trabajo de Grado",
+    "tipologia": "TRABAJO DE GRADO",
+    "creditos": 6,
+    "prerrequisitos": []
+   },
+   "2015290": {
+    "nombre": "Trabajo de Grado - Asignaturas de Posgrado",
+    "tipologia": "TRABAJO DE GRADO",
+    "creditos": 6,
+    "prerrequisitos": []
+   },
+   "2015702": {
+    "nombre": "Gerencia y gestión de proyectos",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2010263 Fundamentos de economia",
+       "2015703 Ingeniería económica"
+      ]
+     }
+    ]
+   },
+   "2015703": {
+    "nombre": "Ingeniería económica",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000005-B Cálculo Integral",
+       "2019617 Matematicas ii"
+      ]
+     }
+    ]
+   },
+   "2015707": {
+    "nombre": "Balance de energía y equilibrio químico",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2015740 Termodinámica química",
+       "2001379 Termodinamica quimica i"
+      ]
+     }
+    ]
+   },
+   "2015708": {
+    "nombre": "Balance de materia",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": []
+   },
+   "2015710": {
+    "nombre": "Control de procesos",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2001852 Metodos numericos",
+       "2015970 Métodos numéricos"
+      ]
+     },
+     {
+      "una_de": [
+       "2001800 Diseño de reactores",
+       "2015716 Ingeniería de Reacciones Químicas"
+      ]
+     }
+    ]
+   },
+   "2015712": {
+    "nombre": "Diseño de plantas y equipos",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2015731 Operaciones de Separación",
+       "2001371 Transferencia de masa ii"
+      ]
+     },
+     {
+      "una_de": [
+       "2015713 Diseño de procesos químicos y bioquímicos",
+       "2001799 Procesos quimicos ii"
+      ]
+     }
+    ]
+   },
+   "2015713": {
+    "nombre": "Diseño de procesos químicos y bioquímicos",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2015707 Balance de energía y equilibrio químico",
+       "2001791 Termodinamica quimica ii"
+      ]
+     }
+    ]
+   },
+   "2015714": {
+    "nombre": "Fluidos",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2000438 Fisica i",
+       "1000019-B Fundamentos de mecánica"
+      ]
+     },
+     {
+      "una_de": [
+       "2015741 Termodinámica",
+       "2001377 Termodinamica i"
+      ]
+     }
+    ]
+   },
+   "2015715": {
+    "nombre": "Ingeniería de Procesos",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2015713 Diseño de procesos químicos y bioquímicos",
+       "2001799 Procesos quimicos ii"
+      ]
+     }
+    ]
+   },
+   "2015716": {
+    "nombre": "Ingeniería de Reacciones Químicas",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2015707 Balance de energía y equilibrio químico",
+       "2001791 Termodinamica quimica ii"
+      ]
+     }
+    ]
+   },
+   "2015718": {
+    "nombre": "Introducción a la ingeniería química",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": []
+   },
+   "2015719": {
+    "nombre": "Laboratorio de fluidos, sólidos y transferencia de calor",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2015714 Fluidos"
+      ]
+     },
+     {
+      "una_de": [
+       "2001367 Manejo de solidos",
+       "2015726 Manejo de sólidos"
+      ]
+     },
+     {
+      "una_de": [
+       "2015743 Transferencia de calor",
+       "2001368 Transferencia de calor i"
+      ]
+     }
+    ]
+   },
+   "2015720": {
+    "nombre": "Laboratorio de operaciones de separación, reaccion y control",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2015731 Operaciones de Separación",
+       "2001371 Transferencia de masa ii"
+      ]
+     },
+     {
+      "una_de": [
+       "2001806 Control de procesos",
+       "2015710 Control de procesos"
+      ]
+     }
+    ]
+   },
+   "2015721": {
+    "nombre": "Laboratorio de propiedades termodinámicas y de transporte",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2015707 Balance de energía y equilibrio químico",
+       "2001791 Termodinamica quimica ii"
+      ]
+     }
+    ]
+   },
+   "2015726": {
+    "nombre": "Manejo de sólidos",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "todas": [
+       "2015714 Fluidos"
+      ]
+     }
+    ]
+   },
+   "2015731": {
+    "nombre": "Operaciones de Separación",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2015744 Transferencia de masa",
+       "2001370 Transferencia de masa i"
+      ]
+     },
+     {
+      "una_de": [
+       "2015707 Balance de energía y equilibrio químico",
+       "2001791 Termodinamica quimica ii"
+      ]
+     }
+    ]
+   },
+   "2015735": {
+    "nombre": "Taller 1",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 1,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2015741 Termodinámica",
+       "2001377 Termodinamica i"
+      ]
+     },
+     {
+      "una_de": [
+       "1000006-B Cálculo en varias variables",
+       "2000927 Matematicas iii"
+      ]
+     }
+    ]
+   },
+   "2015736": {
+    "nombre": "Taller 2",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 1,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000007-B Ecuaciones Diferenciales",
+       "2019619 Matematicas iv"
+      ]
+     }
+    ]
+   },
+   "2015740": {
+    "nombre": "Termodinámica química",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2015741 Termodinámica",
+       "2001377 Termodinamica i"
+      ]
+     },
+     {
+      "una_de": [
+       "1000006-B Cálculo en varias variables",
+       "2000927 Matematicas iii"
+      ]
+     }
+    ]
+   },
+   "2015741": {
+    "nombre": "Termodinámica",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000004-B Cálculo diferencial",
+       "2001285 Matematicas i"
+      ]
+     },
+     {
+      "todas": [
+       "2015708 Balance de materia"
+      ]
+     }
+    ]
+   },
+   "2015743": {
+    "nombre": "Transferencia de calor",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 4,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "2015741 Termodinámica",
+       "2001377 Termodinamica i"
+      ]
+     },
+     {
+      "una_de": [
+       "1000007-B Ecuaciones Diferenciales",
+       "2019619 Matematicas iv"
+      ]
+     }
+    ]
+   },
+   "2015744": {
+    "nombre": "Transferencia de masa",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000007-B Ecuaciones Diferenciales",
+       "2019619 Matematicas iv"
+      ]
+     }
+    ]
+   },
+   "2015970": {
+    "nombre": "Métodos numéricos",
+    "tipologia": "FUND. OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": [
+     {
+      "una_de": [
+       "1000007-B Ecuaciones Diferenciales",
+       "2019619 Matematicas iv"
+      ]
+     }
+    ]
+   },
+   "2024045": {
+    "nombre": "Taller de proyectos interdisciplinarios",
+    "tipologia": "DISCIPLINAR OBLIGATORIA",
+    "creditos": 3,
+    "prerrequisitos": []
+   }
+  }
+ }
+}

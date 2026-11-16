@@ -1,7 +1,7 @@
 {
  "id": "sistemas",
  "nombre": "Ingeniería de Sistemas y Computación",
- "plan": "2A74",
+ "plan": "Acuerdo 003-A de 2022 del Consejo Académico; Acuerdo 006 de 2023 del Consejo de Facultad (impreso en la malla)",
  "creditos": 165,
  "semestres": [
   {
@@ -13,7 +13,8 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Matemáticas",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "sia": true
     },
     {
      "cod": "2025975",
@@ -21,7 +22,8 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Contexto Profesional y Proyectos de Ingeniería",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "sia": true
     },
     {
      "cod": "2015734",
@@ -29,7 +31,8 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Métodos y Tecnologías de Software",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "sia": true
     },
     {
      "cod": "2016703",
@@ -37,7 +40,8 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Sistemas, Modelos, Optimización y Simulación",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "sia": true
     },
     {
      "cod": "1000089",
@@ -59,9 +63,10 @@
      "cat": "Fundamentación",
      "agr": "Física",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "1000004"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "1000005",
@@ -70,9 +75,10 @@
      "cat": "Fundamentación",
      "agr": "Matemáticas",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "1000004"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "1000003",
@@ -80,7 +86,11 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Matemáticas",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "1000004"
+     ],
+     "sia": true
     },
     {
      "cod": "2016375",
@@ -89,9 +99,10 @@
      "cat": "Disciplinar",
      "agr": "Métodos y Tecnologías de Software",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "2015734"
-     ]
+     ],
+     "sia": true
     }
    ]
   },
@@ -105,9 +116,11 @@
      "cat": "Fundamentación",
      "agr": "Física",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
+      "1000005",
       "1000019"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "1000006",
@@ -116,10 +129,10 @@
      "cat": "Fundamentación",
      "agr": "Matemáticas",
      "tipo": "obligatoria",
-     "rv": [
-      "1000005",
-      "1000003"
-     ]
+     "r": [
+      "1000005"
+     ],
+     "sia": true
     },
     {
      "cod": "2025963",
@@ -128,9 +141,10 @@
      "cat": "Fundamentación",
      "agr": "Ciencias de la Computación",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "1000003"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2016353",
@@ -139,9 +153,10 @@
      "cat": "Disciplinar",
      "agr": "Infraestructura Computacional, de Comunicaciones y de Información",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "2016375"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2016698",
@@ -150,10 +165,10 @@
      "cat": "Disciplinar",
      "agr": "Infraestructura Computacional, de Comunicaciones y de Información",
      "tipo": "obligatoria",
-     "rv": [
-      "2015734",
-      "1000017"
-     ]
+     "r": [
+      "2025975"
+     ],
+     "sia": true
     }
    ]
   },
@@ -167,9 +182,10 @@
      "cat": "Fundamentación",
      "agr": "Probabilidad y Estadística",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "1000005"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2015703",
@@ -178,9 +194,10 @@
      "cat": "Fundamentación",
      "agr": "Ciencias Económicas y Administrativas",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "1000005"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2025964",
@@ -189,9 +206,10 @@
      "cat": "Fundamentación",
      "agr": "Ciencias de la Computación",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "2025963"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2016699",
@@ -200,10 +218,10 @@
      "cat": "Disciplinar",
      "agr": "Métodos y Tecnologías de Software",
      "tipo": "obligatoria",
-     "rv": [
-      "2016375",
-      "2025963"
-     ]
+     "r": [
+      "2016375"
+     ],
+     "sia": true
     },
     {
      "cod": "2016697",
@@ -212,9 +230,10 @@
      "cat": "Disciplinar",
      "agr": "Infraestructura Computacional, de Comunicaciones y de Información",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "2016698"
-     ]
+     ],
+     "sia": true
     }
    ]
   },
@@ -228,10 +247,13 @@
      "cat": "Disciplinar",
      "agr": "Sistemas, Modelos, Optimización y Simulación",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
+      "1000006",
+      "2025964",
       "1000013",
-      "2015734"
-     ]
+      "2016375"
+     ],
+     "sia": true
     },
     {
      "cod": "2015702",
@@ -240,9 +262,10 @@
      "cat": "Fundamentación",
      "agr": "Ciencias Económicas y Administrativas",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "2015703"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2025967",
@@ -251,9 +274,12 @@
      "cat": "Disciplinar",
      "agr": "Infraestructura Computacional, de Comunicaciones y de Información",
      "tipo": "obligatoria",
-     "rv": [
-      "2016697"
-     ]
+     "r": [
+      "2016697",
+      "2016699",
+      "1000017"
+     ],
+     "sia": true
     },
     {
      "cod": "2016701",
@@ -262,10 +288,11 @@
      "cat": "Disciplinar",
      "agr": "Métodos y Tecnologías de Software",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "2016699",
       "2016353"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2015174",
@@ -274,9 +301,10 @@
      "cat": "Fundamentación",
      "agr": "Ciencias de la Computación",
      "tipo": "obligatoria",
-     "rv": [
-      "2025964"
-     ]
+     "r": [
+      "2025963"
+     ],
+     "sia": true
     }
    ]
   },
@@ -290,10 +318,10 @@
      "cat": "Disciplinar",
      "agr": "Sistemas, Modelos, Optimización y Simulación",
      "tipo": "obligatoria",
-     "rv": [
-      "1000003",
+     "r": [
       "2025970"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2025982",
@@ -302,9 +330,11 @@
      "cat": "Disciplinar",
      "agr": "Infraestructura Computacional, de Comunicaciones y de Información",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
+      "2016353",
       "2015702"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2015970",
@@ -313,11 +343,10 @@
      "cat": "Fundamentación",
      "agr": "Ciencias de la Computación",
      "tipo": "obligatoria",
-     "rv": [
-      "1000006",
-      "1000003",
-      "2015734"
-     ]
+     "r": [
+      "1000006"
+     ],
+     "sia": true
     },
     {
      "cod": "2016702",
@@ -326,9 +355,11 @@
      "cat": "Disciplinar",
      "agr": "Métodos y Tecnologías de Software",
      "tipo": "obligatoria",
-     "rv": [
-      "2016701"
-     ]
+     "r": [
+      "2016701",
+      "2025967"
+     ],
+     "sia": true
     },
     {
      "cod": "2016696",
@@ -337,10 +368,12 @@
      "cat": "Fundamentación",
      "agr": "Ciencias de la Computación",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "2016699",
-      "2025964"
-     ]
+      "2025964",
+      "1000013"
+     ],
+     "sia": true
     },
     {
      "cod": "2016707",
@@ -349,10 +382,10 @@
      "cat": "Disciplinar",
      "agr": "Infraestructura Computacional, de Comunicaciones y de Información",
      "tipo": "obligatoria",
-     "rv": [
-      "2016697",
-      "2016699"
-     ]
+     "r": [
+      "2016697"
+     ],
+     "sia": true
     }
    ]
   },
@@ -366,10 +399,10 @@
      "cat": "Disciplinar",
      "agr": "Sistemas, Modelos, Optimización y Simulación",
      "tipo": "obligatoria",
-     "rv": [
-      "1000013",
-      "2025970"
-     ]
+     "r": [
+      "2025971"
+     ],
+     "sia": true
     },
     {
      "cod": "2025983",
@@ -378,10 +411,11 @@
      "cat": "Disciplinar",
      "agr": "Infraestructura Computacional, de Comunicaciones y de Información",
      "tipo": "obligatoria",
-     "rv": [
-      "2025982",
-      "2025967"
-     ]
+     "r": [
+      "2016702",
+      "2025982"
+     ],
+     "sia": true
     },
     {
      "cod": "2025994",
@@ -390,10 +424,11 @@
      "cat": "Disciplinar",
      "agr": "Infraestructura Computacional, de Comunicaciones y de Información",
      "tipo": "obligatoria",
-     "rv": [
-      "1000013",
-      "2025967"
-     ]
+     "r": [
+      "2025967",
+      "1000013"
+     ],
+     "sia": true
     },
     {
      "cod": "2016716",
@@ -402,9 +437,10 @@
      "cat": "Disciplinar",
      "agr": "Métodos y Tecnologías de Software",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "2016702"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2025995",
@@ -413,10 +449,10 @@
      "cat": "Disciplinar",
      "agr": "Sistemas Inteligentes",
      "tipo": "obligatoria",
-     "rv": [
-      "2016696",
-      "1000013"
-     ]
+     "r": [
+      "2016696"
+     ],
+     "sia": true
     },
     {
      "cod": "2025966",
@@ -425,10 +461,11 @@
      "cat": "Disciplinar",
      "agr": "Métodos y Tecnologías de Software",
      "tipo": "obligatoria",
-     "rv": [
+     "r": [
       "2016699",
       "2015174"
-     ]
+     ],
+     "sia": true
     }
    ]
   },
@@ -441,19 +478,23 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Contexto Profesional y Proyectos de Ingeniería",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "r": [
+      "2015702"
+     ],
+     "sia": true
     },
     {
-     "cod": "2025968",
+     "cod": "2016722",
      "n": "Computación Paralela y Distribuida",
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Infraestructura Computacional, de Comunicaciones y de Información",
      "tipo": "obligatoria",
-     "rv": [
-      "2016707",
-      "2025967"
-     ]
+     "r": [
+      "2016696"
+     ],
+     "sia": true
     },
     {
      "cod": "2025972",
@@ -462,10 +503,10 @@
      "cat": "Disciplinar",
      "agr": "Infraestructura Computacional, de Comunicaciones y de Información",
      "tipo": "obligatoria",
-     "rv": [
-      "2025964",
-      "2025967"
-     ]
+     "r": [
+      "2016696"
+     ],
+     "sia": true
     },
     {
      "cod": "2025960",
@@ -474,10 +515,10 @@
      "cat": "Disciplinar",
      "agr": "Computación Aplicada",
      "tipo": "obligatoria",
-     "rv": [
-      "1000003",
-      "2016699"
-     ]
+     "r": [
+      "2016696"
+     ],
+     "sia": true
     },
     {
      "cod": "",
@@ -571,7 +612,308 @@
   "Computación Visual: la tarjeta dice agrupación 'Computación Aplicada', pero la leyenda de agrupaciones la llama 'Compuración [sic] Visual'.",
   "Agrupación abreviada en la tarjeta como 'Cienc. Econom. y Administrativas'; se expandió según la leyenda a 'Ciencias Económicas y Administrativas'.",
   "Trabajo de Grado (sem. X, 6 créditos, componente C) no tiene código en el PDF.",
-  "Normatividad impresa: Acuerdo 003-A de 2022 del Consejo Académico (estructura) y Acuerdo 006 de 2023 del Consejo de Facultad (plan detallado); el pie conserva un texto de plantilla 'Acuerdo XXX de 2014'."
+  "Normatividad impresa: Acuerdo 003-A de 2022 del Consejo Académico (estructura) y Acuerdo 006 de 2023 del Consejo de Facultad (plan detallado); el pie conserva un texto de plantilla 'Acuerdo XXX de 2014'.",
+  "Verificado con el catálogo del SIA (15 nov 2026): se corrigieron códigos 2025968→2016722."
  ],
- "prerrequisitos": "Cargados de mallas/prerrequisitos_validacion.txt (14 nov 2026). r = confirmados en Acuerdo/PEP/malla; rv = por validar en el SIA (no bloquean)."
+ "prerrequisitos": "Cargados de mallas/prerrequisitos_validacion.txt (14 nov 2026). r = confirmados en Acuerdo/PEP/malla; rv = por validar en el SIA (no bloquean).",
+ "prerrequisitos_sia": "2026-11-15",
+ "sia_catalogo": {
+  "fecha": "15 nov 2026",
+  "trabajo_grado": [
+   [
+    "2016843",
+    "Trabajo de grado - asignaturas de posgrado",
+    6
+   ],
+   [
+    "2025973",
+    "Trabajo de grado - modalidad practica de extensión",
+    6
+   ],
+   [
+    "2025974",
+    "Trabajo de grado - modalidad trabajos investigativos",
+    6
+   ]
+  ],
+  "fund_optativas": [
+   [
+    "1000003",
+    "Álgebra Lineal",
+    4
+   ],
+   [
+    "2015555",
+    "Álgebra lineal básica",
+    4
+   ],
+   [
+    "2019072",
+    "Análisis numérico I",
+    4
+   ],
+   [
+    "1000004",
+    "Cálculo diferencial",
+    4
+   ],
+   [
+    "2016377",
+    "Cálculo diferencial en una variable",
+    4
+   ],
+   [
+    "1000006",
+    "Cálculo en varias variables",
+    4
+   ],
+   [
+    "1000005",
+    "Cálculo Integral",
+    4
+   ],
+   [
+    "2015556",
+    "Cálculo integral en una variable",
+    4
+   ],
+   [
+    "2015162",
+    "Calculo vectorial",
+    4
+   ],
+   [
+    "2016028",
+    "Diseño, gestión y evaluación de proyectos",
+    4
+   ],
+   [
+    "2015168",
+    "Fundamentos de matemáticas",
+    4
+   ],
+   [
+    "2015702",
+    "Gerencia y gestión de proyectos",
+    3
+   ],
+   [
+    "2015703",
+    "Ingeniería económica",
+    3
+   ],
+   [
+    "2025986",
+    "Ingeniería económica y análisis de riesgo",
+    3
+   ],
+   [
+    "2025963",
+    "Matemáticas discretas I",
+    4
+   ],
+   [
+    "2025964",
+    "Matemáticas discretas II",
+    4
+   ],
+   [
+    "2015970",
+    "Métodos numéricos",
+    3
+   ],
+   [
+    "2015178",
+    "Probabilidad",
+    4
+   ],
+   [
+    "1000013",
+    "Probabilidad y estadística fundamental",
+    3
+   ],
+   [
+    "2015181",
+    "Sistemas numéricos",
+    4
+   ]
+  ],
+  "disc_optativas": [
+   [
+    "2027641",
+    "Análisis de bases de datos",
+    3
+   ],
+   [
+    "2016353",
+    "Bases de datos",
+    3
+   ],
+   [
+    "2027642",
+    "Compiladores",
+    3
+   ],
+   [
+    "2025960",
+    "Computación visual",
+    3
+   ],
+   [
+    "2016492",
+    "Comunicaciones",
+    3
+   ],
+   [
+    "2026551",
+    "Creación y gestión de empresas",
+    3
+   ],
+   [
+    "2027310",
+    "Criptografía",
+    3
+   ],
+   [
+    "2016498",
+    "Electrónica digital I",
+    4
+   ],
+   [
+    "2016698",
+    "Elementos de computadores",
+    3
+   ],
+   [
+    "2016741",
+    "Finanzas",
+    3
+   ],
+   [
+    "2016037",
+    "Finanzas avanzadas",
+    4
+   ],
+   [
+    "2016007",
+    "Fundamentos de administración",
+    4
+   ],
+   [
+    "2016600",
+    "Gestión tecnológica",
+    3
+   ],
+   [
+    "2016748",
+    "Inteligencia artificial",
+    3
+   ],
+   [
+    "2023251",
+    "Inteligencia artificial y mini-robots",
+    3
+   ],
+   [
+    "2025972",
+    "Introducción a la criptografía y a la seguridad de la Información",
+    3
+   ],
+   [
+    "2027311",
+    "Introducción a la criptografía y a la teoría de información",
+    4
+   ],
+   [
+    "2027631",
+    "Introducción a la inteligencia artificial",
+    3
+   ],
+   [
+    "2026573",
+    "Introducción a las ciencias de la computación y a la programación",
+    3
+   ],
+   [
+    "2025995",
+    "Introducción a los sistemas inteligentes",
+    3
+   ],
+   [
+    "2025966",
+    "Lenguajes de programación",
+    3
+   ],
+   [
+    "2016753",
+    "Microcontroladores",
+    3
+   ],
+   [
+    "2017293",
+    "Modelación matemática",
+    3
+   ],
+   [
+    "2019082",
+    "Modelos matemáticos I",
+    4
+   ],
+   [
+    "2025970",
+    "Modelos y simulación",
+    3
+   ],
+   [
+    "2025971",
+    "Optimización",
+    3
+   ],
+   [
+    "2015734",
+    "Programación de computadores",
+    3
+   ],
+   [
+    "2025982",
+    "Sistemas de información",
+    3
+   ],
+   [
+    "2016053",
+    "Sistemas de Información Gerencial",
+    4
+   ],
+   [
+    "2016615",
+    "Taller de invención y creatividad",
+    3
+   ],
+   [
+    "2024045",
+    "Taller de proyectos interdisciplinarios",
+    3
+   ],
+   [
+    "2017290",
+    "Técnicas de inteligencia artificial",
+    3
+   ],
+   [
+    "2016788",
+    "Tecnología digital",
+    3
+   ],
+   [
+    "2027313",
+    "Teoría de Codificación",
+    4
+   ],
+   [
+    "2025994",
+    "Teoría de la información y sistemas de comunicacion",
+    3
+   ]
+  ]
+ }
 }

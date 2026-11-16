@@ -5,7 +5,7 @@ R = os.path.dirname(os.path.abspath(__file__)); IDX = os.path.join(R, '..', 'ind
 PLAN = {'agricola': '2541', 'civil': '2542', 'electrica': '2544', 'electronica': '2545', 'industrial': '2546', 'mecanica': '2547', 'mecatronica': '2548', 'sistemas': '2A74'}  # códigos de plan del SIA
 F = json.load(open(os.path.join(R, 'fuentes.json'), encoding='utf-8'))
 PDF = {p['id']: p['malla_pdf'] for p in F['programas']}
-FUENTE = {'agricola': 'Acuerdo 030 de 2016', 'industrial': 'PEP 2020 (Acuerdo 024 de 2014)', 'civil': 'PEP 2018'}   # prerrequisitos confirmados
+FUENTE = {k: 'catálogo del SIA' for k in PLAN}   # prerrequisitos verificados con el SIA (sia.py); los de créditos, de la malla/PEP
 def ids(d):                                    # misma asignación de ids que la página (código, o L#/OP# en orden)
     L = O = 0; vistos = {}; por = {}
     for s in d['semestres']:
@@ -22,12 +22,21 @@ for f in sorted(glob.glob(os.path.join(R, 'datos', '*.json'))):
     d = json.load(open(f, encoding='utf-8')); por = ids(d)
     res = lambda lst: ['|'.join(x if re.match(r'^(CRED|DISC)_\d+$', x) else por[x] for x in t.split('|') if re.match(r'^(CRED|DISC)_\d+$', x) or x in por) for t in lst]
     def mat(m):
-        o = {k: m[k] for k in ('cod', 'n', 'c', 'cat', 'agr', 'tipo') if k in m}
+        o = {k: m[k] for k in ('cod', 'n', 'c', 'cat', 'agr', 'tipo', 'sia') if k in m}
         for k in ('r', 'rv'):
             if m.get(k): o[k] = [x for x in res(m[k]) if x]
         return o
-    out[d['id']] = {'nombre': d['nombre'], 'creditos': d['creditos'], 'plan': PLAN[d['id']], 'pdf': PDF.get(d['id'], ''), 'fuente': FUENTE.get(d['id'], ''),
-                    'semestres': [{'sem': s['sem'], 'mat': [mat(m) for m in s['mat']]} for s in d['semestres']]}
+    o = {'nombre': d['nombre'], 'creditos': d['creditos'], 'plan': PLAN[d['id']], 'pdf': PDF.get(d['id'], ''), 'fuente': FUENTE.get(d['id'], ''),
+         'semestres': [{'sem': s['sem'], 'mat': [mat(m) for m in s['mat']]} for s in d['semestres']]}
+    for k in ('agrupaciones', 'agrupaciones_fuente', 'electivas'):
+        if d.get(k): o[k] = d[k]
+    c = d.get('sia_catalogo')
+    if c:
+        o['sia_fecha'] = c['fecha']; o['tg'] = c['trabajo_grado']
+        if not d.get('agrupaciones'):
+            o['sia_opt'] = [g for g in ({'t': 'OPTATIVAS DE FUNDAMENTACIÓN · SIA', 'k': 'fundamentacion', 'm': c['fund_optativas']},
+                                        {'t': 'OPTATIVAS DISCIPLINARES · SIA', 'k': 'disciplinar', 'm': c['disc_optativas']}) if g['m']]
+    out[d['id']] = o
 blk = '<!--MALLAS_DATOS-->\n<script id="mallas-datos">window.MALLAS_DATOS = ' + json.dumps(out, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/') + ';</script>\n<!--/MALLAS_DATOS-->'
 s = open(IDX, encoding='utf-8').read()
 if '<!--/MALLAS_DATOS-->' in s: s = re.sub(r'<!--MALLAS_DATOS-->.*?<!--/MALLAS_DATOS-->', lambda _: blk, s, flags=re.S)

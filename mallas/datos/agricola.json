@@ -13,7 +13,8 @@
      "c": 3,
      "cat": "Disciplinar",
      "agr": "Asignaturas sin Agrupación",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "sia": true
     },
     {
      "cod": "1000004",
@@ -21,7 +22,8 @@
      "c": 4,
      "cat": "Fundamentación",
      "agr": "Matemáticas, Probabilidad y Estadística",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "sia": true
     },
     {
      "cod": "1000024",
@@ -29,7 +31,8 @@
      "c": 3,
      "cat": "Fundamentación",
      "agr": "Química y Biología",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "sia": true
     },
     {
      "cod": "1000009",
@@ -37,7 +40,8 @@
      "c": 3,
      "cat": "Fundamentación",
      "agr": "Química y Biología",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "sia": true
     },
     {
      "cod": "2015711",
@@ -45,7 +49,8 @@
      "c": 3,
      "cat": "Fundamentación",
      "agr": "Expresión Gráfica",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "sia": true
     },
     {
      "cod": "",
@@ -69,7 +74,8 @@
      "tipo": "obligatoria",
      "r": [
       "1000004"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "1000005",
@@ -80,7 +86,8 @@
      "tipo": "obligatoria",
      "r": [
       "1000004"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "1000019",
@@ -91,7 +98,8 @@
      "tipo": "obligatoria",
      "r": [
       "1000004"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2015734",
@@ -99,7 +107,8 @@
      "c": 3,
      "cat": "Fundamentación",
      "agr": "Herramientas Informáticas y Métodos Numéricos",
-     "tipo": "obligatoria"
+     "tipo": "obligatoria",
+     "sia": true
     },
     {
      "cod": "",
@@ -124,7 +133,8 @@
      "r": [
       "1000005",
       "1000003"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "1000013",
@@ -135,7 +145,8 @@
      "tipo": "obligatoria",
      "r": [
       "1000004"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2026134",
@@ -147,7 +158,8 @@
      "r": [
       "1000003",
       "1000019"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2015958",
@@ -159,7 +171,8 @@
      "r": [
       "2015711",
       "2016635"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "",
@@ -184,7 +197,8 @@
      "r": [
       "1000005",
       "1000003"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2017538",
@@ -195,7 +209,8 @@
      "tipo": "obligatoria",
      "r": [
       "1000024"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2016632",
@@ -207,7 +222,8 @@
      "r": [
       "1000024",
       "1000009"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2015703",
@@ -218,7 +234,8 @@
      "tipo": "obligatoria",
      "r": [
       "1000005"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "",
@@ -244,7 +261,8 @@
       "1000006",
       "1000007",
       "2026134"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "",
@@ -264,7 +282,8 @@
      "r": [
       "1000006",
       "2026134"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2015741",
@@ -275,7 +294,8 @@
      "tipo": "obligatoria",
      "r": [
       "1000004"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "",
@@ -299,7 +319,8 @@
      "tipo": "obligatoria",
      "r": [
       "2015966"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2015969",
@@ -311,7 +332,8 @@
      "r": [
       "2015968",
       "2016632"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2015941",
@@ -322,7 +344,8 @@
      "tipo": "obligatoria",
      "r": [
       "2015968"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2016631",
@@ -333,7 +356,8 @@
      "tipo": "obligatoria",
      "r": [
       "2015968"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2016643",
@@ -344,7 +368,8 @@
      "tipo": "obligatoria",
      "r": [
       "2015741"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "",
@@ -369,7 +394,8 @@
      "r": [
       "2015961",
       "2016632"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2015978",
@@ -381,7 +407,8 @@
      "r": [
       "1000013",
       "2015966"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2016627",
@@ -392,7 +419,8 @@
      "tipo": "obligatoria",
      "r": [
       "2015941"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2016633",
@@ -403,7 +431,8 @@
      "tipo": "obligatoria",
      "r": [
       "2016631"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2016638",
@@ -415,7 +444,8 @@
      "r": [
       "2016643",
       "2017538"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "",
@@ -438,8 +468,10 @@
      "agr": "Ingeniería de Riego y Drenaje",
      "tipo": "obligatoria",
      "r": [
-      "2016634"
-     ]
+      "2016634",
+      "2015958"
+     ],
+     "sia": true
     },
     {
      "cod": "2016629",
@@ -449,10 +481,10 @@
      "agr": "Ingeniería de Riego y Drenaje",
      "tipo": "obligatoria",
      "r": [
-      "2015958",
-      "2016634",
-      "2015978"
-     ]
+      "2015978",
+      "2016634"
+     ],
+     "sia": true
     },
     {
      "cod": "",
@@ -474,7 +506,8 @@
      "tipo": "obligatoria",
      "r": [
       "2016633"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2016639",
@@ -485,7 +518,8 @@
      "tipo": "obligatoria",
      "r": [
       "2016638"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2015702",
@@ -496,7 +530,8 @@
      "tipo": "obligatoria",
      "r": [
       "2015703"
-     ]
+     ],
+     "sia": true
     }
    ]
   },
@@ -512,7 +547,8 @@
      "tipo": "obligatoria",
      "r": [
       "DISC_40"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "2024045",
@@ -523,7 +559,8 @@
      "tipo": "obligatoria",
      "r": [
       "DISC_65"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "",
@@ -571,7 +608,8 @@
      "tipo": "obligatoria",
      "r": [
       "2016630"
-     ]
+     ],
+     "sia": true
     },
     {
      "cod": "",
@@ -618,5 +656,95 @@
   "Nombres con diferencia entre páginas: la malla dice 'Diseño de Estructuras en Concreto' y 'Optativa - Herramientas Informáticas y Métodos Numéros' (errata); la página 2 dice 'Diseño de estructuras de concreto' y 'Métodos Numéricos'. Se dejó el nombre de la tarjeta en el primero y se corrigió la errata en el segundo.",
   "Gerencia y Gestión de Proyectos (2015702) aparece en la fila de libre elección del sem. VIII pero es de Fundamentación (Ciencias Económicas y Administrativas)."
  ],
- "prerrequisitos": "Cargados de mallas/prerrequisitos_validacion.txt (14 nov 2026). r = confirmados en Acuerdo/PEP/malla; rv = por validar en el SIA (no bloquean)."
+ "prerrequisitos": "Cargados de mallas/prerrequisitos_validacion.txt (14 nov 2026). r = confirmados en Acuerdo/PEP/malla; rv = por validar en el SIA (no bloquean).",
+ "prerrequisitos_sia": "2026-11-15",
+ "sia_catalogo": {
+  "fecha": "15 nov 2026",
+  "trabajo_grado": [
+   [
+    "2015372",
+    "Trabajo de Grado",
+    6
+   ],
+   [
+    "2015373",
+    "Trabajo de Grado - Asignaturas de Posgrado",
+    6
+   ]
+  ],
+  "fund_optativas": [
+   [
+    "2015942",
+    "Aplicaciones de elementos finitos",
+    3
+   ],
+   [
+    "2015695",
+    "Diseño, gestión y evaluación de proyectos",
+    3
+   ],
+   [
+    "2016592",
+    "Economía general",
+    3
+   ],
+   [
+    "2016741",
+    "Finanzas",
+    3
+   ],
+   [
+    "1000017",
+    "Fundamentos de electricidad y magnetismo",
+    4
+   ],
+   [
+    "1000020",
+    "Fundamentos de oscilaciones, ondas y óptica",
+    4
+   ],
+   [
+    "2015701",
+    "Gerencia de recursos humanos",
+    3
+   ],
+   [
+    "2015970",
+    "Métodos numéricos",
+    3
+   ],
+   [
+    "2017293",
+    "Modelación matemática",
+    3
+   ],
+   [
+    "2025970",
+    "Modelos y simulación",
+    3
+   ],
+   [
+    "2016375",
+    "Programación orientada a objetos",
+    3
+   ],
+   [
+    "2016609",
+    "Seguridad industrial",
+    3
+   ],
+   [
+    "2016610",
+    "Sistemas de costos",
+    4
+   ]
+  ],
+  "disc_optativas": [
+   [
+    "2023219",
+    "Construcciones rurales: Materiales y administración de obra",
+    3
+   ]
+  ]
+ }
 }
