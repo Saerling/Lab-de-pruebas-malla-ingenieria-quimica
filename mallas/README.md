@@ -45,6 +45,8 @@ Códigos de plan del SIA (confirmados contra el catálogo): Agrícola 2541, Civi
 
 **Modalidades de grado.** Sección interactiva en Info y calendario (y en el ⋮ del Trabajo de Grado): Acuerdo 026 de 2012 del Consejo Académico y Acuerdo 037 de 2017 del Consejo de Facultad.
 
+**Doble titulación.** En la portada se elige «Doble titulación» y luego la carrera principal y la segunda. La app muestra un interruptor entre ambas mallas y, en Info y calendario, las materias con el mismo código en los dos planes (estimado: las equivalencias las decide el Comité Asesor), el requisito del 40 % y un botón para pasar las aprobadas. Reglas: Acuerdo 008 de 2008 (arts. 47 y 48) y Acuerdo 155 de 2014 del CSU.
+
 ## Qué falta
 
 1. Créditos exigidos por agrupación y listas de optativas por agrupación de Agrícola, Eléctrica, Electrónica, Industrial, Mecánica y Mecatrónica (están en los acuerdos de `legal.unal.edu.co`, que pide captcha).

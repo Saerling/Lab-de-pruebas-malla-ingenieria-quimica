@@ -9,7 +9,8 @@
     <meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'self'; form-action 'self' https://docs.google.com; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mallas · Ingeniería Química UNAL · v4.2</title>
+    <title>Mallas · Ingeniería UNAL (no oficial)</title>
+    <meta name="description" content="Mallas curriculares interactivas de la Facultad de Ingeniería UNAL Bogotá. Proyecto no oficial, hecho por estudiantes para estudiantes, sin ánimo de lucro.">
     <!-- Etiqueta de Google (Analytics) -->
     <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-WT9LTMW5"></script>
     <script>
@@ -1274,6 +1275,70 @@ html.landing .fb-tip, html.landing .tabs-tip, html.landing #nv-modal { display: 
 html.landing.ld-desde-app .ld-back { display: block; }
 @media (max-width: 520px) { .ld-grid { grid-template-columns: 1fr; } .ld-card { padding: 16px; } }
 @media (prefers-reduced-motion: reduce) { .ld-card, .ld-spark i, html.landing #landing { animation: none; opacity: 1; transform: none; } }
+/* ===== No oficial ===== */
+.nof-pill { display: inline-flex; align-items: center; gap: 4px; margin-left: 6px; padding: 2px 9px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--warning, #e0a96d) 60%, transparent); background: color-mix(in srgb, var(--warning, #e0a96d) 14%, transparent); color: var(--warning, #e0a96d); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.02em; vertical-align: middle; cursor: help; white-space: nowrap; }
+.ld-legal { margin: 14px auto 0; max-width: 560px; font-size: 0.78rem; line-height: 1.55; color: var(--text-dim); padding: 12px 16px; border-radius: 16px; border: 1px dashed var(--border); background: var(--surface); }
+.ld-legal b { color: var(--text); }
+/* ===== Avance en la cápsula ===== */
+.ld-badge.pct { font-variant-numeric: tabular-nums; position: relative; overflow: hidden; background: var(--surface-2); color: var(--text); }
+.ld-badge.pct::before { content: ''; position: absolute; inset: 0; width: var(--p, 0%); background: color-mix(in srgb, var(--primary) 30%, transparent); transition: width .8s var(--ease-emph); }
+.ld-badge.pct span { position: relative; }
+.ld-badge.pct.done { background: var(--primary); color: var(--on-primary); }
+/* ===== Selector una / doble ===== */
+.ld-mode { position: relative; display: inline-flex; padding: 4px; margin: -12px auto 22px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+.ld-mode button { position: relative; z-index: 1; border: 0; background: none; color: var(--text-dim); font: inherit; font-size: 0.88rem; font-weight: 600; padding: 9px 18px; border-radius: 999px; cursor: pointer; transition: color .25s; }
+.ld-mode button[aria-checked="true"] { color: var(--on-primary); }
+.ld-mode-ink { position: absolute; top: 4px; bottom: 4px; left: var(--x, 4px); width: var(--w, 0); border-radius: 999px; background: var(--primary); transition: left .45s var(--spring-smooth), width .45s var(--spring-smooth); }
+.ld-dt { display: none; align-items: stretch; justify-content: center; gap: 10px; margin: 0 auto 18px; max-width: 560px; }
+html.ld-doble .ld-dt { display: flex; animation: ldCard .45s var(--ease-emph) both; }
+.ld-step { flex: 1; display: flex; flex-direction: column; gap: 2px; align-items: flex-start; text-align: left; padding: 10px 14px; border-radius: 16px; border: 1px dashed var(--border); background: var(--surface); color: var(--text); font: inherit; cursor: pointer; transition: border-color .2s, background .2s, transform .3s var(--spring-smooth); }
+.ld-step small { font-size: 0.7rem; color: var(--text-dim); font-weight: 600; }
+.ld-step b { font-size: 0.92rem; font-weight: 650; min-height: 1.2em; }
+.ld-step.cur { border-style: solid; border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-soft); }
+.ld-step.ok { border-style: solid; }
+.ld-step.pop { animation: ldGo .42s var(--spring-bounce); }
+.ld-plus { align-self: center; color: var(--text-dim); font-weight: 700; }
+.ld-card .ld-role { position: absolute; top: -9px; left: 16px; padding: 2px 10px; border-radius: 999px; font-size: 0.68rem; font-weight: 700; background: var(--primary); color: var(--on-primary); box-shadow: 0 4px 14px -6px rgba(0,0,0,.5); animation: ldGo .42s var(--spring-bounce) both; }
+.ld-card .ld-role.s { background: var(--accent, var(--primary)); }
+html.ld-doble .ld-card.pick-p, html.ld-doble .ld-card.pick-s { border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-soft); }
+html.ld-doble .ld-card.pick-p.dim { opacity: .55; }
+html.ld-doble .ld-card .ld-shared { display: block; }
+.ld-shared { display: none; font-size: 0.74rem; color: var(--primary); font-weight: 600; }
+/* ===== Hoja de resumen ===== */
+.ld-sheet { position: sticky; bottom: 0; z-index: 3; padding: 0 16px 16px; pointer-events: none; transform: translateY(110%); opacity: 0; transition: transform .5s var(--spring-smooth), opacity .3s; }
+.ld-sheet.open { transform: none; opacity: 1; pointer-events: auto; }
+.ld-sheet-in { max-width: 620px; margin: 0 auto; padding: 16px 18px; border-radius: 24px; border: 1px solid var(--border); background: color-mix(in srgb, var(--surface) 92%, var(--bg)); backdrop-filter: blur(24px) saturate(1.6); -webkit-backdrop-filter: blur(24px) saturate(1.6); box-shadow: 0 -10px 50px -20px rgba(0,0,0,.6); text-align: left; }
+.ld-sheet-h { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.ld-sheet-h b { font-size: 1rem; letter-spacing: -0.01em; }
+.ld-sheet-x { border: 1px solid var(--border); background: var(--surface-2); color: var(--text-dim); border-radius: 999px; padding: 5px 12px; font: inherit; font-size: 0.76rem; cursor: pointer; }
+.ld-sheet-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 12px 0 10px; }
+.ld-sheet-stats div { padding: 10px; border-radius: 14px; background: var(--surface-2); border: 1px solid var(--border); }
+.ld-sheet-stats b { display: block; font-size: 1.25rem; font-variant-numeric: tabular-nums; color: var(--text); }
+.ld-sheet-stats span { font-size: 0.72rem; color: var(--text-dim); line-height: 1.3; display: block; }
+.ld-sheet-req { font-size: 0.8rem; color: var(--text-dim); margin-bottom: 12px; }
+.ld-sheet-req summary { cursor: pointer; color: var(--text); font-weight: 600; }
+.ld-sheet-req ul { margin: 8px 0 0; padding-left: 18px; line-height: 1.55; }
+.ld-sheet-go { width: 100%; border: 0; border-radius: 16px; padding: 13px; background: var(--primary); color: var(--on-primary); font: inherit; font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: transform .3s var(--spring-smooth); }
+.ld-sheet-go:hover { transform: translateY(-2px); } .ld-sheet-go:active { transform: scale(.98); }
+@media (max-width: 520px) { .ld-sheet-stats { grid-template-columns: 1fr 1fr 1fr; } .ld-sheet-stats b { font-size: 1.05rem; } .ld-mode button { padding: 8px 13px; font-size: 0.84rem; } }
+@media (prefers-reduced-motion: reduce) { .ld-sheet, .ld-mode-ink, .ld-badge.pct::before { transition: none; } .ld-card .ld-role, .ld-step.pop { animation: none; } }
+/* ===== Interruptor de doble titulación en la app ===== */
+.dt-switch { display: none; position: relative; margin: 8px auto 0; padding: 3px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); width: max-content; max-width: 100%; }
+html.doble .dt-switch { display: inline-flex; }
+.dt-switch button { border: 0; background: none; font: inherit; font-size: 0.78rem; font-weight: 600; color: var(--text-dim); padding: 6px 12px; border-radius: 999px; cursor: pointer; white-space: nowrap; display: inline-flex; gap: 6px; align-items: center; }
+.dt-switch button small { font-size: 0.64rem; opacity: .75; font-weight: 600; }
+.dt-switch button.on { background: var(--primary); color: var(--on-primary); }
+.dt-switch button:not(.on):hover { color: var(--text); }
+.dt-list { display: grid; gap: 6px; margin-top: 10px; max-height: 320px; overflow: auto; }
+.dt-row { display: grid; grid-template-columns: 1fr auto auto; gap: 8px; align-items: center; font-size: 0.8rem; padding: 7px 10px; border-radius: 10px; background: var(--surface-2); border: 1px solid var(--border); }
+.dt-row code { font-family: var(--mono); font-size: 0.7rem; color: var(--text-dim); }
+.dt-dot { font-size: 0.7rem; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--border); white-space: nowrap; color: var(--text-dim); }
+.dt-dot.ap { color: var(--success); border-color: var(--success); }
+.dt-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.dt-btn { border: 1px solid var(--border); background: var(--surface-2); color: var(--text); border-radius: 12px; padding: 9px 14px; font: inherit; font-size: 0.82rem; font-weight: 600; cursor: pointer; }
+.dt-btn.pri { background: var(--primary); color: var(--on-primary); border-color: var(--primary); }
+.dt-btn:disabled { opacity: .5; cursor: default; }
+
 
 /* ===== v14 · barra dinámica, KPIs, tablas, texto brillante, borde animado y texto por palabras ===== */
 /* Toolbar dinámica (idea de Motion Primitives): la lupa se abre en un buscador */
@@ -1366,6 +1431,7 @@ html.ld-desde-app .kpi, html.landing .kpi { animation: none; }
 <script id="mallas-carrera">
 /* Carrera activa. Química conserva sus claves de guardado; las demás guardan su estado con el prefijo "<id>:" */
 (function () {
+    var RAWGET = Storage.prototype.getItem;   // lectura sin el prefijo de carrera (para portada y doble titulación)
     var M = window.MALLAS_DATOS || {}, id = 'quimica';
     try { id = localStorage.getItem('mallas_programa') || 'quimica'; } catch (e) {}
     try { var q = new URLSearchParams(location.search).get('carrera'); if (q && (q === 'quimica' || M[q])) { id = q; try { localStorage.setItem('mallas_programa', q); } catch (e) {} } } catch (e) {}
@@ -1409,13 +1475,53 @@ html.ld-desde-app .kpi, html.landing .kpi { animation: none; }
     if (!guardada && !q0 && avance) { try { localStorage.setItem('mallas_programa', 'quimica'); } catch (e) {} guardada = 'quimica'; }
     P.primera = !guardada && !q0;
     if (P.primera) document.documentElement.classList.add('landing');
+    // ---- Avance de cualquier carrera (portada, doble titulación) ----
+    P.lsRaw = function (k) { try { return RAWGET.call(localStorage, k); } catch (e) { return null; } };
+    P.clave = function (k, base) { return k === 'quimica' ? base : k + ':' + base; };
+    P.mats = function (k) {                       // [{id, cod, n, c, cat}] con los mismos ids que usa la malla
+        if (k === 'quimica') return (typeof dataIQ !== 'undefined' ? dataIQ : []).reduce(function (a, s) { return a.concat(s.mat.map(function (m) { return { id: m.id, cod: m.siaId || '', n: m.n, c: m.c, cat: m.cat }; })); }, []);
+        var d = M[k]; if (!d) return [];
+        var L = 0, O = 0, vistos = {}, out = [];
+        d.semestres.forEach(function (s) { s.mat.forEach(function (m) {
+            var mid = m.cod || (m.tipo === 'libre' ? 'L' + (++L) : 'OP' + (++O));
+            if (vistos[mid]) mid = mid + '_' + (++vistos[mid]); else vistos[mid] = 1;
+            out.push({ id: mid, cod: m.cod || '', n: m.n, c: m.c, cat: m.cat });
+        }); });
+        return out;
+    };
+    P.aprobadas = function (k) {                  // Set de ids aprobados (estado visual o nota >= 3 en la calculadora)
+        var ap = {}, vis = {}, hist = [];
+        try { vis = JSON.parse(P.lsRaw(P.clave(k, 'malla_iq_visual_v7')) || '{}') || {}; } catch (e) {}
+        try { hist = JSON.parse(P.lsRaw(P.clave(k, 'calc_iq_history_v7')) || '[]') || []; } catch (e) {}
+        Object.keys(vis).forEach(function (i) { if (vis[i] === 'approved') ap[i] = 1; });
+        var nota = {};
+        (Array.isArray(hist) ? hist : []).forEach(function (s) { (s.materias || []).forEach(function (m) {
+            if (!m || !m.materiaId || m.nota === '' || m.nota == null) return;
+            var v = m.nota === 'AP' ? 5 : m.nota === 'RE' ? 0 : parseFloat(m.nota);
+            if (!isNaN(v)) nota[m.materiaId] = Math.max(nota[m.materiaId] == null ? -1 : nota[m.materiaId], v);
+        }); });
+        Object.keys(nota).forEach(function (i) { if (nota[i] >= 3) ap[i] = 1; else delete ap[i]; });
+        return ap;
+    };
+    P.avance = function (k) {
+        var mats = P.mats(k), ap = P.aprobadas(k), tot = 0, hecho = 0;
+        mats.forEach(function (m) { tot += m.c; if (ap[m.id]) hecho += m.c; });
+        var total = k === 'quimica' ? 180 : (M[k] ? M[k].creditos : tot) || tot;
+        return { cr: hecho, total: total, pct: total ? Math.min(100, Math.round(hecho / total * 100)) : 0 };
+    };
+    P.nombreDe = function (k) { return k === 'quimica' ? 'Ingeniería Química' : (M[k] ? M[k].nombre : k); };
+    P.corto = function (k) { return P.nombreDe(k).replace(/^Ingeniería (de |en )?/, '').replace(/ y Computación$/, ''); };
+    // Doble titulación: { p: principal, s: segunda }
+    P.doble = null;
+    try { var dt = JSON.parse(RAWGET.call(localStorage, 'mallas_doble') || 'null'); if (dt && dt.p && dt.s && dt.p !== dt.s && (dt.p === 'quimica' || M[dt.p]) && (dt.s === 'quimica' || M[dt.s])) P.doble = dt; } catch (e) {}
+    P.setDoble = function (dt) { try { if (dt) localStorage.setItem('mallas_doble', JSON.stringify(dt)); else localStorage.removeItem('mallas_doble'); } catch (e) {} P.doble = dt; };
     window.PROG = P;
     window.setPrograma = function (nid) {
         try { localStorage.setItem('mallas_programa', nid); } catch (e) {}
         if (window.gtag) gtag('event', 'cambiar_carrera', { carrera: nid });
         location.href = location.pathname + (nid === 'quimica' ? '' : '?carrera=' + nid);
     };
-    document.title = 'Mallas · ' + P.nombre + ' UNAL';
+    document.title = 'Mallas · ' + P.nombre + ' (no oficial)';
 })();
 </script>
 <script>document.documentElement.setAttribute('data-theme', (function(){try{return localStorage.getItem('theme_iq')}catch(e){return null}})() || 'dark');</script>
@@ -1706,11 +1812,30 @@ html.fxo-ring .kpi:first-child { padding-right: 16px; }
     <div class="ld-glow" aria-hidden="true"><i></i><i></i></div>
     <button class="ld-back" id="ld-back" type="button" onclick="closeLanding()" aria-label="Volver a mi malla">✕</button>
     <div class="ld-wrap">
-        <p class="ld-eyebrow">Facultad de Ingeniería · UNAL Bogotá</p>
+        <p class="ld-eyebrow">Facultad de Ingeniería · UNAL Bogotá <span class="nof-pill" title="Proyecto independiente hecho por estudiantes. No es un sitio de la Universidad Nacional de Colombia.">No oficial</span></p>
         <h2 id="ld-title">¿Qué <span id="ld-mark">estudias</span>?</h2>
-        <p class="ld-sub">Elige tu carrera para ver tu malla, calcular tu PAPA, armar tu horario con cupos del SIA y planificar tus semestres.</p>
+        <p class="ld-sub" id="ld-sub">Elige tu carrera para ver tu malla, calcular tu PAPA, armar tu horario con cupos del SIA y planificar tus semestres.</p>
+        <div class="ld-mode" id="ld-mode" role="radiogroup" aria-label="¿Cuántas carreras?">
+            <span class="ld-mode-ink" aria-hidden="true"></span>
+            <button type="button" role="radio" aria-checked="true" data-mode="una">Una carrera</button>
+            <button type="button" role="radio" aria-checked="false" data-mode="doble">🎓 Doble titulación</button>
+        </div>
+        <div class="ld-dt" id="ld-dt" aria-live="polite">
+            <button type="button" class="ld-step" data-step="p"><small>1 · Principal</small><b id="ld-dt-p">Elige una</b></button>
+            <span class="ld-plus" aria-hidden="true">+</span>
+            <button type="button" class="ld-step" data-step="s"><small>2 · Segunda</small><b id="ld-dt-s">—</b></button>
+        </div>
         <div class="ld-grid" id="ld-grid"></div>
         <p class="ld-foot">Puedes cambiar de carrera cuando quieras desde la cápsula con su nombre. Cada carrera guarda su avance por separado.</p>
+        <p class="ld-legal">🤝 <b>Hecho por estudiantes, para estudiantes.</b> Sin ánimo de lucro, solo para ayudar. No es un sitio oficial de la Universidad Nacional de Colombia: confirma siempre tu información en el SIA y con tu coordinación curricular.</p>
+    </div>
+    <div class="ld-sheet" id="ld-sheet" role="dialog" aria-modal="false" aria-labelledby="ld-sheet-t">
+        <div class="ld-sheet-in">
+            <div class="ld-sheet-h"><b id="ld-sheet-t"></b><button type="button" class="ld-sheet-x" id="ld-sheet-x" aria-label="Cambiar la segunda carrera">Cambiar</button></div>
+            <div class="ld-sheet-stats" id="ld-sheet-stats"></div>
+            <details class="ld-sheet-req"><summary>¿Qué pide la Universidad?</summary><ul id="ld-sheet-req"></ul></details>
+            <button type="button" class="ld-sheet-go" id="ld-sheet-go">Entrar a mi doble titulación →</button>
+        </div>
     </div>
 </section>
 
@@ -1718,8 +1843,9 @@ html.fxo-ring .kpi:first-child { padding-right: 16px; }
     <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme(event)">☀ Modo día</button>
     <button class="fb-btn" id="fb-btn" onclick="openFeedback()" title="Dime tu opinión">💬 Comentarios</button>
     <button class="coffee-btn" onclick="openCoffeeModal()"><span class="coffee-ico">☕</span> Invítame un café</button>
-    <h1 style="margin:0 0 10px">Mallas</h1>
+    <h1 style="margin:0 0 10px">Mallas <span class="nof-pill" title="Proyecto independiente hecho por estudiantes, sin ánimo de lucro. No es un sitio de la Universidad Nacional de Colombia.">No oficial</span></h1>
     <button class="prog-chip" id="prog-chip" onclick="openProgramas()" aria-haspopup="dialog" title="Cambiar de carrera"><span class="prog-dot"></span><span id="prog-nombre">Ingeniería Química</span><span class="prog-caret" aria-hidden="true">▾</span></button>
+    <div class="dt-switch" id="dt-switch" role="tablist" aria-label="Tus dos carreras"></div>
     <button class="ver-chip" id="nv-chip" onclick="openNovedades()" title="Qué hay de nuevo">✨ Novedades v4.2</button>
     <div class="tabs">
         <button class="tab-btn active" id="tab-malla" onclick="switchTab('malla')">Malla Curricular</button>
@@ -1872,6 +1998,7 @@ html.fxo-ring .kpi:first-child { padding-right: 16px; }
     <section class="sem-hero" id="sem-hero"></section>
     <section class="info-card" id="cal-card"></section>
     <section class="info-card" id="com-card"></section>
+    <section class="info-card" id="dt-card" hidden></section>
     <section class="info-card" id="grado-card"></section>
 
     <div class="info-grid">
@@ -1968,7 +2095,8 @@ html.fxo-ring .kpi:first-child { padding-right: 16px; }
     <span class="foot-tag">// Aviso legal</span>
     La información académica que aparece en esta página (malla curricular, asignaturas, créditos, cupos y horarios)
     <strong>no es de mi autoría</strong>: es de dominio de la <strong>Universidad Nacional de Colombia</strong>.<br>
-    Este sitio es un proyecto independiente, <strong>sin fines lucrativos</strong>, creado únicamente con <strong>fines educativos</strong>.
+    Este sitio es un proyecto independiente y <strong>no oficial</strong>, <strong>hecho por estudiantes para estudiantes</strong>, <strong>sin ánimo de lucro</strong> y con el único fin de ayudar.<br>
+    No representa a la Universidad ni a la Facultad de Ingeniería: confirma siempre tu información en el SIA y con tu coordinación curricular.
 </footer>
 
 <div class="modal-overlay" id="coffee-modal" onclick="if(event.target===this)closeCoffeeModal()">
@@ -5188,20 +5316,30 @@ infoLinksRender();
 (function () {
     var ORDEN = ['quimica', 'sistemas', 'industrial', 'civil', 'mecanica', 'mecatronica', 'electrica', 'electronica', 'agricola'];
     var L = PROG.lista || {}, root = document.documentElement, grid = document.getElementById('ld-grid'), ld = document.getElementById('landing'), ann = null;
-    function info(k) {
-        if (k === 'quimica') return { n: 'Ingeniería Química', sems: dataIQ.map(function (s) { return s.mat.reduce(function (a, m) { return a + m.c; }, 0); }), mats: dataIQ.reduce(function (a, s) { return a + s.mat.length; }, 0), cr: 180, badge: ['full', 'Completa'] };
+    function info0(k) {
+        if (k === 'quimica') return { n: 'Ingeniería Química', sems: dataIQ.map(function (s) { return s.mat.reduce(function (a, m) { return a + m.c; }, 0); }), mats: dataIQ.reduce(function (a, s) { return a + s.mat.length; }, 0), cr: 180, badge0: ['full', 'Completa'] };
         var d = L[k]; if (!d) return null;
-        return { n: d.nombre, sems: d.semestres.map(function (s) { return s.mat.reduce(function (a, m) { return a + m.c; }, 0); }), mats: d.semestres.reduce(function (a, s) { return a + s.mat.length; }, 0), cr: d.creditos, badge: d.fuente ? ['conf', 'Prerrequisitos ✓'] : ['', 'Beta'] };
+        return { n: d.nombre, sems: d.semestres.map(function (s) { return s.mat.reduce(function (a, m) { return a + m.c; }, 0); }), mats: d.semestres.reduce(function (a, s) { return a + s.mat.length; }, 0), cr: d.creditos, badge0: d.fuente ? ['conf', 'Prerrequisitos ✓'] : ['', 'Beta'] };
+    }
+    function info(k) {
+        var x = info0(k); if (!x) return null;
+        var a = PROG.avance(k); x.av = a;
+        x.badge = ['pct' + (a.pct >= 100 ? ' done' : ''), a.pct + ' % completado'];
+        return x;
     }
     function pintar() {
         grid.innerHTML = ORDEN.map(function (k, i) {
             var x = info(k); if (!x) return '';
             var max = Math.max.apply(null, x.sems), min = Math.min.apply(null, x.sems);
-            return '<button type="button" class="ld-card' + (k === PROG.id && !PROG.primera ? ' on' : '') + '" data-k="' + k + '" style="--i:' + i + '">' +
-                '<span class="ld-top"><span class="ld-name">' + x.n + '</span><span class="ld-badge ' + x.badge[0] + '">' + x.badge[1] + '</span></span>' +
+            return '<button type="button" class="ld-card' + (k === PROG.id && !PROG.primera && !modoDoble() ? ' on' : '') + (DT.p === k ? ' pick-p' + (DT.s ? '' : '') : '') + (DT.s === k ? ' pick-s' : '') + '" data-k="' + k + '" style="--i:' + i + '"' + (modoDoble() && DT.p === k && !DT.s ? ' aria-pressed="true"' : '') + '>' +
+                (DT.p === k ? '<span class="ld-role">Principal</span>' : DT.s === k ? '<span class="ld-role s">Segunda</span>' : '') +
+                '<span class="ld-top"><span class="ld-name">' + x.n + '</span><span class="ld-badge ' + x.badge[0] + '" style="--p:' + x.av.pct + '%" title="' + x.av.cr + ' de ' + x.av.total + ' créditos aprobados"><span>' + x.badge[1] + '</span></span></span>' +
+                (DT.p && DT.p !== k ? '<span class="ld-shared">' + comunes(DT.p, k).n + ' materias en común con ' + PROG.corto(DT.p) + '</span>' : '') +
                 '<span class="ld-spark" aria-hidden="true">' + x.sems.map(function (c, j) { return '<i style="height:' + (max > min ? 25 + (c - min) / (max - min) * 75 : 70) + '%;--j:' + j + '" title="Semestre ' + (j + 1) + ': ' + c + ' créditos"></i>'; }).join('') + '</span>' +
                 '<span class="ld-meta"><span><b>' + x.cr + '</b> créditos</span><span><b>' + x.mats + '</b> materias</span><span><b>' + x.sems.length + '</b> semestres</span></span>' +
-                '<span class="ld-cta"><span>' + (k === PROG.id && !PROG.primera ? 'Tu carrera actual' : 'Sede Bogotá') + '</span><span>' + (k === PROG.id && !PROG.primera ? 'Seguir →' : 'Entrar →') + '</span></span></button>';
+                (modoDoble()
+                    ? '<span class="ld-cta"><span>' + (DT.p === k ? 'Tu carrera principal' : DT.s === k ? 'Tu segunda carrera' : 'Sede Bogotá') + '</span><span>' + (DT.p === k ? (DT.s ? '✓' : 'Toca para cambiar') : DT.s === k ? '✓' : (DT.p ? 'Elegir como segunda +' : 'Elegir como principal +')) + '</span></span></button>'
+                    : '<span class="ld-cta"><span>' + (k === PROG.id && !PROG.primera ? 'Tu carrera actual' : 'Sede Bogotá') + '</span><span>' + (k === PROG.id && !PROG.primera ? 'Seguir →' : 'Entrar →') + '</span></span></button>');
         }).join('');
     }
     function marcar() {
@@ -5210,8 +5348,87 @@ infoLinksRender();
         ann = roughAnnotate(document.getElementById('ld-mark'), { type: 'highlight', color: 'color-mix(in srgb, var(--primary) 32%, transparent)', animationDuration: 900, iterations: 2, multiline: true });
         setTimeout(function () { if (ann) ann.show(); }, 450);
     }
+    // ===== Doble titulación en la portada =====
+    var DT = { p: null, s: null }, modo = $mode();
+    function $mode() { return PROG.doble ? 'doble' : 'una'; }
+    function modoDoble() { return modo === 'doble'; }
+    if (PROG.doble) DT = { p: PROG.doble.p, s: PROG.doble.s };
+    var SUB = document.getElementById('ld-sub'), SUB0 = SUB.textContent, sheet = document.getElementById('ld-sheet');
+    function comunes(a, b) {
+        var A = {}, out = [], cr = 0;
+        PROG.mats(a).forEach(function (m) { if (m.cod) A[m.cod.split('-')[0]] = m; });
+        PROG.mats(b).forEach(function (m) { var c = m.cod && m.cod.split('-')[0]; if (c && A[c] && !out.some(function (o) { return o.cod === c; })) { out.push({ cod: c, n: m.n, c: m.c, a: A[c].id, b: m.id }); cr += m.c; } });
+        return { n: out.length, cr: cr, lista: out };
+    }
+    PROG.comunes = comunes;
+    function inkMode() {
+        var w = document.getElementById('ld-mode'), on = w.querySelector('[aria-checked="true"]'), ink = w.querySelector('.ld-mode-ink');
+        if (on) { ink.style.setProperty('--x', on.offsetLeft + 'px'); ink.style.setProperty('--w', on.offsetWidth + 'px'); }
+    }
+    function pintarDoble() {
+        root.classList.toggle('ld-doble', modoDoble());
+        document.querySelectorAll('#ld-mode [data-mode]').forEach(function (x) { x.setAttribute('aria-checked', String(x.dataset.mode === modo)); });
+        inkMode();
+        var sp = document.querySelector('.ld-step[data-step="p"]'), ss = document.querySelector('.ld-step[data-step="s"]');
+        document.getElementById('ld-dt-p').textContent = DT.p ? PROG.corto(DT.p) : 'Elige una';
+        document.getElementById('ld-dt-s').textContent = DT.s ? PROG.corto(DT.s) : (DT.p ? 'Elige otra' : '—');
+        sp.classList.toggle('cur', modoDoble() && !DT.p); ss.classList.toggle('cur', modoDoble() && !!DT.p && !DT.s);
+        sp.classList.toggle('ok', !!DT.p); ss.classList.toggle('ok', !!DT.s);
+        SUB.textContent = !modoDoble() ? SUB0 : !DT.p ? 'Toca primero tu carrera principal, la que estudias hoy.' : !DT.s ? 'Ahora toca la segunda carrera. En cada una ves cuántas materias comparte con ' + PROG.corto(DT.p) + '.' : 'Listo. Revisa el resumen y entra; podrás pasar de una malla a la otra con un toque.';
+        if (modoDoble() && DT.p && DT.s) abrirHoja(); else sheet.classList.remove('open');
+    }
+    function abrirHoja() {
+        var c = comunes(DT.p, DT.s), apP = PROG.aprobadas(DT.p), totS = PROG.avance(DT.s).total, avP = PROG.avance(DT.p);
+        var ya = c.lista.filter(function (x) { return apP[x.a]; }), crYa = ya.reduce(function (t, x) { return t + x.c; }, 0);
+        document.getElementById('ld-sheet-t').textContent = PROG.corto(DT.p) + ' + ' + PROG.corto(DT.s);
+        document.getElementById('ld-sheet-stats').innerHTML =
+            '<div><b>' + c.n + '</b><span>materias en común (' + c.cr + ' cr.)</span></div>' +
+            '<div><b>' + crYa + '</b><span>créditos que ya llevas de ' + PROG.corto(DT.s) + '</span></div>' +
+            '<div><b>~' + Math.max(0, totS - crYa) + '</b><span>créditos por hacer en la segunda</span></div>';
+        var cuarenta = Math.ceil(avP.total * 0.4);
+        document.getElementById('ld-sheet-req').innerHTML =
+            '<li>Haber cursado al menos el <b>40 %</b> de los créditos de tu carrera principal (' + cuarenta + ' de ' + avP.total + '; llevas ' + avP.cr + ' aprobados).</li>' +
+            '<li>Pedirla por el <b>SIA</b> en las fechas del calendario, en un programa donde nunca hayas sido estudiante.</li>' +
+            '<li>El Comité Asesor estudia qué materias se reconocen por <b>equivalencia o convalidación</b>; las «en común» de aquí son un estimado por código.</li>' +
+            '<li>Solo usas el <b>cupo de créditos</b> que no gastaste en la primera. Con <b>PAPA ≥ 4,3</b> el Consejo de Facultad puede darte cupo extra; con menos, una sola vez si te faltan 10 créditos o menos.</li>' +
+            '<li>Formaliza la admisión ante el Consejo de Sede <b>antes de recibir el primer título</b>. No hay reservas de cupo automáticas nuevas.</li>' +
+            '<li style="list-style:none;margin-left:-18px;margin-top:6px;font-size:.72rem">Acuerdo 008 de 2008 (arts. 47 y 48) y Acuerdo 155 de 2014 del Consejo Superior Universitario.</li>';
+        sheet.classList.add('open');
+    }
+    function elegirDoble(k) {
+        if (!DT.p || (DT.p && DT.s)) { if (DT.p === k && !DT.s) return; DT = { p: k, s: null }; pop('p'); }
+        else if (k === DT.p) { DT = { p: null, s: null }; pop('p'); }
+        else { DT.s = k; pop('s'); }
+        if (window.gtag) gtag('event', 'doble_elegir', { principal: DT.p || '', segunda: DT.s || '' });
+        pintar(); pintarDoble();
+        if (DT.p && !DT.s) { var c = grid.querySelector('.ld-card:not(.pick-p)'); if (c && innerWidth < 700) setTimeout(function () { c.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 120); }
+    }
+    function pop(w) { var el = document.querySelector('.ld-step[data-step="' + w + '"]'); el.classList.remove('pop'); void el.offsetWidth; el.classList.add('pop'); }
+    document.getElementById('ld-mode').addEventListener('click', function (e) {
+        var b = e.target.closest('[data-mode]'); if (!b || b.dataset.mode === modo) return;
+        modo = b.dataset.mode;
+        if (!modoDoble()) sheet.classList.remove('open');
+        else if (!DT.p && !PROG.primera) DT.p = PROG.id;   // si ya estudia una, arranca como principal
+        if (window.gtag) gtag('event', 'doble_modo', { modo: modo });
+        pintar(); pintarDoble();
+    });
+    document.getElementById('ld-dt').addEventListener('click', function (e) {
+        var b = e.target.closest('.ld-step'); if (!b) return;
+        if (b.dataset.step === 'p') DT = { p: null, s: null }; else DT.s = null;
+        pintar(); pintarDoble();
+    });
+    document.getElementById('ld-sheet-x').addEventListener('click', function () { DT.s = null; pintar(); pintarDoble(); });
+    document.getElementById('ld-sheet-go').addEventListener('click', function () {
+        if (!DT.p || !DT.s) return;
+        PROG.setDoble({ p: DT.p, s: DT.s });
+        if (window.gtag) gtag('event', 'doble_entrar', { principal: DT.p, segunda: DT.s });
+        sheet.classList.remove('open'); ld.classList.add('out');
+        setTimeout(function () { setPrograma(DT.p); }, 300);
+    });
+    addEventListener('resize', inkMode);
     window.openLanding = function (desdeApp) {
-        pintar(); ld.classList.remove('out'); root.classList.add('landing'); root.classList.toggle('ld-desde-app', !!desdeApp);
+        modo = $mode(); if (PROG.doble) DT = { p: PROG.doble.p, s: PROG.doble.s }; else if (!modoDoble()) DT = { p: null, s: null };
+        pintar(); setTimeout(pintarDoble, 0); ld.classList.remove('out'); root.classList.add('landing'); root.classList.toggle('ld-desde-app', !!desdeApp);
         ld.scrollTop = 0; marcar();
         var on = grid.querySelector('.ld-card.on') || grid.querySelector('.ld-card'); if (on) setTimeout(function () { on.focus({ preventScroll: true }); }, 50);
         if (window.gtag && desdeApp) gtag('event', 'abrir_portada');
@@ -5225,7 +5442,10 @@ infoLinksRender();
     window.closeProgramas = window.closeLanding;
     grid.addEventListener('click', function (e) {
         var b = e.target.closest('.ld-card'); if (!b) return;
-        var k = b.dataset.k; b.classList.add('go');
+        var k = b.dataset.k;
+        if (modoDoble()) { elegirDoble(k); return; }
+        b.classList.add('go');
+        if (PROG.doble) PROG.setDoble(null);   // eligió una sola carrera
         if (window.gtag) gtag('event', 'elegir_carrera', { carrera: k });
         if (k === PROG.id) { try { localStorage.setItem('mallas_programa', k); } catch (e) {} PROG.primera = false; root.classList.add('ld-desde-app'); setTimeout(closeLanding, 220); return; }
         setTimeout(function () { ld.classList.add('out'); setTimeout(function () { setPrograma(k); }, 300); }, 200);
@@ -5947,6 +6167,90 @@ infoLinksRender();
     };
     var sw = window.switchTab;
     if (typeof sw === 'function') window.switchTab = function (t) { var r = sw.apply(this, arguments); if (t === 'info') pintar(); return r; };
+    pintar();
+})();
+</script>
+<script id="doble-v1">
+/* Doble titulación dentro de la app: interruptor entre las dos mallas + panel en Info y calendario.
+   Reglas: Acuerdo 008 de 2008 (arts. 47-48) y Acuerdo 155 de 2014 del Consejo Superior Universitario. */
+(function () {
+    var D = PROG.doble;
+    if (!D || (PROG.id !== D.p && PROG.id !== D.s) || !PROG.comunes) return;
+    var otra = PROG.id === D.p ? D.s : D.p, soyP = PROG.id === D.p;
+    document.documentElement.classList.add('doble');
+    var esc = function (t) { return String(t).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
+
+    // --- interruptor en el encabezado ---
+    var sw = document.getElementById('dt-switch');
+    function pintarSwitch() {
+        if (!sw) return;
+        sw.innerHTML = [D.p, D.s].map(function (k, i) {
+            var on = k === PROG.id;
+            return '<button type="button" role="tab" aria-selected="' + on + '" class="' + (on ? 'on' : '') + '" data-k="' + k + '">' + esc(PROG.corto(k)) + ' <small>' + (i ? 'Segunda' : 'Principal') + ' · ' + PROG.avance(k).pct + ' %</small></button>';
+        }).join('');
+    }
+    if (sw) {
+        pintarSwitch();
+        sw.addEventListener('click', function (e) {
+            var b = e.target.closest('button[data-k]'); if (!b || b.dataset.k === PROG.id) return;
+            if (window.gtag) gtag('event', 'doble_cambiar', { a: b.dataset.k });
+            document.body.style.transition = 'opacity .25s'; document.body.style.opacity = '0';
+            setTimeout(function () { setPrograma(b.dataset.k); }, 220);
+        });
+    }
+
+    // --- panel en Info y calendario ---
+    var card = document.getElementById('dt-card');
+    function aprobadasAqui() {
+        var ap = {};
+        PROG.mats(PROG.id).forEach(function (m) { if (typeof getCombinedState === 'function' && getCombinedState(m.id) === 'approved') ap[m.id] = 1; });
+        return ap;
+    }
+    function pintar() {
+        if (!card) return;
+        var c = PROG.comunes(PROG.id, otra), apOtra = PROG.aprobadas(otra), apAqui = aprobadasAqui();
+        var pasar = c.lista.filter(function (x) { return apOtra[x.b] && !apAqui[x.a]; });
+        var avP = PROG.avance(D.p), cuarenta = Math.ceil(avP.total * 0.4), ok40 = avP.cr >= cuarenta;
+        card.hidden = false;
+        card.innerHTML = '<h3>🎓 Doble titulación · ' + esc(PROG.corto(D.p)) + ' + ' + esc(PROG.corto(D.s)) + '</h3>' +
+            '<p class="ic-note" style="margin:0 0 10px">Estás en tu <b>' + (soyP ? 'carrera principal' : 'segunda carrera') + '</b>. Cambia de malla con el interruptor de arriba; cada una guarda su avance.</p>' +
+            '<div class="gr-top"><div class="gr-meter"><div class="gr-meter-l"><span>Requisito del 40 % en ' + esc(PROG.corto(D.p)) + '</span><span>' + avP.cr + ' / ' + cuarenta + '</span></div><div class="gr-bar"><i style="width:' + Math.min(100, Math.round(avP.cr / cuarenta * 100)) + '%"></i></div></div>' +
+            '<span class="gr-state' + (ok40 ? ' ok' : '') + '">' + (ok40 ? '✓ Ya puedes pedirla' : 'Te faltan ' + (cuarenta - avP.cr) + ' créditos') + '</span></div>' +
+            '<p class="ic-note" style="margin:6px 0 0"><b>' + c.n + ' materias en común</b> (' + c.cr + ' créditos, mismo código en ambos planes). El Comité Asesor decide las equivalencias y convalidaciones; esto es un estimado.</p>' +
+            '<div class="dt-list">' + (c.lista.length ? c.lista.map(function (x) {
+                return '<div class="dt-row"><span>' + esc(x.n) + ' <code>' + esc(x.cod) + '</code></span>' +
+                    '<span class="dt-dot' + (apAqui[x.a] ? ' ap' : '') + '" title="' + esc(PROG.corto(PROG.id)) + '">' + (apAqui[x.a] ? '✓ ' : '') + esc(PROG.corto(PROG.id)) + '</span>' +
+                    '<span class="dt-dot' + (apOtra[x.b] ? ' ap' : '') + '" title="' + esc(PROG.corto(otra)) + '">' + (apOtra[x.b] ? '✓ ' : '') + esc(PROG.corto(otra)) + '</span></div>';
+            }).join('') : '<div class="dt-row"><span>No comparten materias con el mismo código.</span></div>') + '</div>' +
+            '<div class="dt-actions">' +
+            '<button type="button" class="dt-btn pri" id="dt-pasar"' + (pasar.length ? '' : ' disabled') + '>' + (pasar.length ? 'Marcar aquí las ' + pasar.length + ' que aprobaste en ' + esc(PROG.corto(otra)) : 'Nada por pasar desde ' + esc(PROG.corto(otra))) + '</button>' +
+            '<button type="button" class="dt-btn" id="dt-cambiar">Cambiar carreras</button>' +
+            '<button type="button" class="dt-btn" id="dt-salir">Salir de doble titulación</button></div>' +
+            '<details class="ld-sheet-req" style="margin-top:12px"><summary>¿Qué pide la Universidad?</summary><ul>' +
+            '<li>Haber cursado al menos el 40 % de los créditos de la carrera principal, sin sanciones disciplinarias.</li>' +
+            '<li>Pedirla por el SIA en las fechas del calendario, en un programa donde nunca hayas sido estudiante.</li>' +
+            '<li>Solo usas el cupo de créditos que no gastaste en la primera. Con PAPA ≥ 4,3 el Consejo de Facultad puede darte cupo extra; con menos, una sola vez si te faltan 10 créditos o menos.</li>' +
+            '<li>Formaliza la admisión ante el Consejo de Sede antes de recibir el primer título. No hay nuevas reservas de cupo automáticas.</li>' +
+            '</ul><p class="gr-src">Acuerdo 008 de 2008 (arts. 47 y 48) y Acuerdo 155 de 2014 del Consejo Superior Universitario. Confirma con la Secretaría de tu Facultad.</p></details>';
+    }
+    document.addEventListener('click', function (e) {
+        if (!card || !card.contains(e.target)) return;
+        var id = e.target.id;
+        if (id === 'dt-pasar') {
+            var c = PROG.comunes(PROG.id, otra), apOtra = PROG.aprobadas(otra), n = 0;
+            c.lista.forEach(function (x) { if (apOtra[x.b] && getCombinedState(x.a) !== 'approved') { visualState[x.a] = 'approved'; n++; } });
+            lsSet('malla_iq_visual_v7', JSON.stringify(visualState));
+            if (window.gtag) gtag('event', 'doble_pasar', { n: n });
+            renderMalla(); pintar(); pintarSwitch();
+            var b = document.getElementById('dt-pasar'); if (b) b.textContent = '✓ ' + n + ' materias marcadas';
+        } else if (id === 'dt-cambiar') { openLanding(true); }
+        else if (id === 'dt-salir') {
+            if (!confirm('¿Salir de doble titulación? Tu avance en ambas carreras se conserva.')) return;
+            PROG.setDoble(null); document.documentElement.classList.remove('doble'); card.hidden = true;
+        }
+    });
+    var sw0 = window.switchTab;
+    if (typeof sw0 === 'function') window.switchTab = function (t) { var r = sw0.apply(this, arguments); if (t === 'info') pintar(); return r; };
     pintar();
 })();
 </script>
