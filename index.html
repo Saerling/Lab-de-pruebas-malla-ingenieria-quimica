@@ -1959,6 +1959,7 @@ html.fxo-ring .kpi:first-child { padding-right: 16px; }
     <h1 style="margin:0 0 10px">Mallas <span class="nof-pill" title="Proyecto independiente hecho por estudiantes, sin ánimo de lucro. No es un sitio de la Universidad Nacional de Colombia.">No oficial</span></h1>
     <button class="prog-chip" id="prog-chip" onclick="openProgramas()" aria-haspopup="dialog" title="Cambiar de carrera"><span class="prog-dot"></span><span id="prog-nombre">Ingeniería Química</span><span class="prog-caret" aria-hidden="true">▾</span></button>
     <div class="dt-switch" id="dt-switch" role="tablist" aria-label="Tus dos carreras"></div>
+    <button class="ver-chip" id="nv-chip" onclick="openNovedades()" title="Qué hay de nuevo">✨ Novedades v5.0</button>
     <div class="tabs">
         <button class="tab-btn active" id="tab-malla" onclick="switchTab('malla')">Malla Curricular</button>
         <button class="tab-btn" id="tab-calc" onclick="switchTab('calc')">Calculadora Histórica</button>
@@ -2275,6 +2276,34 @@ html.fxo-ring .kpi:first-child { padding-right: 16px; }
             <button class="close-btn" onclick="closeResenas()">&times;</button>
         </div>
         <div id="resenas-body"></div>
+    </div>
+</div>
+
+<!-- NOVEDADES v4.2 (se muestra una vez al entrar; se reabre desde el botón del encabezado) -->
+<div class="modal-overlay" id="nv-modal" onclick="if(event.target===this)closeNovedades()">
+    <div class="nv-card" role="dialog" aria-modal="true" aria-labelledby="nv-title">
+        <div class="nv-prog" id="nv-prog"></div>
+        <button class="close-btn nv-close" onclick="closeNovedades()" aria-label="Cerrar novedades">&times;</button>
+        <div class="nv-scroll" id="nv-scroll" tabindex="0">
+            <div class="nv-hero">
+                <h2 class="nv-sr" id="nv-title">Novedades de la versión 5.0</h2>
+                <div class="nv-term" id="nv-term" aria-hidden="true"></div>
+                <div class="nv-ver" aria-hidden="true">
+                    <span class="nv-old">v4.2</span>
+                    <span class="nv-arrow">→</span>
+                    <span class="nv-odo"><span class="nv-v">v</span><span class="nv-d" id="nv-d1"><span class="nv-strip"></span></span><span class="nv-dot">.</span><span class="nv-d" id="nv-d2"><span class="nv-strip"></span></span></span>
+                </div>
+                <p class="nv-lead">Pasamos de la versión 4.2 a la 5.0: de una malla a nueve carreras. Abajo está lo nuevo y el historial de la 4.2.</p>
+                <div class="nv-done" id="nv-done"></div>
+                <div class="nv-burst" id="nv-burst" aria-hidden="true"></div>
+            </div>
+            <div class="nv-mig" id="nv-mig"></div>
+            <div class="nv-list" id="nv-list"></div>
+        </div>
+        <div class="nv-foot">
+            <small>Puedes volver a verlo con el botón «Novedades» del encabezado.</small>
+            <button class="nv-cta" id="nv-cta" onclick="closeNovedades()">Entrar a la malla</button>
+        </div>
     </div>
 </div>
 
@@ -4841,10 +4870,201 @@ infoLinksRender();
         } catch (e) { btn.textContent = 'Error, reintenta'; }
     }
 </script>
+<script id="novedades-v42">
+(function () {
+    var VERSION = '5.0', KEY = 'malla_iq_novedades_visto';
+    var ITEMS = [
+        { s: 'new', e: '🏛️', t: 'Nueve carreras de la Facultad', p: 'Además de Química están Agrícola, Civil, Eléctrica, Electrónica, Industrial, Mecánica, Mecatrónica y Sistemas, armadas con su malla oficial. Eliges la tuya en la portada.' },
+        { s: 'new', e: '✅', t: 'Prerrequisitos verificados con el SIA', p: 'Los requisitos de las nueve carreras se cotejaron con el catálogo del SIA. Los que aún dicen «por validar» también bloquean, solo se ven punteados.' },
+        { s: 'new', e: '🎓', t: 'Doble titulación', p: 'En la portada eliges tu carrera principal y la segunda. Ves el camino paso a paso, las materias en común marcadas en la malla y pasas de una carrera a otra con un toque.' },
+        { s: 'new', e: '🧭', t: 'Modalidades de grado', p: 'Trabajos investigativos, prácticas de extensión y asignaturas de posgrado, con fechas, requisitos y cuánto te falta. Está en Info y calendario y en el ⋮ del Trabajo de Grado.' },
+        { s: 'new', e: '🗂️', t: 'Agrupaciones más completas', p: 'Civil y Sistemas tienen sus agrupaciones con créditos exigidos y optativas; en las demás ves las optativas que registra el SIA.' },
+        { s: 'new', e: '📈', t: 'Tu avance en la portada', p: 'Cada carrera muestra cuánto llevas completado.' },
+        { s: 'new', e: '🔦', t: 'Conexiones más claras', p: 'Al pasar el cursor o tocar una materia, todo lo que no tiene que ver con ella se oscurece, aprobadas incluidas.' },
+        { s: 'new', e: '✨', t: 'Diseño más tranquilo', p: 'Transición suave entre la portada y la malla, más espacio entre materias y menos elementos en pantalla.' },
+        { s: 'fix', e: '🧪', t: 'Prerrequisitos de Química según el SIA', p: 'Termodinámica pide también Cálculo Diferencial; Lab. Fluidos y Calor, Fluidos, Manejo de Sólidos y Transferencia de Calor.' },
+        { s: 'fix', e: '🔢', t: 'Códigos corregidos', p: 'Se arreglaron códigos mal transcritos en Electrónica, Mecatrónica y Sistemas.' },
+        { s: 'fix', e: '🏷️', t: 'Sitio no oficial y sin anuncios', p: 'Hecho por estudiantes para estudiantes, sin ánimo de lucro. Se quitaron los anuncios.' },
+        { s: 'v42', e: '🌗', t: 'Modo noche y modo día', p: 'Nuevo diseño con dos temas. Cambia con el botón del encabezado y se recuerda tu elección.' },
+        { s: 'v42', e: '🧮', t: 'Calculadora de promedios', p: 'Anota tus notas semestre a semestre y consulta tu PAPA. Incluye la nivelación como semestre 0.' },
+        { s: 'v42', e: '✅', t: 'Aprobada, reprobada o pendiente', p: 'Clic para aprobar una materia; en ⋮ eliges reprobada o pendiente. Las notas de la calculadora actualizan la malla solas.' },
+        { s: 'v42', e: '☝️', t: 'Prerrequisitos que se respetan', p: 'No puedes aprobar una materia sin sus prerrequisitos (' + (window.PROG && PROG.id !== 'quimica' ? 'también los de créditos aprobados y los que siguen por validar' : 'incluidos los de 108, 53 y 60 créditos') + ') y te dice qué te falta.' },
+        { s: 'v42', e: '🔗', t: 'Conexiones entre materias', p: 'Líneas que unen cada materia con sus prerrequisitos; al pasar el cursor se resaltan. Actívalas o apágalas con el botón Conexiones.' },
+        { s: 'v42', e: '🧭', t: 'Mi planificación', p: 'Con el botón Planificar arrastras las materias entre semestres (o usas ‹ ›) para armar tu propio orden. Te avisa si algo queda antes de su prerrequisito y la malla oficial no cambia.' },
+        { s: 'v42', e: '🗂️', t: 'Programa por agrupaciones', p: 'Las asignaturas del plan agrupadas por componente, con créditos exigidos, obligatorios y optativos.' },
+        { s: 'v42', e: '📊', t: 'Cupos y grupos en tiempo real', p: 'Consulta grupos, horarios, salones y cupos del SIA desde cualquier materia.' },
+        { s: 'v42', e: '⭐', t: 'Reseñas anónimas de profesores', p: 'Mira la calificación de cada profesor y deja la tuya, sin cuenta ni correo.' },
+        { s: 'v42', e: '📌', t: 'Libre elección con el catálogo del SIA', p: 'Busca materias de libre elección y fíjalas en los cupos de tu malla.' },
+        { s: 'v42', e: '🗓️', t: 'Horario semanal', p: 'Arma hasta tres planes (A, B y C), detecta cruces, marca favoritas, copia o imprime tu horario.' },
+        { s: 'v42', e: '📍', t: 'Info y calendario', p: 'Calendario del semestre con cuenta regresiva, líneas de emergencia, solicitud de sobrecupo y tus propios enlaces.' },
+        { s: 'v42', e: '💬', t: 'Buzón de comentarios', p: 'Cuéntame tu opinión, sugerencias o quejas desde el botón Comentarios. Tu mensaje me llega solo a mí.' }
+    ];
+    var CMD = 'malla actualizar 4.2 → 5.0';
+    if (window.PROG && PROG.id !== 'quimica') {   // las demás carreras no tuvieron versión 1.0
+        CMD = 'mallas abrir ' + PROG.id;
+        var lead = document.querySelector('#nv-modal .nv-lead');
+        if (lead) lead.textContent = 'Bienvenido a la malla de ' + PROG.nombre + '. Esto es lo que puedes hacer aquí.';
+        document.querySelectorAll('#nv-modal .nv-old, #nv-modal .nv-arrow').forEach(function (e) { e.style.display = 'none'; });
+    }
+    var modal = document.getElementById('nv-modal');
+    if (!modal) return;
+    var timers = [], io = null, prevFocus = null, built = false;
+    var reduce = function () { return !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches); };
+    var later = function (fn, ms) { timers.push(setTimeout(fn, ms)); };
+    var $ = function (id) { return document.getElementById(id); };
+
+    function build() {
+        if (built) return;
+        built = true;
+        var h = '', n = 0, last = '';
+        ITEMS.forEach(function (it) {
+            if (it.s !== last) {
+                last = it.s;
+                h += '<div class="nv-sec' + (it.s === 'v42' ? ' nv-log' : '') + '">' + ({ new: '✨ Lo nuevo en la 5.0', fix: '🛠️ Lo corregido en la 5.0', v42: '📜 Historial · versión 4.2 (de la 1.0 a la 4.2)' })[it.s] + '</div>';
+            }
+            n++;
+            h += '<div class="nv-item ' + (it.s === 'v42' ? 'log' : it.s) + '"><div class="nv-n">' + n + '</div><div><div class="nv-t">' + it.e + ' ' + it.t + '</div><p class="nv-p">' + it.p + '</p></div></div>';
+        });
+        $('nv-list').innerHTML = h;
+        ['nv-d1', 'nv-d2'].forEach(function (id) {
+            var s = document.querySelector('#' + id + ' .nv-strip'), d = '';
+            for (var i = 0; i < 30; i++) d += '<span>' + (i % 10) + '</span>';
+            s.innerHTML = d;
+        });
+        $('nv-scroll').addEventListener('scroll', function () {
+            var el = this, max = el.scrollHeight - el.clientHeight;
+            $('nv-prog').style.width = (max > 0 ? Math.min(100, el.scrollTop / max * 100) : 0) + '%';
+        });
+    }
+
+    function setStrip(id, idx, dur, animate) {
+        var s = document.querySelector('#' + id + ' .nv-strip');
+        if (!animate) s.style.transition = 'none';
+        s.style.setProperty('--t', dur + 's');
+        s.style.setProperty('--i', idx);
+        if (!animate) { void s.offsetWidth; s.style.transition = ''; }
+    }
+
+    function termHtml(i, cursor) { return '<b>$</b> ' + CMD.slice(0, i) + (cursor ? '<span class="cur"></span>' : ''); }
+    function typeTerm(done) {
+        var i = 0;
+        (function step() {
+            $('nv-term').innerHTML = termHtml(i, true);
+            if (i++ < CMD.length) later(step, 30); else done();
+        })();
+    }
+
+    function burst() {
+        var box = $('nv-burst'), cols = ['var(--primary)', 'var(--accent)', 'var(--warning)', 'var(--success)'], h = '';
+        for (var i = 0; i < 30; i++) {
+            var a = Math.random() * Math.PI * 2, d = 90 + Math.random() * 130;
+            h += '<i style="--c:' + cols[i % 4] + ';--dx:' + Math.round(Math.cos(a) * d) + 'px;--dy:' + Math.round(Math.sin(a) * d) + 'px;--r:' + Math.round(Math.random() * 720 - 360) + 'deg"></i>';
+        }
+        box.innerHTML = h;
+        later(function () { box.innerHTML = ''; }, 1300);
+    }
+
+    function land() {
+        var d = $('nv-done');
+        d.innerHTML = '<b>✓</b> Actualizada a la versión ' + VERSION + ' · ' + ITEMS.filter(function (x) { return x.s !== 'v42'; }).length + ' cambios';
+        d.classList.add('on');
+        if (!reduce()) burst();
+    }
+
+    function startReveal() {
+        var els = [].slice.call(document.querySelectorAll('#nv-list .nv-item'));
+        if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+        io = new IntersectionObserver(function (entries) {
+            var k = 0;
+            entries.forEach(function (en) {
+                if (!en.isIntersecting) return;
+                en.target.style.setProperty('--d', Math.min(k++, 8) * 85 + 'ms');
+                en.target.classList.add('in');
+                io.unobserve(en.target);
+            });
+        }, { root: $('nv-scroll'), threshold: 0.15 });
+        els.forEach(function (e) { io.observe(e); });
+    }
+
+    function reset() {
+        timers.forEach(clearTimeout); timers = [];
+        if (io) { io.disconnect(); io = null; }
+        $('nv-term').innerHTML = termHtml(0, true);
+        setStrip('nv-d1', 4, 0, false);
+        setStrip('nv-d2', 2, 0, false);
+        $('nv-done').classList.remove('on');
+        $('nv-burst').innerHTML = '';
+        [].forEach.call(document.querySelectorAll('#nv-list .nv-item'), function (e) { e.classList.remove('in'); });
+        $('nv-scroll').scrollTop = 0;
+        $('nv-prog').style.width = '0';
+        var m = $('nv-mig'), n = window.__mig && window.__mig.v1;
+        if (n > 0) { m.innerHTML = '<b>💾 Recuperamos tu progreso.</b> Copiamos ' + n + (n === 1 ? ' materia aprobada' : ' materias aprobadas') + ' de la versión 1.0 a tu nueva malla.'; m.classList.add('on'); }
+        else m.classList.remove('on');
+    }
+
+    function play() {
+        if (reduce()) {
+            $('nv-term').innerHTML = termHtml(CMD.length, false);
+            setStrip('nv-d1', 15, 0, false); setStrip('nv-d2', 20, 0, false);
+            land(); startReveal(); return;
+        }
+        later(function () {
+            typeTerm(function () {
+                later(function () {
+                    $('nv-term').innerHTML = termHtml(CMD.length, false);
+                    setStrip('nv-d1', 15, 1.6, true);
+                    setStrip('nv-d2', 20, 2.2, true);
+                    later(startReveal, 900);
+                    later(land, 2300);
+                }, 150);
+            });
+        }, 380);
+    }
+
+    function seen() { try { return localStorage.getItem(KEY) === VERSION; } catch (e) { return false; } }
+    function markSeen() { try { localStorage.setItem(KEY, VERSION); } catch (e) { /* sin almacenamiento */ } }
+
+    window.openNovedades = function () {
+        build(); reset();
+        prevFocus = document.activeElement;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        try { $('nv-cta').focus({ preventScroll: true }); } catch (e) {}
+        markSeen();
+        play();
+    };
+    window.closeNovedades = function () {
+        if (!modal.classList.contains('active')) return;
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+        timers.forEach(clearTimeout); timers = [];
+        if (io) { io.disconnect(); io = null; }
+        var chip = $('nv-chip'); if (chip) chip.classList.remove('nuevo');
+        if (window.fbShowTip) setTimeout(window.fbShowTip, 500);
+        if (prevFocus && prevFocus.focus) { try { prevFocus.focus({ preventScroll: true }); } catch (e) {} }
+    };
+
+    document.addEventListener('keydown', function (e) {
+        if (!modal.classList.contains('active')) return;
+        if (e.key === 'Escape') { e.preventDefault(); window.closeNovedades(); return; }
+        if (e.key !== 'Tab') return;
+        var f = [].slice.call(modal.querySelectorAll('button, [tabindex="0"]'));
+        if (!f.length) return;
+        var first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+
+    if (!seen()) {
+        var chip = $('nv-chip'); if (chip) chip.classList.add('nuevo');
+        (function nvEspera() { setTimeout(function () { if (document.documentElement.classList.contains('landing')) nvEspera(); else window.openNovedades(); }, 700); })();
+    }
+})();
+</script>
 <script id="comentarios-v42">
 (function () {
     var API = 'https://proxy-sia.onrender.com/api/comentarios';
-    var K_TIP = 'malla_iq_fb_tip', K_LAST = 'malla_iq_fb_last';
+    var K_TIP = 'malla_iq_fb_tip', K_LAST = 'malla_iq_fb_last', K_NV = 'malla_iq_novedades_visto';
     var $ = function (id) { return document.getElementById(id); };
     var modal = $('fb-modal'), tip = $('fb-tip'), btn = $('fb-btn');
     if (!modal || !tip || !btn) return;
@@ -4940,9 +5160,10 @@ infoLinksRender();
     });
     document.addEventListener('pointerdown', function (e) { if (tip.classList.contains('on') && !tip.contains(e.target) && e.target !== btn) window.fbHideTip(); });
 
+    /* Si ya vio las novedades, el aviso sale solo; si no, sale al cerrar el pop-up de novedades */
     if (get(K_TIP) !== '1') {
         btn.classList.add('nuevo');
-        setTimeout(window.fbShowTip, 1800);
+        if (get(K_NV) === '5.0') setTimeout(window.fbShowTip, 1800);
     }
 })();
 </script>
@@ -5821,6 +6042,7 @@ infoLinksRender();
             { ic: '🖨', t: 'Imprimir horario', run: () => { switchTab('horario'); setTimeout(() => print(), 300); } },
             { ic: '⬇️', t: 'Exportar mi avance', run: call('respaldoExportar') },
             { ic: '⬆️', t: 'Importar un respaldo', run: () => { const f = $('respaldo-file'); if (f) f.click(); } },
+            { ic: '✨', t: 'Ver novedades', run: call('openNovedades') },
             { ic: '💬', t: 'Enviar comentarios', run: call('openFeedback') },
             { ic: '☕', t: 'Invítame un café', run: call('openCoffeeModal') },
             { ic: '🍅', t: S.pomo ? 'Ocultar pomodoro' : 'Mostrar pomodoro', run: () => { S.pomo = !S.pomo; save(); applyFlags(); } },
